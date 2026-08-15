@@ -1,0 +1,5 @@
+#!/bin/sh
+export COIN_OPEN_DATA_ROOT=/var/lib/coin-im-open
+export COIN_OPEN_KEY_PATH=/etc/coin-im-open/encryption.key
+export PYTHONPATH=/opt/coin-im-open/current
+exec /opt/coin-im-open/venv/bin/python -m coin_open.cli "$@"

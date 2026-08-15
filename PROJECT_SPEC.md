@@ -15,6 +15,9 @@ The page should feel like a serious editorial landing page, not a generic AI/Saa
 - `es.html`: Spanish version, served at `/es`. Do not expose it from the English homepage unless explicitly requested.
 - `styles.css`: shared visual system for English and Russian pages.
 - `ms.css`: Market Scan longread visual system, served by `ms.html`.
+- `handling.html` and `handling/index.html`: factual file-handling page, served at `/handling`.
+- `open.html` and `open/index.html`: manual Business File intake, served at `/open`.
+- `server/coin_open/`: encrypted manual intake API deployed separately from the static web root.
 - `robots.txt`: crawler and AI-agent access policy.
 - `llms.txt`: concise language-aware reference for AI agents.
 - `sitemap.xml`: public sitemap.
@@ -101,11 +104,7 @@ Do not deploy unless the current user message explicitly says to deploy.
 
 Current production deployment is the VPS flow in `DEPLOY.md`.
 
-Historical Cloudflare Worker deployment method:
-
-```bash
-npx --yes wrangler@latest deploy --name aged-star-171b --compatibility-date 2026-08-13 --assets <clean-static-dir>
-```
+The old Cloudflare Worker `aged-star-171b` is retired. Do not use Wrangler or change Worker routes unless the user explicitly asks to restore that historical path.
 
 Use a clean temporary static directory for deployment. Include only the files needed for the site:
 
@@ -116,6 +115,10 @@ Use a clean temporary static directory for deployment. Include only the files ne
 - `s.html`
 - `ms.html`
 - `ms/index.html`
+- `handling.html`
+- `handling/index.html`
+- `open.html`
+- `open/index.html`
 - `llms.txt`
 - `styles.css`
 - `ms.css`
@@ -133,8 +136,6 @@ After deployment, verify:
 - production HTML references the current CSS version
 - production text did not drift from local text when the task was visual-only
 
-Do not use the historical Cloudflare Worker deployment unless the user explicitly asks to restore that path.
-
 Then update `VERSIONS.md`.
 
 VPS origin deployment:
@@ -148,6 +149,14 @@ VPS origin deployment:
 - After rsync, verify direct origin HTTP before changing DNS.
 - DNS already points to the VPS through Cloudflare DNS-only records. TLS is issued on the VPS through certbot.
 
+## Current Operational Boundaries
+
+- `/open` is a manual Business File intake, not an automatic Market Scan product.
+- Uploaded files and metadata are encrypted with AES-256-GCM by the intake API and stored outside the static web root.
+- The current intake has no account system, result page, result token, SMTP delivery, automated OpenAI/Anthropic processing, worker queue, dashboard, or countdown.
+- Do not claim those capabilities as live until their server-side implementation and production configuration have been verified.
+- API credentials, encryption keys, SMTP credentials, and other secrets belong on the VPS only and must never be committed.
+
 ## Current Contacts
 
 - Email: `mail@coin.im`
@@ -158,4 +167,4 @@ VPS origin deployment:
 
 ## Working Rule For Future Edits
 
-First inspect current files. Preserve unrelated changes. Keep changes minimal and production-ready. If the user says text must not change, compare visible text before and after.
+First inspect current files. Preserve unrelated changes. Keep changes minimal and production-ready. If the user says text must not change, compare visible text before and after. Keep `ms.html` and `ms/index.html`, `handling.html` and `handling/index.html`, and `open.html` and `open/index.html` byte-identical.

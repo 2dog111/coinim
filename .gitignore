@@ -3,3 +3,8 @@ node_modules/
 *.log
 .env
 .env.*
+.wrangler/
+qa-screens/
+__pycache__/
+*.py[cod]
+.venv/

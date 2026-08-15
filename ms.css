@@ -156,6 +156,9 @@ body.ms-page {
   font-size: 0.72rem;
   font-weight: 600;
   line-height: 1;
+}
+
+.ms-kicker {
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }

@@ -69,16 +69,21 @@ const getSectionCopy = (html) => {
   };
   const restBands = [...main.matchAll(/<div class="rest-band(?: [^"]*)?"[^>]*>[\s\S]*?<\/div>/g)]
     .map((match) => match[0])
+    .filter((source) => !/\bhome-rest\b/.test(source))
     .filter((source) => textNodes(source));
   const sections = [
-    ["Hero", "hero", section(/<section class="home-hero"[\s\S]*?<\/section>/)],
-    ["The record", "proof", section(/<section class="home-proof"[\s\S]*?<\/section>/)],
+    ["Hero", "hero", section(/<section\b[^>]*class="[^"]*\bhome-hero\b[^"]*"[^>]*>[\s\S]*?<\/section>/)],
+    ["Object one", "object-one", section(/<section id="object-one"[\s\S]*?<\/section>/)],
+    ["The record", "proof", section(/<section\b[^>]*class="[^"]*\bhome-proof\b[^"]*"[^>]*>[\s\S]*?<\/section>/)],
+    ["Record bridge", "record-bridge", section(/<div class="rest-band home-rest"[^>]*>[\s\S]*?<\/div>/)],
     ["Stage one", "stage-1", section(/<section id="stage-1"[\s\S]*?<\/section>/)],
     ["Stage two", "stage-2", section(/<section id="stage-2"[\s\S]*?<\/section>/)],
     ["Stage three", "stage-3", section(/<section id="stage-3"[\s\S]*?<\/section>/)],
     ["Stage four", "stage-4", section(/<section id="stage-4"[\s\S]*?<\/section>/)],
     ["Rest band", "rest-1", restBands[0]],
     ["The objects", "objects", section(/<section id="objects"[\s\S]*?<\/section>/)],
+    ["Before a word is read", "before-reading", section(/<section id="before-reading"[\s\S]*?<\/section>/)],
+    ["Why paper, when email is free", "why-paper", section(/<section id="why-paper"[\s\S]*?<\/section>/)],
     ["Rest band", "rest-2", restBands[1]],
     ["How we work together", "how", section(/<section id="how"[\s\S]*?<\/section>/)],
     ["The obvious questions", "faq", section(/<section id="faq"[\s\S]*?<\/section>/)],

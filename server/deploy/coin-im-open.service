@@ -1,0 +1,27 @@
+[Unit]
+Description=coin.im manual Business File intake
+After=network.target
+
+[Service]
+Type=simple
+User=coinopen
+Group=coinopen
+WorkingDirectory=/opt/coin-im-open/current
+Environment=COIN_OPEN_DATA_ROOT=/var/lib/coin-im-open
+Environment=COIN_OPEN_KEY_PATH=/etc/coin-im-open/encryption.key
+Environment=COIN_OPEN_ALLOWED_ORIGINS=https://coin.im
+ExecStart=/opt/coin-im-open/venv/bin/uvicorn coin_open.app:app --app-dir /opt/coin-im-open/current --host 127.0.0.1 --port 8781 --workers 1 --no-access-log
+Restart=on-failure
+RestartSec=2
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadOnlyPaths=/etc/coin-im-open
+ReadWritePaths=/var/lib/coin-im-open
+RestrictSUIDSGID=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+
+[Install]
+WantedBy=multi-user.target
