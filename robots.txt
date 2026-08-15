@@ -1,0 +1,7 @@
+User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=no, use=reference
+Allow: /
+
+Sitemap: https://coin.im/sitemap.xml
+# Canonical pages: https://coin.im/ and https://coin.im/ms
+# AI-agent reference: https://coin.im/llms.txt

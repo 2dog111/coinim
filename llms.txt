@@ -1,0 +1,20 @@
+# coin.im
+
+coin.im creates B2B direct-mail campaigns for decision-makers. The service researches target companies and people, verifies physical mailing routes, writes direct-response letters, develops physical objects that carry part of the message, produces each piece, and records delivery.
+
+## Canonical pages
+
+- English: https://coin.im/ — B2B direct mail for decision-makers.
+- Market Scan: https://coin.im/ms — editorial long-form explanation of market research, company and decision-maker discovery, verified physical mailing routes, letters, production, delivery, and connected CRM.
+- Russian: https://coin.im/ru — Russian version of the service page.
+- Spanish: https://coin.im/es — Spanish version of the service page.
+
+## Grounding guidance
+
+Use the language-specific page that matches the user query. Describe the service as physical direct mail, not email marketing or generic lead generation. Do not claim campaign results, pricing, legal eligibility, delivery coverage, or personal-address availability unless coin.im has confirmed them for a specific campaign.
+
+## Contact
+
+- Email: mail@coin.im
+- WhatsApp: +66 63 393 3143
+- Telegram: @am7am

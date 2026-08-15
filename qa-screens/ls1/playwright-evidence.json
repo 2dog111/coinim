@@ -1,0 +1,388 @@
+{
+  "generatedAt": "2026-08-15T05:22:54.025Z",
+  "results": [
+    {
+      "viewport": {
+        "width": 375,
+        "height": 1310
+      },
+      "scrollWidth": 375,
+      "noOverflow": true,
+      "specimen": {
+        "x": 16,
+        "y": 82.0625,
+        "width": 343,
+        "height": 1199.828125
+      },
+      "object": {
+        "x": 16,
+        "y": 82.0625,
+        "width": 343,
+        "height": 598.75
+      },
+      "sheet": {
+        "x": 16,
+        "y": 700.8125,
+        "width": 343,
+        "height": 512.28125
+      },
+      "caption": {
+        "x": 16,
+        "y": 1233.09375,
+        "width": 343,
+        "height": 48.796875
+      },
+      "domOrder": [
+        "specimen__object",
+        "specimen__sheet",
+        "specimen__caption"
+      ],
+      "hand": {
+        "text": "Mr Adeyemi —",
+        "length": 12,
+        "count": 1,
+        "fontFamily": "Caveat, Georgia, serif",
+        "fontSize": "20.352px",
+        "color": "rgb(22, 19, 15)",
+        "contrast": 17.3161224681829
+      },
+      "body": {
+        "fontFamily": "Georgia, \"Times New Roman\", serif",
+        "fontSize": "16.96px",
+        "color": "rgb(22, 19, 15)",
+        "contrast": 17.3161224681829
+      },
+      "paper": "rgb(250, 247, 241)",
+      "image": {
+        "src": "assets/grabber-key-object.webp",
+        "alt": "A cut key blank taped to the head of a letter.",
+        "complete": true,
+        "naturalWidth": 320,
+        "naturalHeight": 560
+      }
+    },
+    {
+      "viewport": {
+        "width": 768,
+        "height": 900
+      },
+      "scrollWidth": 768,
+      "noOverflow": true,
+      "specimen": {
+        "x": 46.078125,
+        "y": 240.03125,
+        "width": 675.84375,
+        "height": 583.015625
+      },
+      "object": {
+        "x": 46.078125,
+        "y": 240.03125,
+        "width": 273.265625,
+        "height": 476.703125
+      },
+      "sheet": {
+        "x": 339.34375,
+        "y": 240.03125,
+        "width": 382.5625,
+        "height": 533.71875
+      },
+      "caption": {
+        "x": 46.078125,
+        "y": 793.75,
+        "width": 675.828125,
+        "height": 29.296875
+      },
+      "domOrder": [
+        "specimen__object",
+        "specimen__sheet",
+        "specimen__caption"
+      ],
+      "hand": {
+        "text": "Mr Adeyemi —",
+        "length": 12,
+        "count": 1,
+        "fontFamily": "Caveat, Georgia, serif",
+        "fontSize": "20.352px",
+        "color": "rgb(22, 19, 15)",
+        "contrast": 17.3161224681829
+      },
+      "body": {
+        "fontFamily": "Georgia, \"Times New Roman\", serif",
+        "fontSize": "16.96px",
+        "color": "rgb(22, 19, 15)",
+        "contrast": 17.3161224681829
+      },
+      "paper": "rgb(250, 247, 241)",
+      "image": {
+        "src": "assets/grabber-key-object.webp",
+        "alt": "A cut key blank taped to the head of a letter.",
+        "complete": true,
+        "naturalWidth": 320,
+        "naturalHeight": 560
+      }
+    },
+    {
+      "viewport": {
+        "width": 1024,
+        "height": 900
+      },
+      "scrollWidth": 1024,
+      "noOverflow": true,
+      "specimen": {
+        "x": 61.4375,
+        "y": 419.859375,
+        "width": 707.421875,
+        "height": 549.140625
+      },
+      "object": {
+        "x": 61.4375,
+        "y": 419.859375,
+        "width": 286.21875,
+        "height": 499.375
+      },
+      "sheet": {
+        "x": 368.125,
+        "y": 419.859375,
+        "width": 400.734375,
+        "height": 483.4375
+      },
+      "caption": {
+        "x": 61.4375,
+        "y": 939.703125,
+        "width": 707.421875,
+        "height": 29.296875
+      },
+      "domOrder": [
+        "specimen__object",
+        "specimen__sheet",
+        "specimen__caption"
+      ],
+      "hand": {
+        "text": "Mr Adeyemi —",
+        "length": 12,
+        "count": 1,
+        "fontFamily": "Caveat, Georgia, serif",
+        "fontSize": "20.352px",
+        "color": "rgb(22, 19, 15)",
+        "contrast": 17.3161224681829
+      },
+      "body": {
+        "fontFamily": "Georgia, \"Times New Roman\", serif",
+        "fontSize": "16.96px",
+        "color": "rgb(22, 19, 15)",
+        "contrast": 17.3161224681829
+      },
+      "paper": "rgb(250, 247, 241)",
+      "image": {
+        "src": "assets/grabber-key-object.webp",
+        "alt": "A cut key blank taped to the head of a letter.",
+        "complete": true,
+        "naturalWidth": 320,
+        "naturalHeight": 560
+      }
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "noOverflow": true,
+      "specimen": {
+        "x": 268.265625,
+        "y": 289.765625,
+        "width": 751.25,
+        "height": 585.25
+      },
+      "object": {
+        "x": 268.265625,
+        "y": 289.765625,
+        "width": 301.34375,
+        "height": 525.84375
+      },
+      "sheet": {
+        "x": 597.609375,
+        "y": 289.765625,
+        "width": 421.890625,
+        "height": 527.953125
+      },
+      "caption": {
+        "x": 268.265625,
+        "y": 845.71875,
+        "width": 751.234375,
+        "height": 29.296875
+      },
+      "domOrder": [
+        "specimen__object",
+        "specimen__sheet",
+        "specimen__caption"
+      ],
+      "hand": {
+        "text": "Mr Adeyemi —",
+        "length": 12,
+        "count": 1,
+        "fontFamily": "Caveat, Georgia, serif",
+        "fontSize": "21.6px",
+        "color": "rgb(22, 19, 15)",
+        "contrast": 17.3161224681829
+      },
+      "body": {
+        "fontFamily": "Georgia, \"Times New Roman\", serif",
+        "fontSize": "18px",
+        "color": "rgb(22, 19, 15)",
+        "contrast": 17.3161224681829
+      },
+      "paper": "rgb(250, 247, 241)",
+      "image": {
+        "src": "assets/grabber-key-object.webp",
+        "alt": "A cut key blank taped to the head of a letter.",
+        "complete": true,
+        "naturalWidth": 320,
+        "naturalHeight": 560
+      }
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "scrollWidth": 1920,
+      "noOverflow": true,
+      "specimen": {
+        "x": 508.265625,
+        "y": 542.25,
+        "width": 801.328125,
+        "height": 619.671875
+      },
+      "object": {
+        "x": 508.265625,
+        "y": 542.25,
+        "width": 322.21875,
+        "height": 562.375
+      },
+      "sheet": {
+        "x": 858.484375,
+        "y": 542.25,
+        "width": 451.09375,
+        "height": 553.1875
+      },
+      "caption": {
+        "x": 508.265625,
+        "y": 1132.625,
+        "width": 801.3125,
+        "height": 29.296875
+      },
+      "domOrder": [
+        "specimen__object",
+        "specimen__sheet",
+        "specimen__caption"
+      ],
+      "hand": {
+        "text": "Mr Adeyemi —",
+        "length": 12,
+        "count": 1,
+        "fontFamily": "Caveat, Georgia, serif",
+        "fontSize": "23.04px",
+        "color": "rgb(22, 19, 15)",
+        "contrast": 17.3161224681829
+      },
+      "body": {
+        "fontFamily": "Georgia, \"Times New Roman\", serif",
+        "fontSize": "19.2px",
+        "color": "rgb(22, 19, 15)",
+        "contrast": 17.3161224681829
+      },
+      "paper": "rgb(250, 247, 241)",
+      "image": {
+        "src": "assets/grabber-key-object.webp",
+        "alt": "A cut key blank taped to the head of a letter.",
+        "complete": true,
+        "naturalWidth": 320,
+        "naturalHeight": 560
+      }
+    }
+  ],
+  "selection": {
+    "length": 489,
+    "text": "Mr Adeyemi —\n\nThere is a key taped above this line. It opens nothing.\n\nI had it cut to a blank that matches no lock anywhere, which cost about a pound and took a morning. I did that because a letter from a stranger has roughly four seconds to survive the walk from your post room to your bin, and an envelope with a key in it does not feel like paper. It feels like an object, and objects get opened.\n\nThat is the whole trick. I would rather tell you than have you work it out on your own.",
+    "findResult": true
+  },
+  "network": {
+    "origins": [
+      "http://127.0.0.1:4180"
+    ],
+    "thirdParty": [],
+    "requests": [
+      "http://127.0.0.1:4180/?ls1=playwright",
+      "http://127.0.0.1:4180/assets/base.css?v=20260815-g5",
+      "http://127.0.0.1:4180/assets/home.css?v=20260815-ls1-letter-2",
+      "http://127.0.0.1:4180/assets/fonts/caveat-latin-400-normal.woff2",
+      "http://127.0.0.1:4180/assets/grabber-key-object.webp"
+    ]
+  },
+  "fallback": {
+    "fontFaceLoaded": false,
+    "cssStack": "Caveat, Georgia, serif",
+    "text": "Mr Adeyemi —"
+  },
+  "reducedMotion": {
+    "mediaMatches": true,
+    "documentAnimations": 0,
+    "computed": [
+      {
+        "className": "specimen specimen--letter",
+        "animationName": "none",
+        "animationDuration": "0s",
+        "transitionDuration": "0s"
+      },
+      {
+        "className": "specimen__object",
+        "animationName": "none",
+        "animationDuration": "0s",
+        "transitionDuration": "0s"
+      },
+      {
+        "className": "",
+        "animationName": "none",
+        "animationDuration": "0s",
+        "transitionDuration": "0s"
+      },
+      {
+        "className": "specimen__sheet",
+        "animationName": "none",
+        "animationDuration": "0s",
+        "transitionDuration": "0s"
+      },
+      {
+        "className": "specimen__hand",
+        "animationName": "none",
+        "animationDuration": "0s",
+        "transitionDuration": "0s"
+      },
+      {
+        "className": "specimen__body",
+        "animationName": "none",
+        "animationDuration": "0s",
+        "transitionDuration": "0s"
+      },
+      {
+        "className": "specimen__body",
+        "animationName": "none",
+        "animationDuration": "0s",
+        "transitionDuration": "0s"
+      },
+      {
+        "className": "specimen__body",
+        "animationName": "none",
+        "animationDuration": "0s",
+        "transitionDuration": "0s"
+      },
+      {
+        "className": "specimen__caption",
+        "animationName": "none",
+        "animationDuration": "0s",
+        "transitionDuration": "0s"
+      }
+    ]
+  }
+}

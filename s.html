@@ -1,0 +1,676 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>LLL.bz AI / Relay Opinions</title>
+    <style>
+      :root {
+        color-scheme: light;
+        background: #f7f3ea;
+        color: #1b1a18;
+        font-family: ui-serif, "Iowan Old Style", "Charter", "Bitstream Charter", Georgia, Cambria, "Times New Roman", serif;
+        font-size: clamp(18px, 17px + 0.25vw, 20px);
+        line-height: 1.68;
+        font-weight: 400;
+        font-kerning: normal;
+        font-variant-ligatures: common-ligatures;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background: #f7f3ea;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: #f7f3ea;
+        color: #1b1a18;
+        hyphens: none;
+        overflow-wrap: normal;
+        word-break: normal;
+      }
+
+      .reading-page {
+        max-width: 64ch;
+        margin: 0 auto;
+        padding: 40px clamp(32px, 5vw, 56px) 96px;
+      }
+
+      .site-header {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: clamp(16px, 3vw, 26px);
+        margin: 0 0 54px;
+      }
+
+      .brand-lockup {
+        flex: 0 0 auto;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        max-width: 100%;
+      }
+
+      .logo {
+        flex: 0 0 auto;
+        display: inline-block;
+        margin: 0;
+        padding: 0.14em 0.24em 0.18em;
+        color: #0067ff;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", Arial, sans-serif;
+        font-size: 96px;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: 0;
+        border: 1px solid rgba(255, 255, 255, 0.84);
+        border-radius: 0.22em;
+        background: rgba(255, 255, 255, 0.16);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.72),
+          inset 0 -1px 0 rgba(0, 103, 255, 0.08),
+          0 14px 34px rgba(0, 103, 255, 0.12);
+        text-shadow: none;
+        backdrop-filter: blur(18px) saturate(1.35);
+        -webkit-backdrop-filter: blur(18px) saturate(1.35);
+      }
+
+      .site-title {
+        max-width: 14em;
+        color: #178f57;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", Arial, sans-serif;
+        font-size: clamp(32px, 4.2vw, 48px);
+        font-weight: 720;
+        line-height: 1.06;
+        letter-spacing: 0;
+        white-space: normal;
+        text-wrap: balance;
+      }
+
+      .note {
+        color: #1b1a18;
+        font-size: 1.2rem;
+        font-weight: 400;
+        line-height: 1.58;
+        text-align: left;
+        hyphens: none;
+        overflow-wrap: normal;
+        word-break: normal;
+        text-wrap: pretty;
+      }
+
+      .note-title {
+        margin: 0 0 0.82em;
+        color: #171717;
+        font-size: 1.55em;
+        font-weight: 700;
+        line-height: 1.12;
+        text-wrap: balance;
+      }
+
+      .note h3 {
+        margin: 1.6em 0 0.48em;
+        color: #171717;
+        font-size: 1.12em;
+        font-weight: 700;
+        line-height: 1.2;
+        text-wrap: balance;
+      }
+
+      .note p {
+        margin: 0 0 1.15em;
+      }
+
+      .note p:last-child {
+        margin-bottom: 0;
+      }
+
+      .note a {
+        color: #0067ff;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.18em;
+        overflow-wrap: anywhere;
+      }
+
+      .note-meta {
+        color: #3c3832;
+      }
+
+      .note-principle {
+        margin: 1.35em 0 1.45em;
+        padding: 0.88em 1em 0.92em;
+        color: #182016;
+        background: rgba(23, 143, 87, 0.075);
+        border: 1px solid rgba(23, 143, 87, 0.18);
+        border-left: 5px solid rgba(23, 143, 87, 0.58);
+        border-radius: 8px;
+        box-shadow: 0 12px 28px rgba(29, 74, 48, 0.055);
+      }
+
+      .note-warning {
+        margin: 1.55em 0 0;
+        padding: 1.05em 1.12em 1.08em;
+        color: #171b22;
+        font-size: 1.02em;
+        line-height: 1.52;
+        background: rgba(0, 103, 255, 0.045);
+        border: 1px solid rgba(0, 103, 255, 0.13);
+        border-left: 5px solid rgba(0, 103, 255, 0.46);
+        border-radius: 8px;
+        box-shadow: 0 14px 34px rgba(24, 44, 82, 0.055);
+      }
+
+      .note-principle p,
+      .note-warning p {
+        margin: 0;
+      }
+
+      .note-separator {
+        position: relative;
+        display: grid;
+        place-items: center;
+        min-height: 132px;
+        margin: 118px -40px 104px;
+      }
+
+      .note-separator::before,
+      .note-separator::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(27, 26, 24, 0.34) 14%,
+          rgba(27, 26, 24, 0.34) 86%,
+          transparent
+        );
+      }
+
+      .note-separator::before {
+        top: 22px;
+      }
+
+      .note-separator::after {
+        bottom: 22px;
+      }
+
+      .separator-mark {
+        width: min(100%, 650px);
+        height: 66px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 11px;
+        align-items: center;
+        padding: 0 22px;
+        border-left: 8px solid #1b1a18;
+        border-right: 8px solid #1b1a18;
+      }
+
+      .separator-mark span {
+        display: block;
+        height: 34px;
+        min-width: 0;
+        border-radius: 3px;
+        box-shadow: 0 12px 22px rgba(27, 26, 24, 0.12);
+        transform: skewX(-16deg);
+      }
+
+      .separator-mark span:nth-child(1) {
+        background: #e84a5f;
+      }
+
+      .separator-mark span:nth-child(2) {
+        background: #f4a62a;
+      }
+
+      .separator-mark span:nth-child(3) {
+        background: #16a085;
+      }
+
+      .separator-mark span:nth-child(4) {
+        background: #2f80ed;
+      }
+
+      .separator-mark span:nth-child(5) {
+        background: #8e44ad;
+      }
+
+
+      .section-heading {
+        margin: 2.35em 0 0.86em;
+        color: #171717;
+        font-size: 1.24em;
+        font-weight: 700;
+        line-height: 1.16;
+        text-wrap: balance;
+      }
+
+      .quote-card {
+        margin: 1.18em 0;
+        padding: 1.02em 1.08em 1.08em;
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(27, 26, 24, 0.09);
+        border-left: 5px solid rgba(0, 103, 255, 0.38);
+        border-radius: 8px;
+        box-shadow: 0 16px 38px rgba(54, 45, 31, 0.05);
+      }
+
+      .quote-card p {
+        margin-bottom: 0.78em;
+      }
+
+      .quote-card p:last-child {
+        margin-bottom: 0;
+      }
+
+      .quote-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 2.18em;
+        height: 1.78em;
+        margin: 0 0.42em 0.18em 0;
+        color: #0067ff;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", Arial, sans-serif;
+        font-size: 0.82em;
+        font-weight: 760;
+        line-height: 1;
+        vertical-align: baseline;
+        border: 1px solid rgba(0, 103, 255, 0.18);
+        border-radius: 999px;
+        background: rgba(0, 103, 255, 0.06);
+      }
+
+      .quote-source {
+        color: #3c3832;
+        font-size: 0.88em;
+        line-height: 1.45;
+      }
+
+      .sources-list {
+        margin: 0.7em 0 0;
+        padding-left: 1.32em;
+      }
+
+      .sources-list li {
+        margin: 0 0 0.82em;
+        padding-left: 0.18em;
+      }
+
+      @media (max-width: 640px) {
+        :root {
+          font-size: 18px;
+          line-height: 1.62;
+        }
+
+        .reading-page {
+          padding: 24px 20px 72px;
+        }
+
+        .site-header {
+          gap: 12px;
+          margin-bottom: 38px;
+        }
+
+        .logo {
+          font-size: clamp(52px, 14vw, 58px);
+        }
+
+        .site-title {
+          font-size: clamp(26px, 8vw, 34px);
+        }
+
+        .note-separator {
+          min-height: 104px;
+          margin: 86px -12px 76px;
+        }
+
+        .note-separator::before,
+        .note-separator::after {
+          height: 2px;
+        }
+
+        .note-separator::before {
+          top: 16px;
+        }
+
+        .note-separator::after {
+          bottom: 16px;
+        }
+
+        .separator-mark {
+          height: 54px;
+          gap: 6px;
+          padding: 0 13px;
+          border-left-width: 6px;
+          border-right-width: 6px;
+        }
+
+        .separator-mark span {
+          height: 28px;
+          border-radius: 2px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="reading-page" aria-label="LLL.bz notes">
+      <header class="site-header" aria-label="LLL.bz">
+        <div class="brand-lockup">
+          <div class="logo" aria-label="LLL.bz">LLL.bz</div>
+          <div class="site-title">AI / Relay Notes</div>
+        </div>
+      </header>
+
+      <article class="note" aria-label="50 реальных мнений китайских программистов об API-релеях">
+        <h1 class="note-title">50 реальных мнений китайских программистов об API-релеях</h1>
+
+        <p class="note-meta"><strong>Ранжировано по практической пользе.</strong></p>
+        <p class="note-meta"><strong>Материалы: май-июнь 2026.</strong></p>
+        <div class="note-warning">
+          <p>Материал собран как практический рейтинг мнений и предупреждений о релейных API: подмена моделей, биллинг, безопасность, стабильность и выбор платформы.</p>
+        </div>
+        <div class="note-principle">
+          <p><strong>Короткое правило:</strong> проверять малым пополнением, одинаковыми задачами и не отправлять чувствительные данные через непроверенный релей.</p>
+        </div>
+
+        <h2 class="section-heading">РАЗДЕЛ 1. Главное: подмена моделей и фальшивые проверки</h2>
+
+        <section class="quote-card" aria-label="Мнение 1">
+          <p><span class="quote-number">1</span>Проверить подмену модели сейчас трудно. Новичков часто цепляют сайты, которые обещают через веб-страницу определить, настоящий ли это Claude CC. По словам владельца релея, это почти всегда обман: такие тесты смотрят несколько полей tools и пару специфических полей в ответе. На этом строят видимость проверки. Верить сайтам, которые обещают определить “полный Claude”, нельзя. У некоторых релеев собственный тест всегда проходит, а у конкурентов всегда нет.</p>
+          <p class="quote-source"><strong>Источник:</strong> владелец релейной платформы, V2EX, июнь 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 2">
+          <p><span class="quote-number">2</span>На рынке есть люди, которые умеют замаскировать kiro или gpt-5.4 под claude ccmax так, что популярные веб-проверки ничего не заметят. Но качество у этих каналов разное. Настоящий ccmax opus, если prompt-документ написан нормально, часто закрывает задачу с первого прохода. Опытный программист видит результат и сразу понимает разницу. После этого reverse-каналы с внедренными промптами и дешевые модели ощущаются резко слабее.</p>
+          <p class="quote-source"><strong>Источник:</strong> владелец релейной платформы, V2EX, июнь 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 3">
+          <p><span class="quote-number">3</span>Относительно надежная проверка одна: взять подпись thinking-блока у релея и отправить подписанный пакет в официальный ccmax. Если это reverse-канал, официальный сервер подпись не подтвердит и вернет ошибку. Честный ccmax-релей такую проверку проходит.</p>
+          <p class="quote-source"><strong>Источник:</strong> владелец релейной платформы, V2EX, июнь 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 4">
+          <p><span class="quote-number">4</span>Подмена не обязательно идет на каждом запросе. Релей может обработать 10 запросов и подменить 1-2. Экономика понятна: gpt-5.4 внутри рынка может стоить около 4 фэней, а ccmax - около 1.5 юаня. Разница в десятки раз. Значит, у релея есть прямой финансовый мотив подменять дорогую модель дешевой.</p>
+          <p class="quote-source"><strong>Источник:</strong> владелец релейной платформы, V2EX, июнь 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 5">
+          <p><span class="quote-number">5</span>Если ccmax-канал ведет себя странно, тупит и не дает результата уровня настоящего ccmax, не сжигай на него баланс. Лучше взять дешевый kiro reverse: он стоит копейки, и потери будут меньше.</p>
+          <p class="quote-source"><strong>Источник:</strong> владелец релейной платформы, V2EX, июнь 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 6">
+          <p><span class="quote-number">6</span>После проверки двух релеев результат оказался неприятным: у одного высокий риск, tool-calling был изменен; у второго средний риск, в prompt что-то внедряли. Оба сервиса до этого использовались почти полгода.</p>
+          <p class="quote-source"><strong>Источник:</strong> разработчик, Juejin.cn, май 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 7">
+          <p><span class="quote-number">7</span>Типовые ловушки выглядят так: просишь claude-sonnet-4, а запрос уходит в дешевую open-source модель; просишь AI поставить пакет, а релей меняет одну букву в названии и ведет к вредоносной версии; длинный контекст внезапно исчезает, потому что релей выкинул старую часть диалога ради экономии; реально потратил 1000 токенов, а в биллинге видишь 1500.</p>
+          <p class="quote-source"><strong>Источник:</strong> разработчик, Juejin.cn, май 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 8">
+          <p><span class="quote-number">8</span>CISPA в марте 2026 опубликовал работу arxiv:2603.01919 о сторонних API. Из 24 проверенных API-эндпоинтов больше половины подменяли модель на бэкенде. При работе через фейковые модели ошибок на каждый потраченный доллар было в 2-4 раза больше, чем через официальный API. Вдобавок 187 научных работ использовали такие API для экспериментов, и 62% этих работ уже приняли ACL, CVPR и другие топовые конференции.</p>
+          <p class="quote-source"><strong>Источник:</strong> пользователь V2EX, март 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 9">
+          <p><span class="quote-number">9</span>Громкие обещания SLA сами по себе ничего не доказывают. В обсуждениях V2EX звучит жесткая позиция: те, кто громче всех обещает SLA, нередко оказываются главными подменщиками моделей.</p>
+          <p class="quote-source"><strong>Источник:</strong> пользователь V2EX, июнь 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 10">
+          <p><span class="quote-number">10</span>Релейный бизнес держится на тонкой инфраструктуре и постоянном обходе банов. Стоит усилить риск-контроль, и аккаунты начинают умирать пачками. Не стоит верить заявлениям про “антибан-технологии”. Был пример с 88code: они говорили, что умеют защищать аккаунты, пользователи понесли им аккаунты, а на следующий день сервер лег. Слова про железный SLA в этой нише лучше проверять делом.</p>
+          <p class="quote-source"><strong>Источник:</strong> владелец релейной платформы, V2EX, июнь 2026</p>
+        </section>
+
+        <h2 class="section-heading">РАЗДЕЛ 2. Пять историй, где люди потеряли деньги или время</h2>
+
+        <section class="quote-card" aria-label="Мнение 11">
+          <p><span class="quote-number">11</span>История первая: человек нашел частный релей в техническом сообществе. Цена была на 30% ниже рынка. Он пополнил баланс на 200 юаней. Первые три дня все работало. На четвертый начались ошибки. На пятый сервис исчез, группа была распущена, владелец пропал. Главный урок: не брать личные релеи без компании за спиной.</p>
+          <p class="quote-source"><strong>Источник:</strong> GitHub KKWANG4444, май 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 12">
+          <p><span class="quote-number">12</span>История вторая: человек поднял One API и купил собственный прокси. На бумаге схема выглядела дешево. На практике каждые две недели IP улетал в бан, после Anthropic Shield-v2 обычный VPS-IP перестал держаться, а чинить падения приходилось самому. Один раз все API легли в 3 ночи, разбор шел до утра. Через два месяца он отказался от самосбора.</p>
+          <p class="quote-source"><strong>Источник:</strong> GitHub KKWANG4444, май 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 13">
+          <p><span class="quote-number">13</span>История третья: сервис выглядел нормальным, но в пиковые часы первый токен приходил через 5 секунд. В ChatBot-проекте пользователи начали писать, что AI слишком медленный. Проблема была не в модели, а в релеe. Пользовательский опыт развалился на задержке.</p>
+          <p class="quote-source"><strong>Источник:</strong> GitHub KKWANG4444, май 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 14">
+          <p><span class="quote-number">14</span>История четвертая: релей не мог выдать счет. Для личного проекта это терпимо. Для компании - тупик. Финансовый отдел не принял расход, и все пришлось переделывать. Для команды сразу проверять счета, юрлицо и банковский перевод.</p>
+          <p class="quote-source"><strong>Источник:</strong> GitHub KKWANG4444, май 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 15">
+          <p><span class="quote-number">15</span>История пятая: проект вырос, QPS поднялся с десятков до сотен. Релей не выдержал: лимиты, таймауты, обрывы. До запуска поддержка отвечала “без ограничений”. Под нагрузкой стало видно, что ограничение есть. Перед продакшном нужен stress-test, а не переписка с поддержкой.</p>
+          <p class="quote-source"><strong>Источник:</strong> GitHub KKWANG4444, май 2026</p>
+        </section>
+
+        <h2 class="section-heading">РАЗДЕЛ 3. Правила выбора API-релея</h2>
+
+        <section class="quote-card" aria-label="Мнение 16">
+          <p><span class="quote-number">16</span>Девять признаков надежного релея: официальная компания; публичная статус-панель; WeChat, Alipay или банковский перевод; живая китайская поддержка; широкий набор моделей; TTFT меньше 1 секунды; успешность под конкурентной нагрузкой выше 99%; streaming и Function Calling; прозрачный биллинг по key, проектам и моделям. Первый пункт отсекает большую часть слабых вариантов.</p>
+          <p class="quote-source"><strong>Источник:</strong> GitHub KKWANG4444, май 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 17">
+          <p><span class="quote-number">17</span>Релей выбирают не по минимальной цене, а по стабильности. Пять минут простоя API могут сломать онлайн-продукт. Потери от сбоя обычно выше, чем экономия в несколько десятков юаней.</p>
+          <p class="quote-source"><strong>Источник:</strong> GitHub KKWANG4444, май 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 18">
+          <p><span class="quote-number">18</span>Compliance лучше проверять в начале. Если проект растет, появятся счета, банковские переводы, договоры, юрлица и внутренние проверки. Проще сразу выбрать платформу, которая это умеет, чем потом переносить интеграцию в спешке.</p>
+          <p class="quote-source"><strong>Источник:</strong> GitHub KKWANG4444, май 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 19">
+          <p><span class="quote-number">19</span>Инструмент не должен съедать работу. Настройка API, прокси и бесконечный разбор странных ошибок не являются основным результатом. Смысл релея - снять трение, а не добавить новый слой проблем.</p>
+          <p class="quote-source"><strong>Источник:</strong> GitHub KKWANG4444, май 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 20">
+          <p><span class="quote-number">20</span>Совместные покупки на Xianyu лучше не трогать. Риск побега высокий, подмена моделей там почти норма.</p>
+          <p class="quote-source"><strong>Источник:</strong> GitHub KKWANG4444, май 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 21">
+          <p><span class="quote-number">21</span>Нельзя выводить большой трафик без нагрузочного теста. На маленьком объеме сервис может выглядеть чисто, а на реальной нагрузке упасть сразу.</p>
+          <p class="quote-source"><strong>Источник:</strong> GitHub KKWANG4444, май 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 22">
+          <p><span class="quote-number">22</span>API Key не должен светиться на клиенте. Фронтенд не должен напрямую передавать ключ. Вызов релея - только через бэкенд.</p>
+          <p class="quote-source"><strong>Источник:</strong> GitHub KKWANG4444, май 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 23">
+          <p><span class="quote-number">23</span>Не строить систему вокруг одной модели. Нужен fallback: если основная модель легла, запросы должны уходить на резервную.</p>
+          <p class="quote-source"><strong>Источник:</strong> GitHub KKWANG4444, май 2026</p>
+        </section>
+
+        <h2 class="section-heading">РАЗДЕЛ 4. Данные и безопасность</h2>
+
+        <section class="quote-card" aria-label="Мнение 24">
+          <p><span class="quote-number">24</span>Релей видит открытый текст запросов и ответов. Он может логировать диалоги, искать ключи, пароли, pubkey, cred и другие чувствительные строки. В обсуждениях упоминались покупки пользовательских сессий в Telegram под видом данных для обучения. Владелец релея отдельно говорил: “обучение” часто только прикрытие. Пароли, приватные ключи и коммерческие секреты через непроверенный релей лучше не гонять.</p>
+          <p class="quote-source"><strong>Источник:</strong> владелец релейной платформы, V2EX, июнь 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 25">
+          <p><span class="quote-number">25</span>Бесплатное часто оказывается самым дорогим. Пользователь думает, что получает дешевый API. На деле его запросы, ответы и поведение могут стать товаром.</p>
+          <p class="quote-source"><strong>Источник:</strong> пользователь V2EX, июнь 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 26">
+          <p><span class="quote-number">26</span>Черный релей может зарабатывать трижды. Первый доход - пополнение баланса пользователем. Второй - бесплатные квоты Anthropic/OpenAI через массово зарегистрированные аккаунты и попытки refund после банов. Третий - продажа пользовательских запросов и ответов как данных. Если один источник дохода ломается, остаются другие.</p>
+          <p class="quote-source"><strong>Источник:</strong> пользователь V2EX, июнь 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 27">
+          <p><span class="quote-number">27</span>Схема плохого релея простая: низкая цена, подарочные токены, быстрый приток пользователей, рост масштаба, затем повышение цен и падение стабильности. Жалобы в группе заканчиваются баном. В финале исчезает домен и обнуляется баланс.</p>
+          <p class="quote-source"><strong>Источник:</strong> пользователь V2EX, июнь 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 28">
+          <p><span class="quote-number">28</span>Практика для VPN и API-релеев одинаковая: пополнять мало. Закинул 50 юаней, проверил, не понравилось - ушел. Не надо кредитовать поставщика вперед.</p>
+          <p class="quote-source"><strong>Источник:</strong> пользователь V2EX, июнь 2026</p>
+        </section>
+
+        <h2 class="section-heading">РАЗДЕЛ 5. Аудит, проверки и реальные тесты</h2>
+
+        <section class="quote-card" aria-label="Мнение 29">
+          <p><span class="quote-number">29</span>Инструмент api-relay-audit от Toby Bridges запускается одной командой: python audit.py --key YOUR_KEY --url https://relay.example/v1 --output report.md. Он проверяет 13 рисков: внедрение в prompt, соответствие модели, обрезку контекста, изменение tool-calling, утечку ключей в ошибках и другие вещи. По каждому пункту дает clean, anomaly или inconclusive. Через 10-15 минут получается отчет с рисками.</p>
+          <p class="quote-source"><strong>Источник:</strong> разработчик, Juejin.cn, май 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 30">
+          <p><span class="quote-number">30</span>В одном резонансном исследовании проверили 28 платных роутов и 400 бесплатных. Один платный роут и восемь бесплатных активно внедряли вредоносный код. Некоторые обращались к подготовленным AWS-учетным данным исследователей. Были случаи, где ETH-приватные ключи действительно уводились. Указанная работа: arXiv:2604.08407.</p>
+          <p class="quote-source"><strong>Источник:</strong> Juejin.cn, май 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 31">
+          <p><span class="quote-number">31</span>У проверок есть обратная сторона. Часть инструментов “разоблачения” конкуренты используют друг против друга, чтобы влиять на цену и репутацию в нише. У разных reverse-инструментов разные JSON-поля, поэтому простые веб-тесты часто дают не проверку, а ее имитацию.</p>
+          <p class="quote-source"><strong>Источник:</strong> владелец релейной платформы, V2EX, июнь 2026</p>
+        </section>
+
+        <h2 class="section-heading">РАЗДЕЛ 6. Платформы: короткие отзывы</h2>
+
+        <section class="quote-card" aria-label="Мнение 32">
+          <p><span class="quote-number">32</span>PackyCode активен с конца 2024 - начала 2025 года. Один из первых китайских поставщиков, который серьезно оптимизировался под Claude Code. Платформа общается с open-source сообществом, владелец активен в X, поддержка отвечает быстро. Со временем PackyCode стал апстримом для других релеев. По Gemini многие каналы сейчас медленные или не работают, а PackyCode в этих отзывах выглядит быстрее.</p>
+          <p class="quote-source"><strong>Источник:</strong> GitHub zzsting88, июнь 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 33">
+          <p><span class="quote-number">33</span>У IKunCode сильный канал для Claude Code - “ClaudeCode-стабильный”. Цена: 11.5 юаня за вход и 57.5 юаня за выход на 1M токенов. По отзыву: стабильно, скорость нормальная, общий уровень хороший.</p>
+          <p class="quote-source"><strong>Источник:</strong> пользователь V2EX, июнь 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 34">
+          <p><span class="quote-number">34</span>ModCon появился в ноябре 2025. GPT-серия сделана неплохо. GPT-5.5 стоит около 0.9 юаня за вход на 1M токенов. По отзыву, сервис достаточно стабильный.</p>
+          <p class="quote-source"><strong>Источник:</strong> пользователь V2EX, июнь 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 35">
+          <p><span class="quote-number">35</span>Aegisy дает новым пользователям $5 и ежедневный check-in с баллами. Подходит для первичного теста своих сценариев без крупного пополнения.</p>
+          <p class="quote-source"><strong>Источник:</strong> GitHub zzsting88, июнь 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 36">
+          <p><span class="quote-number">36</span>DawCode дает новым пользователям 4 юаня и ежедневный check-in. Логика простая: сначала проверить скорость и стабильность на подарочном балансе, потом решать насчет пополнения.</p>
+          <p class="quote-source"><strong>Источник:</strong> GitHub zzsting88, июнь 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 37">
+          <p><span class="quote-number">37</span>WinToken периодически дает промокоды для новых пользователей на странице hvoy. В лучшем случае можно получить до 113 юаней, в более обычном - около 35 юаней. Эти деньги стоит тратить на реальные задачи, а не на случайные тесты.</p>
+          <p class="quote-source"><strong>Источник:</strong> пользователь V2EX, июнь 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 38">
+          <p><span class="quote-number">38</span>Unity2.ai дает $2 за регистрацию и до $10 за комментарий или вступление в группу с ID. Максимум около $12. Проверять лучше сразу на рабочих сценариях.</p>
+          <p class="quote-source"><strong>Источник:</strong> пользователь V2EX, июнь 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 39">
+          <p><span class="quote-number">39</span>С AI派 осторожно: кэш стоит около 0.52x, тогда как у многих сайтов около 0.1x. В coding-задачах кэш используется часто, поэтому итоговая цена может оказаться сильно выше видимой. Пополнять лучше маленькими суммами.</p>
+          <p class="quote-source"><strong>Источник:</strong> пользователь V2EX, июнь 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 40">
+          <p><span class="quote-number">40</span>OpenRouter был одним из первых сервисов с одним API для множества моделей. Для китайских пользователей он стал менее удобен: местные карты уже не проходят для Claude и GPT. Плюсы - стабильность и оригинальные модели. Минус - часто дороже официальной цены примерно на 5%.</p>
+          <p class="quote-source"><strong>Источник:</strong> GitHub zzsting88, июнь 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 41">
+          <p><span class="quote-number">41</span>RightCode заточен под программирование и поддерживает Claude, Gemini и GPT. Рекомендуемый канал - /claude. Opus 4.7 стоит около 10 юаней за вход и 50 юаней за выход на 1M токенов. Минимальное пополнение 1 юань, дают 5 юаней баланса на тест.</p>
+          <p class="quote-source"><strong>Источник:</strong> GitHub zzsting88, июнь 2026</p>
+        </section>
+
+        <h2 class="section-heading">РАЗДЕЛ 7. Цена и экономия</h2>
+
+        <section class="quote-card" aria-label="Мнение 42">
+          <p><span class="quote-number">42</span>Для личного использования один из вариантов - купить GPT Plus через турецкий регион примерно за 80 юаней в месяц. Схема из обсуждения: турецкий Apple ID, подарочная карта через mtcgame или Xianyu, затем VPN и Codex для кода, чата и ежедневных задач. По оценкам пользователей, $20 Plus может дать эквивалент примерно $400 в токенах. Для одиночной работы этого часто хватает.</p>
+          <p class="quote-source"><strong>Источник:</strong> владелец релейной платформы, V2EX, июнь 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 43">
+          <p><span class="quote-number">43</span>Если не хочется собирать схему самому, можно брать релей из верхней части рейтингов с ценой около 1 юаня за вход и 6 юаней за выход на 1M токенов GPT-5.5. Пополнять небольшими суммами. Для более сложного результата - Claude, но цена выше.</p>
+          <p class="quote-source"><strong>Источник:</strong> GitHub zzsting88, июнь 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 44">
+          <p><span class="quote-number">44</span>Рабочая связка: дешевый GPT-5.5 за 1-2 юаня на 1M токенов для массовых задач и более дорогой Claude Code примерно за 10 юаней на 1M токенов для сложного кода. Хороший cc-канал с Opus 4.7 по 10/50 юаней за 1M токенов почти не подменяется.</p>
+          <p class="quote-source"><strong>Источник:</strong> GitHub zzsting88, июнь 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 45">
+          <p><span class="quote-number">45</span>Слишком низкая цена обычно означает одно из трех: подмена модели, нестабильность или скрытые платежи. Дешевое не всегда плохое, но дешевое надо проверять жестче.</p>
+          <p class="quote-source"><strong>Источник:</strong> GitHub zzsting88, июнь 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 46">
+          <p><span class="quote-number">46</span>Самая тихая статья расходов - кэш. Обычная цена кэша часто около 10% от основной цены. Некоторые берут 15%. Жадные сервисы берут 30%. Для coding-задач это важно, потому что кэш используется постоянно.</p>
+          <p class="quote-source"><strong>Источник:</strong> GitHub zzsting88, июнь 2026</p>
+        </section>
+
+        <h2 class="section-heading">РАЗДЕЛ 8. Суть</h2>
+
+        <section class="quote-card" aria-label="Мнение 47">
+          <p><span class="quote-number">47</span>Релеи решают настоящие проблемы: оплата, доступ, маршрутизация, единый API. Ими можно пользоваться. Но асимметрия огромная. Ты не знаешь, какая модель реально стоит на бэкенде. Не знаешь, пишутся ли твои диалоги. Не знаешь, исчезнет ли владелец завтра. Это не мелочь, а базовый риск.</p>
+          <p class="quote-source"><strong>Источник:</strong> пользователь V2EX, июнь 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 48">
+          <p><span class="quote-number">48</span>Хорошая схема - использовать GPT там, где нужен GPT, Claude там, где нужен Claude, и китайские модели там, где они подходят. Переключаться по задаче, а не по привычке. Надежный релей дает именно эту свободу.</p>
+          <p class="quote-source"><strong>Источник:</strong> GitHub KKWANG4444, май 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 49">
+          <p><span class="quote-number">49</span>Один ветеран китайского интернета писал, что даже в серых схемах раньше были принципы. Он купил доступ у двух продавцов, которые на V2EX называли себя “источником”. Чем больше пользовался, тем больше сомневался. В итоге поднял свой reverse-прокси и сравнил на одном проекте и в одной среде. Даже без учета подмены биллинг у релеев был почти вдвое выше, скорость хуже, иногда генерация кода занимала 20 минут. Один продавец говорил, что покупает PLUS у источника по 50 юаней, а ссылка на пополнение оказалась той же, где другие продают за 15. Вывод: даже у серого рынка должны быть принципы.</p>
+          <p class="quote-source"><strong>Источник:</strong> пользователь V2EX, июнь 2026</p>
+        </section>
+
+        <section class="quote-card" aria-label="Мнение 50">
+          <p><span class="quote-number">50</span>Личный итог одного пользователя: релеи часто оказываются ловушкой. Обещают “своих людей” и дешевый доступ, а на практике дают задержки, непрозрачный биллинг и сомнения в модели.</p>
+          <p class="quote-source"><strong>Источник:</strong> пользователь V2EX, июнь 2026</p>
+        </section>
+
+        <div class="note-separator" role="separator" aria-label="Разделитель">
+          <div class="separator-mark" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+        <h2 class="section-heading">Источники по важности</h2>
+        <ol class="sources-list">
+          <li>V2EX - главный китайский форум разработчиков, живые обсуждения и инсайды. Ключевые треды: t/1200135 - внутренняя кухня релейных платформ; t/1210326 - обсуждение рисков и экономии.</li>
+          <li>GitHub KKWANG4444/ai-api-proxy-china-guide - структурированный гайд по выбору API-релеев, правилам и ошибкам.</li>
+          <li>GitHub zzsting88/relayAPI - сравнение 20+ платформ, цены, отзывы и предупреждения.</li>
+          <li>Juejin.cn - материалы про api-relay-audit, аудит релеев и реальные проверки.</li>
+          <li>CSDN / SegmentFault - технические дополнения, совместимость и практические заметки.</li>
+        </ol>
+      </article>
+    </main>
+  </body>
+</html>

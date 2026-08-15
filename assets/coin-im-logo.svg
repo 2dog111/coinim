@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">coin.im</title>
+  <rect width="512" height="512" rx="112" fill="#f8de6a"/>
+  <circle cx="256" cy="256" r="207" fill="none" stroke="#946500" stroke-width="14"/>
+  <path d="M119 177h274v169H119z" fill="#fff7dc" stroke="#1c201e" stroke-width="18" stroke-linejoin="round"/>
+  <path d="m127 185 129 100 129-100" fill="none" stroke="#1c201e" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="m127 338 94-84m164 84-94-84" fill="none" stroke="#c58d0c" stroke-width="15" stroke-linecap="round"/>
+</svg>

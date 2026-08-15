@@ -1,0 +1,651 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>LLL.bz AI / Notes</title>
+    <style>
+      :root {
+        color-scheme: light;
+        background: #f7f3ea;
+        color: #1b1a18;
+        font-family: ui-serif, "Iowan Old Style", "Charter", "Bitstream Charter", Georgia, Cambria, "Times New Roman", serif;
+        font-size: clamp(18px, 17px + 0.25vw, 20px);
+        line-height: 1.68;
+        font-weight: 400;
+        font-kerning: normal;
+        font-variant-ligatures: common-ligatures;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background: #f7f3ea;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: #f7f3ea;
+        color: #1b1a18;
+        hyphens: none;
+        overflow-wrap: normal;
+        word-break: normal;
+      }
+
+      .reading-page {
+        max-width: 64ch;
+        margin: 0 auto;
+        padding: 40px clamp(32px, 5vw, 56px) 96px;
+      }
+
+      .site-header {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: clamp(16px, 3vw, 26px);
+        margin: 0 0 54px;
+      }
+
+      .brand-lockup {
+        flex: 0 0 auto;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        max-width: 100%;
+      }
+
+      .logo {
+        flex: 0 0 auto;
+        display: inline-block;
+        margin: 0;
+        padding: 0.14em 0.24em 0.18em;
+        color: #0067ff;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", Arial, sans-serif;
+        font-size: 96px;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: 0;
+        border: 1px solid rgba(255, 255, 255, 0.84);
+        border-radius: 0.22em;
+        background: rgba(255, 255, 255, 0.16);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.72),
+          inset 0 -1px 0 rgba(0, 103, 255, 0.08),
+          0 14px 34px rgba(0, 103, 255, 0.12);
+        text-shadow: none;
+        backdrop-filter: blur(18px) saturate(1.35);
+        -webkit-backdrop-filter: blur(18px) saturate(1.35);
+      }
+
+      .site-title {
+        max-width: 14em;
+        color: #178f57;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", Arial, sans-serif;
+        font-size: clamp(32px, 4.2vw, 48px);
+        font-weight: 720;
+        line-height: 1.06;
+        letter-spacing: 0;
+        white-space: normal;
+        text-wrap: balance;
+      }
+
+      .note {
+        color: #1b1a18;
+        font-size: 1.2rem;
+        font-weight: 400;
+        line-height: 1.58;
+        text-align: left;
+        hyphens: none;
+        overflow-wrap: normal;
+        word-break: normal;
+        text-wrap: pretty;
+      }
+
+      .note-title {
+        margin: 0 0 0.82em;
+        color: #171717;
+        font-size: 1.55em;
+        font-weight: 700;
+        line-height: 1.12;
+        text-wrap: balance;
+      }
+
+      .note h3 {
+        margin: 1.6em 0 0.48em;
+        color: #171717;
+        font-size: 1.12em;
+        font-weight: 700;
+        line-height: 1.2;
+        text-wrap: balance;
+      }
+
+      .note p {
+        margin: 0 0 1.15em;
+      }
+
+      .note p:last-child {
+        margin-bottom: 0;
+      }
+
+      .note a {
+        color: #0067ff;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.18em;
+        overflow-wrap: anywhere;
+      }
+
+      .note-meta {
+        color: #3c3832;
+      }
+
+      .note-principle {
+        margin: 1.35em 0 1.45em;
+        padding: 0.88em 1em 0.92em;
+        color: #182016;
+        background: rgba(23, 143, 87, 0.075);
+        border: 1px solid rgba(23, 143, 87, 0.18);
+        border-left: 5px solid rgba(23, 143, 87, 0.58);
+        border-radius: 8px;
+        box-shadow: 0 12px 28px rgba(29, 74, 48, 0.055);
+      }
+
+      .note-warning {
+        margin: 1.55em 0 0;
+        padding: 1.05em 1.12em 1.08em;
+        color: #171b22;
+        font-size: 1.02em;
+        line-height: 1.52;
+        background: rgba(0, 103, 255, 0.045);
+        border: 1px solid rgba(0, 103, 255, 0.13);
+        border-left: 5px solid rgba(0, 103, 255, 0.46);
+        border-radius: 8px;
+        box-shadow: 0 14px 34px rgba(24, 44, 82, 0.055);
+      }
+
+      .note-principle p,
+      .note-warning p {
+        margin: 0;
+      }
+
+      .note-separator {
+        position: relative;
+        display: grid;
+        place-items: center;
+        min-height: 132px;
+        margin: 118px -40px 104px;
+      }
+
+      .note-separator::before,
+      .note-separator::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(27, 26, 24, 0.34) 14%,
+          rgba(27, 26, 24, 0.34) 86%,
+          transparent
+        );
+      }
+
+      .note-separator::before {
+        top: 22px;
+      }
+
+      .note-separator::after {
+        bottom: 22px;
+      }
+
+      .separator-mark {
+        width: min(100%, 650px);
+        height: 66px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 11px;
+        align-items: center;
+        padding: 0 22px;
+        border-left: 8px solid #1b1a18;
+        border-right: 8px solid #1b1a18;
+      }
+
+      .separator-mark span {
+        display: block;
+        height: 34px;
+        min-width: 0;
+        border-radius: 3px;
+        box-shadow: 0 12px 22px rgba(27, 26, 24, 0.12);
+        transform: skewX(-16deg);
+      }
+
+      .separator-mark span:nth-child(1) {
+        background: #e84a5f;
+      }
+
+      .separator-mark span:nth-child(2) {
+        background: #f4a62a;
+      }
+
+      .separator-mark span:nth-child(3) {
+        background: #16a085;
+      }
+
+      .separator-mark span:nth-child(4) {
+        background: #2f80ed;
+      }
+
+      .separator-mark span:nth-child(5) {
+        background: #8e44ad;
+      }
+
+      @media (max-width: 640px) {
+        :root {
+          font-size: 18px;
+          line-height: 1.62;
+        }
+
+        .reading-page {
+          padding: 24px 20px 72px;
+        }
+
+        .site-header {
+          gap: 12px;
+          margin-bottom: 38px;
+        }
+
+        .logo {
+          font-size: clamp(52px, 14vw, 58px);
+        }
+
+        .site-title {
+          font-size: clamp(26px, 8vw, 34px);
+        }
+
+        .note-separator {
+          min-height: 104px;
+          margin: 86px -12px 76px;
+        }
+
+        .note-separator::before,
+        .note-separator::after {
+          height: 2px;
+        }
+
+        .note-separator::before {
+          top: 16px;
+        }
+
+        .note-separator::after {
+          bottom: 16px;
+        }
+
+        .separator-mark {
+          height: 54px;
+          gap: 6px;
+          padding: 0 13px;
+          border-left-width: 6px;
+          border-right-width: 6px;
+        }
+
+        .separator-mark span {
+          height: 28px;
+          border-radius: 2px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="reading-page" aria-label="LLL.bz notes">
+      <header class="site-header" aria-label="LLL.bz">
+        <div class="brand-lockup">
+          <div class="logo" aria-label="LLL.bz">LLL.bz</div>
+          <div class="site-title">AI / Notes</div>
+        </div>
+      </header>
+
+      <article class="note" aria-label="Китайские API-платформы для покупки API к ИИ-моделям">
+        <h1 class="note-title">Китайские API-платформы для покупки API к ИИ-моделям</h1>
+
+        <p class="note-meta"><strong>Дата проверки URL:</strong> 23 июня 2026.</p>
+        <p class="note-meta"><strong>Формат:</strong> ранжированный список без дублей. Китайские иероглифы в названиях оставлены, потому что по ним проще искать платформы в китайских источниках.</p>
+        <div class="note-warning">
+          <p>Цены ниже - ориентиры. В relay API они меняются быстро: разные каналы, разные группы, скидки, кэш, подписки, скрытые коэффициенты. Перед оплатой нужно заново открыть личный кабинет и проверить цену, канал, списания, лимиты, возврат, документы и риск подмены модели.</p>
+        </div>
+        <div class="note-principle">
+          <p><strong>Правило:</strong> не пополнять крупно. Сначала ¥1-¥10. Потом 2-3 дня тестов на реальных задачах. Только после этого выбирать основную платформу.</p>
+        </div>
+
+        <h3>№ 1. ChatAnywhere</h3>
+        <p><a href="https://api.chatanywhere.tech" target="_blank" rel="noopener noreferrer">https://api.chatanywhere.tech</a></p>
+        <p><strong>Документация:</strong> <a href="https://docs.chatanywhere.tech" target="_blank" rel="noopener noreferrer">https://docs.chatanywhere.tech</a></p>
+        <p><strong>Цены:</strong> в документации указано gpt-5.5 - 0.035 / 0.21 за 1K tokens, gpt-5.5-ca - 0.02 / 0.12 за 1K tokens. Важно: это цена за 1K, не за 1M.</p>
+        <p>Крупная китайская relay-платформа. Поддерживает GPT, Claude, Gemini, DeepSeek, Qwen, Kimi, MiniMax и другие модели. Подключение стандартное: меняется base_url и api_key. Хороша для дешевого теста, учебных задач и личного вайбкодинга. Для чувствительных данных - не основной вариант.</p>
+
+        <h3>№ 2. AnPin AI</h3>
+        <p><strong>Официальный URL публично не закреплен. Искать:</strong> AnPin AI API中转.</p>
+        <p><strong>Цены:</strong> по relayAPI, GPT-5.5 - около ¥0.8 вход / ¥4.8 выход за 1M токенов. Opus 4.7 MAX - около ¥8.5 / ¥42.5 за 1M.</p>
+        <p>Очень дешевый китайский API-релей с фокусом на GPT и Claude. Интересен ценой, но без подтвержденного домена его нельзя ставить как основной вариант. Только поиск через китайские каталоги, минимальное пополнение и ручная проверка качества.</p>
+
+        <h3>№ 3. ModCon</h3>
+        <p><strong>Официальный URL публично не закреплен. Искать:</strong> ModCon API中转.</p>
+        <p><strong>Цены:</strong> по relayAPI, GPT-5.5 - около ¥0.9 за входной 1M токенов. Выходной тариф нужно проверять в кабинете.</p>
+        <p>Узкий релей для GPT, Claude и Gemini. Хорош как дешевый тестовый кандидат для GPT-вайбкодинга. Без подтвержденного домена лучше не ставить активной ссылкой на публичной странице.</p>
+
+        <h3>№ 4. IKunCode</h3>
+        <p><a href="https://api.ikuncode.cc" target="_blank" rel="noopener noreferrer">https://api.ikuncode.cc</a></p>
+        <p><strong>Документация:</strong> <a href="https://docs.ikuncode.cc" target="_blank" rel="noopener noreferrer">https://docs.ikuncode.cc</a></p>
+        <p><strong>Цены:</strong> по relayAPI, GPT-5.5 - около ¥1 вход / ¥6 выход за 1M. ClaudeCode-стабильный - около ¥11.5 / ¥57.5 за 1M.</p>
+        <p>Платформа для программистов. Поддерживает Claude Code, Codex и Gemini CLI. Подходит для AI-кодинга, когда нужен не широкий маркетплейс, а рабочий API под разработку.</p>
+
+        <h3>№ 5. 智惠API</h3>
+        <p><a href="https://api.api2cn.com" target="_blank" rel="noopener noreferrer">https://api.api2cn.com</a></p>
+        <p><strong>Страница в Hvoy:</strong> <a href="https://www.hvoy.ai/sites/apiapi2cncom/" target="_blank" rel="noopener noreferrer">https://www.hvoy.ai/sites/apiapi2cncom/</a></p>
+        <p><strong>Цены:</strong> Opus 4.8 - около ¥8.12 вход / ¥40.62 выход за 1M. GPT-5.5 - около ¥1.25 / ¥7.5 за 1M. В обзорах встречался промокод hvoy на ¥5.</p>
+        <p>Новая платформа 2026 года с поддержкой Claude, GPT и Gemini. Интересна как быстрый дешевый тест, особенно если актуален стартовый бонус.</p>
+
+        <h3>№ 6. PACKYCODE / PACKYAPI</h3>
+        <p><a href="https://www.packycode.com" target="_blank" rel="noopener noreferrer">https://www.packycode.com</a></p>
+        <p><strong>API-шлюз:</strong> <a href="https://www.packyapi.com" target="_blank" rel="noopener noreferrer">https://www.packyapi.com</a></p>
+        <p><strong>Документация:</strong> <a href="https://docs.packyapi.com" target="_blank" rel="noopener noreferrer">https://docs.packyapi.com</a></p>
+        <p><strong>Цены:</strong> по relayAPI, GPT-5.5 - около ¥2.5 вход / ¥15 выход за 1M. Opus 4.7 в cc-канале - около ¥10 / ¥50 за 1M. Gemini 3.1 Pro - около ¥6 / ¥36 за 1M.</p>
+        <p>Один из заметных вариантов для Claude Code-сообщества. Платформа ориентирована на AI-программирование, Codex CLI, Claude Code и Gemini CLI. Хороший основной или резервный тест для coding-first задач.</p>
+
+        <h3>№ 7. DawCode</h3>
+        <p><strong>Официальный URL публично не закреплен. Искать:</strong> DawCode API中转.</p>
+        <p><strong>Цены:</strong> GPT-5.5 - около ¥2 вход / ¥12 выход за 1M. Opus 4.6 в cc-stu группе - около ¥7.5 / ¥37.5. Sonnet 4.6 - около ¥4.5 / ¥22.5. Есть тариф около ¥188 в месяц, но его нужно считать по реальной нагрузке.</p>
+        <p>Новая платформа 2026 года для Claude, GPT и Gemini. Есть несколько линий качества, стартовый бонус и ежедневные начисления. Подходит для малого теста, но не как безусловный основной шлюз без проверки.</p>
+
+        <h3>№ 8. Aegisy AI Gateway</h3>
+        <p><a href="https://www.aegisy.top" target="_blank" rel="noopener noreferrer">https://www.aegisy.top</a></p>
+        <p><strong>Дополнительный адрес:</strong> <a href="https://www.aegisy.cc" target="_blank" rel="noopener noreferrer">https://www.aegisy.cc</a></p>
+        <p><strong>Цены:</strong> в китайских статьях встречается около 2折, то есть примерно 20% от официальных тарифов. Ориентир из подборок по GPT-5.5 - около $1 вход / $6 выход за 1M. Точный тариф проверять в кабинете.</p>
+        <p>AI API Gateway для Cursor, Codex, Claude Code, Cline и агентских сценариев. Поддерживает OpenAI-compatible интерфейс, streaming, function calling, MCP и A2A. Интересен для agent-разработки и Codex CLI.</p>
+
+        <h3>№ 9. 词元无忧 API / TOKEN5U</h3>
+        <p><a href="https://token5u.cn" target="_blank" rel="noopener noreferrer">https://token5u.cn</a></p>
+        <p><strong>API:</strong> <a href="https://api.token5u.cn" target="_blank" rel="noopener noreferrer">https://api.token5u.cn</a></p>
+        <p><strong>Цены:</strong> в обзорах встречается 30-50% от официальных тарифов. Ориентир по GPT-5.5 - около $0.75 вход / $4.50 выход за 1M. Точные цены проверять в кабинете.</p>
+        <p>Enterprise-ориентированная платформа с китайским доменом, OpenAI-совместимым протоколом, юаневой оплатой и поддержкой счетов. Подходит тем, кому важны формальность, прозрачность и работа внутри китайской юрисдикции.</p>
+
+        <h3>№ 10. 简易API / Jeniya Chat</h3>
+        <p><a href="https://jeniya.chat" target="_blank" rel="noopener noreferrer">https://jeniya.chat</a></p>
+        <p><strong>Дополнительный адрес:</strong> <a href="https://jeniya.cn" target="_blank" rel="noopener noreferrer">https://jeniya.cn</a></p>
+        <p><strong>Документация:</strong> <a href="https://jeniya.apifox.cn" target="_blank" rel="noopener noreferrer">https://jeniya.apifox.cn</a></p>
+        <p><strong>Цены:</strong> в пользовательских рейтингах встречается курс около ¥0.93 за $1 API额度. Для Claude Opus 4.8 указывались ориентиры около ¥5 вход / ¥25 выход за 1M. GPT-5.5 в подборках - около $0.90 / $5.40 за 1M.</p>
+        <p>Простой вход, большой модельный каталог, поддержка Claude Code, Codex-групп, Gemini-групп, Cherry Studio и CC Switch. Один из лучших кандидатов для быстрого дешевого теста.</p>
+
+        <h3>№ 11. 魔芋 AI / MOYU AI</h3>
+        <p><a href="https://www.moyu.info" target="_blank" rel="noopener noreferrer">https://www.moyu.info</a></p>
+        <p><strong>Цены:</strong> в китайских обзорах выделяется низкая цена на Claude. GPT-5.5 в пользовательских подборках встречается около $0.50 вход / $3.00 выход за 1M. Claude Sonnet 4.5 в обзорах указывали примерно на уровне 1/7 официальной цены.</p>
+        <p>API-шлюз с фокусом на Claude, GPT и Gemini. Интересен пользователям Claude Code, особенно если основная нагрузка идет через Claude-модели. Перед рабочей нагрузкой нужно проверить канал, списания, задержку и качество ответов.</p>
+
+        <h3>№ 12. AIFAST.CLUB / NO.1-API</h3>
+        <p><a href="https://www.aifast.club" target="_blank" rel="noopener noreferrer">https://www.aifast.club</a></p>
+        <p><strong>Документация:</strong> <a href="https://aifast.apifox.cn" target="_blank" rel="noopener noreferrer">https://aifast.apifox.cn</a></p>
+        <p><strong>Цены:</strong> в старых подборках встречались GPT-тарифы около $0.0001-0.0005 вход / $0.0004-0.0015 выход за 1K токенов. В пересчете это примерно $0.10-0.50 / $0.40-1.50 за 1M, но актуальность нужно проверять.</p>
+        <p>Китайский агрегатор с большим набором моделей и локальной оплатой. Подходит, когда нужен один ключ под Claude, OpenAI, Gemini, DeepSeek, Qwen, Kimi, Doubao и GLM. Не дублирует Nonelinear: это отдельная платформа.</p>
+
+        <h3>№ 13. 非线智能 API / NONELINEAR</h3>
+        <p><a href="https://nonelinear.com" target="_blank" rel="noopener noreferrer">https://nonelinear.com</a></p>
+        <p><strong>API:</strong> <a href="https://api.nonlinear.com/v1" target="_blank" rel="noopener noreferrer">https://api.nonlinear.com/v1</a></p>
+        <p><strong>Модели:</strong> <a href="https://nonelinear.com/static/models.html" target="_blank" rel="noopener noreferrer">https://nonelinear.com/static/models.html</a></p>
+        <p><strong>Документация:</strong> <a href="https://docs.nonelinear.com" target="_blank" rel="noopener noreferrer">https://docs.nonelinear.com</a></p>
+        <p><strong>Цены:</strong> обычно не самый дешевый вариант. В подборках встречается 8-9.5折 от официальных тарифов, то есть примерно 5-20% скидки.</p>
+        <p>Платформа с OpenAI-compatible, Anthropic native и Gemini native протоколами. Это важно для Claude Code, Cursor и Cline, где native-протокол часто стабильнее эмуляции. Хороша не ценой, а совместимостью и чистотой подключения.</p>
+
+        <h3>№ 14. 诗云API / SHIYUNAPI</h3>
+        <p><a href="https://shiyunapi.com" target="_blank" rel="noopener noreferrer">https://shiyunapi.com</a></p>
+        <p><strong>Цены:</strong> исторически в обзорах встречались enterprise-пакеты примерно на 47% ниже официальных тарифов. Сейчас как активную платформу считать нельзя.</p>
+        <p>Архивная позиция. Сервис был заметным в китайских списках API-релеев, но на момент проверки сайт сообщает о приостановке работы с 5 июня 2026 года. Для публичной страницы лучше не ставить кнопку оплаты.</p>
+
+        <h3>№ 15. DashScope 灵积 / Alibaba Cloud Model Studio</h3>
+        <p><a href="https://dashscope.aliyun.com" target="_blank" rel="noopener noreferrer">https://dashscope.aliyun.com</a></p>
+        <p><strong>Документация:</strong> <a href="https://www.alibabacloud.com/help/en/model-studio/qwen-api-via-dashscope" target="_blank" rel="noopener noreferrer">https://www.alibabacloud.com/help/en/model-studio/qwen-api-via-dashscope</a></p>
+        <p><strong>Цены:</strong> официальные тарифы Alibaba зависят от модели Qwen, региона и режима вызова. Для новых пользователей обычно есть бесплатные квоты или тестовые кредиты, но их нужно проверять в аккаунте Alibaba Cloud.</p>
+        <p>Официальная платформа Alibaba Cloud для Qwen и моделей Alibaba. Это не дешевый серый релей западных моделей, а официальная инфраструктура. Лучший выбор, если проект строится на Qwen, китайском языке, счетах и легальной корпоративной схеме.</p>
+
+        <h3>№ 16. V-API</h3>
+        <p><a href="https://api.gpt.ge" target="_blank" rel="noopener noreferrer">https://api.gpt.ge</a></p>
+        <p><strong>Модели:</strong> <a href="https://api.gpt.ge/models" target="_blank" rel="noopener noreferrer">https://api.gpt.ge/models</a></p>
+        <p><strong>Цены:</strong> <a href="https://api.gpt.ge/pricing" target="_blank" rel="noopener noreferrer">https://api.gpt.ge/pricing</a></p>
+        <p><strong>Цены:</strong> Claude Opus 4.8 - около $1.75 вход / $8.75 выход за 1M. GPT-5.5 - около $5 / $30. GPT-5.4-mini - около $0.75 / $4.5. Claude Sonnet 4.6 - около $1.05 / $5.25. DeepSeek - от $0.28 за 1M.</p>
+        <p><strong>Большой универсальный шлюз:</strong> сотни моделей, OpenAI-compatible протокол, pay-as-you-go, GPT, Claude, Gemini, Grok, DeepSeek, Runway и другие модели в одном месте. Хороший вариант, если нужен широкий каталог, а не только кодинг.</p>
+
+        <h3>№ 17. 灵眸AI / LMU AI</h3>
+        <p><a href="https://api.lmuai.com" target="_blank" rel="noopener noreferrer">https://api.lmuai.com</a></p>
+        <p><strong>Документация:</strong> <a href="https://docs.lmuai.com" target="_blank" rel="noopener noreferrer">https://docs.lmuai.com</a></p>
+        <p><strong>Дополнительная документация:</strong> <a href="https://docs.fulitimes.com" target="_blank" rel="noopener noreferrer">https://docs.fulitimes.com</a></p>
+        <p><strong>Цены:</strong> в публичных материалах встречается курс около ¥2.2-¥2.4 за $1 API额度. Для активной нагрузки есть C-PRO / C-MAX подписки; встречались планы от ¥599 за 30 дней, но фактический лимит и курс нужно проверять перед оплатой.</p>
+        <p>Сильный вариант для Claude Code, Codex CLI, Cursor, VS Code, OpenCode и Cherry Studio. Важное преимущество - Prompt Caching и документация под реальные инструменты разработки. Интересен тем, кто много пишет код через Claude Code.</p>
+
+        <h3>№ 18. BUZZ AI</h3>
+        <p><a href="https://buzzai.cc" target="_blank" rel="noopener noreferrer">https://buzzai.cc</a></p>
+        <p><strong>Документация:</strong> <a href="https://doc.buzzai.cc" target="_blank" rel="noopener noreferrer">https://doc.buzzai.cc</a></p>
+        <p><strong>Модели и цены:</strong> <a href="https://buzzai.cc/models" target="_blank" rel="noopener noreferrer">https://buzzai.cc/models</a></p>
+        <p><strong>Цены:</strong> pay-as-you-go, без подписки и минимального платежа. Площадка заявляет цены ниже first-party rates и публикует живую таблицу через models / pricing API. Фиксированные цифры лучше не hardcode-ить.</p>
+        <p>Developer-focused AI gateway. Один ключ для Claude, GPT, Gemini и Grok. Заявляет transparent forwarding, zero data retention, совместимость с Anthropic/OpenAI SDK, Prompt Caching и отсутствие скрытой подмены модели.</p>
+
+        <h3>№ 19. DMXAPI</h3>
+        <p><a href="https://dmxapi.com" target="_blank" rel="noopener noreferrer">https://dmxapi.com</a></p>
+        <p><strong>Дополнительный адрес:</strong> <a href="https://www.dmxapi.com" target="_blank" rel="noopener noreferrer">https://www.dmxapi.com</a></p>
+        <p><strong>Китайский адрес:</strong> <a href="https://dmxapi.cn" target="_blank" rel="noopener noreferrer">https://dmxapi.cn</a></p>
+        <p><strong>Цены:</strong> в публичных описаниях заявляются скидки по отдельным каналам и bulk purchasing discount. Конкретные цены зависят от модели и канала.</p>
+        <p>Крупный агрегатор моделей от LangChain Chinese Network. Поддерживает 300+ моделей, текст, изображения, видео и аудио. Подходит командам, которым нужен один шлюз под разные типы AI-задач. Правильный домен - dmxapi.com.</p>
+
+        <h3>№ 20. YKH.AI / 神马中转API</h3>
+        <p><a href="https://api.ykh.ai" target="_blank" rel="noopener noreferrer">https://api.ykh.ai</a></p>
+        <p><strong>Материалы:</strong> <a href="https://github.com/whataicc/doc-whataicc-api" target="_blank" rel="noopener noreferrer">https://github.com/whataicc/doc-whataicc-api</a></p>
+        <p><strong>Цены:</strong> в relayAPI встречается курс около ¥2 за $1 quota. Lite-группа - около ¥0.25 за 1M токенов, pro-группа - около ¥0.5 за 1M. Перед оплатой проверять, что именно считается «1M» и какой канал выбран.</p>
+        <p>Чистый интерфейс, много upstream-сервисов, большой набор моделей, поддержка Cherry Studio и CC Switch. Хорош для быстрого теста и дешевой нагрузки, когда нужна простая платформа без тяжелой витрины.</p>
+
+        <h3>№ 21. 硅基流动 / SiliconFlow</h3>
+        <p><a href="https://cloud.siliconflow.cn" target="_blank" rel="noopener noreferrer">https://cloud.siliconflow.cn</a></p>
+        <p><strong>Международный сайт:</strong> <a href="https://www.siliconflow.com" target="_blank" rel="noopener noreferrer">https://www.siliconflow.com</a></p>
+        <p><strong>Цены:</strong> <a href="https://www.siliconflow.com/pricing" target="_blank" rel="noopener noreferrer">https://www.siliconflow.com/pricing</a></p>
+        <p><strong>Документация:</strong> <a href="https://docs.siliconflow.cn" target="_blank" rel="noopener noreferrer">https://docs.siliconflow.cn</a></p>
+        <p><strong>Цены:</strong> на международной странице DeepSeek-V4-Flash - около $0.13 вход / $0.28 выход за 1M. Qwen3.5-9B - около $0.10 / $0.15 за 1M. Есть бесплатный стартовый кредит.</p>
+        <p>Один из лучших вариантов для китайских open-source моделей: DeepSeek, Qwen, GLM, MiniMax и похожие направления. Не главный выбор для Claude Opus или GPT, но сильный вариант для дешевого массового inference на китайских моделях.</p>
+
+        <h3>№ 22. XycAi / 星道智能</h3>
+        <p><a href="https://xyc.ai" target="_blank" rel="noopener noreferrer">https://xyc.ai</a></p>
+        <p><strong>Каталожная ссылка:</strong> <a href="https://xyc.ai/sign-up?utm_source=hvoyai&amp;utm_medium=free" target="_blank" rel="noopener noreferrer">https://xyc.ai/sign-up?utm_source=hvoyai&amp;utm_medium=free</a></p>
+        <p><strong>Цены:</strong> в relayAPI указывается GPT-5.5 около 2.2折, Opus 4.8 около 3.9折. Это скидочные коэффициенты, не финальный чек.</p>
+        <p>Формальный вариант для тех, кому важны лицензии, зарубежное направление, счета и налоговая часть. В описаниях фигурируют GPT, Opus, DeepSeek, Qwen, Kling и другие модели. Перед оплатой - только малый тест.</p>
+
+        <h3>№ 23. Lumin AI</h3>
+        <p><a href="https://ai.luminai.cc" target="_blank" rel="noopener noreferrer">https://ai.luminai.cc</a></p>
+        <p><strong>Документация:</strong> <a href="https://docs.luminai.cc" target="_blank" rel="noopener noreferrer">https://docs.luminai.cc</a></p>
+        <p><strong>Цены:</strong> Kiro-канал - около ¥2 вход / ¥10 выход за 1M. Full / 满血 - около ¥6 / ¥30. GPT Pro - около ¥2 / ¥12. Минимальное пополнение в обзорах - около ¥5.</p>
+        <p>Новая платформа 2026 года, заметная в GitHub-рейтингах. Сильная сторона - цена, поддержка, мало публичного маркетинга и фокус на программистов. Хороший кандидат на малый тест.</p>
+
+        <h3>№ 24. RightCode</h3>
+        <p><a href="https://www.right.codes" target="_blank" rel="noopener noreferrer">https://www.right.codes</a></p>
+        <p><strong>Документация:</strong> <a href="https://docs.right.codes" target="_blank" rel="noopener noreferrer">https://docs.right.codes</a></p>
+        <p><strong>Цены:</strong> Kiro-реверс - около 0.4折. GPT-5.5 - около ¥2 вход / ¥12 выход за 1M. Opus 4.7 через /claude - около ¥10 / ¥50. Opus 4.6 reverse - около ¥1.5 / ¥7.5, но качество канала нужно проверять.</p>
+        <p>Сильная специализация на программировании. Поддерживает Claude Code, Codex, Gemini CLI и Grok Code через единый доступ. Хороший вариант для coding-only задач. Основной рабочий домен - right.codes.</p>
+
+        <h3>№ 25. ofox.ai / OfoxAI</h3>
+        <p><a href="https://ofox.ai" target="_blank" rel="noopener noreferrer">https://ofox.ai</a></p>
+        <p><strong>Claude Code:</strong> <a href="https://ofox.ai/vibe-coding" target="_blank" rel="noopener noreferrer">https://ofox.ai/vibe-coding</a></p>
+        <p><strong>Enterprise:</strong> <a href="https://ofox.ai/enterprise" target="_blank" rel="noopener noreferrer">https://ofox.ai/enterprise</a></p>
+        <p><strong>API base:</strong> <a href="https://api.ofox.ai/v1" target="_blank" rel="noopener noreferrer">https://api.ofox.ai/v1</a></p>
+        <p><strong>Цены:</strong> публичная страница делает упор на 0% platform fee и volume credits до 7%. Точные цены зависят от модели и канала.</p>
+        <p>Удобен для AI Agent и vibe coding. Поддерживает Claude, GPT, Gemini, DeepSeek, Qwen и 100+ моделей. Есть Anthropic/OpenAI/Google протоколы, zero content retention, cost controls и enterprise-страница. Хороший вариант для командной работы и Claude Code-сценариев.</p>
+
+        <h3>№ 26. 造梦者 AI / ZMZAI</h3>
+        <p><a href="https://www.zmzai.cn" target="_blank" rel="noopener noreferrer">https://www.zmzai.cn</a></p>
+        <p><strong>Цены:</strong> в обзорах встречается модель единого внутреннего курса для API额度, иногда около ¥0.55 за $1 quota. Это нужно отдельно проверять в кабинете.</p>
+        <p>Китайский API-транзит для доступа к большим моделям через единый интерфейс. Делает упор на широкий набор моделей, низкий порог входа и понятное подключение для разработчиков.</p>
+
+        <h3>№ 27. API易 / APIYI / AI亦为</h3>
+        <p><a href="https://api.apiyi.com" target="_blank" rel="noopener noreferrer">https://api.apiyi.com</a></p>
+        <p><strong>Документация:</strong> <a href="https://docs.apiyi.com" target="_blank" rel="noopener noreferrer">https://docs.apiyi.com</a></p>
+        <p><strong>Цены:</strong> в документации указано, что зарубежные модели часто идут по официальным тарифам, китайские модели - ниже официальных. С учетом бонусов и скидок итоговая цена может отличаться.</p>
+        <p>Корпоративная китайская платформа API-транзита. Поддерживает 400+ моделей и OpenAI-compatible стандарт. Один ключ позволяет вызывать OpenAI, Claude, Gemini, DeepSeek, Qwen, Kimi, GLM и Minimax.</p>
+
+        <h3>№ 28. POIXE AI</h3>
+        <p><a href="https://poixe.com" target="_blank" rel="noopener noreferrer">https://poixe.com</a></p>
+        <p><strong>Цены:</strong> по relayAPI, Sonnet 4.6 после обновления - около ¥10.5 вход / ¥63 выход за 1M. Opus 4.7 - около ¥28 / ¥140. Цены не самые низкие, но качество в обзорах отмечали выше среднего.</p>
+        <p>Старый игрок рынка relay API. Главная особенность - P2P-модель с поставщиками, где разные каналы конкурируют между собой. Интересен не только как API-шлюз, но и как экосистема.</p>
+
+        <h3>№ 29. 302.AI</h3>
+        <p><a href="https://302.ai" target="_blank" rel="noopener noreferrer">https://302.ai</a></p>
+        <p><strong>Цены:</strong> смешанная модель подписки и pay-as-you-go. Для части моделей цены близки к партнёрским или официальным тарифам. Конкретные цифры лучше смотреть внутри сервиса.</p>
+        <p>Платформа для студентов, начинающих и личного использования. Дает готовые AI-инструменты, чат-ботов, генераторы изображений и API-доступ. Хороша, если нужно разобраться в рынке без сложной корпоративной настройки.</p>
+
+        <h3>№ 30. AIHUBMix</h3>
+        <p><a href="https://aihubmix.com" target="_blank" rel="noopener noreferrer">https://aihubmix.com</a></p>
+        <p><strong>Документация:</strong> <a href="https://docs.aihubmix.com" target="_blank" rel="noopener noreferrer">https://docs.aihubmix.com</a></p>
+        <p><strong>Цены:</strong> в старых обзорах встречался GPT-3.5-turbo около ¥0.005 за 1K токенов и GPT-4-уровень около ¥5 / ¥25 за 1M. Актуальные тарифы нужно перепроверять.</p>
+        <p>Один из старых и понятных китайских API-шлюзов. Сильная сторона - документация, простое подключение и спокойный старт. Не обязательно самый дешевый вариант, зато удобен новичку.</p>
+
+        <h3>№ 31. CATROUTER</h3>
+        <p><a href="https://catrouter.net" target="_blank" rel="noopener noreferrer">https://catrouter.net</a></p>
+        <p><strong>API:</strong> <a href="https://api.catrouter.net" target="_blank" rel="noopener noreferrer">https://api.catrouter.net</a></p>
+        <p><strong>Цены:</strong> главный смысл - дешевые китайские и open-source модели. Конкретные тарифы по DeepSeek, Qwen и GLM смотреть в кабинете.</p>
+        <p>API-маршрутизатор с акцентом на китайские и open-source модели: DeepSeek, Qwen, GLM и похожие направления. Хороший кандидат, если основная стратегия - не дорогие западные модели, а сильные китайские модели.</p>
+
+        <h3>№ 32. API RANKING</h3>
+        <p><a href="https://apiranking.com" target="_blank" rel="noopener noreferrer">https://apiranking.com</a></p>
+        <p><strong>Цены:</strong> это не только API-доступ, а рейтинговый и проверочный сервис. Прайсы зависят от выбранной станции и собственного доступа внутри платформы.</p>
+        <p>Полезен для сравнения relay-станций, проверки подлинности моделей, отслеживания цен и выбора безопасного канала перед пополнением. Нужен не для слепой покупки, а для фильтрации рынка.</p>
+
+        <h3>№ 33. TOKENRIVER.AI</h3>
+        <p><a href="https://tokenriver.ai" target="_blank" rel="noopener noreferrer">https://tokenriver.ai</a></p>
+        <p><strong>Китайский адрес:</strong> <a href="https://tokenriver.cn" target="_blank" rel="noopener noreferrer">https://tokenriver.cn</a></p>
+        <p><strong>Цены:</strong> ориентир из рейтингов - средний сегмент, не «самый дешевый». Тарифы зависят от модели, канала и командного сценария.</p>
+        <p>Платформа для API-шлюза, управления моделями и командной работы. Делает упор на стабильность, мониторинг, управление и удобство. Интересна для команд, а не только для одиночных тестов.</p>
+
+        <h3>№ 34. TREEROUTER</h3>
+        <p><a href="https://api.treerouter.ai" target="_blank" rel="noopener noreferrer">https://api.treerouter.ai</a></p>
+        <p><strong>Документация:</strong> <a href="https://treerouter.apifox.cn" target="_blank" rel="noopener noreferrer">https://treerouter.apifox.cn</a></p>
+        <p><strong>Цены:</strong> публичные ориентиры слабые. Проверять по выбранным маршрутам и моделям.</p>
+        <p>Маршрутизатор для сложных AI-задач с несколькими моделями. Идея сервиса - не просто дать один ключ, а гибко направлять запросы между моделями и каналами под разные сценарии.</p>
+
+        <h3>№ 35. CRAZYROUTER</h3>
+        <p><a href="https://crazyrouter.com" target="_blank" rel="noopener noreferrer">https://crazyrouter.com</a></p>
+        <p><strong>Цены:</strong> в обзорах встречается 30-50% ниже официальных тарифов. Точные цены зависят от модели и ноды.</p>
+        <p>API-шлюз с глобальными нодами и большим набором моделей. Поддерживает OpenAI SDK-совместимость и pay-as-you-go подход. Подходит международным командам, которым нужны разные модели через один интерфейс.</p>
+
+        <h3>№ 36. 智增增 / ZHIZENGZENG</h3>
+        <p><a href="https://gpt.zhizengzeng.com" target="_blank" rel="noopener noreferrer">https://gpt.zhizengzeng.com</a></p>
+        <p><strong>Цены:</strong> тарифы зависят от модели и канала. В публичных описаниях акцент не на минимальной цене, а на масштабе и формальной инфраструктуре.</p>
+        <p>Китайская Token Export Platform с формальной компанией-оператором и большим набором глобальных и китайских моделей. Подходит тем, кому нужна более оформленная инфраструктура, а не только дешевый релей.</p>
+
+        <h3>№ 37. AIGOCODE</h3>
+        <p><a href="https://www.aigocode.com" target="_blank" rel="noopener noreferrer">https://www.aigocode.com</a></p>
+        <p><strong>Документация:</strong> <a href="https://docs.aigocode.com" target="_blank" rel="noopener noreferrer">https://docs.aigocode.com</a></p>
+        <p><strong>Цены:</strong> по relayAPI, дешевый Opus 4.6 reverse - около ¥2 / ¥10 за 1M, рекомендованный Opus 4.6 - около ¥9 / ¥45, GPT-5.3 - около ¥1.5 / ¥9. Есть недельные пакеты.</p>
+        <p>Небольшая платформа для Claude Code, Codex, Gemini CLI и похожих инструментов. В сообществе ценится за аккуратность и отсутствие явных жалоб на подмену моделей. Хороша для осторожного малого теста.</p>
+
+        <h3>№ 38. 接口通 API / APIROUTER</h3>
+        <p><a href="https://apirouter.ai" target="_blank" rel="noopener noreferrer">https://apirouter.ai</a></p>
+        <p><strong>Цены:</strong> в обзорах упоминаются ступенчатые скидки, но публичные тарифы нужно проверять по кабинету.</p>
+        <p>API-платформа для единого доступа к моделям через совместимый интерфейс. Перед крупной нагрузкой лучше вручную проверить тарифы, стабильность, документы и качество каналов.</p>
+
+        <h3>№ 39. 聚星AI</h3>
+        <p><a href="https://juxingai888.com" target="_blank" rel="noopener noreferrer">https://juxingai888.com</a></p>
+        <p><strong>Возможный дополнительный адрес:</strong> <a href="https://juxingai.top" target="_blank" rel="noopener noreferrer">https://juxingai.top</a></p>
+        <p><strong>Цены:</strong> в китайских обзорах встречалось агрессивное позиционирование, вплоть до очень низкой цены на GPT-уровень. Данных мало, проверять только минимальным пополнением.</p>
+        <p>Платформа со слабой публичной проверкой. Можно рассматривать только как эксперимент: минимальное пополнение, несколько дней нагрузки, контроль списаний и качества.</p>
+
+        <h3>№ 40. 云雾AI</h3>
+        <p><a href="https://yunwu.ai" target="_blank" rel="noopener noreferrer">https://yunwu.ai</a></p>
+        <p><strong>Цены:</strong> в китайских описаниях позиционируется как недорогой API-транзит. Точные тарифы смотреть внутри сервиса.</p>
+        <p>Китайский API-транзит для разработчиков. Дает единый интерфейс для вызова OpenAI, Claude, Gemini, DeepSeek и других моделей. Подходит как универсальный шлюз для тестов.</p>
+
+        <h3>№ 41. 向量API / 向量引擎</h3>
+        <p><a href="https://api.vectorengine.ai" target="_blank" rel="noopener noreferrer">https://api.vectorengine.ai</a></p>
+        <p><strong>Дополнительный адрес:</strong> <a href="https://api.vengine.cloud" target="_blank" rel="noopener noreferrer">https://api.vengine.cloud</a></p>
+        <p><strong>Цены:</strong> публичные ориентиры слабые. Проверять по моделям в кабинете.</p>
+        <p>Китайский API-шлюз для единого доступа к ИИ-моделям через OpenAI-compatible интерфейс. В китайских обзорах подается как вариант для коммерческого применения и стабильного подключения.</p>
+
+        <h3>№ 42. 极光API</h3>
+        <p><a href="https://aicvw.com" target="_blank" rel="noopener noreferrer">https://aicvw.com</a></p>
+        <p><strong>Цены:</strong> обычно позиционируется как бюджетный вариант для личных задач и тестов. Конкретные тарифы смотреть на стороне сервиса.</p>
+        <p>Китайская платформа API-транзита для OpenAI, Claude, Gemini, DeepSeek, Qwen, Grok, Doubao, Midjourney, Suno и Luma. Больше подходит для личных проектов и небольших разработческих задач.</p>
+
+        <h3>№ 43. POLOAPI</h3>
+        <p><a href="https://poloapi.com" target="_blank" rel="noopener noreferrer">https://poloapi.com</a></p>
+        <p><strong>Дополнительные адреса:</strong> <a href="https://ai.poloapi.com" target="_blank" rel="noopener noreferrer">https://ai.poloapi.com</a>, <a href="https://poloai.top" target="_blank" rel="noopener noreferrer">https://poloai.top</a></p>
+        <p><strong>Цены:</strong> зависят от модели и канала. В публичных описаниях делает упор на широкий каталог и высокую параллельную нагрузку, а не только на минимальную цену.</p>
+        <p>Крупная китайская платформа агрегации моделей. Подходит компаниям и разработчикам, которым нужен единый доступ к OpenAI, Claude, Gemini, Grok, DeepSeek и Qwen.</p>
+
+        <h3>№ 44. 柏拉图AI / Plato AI / 柏拉图次元API</h3>
+        <p><a href="https://api.bltcy.ai" target="_blank" rel="noopener noreferrer">https://api.bltcy.ai</a></p>
+        <p><strong>Документация:</strong> <a href="https://wiki.bltcy.ai" target="_blank" rel="noopener noreferrer">https://wiki.bltcy.ai</a></p>
+        <p><strong>Цены:</strong> в публичных описаниях заявляются низкие цены и быстрый старт. Точный тариф зависит от модели.</p>
+        <p>Китайская платформа агрегации моделей. Дает доступ к OpenAI, Claude, Midjourney, Suno, Luma и другим сервисам через единый интерфейс. Документация отдельно ведется на wiki.bltcy.ai.</p>
+
+        <h3>№ 45. ClaudeHub / 青栀AI</h3>
+        <p><a href="https://qinzhiai.com" target="_blank" rel="noopener noreferrer">https://qinzhiai.com</a></p>
+        <p><strong>Документация:</strong> <a href="https://docs.qinzhiai.com" target="_blank" rel="noopener noreferrer">https://docs.qinzhiai.com</a></p>
+        <p><strong>Цены:</strong> пополнение в обзорах описывалось как 1:1, но итоговая стоимость зависит от модели и канала.</p>
+        <p>Китайская платформа API-транзита с упором на официальные модели без подмены и снижения качества. Поддерживает Claude, GPT, Gemini и китайские модели. Один API-ключ совместим со многими моделями.</p>
+
+        <h3>№ 46. UniAPI</h3>
+        <p><a href="https://uniapi.ai" target="_blank" rel="noopener noreferrer">https://uniapi.ai</a></p>
+        <p><strong>Документация:</strong> <a href="https://docs.uniapi.ai" target="_blank" rel="noopener noreferrer">https://docs.uniapi.ai</a></p>
+        <p><strong>Цены:</strong> позиционируется как high value для enterprise-сценариев. Конкретные тарифы смотреть в кабинете.</p>
+        <p>All-in-One платформа для предприятий, университетов, разработчиков и технических команд. Объединяет OpenAI, Claude, Gemini, Midjourney, Suno и другие модели в одном подключении.</p>
+
+        <h3>№ 47. 灵芽API</h3>
+        <p><a href="https://api.lingyaai.cn" target="_blank" rel="noopener noreferrer">https://api.lingyaai.cn</a></p>
+        <p><strong>Цены:</strong> ориентир - недорогой транзит для китайских и глобальных моделей. Точные тарифы проверять по модели.</p>
+        <p>Китайский сервис транзита больших моделей. Поддерживает DeepSeek, Qwen, Kimi, GLM, Doubao, MiniMax и другие модели. Делает упор на работу внутри Китая, низкую задержку и круглосуточную доступность.</p>
+
+        <h3>№ 48. CloseAI</h3>
+        <p><a href="https://www.closeai-asia.com" target="_blank" rel="noopener noreferrer">https://www.closeai-asia.com</a></p>
+        <p><strong>Документация:</strong> <a href="https://doc.closeai-asia.com" target="_blank" rel="noopener noreferrer">https://doc.closeai-asia.com</a></p>
+        <p><strong>Цены:</strong> enterprise-сегмент. Стоимость зависит от объема, модели, документов и условий работы.</p>
+        <p>Корпоративная платформа для транзита OpenAI, Claude и Gemini. Делает упор на официальный доступ, высокую параллельную нагрузку, счета, документы и работу с компаниями, вузами и исследовательскими командами.</p>
+
+        <h3>№ 49. 智创聚合API</h3>
+        <p><a href="https://api.lconai.com" target="_blank" rel="noopener noreferrer">https://api.lconai.com</a></p>
+        <p><strong>Дополнительный адрес:</strong> <a href="https://s.lconai.com" target="_blank" rel="noopener noreferrer">https://s.lconai.com</a></p>
+        <p><strong>Цены:</strong> по расходу, зависят от модели и канала. Проверять внутри кабинета.</p>
+        <p>Китайская платформа для единого доступа к глобальным AIGC-моделям. Поддерживает OpenAI, DeepSeek, Claude, Midjourney и другие модели. Делает упор на простое подключение и работу через китайскую сеть.</p>
+
+        <h3>№ 50. UIUIAPI</h3>
+        <p><a href="https://uiuiapi.com" target="_blank" rel="noopener noreferrer">https://uiuiapi.com</a></p>
+        <p><strong>Цены:</strong> зависят от модели. Публичный акцент - один интерфейс и широкий каталог, а не одна фиксированная ставка.</p>
+        <p>Универсальный центр агрегации моделей. Один интерфейс дает доступ к OpenAI, Claude, Gemini, DeepSeek, Midjourney, Suno, Stable Diffusion и другим моделям без регистрации на множестве отдельных платформ.</p>
+
+        <h3>№ 51. AI API 中转站导航</h3>
+        <p><a href="https://liaohezuo.com" target="_blank" rel="noopener noreferrer">https://liaohezuo.com</a></p>
+        <p><strong>Цены:</strong> это не API-шлюз, а навигатор. Цены показывает или сравнивает по сторонним станциям.</p>
+        <p>Каталог китайских API-транзитов. Удобен для мониторинга рынка: смотреть новые станции, сравнивать модели, цены и доступность перед тем, как пополнять деньги.</p>
+
+        <div class="note-separator" role="separator" aria-label="Разделитель">
+          <div class="separator-mark" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+        <h3>Быстрый выбор</h3>
+        <p><strong>Максимальная экономия:</strong> ChatAnywhere CA, AnPin AI, ModCon, IKunCode, 智惠API. Codex / Claude Code / coding-first: PackyCode, IKunCode, Aegisy, Jeniya, RightCode, LMU AI, OfoxAI. Первый дешевый тест: ChatAnywhere, Jeniya, DawCode, 智惠API, YKH.AI. Китайские open-source модели: DashScope, SiliconFlow, CatRouter, ZMZAI. Enterprise и счета: DashScope, DMXAPI, APIYI, Token5u, TokenRiver, CloseAI, UniAPI, XycAi. Проверка станций и риска подмены: API Ranking, Hvoy, Noderank. Слабее проверены: AnPin AI, ModCon, DawCode, 聚星AI, XycAi, Aegisy. Их лучше тестировать только минимальным пополнением.</p>
+
+        <h3>Практическое правило тестирования</h3>
+        <p>1. Открыть 3-5 платформ из верхней части списка. 2. Пополнить минимально: ¥1-¥10. 3. Прогнать один и тот же набор задач: Codex, Claude Code, длинный контекст, несколько повторов, один тяжелый рефакторинг. 4. Сравнить цену, скорость, стабильность, списания, качество модели, ошибки, поддержку Prompt Cache и риск подмены. 5. Основную платформу выбирать только после нескольких дней реальной нагрузки.</p>
+
+        <h3>Предупреждение</h3>
+        <div class="note-warning">
+          <p>Все relay API - посредники. Запросы проходят через стороннюю инфраструктуру. Для личного кода и тестов это может быть приемлемо. Для клиентских данных, паролей, приватных репозиториев, финансовых документов и коммерческих секретов лучше использовать официальный API, корпоративный контракт или собственную инфраструктуру.</p>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/l/font?kit=WnznHAc5bAfYB2QRah7pcpNvOx-pjfJ9SIK7RzRivCWXg8QfW90fqAwavZNA5C_-GTHILMiTWLzH2x02PZs3&skey=7833cd5b856b60c9&v=v23) format('truetype');
+}
+@font-face {
+  font-family: 'Patrick Hand';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/l/font?kit=LDI1apSQOAYtSuYWp8ZhfYeMWdDts5Yf3Bm7s8DvetYIWTSlB2uxesrEI73MgjYuwQmDQKCjhuA&skey=7fb0ea6515a61339&v=v25) format('truetype');
+}
+@font-face {
+  font-family: 'Shantell Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/l/font?kit=FeUaS0pCoLIo-lcdY7kjvNoQqWVWB0qWpl29ajppTuUTu_kJKmHesPOL-maYi4xZeHCNQ09eBlmv2QcUzJ39-rAISYR8S2i20NsZohJjSjRXkaw9t_v3b0wY_ItgD6JS1sfZuumhPykTUxWgwA&skey=bb27144b79335f7b&v=v13) format('truetype');
+}

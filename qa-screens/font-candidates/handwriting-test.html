@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Handwriting test</title>
+    <style>
+      @font-face {
+        font-family: "Caveat";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url("caveat-subset.ttf") format("truetype");
+      }
+      @font-face {
+        font-family: "Patrick Hand";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url("patrick-hand-subset.ttf") format("truetype");
+      }
+      @font-face {
+        font-family: "Shantell Sans";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url("shantell-sans-subset.ttf") format("truetype");
+      }
+      :root {
+        --paper: #f4efe5;
+        --paper-raised: #faf7f1;
+        --ink: #16130f;
+        --rule: #d6cbb8;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 24px;
+        color: var(--ink);
+        background: var(--paper);
+      }
+      main {
+        display: grid;
+        gap: 20px;
+        width: min(100%, 760px);
+      }
+      article {
+        padding: 18px;
+        background: var(--paper-raised);
+        border: 1px solid var(--rule);
+      }
+      h1,
+      h2,
+      p {
+        margin: 0;
+      }
+      h1 {
+        font: 400 22px/1.2 Georgia, "Times New Roman", serif;
+      }
+      h2 {
+        margin-bottom: 12px;
+        font: 400 14px/1.3 ui-monospace, "SF Mono", Menlo, monospace;
+      }
+      p {
+        max-width: 48ch;
+        font-size: 1.35rem;
+        line-height: 1.6;
+        letter-spacing: 0;
+      }
+      .caveat p {
+        font-family: "Caveat", Georgia, "Times New Roman", serif, cursive;
+      }
+      .patrick p {
+        font-family: "Patrick Hand", Georgia, "Times New Roman", serif, cursive;
+      }
+      .shantell p {
+        font-family: "Shantell Sans", Georgia, "Times New Roman", serif, cursive;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Handwriting candidates</h1>
+      <article class="caveat">
+        <h2>Caveat</h2>
+        <p>Hello Marion, a/o r/v i/l n/m 0123456789. The object buys ten seconds.</p>
+      </article>
+      <article class="patrick">
+        <h2>Patrick Hand</h2>
+        <p>Hello Marion, a/o r/v i/l n/m 0123456789. The object buys ten seconds.</p>
+      </article>
+      <article class="shantell">
+        <h2>Shantell Sans</h2>
+        <p>Hello Marion, a/o r/v i/l n/m 0123456789. The object buys ten seconds.</p>
+      </article>
+    </main>
+  </body>
+</html>

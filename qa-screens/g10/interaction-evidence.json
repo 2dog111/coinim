@@ -1,0 +1,250 @@
+{
+  "fill0": {
+    "transform": "none",
+    "angleDegrees": 0,
+    "boxShadow": "none",
+    "outlineStyle": "none",
+    "outlineWidth": "3px",
+    "beforeTransform": "matrix(0, 0, 0, 1, 0, 0)",
+    "transitionDuration": "0.09s",
+    "beforeTransitionDuration": "0.18s"
+  },
+  "fill90": {
+    "transform": "matrix(0.999962, -0.00872654, 0.00872654, 0.999962, 0, 0)",
+    "angleDegrees": -0.5000002194469105,
+    "boxShadow": "none",
+    "outlineStyle": "none",
+    "outlineWidth": "3px",
+    "beforeTransform": "matrix(0.861859, 0, 0, 1, 0, 0)",
+    "transitionDuration": "0.09s",
+    "beforeTransitionDuration": "0.18s"
+  },
+  "fill220": {
+    "transform": "matrix(0.999962, -0.00872654, 0.00872654, 0.999962, 0, 0)",
+    "angleDegrees": -0.5000002194469105,
+    "boxShadow": "none",
+    "outlineStyle": "none",
+    "outlineWidth": "3px",
+    "beforeTransform": "matrix(1, 0, 0, 1, 0, 0)",
+    "transitionDuration": "0.09s",
+    "beforeTransitionDuration": "0.18s"
+  },
+  "active": {
+    "transform": "matrix(0.999962, -0.00872654, 0.00872654, 0.999962, 0.00872654, 0.999962)",
+    "angleDegrees": -0.5000002194469105,
+    "translateX": 0.00872654,
+    "translateY": 0.999962,
+    "boxShadow": "rgba(0, 0, 0, 0.14) 0px 1px 2px 0px inset",
+    "beforeTransform": "matrix(1, 0, 0, 1, 0, 0)"
+  },
+  "prose": {
+    "base": "1px",
+    "hover": "2px"
+  },
+  "focusTrail": [
+    {
+      "text": "Skip to content",
+      "classes": "skip-link"
+    },
+    {
+      "text": "coin.im",
+      "classes": "site-wordmark"
+    },
+    {
+      "text": "mail@coin.im",
+      "classes": ""
+    },
+    {
+      "text": "WhatsApp",
+      "classes": ""
+    },
+    {
+      "text": "Telegram",
+      "classes": ""
+    },
+    {
+      "text": "Start a campaign",
+      "classes": "hero-link btn btn--stamp"
+    }
+  ],
+  "focus": {
+    "transform": "matrix(0.999962, -0.00872654, 0.00872654, 0.999962, 0, 0)",
+    "angleDegrees": -0.5000002194469105,
+    "outlineStyle": "solid",
+    "outlineWidth": "2px",
+    "outlineColor": "rgb(22, 19, 15)",
+    "beforeTransform": "matrix(1, 0, 0, 1, 0, 0)"
+  },
+  "reduced": {
+    "media": true,
+    "transform": "none",
+    "transitionDuration": "0s",
+    "beforeTransitionDuration": "0s",
+    "animations": 0
+  },
+  "responsive": [
+    {
+      "viewport": 375,
+      "scrollWidth": 375,
+      "noOverflow": true,
+      "introDisplay": "block",
+      "rect": {
+        "width": 343,
+        "height": 816.984375
+      },
+      "rows": [
+        {
+          "width": 343,
+          "height": 179.890625
+        },
+        {
+          "width": 343,
+          "height": 133.296875
+        },
+        {
+          "width": 343,
+          "height": 158.5625
+        }
+      ]
+    },
+    {
+      "viewport": 768,
+      "scrollWidth": 768,
+      "noOverflow": true,
+      "introDisplay": "block",
+      "rect": {
+        "width": 667.78125,
+        "height": 573.359375
+      },
+      "rows": [
+        {
+          "width": 667.78125,
+          "height": 130.84375
+        },
+        {
+          "width": 667.78125,
+          "height": 105.578125
+        },
+        {
+          "width": 667.78125,
+          "height": 105.578125
+        }
+      ]
+    },
+    {
+      "viewport": 1024,
+      "scrollWidth": 1024,
+      "noOverflow": true,
+      "introDisplay": "block",
+      "rect": {
+        "width": 667.78125,
+        "height": 599.5625
+      },
+      "rows": [
+        {
+          "width": 667.78125,
+          "height": 130.84375
+        },
+        {
+          "width": 667.78125,
+          "height": 105.578125
+        },
+        {
+          "width": 667.78125,
+          "height": 130.84375
+        }
+      ]
+    },
+    {
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "noOverflow": true,
+      "introDisplay": "block",
+      "rect": {
+        "width": 667.78125,
+        "height": 636.765625
+      },
+      "rows": [
+        {
+          "width": 667.78125,
+          "height": 135.34375
+        },
+        {
+          "width": 667.78125,
+          "height": 108.953125
+        },
+        {
+          "width": 667.78125,
+          "height": 135.34375
+        }
+      ]
+    },
+    {
+      "viewport": 1920,
+      "scrollWidth": 1920,
+      "noOverflow": true,
+      "introDisplay": "block",
+      "rect": {
+        "width": 667.78125,
+        "height": 695.640625
+      },
+      "rows": [
+        {
+          "width": 667.78125,
+          "height": 140.96875
+        },
+        {
+          "width": 667.78125,
+          "height": 113.171875
+        },
+        {
+          "width": 667.78125,
+          "height": 140.96875
+        }
+      ]
+    }
+  ],
+  "colors": {
+    "buttonInk": "rgb(22, 19, 15)",
+    "accent": "#f8de6a",
+    "heading": "rgb(22, 19, 15)",
+    "paragraph": "rgb(69, 61, 51)",
+    "term": "rgb(22, 19, 15)",
+    "definition": "rgb(69, 61, 51)",
+    "stageBackground": "rgb(244, 239, 229)"
+  },
+  "contrast": {
+    "button": 13.796909765481546,
+    "heading": 16.157001381781363,
+    "paragraph": 9.309685186534495,
+    "term": 16.157001381781363,
+    "definition": 9.309685186534495
+  },
+  "exactCopy": {
+    "matches": true,
+    "expected": [
+      "What we cannot do yet",
+      "Delivery today runs through a service that records receipt by the named recipient. That works, and it is what the paragraph above describes. It is not what we want.",
+      "Three things we are building. None of them exist as you read this.",
+      "Couriers of our own, in named cities, instead of a service.",
+      "A courier we employ can be told to put the letter into one person's hands and nobody else's, and to leave undelivered if that person is not there. A parcel service cannot be told that.",
+      "A ledger instead of a screen.",
+      "The recipient signs a numbered page by hand. Delivery stops being a status code and becomes a signature with a date beside it.",
+      "A finite return.",
+      "Three attempts, each leaving a card that says which attempt it was, the third saying it is the last. Not a service that gives up quietly, and not one that never stops.",
+      "When any of this becomes true, this section gets shorter. Until then it stays here, listing what we owe."
+    ],
+    "actual": [
+      "What we cannot do yet",
+      "Delivery today runs through a service that records receipt by the named recipient. That works, and it is what the paragraph above describes. It is not what we want.",
+      "Three things we are building. None of them exist as you read this.",
+      "Couriers of our own, in named cities, instead of a service.",
+      "A courier we employ can be told to put the letter into one person's hands and nobody else's, and to leave undelivered if that person is not there. A parcel service cannot be told that.",
+      "A ledger instead of a screen.",
+      "The recipient signs a numbered page by hand. Delivery stops being a status code and becomes a signature with a date beside it.",
+      "A finite return.",
+      "Three attempts, each leaving a card that says which attempt it was, the third saying it is the last. Not a service that gives up quietly, and not one that never stops.",
+      "When any of this becomes true, this section gets shorter. Until then it stays here, listing what we owe."
+    ]
+  }
+}
