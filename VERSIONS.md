@@ -4,7 +4,7 @@ This is the local place to check the current site version before edits or deploy
 
 ## Current Version
 
-- Local site version: `2026-08-15-110931Z-vps-g30`
+- Local site version: `2026-08-15-113449Z-vps-g31`
 - Home base CSS cache key in HTML: `assets/base.css?v=20260815-g24`
 - Home CSS cache key in HTML: `assets/home.css?v=20260815-g24`
 - Business File home CSS cache key in HTML: `assets/home.css?v=20260815-g18`
@@ -57,7 +57,7 @@ Historical only. Current production is the VPS origin described below and in `DE
 
 - Deployment date: `2026-08-15`
 - Host: `iva` / `193.181.215.57`
-- Active release: `/var/www/coin.im/releases/20260815T110931Z`
+- Active release: `/var/www/coin.im/releases/20260815T113449Z`
 - Active intake API release: `/opt/coin-im-open/releases/20260815T092516Z`
 - Current symlink: `/var/www/coin.im/current`
 - Nginx config: `/etc/nginx/conf.d/coin.im.conf`
@@ -81,6 +81,8 @@ styles.css?v=YYYYMMDD-N
 Update this file after any completed deploy or major local visual iteration.
 
 ## Last Verified Local QA
+
+The 2026-08-15 G31 pass replaced the homepage hero framing, lead, first-letter caption and previously empty record bridge with the supplied two-piles copy, without changing public CSS, images, component classes, social image alt text or the stage panel. The visible-copy reference was synchronized and `node scripts/check-copy.js` passes. Local and production checks at 375, 768, 1024, 1440 and 1920, plus production at 430, found one `h1`, three lead paragraphs, valid ARIA targets, no horizontal overflow and no console warnings or errors. Lighthouse returned Performance 94, Accessibility 96, Best Practices 100 and SEO 100. The exact COPY renders in three heading lines at 1440 rather than the requested maximum of two; the prompt forbids the CSS, font-size and markup changes needed to alter that, so the discrepancy is documented in `audit-g31.md`. The prompt's case-sensitive lowercase count for `nobody can tell what is inside` is also inconsistent with its uppercase COPY. The clean 81-file VPS release is `/var/www/coin.im/releases/20260815T113449Z`; required HTTPS routes returned 200 and local/active homepage hashes match.
 
 The 2026-08-15 G30 pass replaced all seven supplied homepage stage-panel strings without changing markup or CSS and deployed the accumulated G27-G30 text changes. Stage names remain on one line at 1024, 1280 and 1440; notes stay within two lines; and local overflow checks passed at 375, 768, 1024, 1280 and 1440. The existing 1024 breakpoint stacks the panel below the hero, so the hero ends below the 768 px viewport; this unresolved style constraint and the two inconsistent grep expectations are documented in `audit-g30.md`. Lighthouse returned Performance 94, Accessibility 96, Best Practices 100 and SEO 100. The clean 81-file release is `/var/www/coin.im/releases/20260815T110931Z`; all required HTTPS routes returned 200, production overflow checks passed at 375, 430, 1024 and 1920, remote hashes match and no Cloudflare Worker, DNS or mail settings were changed.
 

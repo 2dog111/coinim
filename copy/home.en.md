@@ -1,10 +1,10 @@
 ## Hero {#hero}
 
-Notifications disappear. A letter stays. We post paper letters. They go to people who stopped reading email years ago. Inside each envelope there is an object they have to pick up with their hands, addressed to a named person at a street address we have checked by hand before posting. You are buying a campaign. You are also watching it being thought through: which market, which people, which sentence. Sometimes they reply. Request a scan What a scan returns The scan is paid work. It starts once the invoice is settled. Four stages 01 Market Scan Which markets have a reason to answer you now. 02 Companies, people, addresses Named people at addresses confirmed against two sources. 03 The letter and the thing inside it One page, one ask, and something with weight. 04 Production and delivery Printed, posted, and delivery evidence for every record. Three separate purchases: the scan, the contacts, the posting. You can stop after any of them.
+Post arrives in two piles. One gets opened. The person you need sorts their post by hand, in about two seconds, before they have read a word. We post paper letters built for those two seconds. An object inside, so the envelope cannot be judged flat. A named person at a street address confirmed against two sources. A first sentence that could not have been posted to anyone else. Sometimes they reply. Request a scan What a scan returns The scan is paid work. It starts once the invoice is settled. Four stages 01 Market Scan Which markets have a reason to answer you now. 02 Companies, people, addresses Named people at addresses confirmed against two sources. 03 The letter and the thing inside it One page, one ask, and something with weight. 04 Production and delivery Printed, posted, and delivery evidence for every record. Three separate purchases: the scan, the contacts, the posting. You can stop after any of them.
 
 ## Object one {#object-one}
 
-Object one of twelve A key is an obvious object. We know. It earns its place on weight. It falls out of the envelope onto a desk, it will not go into a folder, and no one has ever archived one by accident. The letter around it names the company in its first sentence. Seven of the twelve letters stop in the middle of a sentence. That is deliberate.
+Object one of twelve Nobody can tell what is inside this envelope without opening it. Something inside it has to be picked up. The address on it was checked by hand before posting. The letter around it names the company in its first sentence, and asks for one thing small enough to answer the same day. Seven of the twelve letters stop in the middle of a sentence. That is deliberate.
 
 ## The record {#proof}
 
@@ -12,7 +12,7 @@ Object one of twelve A key is an obvious object. We know. It earns its place on 
 
 ## Record bridge {#record-bridge}
 
-
+Notifications disappear. A letter stays.
 
 ## Stage one {#stage-1}
 
