@@ -43,7 +43,7 @@ Historical only. Current production is the VPS origin described below and in `DE
 
 - Deployment date: `2026-08-15`
 - Host: `iva` / `193.181.215.57`
-- Active release: `/var/www/coin.im/releases/20260815T072601Z`
+- Active release: `/var/www/coin.im/releases/20260815T074146Z`
 - Current symlink: `/var/www/coin.im/current`
 - Nginx config: `/etc/nginx/conf.d/coin.im.conf`
 - Certbot issued a Let's Encrypt certificate for `coin.im` and `www.coin.im`; it expires on `2026-11-13` and is configured for automatic renewal.
