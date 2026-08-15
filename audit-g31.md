@@ -105,4 +105,4 @@ For each of `375`, `768`, `1024`, `1440`, and `1920`, local screenshots are stor
 - Required public routes returned HTTP 200, including `/`, `/ru`, `/es`, `/ms`, `/handling`, `/open`, `/api/open/health`, CSS assets, `robots.txt`, `sitemap.xml`, and `www.coin.im`.
 - Production overflow checks passed at 375, 430, 768, 1024, 1440, and 1920 with no console warnings or errors.
 - The `coin.im` certificate remains valid through 2026-11-13.
-- No backend, DNS, mail, Cloudflare Worker, or Worker-route change was made.
+- No backend, DNS, or mail change was made.

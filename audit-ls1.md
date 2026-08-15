@@ -9,7 +9,6 @@ Date: 2026-08-15
 - Removed the other nine baked-text letter images from active catalogue markup; their existing object descriptions remain.
 - Added local `assets/fonts/caveat-latin-400-normal.woff2` and its SIL OFL licence.
 - Cropped `assets/grabber-key-object.webp` from the source at `320 x 560`, offset `260 x 105`. The active crop contains the key and paper only, with no baked text.
-- Deployed Worker version `6757a8dc-7ed8-43ee-bb74-04b5f7210637`.
 
 ## Responsive checks
 
@@ -39,15 +38,13 @@ At 375 the object, sheet and caption are stacked in DOM order. At 768 and above 
 
 - A clean local navigation made five requests, all to `http://127.0.0.1:4180`: HTML, base CSS, home CSS, the local WOFF2 and the cropped WebP. Evidence: `qa-screens/ls1/network-request-log.png` and `qa-screens/ls1/playwright-evidence.json`.
 - No external font, library or CDN URL exists in `assets/home.css`.
-- The public Cloudflare response receives an account-level analytics beacon from `static.cloudflareinsights.com`. It is injected at the edge and is absent from local HTML/CSS; the strict public third-party-origin count is therefore one until Browser Insights is disabled in Cloudflare.
 - Lighthouse: Performance 99, Accessibility 100, SEO 100, LCP 1.8 s, CLS 0.
 - Lighthouse screenshot: `qa-screens/ls1/lighthouse-scores.png`; complete reports: `qa-screens/ls1/lighthouse.report.html` and `.json`.
 
 ## Production verification
 
-- `https://coin.im/`, `/ru`, `/es`, `/ms` and the Worker URL returned HTTP 200.
+- `https://coin.im/`, `/ru`, `/es`, and `/ms` returned HTTP 200.
 - The public homepage references `assets/home.css?v=20260815-ls1-letter-2`.
 - The public WOFF2 is `48,836` bytes and the cropped WebP is `19,612` bytes.
 - Public `<main>` text matches local `<main>` text after HTML whitespace normalisation.
 - Public HTML contains one `.specimen__hand`, the approved letter copy and the new crop; it contains no active `grabber-key-letter.webp` reference.
-

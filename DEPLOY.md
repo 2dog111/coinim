@@ -1,6 +1,6 @@
 # coin.im VPS Deploy
 
-Production is served from the VPS, not from the Cloudflare Worker.
+Production is served from the VPS.
 
 - Host: `iva`
 - IP: `193.181.215.57`
@@ -10,8 +10,6 @@ Production is served from the VPS, not from the Cloudflare Worker.
 - Public URLs: `https://coin.im/`, `https://www.coin.im/`
 - DNS: Cloudflare DNS-only `A` records for `coin.im` and `www.coin.im` to `193.181.215.57`
 - TLS: Let's Encrypt certificate for `coin.im` and `www.coin.im`, renewed by certbot
-
-Do not deploy with Wrangler or Cloudflare Workers unless the user explicitly asks to restore the old Worker path.
 
 ## Files To Deploy
 
@@ -35,7 +33,7 @@ Use a clean temporary directory. Include only:
 - `sitemap.xml`
 - `assets/`
 
-Do not copy audit files, screenshots, `.wrangler/`, scripts, git metadata, or local notes.
+Do not copy audit files, screenshots, scripts, git metadata, or local notes.
 
 ## Deploy Commands
 
@@ -122,14 +120,13 @@ Use this prompt when another session needs to deploy the current site:
 ```text
 Read AGENTS.md, PROJECT_SPEC.md, VERSIONS.md, and DEPLOY.md first.
 
-Deploy the current coin.im static site to the VPS, not to Cloudflare Workers.
+Deploy the current coin.im static site to the VPS.
 
 Use host `iva` and create a clean release under `/var/www/coin.im/releases/<timestamp>`.
 Deploy only the production static files listed in DEPLOY.md.
 Switch `/var/www/coin.im/current` to the new release with a symlink.
 Run `sudo nginx -t` and reload Nginx.
 Verify `https://coin.im/`, `/ru`, `/es`, `/ms`, `/handling`, `/open`, `/api/open/health`, CSS assets, `robots.txt`, `sitemap.xml`, and `https://www.coin.im/`.
-Do not touch MX, TXT, SRV, DKIM, DMARC, Cloudflare Worker routes, or DNS unless I explicitly ask.
-Do not use `wrangler deploy`.
+Do not touch MX, TXT, SRV, DKIM, DMARC, or DNS unless I explicitly ask.
 Update VERSIONS.md with the new active release and verification results.
 ```

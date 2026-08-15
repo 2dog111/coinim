@@ -32,4 +32,4 @@ em dash  0
 - VPS release: `/var/www/coin.im/releases/20260815T105520Z`.
 - Public text checks passed at `https://coin.im/`.
 - Required HTTPS routes returned 200.
-- No Cloudflare Worker, DNS or mail configuration was changed.
+- No DNS or mail configuration was changed.

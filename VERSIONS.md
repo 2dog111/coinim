@@ -31,27 +31,16 @@ This is the local place to check the current site version before edits or deploy
 - Archive SHA-256: `b4eb773a18e5b1d0a00c6fbac6c060b377ac9e423a39bd7e687eb0b70675299b`
 - File count in clean static snapshot: `56`
 - Included files follow the VPS production list in `DEPLOY.md`: HTML pages, `llms.txt`, CSS files, `robots.txt`, `sitemap.xml`, `ms/index.html`, and `assets/`.
-- To roll back later, deploy this archive through the VPS release flow in `DEPLOY.md`; do not use Wrangler or the old Cloudflare Worker path.
+- To roll back later, deploy this archive through the VPS release flow in `DEPLOY.md`.
 
 ## Git Checkpoint
 
-- Annotated tag: `checkpoint-20260815-g30`
+- Annotated tag: `checkpoint-20260815-g31`
 - Branch at creation: `main`
-- Scope: the complete source state through G30, including the current static site, Market Scan route mirror, `/handling`, the manual encrypted `/open` intake and API source, deployment documentation, and audit reports.
+- Scope: the complete source state through G31, including the current static site, Market Scan route mirror, `/handling`, the manual encrypted `/open` intake and API source, deployment documentation, audit reports, and G31 homepage copy pass.
 - Generated `qa-screens/` files are intentionally excluded; they are local evidence, not required to build or restore the site.
-- Inspect the checkpoint with `git show checkpoint-20260815-g30`.
-- Start a safe rollback branch with `git switch -c restore/checkpoint-20260815-g30 checkpoint-20260815-g30`. Do not reset a dirty working tree.
-
-## Last Known Cloudflare Worker Deployment
-
-Historical only. Current production is the VPS origin described below and in `DEPLOY.md`; do not use this Worker path unless explicitly asked to restore it.
-
-- Deployment date: `2026-08-15`
-- Cloudflare Worker name: `aged-star-171b`
-- Worker URL: `https://aged-star-171b.uuudotbz.workers.dev`
-- Production version ID: `6757a8dc-7ed8-43ee-bb74-04b5f7210637`
-- Last deployed files included: `index.html`, `ru.html`, `es.html`, `ai.html`, `s.html`, `ms.html`, `ms/index.html`, `styles.css`, `ms.css`, `robots.txt`, `sitemap.xml`, `llms.txt`, `assets/`
-- Current generated header mark: `assets/coin-im-mark-20260813.webp`
+- Inspect the checkpoint with `git show checkpoint-20260815-g31`.
+- Start a safe rollback branch with `git switch -c restore/checkpoint-20260815-g31 checkpoint-20260815-g31`. Do not reset a dirty working tree.
 
 ## Current Production Deployment
 
@@ -84,7 +73,7 @@ Update this file after any completed deploy or major local visual iteration.
 
 The 2026-08-15 G31 pass replaced the homepage hero framing, lead, first-letter caption and previously empty record bridge with the supplied two-piles copy, without changing public CSS, images, component classes, social image alt text or the stage panel. The visible-copy reference was synchronized and `node scripts/check-copy.js` passes. Local and production checks at 375, 768, 1024, 1440 and 1920, plus production at 430, found one `h1`, three lead paragraphs, valid ARIA targets, no horizontal overflow and no console warnings or errors. Lighthouse returned Performance 94, Accessibility 96, Best Practices 100 and SEO 100. The exact COPY renders in three heading lines at 1440 rather than the requested maximum of two; the prompt forbids the CSS, font-size and markup changes needed to alter that, so the discrepancy is documented in `audit-g31.md`. The prompt's case-sensitive lowercase count for `nobody can tell what is inside` is also inconsistent with its uppercase COPY. The clean 81-file VPS release is `/var/www/coin.im/releases/20260815T113449Z`; required HTTPS routes returned 200 and local/active homepage hashes match.
 
-The 2026-08-15 G30 pass replaced all seven supplied homepage stage-panel strings without changing markup or CSS and deployed the accumulated G27-G30 text changes. Stage names remain on one line at 1024, 1280 and 1440; notes stay within two lines; and local overflow checks passed at 375, 768, 1024, 1280 and 1440. The existing 1024 breakpoint stacks the panel below the hero, so the hero ends below the 768 px viewport; this unresolved style constraint and the two inconsistent grep expectations are documented in `audit-g30.md`. Lighthouse returned Performance 94, Accessibility 96, Best Practices 100 and SEO 100. The clean 81-file release is `/var/www/coin.im/releases/20260815T110931Z`; all required HTTPS routes returned 200, production overflow checks passed at 375, 430, 1024 and 1920, remote hashes match and no Cloudflare Worker, DNS or mail settings were changed.
+The 2026-08-15 G30 pass replaced all seven supplied homepage stage-panel strings without changing markup or CSS and deployed the accumulated G27-G30 text changes. Stage names remain on one line at 1024, 1280 and 1440; notes stay within two lines; and local overflow checks passed at 375, 768, 1024, 1280 and 1440. The existing 1024 breakpoint stacks the panel below the hero, so the hero ends below the 768 px viewport; this unresolved style constraint and the two inconsistent grep expectations are documented in `audit-g30.md`. Lighthouse returned Performance 94, Accessibility 96, Best Practices 100 and SEO 100. The clean 81-file release is `/var/www/coin.im/releases/20260815T110931Z`; all required HTTPS routes returned 200, production overflow checks passed at 375, 430, 1024 and 1920, and remote hashes match.
 
 The 2026-08-15 G29 pass aligned Market Scan with the homepage by stating that the first chronicle returns within 72 hours in Current status, the visible timing FAQ answer and its JSON-LD counterpart. The visible and structured answers match exactly, JSON-LD is valid, and `ms.html` equals `ms/index.html`. Browser checks at 375 and 1440 found no horizontal overflow or console warnings; Lighthouse returned Performance 99, Accessibility 100, Best Practices 100 and SEO 100. The requested grep expectation says two `72 hours` matches in `ms.html`, but the three required placements necessarily produce three; this is documented in `audit-g29.md`. It was deployed with G30 in `/var/www/coin.im/releases/20260815T110931Z`.
 
@@ -140,7 +129,7 @@ The 2026-08-15 IMG-1 asset deployment regenerated six direct-mail letter images 
 
 The 2026-08-15 G10 pass added marker-fill and stamp interaction physics to both home-page buttons, strengthened prose-link underlines on hover, and added the exact `What we cannot do yet` copy after the unchanged delivery sentence. Both buttons passed keyboard focus checks, reduced motion disables transitions and rotation, five requested widths have no horizontal overflow, and measured button contrast is 13.797:1. Lighthouse returned Performance 99, Accessibility 100 and SEO 100. It was deployed to VPS release `/var/www/coin.im/releases/20260815T055944Z`; full evidence is in `audit-g10.md` and `qa-screens/g10/`.
 
-The 2026-08-15 LS1 pass replaced the baked-text object catalogue images with one approved, selectable key-letter specimen; the other nine unapproved letter images were removed from active markup. Caveat is self-hosted as WOFF2 with Georgia fallback, the object crop contains no baked text, all five requested widths have no horizontal overflow, and the measured text contrast is 17.316:1. Lighthouse returned Performance 99, Accessibility 100 and SEO 100. It was deployed to `aged-star-171b` as version `6757a8dc-7ed8-43ee-bb74-04b5f7210637`; full evidence is in `audit-ls1.md` and `qa-screens/ls1/`.
+The 2026-08-15 LS1 pass replaced the baked-text object catalogue images with one approved, selectable key-letter specimen; the other nine unapproved letter images were removed from active markup. Caveat is self-hosted as WOFF2 with Georgia fallback, the object crop contains no baked text, all five requested widths have no horizontal overflow, and the measured text contrast is 17.316:1. Lighthouse returned Performance 99, Accessibility 100 and SEO 100. Full evidence is in `audit-ls1.md` and `qa-screens/ls1/`.
 
 The 2026-08-15 G7 rhythm pass removed stage numbers from the hero index and all four stage sections, replaced the four stage labels, and consolidated vertical rhythm around `--space-section`, `--space-block`, and `--space-tight`. The visible copy comparison changed only the approved labels and removed numbers. Checks at 375, 430, 768, 1024, 1440 and 1920 found no horizontal overflow; all four stage links reached their original anchors. Full measurements and before/after screenshots are in `audit-home-g7.md`.
 
@@ -148,7 +137,7 @@ The 2026-08-15 live-home review pass restored the three stronger legacy lines, c
 
 The 2026-08-15 MS-2 local text pass removed all visible `may` occurrences from Market Scan, added the hypotheses hedge, reduced the object section to its main-page link, rebuilt the buyer-first FAQ and final CTA, and updated the document title. `ms.html` and `ms/index.html` are byte-identical. Checks at `375` and `1440` found no horizontal overflow. Lighthouse remained Performance 99, Accessibility 100 and SEO 100, with LCP improving from 1.8 s to 1.7 s. See `audit-ms2.md` for exact-match discrepancies and the two source-state limitations.
 
-The 2026-08-15 G6 copy refresh changed exactly six approved home-page text fragments. `node scripts/check-copy.js` passes, screenshots at `375` and `1440` have no visual regression, and no horizontal overflow was found at either width. Lighthouse returned Performance 100, Accessibility 100 and SEO 100, with LCP 1.5 s. It was deployed to `aged-star-171b` as version `44d856b7-cefd-41f4-b50e-f4232f953e42`; `/`, `/ru`, `/es`, `/ms` and the CSS resources returned HTTP 200.
+The 2026-08-15 G6 copy refresh changed exactly six approved home-page text fragments. `node scripts/check-copy.js` passes, screenshots at `375` and `1440` have no visual regression, and no horizontal overflow was found at either width. Lighthouse returned Performance 100, Accessibility 100 and SEO 100, with LCP 1.5 s.
 
 The 2026-08-13 refresh was checked at:
 

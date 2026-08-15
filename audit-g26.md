@@ -41,7 +41,7 @@ Six things people ask                               1
 - Local, clean snapshot and remote SHA-256 hashes match for `index.html`, `ms.html` and `ms/index.html`.
 - All required HTTPS routes returned 200; Nginx is active and `nginx -t` passed.
 - Certificate for `coin.im` and `www.coin.im` is valid through 2026-11-13.
-- No Cloudflare Worker, DNS or mail configuration was changed.
+- No DNS or mail configuration was changed.
 
 ## Unrelated existing check
 

@@ -40,4 +40,4 @@ The supplied Stage 3 replacement is not only a sentence split. Compared with the
 
 ## Deployment
 
-Deployed with G30 in VPS release `/var/www/coin.im/releases/20260815T110931Z`. No Cloudflare Worker, DNS or mail changes were made.
+Deployed with G30 in VPS release `/var/www/coin.im/releases/20260815T110931Z`. No DNS or mail changes were made.

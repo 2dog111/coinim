@@ -37,4 +37,4 @@ The stated expectation of two matches in `ms.html` conflicts with the three requ
 
 ## Deployment
 
-Deployed with G30 in VPS release `/var/www/coin.im/releases/20260815T110931Z`. No Cloudflare Worker, DNS or mail changes were made.
+Deployed with G30 in VPS release `/var/www/coin.im/releases/20260815T110931Z`. No DNS or mail changes were made.

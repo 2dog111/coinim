@@ -84,4 +84,4 @@ At 375, 768, 1024, 1440 and 1920: one `h1`, no horizontal overflow, no missing a
 
 Accessibility is 96 because the required `var(--ink-soft)` label colour has insufficient contrast on the dark plate.
 
-VPS release: `/var/www/coin.im/releases/20260815T103707Z`. Nginx validation and all required public HTTPS checks passed. Worker, DNS, backend and mail records were untouched.
+VPS release: `/var/www/coin.im/releases/20260815T103707Z`. Nginx validation and all required public HTTPS checks passed. DNS, backend and mail records were untouched.

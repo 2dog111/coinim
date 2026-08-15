@@ -41,4 +41,4 @@ Screenshots, browser results and `lighthouse.json` are in `qa-screens/g23/`.
 - Nginx configuration test: passed
 - Nginx: active and reloaded
 - Required public routes: HTTP 200
-- Cloudflare Worker, DNS and mail records: untouched
+- DNS and mail records: untouched

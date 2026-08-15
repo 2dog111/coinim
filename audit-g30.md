@@ -50,4 +50,4 @@ Screenshots are in `qa-screens/g30/`: `panel-1024.png`, `panel-1280.png`, `panel
 - All required HTTPS routes returned 200.
 - Production overflow checks passed at 375, 430, 1024 and 1920 with one `h1` and no console warnings or errors.
 - Nginx is active, `nginx -t` passed, and the certificate for `coin.im` and `www.coin.im` is valid through 2026-11-13.
-- No Cloudflare Worker, DNS or mail configuration was changed.
+- No DNS or mail configuration was changed.

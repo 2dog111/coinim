@@ -2,7 +2,7 @@
 
 - Start by reading `PROJECT_SPEC.md`, `VERSIONS.md`, and `DEPLOY.md` if they exist.
 - Do not deploy, publish, push, or change production unless the current user message explicitly authorizes that action.
-- Production is the VPS release flow in `DEPLOY.md`. Never use Wrangler, `aged-star-171b`, or Cloudflare Worker routes unless the user explicitly asks to restore that retired path.
+- Production is the VPS release flow in `DEPLOY.md`.
 - Do not change DNS, MX, TXT, SRV, DKIM, DMARC, or mail routing without a separate explicit command.
 - Keep route mirrors byte-identical: `ms.html` with `ms/index.html`, `handling.html` with `handling/index.html`, and `open.html` with `open/index.html`.
 - Preserve unrelated and parallel-session changes. Do not use destructive Git commands to create or restore a checkpoint.

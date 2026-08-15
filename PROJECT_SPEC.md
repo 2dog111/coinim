@@ -104,8 +104,6 @@ Do not deploy unless the current user message explicitly says to deploy.
 
 Current production deployment is the VPS flow in `DEPLOY.md`.
 
-The old Cloudflare Worker `aged-star-171b` is retired. Do not use Wrangler or change Worker routes unless the user explicitly asks to restore that historical path.
-
 Use a clean temporary static directory for deployment. Include only the files needed for the site:
 
 - `index.html`

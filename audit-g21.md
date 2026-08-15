@@ -55,4 +55,4 @@ Screenshots and `lighthouse.json` are in `qa-screens/g21/`.
 - Nginx: active and reloaded
 - Required public routes: HTTP 200
 - Public G21 copy and `assets/home.css?v=20260815-g21`: verified
-- Cloudflare Worker, DNS and mail records: untouched
+- DNS and mail records: untouched
