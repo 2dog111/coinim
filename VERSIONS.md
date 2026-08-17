@@ -4,15 +4,16 @@ This is the local place to check the current site version before edits or deploy
 
 ## Current Version
 
-- Local site version: `2026-08-18-editorial-restyle-e1`
-- Active VPS release: `/var/www/coin.im/releases/20260817T174427Z`
-- Git commit: `a98a959` on `main`
-- Shared base CSS cache key in HTML: `assets/base.css?v=20260818-e1` (/, /ms, /msru, /open)
-- Home CSS cache key in HTML: `assets/home.css?v=20260818-e1` (also loaded by /open)
-- Russian home page stylesheet: `assets/ru.css?v=20260818-e1` (ru.html no longer loads `styles.css`; `styles.css` still serves /es and stays deployed)
-- Business File CSS cache key in HTML: `assets/open.css?v=20260818-e1`
+- Local site version: `2026-08-18-home-cta-to-marketscan-e2`
+- Active VPS release: `/var/www/coin.im/releases/20260817T180232Z`
+- Git commit: `5f1ffc8` on `main` (restyle landed in `a98a959`, release `20260817T174427Z`)
+- Home page funnel: `/` links only to `/ms` (six links, no `/open` link at all); `/ms` and `/msru` keep their three `/open` CTAs
+- Shared base CSS cache key in HTML: `assets/base.css?v=20260818-e2` (/, /ms, /msru, /open)
+- Home CSS cache key in HTML: `assets/home.css?v=20260818-e2` (also loaded by /open)
+- Russian home page stylesheet: `assets/ru.css?v=20260818-e2` (ru.html no longer loads `styles.css`; `styles.css` still serves /es and stays deployed)
+- Business File CSS cache key in HTML: `assets/open.css?v=20260818-e2`
 - Business File JS cache key in HTML: `assets/open.js?v=20260815-open3` (JS unchanged)
-- Market Scan CSS cache key in HTML: `assets/ms.css?v=20260818-e1`
+- Market Scan CSS cache key in HTML: `assets/ms.css?v=20260818-e2`
 - Body/heading font: `assets/fonts/source-serif-4-variable.woff2` (Source Serif 4 Variable, latin + cyrillic subset, 198 KB, preloaded on /, /ru, /ms, /msru, /open)
 - 2026-08-18 deploy verified: all public URLs below return 200 over HTTPS, `/api/open/health` OK, `www` OK, nginx config test clean, reload clean
 - Note: the London microcement passage in `/ms` and `/msru` sat restored in the working tree in both languages (uncommitted parallel-session state after commit `8b0571e` cut it); it is preserved and deployed
