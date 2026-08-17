@@ -102,8 +102,15 @@
 }
 
 .ms-story-part .ms-prose p {
-  font-size: 1.16rem;
-  line-height: 1.72;
+  max-width: 64ch;
+  font-size: 1.24rem;
+  line-height: 1.7;
+  text-wrap: pretty;
+  hyphens: auto;
+}
+
+.ms-story-part .ms-prose p + p {
+  margin-top: 1.15em;
 }
 
 .ms-story-part .ms-prose h3 {
@@ -111,6 +118,7 @@
   font-size: 1.5rem;
   line-height: 1.25;
   letter-spacing: 0;
+  text-wrap: balance;
 }
 
 .ms-story-inline-cta {
@@ -209,8 +217,9 @@
   }
 
   .ms-story-part .ms-prose p {
-    font-size: 1.06rem;
-    line-height: 1.68;
+    max-width: none;
+    font-size: 1.13rem;
+    line-height: 1.7;
   }
 
   .ms-story-part .ms-prose h3 {
@@ -226,4 +235,22 @@
   .ms-story-closing {
     margin-top: 4.5rem;
   }
+}
+
+.ms-hero-resume {
+  margin: 1.25rem 0 0;
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+.ms-hero-resume a {
+  color: var(--ink);
+}
+
+.ms-hero-resume[hidden] {
+  display: none;
 }
