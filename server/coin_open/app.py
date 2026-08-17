@@ -19,9 +19,14 @@ from urllib.parse import unquote, urlsplit
 
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 
+from . import analytics
+
 
 DATA_ROOT = Path(os.environ.get("COIN_OPEN_DATA_ROOT", "/var/lib/coin-im-open"))
 KEY_PATH = Path(os.environ.get("COIN_OPEN_KEY_PATH", "/etc/coin-im-open/encryption.key"))
+ADMIN_TOKEN_PATH = Path(
+    os.environ.get("COIN_OPEN_ADMIN_TOKEN_PATH", "/etc/coin-im-open/admin-token")
+)
 ALLOWED_ORIGINS = {
     value.strip()
     for value in os.environ.get("COIN_OPEN_ALLOWED_ORIGINS", "https://coin.im").split(",")
@@ -91,6 +96,31 @@ def client_ip(scope: dict, headers: dict[str, str]) -> str:
         return value.strip()
     client = scope.get("client")
     return str(client[0]) if client else "unknown"
+
+
+def admin_token() -> str:
+    """Секрет админки. Нет файла, нет и страницы."""
+    try:
+        return ADMIN_TOKEN_PATH.read_text(encoding="utf-8").strip()
+    except OSError:
+        return ""
+
+
+async def send_html(send, status: int, body: str) -> None:
+    payload = body.encode("utf-8")
+    await send(
+        {
+            "type": "http.response.start",
+            "status": status,
+            "headers": [
+                (b"content-type", b"text/html; charset=utf-8"),
+                (b"content-length", str(len(payload)).encode()),
+                (b"cache-control", b"no-store"),
+                (b"x-robots-tag", b"noindex, nofollow"),
+            ],
+        }
+    )
+    await send({"type": "http.response.body", "body": payload})
 
 
 async def send_json(send, status: int, payload: dict) -> None:
@@ -419,6 +449,31 @@ async def app(scope, receive, send) -> None:
     try:
         if method == "GET" and path == "/api/open/health":
             await send_json(send, 200, {"status": "ok"})
+            return
+
+        if method == "POST" and path == "/api/open/beacon":
+            body = await read_body(receive, 2048)
+            try:
+                payload = json.loads(body.decode("utf-8")) if body else {}
+                if isinstance(payload, dict):
+                    analytics.record(
+                        DATA_ROOT,
+                        load_key(),
+                        client_ip(scope, headers),
+                        headers.get("user-agent", ""),
+                        payload,
+                    )
+            except Exception:
+                logger.warning("analytics_beacon_failed")
+            await send_json(send, 200, {"ok": True})
+            return
+
+        match = re.fullmatch(r"/api/open/panel/([A-Za-z0-9_-]{20,120})", path)
+        if method == "GET" and match:
+            token = admin_token()
+            if not token or not hmac.compare_digest(match.group(1), token):
+                raise IntakeError(404, "Not found.")
+            await send_html(send, 200, analytics.panel_html(analytics.summary(DATA_ROOT)))
             return
         key = load_key()
         if method == "POST" and path == "/api/open/drafts":
