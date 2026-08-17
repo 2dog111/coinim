@@ -1,6 +1,5 @@
 .ms-hero-v2 {
   display: flex;
-  min-height: 85svh;
   padding-top: 4.5rem;
   padding-bottom: 2.5rem;
 }
@@ -55,8 +54,8 @@
 }
 
 .ms-hero-marker {
-  margin: auto 0 0;
-  padding-top: 3.5rem;
+  margin: 0;
+  padding-top: 3rem;
   color: var(--ink-muted);
   font-family: var(--font-mono);
   font-size: 0.78rem;
