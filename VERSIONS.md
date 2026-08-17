@@ -4,7 +4,7 @@ This is the local place to check the current site version before edits or deploy
 
 ## Current Version
 
-- Local site version: `2026-08-17-171243Z-vps-ms-msru-model-names`
+- Local site version: `2026-08-17-173203Z-vps-ms-msru-trim`
 - Home base CSS cache key in HTML: `assets/base.css?v=20260815-g24`
 - Home CSS cache key in HTML: `assets/home.css?v=20260815-g24`
 - Business File home CSS cache key in HTML: `assets/home.css?v=20260815-g24`
@@ -47,7 +47,7 @@ This is the local place to check the current site version before edits or deploy
 
 - Deployment date: `2026-08-17`
 - Host: `iva` / `193.181.215.57`
-- Active release: `/var/www/coin.im/releases/20260817T171243Z`
+- Active release: `/var/www/coin.im/releases/20260817T173203Z`
 - Active intake API release: `/opt/coin-im-open/releases/20260815T092516Z`
 - Current symlink: `/var/www/coin.im/current`
 - Nginx config: `/etc/nginx/conf.d/coin.im.conf`
@@ -161,6 +161,12 @@ The 2026-08-15 G10 pass added marker-fill and stamp interaction physics to both 
 The 2026-08-15 LS1 pass replaced the baked-text object catalogue images with one approved, selectable key-letter specimen; the other nine unapproved letter images were removed from active markup. Caveat is self-hosted as WOFF2 with Georgia fallback, the object crop contains no baked text, all five requested widths have no horizontal overflow, and the measured text contrast is 17.316:1. Lighthouse returned Performance 99, Accessibility 100 and SEO 100. Full evidence is in `audit-ls1.md` and `qa-screens/ls1/`.
 
 The 2026-08-15 G7 rhythm pass removed stage numbers from the hero index and all four stage sections, replaced the four stage labels, and consolidated vertical rhythm around `--space-section`, `--space-block`, and `--space-tight`. The visible copy comparison changed only the approved labels and removed numbers. Checks at 375, 430, 768, 1024, 1440 and 1920 found no horizontal overflow; all four stage links reached their original anchors. Full measurements and before/after screenshots are in `audit-home-g7.md`.
+
+The 2026-08-17 release `20260817T173203Z` cut eight passages the owner picked from a proposed list, on both Market Scan pages.
+
+Removed: the machine-has-no-wanting paragraph closing part one, which part five already states at length; the numbers inside the five per-model paragraphs in part four, now that the matrix above them carries the same figures, leaving each model its verdict; the address-failure list inside the routing step in part two, back to a single pointer at part one; the physical-monument sentence in part five, which repeats part one word for word; the third pass at the nobody-brings-this-table joke in part two; the loose-change aside on the end of the LinkedIn paragraph; the London microcement deep-research example; and the three landing-page-and-CRM sentences inside the hammer passage in part three.
+
+Russian body words went 6127 to 6032, English 7607 to 7368. Paragraph counts went 151 to 149 and 157 to 155. No numbers in the surviving text changed, no dash characters introduced, div balance unchanged at 19 and 20 pairs. Both route mirrors stay byte-identical and live `/ms`, `/ms/`, `/msru`, `/msru/` hash to the local files. All fourteen required HTTPS checks returned 200, `nginx -t` passed and nginx reloaded. Text-only pass: no browser checks were run, the table added in the previous release was not touched.
 
 The 2026-08-17 release `20260817T171243Z` put the real model names and the benchmark matrix back on both Market Scan pages, at the owner's explicit instruction.
 
