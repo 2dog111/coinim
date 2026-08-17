@@ -22,6 +22,8 @@ Use a clean temporary directory. Include only:
 - `s.html`
 - `ms.html`
 - `ms/index.html`
+- `msru.html`
+- `msru/index.html`
 - `handling.html`
 - `handling/index.html`
 - `open.html`
@@ -41,9 +43,10 @@ Run from the repository root.
 
 ```bash
 tmp=$(mktemp -d /tmp/coin-im-release.XXXXXX)
-mkdir -p "$tmp/ms" "$tmp/handling" "$tmp/open"
-rsync -a index.html ru.html es.html ai.html s.html ms.html handling.html open.html llms.txt styles.css ms.css robots.txt sitemap.xml assets "$tmp/"
+mkdir -p "$tmp/ms" "$tmp/msru" "$tmp/handling" "$tmp/open"
+rsync -a index.html ru.html es.html ai.html s.html ms.html msru.html handling.html open.html llms.txt styles.css ms.css robots.txt sitemap.xml assets "$tmp/"
 rsync -a ms/index.html "$tmp/ms/index.html"
+rsync -a msru/index.html "$tmp/msru/index.html"
 rsync -a handling/index.html "$tmp/handling/index.html"
 rsync -a open/index.html "$tmp/open/index.html"
 
@@ -82,6 +85,7 @@ urls = [
     "https://coin.im/ru",
     "https://coin.im/es",
     "https://coin.im/ms",
+    "https://coin.im/msru",
     "https://coin.im/handling",
     "https://coin.im/open",
     "https://coin.im/api/open/health",
@@ -126,7 +130,7 @@ Use host `iva` and create a clean release under `/var/www/coin.im/releases/<time
 Deploy only the production static files listed in DEPLOY.md.
 Switch `/var/www/coin.im/current` to the new release with a symlink.
 Run `sudo nginx -t` and reload Nginx.
-Verify `https://coin.im/`, `/ru`, `/es`, `/ms`, `/handling`, `/open`, `/api/open/health`, CSS assets, `robots.txt`, `sitemap.xml`, and `https://www.coin.im/`.
+Verify `https://coin.im/`, `/ru`, `/es`, `/ms`, `/msru`, `/handling`, `/open`, `/api/open/health`, CSS assets, `robots.txt`, `sitemap.xml`, and `https://www.coin.im/`.
 Do not touch MX, TXT, SRV, DKIM, DMARC, or DNS unless I explicitly ask.
 Update VERSIONS.md with the new active release and verification results.
 ```

@@ -6,6 +6,7 @@ coin.im creates B2B direct-mail campaigns for decision-makers. The service resea
 
 - English: https://coin.im/ — B2B direct mail for decision-makers.
 - Market Scan: https://coin.im/ms — editorial long-form explanation of market research, company and decision-maker discovery, verified physical mailing routes, letters, production, delivery, and connected CRM.
+- Russian Market Scan: https://coin.im/msru — Russian version of the Market Scan story page.
 - File handling: https://coin.im/handling — What we do with what you send.
 - Business File intake: https://coin.im/open — manual upload intake for a Market Chronicle.
 - Russian: https://coin.im/ru — Russian version of the service page.

@@ -15,6 +15,7 @@ The page should feel like a serious editorial landing page, not a generic AI/Saa
 - `es.html`: Spanish version, served at `/es`. Do not expose it from the English homepage unless explicitly requested.
 - `styles.css`: shared visual system for English and Russian pages.
 - `ms.css`: Market Scan longread visual system, served by `ms.html`.
+- `msru.html` and `msru/index.html`: Russian Market Scan story page, served at `/msru`.
 - `handling.html` and `handling/index.html`: factual file-handling page, served at `/handling`.
 - `open.html` and `open/index.html`: manual Business File intake, served at `/open`.
 - `server/coin_open/`: encrypted manual intake API deployed separately from the static web root.
@@ -113,6 +114,8 @@ Use a clean temporary static directory for deployment. Include only the files ne
 - `s.html`
 - `ms.html`
 - `ms/index.html`
+- `msru.html`
+- `msru/index.html`
 - `handling.html`
 - `handling/index.html`
 - `open.html`
@@ -131,6 +134,7 @@ After deployment, verify:
 - `https://coin.im/es`
 - `https://coin.im/styles.css?v=<current-version>`
 - `https://coin.im/ms.css?v=<current-ms-version>`
+- `https://coin.im/msru`
 - production HTML references the current CSS version
 - production text did not drift from local text when the task was visual-only
 
@@ -143,7 +147,7 @@ VPS origin deployment:
 - Releases: `/var/www/coin.im/releases/<timestamp>`
 - Nginx config: `/etc/nginx/conf.d/coin.im.conf`
 - Use the same clean temporary static directory contents listed above.
-- Keep `/`, `/ru`, `/es`, and `/ms` working through Nginx `try_files`.
+- Keep `/`, `/ru`, `/es`, `/ms`, and `/msru` working through Nginx `try_files`.
 - After rsync, verify direct origin HTTP before changing DNS.
 - DNS already points to the VPS through Cloudflare DNS-only records. TLS is issued on the VPS through certbot.
 

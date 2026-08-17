@@ -1,1 +1,230 @@
-@layer page {}
+.ms-hero-v2 {
+  display: flex;
+  min-height: 85svh;
+  padding-top: 4.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.ms-hero-inner {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.ms-hero-v2 h1 {
+  max-width: 15ch;
+  font-size: 4.75rem;
+  line-height: 1.02;
+  letter-spacing: 0;
+}
+
+.ms-hero-subtitle {
+  max-width: 58ch;
+  font-size: 2rem;
+  line-height: 1.25;
+}
+
+.ms-hero-actions {
+  margin-top: 2rem;
+}
+
+.ms-cta-caption {
+  max-width: 58ch;
+  margin: 0.85rem 0 0;
+  color: var(--ink-muted);
+  font-size: 0.86rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+.ms-story-read-link {
+  color: var(--ink-soft);
+  text-decoration: underline;
+  text-decoration-color: var(--rule-strong);
+  text-underline-offset: 0.22em;
+}
+
+.ms-story-read-link::after {
+  display: none;
+}
+
+.ms-story-read-link:hover {
+  color: var(--stamp);
+  text-decoration-color: currentColor;
+}
+
+.ms-hero-marker {
+  margin: auto 0 0;
+  padding-top: 3.5rem;
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+.ms-story-part {
+  padding-top: 8rem;
+  padding-bottom: 8.5rem;
+}
+
+.ms-story-part::before {
+  display: none;
+}
+
+.ms-story-part--paper {
+  background: var(--paper);
+}
+
+.ms-story-part--deep {
+  background: var(--paper-deep);
+}
+
+.ms-part-number {
+  margin: 0 0 1.4rem;
+  color: var(--stamp);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.ms-story-part h2 {
+  font-size: 3rem;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.ms-story-part .ms-prose {
+  margin-top: 2.75rem;
+}
+
+.ms-story-part .ms-prose p {
+  font-size: 1.16rem;
+  line-height: 1.72;
+}
+
+.ms-story-part .ms-prose h3 {
+  margin-top: 4.5rem;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.ms-story-inline-cta {
+  margin-top: 2rem;
+}
+
+.ms-benchmark-display {
+  max-width: var(--measure);
+  margin: 4.5rem 0;
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: 3.4rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.ms-benchmark-display p {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.ms-benchmark-display p + p {
+  margin-top: 0.18em;
+}
+
+.ms-story-closing {
+  margin-top: 6rem;
+}
+
+.ms-story-closing .ms-primary-link {
+  margin-top: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .ms-hero-v2 h1 {
+    font-size: 4rem;
+  }
+
+  .ms-story-part {
+    padding-top: 7rem;
+    padding-bottom: 7.5rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .ms-hero-v2 {
+    display: block;
+    min-height: 0;
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .ms-hero-inner {
+    display: block;
+  }
+
+  .ms-hero-v2 h1 {
+    max-width: 13ch;
+    font-size: 2.75rem;
+    line-height: 1.04;
+  }
+
+  .ms-hero-subtitle {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .ms-hero-actions {
+    align-items: flex-start;
+    margin-top: 1.75rem;
+  }
+
+  .ms-hero-marker {
+    margin-top: 3rem;
+    padding-top: 0;
+  }
+
+  .ms-story-part {
+    padding-top: 5.5rem;
+    padding-bottom: 6rem;
+  }
+
+  .ms-part-number {
+    margin-bottom: 1.1rem;
+  }
+
+  .ms-story-part h2 {
+    font-size: 2.25rem;
+    line-height: 1.12;
+  }
+
+  .ms-story-part .ms-prose {
+    margin-top: 2.25rem;
+  }
+
+  .ms-story-part .ms-prose p {
+    font-size: 1.06rem;
+    line-height: 1.68;
+  }
+
+  .ms-story-part .ms-prose h3 {
+    margin-top: 3.5rem;
+    font-size: 1.35rem;
+  }
+
+  .ms-benchmark-display {
+    margin: 3.5rem 0;
+    font-size: 2rem;
+  }
+
+  .ms-story-closing {
+    margin-top: 4.5rem;
+  }
+}

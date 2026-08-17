@@ -3,26 +3,28 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Do not buy the list yet: Market Scan | coin.im</title>
+    <title>Market Scan: the part of outreach nobody does | coin.im</title>
     <meta
       name="description"
-      content="Market Scan is a deep research pass that runs before any contact is purchased. It maps every defensible market for an offer, proves why each one exists, learns how those companies and decision-makers are actually named, and turns it into thousands of precise search instructions."
+      content="The whole story of Market Scan: why buying lead lists is backwards, what I built instead, how the four sessions work inside, what it took, and what the benchmark numbers say."
     />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <link rel="canonical" href="https://coin.im/ms" />
+    <link rel="alternate" hreflang="ru" href="https://coin.im/msru" />
+    <link rel="alternate" hreflang="x-default" href="https://coin.im/ms" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="coin.im" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:title" content="Market Scan: find the whole market before you buy a single contact" />
-    <meta property="og:description" content="One deep scan. Every defensible market, with evidence. Every way those companies and people are named. Thousands of precise search instructions. Then the companies, the people, the physical routes and the letters." />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:title" content="The one part of outreach nobody ever does" />
+    <meta property="og:description" content="A first-person story of building Market Scan, from a dumping folder and two-day runs to four sessions that map an entire market before you buy a single lead." />
     <meta property="og:url" content="https://coin.im/ms" />
     <meta property="og:image" content="https://coin.im/assets/coin-im-share-en.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="coin.im Market Scan for physical B2B outreach" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Market Scan Before the Lead List | coin.im" />
-    <meta name="twitter:description" content="See how coin.im turns one business into a complete map of markets, companies, decision-makers, physical addresses, letters and delivery records." />
+    <meta name="twitter:title" content="The one part of outreach nobody ever does" />
+    <meta name="twitter:description" content="A first-person story of building Market Scan, from a dumping folder and two-day runs to four sessions that map an entire market before you buy a single lead." />
     <meta name="twitter:image" content="https://coin.im/assets/coin-im-share-en.png" />
     <meta name="twitter:image:alt" content="coin.im Market Scan for physical B2B outreach" />
     <meta name="theme-color" content="#f4efe5" />
@@ -31,7 +33,7 @@
     <link rel="icon" href="/assets/favicon.png?v=20260815-g5" type="image/png" sizes="96x96" />
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=20260815-g5" sizes="180x180" />
     <link rel="stylesheet" href="/assets/base.css?v=20260815-g26" />
-    <link rel="stylesheet" href="/assets/ms.css?v=20260815-g26" />
+    <link rel="stylesheet" href="/assets/ms.css?v=20260815-story1" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -63,62 +65,6 @@
             "inLanguage": "en",
             "about": {"@id": "https://coin.im/#organization"},
             "mainEntity": {"@id": "https://coin.im/ms#service"}
-          },
-          {
-            "@type": "FAQPage",
-            "@id": "https://coin.im/ms#faq",
-            "url": "https://coin.im/ms#faq",
-            "inLanguage": "en",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "What does this cost?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "There is no price on this page, because there is no self-serve product behind it yet. A scan is quoted on its own, and the number moves on how many markets are plausible, how many geographies the vocabulary work has to be repeated in, and how much of it is already known. You get the quote before anything starts."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "How long does it take?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "The first chronicle comes back within 72 hours. The complete scan takes as long as the market takes to read: a narrow offer in one country is quick, a product with six plausible buyer contexts across five geographies is not."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What happens when the scan is wrong?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Parts of it will be. That is what the experimental label is for: small tests, cheap failures, and a market removed from the plan when the letters come back unanswered. What we will not do is leave a dead direction in the plan because it looked good in the first document."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Why not just start with Apollo or Clay?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Because those tools are excellent once the search has been defined, and cannot help you define it. They retrieve records matching words and filters you supply. They cannot tell you which words, markets and buyer contexts you failed to supply, and they will return a clean, fast, confident result either way."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Why would anybody need thousands of Market Arms?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Because twenty markets, ten company-naming patterns, ten title patterns and a few geographies already produce thousands of legitimate combinations. The purpose is not to buy every contact behind every arm. Most are never purchased. The purpose is to see the whole searchable market before pruning it, rather than pruning it accidentally by never having seen it."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Why not just post it to headquarters?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Sometimes headquarters is correct. Sometimes it is a formation agent's address, a shared reception with no reason to route anything, or an office in a different country from the recipient. A physical route has to connect the current person, the current role and a receiving location that will actually pass it along."
-                }
-              }
-            ]
           }
         ]
       }
@@ -132,6 +78,7 @@
         <a href="mailto:mail@coin.im">mail@coin.im</a>
         <a href="https://wa.me/66633933143" target="_blank" rel="noopener noreferrer">WhatsApp</a>
         <a href="https://t.me/am7am" target="_blank" rel="noopener noreferrer">Telegram</a>
+        <a href="/msru">RU</a>
       </nav>
       <div class="site-reading-progress" aria-hidden="true">
         <span data-site-progress></span>
@@ -141,1027 +88,295 @@
     <main id="main-content">
       <section class="ms-hero-v2" id="top" aria-labelledby="ms-title">
         <div class="ms-hero-inner">
-          <p class="ms-kicker">coin.im / Market Scan</p>
-          <h1 id="ms-title">Do not buy the list yet.</h1>
-          <p class="ms-hero-subtitle">First, find the whole market.</p>
-          <p class="ms-hero-lead">Give Market Scan a business, an offer, a geography and a goal. It reads the market from the inside out, finds every serious place the offer could sell, proves why each direction exists, and then researches every useful way those companies and those decision-makers are actually named. Only after that do we look for real companies, real people and real physical addresses. Then we write the letters. Then we send them. Then we keep the entire path in one record.</p>
-          <ol class="ms-pipeline chain" aria-label="Market Scan pipeline">
-            <li>One deep scan</li>
-            <li>Months of campaigns</li>
-            <li>Defended markets</li>
-            <li>Named people</li>
-            <li>Verified physical routes</li>
-            <li>Letters</li>
-            <li>Delivery</li>
-            <li>Response</li>
-          </ol>
-          <div class="ms-hero-actions">
-            <a class="ms-primary-link" href="#premise">Start with the premise</a>
-            <a class="ms-text-link" href="https://t.me/am7am" target="_blank" rel="noopener noreferrer">Talk to us</a>
+          <h1 id="ms-title">I built a machine that does the one part of outreach nobody ever does.</h1>
+          <p class="ms-hero-subtitle">This page is the whole story: why the normal way of finding customers is broken, what I built instead, how it works inside, what it cost to build, and what the numbers say. It's long.</p>
+          <div class="ms-hero-actions ms-ui-copy">
+            <a class="ms-primary-link" href="https://coin.im/open">Open a business file</a>
+            <a class="ms-text-link ms-story-read-link" href="#premise">or read the whole story</a>
           </div>
-          <p class="ms-run-note">Built once. Runs for a year.</p>
+          <p class="ms-cta-caption ms-ui-copy">Website, deck, a couple of call recordings if you have them. The chronicle comes back to your work email.</p>
+          <p class="ms-hero-marker ms-ui-copy">Part one</p>
         </div>
       </section>
 
-      <section class="ms-act" id="premise" aria-labelledby="premise-title" data-ms-section>
+      <section class="ms-act ms-story-part ms-story-part--paper" id="premise" aria-labelledby="premise-title" data-ms-section>
         <div class="ms-act-shell">
-          <p class="ms-act-label">I. The premise</p>
-          <h2 id="premise-title">Every outbound campaign rests on one sentence nobody writes down.</h2>
+          <div class="ms-story-anchor-group" aria-hidden="true">
+            <span id="difficulty"></span>
+            <span id="terms"></span>
+            <span id="reading"></span>
+            <span id="chronicle"></span>
+            <span id="hypotheses"></span>
+            <span id="verticals"></span>
+            <span id="writer"></span>
+            <span id="naming"></span>
+          </div>
+          <h2 id="premise-title">Part one. Why the normal way doesn't work.</h2>
           <div class="ms-prose">
-            <p>The sentence is this: these are the people who should hear from us.</p>
-            <p>Almost the entire industry treats that sentence as the starting conditions rather than the work. You open a tool. You choose an industry from a dropdown. You choose a company size. You choose a country. You choose a job title. You choose a number. Everything downstream, from the enrichment and the sequences to the personalisation, the deliverability engineering and the reporting, is sophisticated machinery built on top of an assumption that took ninety seconds and was never examined again.</p>
-            <p>Market Scan is the attempt to spend real effort on those ninety seconds.</p>
-            <p>It is one deep research operation that runs before a single contact is purchased. It produces a defended map of every market the offer can plausibly enter, the evidence and economic reasoning behind each one, the vocabulary each of those markets uses to describe itself, the roles that actually own the problem inside them, and a matrix of precise search instructions a sourcing system can execute.</p>
-            <p>The output is not a list of people. It is the reason a list of people should exist.</p>
-          </div>
-          <blockquote class="ms-pullquote">Market Scan does not begin with people. It begins by proving that those people belong in the campaign at all.</blockquote>
+            <p>Outreach is done backwards.</p>
+            <p>Somebody sits down to do cold sales and goes for contacts first. They open Apollo or Clay, type in an industry, set filters on company size, geography, job title, and export ten thousand rows. They think they've defined the market. They've defined their own vocabulary: the database handed back the words they already knew how to type.</p>
+            <p>With email you can live with that. A send costs nothing, the mistake drowns in the noise, and a month later you don't remember who you wrote to. We work with paper. Paper doesn't forgive.</p>
 
-          <div class="ms-order-block" aria-labelledby="order-title">
-            <h3 id="order-title">Most systems run this backwards.</h3>
-            <div class="ms-order-grid">
-              <div class="ms-order-list ms-order-list-muted">
-                <h4>The usual order</h4>
-                <ol>
-                  <li>Choose an industry</li>
-                  <li>Choose the filters</li>
-                  <li>Buy the contacts</li>
-                  <li>Write a letter</li>
-                  <li>Personalise the opening line</li>
-                  <li>Send</li>
-                  <li>Explain the results afterwards</li>
-                </ol>
-              </div>
-              <div class="ms-order-list">
-                <h4>The coin.im order</h4>
-                <ol>
-                  <li>Understand the business and the offer</li>
-                  <li>Read the market and write it down with sources</li>
-                  <li>Find every defensible market, obvious and otherwise</li>
-                  <li>Group them into campaigns that can share one argument</li>
-                  <li>Write a different argument for each group</li>
-                  <li>Research how those companies and those people are actually named</li>
-                  <li>Turn that into thousands of precise search instructions</li>
-                  <li>Remove everything that cannot defend itself</li>
-                  <li>Find the companies</li>
-                  <li>Find the people</li>
-                  <li>Prove a physical route to each one</li>
-                  <li>Write the letter</li>
-                  <li>Produce the object</li>
-                  <li>Send it</li>
-                  <li>Keep every step connected to the hypothesis that created it</li>
-                </ol>
-              </div>
-            </div>
-            <p class="ms-order-close">The first eight steps happen before a single contact is purchased. That is the entire idea. Everything else on this page is an explanation of what those eight steps actually involve, and why almost nobody does them.</p>
-          </div>
+            <h3>Paper costs money per piece</h3>
+            <p>Every send is an envelope, paper, printing, an object in the box if there is one, packaging, postage, and hands to assemble it. That's money on the invoice. Then time: paper travels for days.</p>
+            <p>A confident package sent to the wrong person is a small physical monument to not thinking early enough. It costs money, it travels a week, it lands on the desk of someone who doesn't need it, and you find out about it never.</p>
+            <p>So you can't write to ten thousand "logistics companies" to see what sticks. You can't even write to a thousand. You have to know who you're writing to before you buy the list, because every line on that list you pay for later in paper.</p>
+            <p>What convinced me the problem sits elsewhere: I run a channel whose audience is exactly the people my clients want. It generates replies in volume. And even from those, people can't reliably convert to profit. I've seen three hundred leads delivered and zero deals closed. Three hundred and zero. Getting to people was never the bottleneck. Getting to the right people, with the right reason, is.</p>
+            <p>Paper adds a third word: and there. The right person with the right letter still has to physically arrive in the right building. More on that later.</p>
+            <p>Which means someone has to do the work nobody does.</p>
 
-          <article class="ms-example-card" aria-labelledby="example-title">
-            <p class="ms-stamp">Fictional throughout</p>
-            <h3 id="example-title">The example we will use.</h3>
-            <div class="ms-prose">
-              <p>Northline Industrial is invented. The mechanics around it are not.</p>
-              <p>Northline sells condition-monitoring kits for conveyor systems: small sensors that detect a bearing beginning to fail weeks before it stops a line.</p>
-              <p>Ask any competent person where to sell this and the answer arrives in about four seconds. Factories.</p>
-              <p>That answer is correct. It is also worth a fraction of the market that is actually available, and it is the answer a dropdown menu would have produced without the meeting.</p>
-              <p>The rest of this page is about the part that comes after the obvious answer. We will return to Northline throughout.</p>
-            </div>
-          </article>
-        </div>
-      </section>
+            <h3>The first ten markets are free. The next thirty are the job.</h3>
+            <p>Put ten sharp people in a room, explain the product, ask where it could sell. In an hour you'll have ten directions on the whiteboard. They'll be good ones. Existing customers, competitors' customers, a couple of neighbouring industries, one odd idea somebody remembers from a previous job. Try to make them prove any of it with sources and you'll fail, but the ten are so obvious they're ninety percent right without proof.</p>
+            <p>The problem is what sits above those ten.</p>
+            <p>Above them there's another ten, twenty, thirty directions that no living person will ever reach. Every next direction costs exponentially more enthusiasm than the last, and enthusiasm is a finite human resource. I'll be honest: I've never once wanted to sit down and grind through the logic chain for hypothesis number twenty-four. With ten in hand you can spend forever working those ten instead of going wider. Everyone does.</p>
+            <p>I've tried to buy this work from people. Salaries from three to twelve thousand dollars a month. Weeks and months to get someone to do it even occasionally, even averagely. People will happily do things when you crack the whip. But systematic, grinding, thorough work is against their nature. People think beautifully by feel, in the field. That's exactly why they don't think in systems.</p>
+            <p>A machine is the opposite. It lives from the moment it wakes to the moment it sleeps, and the systematic nature of a task is the only thing it breathes. It has no mood. Hypothesis twenty-four gets exactly the same attention as hypothesis two, at four in the morning, forever.</p>
 
-      <section class="ms-act" id="difficulty" aria-labelledby="difficulty-title" data-ms-section>
-        <div class="ms-act-shell">
-          <p class="ms-act-label">II. Why this is difficult</p>
-          <h2 id="difficulty-title">The first ten markets are easy. The next twenty are the actual job.</h2>
-          <div class="ms-prose">
-            <p>Put ten experienced people in a room. Explain the product. Ask them where it could be sold.</p>
-            <p>They will produce a sensible list quickly, and it will be a good list. Existing customers. The customers of direct competitors. Two or three neighbouring industries. One interesting idea somebody remembers from a previous job.</p>
-            <p>After an hour the whiteboard looks excellent. Everybody leaves satisfied.</p>
-            <p>That was the easy part, and it is roughly the first ten.</p>
-            <p>Now ask the same room to prove each direction with current sources. Ask for twenty more defensible markets on top of those. Ask how each of those markets names its own companies. Ask for every plausible title held by the person who owns the problem. Ask them to repeat all of it across the United States, Britain, Germany, the Gulf and Southeast Asia. Ask for the result as a search matrix.</p>
-            <p>At this point the meeting ends.</p>
-            <p>Not because the people are not good. Because the work has stopped resembling a meeting.</p>
-            <h3>Every market after the tenth costs more appetite than the one before it.</h3>
-            <p>This gets mistaken for a failure of intelligence. It is not. It is a failure of appetite, and it is completely reasonable.</p>
-            <p>The first ten directions arrive on their own, because they already exist somewhere in the room's collective experience. The eleventh requires somebody to go and look. The fifteenth requires somebody to go and look, find nothing useful, and go and look again. The twenty-fifth requires somebody to defend an unfamiliar market to four colleagues who would rather go back to the ten that already sound sensible.</p>
-            <p>Nobody sustains that for long. And there is rarely any pressure to. A team holding ten workable directions can spend an entire year inside them and never once feel a reason to widen the field.</p>
-            <p>A machine has no appetite to lose. That is its single most useful property here, and it has almost nothing to do with intelligence.</p>
-          </div>
-          <blockquote class="ms-pullquote">The eleventh market is rarely rejected. It is simply never reached.</blockquote>
-          <div class="ms-prose">
-            <h3>Finding a market is one layer. Underneath it are ten more.</h3>
-            <p>For every direction that survives, somebody still has to answer:</p>
-            <ol class="question-list">
-              <li>Why would this buyer care?</li>
-              <li>How does the problem cost them money?</li>
-              <li>Who owns the consequence when it does?</li>
-              <li>What would make this hypothesis wrong?</li>
-              <li>What evidence supports it today?</li>
-              <li>What does this type of company call itself?</li>
-              <li>What does this role call itself?</li>
-              <li>Which geographical terms change the search?</li>
-              <li>Which records should be excluded, and on what signal?</li>
-              <li>And what, specifically, should this market be told?</li>
-            </ol>
-            <h3>Then the combinations begin multiplying.</h3>
-            <p>Take a deliberately conservative illustration.</p>
-          </div>
-          <div class="equation" aria-label="Search paths equation">
-            <div class="equation-inputs">
-              <div><span>25</span><p>market hypotheses</p></div>
-              <div><span>12</span><p>useful company-name patterns per hypothesis</p></div>
-              <div><span>8</span><p>useful job-title patterns</p></div>
-              <div><span>3</span><p>geographies</p></div>
-            </div>
-            <div class="equation-result" aria-label="25 × 12 × 8 × 3  =  7,200">
-              <p class="equation-expression"><span>25</span><b>×</b><span>12</span><b>×</b><span>8</span><b>×</b><span>3</span></p>
-              <span class="equation-equals">=</span>
-              <p class="equation-total"><strong>7,200</strong><span>search paths</span></p>
-            </div>
-          </div>
-          <div class="ms-prose">
-            <p>And that is before company size, operating model, installed technology, legal entity type, local language, subsidiaries, parent groups, or any qualifier separating an operator from an adviser.</p>
-            <p>The difficulty was never typing one search query. The difficulty is building the complete map without losing the reasoning that produced each part of it. A search path with no reasoning attached is indistinguishable from a guess, and six weeks later there is no way to tell which was which.</p>
-          </div>
-          <blockquote class="ms-pullquote">A database can only search the words you already knew to type.</blockquote>
-        </div>
-        <div class="rest-band">
-          <p>Every lead list ever purchased was filtered through a vocabulary somebody typed from memory.</p>
-        </div>
-      </section>
+            <h3>Nobody calls themselves what you'd call them</h3>
+            <p>Say you found the market. That still doesn't mean you can find it in a database.</p>
+            <p>Companies name themselves however they feel like. So do industries. So do people.</p>
+            <p>Try gambling. The companies call themselves Real Money Gaming. And iGaming. And Casino. And Betting. And eSports. And Monetary Games. Plus whatever category the local regulator invented that you've never said out loud. Type "gambling companies" and you get exactly the narrow slice you asked for.</p>
+            <p>People are worse. You'll go looking for Founders and classic C-level, and in some parts of the world the person who actually signs partner deals in that industry is called Head of VIP. Head of VIP. Whatever that's supposed to mean. Try typing that into a filter when you've never heard the phrase in your life.</p>
+            <p>This is where the whole "hire someone with industry experience" thing comes from. Companies pay a premium for salespeople who already learned the vocabulary on someone else's payroll. They're paying for a dictionary somebody else already bought.</p>
+            <p>Now count what it takes to close that gap honestly. For every segment, every name a company type goes by. For every segment, every title the buyer goes by. Times geography. You get a matrix of tens of thousands of intersections. A person will never bring you that. Not in an hour, not in a day, not in a year. They'll come up with a couple of variants, hammer those, and fold when it doesn't work. That's just how people are built.</p>
 
-      <section class="ms-act" id="terms" aria-labelledby="terms-title" data-ms-section>
-        <div class="ms-act-shell">
-          <p class="ms-act-label">III. Three terms</p>
-          <h2 id="terms-title">Hypothesis. Vertical. Market Arm.</h2>
-          <div class="ms-prose">
-            <p>Three words do most of the work on this page. They sound more technical than they are, and the distance between the first and the third is the distance between an opinion and an instruction.</p>
-          </div>
+            <h3>And the paper still has to arrive</h3>
+            <p>There's a third hole email people never think about, and for us it's the main one.</p>
+            <p>Right name, right title, right company. Where do you send it? The database has the headquarters address. Headquarters is a floor of an office building where nobody has ever seen our person. The registered address is worse: it often points to a corporate services firm where somebody's whole job is signing for legal notices and forwarding them on. The person works at a regional site, in another city, sometimes another country. The company moved. The person left. Reception will accept the package and carry it nowhere. A parent company will return mail addressed to an employee of its subsidiary.</p>
+            <p>Every one of those misses costs exactly what a hit costs. And you won't see it.</p>
+            <p>So on top of the right market, the right person and the right letter, there's one more step: a proven physical route. A linked record: this company, this person, this role, this site, this mailing address, checked so that every part agrees with every other part. If it doesn't agree, it doesn't go. And it doesn't get tested on your postage.</p>
 
-          <div class="term">
-            <p class="term-marker">01</p>
-            <h3>Hypothesis</h3>
-            <p class="term-definition">One specific reason one specific type of company buys.</p>
-            <div class="ms-prose">
-              <p>A hypothesis has a shape. This type of company buys this offer, because this problem creates this economic consequence, and this kind of person is likely to own it.</p>
-              <p>"Logistics companies" is not a hypothesis. It is two words and a hope.</p>
-            </div>
-            <div class="example">
-              <p class="example-label">Example</p>
-              <p>Multi-site warehouse operators buy conveyor condition monitoring because one failing bearing stops a sortation line inside a fixed despatch window, the delay repeats across several facilities, and the cost lands on operations or reliability leadership rather than on procurement.</p>
-            </div>
-          </div>
-
-          <div class="term">
-            <p class="term-marker">02</p>
-            <h3>Vertical</h3>
-            <p class="term-definition">A group of hypotheses that can honestly share one campaign argument.</p>
-            <div class="ms-prose">
-              <p>Twenty-five hypotheses do not require twenty-five campaigns. Some of them share the same problem, the same buyer and the same commercial argument, and splitting them produces twenty-five nearly identical letters that nobody has time to write properly.</p>
-              <p>Others look adjacent and are not. If the buyer changes, or the reason to care changes, or the evidence that persuades changes, they are separate verticals no matter how similar the industry label appears.</p>
-            </div>
-            <div class="example">
-              <p class="example-label">Example</p>
-              <p>Multi-site warehouses, parcel hubs and fulfilment centres belong to a single operational-reliability vertical, because in all three the problem is unplanned downtime inside a fixed daily window and the same argument reaches the same function.</p>
-              <p>A conveyor integrator does not belong in that vertical. It never suffers the downtime. It buys the same product for an entirely different commercial reason, so it gets a vertical of its own.</p>
-            </div>
-          </div>
-
-          <div class="term">
-            <p class="term-marker">03</p>
-            <h3>Market Arm</h3>
-            <p class="term-definition">One complete, executable instruction for finding companies and people inside a vertical.</p>
-            <div class="ms-prose">
-              <p>This is where strategy stops being a document. A Market Arm is the unit a sourcing system can run, a researcher can verify and a human can argue with.</p>
-              <p>It combines the vertical, the company type, every useful way that company type is named, the buyer function, every useful title variant, the geography, the scale, and whatever qualifier keeps the search honest.</p>
-            </div>
-            <p class="formula-strip" aria-label="vertical × company type × company names × buyer function × job titles × geography × scale × qualifier = one Market Arm"><span>vertical</span><b>×</b><span>company type</span><b>×</b><span>company names</span><b>×</b><span>buyer function</span><b>×</b><span>job titles</span><b>×</b><span>geography</span><b>×</b><span>scale</span><b>×</b><span>qualifier</span><i>=</i><strong>one Market Arm</strong></p>
-            <div class="spec-card">
-              <h4>MARKET ARM · NORTHLINE / US-3PL-01</h4>
-              <dl>
-                <div><dt>VERTICAL</dt><dd>Multi-site operational reliability</dd></div>
-                <div><dt>COMPANY TYPE</dt><dd>Third-party logistics operator</dd></div>
-                <div><dt>ALSO NAMED</dt><dd>3PL, contract logistics, fulfilment network, distribution services, supply chain solutions</dd></div>
-                <div><dt>BUYER FUNCTION</dt><dd>Operational reliability</dd></div>
-                <div><dt>JOB TITLES</dt><dd>VP Operations, Operations Director, Head of Engineering, Reliability Lead, Site Engineering Manager</dd></div>
-                <div><dt>GEOGRAPHY</dt><dd>United States</dd></div>
-                <div><dt>SCALE</dt><dd>Five or more operating sites</dd></div>
-                <div><dt>QUALIFIER</dt><dd>Runs conveyor-dependent facilities</dd></div>
-              </dl>
-            </div>
-            <div class="ms-prose">
-              <p>This is now useful. A sourcing system can execute it. A researcher can verify it. A human can look at it and disagree with a specific part of it rather than with the general mood of the campaign.</p>
-              <p>Before the Market Arm, we have an interesting idea about a market. After it, we have a reproducible instruction and a written record of why it exists.</p>
-            </div>
-            <blockquote class="ms-pullquote">A hypothesis tells us why to search.<br />A vertical tells us which campaign to build.<br />A Market Arm tells the sourcing system exactly what to find.</blockquote>
+            <h3>What follows from that</h3>
+            <p>Add it up.</p>
+            <p>Every send costs real money and travels a week, so you aim before you buy the list.</p>
+            <p>Half the market sits above the ten a brainstorm reaches, and no amount of money gets a human up there.</p>
+            <p>The market you did find, you can't reach if you don't know what it calls itself.</p>
+            <p>And even the right person won't get the paper if you haven't checked where they actually sit.</p>
+            <p>Four jobs. Each one needs inhuman patience and zero creativity, just consistency. Exactly what people don't have and a machine has in abundance.</p>
+            <p>That's where Market Scan came from. It does the part of the work a human won't do because of how humans are built.</p>
           </div>
         </div>
       </section>
-      <section class="ms-act" id="reading" aria-labelledby="reading-title" data-ms-section>
+      <section class="ms-act ms-story-part ms-story-part--deep" id="judge" aria-labelledby="judge-title" data-ms-section>
         <div class="ms-act-shell">
-          <p class="ms-act-label">IV. Reading the market</p>
-          <h2 id="reading-title">The scan starts with the client's own information, then leaves it behind.</h2>
+          <h2 id="judge-title">Part two. What happens inside.</h2>
           <div class="ms-prose">
-            <p>Everything begins with what the client can tell us. What the product does. Who already buys it. Where the business can legally and practically operate. What makes the offer worth money. What must be avoided. And what decision we ultimately want another person to make.</p>
-            <p>That is the seed. It is also the least reliable material in the entire exercise, and most founders reading this already know why. A business describes itself in the vocabulary of the people who built it. The market describes that same business in the vocabulary of the people who pay for it. The two are rarely identical, and only the second one can be searched.</p>
-            <p>So the scan goes outward. It reads nine kinds of public material, and it reads each of them for a specific reason. Not to collect links. Anyone can collect links. Not to summarise an industry. To answer one question repeatedly: where can this offer matter, and who would feel it if it did.</p>
-          </div>
-          <div class="source-list">
-            <article class="source-item">
-              <p class="source-number">01</p>
-              <h3>Competitors</h3>
-              <p class="source-reveals">What the category has already agreed to call itself.</p>
-              <p>Competitors reveal which words the market understands without explanation, which promises have been repeated until they stopped carrying meaning, and which claim the buyer has now read eleven times this quarter. They are also the fastest route to the second source, which is considerably more valuable.</p>
-            </article>
-            <article class="source-item">
-              <p class="source-number">02</p>
-              <h3>The customers of competitors</h3>
-              <p class="source-reveals">Who is actually paying, as opposed to who was supposed to.</p>
-              <p>A competitor's homepage describes its intended market. Its customer list describes the market it actually got. The distance between those two is frequently where an unclaimed direction is sitting, in plain view, unmentioned by anybody because it was never part of the plan.</p>
-              <p>Read far enough and the customers of the competitors' competitors begin appearing as well. That is usually where the buyer types live that nobody in the category has thought to name yet.</p>
-            </article>
-            <article class="source-item">
-              <p class="source-number">03</p>
-              <h3>Case studies</h3>
-              <p class="source-reveals">The product attached to a real operating situation.</p>
-              <p>A case study connects five things that are otherwise kept apart: the problem, the buyer, the process that existed beforehand, the result, and the language everyone used after money had changed hands. That last item justifies the reading on its own.</p>
-            </article>
-            <article class="source-item">
-              <p class="source-number">04</p>
-              <h3>Reviews</h3>
-              <p class="source-reveals">The complaints that never reach a sales page.</p>
-              <p>Reviews expose switching reasons, small operational failures and the specific disappointment that sent somebody looking for an alternative in the first place. A polished website will never contain the sentence that actually begins a purchase.</p>
-            </article>
-            <article class="source-item">
-              <p class="source-number">05</p>
-              <h3>Partner and integration pages</h3>
-              <p class="source-reveals">The ecosystem standing around the purchase.</p>
-              <p>Partner directories expose adjacent vendors, adjacent technologies and adjacent customer types that no keyword search would ever have produced, for the simple reason that they are described in somebody else's vocabulary rather than in yours.</p>
-            </article>
-            <article class="source-item">
-              <p class="source-number">06</p>
-              <h3>Job descriptions</h3>
-              <p class="source-reveals">Who owns the work, as opposed to who owns the org chart.</p>
-              <p>A company will tell you the problem belongs to operations. Its open vacancies will show that reliability engineering, site maintenance or regional automation holds the actual responsibility, the actual budget line and the actual reporting obligation. Job adverts are among the most honest documents a company publishes, because they are written to attract somebody who will genuinely have to do the work.</p>
-            </article>
-            <article class="source-item">
-              <p class="source-number">07</p>
-              <h3>Associations and directories</h3>
-              <p class="source-reveals">How companies describe themselves to their peers.</p>
-              <p>When a company needs to be found by regulators, buyers or competitors, it chooses its own classification. That self-selected vocabulary is consistently more useful than the industry label a generic lead database assigned to it from the outside, without asking.</p>
-            </article>
-            <article class="source-item">
-              <p class="source-number">08</p>
-              <h3>Regulations and public changes</h3>
-              <p class="source-reveals">The reason a tolerated problem becomes a funded one.</p>
-              <p>A new rule, reporting obligation, safety standard, licensing regime or procurement requirement can convert a problem the market has lived with for a decade into a line in next year's budget. Fit explains whether somebody could buy. Changes like these explain why they might buy this year rather than eventually.</p>
-            </article>
-            <article class="source-item">
-              <p class="source-number">09</p>
-              <h3>Alternative solutions</h3>
-              <p class="source-reveals">The competitor that is not a product.</p>
-              <p>The thing standing between the offer and the money is often not a rival vendor. It is a spreadsheet. An agency. One experienced employee who has always handled it. A manual process. An existing maintenance contract. Or a decision to tolerate the problem for one more year, which is the most common competitor in every market on earth and the one almost never named in a sales deck.</p>
-            </article>
-          </div>
-          <div class="ms-prose">
-            <p>The pass is finished when the system can explain the market. Not when it has listed the websites inside it.</p>
-            <h3>This is the part where a machine is unlike a person.</h3>
-            <p>None of those nine sources is exotic. A capable researcher would name the same nine, and would read them better than any model reads them.</p>
-            <p>They would read perhaps forty sources for a direction, across several days, and would do it thoroughly for the first three or four directions. By the eighth, the reading gets faster and the notes get shorter, because the work is long, the returns feel diminishing, and there is a meeting on Thursday.</p>
-            <p>The scan reads hundreds of sources per direction, and it reads the twenty-eighth direction exactly as carefully as it read the first. Not better than a good researcher. The same as itself, thirty times in a row, across five geographies.</p>
-            <p>That consistency is the entire mechanical advantage. It is worth describing plainly rather than dressing it up as intelligence.</p>
-          </div>
-        </div>
-        <div class="rest-band">
-          <p>The most common competitor in any market is the decision to do nothing for one more year.</p>
-        </div>
-      </section>
+            <p>This isn't one prompt or one model. It's four sessions in a row, each one doing its own job, each one standing on the one before it. Earlier versions were different and worse. That's part three. This is how it works now, and then, past the scan itself, how a map of a market becomes a letter in someone's hands.</p>
 
-      <section class="ms-act" id="chronicle" aria-labelledby="chronicle-title" data-ms-section>
-        <div class="ms-act-shell">
-          <p class="ms-act-label">V. The Market Chronicle</p>
-          <h2 id="chronicle-title">One sourced document explaining how the market actually works.</h2>
-          <div class="ms-prose">
-            <p>Everything read in the first pass is written into a single document. Not a summary. Not a slide. A working record, with sources, on top of which the rest of the scan is built.</p>
-            <p>The Chronicle is the memory of the operation. Every hypothesis produced later has to point back to something inside it, and anything that cannot point back to something inside it does not survive the Judge.</p>
-            <p>It records:</p>
-          </div>
-          <div class="manifest">
-            <p>What the product does</p>
-            <p>What economic problem it solves</p>
-            <p>How buyers currently solve that problem</p>
-            <p>Which markets already buy something similar</p>
-            <p>Which adjacent markets share the same problem</p>
-            <p>Which company types keep reappearing</p>
-            <p>Which roles appear to own the decision</p>
-            <p>Which vocabulary each market uses for itself</p>
-            <p>Where the sources agree</p>
-            <p>Where the sources contradict each other</p>
-            <p>Which claims are well supported</p>
-            <p>Which claims are still guesses</p>
-            <p>What the next pass is required to resolve</p>
-          </div>
-          <div class="ms-prose">
-            <h3>Three kinds of statement, kept apart on purpose.</h3>
-          </div>
-          <div class="tier-list">
-            <div class="tier">
-              <p class="tag tag-supported">SUPPORTED</p>
-              <p>Several independent sources agree and at least one of them is primary: a filing, a regulation, a published case, a job advert, a company's own chosen classification.</p>
-            </div>
-            <div class="tier">
-              <p class="tag tag-contested">CONTESTED</p>
-              <p>Sources disagree, or the only support is a vendor making a claim about its own market. Kept, marked, and never permitted to become the foundation of a campaign by itself.</p>
-            </div>
-            <div class="tier">
-              <p class="tag tag-unresolved">UNRESOLVED</p>
-              <p>A question the first pass raised and could not close. Written down rather than dropped, because the second research pass receives these explicitly as instructions.</p>
-            </div>
-          </div>
-          <div class="ms-prose">
-            <p>Keeping those three apart is not academic caution. It is the thing that prevents a research system from producing a confident, fluent, beautifully formatted document in which nothing at all can be checked.</p>
-            <p>That is the characteristic failure of any language model handed a research brief and no obligation to show its work. Ask a model for market research and it will always return market research. The only question that matters afterwards is whether a single line of it can be traced back to something real.</p>
-            <p>"Sell to logistics companies" is not research. The Chronicle has to state which logistics companies, operating in which way, carrying which problem, at what scale, triggered by what, decided by which role, and on the strength of what evidence.</p>
-          </div>
-          <blockquote class="ms-pullquote">Without the Chronicle the system can still produce segment names. It simply cannot explain why anybody should believe them.</blockquote>
-        </div>
-      </section>
-      <section class="ms-act" id="hypotheses" aria-labelledby="hypotheses-title" data-ms-section>
-        <div class="ms-act-shell">
-          <p class="ms-act-label">VI. The hypotheses</p>
-          <h2 id="hypotheses-title">Not every market sits the same distance from the offer.</h2>
-          <div class="ms-prose">
-            <p>Everything in this section is a hypothesis until the letters come back. We write hypotheses in the indicative because hedging every sentence makes the weak ones look like the strong ones, which is the opposite of useful. Where a direction is a genuine guess, it is labelled experimental, and that label is doing the hedging for the whole paragraph.</p>
-            <p>By the end of the first pass there is a long list of directions and a document explaining where each one came from. They are not equal, and treating them as equal is how a scan turns back into noise.</p>
-            <p>So we place every hypothesis at one of three distances from the offer. The distance is not a quality ranking. A distant market can easily be the better market. It describes how much has to be true for the direction to work, and therefore how much should be spent finding out.</p>
-          </div>
-          <div class="distance-set">
-            <div class="distance-scale" aria-hidden="true">
-              <div class="distance-line">
-                <span class="distance-tick distance-tick-primary"><b></b><em>PRIMARY</em></span>
-                <span class="distance-tick distance-tick-adjacent"><b></b><em>ADJACENT</em></span>
-                <span class="distance-tick distance-tick-experimental"><b></b><em>EXPERIMENTAL</em></span>
-              </div>
-              <div class="distance-captions">
-                <span>closer to the offer</span>
-                <span>further from the offer</span>
-              </div>
-            </div>
-            <div class="distance-entry">
-              <p class="tag tag-primary">PRIMARY</p>
-              <h3>Primary markets</h3>
-              <p class="distance-definition">The product fits, the problem is visible, and buyers like this already exist.</p>
-              <div class="ms-prose">
-                <p>The economic problem can be stated in one sentence. Similar organisations are already paying somebody for something adjacent. The role likely to own the decision is reasonably clear.</p>
-                <p>Primary does not mean guaranteed. It means the path from offer to buyer is short and the argument needs no preamble. Most of the first ten from the whiteboard land here, which is exactly why the whiteboard felt so satisfying.</p>
-              </div>
-            </div>
-            <div class="distance-entry">
-              <p class="tag tag-adjacent">ADJACENT</p>
-              <h3>Adjacent markets</h3>
-              <p class="distance-definition">One meaningful step away, and the step can be explained without gymnastics.</p>
-              <div class="ms-prose">
-                <p>The product solves the same underlying problem in a different operating context. Or a different kind of organisation buys it for a commercial reason the original buyer would not even recognise.</p>
-                <p>The connection still has to survive being said out loud to somebody sceptical. If explaining why this market belongs takes four sentences and a diagram, it is not adjacent. It is experimental, and it gets labelled as such rather than promoted for looking respectable.</p>
-              </div>
-            </div>
-            <div class="distance-entry">
-              <p class="tag tag-experimental">EXPERIMENTAL</p>
-              <h3>Experimental markets</h3>
-              <p class="distance-definition">The directions a brainstorm reliably misses.</p>
-              <div class="ms-prose">
-                <p>An unusual buyer. A use case the category has never bothered to name. An organisation positioned to introduce the offer across many companies at once. These are the markets sitting past the point where human appetite runs out, and they are most of the reason the scan exists at all.</p>
-                <p>Experimental does not mean the model imagined something entertaining. It means the evidence is thinner or the commercial path is longer. So the burden of proof goes up and the size of the test goes down. An experimental market earns a small, cheap, honest trial. It does not earn the budget.</p>
-              </div>
-            </div>
-          </div>
-          <div class="ms-prose">
-            <h3>Every hypothesis carries a stated confidence, and the reason for it.</h3>
-            <p>Alongside the distance, each direction carries an explicit confidence and a written justification for it. What supports it. What weakens it. Which single piece of evidence would move it furthest in either direction.</p>
-            <p>The number matters less than the obligation to produce one. A system required to state how confident it is, and why, cannot set a guess and a certainty in the same typeface. That is the standard failure of research documents that read beautifully and turn out, on inspection, to be one strong finding surrounded by twelve agreeable assumptions.</p>
-          </div>
-          <blockquote class="ms-pullquote">A distant market can be the better market. Distance describes how much has to be true, not how much money is waiting.</blockquote>
-        </div>
-        <div class="rest-band">
-          <p>The whiteboard is satisfying because it stops at precisely the point where the work begins.</p>
-        </div>
-      </section>
+            <h3>The input</h3>
+            <p>Before any of the sessions run, a bot talks to the client. A conversation, not a form. Out of it comes what the business sells, who already buys, where it can operate, what makes the offer worth money, what can't be said, and what decision we ultimately want a stranger to make. Plus the client's domain. That's where the machine starts digging. Plus recordings of calls with customers, if there are any: the most useful thing on the way in and the least often sent. Names can be stripped out. What matters is how the buyer describes the problem in their own words.</p>
 
-      <section class="ms-act" id="verticals" aria-labelledby="verticals-title" data-ms-section>
-        <div class="ms-act-shell">
-          <p class="ms-act-label">VII. Verticals</p>
-          <h2 id="verticals-title">Twenty-five hypotheses do not require twenty-five campaigns.</h2>
-          <div class="ms-prose">
-            <p>Some directions share a problem, a buyer and an argument. Splitting them produces twenty-five nearly identical letters, and nobody on earth writes the twenty-fifth one properly.</p>
-            <p>Other directions look almost identical and are not. Merging those produces one letter that is vaguely true for everybody and compelling to nobody. That is the standard output of the industry, and the reason most cold mail reads as though it were addressed to a category rather than to a company.</p>
-            <p>So we test every accepted hypothesis against the others on three questions.</p>
-            <ol class="question-list">
-              <li>Is the economic problem the same?</li>
-              <li>Is the person who owns it the same?</li>
-              <li>Does the same evidence persuade them?</li>
-            </ol>
-            <p>Three yes answers and they can share a campaign. A single no and they separate, no matter how similar the industry label looks from the outside.</p>
-          </div>
-          <div class="merge-diagram" role="img" aria-label="Three related hypotheses merge into one vertical while a fourth becomes a separate vertical">
-            <div class="merge-diagram-inner">
-              <div class="merge-column merge-column-left">
-                <p class="merge-node merge-node-a">Multi-site warehouses</p>
-                <p class="merge-node merge-node-b">Parcel hubs</p>
-                <p class="merge-node merge-node-c">Fulfilment centres</p>
-                <p class="merge-node merge-node-d">Conveyor integrators</p>
-              </div>
-              <svg class="merge-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-                <path d="M0 13 L100 30" />
-                <path d="M0 30 L100 30" />
-                <path d="M0 47 L100 30" />
-                <path d="M0 82 L100 82" />
-              </svg>
-              <div class="merge-column merge-column-right">
-                <p class="merge-node merge-node-primary">Operational reliability</p>
-                <p class="merge-node merge-node-secondary">Channel and retrofit revenue</p>
-              </div>
-            </div>
-          </div>
-          <div class="ms-prose">
-            <h3>Northline Industrial, in full.</h3>
-            <p>Northline sells conveyor condition monitoring. The dropdown answer was factories.</p>
-            <p>But conveyors also run inside parcel hubs, fulfilment centres, food plants, cold-storage facilities, distribution networks and third-party logistics operations. The same equipment can be sold through integrators who never operate a conveyor themselves. And it can be introduced across a dozen businesses at once by a private-equity operations team that directly owns none of them.</p>
-            <p>This is the point at which a single industry label stops holding together.</p>
-          </div>
-          <div>
-            <article class="spec-card spec-card--plain">
-              <h3>Food manufacturing group</h3>
-              <dl>
-                <div><dt>PROBLEM</dt><dd>A stoppage that spoils product, triggers a sanitation cycle, creates overtime and pushes a production schedule that was already tight.</dd></div>
-                <div><dt>LIKELY BUYER</dt><dd>Engineering, maintenance or plant operations.</dd></div>
-                <div><dt>THE ARGUMENT</dt><dd>Catching a small mechanical failure before it becomes a production event with a hygiene consequence attached.</dd></div>
-                <div><dt>DISTANCE</dt><dd><span class="tag tag-primary">PRIMARY</span></dd></div>
-              </dl>
-            </article>
-            <article class="spec-card spec-card--plain">
-              <h3>Parcel hub</h3>
-              <dl>
-                <div><dt>PROBLEM</dt><dd>Throughput inside a narrow peak window, where every lost minute compounds against a despatch cut-off that does not move.</dd></div>
-                <div><dt>LIKELY BUYER</dt><dd>Regional operations, automation or site engineering.</dd></div>
-                <div><dt>THE ARGUMENT</dt><dd>Keeping the line moving during the only hours of the day that count.</dd></div>
-                <div><dt>DISTANCE</dt><dd><span class="tag tag-primary">PRIMARY</span></dd></div>
-              </dl>
-            </article>
-            <article class="spec-card spec-card--plain">
-              <h3>Third-party logistics network</h3>
-              <dl>
-                <div><dt>PROBLEM</dt><dd>Downtime that crosses into contractual territory. A failure does not only cost hours, it threatens a client service-level agreement and therefore the commercial relationship itself.</dd></div>
-                <div><dt>LIKELY BUYER</dt><dd>Higher in operations than the previous two, because the consequence crosses several sites and several customers at once.</dd></div>
-                <div><dt>THE ARGUMENT</dt><dd>Protecting the agreement, not the bearing.</dd></div>
-                <div><dt>DISTANCE</dt><dd><span class="tag tag-primary">PRIMARY</span></dd></div>
-              </dl>
-            </article>
-            <article class="spec-card spec-card--plain">
-              <h3>Conveyor integrator</h3>
-              <dl>
-                <div><dt>PROBLEM</dt><dd>None of their own. The integrator never suffers the end user's downtime and will not be persuaded by any argument built on it.</dd></div>
-                <div><dt>LIKELY BUYER</dt><dd>Commercial or service leadership.</dd></div>
-                <div><dt>THE ARGUMENT</dt><dd>Monitoring strengthens the retrofit offer, reduces emergency call-outs and creates recurring service revenue. Same product, different buyer, different reason, and a letter with nothing in common with the first three.</dd></div>
-                <div><dt>DISTANCE</dt><dd><span class="tag tag-adjacent">ADJACENT</span></dd></div>
-              </dl>
-            </article>
-            <article class="spec-card spec-card--plain">
-              <h3>Private-equity operations team</h3>
-              <dl>
-                <div><dt>PROBLEM</dt><dd>Not a broken conveyor. An operational improvement repeatable enough to be introduced across several portfolio companies in the same year.</dd></div>
-                <div><dt>LIKELY BUYER</dt><dd>Operating partner or portfolio operations lead.</dd></div>
-                <div><dt>THE ARGUMENT</dt><dd>One programme, many companies, measurable and repeatable. The conveyor is barely mentioned.</dd></div>
-                <div><dt>DISTANCE</dt><dd><span class="tag tag-experimental">EXPERIMENTAL</span></dd></div>
-              </dl>
-            </article>
-          </div>
-          <div class="ms-prose">
-            <p>A normal lead list puts all five into industrial companies, sorted by headcount.</p>
-            <p>Five different problems. Four different buyer functions. Five different letters. And a private-equity operating partner who would have been removed entirely by the industry dropdown, because the fund is not an industrial company and has never operated a conveyor in its life.</p>
-          </div>
-          <blockquote class="ms-pullquote">Market Scan keeps the differences that change the sale. A filter deletes them, silently, before anybody has seen them.</blockquote>
-        </div>
-      </section>
-      <section class="ms-act" id="writer" aria-labelledby="writer-title" data-ms-section>
-        <div class="ms-act-shell">
-          <p class="ms-act-label">VIII. The letters</p>
-          <h2 id="writer-title">The letter is written after the market is understood, not before it.</h2>
-          <div class="ms-prose">
-            <p>A warehouse operator, a conveyor integrator and a private-equity operations team should not receive the same letter merely because all three can be made to care about conveyor failures.</p>
-            <p>They buy for different reasons. They carry different objections. Different people own the decision. Different evidence moves them.</p>
-            <p>So each accepted vertical receives its own commercial argument, its own sequence, and its own definition of what a good reply would even look like.</p>
-            <h3>What the letter is allowed to claim.</h3>
-            <p>Selling potential barely opens a door any more. We have AI. We have a platform. We have infrastructure. We have the best team in the category. The active market has heard every one of those, fifteen layers deep, and the people who somehow have not heard them are usually either impossible to work with or have no money to spend.</p>
-            <p>What still works is naming a specific economic consequence inside a process the recipient already lives with every day. Not: we noticed you have a challenge in this area.</p>
-            <p>But: this is where the money leaks, this is roughly what it costs, this is who normally owns it, and this is what changes if it stops.</p>
-            <p>The difference between those two sentences is not tone. It is whether the sender did the research.</p>
-            <p>Three constructions this system will not produce:</p>
-          </div>
-          <div class="specimen" aria-label="Rejected email constructions">
-            <p>I've noticed that you...</p>
-            <p>This is my final email.</p>
-            <p>I hope this email finds you well.</p>
-          </div>
-          <div class="ms-prose">
-            <p>The first announces that a template has been personalised. The second attempts to frighten somebody who is not frightened. The third has been transmitted so many billions of times that it now carries no information at all, and survives only as a reliable marker that the message can be deleted unread.</p>
-            <p>All three are cheap to write. That is precisely why they are everywhere.</p>
-            <h3>There is now a fourth participant in every deal.</h3>
-            <p>There used to be the buyer. Then the buyer and their team. Then the buyer, their team, and the market around them.</p>
-            <p>Now there is the buyer, their team, the market, and a model sitting beside each of them that will research your company in ninety seconds and deliver a verdict. Frequently: this looks expensive, this looks unproven, you probably do not need this.</p>
-            <p>Charisma no longer carries a weak argument through. Neither does a confident deck or a well-designed website. There is something in the room that does not get tired, does not get flattered, and locates the soft part of the pitch immediately.</p>
-            <p>The only durable answer is to be right about the market before writing anything, and specific enough that the research confirms the letter instead of taking it apart.</p>
-          </div>
-          <blockquote class="ms-pullquote">You are no longer writing to a person. You are writing to a person and to whatever they paste you into.</blockquote>
-          <div class="ms-prose">
-            <h3>Why this part is not handed to people.</h3>
-            <p>This is not a claim that machines write better prose than good writers. They do not.</p>
-            <p>It is a claim about something else entirely. Ask a talented salesperson for one excellent letter and you will usually get one. Ask for twenty-five, one per vertical, each built on its own evidence, each avoiding the objections specific to that buyer, each holding the same standard from the first to the last. It does not happen. It has been paid for at every reasonable salary, for months at a time, and it still does not happen.</p>
-            <p>People think in situations. They are remarkable at reading a room and improvising the argument that lands. That skill does not convert into twenty-five systematic documents produced to an identical standard on a Tuesday afternoon.</p>
-            <p>Systems are the one thing a machine is suited to. So the machine drafts every vertical to the same standard, and the human does what humans are actually good at: deciding which arguments are true, which are worth money, and what finally goes into somebody's hands.</p>
-          </div>
-        </div>
-        <div class="rest-band">
-          <p>Nobody has ever written the twenty-fifth letter as carefully as they wrote the first one.</p>
-        </div>
-      </section>
+            <h3>Session one. Research.</h3>
+            <p>A swarm of models reads everything that exists on the market around this business. Competitors, customers of competitors, case studies, reviews, partner pages, directories, associations, job postings, regulations, adjacent technologies, and, this matters, whatever people use instead of buying anything at all.</p>
+            <p>Out of that comes the market chronicle. One document that explains how the market actually works: who has the problem, what they call it, who's already selling into it, where the money leaks, which roles usually own the problem. And, this is what makes it usable, the chronicle marks its own weak spots. What's backed by sources. What's still a guess.</p>
+            <p>From the chronicle come the hypotheses. The priority set at the top, and every experimental direction that's still defensible underneath.</p>
+            <p>Where do the hypotheses come from? Three places at once.</p>
+            <p>The model's own memory. It's read the entire internet, it's seen more than any living person, which is why it answers broad questions instantly, with no reasoning. Ask "who buys this kind of thing" and it sketches the field on the spot.</p>
+            <p>Deep research. On a given topic it reads hundreds of sources in minutes and finds connections a person wouldn't, because a person can't read that many sources and think hard about them even over several days.</p>
+            <p>Brand clouds. Take the businesses of this type and the direct competitors of the one we're working for, and look at who's in their customer base. In a competitor's brand cloud there can easily be an entity nobody would ever think of. You just have to find it. The machine finds every customer type of every competitor type and, if the task is set right, decides: is this an anomaly, is it bullshit, or is it real. And puts a percentage on it.</p>
+            <p>That percentage is the mechanism. Every hypothesis gets a weight, and the weight is a number rather than a yes or a no. Only the ones with a non-zero weight go forward. This is what stops the machine from inventing markets. It can imagine anything it likes, but if the imagination has no evidence behind it, it gets a zero and it stops there.</p>
+            <p>The hypotheses come in tiers. Tier one, the close obvious ones, the ten from the whiteboard. Tier two, one step sideways: the same problem in a different context, or a partner who buys for a completely different reason than the end user. Tier three, experimental, the ones a brainstorm never reaches: an unusual buyer, an odd application, an organization that can push the offer into many companies at once. Experimental doesn't mean made up. It means the evidence is thinner and the path is longer, so the test is smaller and the bar is higher.</p>
+            <p>Last thing Research does: it groups. If the product sells to, roughly, any kind of bank, you don't want ten categories of slightly different banks and payment companies. You want one clear vertical: cash custody fintech, say. A vertical is a group of hypotheses that can live on one letter. If the buyer or the argument changes, that's a different vertical.</p>
+            <p>Up to fifty minutes for all of that.</p>
 
-      <section class="ms-act" id="naming" aria-labelledby="naming-title" data-ms-section>
-        <div class="ms-act-shell">
-          <p class="ms-act-label">IX. How the market names itself</p>
-          <h2 id="naming-title">Knowing a market matters is not the same as being able to find it.</h2>
-          <div class="ms-prose">
-            <p>By now we know that a market deserves attention, why it deserves attention, and what should be said to it. None of that helps if we cannot locate a single company inside it.</p>
-            <p>Companies name themselves inconsistently. Industries name themselves inconsistently. Job titles are worse than both. The vocabulary shifts with geography, company size, business model, and whichever rebrand survived the last board meeting.</p>
-            <p>So the second research pass goes looking for the language.</p>
-            <p>Leave the conveyors for a moment. Gambling shows this better than any other industry, because it cannot agree what it is called even in its own filings.</p>
-            <h3>One market, eleven names.</h3>
-            <p>Suppose the target is gambling. The companies describe themselves as:</p>
-          </div>
-          <ul class="vocab-set" aria-label="Company vocabulary variants">
-            <li><span class="tag tag--plain">gambling</span></li>
-            <li><span class="tag tag--plain">gaming</span></li>
-            <li><span class="tag tag--plain">real-money gaming</span></li>
-            <li><span class="tag tag--plain">iGaming</span></li>
-            <li><span class="tag tag--plain">casino</span></li>
-            <li><span class="tag tag--plain">betting</span></li>
-            <li><span class="tag tag--plain">sportsbook</span></li>
-            <li><span class="tag tag--plain">wagering</span></li>
-            <li><span class="tag tag--plain">interactive gaming</span></li>
-            <li><span class="tag tag--plain">gaming platform</span></li>
-            <li><span class="tag tag--plain">online gaming operator</span></li>
-          </ul>
-          <div class="ms-prose">
-            <p>And in several jurisdictions, a local regulatory category nobody outside that jurisdiction has ever said out loud.</p>
-            <p>Search only for gambling companies and the database returns exactly the narrow market your narrow vocabulary requested. It will return it quickly, cleanly, and with no indication whatsoever that anything is missing.</p>
-            <p>That is the dangerous part. An incomplete search does not look incomplete.</p>
-            <h3>The same problem, worse, with people.</h3>
-            <p>A partnerships decision inside that market belongs to:</p>
-          </div>
-          <ul class="vocab-set" aria-label="Partnerships buyer title variants">
-            <li><span class="tag tag--plain">Head of Partnerships</span></li>
-            <li><span class="tag tag--plain">Commercial Director</span></li>
-            <li><span class="tag tag--plain">Affiliate Director</span></li>
-            <li><span class="tag tag--plain">Business Development Lead</span></li>
-            <li><span class="tag tag--plain">Head of VIP</span></li>
-            <li><span class="tag tag--plain">Regional Manager</span></li>
-            <li><span class="tag tag--plain">Country Manager</span></li>
-            <li><span class="tag tag--plain">Chief Commercial Officer</span></li>
-          </ul>
-          <div class="ms-prose">
-            <p>Head of VIP is the one worth stopping on. In parts of that industry it denotes the person who personally owns the most commercially significant relationships in the business. Nothing in the words tells you that. Nobody would type it into a filter. And an outsider searching for founders and C-level titles in the conventional sense will cleanly miss the person who actually decides.</p>
-            <p>Every industry contains a dozen of these. It is exactly why the market pays a premium for people who already learned one industry's vocabulary at a previous employer's expense, and why buying that knowledge through hiring is slow, narrow and expensive.</p>
-            <p>The useful property of AI here is not that it holds one magic list of job titles. It is that it will repeat this research for every accepted market, in every relevant geography, without deciding somewhere around the fourth segment that three titles are probably enough.</p>
-          </div>
-          <blockquote class="ms-pullquote">The market can be enormous. Your vocabulary is the size of a dropdown.</blockquote>
-          <div class="ms-prose">
-            <h3>Then it becomes a matrix.</h3>
-            <p>Each accepted vertical is crossed with every company type inside it, every naming pattern for that company type, every buyer function, every title variant, every relevant geography, every meaningful scale band, and whatever qualifier keeps the search honest.</p>
-            <p>The result is thousands of Market Arms. On a large scan, tens of thousands.</p>
-            <p>That number is not the system losing control. It is what the market looks like when nobody has rounded it down to the first four ideas that came to mind.</p>
-          </div>
-          <div class="contrast-pair">
-            <article>
-              <h3>Some arms represent thousands of people.</h3>
-              <p>A broad company type, a common title, a large geography. Cheap to source, easy to reach, and usually the most crowded place any letter can be written from.</p>
-            </article>
-            <article>
-              <h3>Some represent fifty.</h3>
-              <p>A narrow qualifier, an unusual title, a specific operating model. Expensive per record, and frequently the better market, because fifty people who all own precisely this problem are worth considerably more than four thousand who might.</p>
-            </article>
-          </div>
-          <div class="ms-prose">
-            <p>The purpose is not to buy every record from every arm. Most arms will never be purchased at all.</p>
-            <p>The purpose is to see the entire searchable market before a human, a database or a budget quietly reduces it to whatever was thinkable on the first afternoon.</p>
-          </div>
-        </div>
-      </section>
-      <section class="ms-act" id="judge" aria-labelledby="judge-title" data-ms-section>
-        <div class="ms-act-shell">
-          <p class="ms-act-label">X. Judge and pruning</p>
-          <h2 id="judge-title">Four passes, and one of them exists only to disagree with the other three.</h2>
-          <div class="ms-prose">
-            <p>Everything described so far runs as four separated passes. They are separated because each demands a different kind of attention, and a system attempting all four at once performs all four adequately.</p>
-          </div>
-          <div class="term">
-            <p class="term-marker">01</p>
-            <h3>Research</h3>
-            <p class="term-definition">Reads the business, then leaves it and reads the market.</p>
-            <div class="ms-prose">
-              <p>Produces the Chronicle. Produces the primary, adjacent and experimental hypotheses, each carrying its evidence, its stated confidence and the reason for that confidence. Hands the next pass a written list of what it could not resolve.</p>
-            </div>
-          </div>
-          <div class="term">
-            <p class="term-marker">02</p>
-            <h3>Writer</h3>
-            <p class="term-definition">Builds a separate commercial argument for every accepted vertical.</p>
-            <div class="ms-prose">
-              <p>Receives the verticals and the reasoning behind them. Produces the angle, the sequence and the intended next step for each, one at a time, to the same standard. Does not pretend a generic letter has become specific because the company name changed.</p>
-            </div>
-          </div>
-          <div class="term">
-            <p class="term-marker">03</p>
-            <h3>Market Arms</h3>
-            <p class="term-definition">Runs the second global research pass, on language rather than markets.</p>
-            <div class="ms-prose">
-              <p>Discovers how the target companies and the target people are actually named, in every relevant geography, at every relevant scale. Turns the strategy into thousands of searchable combinations, each one traceable back to the vertical that produced it.</p>
-            </div>
-          </div>
-          <div class="term">
-            <p class="term-marker">04</p>
-            <h3>Judge</h3>
-            <p class="term-definition">Checks the first three against a long checklist and returns individual parts for repair.</p>
-            <div class="ms-prose">
-              <p>Has no stake in the work it reviews and did not produce any of it. Can reject one letter, one hypothesis or one group of arms without touching anything else.</p>
-            </div>
-          </div>
-          <div class="ms-prose">
-            <h3>The Judge was the part that took longest to get right.</h3>
-            <p>Software can validate a file. It can confirm that the JSON parses, the arithmetic adds up, the required fields are present and nothing is malformed. All of that is useful, and all of it is nearly worthless here, because none of it examines whether the reasoning is any good.</p>
-            <p>Meaning is not a file format.</p>
-            <p>So the Judge asks the questions a validator cannot. Does this hypothesis actually follow from what the Chronicle contains? Does the cited evidence say what it is claimed to say? Do the markets that were merged share a buyer? Did the markets that were separated need to be? Does this letter address the buyer it was written for, or a nearby buyer who was easier to write to? Are these Market Arms useful, or merely numerous?</p>
-            <p>When one part fails, that part goes back. Not the whole scan. A weak letter for one vertical does not invalidate the other twenty-four, and rebuilding everything because one segment came out thin is how a system becomes too expensive to run at all.</p>
-            <h3>What this looked like before it worked.</h3>
-            <p>The current architecture is four sequential passes, each running up to roughly fifty minutes.</p>
-            <p>An earlier version of the same scan used between two hundred and ninety and five hundred sequential model sessions for a single product. The longest complete run took two and a half days.</p>
-            <p>It produced good work. It was also unshippable, in the way that anything requiring two and a half days and continuous supervision is unshippable.</p>
-            <p>Getting from five hundred sessions down to four was not a matter of deleting steps. It was a matter of writing down what each pass is actually responsible for, in enough detail that it stops needing to be told twice. Most of the work of building this system was that, and almost none of it is visible in the output.</p>
-            <h3>A scan is not good because the number came out large.</h3>
-            <p>Discovery should be broad. Spending should be suspicious. Those are different instincts and they belong to different stages.</p>
-            <p>Before a single contact is purchased or a single letter produced, the following are removed:</p>
-          </div>
-          <div class="manifest">
-            <p>Hypotheses no evidence supports</p>
-            <p>Duplicate arms</p>
-            <p>Company-name patterns returning mostly noise</p>
-            <p>Job titles carrying the wrong authority</p>
-            <p>Geographies where the offer cannot operate</p>
-            <p>Company types that look adjacent and are not</p>
-            <p>Dormant legal entities</p>
-            <p>Companies that have stopped trading</p>
-            <p>Consultants presenting themselves as operators</p>
-            <p>Directory profiles presenting themselves as companies</p>
-            <p>Searches too small or too noisy to justify their cost</p>
-          </div>
-          <div class="ms-prose">
-            <p>The scan widens the world first, then removes everything unable to defend itself. Both halves are required. Breadth without pruning is just an expensive list. Pruning without breadth is the dropdown menu again, wearing a longer document.</p>
-          </div>
-          <blockquote class="ms-pullquote">A system that only generates is a content machine. A system able to reject its own attractive ideas is beginning to be useful.</blockquote>
-        </div>
-      </section>
+            <h3>Session two. Writer.</h3>
+            <p>For every vertical with a non-zero weight, it writes a chain of letters.</p>
+            <p>Worth stopping here, because this alone is not a human task. Getting people to write a letter for a specific type of client at all is hard enough, however much you pay them. But that's not the job. The job is the grinding, systematic work of thinking through the ideal template: a letter built so that nobody can tell it's a template, and that fits every target title in the chosen cohort so exactly that there's no logical hole to poke. That is the work I couldn't buy from people.</p>
+            <p>The machine writes chains of unique letters for every segment better than I ever wrote them myself, even if I'd written one a day. A whole pack, in two hours.</p>
+            <p>The letters are specific because each one is written for a specific vertical with a specific buyer and a specific reason to buy. A warehouse operator, a conveyor integrator and a private equity operations team get different letters, even though all three might care about conveyor failures. They buy for different reasons, they object to different things, different people sign, different evidence works.</p>
+            <p>Up to fifty minutes.</p>
 
-      <section class="ms-act" id="sourcing" aria-labelledby="sourcing-title" data-ms-section>
-        <div class="ms-act-shell">
-          <p class="ms-act-label">XI. Companies, people, routes</p>
-          <h2 id="sourcing-title">Only now do we buy anything.</h2>
-          <div class="ms-prose">
-            <p>Every accepted Market Arm becomes a sourcing instruction, and candidate companies come back against it. A record returned by a database is a candidate. It is not yet a company worth writing to.</p>
-            <h3>The company.</h3>
-            <p>We check each candidate against the hypothesis that produced it:</p>
-            <ol class="question-list">
-              <li>Does this company actually perform the target activity?</li>
-              <li>Does it operate in the required geography?</li>
-              <li>Does its scale fit the argument?</li>
-              <li>Is the relevant facility or business unit real?</li>
-              <li>Does it show the operational signal the hypothesis requires?</li>
-              <li>Is it still trading?</li>
-              <li>Is it a duplicate of a record already accepted under another name?</li>
-              <li>Is it part of a larger group, and does that change who decides?</li>
-              <li>Is it an operator, a vendor, an adviser, or a directory entry?</li>
-            </ol>
-            <p>The company file records why the organisation was accepted or rejected, and which Market Arm produced it.</p>
-            <p>That last field matters more than it sounds. It is what allows a weak arm to be identified months later by its results rather than by somebody's opinion of it in a meeting.</p>
+            <h3>Session three. Market Arms.</h3>
+            <p>This is what the whole thing was built for. We write to people, and people are named however.</p>
+            <p>With everything Research and Writer produced under its arm, the next echelon of models goes out and does another global research pass, this time about vocabulary rather than the market. For every segment: what the target employees are called, and what the companies that belong to this segment call and classify themselves.</p>
+            <p>I told you about gambling in part one: six names for one industry, and Head of VIP as the title of the person who signs partner deals. The machine finds every variant of company-type name inside a target industry, and every variant of job title for the goal and offer type, in an hour or two. And it does that as many times as we have segments and hypotheses in the target.</p>
+            <p>What comes out are arms. Each arm is a company type, times how that type names itself, times the function that owns the problem, times how that function is titled, plus geography, plus scale. On paper that cross-product runs to tens of thousands of intersections per segment. Most of them collapse into each other or die on evidence, and what survives is dozens of arms on a narrow segment and several hundred on a wide one.</p>
+            <p>Here is one, written out.</p>
           </div>
-          <blockquote class="ms-pullquote">Found in a database is not a reason to send a letter.</blockquote>
-          <div class="ms-prose">
-            <h3>The person.</h3>
-            <p>We do not send letters to markets. We send them to people, and not necessarily to the most senior person available.</p>
-            <p>The target is whoever sits closest to the decision. Who owns the problem. Who feels the cost when it happens. Who controls the relevant budget line. Who can approve a next step. Or who can carry the proposal to the person who will.</p>
-            <p>A title is evidence. It is not proof. Profiles go stale. Conference biographies describe jobs people have already left. A group executive can hold complete authority and no interest whatsoever in one site's problem. A site manager can feel that problem every single day and have no permission to change anything across the group. Where those signals conflict, the person stays unresolved until a current source closes it.</p>
-            <p>The record is strong when several signals agree at once: the person is current, the role is relevant, the geography makes sense, the operating scope matches the hypothesis, and the company context supports the argument the letter is going to make.</p>
-            <h3>The physical route.</h3>
-            <p>Here physical mail stops resembling email, and being wrong starts costing money.</p>
-            <p>A correct name and a headquarters address are not a delivery route.</p>
-            <p>The registered address often belongs to a formation agent. Headquarters can sit in a different country from the recipient. The person sometimes works from a regional office, a plant or a subsidiary trading under a different name. Companies move. People leave. A shared reception accepts a package and has no reason on earth to route it onward. Parent companies refuse mail addressed to employees of their own subsidiaries.</p>
-            <p>So we verify the route as one connected record: current company, current person, current role, the relevant receiving office, the physical mailing address, the sources supporting each of those, and anything that contradicts them.</p>
+          <div class="ms-benchmark-display" aria-label="One arm: a Real Money Gaming operator calling itself iGaming, Head of VIP, Malta, one hundred to five hundred staff">
+            <p>Real Money Gaming operator, calling itself iGaming</p>
+            <p>Head of VIP, the person who signs partner deals</p>
+            <p>Malta, one hundred to five hundred staff</p>
           </div>
-          <dl class="status-list">
-            <div>
-              <dt><span class="tag tag-verified">VERIFIED</span></dt>
-              <dd>Every element agrees and is current. Cleared for production.</dd>
-            </div>
-            <div>
-              <dt><span class="tag tag-needs-review">NEEDS REVIEW</span></dt>
-              <dd>Something is thin. A person looks at it before anything is printed.</dd>
-            </div>
-            <div>
-              <dt><span class="tag tag-role-uncertain">ROLE UNCERTAIN</span></dt>
-              <dd>The individual is real and current. The responsibility is not confirmed.</dd>
-            </div>
-            <div>
-              <dt><span class="tag tag-office-uncertain">OFFICE UNCERTAIN</span></dt>
-              <dd>The individual is confirmed. The receiving location is not.</dd>
-            </div>
-            <div>
-              <dt><span class="tag tag-moved">MOVED</span></dt>
-              <dd>The record was correct and is no longer correct.</dd>
-            </div>
-            <div>
-              <dt><span class="tag tag-rejected">REJECTED</span></dt>
-              <dd>No route can be established. It stays out of production entirely.</dd>
-            </div>
-          </dl>
           <div class="ms-prose">
-            <p>A weak route is not tested with the client's postage.</p>
-            <p>Machine checking is cheap and posting is not, so we check far past the point that would be reasonable if sending were free. A record can pass through four or five automated checks: the company is trading, the address resolves to a real building rather than a registered-office service, no second address contradicts the first, the role exists in that organisation on a recent source. All of that together still costs less than one wasted envelope.</p>
-            <p>What machine checking cannot tell you is whether the person sat at that desk this morning. Somebody who resigned last week leaves no trace a scan can find. So a campaign can be addressed two ways, and the client chooses: to a named person, which makes the opening sentence sharper and carries the risk that they have moved, or to a role at a confirmed company address, which survives the turnover and gives up some of that sharpness. Where the letter goes to a role, the first sentence is still written about that specific company. A sentence that would survive a find-and-replace of the company name is the wrong sentence either way.</p>
-            <p>That single sentence is most of the difference between physical outreach and email. A bad email address costs nothing, so it gets sent anyway, and the failure is invisible. Paper, an object, production, handling and postage all cost money, and every wasted send is a small physical monument to a decision that should have been made three steps earlier.</p>
-            <p>The constraint is not a disadvantage. It is the entire reason this system runs in the order it does.</p>
-          </div>
-        </div>
-      </section>
-      <section class="ms-act" id="object" aria-labelledby="object-title" data-ms-section>
-        <div class="ms-act-shell">
-          <p class="ms-act-label">XII. The letter and the object</p>
-          <h2 id="object-title">The letter is written last because the letter needs everything that came before it.</h2>
-          <div class="ms-prose">
-            <p>By this point we know why this market matters, why this company fits it, why this person was chosen over the three others in the same building, what economic problem the letter is entitled to discuss, what evidence exists behind it, and where an envelope can physically arrive.</p>
-            <p>Only now can a letter be specific in a way the recipient is able to verify.</p>
-            <p>Each vertical carries its own argument. Each recipient gets one clear reason for the approach. Each letter asks for exactly one next step.</p>
-            <p>When an object goes into the envelope it has to carry part of the argument, not decorate it. A worn part, a material sample, a coin, a map, a card that makes replying trivial. Which object, and why that one, is the other page's job.</p>
-            <a href="https://coin.im/#objects">The objects we post</a>
+            <p>Every arm is people the sourcer will go and find. Some arms are thousands of people. Some are dozens or hundreds. And the small one can easily be the better market. In total it's millions of people.</p>
+            <p>A person will never bring you this table. Part one covered why.</p>
+            <p>The trick with the machine is that it knows every peculiarity of everything on earth. You just have to know how to ask it, at the right moment, in the right way. And then send it properly to research the current situation in the geography that matters.</p>
+            <p>Up to fifty minutes.</p>
+
+            <h3>Session four. Judge.</h3>
+            <p>Checks everything the previous three did against a giant checklist. And can send individual pieces back for rework.</p>
+            <p>Individual pieces, and that is the point. A specific segment, a specific letter, a specific group of arms. The judge asks: is there evidence, do the hypotheses follow from the research, are similar markets grouped right, does the letter match the buyer, are the arms useful or just numerous.</p>
+            <p>And there's a principle underneath all of this. It runs with no deterministic constructors, no gates, no brainless script validators. A script can check JSON, arithmetic and file structure. It can't check whether a hypothesis makes sense. So the judge is a model too. Meaning isn't a file format.</p>
+
+            <h3>Then the paper starts</h3>
+            <p>The scan is done. We have the map of the market, letters for every vertical, and the matrix of arms. Now that has to become an envelope on a specific desk. Here email people would already be sending. We still have three steps ahead, and each one rejects things.</p>
+            <p>Companies. Every accepted arm becomes an instruction for the sourcer. It brings back candidates. Candidates. Each one gets checked: does the company really do the thing, in that geography, at that scale, does it have the operational signal the hypothesis requires, is it alive, is it a duplicate, is it part of a bigger group, does it trade under another name. Is it an operator, a vendor, a consultant, or a line in a directory. One arm easily returns both a company with eleven sites that calls itself "supply chain solutions" and a broker that calls itself a 3PL, ranks beautifully, and owns no facilities. We take the first and throw out the second. Rejection is worth more than acceptance here: it's the only proof the filter is doing anything.</p>
+            <p>People. Inside an accepted company we look for the person closest to the decision. Who owns the problem, who feels its cost, who holds the budget, who can sign the next step or carry it to whoever will. A title is evidence. A group VP has authority and zero interest in one line at one site. A site director feels every minute of downtime and can't approve anything across the group. The right person is whoever owns the consequence at the scale you're selling at.</p>
+            <p>Route. And here we do the thing normal lead-gen systems simply skip. Where the paper physically reaches this person. Every failure from part one applies: the registered address, headquarters in another country, a regional site, a person who left, reception that carries it nowhere. So the route is checked as a linked record: current company, current person, current role, the right site, the physical mailing address, supporting sources, conflicts. Six outcomes: verified, needs review, role uncertain, office uncertain, moved, rejected. Anything short of verified doesn't go into production.</p>
+
+            <h3>The letter goes last</h3>
+            <p>Because the letter needs everything before it. We already know why this market, why this company, why this person, which problem to raise, what evidence exists, and which building the paper will physically reach.</p>
+            <p>Only now can a letter be genuinely specific. Each vertical gets its own commercial argument. Each recipient gets one clear reason for the approach. Each letter asks for exactly one next step.</p>
+            <p>And if there's an object in the box, it carries part of the argument. A worn bearing pulled from a line during an unplanned stop, for the site director who has held exactly that part in his hand on a bad morning. A material sample, when quality or waste shows faster than a paragraph reads. A coin or a banknote, when money should be the subject before the envelope is opened. A map, when there's a route, a network, a territory, a gap. A reply card, when the next action needs to be obvious. The object is a sentence you can pick up.</p>
+
+            <h3>And none of it needs a button</h3>
+            <p>The scan runs entirely on its own. I don't sit next to it, I don't press anything, I don't know it's running. The client talks to the bot, and a few hours later they have the market chronicle, a set of weighted hypotheses, the verticals, letter chains and a matrix of arms covering millions of people. From there, sourcing, route verification and production run off that map for months.</p>
+            <p>Five minutes talking to a bot on the way in. On the way out, what used to take between two hundred ninety and five hundred sequential sessions and up to two and a half days for one product. How that got squeezed into four is the next part.</p>
+            <a class="ms-primary-link ms-story-inline-cta ms-ui-copy" href="https://coin.im/open">Open a business file</a>
           </div>
         </div>
       </section>
 
-      <section class="ms-act" id="record" aria-labelledby="record-title" data-ms-section>
+      <section class="ms-act ms-story-part ms-story-part--paper" id="sourcing" aria-labelledby="sourcing-title" data-ms-section>
         <div class="ms-act-shell">
-          <p class="ms-act-label">XIII. One continuous record</p>
-          <h2 id="record-title">The scan should not disappear into a PDF.</h2>
+          <span id="object" aria-hidden="true"></span>
+          <h2 id="sourcing-title">Part three. How I built it.</h2>
           <div class="ms-prose">
-            <p>This is where most of this work normally goes to die.</p>
-            <p>Research lives in a document. Company sourcing lives in a spreadsheet. The people live in a second spreadsheet. Address verification happens in messages. The copy lives in a separate file. Production happens in a supplier portal. Tracking happens in a carrier account. Replies arrive wherever replies feel like arriving.</p>
-            <p>Four months later somebody asks why one particular company was ever contacted, and the answer has to be reconstructed from six tools and the memory of a person currently on holiday.</p>
-          </div>
-          <ol class="chain chain--dense" aria-label="Continuous campaign record">
-            <li>Market hypothesis</li>
-            <li>Vertical</li>
-            <li>Market Arm</li>
-            <li>Company</li>
-            <li>Person</li>
-            <li>Physical route</li>
-            <li>Letter</li>
-            <li>Object</li>
-            <li>Production</li>
-            <li>Dispatch</li>
-            <li>Delivery</li>
-            <li>Response</li>
-          </ol>
-          <div class="ms-prose">
-            <p>coin.im is built around that chain as one connected record.</p>
-            <p>Open a company and see why it entered the campaign. Open a person and see why they were selected over the three others in the same building. Open an address and see what evidence approved it. Open a letter and see which market logic produced it. Open a delivery event and trace it back to the original hypothesis and the sources behind it.</p>
-            <p>The CRM is not an address book bolted on at the end. It is the memory of how the campaign was built.</p>
-            <h3>And then the results come back and change the map.</h3>
-            <p>A scan built once is not a scan frozen once.</p>
-            <p>Replies, silences, deliveries, refusals and returned envelopes all attach to the arm that produced them. Across months this does something a purchased list is structurally incapable of doing.</p>
-            <p>Weak markets shrink. Strong markets get more precise. Title patterns appear that nobody predicted. Old addresses die and are marked as dead rather than quietly resent next quarter. A hypothesis rated at low confidence turns out to answer at three times the rate of an obvious one, and the reason why gets written down instead of being remembered vaguely by one person.</p>
-            <p>The business stops repeatedly buying lists and starts accumulating knowledge of its own market.</p>
-          </div>
-          <blockquote class="ms-pullquote">A purchased list depreciates from the day it is bought. A scan appreciates from the day it is used.</blockquote>
-          <div class="ms-prose">
-            <h3>What actually arrives.</h3>
-          </div>
-          <div class="source-list source-list--unnumbered">
-            <article class="source-item">
-              <h3>Market Chronicle</h3>
-              <p>A sourced explanation of the market, the economic problem, the existing solutions, the buyers, the vocabulary, the contradictions between sources, and the questions still open.</p>
-            </article>
-            <article class="source-item">
-              <h3>Market hypotheses</h3>
-              <p>Primary, adjacent and experimental directions, each with its evidence, its economic reasoning, its likely buyer, its stated confidence and the specific reasons it turns out to be wrong.</p>
-            </article>
-            <article class="source-item">
-              <h3>Verticals</h3>
-              <p>The accepted campaign groups, with the boundaries explaining what was merged, what was kept separate, and on what basis.</p>
-            </article>
-            <article class="source-item">
-              <h3>Letter campaigns</h3>
-              <p>A separate commercial argument and sequence for every accepted vertical, each written for its own buyer rather than for the category.</p>
-            </article>
-            <article class="source-item">
-              <h3>Market Arms</h3>
-              <p>The full matrix of company types, naming patterns, buyer functions, job titles, geographies, scale bands and qualifiers, each traceable back to the vertical that produced it.</p>
-            </article>
-            <article class="source-item">
-              <h3>Company files</h3>
-              <p>The organisations found through those arms, with the evidence for acceptance or rejection and a record of which arm produced each one.</p>
-            </article>
-            <article class="source-item">
-              <h3>Person files</h3>
-              <p>The people most likely to own, influence or approve the decision, with the signals supporting each and the conflicts that remain unresolved.</p>
-            </article>
-            <article class="source-item">
-              <h3>Physical route files</h3>
-              <p>The receiving office, the mailing address, the supporting sources, any contradictory information, and the approval status of the route.</p>
-            </article>
-            <article class="source-item">
-              <h3>Campaign record</h3>
-              <p>Letter version, object, production, dispatch, delivery, return and response, each connected back to the hypothesis that put it in motion.</p>
-            </article>
+            <p>It started with a dumping folder.</p>
+            <p>The first version worked like this. I drop the client's domain into a folder, along with a recording of the call in whatever format, as long as whisper can make out our mumbling, and any documents that exist. That's it. Then a dedicated coding session goes off for two days and digs through the market. Every hour it deepens the weighting of hypotheses, finds evidence, builds a map of job titles, ties company size to title to market, takes apart every competitor and every competitor of every competitor, direct and indirect. What comes out is a queue of campaigns that then fight each other on equal send volumes: a hypothesis either earns more contacts and moves up a tier, or loses a few rounds in a row and drops out.</p>
+            <p>Two days for one business. Slow, but even then I understood what kind of animal this was. McKinsey charges millions for this and takes months. I've held a report in my hands that someone paid a million for. Two million, actually. And it was worse. So much worse that I opened a bottle of whisky that night. Well, I'd have opened it anyway. What's it doing sitting on the shelf.</p>
+
+            <h3>Then I went in a fourth time</h3>
+            <p>By the time release looked days away, everything I'd been grinding toward for months was done. Full self-serve, an automated seller, plus contacts collected in a way nobody collects them, by the million, better than Clay and Apollo and cheaper. The first client wrote in a week later, and it felt fucking great, even though he was writing about the old revision, and in those few days the letters and the knowledge underneath them had gotten a hundred times stronger.</p>
+            <p>And that's when I went back in for the fourth time.</p>
+            <p>The task sounded simple. Make research plus copywriting plus business reasoning run automatically for any task. One model gave me something sane at some point and I thought that was it. Then a new one came out, and the fear that it could be even better wouldn't let go. Several more days, every weekend, sixteen hours a day. And in the middle of it, the new model lost its mind, and I mean that literally: both models I was working with went stupid in front of my eyes, down to complete imbecility. They stopped seeing the details of the task. I'd say anything at all and they'd latch onto it and dance in circles around that one thought. The repo, where working code already sat, they no longer looked at. They'd wait for me to say something and discuss it in a vacuum.</p>
+            <p>A hammer that changes its molecular composition in your hand. You've got a million nails to drive, and it goes hard rarely, and you have to guess the moment. And only people with a giant repo feel this. It'll build a landing page fine. It'll build a CRM where you drag cards around with a mouse fine. People brag about that on Facebook, though one prompt could do it a year ago. But with a genuinely complex codebase you're in despair, and you're alone. Well. Not alone.</p>
+            <p>Five in the morning, I'm sitting there, told to fuck off by both major providers, writing a ten-thousand-line prompt by hand. Market scan plus copy plus knowledge. Through hardship to the stars.</p>
+            <p>That was version four. Version two had already stunned the people I showed results to, about their own businesses. Version three was several times better than two. And for four I'd designed something I thought was final, and I was running hundreds of experiments under it to find the one configuration I could carve in stone.</p>
+
+            <h3>A month to get stable</h3>
+            <p>A month went into getting the models, working as a team, with no deterministic constructors, no gates and no dumb script validators, to produce a scan that satisfied me. How simple it sounded in my head, and how impossible it turned out to be. The number of parameters that have to get along for it to be both good and stable is beyond belief. I did this thing every hour I was breathing. Waiting for night to push into production a build that had finally shown stability on the test bench, finish ten more little things, and rest. Three days, please.</p>
+            <p>And then the breakthrough. Quality higher than anything I'd ever done by hand. Even for a hundred thousand dollars I couldn't have bought a year of my own time and attention to produce that width at that quality. And it does it without me entirely. I don't press buttons. I don't even know it's running.</p>
+            <p>Here's the scale of what had to be squeezed. At the peak, one scan for one product used between two hundred ninety and five hundred sequential sessions. The record run took two and a half days. I burned tens of billions of tokens on the experiments. Then I refined the paperwork, the doctrine and the methodology texts the scan lives on, until four sessions were enough. Research, Writer, Market Arms, Judge. Fifty minutes each.</p>
+            <p>From five hundred to four, and the quality went up. Because all those months went into one thing: writing down what "good" means precisely enough that one machine can check another and send it back. Everything hard turned out to be in the text, not the code.</p>
+            <p>The system drank all my blood, and a few other fluids besides. I do this around the clock and I'm sick of it. But I'm not stopping.</p>
+
+            <h3>What I took from it</h3>
+            <p>Three things.</p>
+            <p>This is version four, and every version before it already worked and already impressed people. I rebuilt not because it broke, but because I'd figured out how to do it better.</p>
+            <p>The models shifted under my hands the entire way. The same model that's a genius at research goes insane on code, and which one was best changed every two weeks. That's why, in the benchmark, stability is going to be its own property, worth more than creativity.</p>
+            <p>And everything that let me squeeze five hundred sessions into four was paperwork. Doctrine. Text.</p>
           </div>
         </div>
       </section>
-      <section class="ms-act" id="measured" aria-labelledby="measured-title" data-ms-section>
+      <section class="ms-act ms-story-part ms-story-part--deep" id="record" aria-labelledby="record-title" data-ms-section>
         <div class="ms-act-shell">
-          <p class="ms-act-label">XIV. What we measured</p>
-          <h2 id="measured-title">The scan runs on models, and on this particular work they are not remotely equivalent.</h2>
+          <span id="measured" aria-hidden="true"></span>
+          <h2 id="record-title">Part four. The benchmark.</h2>
           <div class="ms-prose">
-            <p>It measures one thing: how each model performs the actual passes of an actual Market Scan.</p>
-            <p>In August 2026 the complete scan, all four passes, was run against three real business inputs, on five models, repeatedly, and scored on what came out.</p>
-            <p>The clients are anonymised here. The numbers are not adjusted.</p>
+            <p>Once I had a build that held stable, one question was left, the one I'd been putting off for the hundredth time: which models to run it on.</p>
+            <p>Up to then I'd always worked on a specific set of models I believed in. Believing isn't enough when I'm going to sell this for money and answer for the result. I had to run the whole scan, all four sessions, on every model, several times over, and get averages I could call representative. I've done this dozens of times before, so the numbers are real, not "somebody counted something and called it a benchmark."</p>
+            <p>It took a full day.</p>
+
+            <h3>What I ran</h3>
+            <p>Five models. Three real clients, data exported read-only from production. Fifteen cells. Offline sidecar, maximum parallelism, production untouched.</p>
+            <p>Two of the biggest names weren't in this run. I had already dropped them from my roster. But from dozens of earlier experiments I know how they'd have done. One of them was solidly mid on this kind of work: shallow on creative depth in text and meaning. In research tasks it scored five times lower and worse than the best model here. The other was much stronger and runs neck and neck with the fastest model in this test, and those two are the ones actually competing in this niche.</p>
+
+            <h3>The numbers</h3>
+            <p>Look at the total line per model, all three clients together.</p>
+            <p>The conservative one: forty-one and a half minutes on average, fifty segments, five hundred seventy-five arms. Doctrine-shaped, safe. That's my current production baseline.</p>
+            <p>The fast one: sixteen minutes, forty-eight segments, six hundred sixty-one arms. Fastest of all, even maps, controlled copy. Closed every cell in fifteen to seventeen minutes.</p>
+            <p>The wide one: forty-two minutes, seventy-three segments, four thousand four hundred seven arms. On all three clients it found the widest universe of segments and arms. Slower, and it overproduces arms, and they need measuring and pruning afterward.</p>
+            <p>The voice one: twenty-nine minutes, thirty-nine segments, twelve hundred seventy-five arms. Strong voice in the letters, wide maps, but capacity-sensitive: on one client the first attempt died on a quota limit and only went through on retry.</p>
+            <p>The compact one: thirty-one minutes, thirty-nine segments, two hundred thirty-six arms. Finished, but narrow, with a messier route, and one first attempt hit an API inspection wall. Good as an independent sanity check. Not a first fallback.</p>
+
+            <h3>The number that explains everything</h3>
+            <p>Take one of the three clients. The fast model found twenty-seven segments there. The wide model found twenty-nine. A tie. Anyone comparing models would say: same thing, move on.</p>
+            <p>Now the arms. The fast model made four hundred sixty-three. The wide model made two thousand three hundred and one.</p>
           </div>
-          <table class="data-table">
-            <caption>Totals across three business inputs, August 2026. Segments and arms are cumulative; minutes are the average per complete run.</caption>
-            <thead>
-              <tr>
-                <th scope="col">MODEL</th>
-                <th scope="col">AVG MIN</th>
-                <th scope="col">SEGMENTS</th>
-                <th scope="col">ARMS</th>
-                <th scope="col">ARMS PER SEGMENT</th>
-                <th scope="col">COMPLETED</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row" data-label="MODEL">Qwen3.8 max</th>
-                <td data-label="AVG MIN">41.1</td>
-                <td data-label="SEGMENTS">50</td>
-                <td data-label="ARMS">575</td>
-                <td data-label="ARMS PER SEGMENT">11.5</td>
-                <td data-label="COMPLETED">3/3</td>
-              </tr>
-              <tr>
-                <th scope="row" data-label="MODEL">GPT 5.5 xhigh</th>
-                <td data-label="AVG MIN">16.4</td>
-                <td data-label="SEGMENTS">48</td>
-                <td data-label="ARMS">661</td>
-                <td data-label="ARMS PER SEGMENT">13.8</td>
-                <td data-label="COMPLETED">3/3</td>
-              </tr>
-              <tr class="data-table-peak">
-                <th scope="row" data-label="MODEL">GPT 5.6 Sol Max</th>
-                <td data-label="AVG MIN">41.8</td>
-                <td data-label="SEGMENTS">73</td>
-                <td data-label="ARMS">4,407</td>
-                <td data-label="ARMS PER SEGMENT">60.4</td>
-                <td data-label="COMPLETED">3/3</td>
-              </tr>
-              <tr>
-                <th scope="row" data-label="MODEL">Kimi k3 max</th>
-                <td data-label="AVG MIN">29.0</td>
-                <td data-label="SEGMENTS">39</td>
-                <td data-label="ARMS">1,275</td>
-                <td data-label="ARMS PER SEGMENT">32.7</td>
-                <td data-label="COMPLETED">3/3</td>
-              </tr>
-              <tr>
-                <th scope="row" data-label="MODEL">GLM5.2 max</th>
-                <td data-label="AVG MIN">31.1</td>
-                <td data-label="SEGMENTS">39</td>
-                <td data-label="ARMS">236</td>
-                <td data-label="ARMS PER SEGMENT">6.1</td>
-                <td data-label="COMPLETED">3/3</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="ms-benchmark-display" aria-label="27 versus 29 segments, 463 versus 2,301 arms, twenty minutes">
+            <p>27 vs 29 segments</p>
+            <p>463 vs 2,301 arms</p>
+            <p>twenty minutes</p>
+          </div>
+          <a class="ms-primary-link ms-story-inline-cta ms-ui-copy" href="https://coin.im/open">See what your market chronicle finds</a>
           <div class="ms-prose">
-            <p>The headline is in the gap between two columns.</p>
-            <p>On segments, the models are close. Forty-eight against seventy-three. Every one of them finds roughly the same set of markets, which is reassuring and also unsurprising: the obvious directions are obvious to anything that reads.</p>
-            <p>On arms, they are not close at all. Six hundred and sixty-one against four thousand four hundred and seven.</p>
-            <p>Same markets. Nearly seven times the searchable surface inside them.</p>
-            <p>That difference is not cleverness. It is persistence: the willingness to keep asking how else this type of company might name itself, in this geography, at this scale, after already producing eleven answers that looked sufficient. It costs about twenty-five extra minutes of reasoning per run.</p>
-            <p>For a scan built once to plan a year of campaigns, twenty-five minutes is not a consideration. That is why the breadth model runs the research and the arms, a faster and more controlled model handles the copy, and a separate model sits as Judge over both.</p>
-          </div>
-          <div class="manifest">
-            <p>The measurement covers writer and research work only.</p>
-          </div>
-          <div class="ms-prose">
-            <p>A wider searchable market is a wider searchable market. It is not revenue, and anybody presenting it as revenue is selling something.</p>
-            <p>What it does mean is that the map is not being truncated by the tool drawing it.</p>
-            <h3>Where the doctrine came from.</h3>
-            <p>The rules the scan follows were not derived in one sitting. They were written down across outbound work with more than six hundred and eighty businesses, in the ordinary way: something failed, the reason was identified, and a rule was added so it would not fail the same way again.</p>
-            <p>Most of this page is that accumulation, restated as a system a machine can execute. The individual observations are not remarkable. Having six hundred of them in one place, applied consistently, is the entire product.</p>
+            <p>Same hypotheses. Same market. Five times as many people you can actually reach. And the entire difference is twenty or thirty extra minutes of the model grinding through its reasoning.</p>
+            <p>That's why I say the gap isn't in understanding the market. Both understood it. The gap is patience with vocabulary. How many names one thing has, in how many places, before the model decides it's found enough names. One is satisfied at four hundred sixty. The other keeps digging to twenty-three hundred.</p>
+            <p>And a market scan is done once in a lifetime, to plan a year of work. So those extra twenty minutes are a total addressable market four to five times larger for the whole year. By my estimate, an eightfold acceleration of a sales team over a ten-year stretch, for twenty extra minutes of pocket-change tokens. And that's the comparison for beginners: dig into the details and there's more, plus text constructions earlier models couldn't do at all.</p>
+
+            <h3>How I route them now</h3>
+            <p>Research and adjacent discovery: the wide model, with the fast one as fallback. Wide gives the broadest maps; fast is the quick, controlled backup.</p>
+            <p>Market Arms: the wide model again, because coverage is maximal. The voice model second, if capacity is healthy. The conservative model for conservative maps, when you want production-shaped rather than maximal.</p>
+            <p>Letters are the interesting one. I use the conservative model with the fast one as fallback, but the fallback is sneaky: both always write, and the judge picks between them. Thirty percent of the time it picks the fast one, which is a remarkable result for a model that's many months old by now. The voice model is the second voice, the style challenger, when capacity allows.</p>
+            <p>Emergency fallback for the whole run is the fast model. Cleanest operational profile end to end.</p>
+            <p>Judge is a separate contract, and I didn't evaluate it in this run. Only writer cells here.</p>
+
+            <h3>On stability</h3>
+            <p>Separately about the fast model.</p>
+            <p>It's nowhere near as creative in text as the conservative model. That one can produce things the fast model never will. But it can also fuck up, including simply not answering the API call. The fast model is the most stable model in existence. It delivers its seven out of ten in text so evenly that you could run it a thousand times on a thousand texts and get exactly the quality you expect every time.</p>
+            <p>For anyone who isn't prepared to write enormous treatises of quality methodology for the runner to lean on, that's not great: seven out of ten is seven out of ten. For someone like me, with a doctrine thousands of lines long, it's fantastic, because predictability is worth more than peaks.</p>
+
+            <h3>Why the ranking flipped</h3>
+            <p>From outside this looks like a contradiction.</p>
+            <p>A few weeks before this run, I'd been saying the voice model beat the wide model, and the wide model destroyed one of the big names. In the benchmark, the wide model is the king of breadth and the voice model is second-tier.</p>
+            <p>The difference is the task. The earlier ranking was about who codes better and holds a complex codebase together. There, the wide model went insane, and I was force-killing it at hour fifteen, hour fifty. On coding tasks it basically never wraps up. I never once waited it out. The benchmark ranking is about research and writing. And on those tasks, strangely, the wide model doesn't go insane: it finishes all the work itself and closes out in forty-two minutes, versus sixteen for the fast one.</p>
+            <p>One model, two tasks, two different verdicts. If only this thing could code without losing its mind, it'd be priceless.</p>
+
+            <h3>What the benchmark doesn't prove</h3>
+            <p>I wrote this into the scorecard itself. It answers writer interchangeability. It doesn't prove production routing, doesn't measure paid sourcing, purchased lead quality, deliverability, or judge acceptance. To make this production, it needs a small governed implementation: keep the conservative model as baseline, add explicit routing by stage, keep deterministic validation to JSON, transport and math only, then compare against the judge and run a bounded live smoke.</p>
           </div>
         </div>
       </section>
 
-      <section class="ms-act" id="faq" aria-labelledby="faq-title" data-ms-section>
+      <section class="ms-act ms-story-part ms-story-part--paper" id="faq" aria-labelledby="faq-title" data-ms-section>
         <div class="ms-act-shell">
-          <h2 id="faq-title">Six things people ask.</h2>
-          <div class="faq">
-            <details open>
-              <summary>What does this cost?</summary>
-              <p>There is no price on this page, because there is no self-serve product behind it yet. A scan is quoted on its own, and the number moves on how many markets are plausible, how many geographies the vocabulary work has to be repeated in, and how much of it is already known. You get the quote before anything starts.</p>
-            </details>
-            <details>
-              <summary>How long does it take?</summary>
-              <p>The first chronicle comes back within 72 hours. The complete scan takes as long as the market takes to read: a narrow offer in one country is quick, a product with six plausible buyer contexts across five geographies is not.</p>
-            </details>
-            <details>
-              <summary>What happens when the scan is wrong?</summary>
-              <p>Parts of it will be. That is what the experimental label is for: small tests, cheap failures, and a market removed from the plan when the letters come back unanswered. What we will not do is leave a dead direction in the plan because it looked good in the first document.</p>
-            </details>
-            <details>
-              <summary>Why not just start with Apollo or Clay?</summary>
-              <p>Because those tools are excellent once the search has been defined, and cannot help you define it. They retrieve records matching words and filters you supply. They cannot tell you which words, markets and buyer contexts you failed to supply, and they will return a clean, fast, confident result either way.</p>
-            </details>
-            <details>
-              <summary>Why would anybody need thousands of Market Arms?</summary>
-              <p>Because twenty markets, ten company-naming patterns, ten title patterns and a few geographies already produce thousands of legitimate combinations. The purpose is not to buy every contact behind every arm. Most are never purchased. The purpose is to see the whole searchable market before pruning it, rather than pruning it accidentally by never having seen it.</p>
-            </details>
-            <details>
-              <summary>Why not just post it to headquarters?</summary>
-              <p>Sometimes headquarters is correct. Sometimes it is a formation agent's address, a shared reception with no reason to route anything, or an office in a different country from the recipient. A physical route has to connect the current person, the current role and a receiving location that will actually pass it along.</p>
-            </details>
+          <div class="ms-story-anchor-group" aria-hidden="true">
+            <span id="status"></span>
+            <span id="status-title"></span>
+            <span id="final-title"></span>
+          </div>
+          <h2 id="faq-title">Part five. The money, and what this actually is.</h2>
+          <div class="ms-prose">
+            <h3>What it costs next to a human</h3>
+            <p>Start with the simplest arithmetic, the one that's been sitting in my head all summer.</p>
+            <p>Take one person capable of doing this whole scope perfectly. Find thirty hypotheses instead of ten, prove each one with sources, write a letter chain for each, dig out every company name and every job title for each, put it all into a matrix of tens of thousands of intersections. That person is almost impossible to find, and if you find them, they cost a fortune and take months.</p>
+            <p>Now take the cost of tokens for the same scope. With the task set right, the machine comes out thousands or tens of thousands of times cheaper. And the better its brain is engineered for the task, the cheaper it gets: fewer wasted runs, fewer redos, fewer sessions. Five hundred sessions versus four is a money number too.</p>
+            <p>I stress the word brain. The machine has been smarter than all living people combined practically since it appeared. Its only problem is that it doesn't share that mind on its own. There is no wanting in it. I have the wanting. And I have writing, which is how the wanting gets put into it. That's how you get a complete genius: its knowledge, its capacity, and properly sharpened desire, which is my contribution.</p>
+
+            <h3>Why paper makes all of this mandatory</h3>
+            <p>Lead-gen software got very good at accelerating the part that comes after the hard decision. You can export ten thousand contacts before breakfast. Enrich them before lunch. Generate ten thousand personalized opening lines before dinner. Connect six tools and watch the records move between them at the speed of a factory producing something nobody has checked.</p>
+            <p>One question remains: why should these people hear from you at all.</p>
+            <p>Most tools ask for an industry. Then a company size. Then a geography. Then a title. Then, how many contacts do you want. They start after the hardest work has already been silently skipped. They don't ask whether the industry label hides five different buyers. They don't ask who owns the problem in a small company versus a large group. They don't ask whether the company calls itself something you didn't think to type. They don't ask whether the person still works there. They don't ask whether paper can reach them.</p>
+            <p>The machine accelerates. The thinking stays parked.</p>
+            <p>With email you can go years without noticing. With paper you can't. Paper costs money. The object costs money. Hands cost money. Postage costs money. A confident package sent to the wrong person is a small physical monument to the decision not to think early enough.</p>
+            <p>So I build in the opposite order. First understand the market. Then its language. Then find the companies. Then the people. Then prove the physical route. Then write the letter. Then produce anything. Then remember what happened.</p>
+
+            <h3>Wide in discovery, suspicious before spending</h3>
+            <p>A scan isn't good because it produced a big number. Discovery should be wide. Spending should be suspicious.</p>
+            <p>Before contacts are bought and letters are produced, the system removes: hypotheses without support, duplicate arms, company names that mostly return noise, titles with the wrong authority, geographies where the offer can't operate, company types that look similar but don't fit, empty legal entities, dead companies, consultants pretending to be operators, marketplace profiles pretending to be companies, and searches too small or too noisy to justify their cost.</p>
+            <p>The scan widens the world first. Then it cuts away what can't defend itself. A system that only generates is a content machine. A system that can reject its own attractive ideas is starting to become useful.</p>
+
+            <h3>One continuous record</h3>
+            <p>Usually research lives in a document. Company sourcing lives in a spreadsheet. People live in another spreadsheet. Address verification happens in messages. Copy lives in a separate file. Production happens in a supplier portal. Tracking happens in a carrier account. Replies show up wherever they feel like. Then somebody tries to reconstruct what happened from six tools and the memory of a person currently on vacation.</p>
+            <p>I'm building around one linked record. Hypothesis, vertical, arm, company, person, physical route, letter, production, dispatch, delivery, response.</p>
+            <p>Open a company and see why it entered the campaign. Open a person and see why they were chosen. Open an address and see why it was approved. Open a letter and see which market logic produced it. Open a delivery event and trace it back to the original hypothesis. The CRM here is the memory of how the campaign was built.</p>
+
+            <h3>Who this is for, and why</h3>
+            <p>The scan sells to people who've already been burned by "bought a list, wrote to it, silence." Who understand that contacts are the most expensive thing in outreach, and that on paper every miss also shows up on the invoice. Who are ready to do the work once, before buying the list, so they can spend a year working from a map.</p>
+            <p>A scan is done once, to plan a year. It's a body of work, and every result feeds back into it: weak markets shrink, strong ones get sharper, new title patterns show up, old addresses die. It changes when the business changes, the product changes, or the market brings new evidence. It doesn't get rebuilt every week because the first thousand records ran out.</p>
+
+            <h3>What I took from the summer</h3>
+            <p>Three things, if I keep it short.</p>
+            <p>The value is that the machine does the work a human will never do, because of how humans are built. Hypothesis twenty-four, Head of VIP, a matrix of tens of thousands of intersections. All of it takes patience people don't have and won't have for any money.</p>
+            <p>Everything hard is in the text. Doctrine is what squeezed five hundred sessions into four. Stability beats creativity, because with a good doctrine, seven out of ten delivered a thousand times in a row is worth more than ten out of ten once a week.</p>
+            <p>And the gap between "I know where the buyers are" and "I can reach them" is a vocabulary gap. Twenty-seven segments against twenty-nine is a tie. Four hundred sixty-three arms against two thousand three hundred and one is five times. In twenty minutes. That's what all of this stands on.</p>
+
+            <div class="ms-story-closing">
+              <p>That's the whole story.</p>
+              <p>If you want your market scanned before you buy another list, talk to me.</p>
+              <a class="ms-primary-link" href="https://t.me/am7am" target="_blank" rel="noopener noreferrer">Talk to me on Telegram</a>
+            </div>
           </div>
         </div>
       </section>
-
-      <section class="ms-act" id="status" aria-labelledby="status-title" data-ms-section>
-        <div class="ms-act-shell">
-          <h2 id="status-title">The explanation is live. The system is still being finished.</h2>
-          <div class="ms-prose">
-            <p>This page describes Market Scan and the full coin.im workflow around it.</p>
-            <p>The scan runs today. Campaigns run today. The automated self-serve version, the sourcing system, physical-route verification, letter production and the connected CRM are being built as one product rather than assembled from separate tools later.</p>
-            <p>The interface will appear when it has real work to show.</p>
-            <p>What does exist is an intake. You send the material, a person reads it, and the first chronicle comes back within 72 hours.</p>
-            <a class="ms-primary-link" href="/open">Open a business file</a>
-            <p>Until then, the job of this page is narrower: after reading it you should understand what Market Scan does, why doing it properly is difficult, and how it turns one business into months of precise physical outreach.</p>
-          </div>
-        </div>
-      </section>
-
-      <div class="ms-act" aria-labelledby="final-title">
-        <div class="ms-act-shell">
-          <p class="ms-act-label">Market first. List second. Letter last.</p>
-          <h2 id="final-title">Find every serious reason to write, before writing to anyone.</h2>
-          <div class="ms-prose">
-            <p>Three lines is enough: what you sell, who you think ought to answer, and what you have already tried.</p>
-          </div>
-          <div class="ms-hero-actions">
-            <a class="ms-primary-link" href="mailto:mail@coin.im">mail@coin.im</a>
-            <a class="ms-text-link" href="https://t.me/am7am" target="_blank" rel="noopener noreferrer">Telegram</a>
-            <a class="ms-text-link" href="https://wa.me/66633933143" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-          </div>
-        </div>
-      </div>
     </main>
 
     <script>
       (() => {
-        const anchors = [
-          { id: "top", number: "", label: "Hero" },
-          { id: "premise", number: "I", label: "The premise" },
-          { id: "difficulty", number: "II", label: "Why this is difficult" },
-          { id: "terms", number: "III", label: "Three terms" },
-          { id: "reading", number: "IV", label: "Reading the market" },
-          { id: "chronicle", number: "V", label: "The Market Chronicle" },
-          { id: "hypotheses", number: "VI", label: "The hypotheses" },
-          { id: "verticals", number: "VII", label: "Verticals" },
-          { id: "writer", number: "VIII", label: "The letters" },
-          { id: "naming", number: "IX", label: "How the market names itself" },
-          { id: "judge", number: "X", label: "Judge and pruning" },
-          { id: "sourcing", number: "XI", label: "Companies, people, routes" },
-          { id: "object", number: "XII", label: "The letter and the object" },
-          { id: "record", number: "XIII", label: "One continuous record" },
-          { id: "measured", number: "XIV", label: "What we measured" },
-          { id: "faq", number: "", label: "The obvious questions" },
-          { id: "status", number: "", label: "Current status" }
-        ];
-
         const header = document.querySelector("[data-site-header]");
         const progress = document.querySelector("[data-site-progress]");
-        let updateTocActive = () => {};
         let frame = null;
 
         const updateScrollState = () => {
@@ -1170,7 +385,6 @@
           const ratio = max > 0 ? window.scrollY / max : 0;
           progress.style.width = `${Math.max(0, Math.min(1, ratio)) * 100}%`;
           header.classList.toggle("is-scrolled", window.scrollY > 80);
-          updateTocActive();
         };
 
         const requestScrollState = () => {
@@ -1181,73 +395,6 @@
         window.addEventListener("scroll", requestScrollState, { passive: true });
         window.addEventListener("resize", requestScrollState);
         updateScrollState();
-
-        const wideQuery = window.matchMedia("(min-width: 1180px)");
-        let toc = null;
-        let tocObserver = null;
-
-        const createToc = () => {
-          if (toc) return;
-          toc = document.createElement("nav");
-          toc.className = "ms-toc";
-          toc.setAttribute("aria-label", "Market Scan table of contents");
-          toc.innerHTML = `<ol>${anchors.map((item) => `
-            <li>
-              <a href="#${item.id}" data-ms-toc-link="${item.id}">
-                <span>${item.number}</span>
-                <b>${item.label}</b>
-              </a>
-            </li>`).join("")}</ol>`;
-          document.body.appendChild(toc);
-
-          const setActive = (id) => {
-            toc.querySelectorAll("a").forEach((link) => {
-              link.classList.toggle("is-active", link.dataset.msTocLink === id);
-            });
-          };
-
-          updateTocActive = () => {
-            const point = window.innerHeight * 0.58;
-            let activeId = "top";
-            anchors.forEach((item) => {
-              const target = document.getElementById(item.id);
-              if (!target) return;
-              const rect = target.getBoundingClientRect();
-              if (rect.height > 0 && rect.top <= point) activeId = item.id;
-            });
-            setActive(activeId);
-          };
-
-          tocObserver = new IntersectionObserver((entries) => {
-            if (entries.some((entry) => entry.isIntersecting)) updateTocActive();
-          }, { rootMargin: "-32% 0px -58% 0px", threshold: 0 });
-
-          anchors.forEach((item) => {
-            const target = document.getElementById(item.id);
-            if (target) tocObserver.observe(target);
-          });
-          updateTocActive();
-        };
-
-        const removeToc = () => {
-          if (tocObserver) {
-            tocObserver.disconnect();
-            tocObserver = null;
-          }
-          if (toc) {
-            toc.remove();
-            toc = null;
-          }
-          updateTocActive = () => {};
-        };
-
-        const syncToc = () => {
-          if (wideQuery.matches) createToc();
-          else removeToc();
-        };
-
-        wideQuery.addEventListener("change", syncToc);
-        syncToc();
       })();
     </script>
   </body>

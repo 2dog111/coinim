@@ -4,14 +4,33 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="referrer" content="no-referrer" />
-    <title>Open a Business File | coin.im</title>
-    <meta name="description" content="Send the material for a manually prepared coin.im Market Chronicle." />
+    <title>Get your Market Chronicle | coin.im</title>
+    <meta name="description" content="Send your website, call recordings and any documents. Market Scan reads your market and returns a sourced Market Chronicle to your work email." />
     <link rel="canonical" href="https://coin.im/open" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="coin.im" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="Get your Market Chronicle | coin.im" />
+    <meta property="og:description" content="Send your website, call recordings and any documents. Market Scan reads your market and returns a sourced Market Chronicle to your work email." />
+    <meta property="og:url" content="https://coin.im/open" />
+    <meta property="og:image" content="https://coin.im/assets/coin-im-share-en.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="coin.im Market Scan benchmark: 27 vs 29 segments, 463 vs 2,301 arms" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Get your Market Chronicle | coin.im" />
+    <meta name="twitter:description" content="Send your website, call recordings and any documents. Market Scan reads your market and returns a sourced Market Chronicle to your work email." />
+    <meta name="twitter:image" content="https://coin.im/assets/coin-im-share-en.png" />
+    <meta name="twitter:image:alt" content="coin.im Market Scan benchmark: 27 vs 29 segments, 463 vs 2,301 arms" />
+    <meta name="theme-color" content="#f4efe5" />
     <link rel="icon" href="/assets/coin-im-logo.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/assets/base.css?v=20260815-g5" />
-    <link rel="stylesheet" href="/assets/home.css?v=20260815-g15" />
-    <link rel="stylesheet" href="/assets/open.css?v=20260815-g8m-2" />
-    <script src="/assets/open.js?v=20260815-g8m" defer></script>
+    <link rel="icon" href="/assets/favicon.ico" sizes="any" />
+    <link rel="icon" href="/assets/favicon.png?v=20260815-g5" type="image/png" sizes="96x96" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=20260815-g5" sizes="180x180" />
+    <link rel="stylesheet" href="/assets/base.css?v=20260815-g26" />
+    <link rel="stylesheet" href="/assets/home.css?v=20260815-g24" />
+    <link rel="stylesheet" href="/assets/open.css?v=20260815-open3" />
+    <script src="/assets/open.js?v=20260815-open3" defer></script>
   </head>
   <body class="ms-page home-page open-page">
     <header class="open-header">
@@ -20,100 +39,92 @@
 
     <main class="open-shell">
       <section id="open-form-view" aria-labelledby="open-title">
-        <h1 id="open-title">Open a business file</h1>
-        <p class="open-intro">Everything below is optional except the four marked fields. Send what you are free to send; if a document sits under someone else's agreement, describe it in a line instead of attaching it.</p>
+        <p class="open-backlink">This is the input for Market Scan. If you haven't read how it works, <a href="https://coin.im/ms">start here ←</a></p>
+        <h1 id="open-title">Get your Market Chronicle</h1>
+        <p class="open-intro">Send what you have about the business. Market Scan reads your market from the inside out and sends back a sourced Market Chronicle to your work email within 72 hours. Everything is optional except your name, work email and website. If you have nothing but a website, that's enough to start.</p>
 
         <form id="business-file-form" novalidate>
-          <div class="form-section">
-            <label for="website">Your website</label>
-            <input id="website" name="website" type="url" inputmode="url" autocomplete="url" placeholder="https://" />
-            <p class="field-error" id="website-error" aria-live="polite"></p>
-          </div>
-
-          <fieldset class="upload-section" data-slot="company_presentation">
-            <legend>Company presentation</legend>
-            <div class="file-inputs">
-              <input type="file" aria-label="Company presentation files" accept=".pdf,.docx,.pptx,.txt,.md,.mp3,.m4a,.wav,.mp4,.png,.jpg,.webp" multiple />
-            </div>
-            <button class="btn add-file" type="button">Add another</button>
-          </fieldset>
-
-          <fieldset class="upload-section" data-slot="pitch_deck">
-            <legend>Pitch deck</legend>
-            <div class="file-inputs">
-              <input type="file" aria-label="Pitch deck files" accept=".pdf,.docx,.pptx,.txt,.md,.mp3,.m4a,.wav,.mp4,.png,.jpg,.webp" multiple />
-            </div>
-            <button class="btn add-file" type="button">Add another</button>
-          </fieldset>
-
-          <fieldset class="upload-section" data-slot="customer_calls">
-            <legend>Recordings or transcripts of calls with your customers</legend>
-            <div class="file-inputs">
-              <input type="file" aria-label="Customer call recordings or transcripts" accept=".pdf,.docx,.pptx,.txt,.md,.mp3,.m4a,.wav,.mp4,.png,.jpg,.webp" multiple />
-            </div>
-            <button class="btn add-file" type="button">Add another</button>
-          </fieldset>
-
-          <fieldset class="upload-section" data-slot="anything_else">
-            <legend>Anything else</legend>
-            <div class="file-inputs">
-              <input type="file" aria-label="Anything else files" accept=".pdf,.docx,.pptx,.txt,.md,.mp3,.m4a,.wav,.mp4,.png,.jpg,.webp" multiple />
-            </div>
-            <button class="btn add-file" type="button">Add another</button>
-          </fieldset>
-
-          <p class="upload-note">Recordings of sales calls are the most useful thing on this list and the least often sent. Names can be stripped out; what matters is how your buyer describes the problem in their own words.</p>
-          <p class="field-error" id="files-error" aria-live="polite"></p>
-
-          <div class="identity-fields">
+          <section class="form-group" aria-labelledby="you-title">
+            <h2 id="you-title">You</h2>
             <div class="form-section">
-              <label for="name">Your name — required</label>
-              <input id="name" name="name" type="text" autocomplete="name" required maxlength="200" />
+              <label for="name">Your name <span>required</span></label>
+              <input id="name" name="name" type="text" autocomplete="name" required maxlength="200" placeholder="First and last" aria-describedby="name-error" />
               <p class="field-error" id="name-error" aria-live="polite"></p>
             </div>
             <div class="form-section">
-              <label for="work-email">Work email — required</label>
+              <label for="work-email">Work email <span>required</span></label>
               <input id="work-email" name="work_email" type="email" autocomplete="email" required maxlength="320" aria-describedby="email-note work-email-error" />
-              <p class="field-note" id="email-note">A company address, not a personal one. The chronicle goes there.</p>
+              <p class="field-note" id="email-note">A company address. The chronicle goes there.</p>
               <p class="field-error" id="work-email-error" aria-live="polite"></p>
             </div>
             <div class="form-section">
-              <label for="phone">Phone — required</label>
-              <input id="phone" name="phone" type="tel" autocomplete="tel" required maxlength="100" />
-              <p class="field-error" id="phone-error" aria-live="polite"></p>
+              <label for="role">Role <span>optional</span></label>
+              <input id="role" name="role" type="text" autocomplete="organization-title" maxlength="200" placeholder="Founder, Head of Sales, …" />
             </div>
-            <div class="form-section">
-              <label for="role">Role — optional</label>
-              <input id="role" name="role" type="text" autocomplete="organization-title" maxlength="200" />
-            </div>
-          </div>
+          </section>
 
-          <fieldset class="contact-section" aria-describedby="channels-error">
-            <legend>How should we reach you — required</legend>
-            <div class="contact-options">
-              <button class="btn contact-choice" type="button" aria-pressed="false" data-channel="Email">Email</button>
-              <button class="btn contact-choice" type="button" aria-pressed="false" data-channel="WhatsApp">WhatsApp</button>
-              <button class="btn contact-choice" type="button" aria-pressed="false" data-channel="Telegram">Telegram</button>
-              <button class="btn contact-choice" type="button" aria-pressed="false" data-channel="Phone">Phone</button>
-              <button class="btn contact-choice" type="button" aria-pressed="false" data-channel="SMS">SMS</button>
-              <button class="btn contact-choice" type="button" aria-pressed="false" data-channel="LINE">LINE</button>
-              <button class="btn contact-choice" type="button" aria-pressed="false" data-channel="WeChat">WeChat</button>
+          <section class="form-group" aria-labelledby="business-title">
+            <h2 id="business-title">The business</h2>
+            <div class="form-section">
+              <label for="website">Your website <span>required</span></label>
+              <input id="website" name="website" type="text" inputmode="url" autocomplete="url" required maxlength="2048" placeholder="https://" aria-describedby="website-note website-error" />
+              <p class="field-note" id="website-note">We start here.</p>
+              <p class="field-error" id="website-error" aria-live="polite"></p>
             </div>
-            <p class="field-error" id="channels-error" aria-live="polite"></p>
-          </fieldset>
+
+            <fieldset class="upload-section" data-upload-zone data-slot="customer_calls">
+              <legend>Recordings or transcripts of calls with your customers <span>optional</span></legend>
+              <p class="field-note">The most useful thing on this list and the least often sent. Names can be stripped out; what matters is how your buyer describes the problem in their own words.</p>
+              <input id="customer-calls" type="file" accept=".mp3,.m4a,.wav,.mp4,.pdf,.docx,.txt" multiple />
+              <label class="drop-zone" for="customer-calls">
+                <span>Drop files here or choose files</span>
+                <small>Audio, video, txt, docx, pdf. Server cap: 200 MB per file.</small>
+              </label>
+              <ul class="file-list" aria-live="polite"></ul>
+              <p class="field-error" id="customer-calls-error" aria-live="polite"></p>
+            </fieldset>
+
+            <fieldset class="upload-section" data-upload-zone data-slot="company_presentation">
+              <legend>Documents <span>optional</span></legend>
+              <p class="field-note">Deck, company presentation, one-pager, case studies, pricing, anything that explains what you sell and to whom. If a document sits under someone else's agreement, describe it in a line below instead of attaching it.</p>
+              <input id="documents" type="file" accept=".pdf,.pptx,.docx,.txt,.md,.png,.jpg,.webp" multiple />
+              <label class="drop-zone" for="documents">
+                <span>Drop files here or choose files</span>
+                <small>PDF, PPTX, DOCX, TXT, MD, PNG, JPG, WEBP. Server cap: 200 MB per file.</small>
+              </label>
+              <ul class="file-list" aria-live="polite"></ul>
+              <p class="field-error" id="documents-error" aria-live="polite"></p>
+            </fieldset>
+
+            <div class="form-section">
+              <label for="anything-else">Anything else <span>optional</span></label>
+              <textarea id="anything-else" name="anything_else" rows="4" maxlength="8000" placeholder="Who buys today, where you can and can't sell, what you'd never want said in a letter, what you want the reader to do."></textarea>
+              <p class="field-error" id="anything-else-error" aria-live="polite"></p>
+            </div>
+
+            <p class="handling-link">Files are stored privately and opened only for your chronicle. <a href="https://coin.im/handling">Where your file sits and who can open it →</a></p>
+            <p class="field-error" id="files-error" aria-live="polite"></p>
+          </section>
+
+          <section class="form-group" aria-labelledby="reaching-title">
+            <h2 id="reaching-title">Reaching you</h2>
+            <div class="form-section">
+              <label for="alternate-contact">Or message me on <span>optional</span></label>
+              <input id="alternate-contact" name="alternate_contact" type="text" autocomplete="off" maxlength="200" placeholder="@telegram, WhatsApp number, LinkedIn URL — only if you'd rather not do email" />
+            </div>
+          </section>
 
           <p class="form-error" id="form-error" role="alert"></p>
-          <button class="btn btn--stamp submit-file" type="submit">Send the file</button>
-          <p class="handling-link">The clock starts when the upload finishes. <a href="/handling">Where your file sits and who can open it →</a></p>
+          <button class="btn btn--stamp submit-file" type="submit" disabled>Send and start the scan</button>
+          <p class="submit-note">The clock starts when the upload finishes.</p>
         </form>
       </section>
 
       <section id="confirmation-view" class="confirmation-view" aria-labelledby="confirmation-title" hidden>
-        <h2 id="confirmation-title" tabindex="-1">Received</h2>
+        <h2 id="confirmation-title" tabindex="-1">Got it. Your scan is running.</h2>
         <div class="ms-prose">
-          <p>Your file is with us. Nothing here is automated: a person reads what you sent, and the first chronicle comes back within 72 hours of this upload.</p>
-          <p>We will reach you the way you asked. There is no account to log into and no page to check — this is the whole interface, and it stays that way until there is something worth building one for.</p>
-          <p>There will be no company names in the chronicle, and no addresses. That is deliberate. It says which companies to look for and what the people who own the problem are called. Finding the actual organisations, the actual people and the postal routes that reach them is the next stage, it is done by hand, and it is quoted separately.</p>
+          <p>Your Market Chronicle will arrive at <span id="confirmation-email">your work email</span> within 72 hours. If you remember something you didn't send — a recording, a deck, a note — reply to the confirmation email and it goes into the same file.</p>
+          <p class="handling-link"><a href="https://coin.im/ms">Read how the scan works while you wait →</a></p>
         </div>
       </section>
     </main>

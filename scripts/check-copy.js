@@ -73,7 +73,6 @@ const getSectionCopy = (html) => {
     .filter((source) => textNodes(source));
   const sections = [
     ["Hero", "hero", section(/<section\b[^>]*class="[^"]*\bhome-hero\b[^"]*"[^>]*>[\s\S]*?<\/section>/)],
-    ["Object one", "object-one", section(/<section id="object-one"[\s\S]*?<\/section>/)],
     ["The record", "proof", section(/<section\b[^>]*class="[^"]*\bhome-proof\b[^"]*"[^>]*>[\s\S]*?<\/section>/)],
     ["Record bridge", "record-bridge", section(/<div class="rest-band home-rest"[^>]*>[\s\S]*?<\/div>/)],
     ["Stage one", "stage-1", section(/<section id="stage-1"[\s\S]*?<\/section>/)],
@@ -81,6 +80,7 @@ const getSectionCopy = (html) => {
     ["Stage three", "stage-3", section(/<section id="stage-3"[\s\S]*?<\/section>/)],
     ["Stage four", "stage-4", section(/<section id="stage-4"[\s\S]*?<\/section>/)],
     ["Rest band", "rest-1", restBands[0]],
+    ["Object one", "object-one", section(/<section id="object-one"[\s\S]*?<\/section>/)],
     ["The objects", "objects", section(/<section id="objects"[\s\S]*?<\/section>/)],
     ["Before a word is read", "before-reading", section(/<section id="before-reading"[\s\S]*?<\/section>/)],
     ["Why paper, when email is free", "why-paper", section(/<section id="why-paper"[\s\S]*?<\/section>/)],

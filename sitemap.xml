@@ -26,6 +26,16 @@
   </url>
   <url>
     <loc>https://coin.im/ms</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://coin.im/ms" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://coin.im/msru" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://coin.im/ms" />
+    <lastmod>2026-08-15</lastmod>
+  </url>
+  <url>
+    <loc>https://coin.im/msru</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://coin.im/ms" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://coin.im/msru" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://coin.im/ms" />
     <lastmod>2026-08-15</lastmod>
   </url>
   <url>
