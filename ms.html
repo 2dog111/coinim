@@ -242,8 +242,8 @@
             <h3>Then I went in a fourth time</h3>
             <p>By the time release looked days away, everything I'd been grinding toward for months was done. Full self-serve, an automated seller, plus contacts collected in a way nobody collects them, by the million, better than Clay and Apollo and cheaper. The first client wrote in a week later, and it felt fucking great, even though he was writing about the old revision, and in those few days the letters and the knowledge underneath them had gotten a hundred times stronger.</p>
             <p>And that's when I went back in for the fourth time.</p>
-            <p>The task sounded simple. Make research plus copywriting plus business reasoning run automatically for any task. One model gave me something sane at some point and I thought that was it. Then a new one came out, and the fear that it could be even better wouldn't let go. Several more days, every weekend, sixteen hours a day. And in the middle of it, the new model lost its mind, and I mean that literally: both models I was working with went stupid in front of my eyes, down to complete imbecility. They stopped seeing the details of the task. I'd say anything at all and they'd latch onto it and dance in circles around that one thought. The repo, where working code already sat, they no longer looked at. They'd wait for me to say something and discuss it in a vacuum.</p>
-            <p>The evening before, the pair of older models was doing both the design and the implementation noticeably better than the ones that replaced them. Models have degraded on my watch before. But swinging tens of times in either direction inside a week, that I don't remember.</p>
+            <p>The task sounded simple. Make research plus copywriting plus business reasoning run automatically for any task. Fable 5 gave me something sane at some point and I thought that was it. Then GPT 5.6 Sol Max came out, and the fear that it could be even better wouldn't let go. Several more days, every weekend, sixteen hours a day. And in the middle of it, Sol lost its mind, and I mean that literally: both models I was working with, Sol and Fable, went stupid in front of my eyes, down to complete imbecility. They stopped seeing the details of the task. I'd say anything at all and they'd latch onto it and dance in circles around that one thought. The repo, where working code already sat, they no longer looked at. They'd wait for me to say something and discuss it in a vacuum.</p>
+            <p>At ten to seven on the evening of 13 July, GPT 5.5 and Opus were doing both the design and the implementation noticeably better than Sol Max and Fable 5, and I'll swear to that. Models have degraded on my watch before. But swinging tens of times in either direction inside a week, that I don't remember.</p>
             <p>A hammer that changes its molecular composition in your hand. You've got a million nails to drive, and it goes hard rarely, and you have to guess the moment. And only people with a giant repo feel this. It'll build a landing page fine. It'll build a CRM where you drag cards around with a mouse fine. People brag about that on Facebook, though one prompt could do it a year ago. But with a genuinely complex codebase you're in despair, and you're alone. Well. Not alone.</p>
             <p>Five in the morning, I'm sitting there, told to fuck off by both major providers, writing a ten-thousand-line prompt by hand. Market scan plus copy plus knowledge. Through hardship to the stars.</p>
             <p>That was version four. Version two had already stunned the people I showed results to, about their own businesses. Version three was several times better than two. And for four I'd designed something I thought was final, and I was running hundreds of experiments under it to find the one configuration I could carve in stone. Eight days straight, starting early on a Friday, I ran nothing else.</p>
@@ -259,7 +259,7 @@
             <h3>What I took from it</h3>
             <p>Three things.</p>
             <p>This is version four, and every version before it already worked and already impressed people. I rebuilt not because it broke, but because I'd figured out how to do it better.</p>
-            <p>The models shifted under my hands the entire way. The same model that's a genius at research goes insane on code, and which one was best changed every two weeks. That's why, in the benchmark, stability is going to be its own property, worth more than creativity.</p>
+            <p>The models shifted under my hands the entire way. Sol Max is a genius at research and goes insane on code, and which one was best changed every two weeks. That's why, in the benchmark, stability is going to be its own property, worth more than creativity.</p>
             <p>And everything that let me squeeze five hundred sessions into four was paperwork. Doctrine. Text.</p>
           </div>
         </div>
@@ -274,22 +274,79 @@
             <p>It took a full day.</p>
 
             <h3>What I ran</h3>
-            <p>Five models. Three real clients, data exported read-only from production. Fifteen cells. Offline sidecar, maximum parallelism, production untouched.</p>
-            <p>Two of the biggest names weren't in this run. I had already dropped them from my roster. But from dozens of earlier experiments I know how they'd have done. One of them was solidly mid on this kind of work: shallow on creative depth in text and meaning. In research tasks it scored five times lower and worse than the best model here. The other was much stronger and runs neck and neck with the fastest model in this test, and those two are the ones actually competing in this niche.</p>
+            <p>Five models. Qwen3.8 max, GPT 5.5 xhigh, GPT 5.6 Sol Max, Kimi k3 max, and GLM5.2 max through the Qwen CLI. Three real clients, data exported read-only from production. Fifteen cells. Offline sidecar, maximum parallelism, production untouched.</p>
+            <p>Fable 5 and Opus 5 weren't in this run. I had already dropped them from my roster, and I don't miss them. But from dozens of earlier experiments I know how they'd have done. Fable is solidly mid on this kind of work: shallow on creative depth in text and meaning. In research tasks it scored five times lower and worse than Sol Max. Opus is much stronger and runs neck and neck with GPT 5.5 xhigh, and those two are the ones actually competing in this niche.</p>
 
             <h3>The numbers</h3>
             <p>Look at the total line per model, all three clients together.</p>
-            <p>The conservative one: forty-one and a half minutes on average, fifty segments, five hundred seventy-five arms. Doctrine-shaped, safe. That's my current production baseline.</p>
-            <p>The fast one: sixteen minutes, forty-eight segments, six hundred sixty-one arms. Fastest of all, even maps, controlled copy. Closed every cell in fifteen to seventeen minutes.</p>
-            <p>The wide one: forty-two minutes, seventy-three segments, four thousand four hundred seven arms. On all three clients it found the widest universe of segments and arms. Slower, and it overproduces arms, and they need measuring and pruning afterward.</p>
-            <p>The voice one: twenty-nine minutes, thirty-nine segments, twelve hundred seventy-five arms. Strong voice in the letters, wide maps, but capacity-sensitive: on one client the first attempt died on a quota limit and only went through on retry.</p>
-            <p>The compact one: thirty-one minutes, thirty-nine segments, two hundred thirty-six arms. Finished, but narrow, with a messier route, and one first attempt hit an API inspection wall. Good as an independent sanity check. Not a first fallback.</p>
-            <p>There's one more number that shows the whole thing at a glance: arms per segment. The wide one, sixty. The voice one, thirty-three. The fast one, almost fourteen. The conservative one, eleven and a half. The compact one, six. Same work, same inputs, a tenfold spread.</p>
-            <p>And what broke, because that's part of the numbers too. Thirteen of the fifteen cells closed on the first attempt. The voice model hit a profile quota on one client and went through on the second attempt in eleven minutes. The compact model got a data inspection refusal from the API on another client and went through on the second attempt in twenty-seven minutes. Final roll-up: fifteen of fifteen, JSON valid.</p>
+          </div>
+          <table class="data-table">
+            <caption>Totals across three business inputs, August 2026. Segments and arms are cumulative; minutes are the average per complete run.</caption>
+            <thead>
+              <tr>
+                <th scope="col">MODEL</th>
+                <th scope="col">AVG MIN</th>
+                <th scope="col">SEGMENTS</th>
+                <th scope="col">ARMS</th>
+                <th scope="col">ARMS PER SEGMENT</th>
+                <th scope="col">COMPLETED</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" data-label="MODEL">Qwen3.8 max</th>
+                <td data-label="AVG MIN">41.1</td>
+                <td data-label="SEGMENTS">50</td>
+                <td data-label="ARMS">575</td>
+                <td data-label="ARMS PER SEGMENT">11.5</td>
+                <td data-label="COMPLETED">3/3</td>
+              </tr>
+              <tr>
+                <th scope="row" data-label="MODEL">GPT 5.5 xhigh</th>
+                <td data-label="AVG MIN">16.4</td>
+                <td data-label="SEGMENTS">48</td>
+                <td data-label="ARMS">661</td>
+                <td data-label="ARMS PER SEGMENT">13.8</td>
+                <td data-label="COMPLETED">3/3</td>
+              </tr>
+              <tr class="data-table-peak">
+                <th scope="row" data-label="MODEL">GPT 5.6 Sol Max</th>
+                <td data-label="AVG MIN">41.8</td>
+                <td data-label="SEGMENTS">73</td>
+                <td data-label="ARMS">4,407</td>
+                <td data-label="ARMS PER SEGMENT">60.4</td>
+                <td data-label="COMPLETED">3/3</td>
+              </tr>
+              <tr>
+                <th scope="row" data-label="MODEL">Kimi k3 max</th>
+                <td data-label="AVG MIN">29.0</td>
+                <td data-label="SEGMENTS">39</td>
+                <td data-label="ARMS">1,275</td>
+                <td data-label="ARMS PER SEGMENT">32.7</td>
+                <td data-label="COMPLETED">3/3</td>
+              </tr>
+              <tr>
+                <th scope="row" data-label="MODEL">GLM5.2 max via Qwen CLI</th>
+                <td data-label="AVG MIN">31.1</td>
+                <td data-label="SEGMENTS">39</td>
+                <td data-label="ARMS">236</td>
+                <td data-label="ARMS PER SEGMENT">6.1</td>
+                <td data-label="COMPLETED">3/3</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="ms-prose">
+            <p>Qwen3.8 max: forty-one and a half minutes on average, fifty segments, five hundred seventy-five arms. Doctrine-shaped, safe. That's my current production baseline.</p>
+            <p>GPT 5.5 xhigh: sixteen minutes, forty-eight segments, six hundred sixty-one arms. Fastest of all, even maps, controlled copy. Closed every cell in fifteen to seventeen minutes. Remarkable for a model that's been out for months.</p>
+            <p>GPT 5.6 Sol Max: forty-two minutes, seventy-three segments, four thousand four hundred seven arms. On all three clients it found the widest universe of segments and arms. Slower, and it overproduces arms, and they need measuring and pruning afterward.</p>
+            <p>Kimi k3 max: twenty-nine minutes, thirty-nine segments, twelve hundred seventy-five arms. Strong voice in the letters, wide maps, but capacity-sensitive: on one client the first attempt died on a profile quota limit and only went through on retry.</p>
+            <p>GLM5.2 max through the Qwen CLI: thirty-one minutes, thirty-nine segments, two hundred thirty-six arms. Finished, but narrow, with a messier route attestation, and one first attempt came back from the Qwen API with a data inspection failure. Good as an independent sanity check. Not a first fallback.</p>
+            <p>The column that shows the whole thing at a glance is arms per segment. Sol Max, sixty. Kimi, thirty-three. GPT 5.5, almost fourteen. Qwen, eleven and a half. GLM, six. Same work, same inputs, a tenfold spread.</p>
+            <p>And what broke, because that's part of the numbers too. Thirteen of the fifteen cells closed on the first attempt. Kimi hit a profile quota on one client and went through on the second attempt in eleven minutes. GLM got the data inspection refusal on another client and went through on the second attempt in twenty-seven minutes. Final roll-up: fifteen of fifteen, JSON valid.</p>
 
             <h3>The number that explains everything</h3>
-            <p>Take one of the three clients. The fast model found twenty-seven segments there. The wide model found twenty-nine. A tie. Anyone comparing models would say: same thing, move on.</p>
-            <p>Now the arms. The fast model made four hundred sixty-three. The wide model made two thousand three hundred and one.</p>
+            <p>Take one of the three clients. GPT 5.5 xhigh found twenty-seven segments there. Sol Max found twenty-nine. A tie. Anyone comparing models would say: same thing, move on.</p>
+            <p>Now the arms. GPT 5.5 made four hundred sixty-three. Sol Max made two thousand three hundred and one.</p>
           </div>
           <div class="ms-benchmark-display" aria-label="27 versus 29 segments, 463 versus 2,301 arms, twenty minutes">
             <p>27 vs 29 segments</p>
@@ -303,25 +360,25 @@
             <p>And a market scan is done once in a lifetime, to plan a year of work. So those extra twenty minutes are a total addressable market four to five times larger for the whole year. By my estimate, an eightfold acceleration of a sales team over a ten-year stretch, for twenty extra minutes of pocket-change tokens. And that's the comparison for beginners. Dig into the details and there's a larger acceleration still, plus things earlier models simply couldn't do: certain games with text constructions that weren't possible before.</p>
 
             <h3>How I route them now</h3>
-            <p>Research and adjacent discovery: the wide model, with the fast one as fallback. Wide gives the broadest maps; fast is the quick, controlled backup.</p>
-            <p>Market Arms: the wide model again, because coverage is maximal. The voice model second, if capacity is healthy. The conservative model for conservative maps, when you want production-shaped rather than maximal.</p>
-            <p>Letters are the interesting one. I use the conservative model with the fast one as fallback, but the fallback is sneaky: both always write, and the judge picks between them. Thirty percent of the time it picks the fast one, which is a remarkable result for a model that's many months old by now. The voice model is the second voice, the style challenger, when capacity allows.</p>
-            <p>Emergency fallback for the whole run is the fast model. Cleanest operational profile end to end.</p>
-            <p>Judge is a separate contract, and I didn't evaluate it in this run. Only writer cells here.</p>
+            <p>Research and adjacent discovery: Sol Max, with GPT 5.5 xhigh as fallback. Sol gives the broadest maps; GPT 5.5 is the quick, controlled backup.</p>
+            <p>Market Arms: Sol Max again, because coverage is maximal. Kimi k3 max second, if capacity is healthy. Qwen3.8 max for conservative maps, when you want production-shaped rather than maximal.</p>
+            <p>Letters are the interesting one. I use Qwen3.8 max with GPT 5.5 xhigh as fallback, but the fallback is sneaky: both always write, and the judge picks between them. Thirty percent of the time it picks GPT 5.5, which is a remarkable result for a model that's many months old by now. Kimi is the second voice, the style challenger, when capacity allows.</p>
+            <p>Emergency fallback for the whole run is GPT 5.5 xhigh. Cleanest operational profile end to end.</p>
+            <p>The judge is a separate contract, still Kimi, and I didn't evaluate it in this run. Only writer cells here.</p>
 
             <h3>On stability</h3>
-            <p>Separately about the fast model, because there's an important thing here.</p>
-            <p>It's nowhere near as creative in text as the conservative model. That one can produce things the fast model never will. But it can also fuck up, including simply not answering the API call. The fast model is the most stable model in existence. It delivers its seven out of ten in text so evenly that you could run it a thousand times on a thousand texts and get exactly the quality you expect every time.</p>
+            <p>Separately about GPT 5.5 xhigh, because there's an important thing here.</p>
+            <p>It's nowhere near as creative in text as Qwen3.8 max. Qwen can produce things GPT 5.5 never will. But Qwen can also fuck up, including simply not answering the API call. GPT 5.5 xhigh is the most stable model in existence. It delivers its seven out of ten in text so evenly that you could run it a thousand times on a thousand texts and get exactly the quality you expect every time.</p>
             <p>For anyone who isn't prepared to write enormous treatises of quality methodology for the runner to lean on, that's not great: seven out of ten is seven out of ten. For someone like me, with a doctrine thousands of lines long, it's fantastic, because predictability is worth more than peaks.</p>
 
             <h3>Why the ranking flipped</h3>
             <p>This needs laying out properly, because from outside it looks like a contradiction.</p>
-            <p>A few weeks before this run, I'd been saying the voice model beat the wide model, and the wide model destroyed one of the big names. In the benchmark, the wide model is the king of breadth and the voice model is second-tier.</p>
-            <p>The difference is the task. The earlier ranking was about who codes better and holds a complex codebase together. There, the wide model went insane, and I was force-killing it at hour fifteen, hour fifty. On coding tasks it basically never wraps up. I never once waited it out. The benchmark ranking is about research and writing. And on those tasks, strangely, the wide model doesn't go insane: it finishes all the work itself and closes out in forty-two minutes, versus sixteen for the fast one.</p>
+            <p>A few weeks before this run, I'd been saying Kimi k3 beat Sol Max, and Sol Max destroyed Fable 5. In the benchmark, Sol Max is the king of breadth and Kimi is second-tier.</p>
+            <p>The difference is the task. The earlier ranking was about who codes better and holds a complex codebase together. There, Sol went insane, and I was force-killing it at hour fifteen, hour fifty. On coding tasks it basically never wraps up. I never once waited it out. The benchmark ranking is about research and writing. And on those tasks, strangely, Sol doesn't go insane: it finishes all the work itself and closes out in forty-two minutes, versus sixteen for GPT 5.5.</p>
             <p>One model, two tasks, two different verdicts. If only this thing could code without losing its mind, it'd be priceless.</p>
 
             <h3>What the benchmark doesn't prove</h3>
-            <p>I wrote this into the scorecard itself. It answers writer interchangeability. It doesn't prove production routing, doesn't measure paid sourcing, purchased lead quality, deliverability, or judge acceptance. To make this production, it needs a small governed implementation: keep the conservative model as baseline, add explicit routing by stage, keep deterministic validation to JSON, transport and math only, then compare against the judge and run a bounded live smoke.</p>
+            <p>I wrote this into the scorecard itself. It answers writer interchangeability. It doesn't prove production routing, doesn't measure paid sourcing, purchased lead quality, deliverability, or judge acceptance. To make this production, it needs a small governed implementation: keep Qwen3.8 max as baseline, add explicit routing by stage, keep deterministic validation to JSON, transport and math only, then compare against the judge and run a bounded live smoke.</p>
           </div>
         </div>
       </section>

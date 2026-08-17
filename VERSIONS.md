@@ -4,7 +4,7 @@ This is the local place to check the current site version before edits or deploy
 
 ## Current Version
 
-- Local site version: `2026-08-17-170627Z-vps-ms-msru-detail-restore`
+- Local site version: `2026-08-17-171243Z-vps-ms-msru-model-names`
 - Home base CSS cache key in HTML: `assets/base.css?v=20260815-g24`
 - Home CSS cache key in HTML: `assets/home.css?v=20260815-g24`
 - Business File home CSS cache key in HTML: `assets/home.css?v=20260815-g24`
@@ -47,7 +47,7 @@ This is the local place to check the current site version before edits or deploy
 
 - Deployment date: `2026-08-17`
 - Host: `iva` / `193.181.215.57`
-- Active release: `/var/www/coin.im/releases/20260817T170627Z`
+- Active release: `/var/www/coin.im/releases/20260817T171243Z`
 - Active intake API release: `/opt/coin-im-open/releases/20260815T092516Z`
 - Current symlink: `/var/www/coin.im/current`
 - Nginx config: `/etc/nginx/conf.d/coin.im.conf`
@@ -161,6 +161,12 @@ The 2026-08-15 G10 pass added marker-fill and stamp interaction physics to both 
 The 2026-08-15 LS1 pass replaced the baked-text object catalogue images with one approved, selectable key-letter specimen; the other nine unapproved letter images were removed from active markup. Caveat is self-hosted as WOFF2 with Georgia fallback, the object crop contains no baked text, all five requested widths have no horizontal overflow, and the measured text contrast is 17.316:1. Lighthouse returned Performance 99, Accessibility 100 and SEO 100. Full evidence is in `audit-ls1.md` and `qa-screens/ls1/`.
 
 The 2026-08-15 G7 rhythm pass removed stage numbers from the hero index and all four stage sections, replaced the four stage labels, and consolidated vertical rhythm around `--space-section`, `--space-block`, and `--space-tight`. The visible copy comparison changed only the approved labels and removed numbers. Checks at 375, 430, 768, 1024, 1440 and 1920 found no horizontal overflow; all four stage links reached their original anchors. Full measurements and before/after screenshots are in `audit-home-g7.md`.
+
+The 2026-08-17 release `20260817T171243Z` put the real model names and the benchmark matrix back on both Market Scan pages, at the owner's explicit instruction.
+
+The names had been on the English page in its first build (`3b51d40`) as a `.data-table` matrix and were dropped in `e22fae9` when the page was rebuilt as a story; the Russian page never carried them. Both pages now name Qwen3.8 max, GPT 5.5 xhigh, GPT 5.6 Sol Max, Kimi k3 max and GLM5.2 max via Qwen CLI throughout part four, plus Fable 5 and Opus 5 as the two models dropped from the roster, and Sol, Fable, GPT 5.5 and Opus by name in the part-three account of the July degradation. The aggregate matrix returned as a `.data-table` with MODEL, AVG MIN, SEGMENTS, ARMS, ARMS PER SEGMENT and COMPLETED, the Sol Max row carrying `data-table-peak`. `.data-table` styling already lives in `assets/base.css`, so no CSS changed.
+
+Browser checks were run for this one because it adds a layout block, not just text. On production at desktop width both pages report one H1, no horizontal overflow, and a 743 px table aligned to the prose measure. At 375 px the mobile rules apply correctly: `thead` hides, cells become a stacked grid, the `data-label` values render through `::before` in the page's own language, and `document.body.scrollWidth` equals the viewport at 375. All fourteen required HTTPS checks returned 200, `nginx -t` passed and nginx reloaded. `ms.html` and `msru.html` stay byte-identical with their route mirrors, and live `/ms`, `/ms/`, `/msru` and `/msru/` hash to the local files.
 
 The 2026-08-17 release `20260817T170627Z` gave the English Market Scan page the same restoration the Russian page got in `20260817T170201Z`.
 
