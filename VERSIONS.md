@@ -16,6 +16,7 @@ This is the local place to check the current site version before edits or deploy
 - Body/heading font: `assets/fonts/source-serif-4-variable.woff2` (Source Serif 4 Variable, latin + cyrillic subset, 198 KB, preloaded on /, /ru, /ms, /msru, /open)
 - 2026-08-18 deploy verified: all public URLs below return 200 over HTTPS, `/api/open/health` OK, `www` OK, nginx config test clean, reload clean
 - Note: the London microcement passage in `/ms` and `/msru` sat restored in the working tree in both languages (uncommitted parallel-session state after commit `8b0571e` cut it); it is preserved and deployed
+- Post-restyle check of the Market Scan benchmark matrix: `.data-table` survives the new type scale. On production `/msru` the table renders at 610 px inside the narrower measure, monospace at 13.44 px, five rows with the `data-table-peak` accent on the GPT 5.6 Sol Max row, one H1, no horizontal overflow, `document.fonts.status` loaded. At 375 px the stacked rules still apply: `thead` hidden, cells display grid, `data-label` values rendering through `::before` in Russian, no overflow. The `GLM5.2 max через Qwen CLI` cell and the caption now wrap to two lines, which is the only visible change from the restyle. Fifteen HTTPS checks returned 200, including the new `assets/fonts/source-serif-4-variable.woff2`
 - Main production URL: `https://coin.im/`
 - Russian page URL: `https://coin.im/ru`
 - Spanish page URL: `https://coin.im/es`
