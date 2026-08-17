@@ -11,16 +11,17 @@
 }
 
 .ms-hero-v2 h1 {
-  max-width: 15ch;
-  font-size: 4.75rem;
-  line-height: 1.02;
-  letter-spacing: 0;
+  max-width: 16ch;
+  font-size: clamp(2.5rem, 1.7rem + 3.8vw, 4.125rem);
+  line-height: 1.06;
+  letter-spacing: -0.01em;
 }
 
 .ms-hero-subtitle {
-  max-width: 58ch;
-  font-size: 2rem;
-  line-height: 1.25;
+  max-width: 52ch;
+  font-size: clamp(1.375rem, 1.15rem + 1.1vw, 1.75rem);
+  line-height: 1.38;
+  text-wrap: pretty;
 }
 
 .ms-hero-actions {
@@ -65,8 +66,8 @@
 }
 
 .ms-story-part {
-  padding-top: 8rem;
-  padding-bottom: 8.5rem;
+  padding-top: var(--space-part);
+  padding-bottom: calc(var(--space-part) + 0.5rem);
 }
 
 .ms-story-part::before {
@@ -92,31 +93,31 @@
 }
 
 .ms-story-part h2 {
-  font-size: 3rem;
-  line-height: 1.1;
-  letter-spacing: 0;
+  font-size: clamp(2rem, 1.5rem + 2.1vw, 2.625rem);
+  line-height: 1.16;
+  letter-spacing: -0.008em;
 }
 
 .ms-story-part .ms-prose {
-  margin-top: 2.75rem;
+  margin-top: clamp(1.9rem, 4vw, 2.6rem);
 }
 
 .ms-story-part .ms-prose p {
-  max-width: 64ch;
-  font-size: 1.24rem;
-  line-height: 1.7;
+  max-width: 62ch;
+  font-size: clamp(1.125rem, 1.05rem + 0.35vw, 1.24rem);
+  line-height: 1.66;
   text-wrap: pretty;
   hyphens: auto;
 }
 
 .ms-story-part .ms-prose p + p {
-  margin-top: 1.15em;
+  margin-top: 1em;
 }
 
 .ms-story-part .ms-prose h3 {
-  margin-top: 4.5rem;
-  font-size: 1.5rem;
-  line-height: 1.25;
+  margin-top: clamp(2.6rem, 5.5vw, 3.6rem);
+  font-size: clamp(1.375rem, 1.25rem + 0.6vw, 1.575rem);
+  line-height: 1.24;
   letter-spacing: 0;
   text-wrap: balance;
 }
@@ -127,14 +128,16 @@
 
 .ms-benchmark-display {
   max-width: var(--measure);
-  margin: 4.5rem 0;
+  margin: clamp(2.8rem, 6vw, 4rem) 0;
+  padding-left: clamp(1rem, 2.5vw, 1.6rem);
   color: var(--ink);
   font-family: var(--font-serif);
-  font-size: 3.4rem;
+  font-size: clamp(1.45rem, 0.6rem + 3.9vw, 3.1rem);
   font-variant-numeric: tabular-nums;
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: 0;
+  font-weight: 480;
+  line-height: 1.08;
+  letter-spacing: -0.008em;
+  border-left: 2px solid var(--stamp);
 }
 
 .ms-benchmark-display p {
@@ -147,7 +150,19 @@
 }
 
 .ms-story-closing {
-  margin-top: 6rem;
+  margin-top: clamp(3.4rem, 7vw, 5rem);
+  padding-top: clamp(1.9rem, 4vw, 2.6rem);
+  border-top: 1px solid var(--rule-strong);
+}
+
+.ms-story-closing > p {
+  color: var(--ink);
+}
+
+.ms-story-closing .ms-primary-link {
+  min-height: 56px;
+  padding-inline: 1.9rem;
+  font-size: 1.0625rem;
 }
 
 .ms-story-closing .ms-primary-link {
@@ -178,9 +193,9 @@
   }
 
   .ms-hero-v2 h1 {
-    max-width: 13ch;
-    font-size: 2.75rem;
-    line-height: 1.04;
+    max-width: 14ch;
+    font-size: 2.5rem;
+    line-height: 1.08;
   }
 
   .ms-hero-subtitle {
@@ -199,8 +214,8 @@
   }
 
   .ms-story-part {
-    padding-top: 5.5rem;
-    padding-bottom: 6rem;
+    padding-top: 3.4rem;
+    padding-bottom: 3.9rem;
   }
 
   .ms-part-number {
@@ -208,8 +223,8 @@
   }
 
   .ms-story-part h2 {
-    font-size: 2.25rem;
-    line-height: 1.12;
+    font-size: 1.95rem;
+    line-height: 1.18;
   }
 
   .ms-story-part .ms-prose {
@@ -218,8 +233,8 @@
 
   .ms-story-part .ms-prose p {
     max-width: none;
-    font-size: 1.13rem;
-    line-height: 1.7;
+    font-size: 1.125rem;
+    line-height: 1.66;
   }
 
   .ms-story-part .ms-prose h3 {
@@ -228,12 +243,16 @@
   }
 
   .ms-benchmark-display {
-    margin: 3.5rem 0;
-    font-size: 2rem;
+    margin: 2.6rem 0;
+    font-size: clamp(1.15rem, 5.4vw, 1.85rem);
   }
 
   .ms-story-closing {
-    margin-top: 4.5rem;
+    margin-top: 3.2rem;
+  }
+
+  .ms-primary-link {
+    width: 100%;
   }
 }
 

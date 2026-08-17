@@ -11,7 +11,7 @@
   --accent-deep: #c9a227;
   --accent-ink: #5a4300;
   --focus: #a83a26;
-  --space-section: clamp(2.75rem, 5vw, 4.25rem);
+  --space-section: clamp(3rem, 1.6rem + 3.2vw, 6rem);
   --space-block: clamp(1.25rem, 2vw, 1.75rem);
   --space-tight: 0.55rem;
   --font-hand: "Caveat", Georgia, serif;
@@ -86,17 +86,17 @@ summary:focus-visible {
   margin: initial;
   color: var(--ink);
   font-family: var(--font-serif);
-  font-size: clamp(2.75rem, 7vw, 5.5rem);
-  font-weight: 400;
-  line-height: 1.02;
-  letter-spacing: 0;
+  font-size: clamp(2.5rem, 1.8rem + 3.6vw, 4.125rem);
+  font-weight: 540;
+  line-height: 1.05;
+  letter-spacing: -0.012em;
 }
 
 .home-deck {
   max-width: var(--measure);
   margin: var(--space-block) 0 0;
   color: var(--ink-soft);
-  font-size: clamp(1.06rem, 1.25vw, 1.2rem);
+  font-size: var(--text-body);
   font-weight: 400;
   line-height: 1.68;
 }
@@ -162,43 +162,31 @@ summary:focus-visible {
 
 .btn {
   position: relative;
-  display: inline-block;
-  isolation: isolate;
-  overflow: hidden;
-  padding: 0.7em 1.35em;
-  color: var(--ink);
-  font: inherit;
-  letter-spacing: 0.01em;
-  text-decoration: none;
-  background-color: var(--paper-raised);
-  border: 1px solid var(--rule-strong);
-  border-radius: 2px;
-  cursor: pointer;
-  transform: rotate(0.5deg);
-  backface-visibility: hidden;
-  transition: color 180ms ease;
-}
-
-.btn--secondary {
-  transform: none;
-}
-
-.hero-link.btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-}
-
-.btn::before {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  background: var(--accent);
-  content: "";
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 180ms ease-out;
-  pointer-events: none;
+  min-height: var(--btn-height);
+  padding: 0.6rem 1.5rem;
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  line-height: 1.2;
+  text-decoration: none;
+  background-color: var(--paper-raised);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0) 55%);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--btn-radius);
+  cursor: pointer;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    0 1px 2px rgba(22, 19, 15, 0.08);
+  transition:
+    transform 180ms ease-out,
+    box-shadow 180ms ease-out,
+    border-color 180ms ease-out,
+    background-color 180ms ease-out;
 }
 
 .btn > span {
@@ -211,27 +199,56 @@ summary:focus-visible {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .btn:hover::before {
-    transform: scaleX(1);
-  }
-
   .btn:hover {
-    color: var(--ink);
+    border-color: var(--ink);
+    transform: translateY(-1px);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.75),
+      0 2px 4px rgba(22, 19, 15, 0.1),
+      0 10px 22px rgba(22, 19, 15, 0.08);
   }
 }
 
 .btn:active {
-  box-shadow: inset 0 1px 0 rgba(22, 19, 15, 0.25);
+  transform: translateY(0);
+  box-shadow: inset 0 2px 4px rgba(22, 19, 15, 0.14);
 }
 
 .btn:focus-visible {
-  outline: 2px solid var(--ink);
+  outline: 3px solid var(--focus);
   outline-offset: 2px;
 }
 
+.btn--primary,
 .btn--stamp {
-  border-color: var(--accent-deep);
-  border-width: 2px;
+  color: var(--ink-inverse);
+  background-color: var(--ink-surface);
+  background-image: var(--glass-highlight);
+  border-color: rgba(22, 19, 15, 0.92);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 1px 2px rgba(22, 19, 15, 0.28),
+    0 8px 20px rgba(22, 19, 15, 0.14);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn--primary:hover,
+  .btn--stamp:hover {
+    color: var(--ink-inverse);
+    background-color: #262019;
+    border-color: rgba(22, 19, 15, 0.92);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.24),
+      0 2px 4px rgba(22, 19, 15, 0.26),
+      0 12px 26px rgba(22, 19, 15, 0.18);
+  }
+}
+
+.btn--primary:active,
+.btn--stamp:active {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .home-page .prose a {
@@ -334,10 +351,10 @@ summary:focus-visible {
   margin: 0;
   color: var(--ink);
   font-family: var(--font-serif);
-  font-size: clamp(3rem, 6.24vw, 6rem);
-  font-weight: 400;
+  font-size: clamp(2.6rem, 5.2vw, 5rem);
+  font-weight: 480;
   line-height: 1;
-  letter-spacing: -0.012em;
+  letter-spacing: -0.014em;
   white-space: nowrap;
 }
 
@@ -363,15 +380,17 @@ summary:focus-visible {
 .hero-contacts .contact-link,
 .minibar__contacts .contact-link {
   display: inline-flex;
-  min-height: 38px;
+  min-height: 44px;
   align-items: center;
-  padding: 0.55rem 0.75rem;
+  padding: 0.55rem 0.85rem;
   color: var(--ink);
+  font-family: var(--font-sans);
   text-decoration: none;
   background: rgba(250, 247, 241, 0.7);
   border: 1px solid var(--rule);
   border-block-end-width: 2px;
-  border-radius: 4px;
+  border-radius: 10px;
+  transition: background-color 180ms ease-out, border-color 180ms ease-out;
 }
 
 .hero-contacts .contact-link:hover,
@@ -415,24 +434,25 @@ summary:focus-visible {
 }
 
 .home-hero.hero h1 {
-  max-inline-size: 15ch;
+  max-inline-size: 16ch;
   margin: 0;
   color: var(--ink);
   font-family: var(--font-serif);
-  font-size: clamp(2.75rem, 6.4vw, 5.75rem);
-  font-weight: 400;
-  line-height: 0.94;
-  letter-spacing: -0.02em;
+  font-size: clamp(2.5rem, 1.8rem + 3.6vw, 4.125rem);
+  font-weight: 540;
+  line-height: 1.05;
+  letter-spacing: -0.012em;
   text-wrap: balance;
 }
 
 .hero__lead {
-  max-inline-size: 46ch;
+  max-inline-size: 50ch;
   margin-block-start: var(--space-block);
   color: var(--ink-soft);
-  font-size: clamp(1.0625rem, 1.3vw, 1.3125rem);
+  font-size: clamp(1.125rem, 1.03rem + 0.5vw, 1.28rem);
   font-weight: 400;
-  line-height: 1.55;
+  line-height: 1.62;
+  text-wrap: pretty;
 }
 
 .hero__lead p {
@@ -450,71 +470,28 @@ summary:focus-visible {
   margin-block-start: var(--space-block);
 }
 
-.hero .btn,
-.minibar .btn {
-  position: relative;
-  z-index: 0;
-  display: inline-flex;
-  min-height: 48px;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  padding: 0.75rem 1.2rem;
-  color: var(--ink);
-  font-family: var(--font-serif);
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.2;
-  text-decoration: none;
-  border: 1px solid var(--rule-strong);
-  border-radius: 2px;
-  transition: color 180ms ease;
-}
-
-.hero .btn::before,
-.minibar .btn::before {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  background: var(--accent);
-  content: "";
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 180ms ease;
-  pointer-events: none;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .hero .btn:hover::before,
-  .minibar .btn:hover::before {
-    transform: scaleX(1);
-  }
-
-  .hero .btn:hover,
-  .minibar .btn:hover {
-    color: var(--ink);
-  }
+.hero .btn {
+  min-width: 13.5rem;
 }
 
 .hero .btn:focus-visible,
 .minibar .btn:focus-visible,
 .minibar__brand:focus-visible,
 .stage__link:focus-visible {
-  outline: 2px solid var(--ink);
+  outline: 3px solid var(--focus);
   outline-offset: 3px;
 }
 
-.hero .btn--primary,
-.minibar .btn--primary {
-  color: var(--paper);
-  background: var(--ink);
-  border-color: var(--ink);
+.hero .btn--secondary {
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
 }
 
-.hero .btn--secondary {
-  color: var(--ink);
-  background: transparent;
-  transform: none;
+@media (hover: hover) and (pointer: fine) {
+  .hero .btn--secondary:hover {
+    background-color: var(--paper-raised);
+  }
 }
 
 .hero__action-note {
@@ -530,7 +507,8 @@ summary:focus-visible {
   padding: clamp(24px, 2.4vw, 36px);
   background: var(--paper-raised);
   border: 1px solid var(--rule);
-  border-radius: 2px;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(22, 19, 15, 0.05);
 }
 
 #stage-panel-title {
@@ -623,6 +601,14 @@ summary:focus-visible {
   transition: transform 180ms ease;
 }
 
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .minibar {
+    background: rgba(244, 239, 229, 0.82);
+    -webkit-backdrop-filter: blur(14px) saturate(1.35);
+    backdrop-filter: blur(14px) saturate(1.35);
+  }
+}
+
 .minibar.is-visible {
   transform: none;
 }
@@ -653,9 +639,10 @@ summary:focus-visible {
 }
 
 .minibar__action {
-  min-height: 36px !important;
-  padding: 0.5rem 0.8rem !important;
-  font-size: 0.875rem !important;
+  min-height: 44px !important;
+  padding: 0.5rem 1rem !important;
+  font-size: 0.9375rem !important;
+  border-radius: 12px !important;
 }
 
 @media (max-width: 1279px) {
@@ -840,7 +827,7 @@ summary:focus-visible {
   margin: clamp(20px, 2.5vw, 36px) 0 0;
   color: var(--ink);
   font-family: var(--font-serif);
-  font-size: clamp(2.375rem, 9vw, 10rem);
+  font-size: clamp(2.375rem, 1.2rem + 7vw, 7.5rem);
   font-weight: 400;
   font-variant-numeric: lining-nums tabular-nums;
   letter-spacing: 0;
@@ -982,10 +969,11 @@ summary:focus-visible {
   margin: initial;
   color: var(--ink);
   font-family: var(--font-serif);
-  font-size: clamp(1.9rem, 4vw, 3.1rem);
-  font-weight: 400;
-  line-height: 1.12;
-  letter-spacing: 0;
+  font-size: clamp(1.875rem, 1.4rem + 1.9vw, 2.625rem);
+  font-weight: 520;
+  line-height: 1.18;
+  letter-spacing: -0.006em;
+  text-wrap: balance;
 }
 
 .stage > div > div:not(.contrast-pair):not(.bridge):not(.spec-card) {
@@ -996,7 +984,7 @@ summary:focus-visible {
 .stage > div > div:not(.contrast-pair):not(.bridge):not(.spec-card) p {
   margin: initial;
   color: var(--ink-soft);
-  font-size: clamp(1.06rem, 1.25vw, 1.2rem);
+  font-size: var(--text-body);
   font-weight: 400;
   line-height: 1.68;
 }
@@ -1280,10 +1268,11 @@ summary:focus-visible {
   max-width: var(--measure);
   color: var(--ink);
   font-family: var(--font-serif);
-  font-size: clamp(1.9rem, 4vw, 3.1rem);
-  font-weight: 400;
-  line-height: 1.12;
-  letter-spacing: 0;
+  font-size: clamp(1.875rem, 1.4rem + 1.9vw, 2.625rem);
+  font-weight: 520;
+  line-height: 1.18;
+  letter-spacing: -0.006em;
+  text-wrap: balance;
 }
 
 #objects .text-shell {
@@ -1302,7 +1291,7 @@ summary:focus-visible {
 #objects .text-shell > div:not(.text-block) p {
   margin: initial;
   color: var(--ink-soft);
-  font-size: clamp(1.06rem, 1.25vw, 1.2rem);
+  font-size: var(--text-body);
   font-weight: 400;
   line-height: 1.68;
 }
@@ -1318,6 +1307,8 @@ summary:focus-visible {
   height: auto;
   margin-top: var(--space-block);
   border: 1px solid var(--rule);
+  border-radius: 10px;
+  box-shadow: 0 10px 28px rgba(22, 19, 15, 0.07);
 }
 
 .text-block {
@@ -1346,7 +1337,7 @@ summary:focus-visible {
   max-width: var(--measure);
   margin-block-start: 0.9em;
   color: var(--ink-soft);
-  font-size: clamp(1.06rem, 1.25vw, 1.2rem);
+  font-size: var(--text-body);
   font-weight: 400;
   line-height: 1.68;
 }
@@ -1360,7 +1351,7 @@ summary:focus-visible {
   gap: var(--space-block);
   margin: var(--space-section) 0;
   padding: 0;
-  font-size: clamp(1.06rem, 1.25vw, 1.2rem);
+  font-size: var(--text-body);
 }
 
 .specimen__object img {
@@ -1368,6 +1359,8 @@ summary:focus-visible {
   width: 100%;
   height: auto;
   border: 1px solid var(--rule);
+  border-radius: 10px;
+  box-shadow: 0 10px 28px rgba(22, 19, 15, 0.07);
 }
 
 .specimen__sheet {
@@ -1460,7 +1453,7 @@ summary:focus-visible {
   max-width: var(--measure);
   margin-top: var(--space-block);
   color: var(--ink-soft);
-  font-size: clamp(1.06rem, 1.25vw, 1.2rem);
+  font-size: var(--text-body);
   font-weight: 400;
   line-height: 1.68;
 }
@@ -1491,7 +1484,7 @@ summary:focus-visible {
   max-width: var(--measure);
   margin-block-start: 0.9em;
   color: var(--ink-soft);
-  font-size: clamp(1.06rem, 1.25vw, 1.2rem);
+  font-size: var(--text-body);
   font-weight: 400;
   line-height: 1.68;
 }
@@ -1570,7 +1563,7 @@ summary:focus-visible {
   }
 
   .home-hero h1 {
-    font-size: clamp(2.55rem, 15vw, 3.8rem);
+    font-size: clamp(2.35rem, 11vw, 2.9rem);
   }
 
   .hero-actions {
@@ -1627,4 +1620,27 @@ summary:focus-visible {
     transition: none !important;
     animation: none !important;
   }
+}
+
+/* E1 refinements: heading weights and image rhythm */
+.stage > div > h3,
+.text-block h3,
+.spec-card--plain h3,
+.faq--open h3,
+.contrast-pair h3,
+.business-file-intake h3,
+.stage .bridge h3,
+.record__turn,
+.record__impact {
+  font-weight: 520;
+}
+
+#stage-panel-title,
+.stage-label,
+.plate__label {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ink-muted);
 }

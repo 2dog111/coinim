@@ -27,9 +27,10 @@
     <link rel="icon" href="/assets/favicon.ico" sizes="any" />
     <link rel="icon" href="/assets/favicon.png?v=20260815-g5" type="image/png" sizes="96x96" />
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=20260815-g5" sizes="180x180" />
-    <link rel="stylesheet" href="/assets/base.css?v=20260815-g26" />
-    <link rel="stylesheet" href="/assets/home.css?v=20260815-g24" />
-    <link rel="stylesheet" href="/assets/open.css?v=20260815-open3" />
+    <link rel="preload" href="/assets/fonts/source-serif-4-variable.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/assets/base.css?v=20260818-e1" />
+    <link rel="stylesheet" href="/assets/home.css?v=20260818-e1" />
+    <link rel="stylesheet" href="/assets/open.css?v=20260818-e1" />
     <script src="/assets/open.js?v=20260815-open3" defer></script>
   </head>
   <body class="ms-page home-page open-page">
@@ -44,15 +45,15 @@
         <p class="open-intro">Send what you have about the business. Market Scan reads your market from the inside out and sends back a sourced Market Chronicle to your work email within 72 hours. Everything is optional except your name, work email and website. If you have nothing but a website, that's enough to start.</p>
 
         <form id="business-file-form" novalidate>
-          <section class="form-group" aria-labelledby="you-title">
+          <section class="form-group form-group--duo" aria-labelledby="you-title">
             <h2 id="you-title">You</h2>
-            <div class="form-section">
-              <label for="name">Your name <span>required</span></label>
+            <div class="form-section form-section--half">
+              <label for="name">Your name <span class="req">required</span></label>
               <input id="name" name="name" type="text" autocomplete="name" required maxlength="200" placeholder="First and last" aria-describedby="name-error" />
               <p class="field-error" id="name-error" aria-live="polite"></p>
             </div>
-            <div class="form-section">
-              <label for="work-email">Work email <span>required</span></label>
+            <div class="form-section form-section--half">
+              <label for="work-email">Work email <span class="req">required</span></label>
               <input id="work-email" name="work_email" type="email" autocomplete="email" required maxlength="320" aria-describedby="email-note work-email-error" />
               <p class="field-note" id="email-note">A company address. The chronicle goes there.</p>
               <p class="field-error" id="work-email-error" aria-live="polite"></p>
@@ -66,7 +67,7 @@
           <section class="form-group" aria-labelledby="business-title">
             <h2 id="business-title">The business</h2>
             <div class="form-section">
-              <label for="website">Your website <span>required</span></label>
+              <label for="website">Your website <span class="req">required</span></label>
               <input id="website" name="website" type="text" inputmode="url" autocomplete="url" required maxlength="2048" placeholder="https://" aria-describedby="website-note website-error" />
               <p class="field-note" id="website-note">We start here.</p>
               <p class="field-error" id="website-error" aria-live="polite"></p>
