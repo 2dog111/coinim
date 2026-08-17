@@ -4,7 +4,7 @@ This is the local place to check the current site version before edits or deploy
 
 ## Current Version
 
-- Local site version: `2026-08-17-170201Z-vps-msru-detail-restore`
+- Local site version: `2026-08-17-170627Z-vps-ms-msru-detail-restore`
 - Home base CSS cache key in HTML: `assets/base.css?v=20260815-g24`
 - Home CSS cache key in HTML: `assets/home.css?v=20260815-g24`
 - Business File home CSS cache key in HTML: `assets/home.css?v=20260815-g24`
@@ -47,7 +47,7 @@ This is the local place to check the current site version before edits or deploy
 
 - Deployment date: `2026-08-17`
 - Host: `iva` / `193.181.215.57`
-- Active release: `/var/www/coin.im/releases/20260817T170201Z`
+- Active release: `/var/www/coin.im/releases/20260817T170627Z`
 - Active intake API release: `/opt/coin-im-open/releases/20260815T092516Z`
 - Current symlink: `/var/www/coin.im/current`
 - Nginx config: `/etc/nginx/conf.d/coin.im.conf`
@@ -162,7 +162,13 @@ The 2026-08-15 LS1 pass replaced the baked-text object catalogue images with one
 
 The 2026-08-15 G7 rhythm pass removed stage numbers from the hero index and all four stage sections, replaced the four stage labels, and consolidated vertical rhythm around `--space-section`, `--space-block`, and `--space-tight`. The visible copy comparison changed only the approved labels and removed numbers. Checks at 375, 430, 768, 1024, 1440 and 1920 found no horizontal overflow; all four stage links reached their original anchors. Full measurements and before/after screenshots are in `audit-home-g7.md`.
 
-The 2026-08-17 release `20260817T170201Z` restored and expanded the Russian Market Scan copy at the owner's request. Not yet committed locally at the time of writing.
+The 2026-08-17 release `20260817T170627Z` gave the English Market Scan page the same restoration the Russian page got in `20260817T170201Z`.
+
+`ms.html` received the parallel pass: the tightened lead-ins were restored to their fuller form, and the same eleven passages were added from the source Telegram posts, written for English rather than translated. LinkedIn at `$20,196` over seventeen years and `$99` a month for Sales Navigator; contacts as the most expensive thing in outreach plus domain karma; the six hundred and eighty businesses; six real subject lines from benchmark runs, quoted in their original English; the London microcement deep-research example; the three-to-twenty-thousand arms range; the full address-failure list in the routing step; the week the models degraded; the eight-day version-four run; the bar the owner is aiming for; the arms-per-segment ratios and the two failed first attempts in the fifteen-cell matrix.
+
+Body words went from 6746 to 7607, paragraphs from 147 to 157, opening tags in `main` from 229 to 239. No numbers changed, no dash or arrow characters introduced, no bold, no badges. Straight quotes were used for the subject lines to match the existing `"supply chain solutions"` usage. `ms.html` and `ms/index.html` are byte-identical at 55514 bytes, and live `/ms`, `/ms/` and the local file all hash to `0244f670327b179b1ae7426c9648b4e87d1979ce`. The Russian page is unchanged from the previous release and still hashes to `36f86a12791b261ed856695630cb2073f56d3fc2`. All fourteen required HTTPS checks returned 200, `nginx -t` passed and nginx reloaded. Text-only pass: no browser, responsive or Lighthouse checks were run.
+
+The 2026-08-17 release `20260817T170201Z` restored and expanded the Russian Market Scan copy at the owner's request.
 
 The 2026-08-17 tightening pass (`8d81be2`) had cut the vivid detail out of `msru.html`; the owner asked for it back with maximum specificity. All seventeen tightened sentences were restored to their fuller form, and eleven new passages were added from the source Telegram posts in `~/antropic/GladkovChanel/razbor-kanala/01-market-scan`: the LinkedIn subscription total (`$20,196` over seventeen years, `$99` a month for Sales Navigator), contacts as the most expensive part of outreach and domain karma, the six hundred and eighty businesses behind the ten-hypotheses claim, six real subject lines from benchmark runs, the London microcement deep-research example, the three-to-twenty-thousand arms range, the full address-failure list in the routing step, the model-degradation week, the eight-day fourth-version run, the two-hundred-dollar scan and the reaction the owner is aiming for, the arms-per-segment ratios (sixty, thirty-three, fourteen, eleven and a half, six) and the two failed first attempts inside the fifteen-cell matrix.
 
