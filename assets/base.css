@@ -74,9 +74,13 @@ body.ms-page {
   z-index: 100;
   top: 0.75rem;
   left: 0.75rem;
-  padding: 0.65rem 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.65rem 0.95rem;
   color: var(--ink-inverse);
   background: var(--ink-surface);
+  border-radius: 10px;
   opacity: 0;
   pointer-events: none;
   transform: translateY(-150%);
@@ -367,7 +371,9 @@ body.ms-page {
 }
 
 .ms-page .ms-primary-link,
-.ms-page .ms-primary-link:hover {
+.ms-page .ms-primary-link:hover,
+.ms-page a.skip-link,
+.ms-page a.skip-link:focus {
   color: var(--ink-inverse);
 }
 

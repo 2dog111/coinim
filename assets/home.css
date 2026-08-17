@@ -1644,3 +1644,100 @@ summary:focus-visible {
   letter-spacing: 0.02em;
   color: var(--ink-muted);
 }
+
+/* E2: buttons must keep their own colour wherever they sit.
+   `.home-page .prose a` and `.stage > div > a` are more specific than the
+   `.btn` classes, so anchors carrying a button class are named explicitly. */
+.home-page a.btn,
+.home-page .prose a.btn,
+.home-page .stage > div > a.btn {
+  text-decoration: none;
+}
+
+.home-page a.btn--primary,
+.home-page a.btn--stamp,
+.home-page .prose a.btn--primary,
+.home-page .prose a.btn--stamp,
+.home-page .stage > div > a.btn--primary,
+.home-page .stage > div > a.btn--stamp {
+  color: var(--ink-inverse);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .home-page a.btn--primary:hover,
+  .home-page a.btn--stamp:hover,
+  .home-page .prose a.btn--primary:hover,
+  .home-page .prose a.btn--stamp:hover {
+    color: var(--ink-inverse);
+    text-decoration: none;
+  }
+}
+
+/* E2: the Market Scan hand-off is the loudest block on the home page */
+.stage .bridge--feature {
+  max-width: var(--measure-wide);
+  padding: clamp(1.75rem, 4vw, 3rem) clamp(1.5rem, 4vw, 3rem);
+  background-color: var(--paper-deep);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0) 60%);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--panel-radius);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 16px 40px rgba(22, 19, 15, 0.08);
+}
+
+.stage .bridge--feature h3 {
+  max-width: 20ch;
+  margin: 0;
+  font-size: clamp(1.6rem, 1.25rem + 1.5vw, 2.25rem);
+  font-weight: 520;
+  line-height: 1.16;
+  letter-spacing: -0.006em;
+}
+
+.stage .bridge--feature h3 + p {
+  max-width: 54ch;
+  margin-top: clamp(0.9rem, 2vw, 1.25rem);
+  color: var(--ink-soft);
+  font-size: var(--text-body);
+  line-height: 1.6;
+}
+
+.home-page .stage .bridge--feature a.bridge__cta,
+.home-page .stage > div > a.bridge__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  min-height: 56px;
+  margin: clamp(1.4rem, 3vw, 1.9rem) 0 0;
+  padding-inline: 1.9rem;
+  color: var(--ink-inverse);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+@media (max-width: 520px) {
+  .home-page .stage .bridge--feature a.bridge__cta {
+    width: 100%;
+  }
+}
+
+/* Air under the in-text button so the note below it reads as a new thought */
+.business-file-intake .btn {
+  margin-bottom: 0.9rem;
+}
+
+/* Touch targets: the closing contact row and the plain contact links */
+.contact-links .contact-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.contact-links .contact-link:not(.btn) {
+  padding-inline: 0.15rem;
+}
