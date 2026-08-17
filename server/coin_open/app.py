@@ -19,7 +19,7 @@ from urllib.parse import unquote, urlsplit
 
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 
-from . import analytics
+from . import admin, analytics
 
 
 DATA_ROOT = Path(os.environ.get("COIN_OPEN_DATA_ROOT", "/var/lib/coin-im-open"))
@@ -104,6 +104,39 @@ def admin_token() -> str:
         return ADMIN_TOKEN_PATH.read_text(encoding="utf-8").strip()
     except OSError:
         return ""
+
+
+async def send_redirect(send, location: str) -> None:
+    await send(
+        {
+            "type": "http.response.start",
+            "status": 303,
+            "headers": [
+                (b"location", location.encode()),
+                (b"content-length", b"0"),
+                (b"cache-control", b"no-store"),
+            ],
+        }
+    )
+    await send({"type": "http.response.body", "body": b""})
+
+
+async def send_file(send, body: bytes, filename: str) -> None:
+    disposition = f'attachment; filename="{filename}"'
+    await send(
+        {
+            "type": "http.response.start",
+            "status": 200,
+            "headers": [
+                (b"content-type", b"application/octet-stream"),
+                (b"content-length", str(len(body)).encode()),
+                (b"content-disposition", disposition.encode("utf-8")),
+                (b"cache-control", b"no-store"),
+                (b"x-robots-tag", b"noindex, nofollow"),
+            ],
+        }
+    )
+    await send({"type": "http.response.body", "body": body})
 
 
 async def send_html(send, status: int, body: str) -> None:
@@ -468,13 +501,44 @@ async def app(scope, receive, send) -> None:
             await send_json(send, 200, {"ok": True})
             return
 
-        match = re.fullmatch(r"/api/open/panel/([A-Za-z0-9_-]{20,120})", path)
-        if method == "GET" and match:
-            token = admin_token()
-            if not token or not hmac.compare_digest(match.group(1), token):
+        panel = re.fullmatch(
+            r"/api/open/panel/([A-Za-z0-9_-]{20,120})"
+            r"(?:/(ack|file)/(job_\d{8}T\d{6}Z_[a-f0-9]{16})(?:/(\d{2}\.aesgcm))?)?",
+            path,
+        )
+        if panel:
+            secret = admin_token()
+            if not secret or not hmac.compare_digest(panel.group(1), secret):
                 raise IntakeError(404, "Not found.")
-            await send_html(send, 200, analytics.panel_html(analytics.summary(DATA_ROOT)))
-            return
+            action, job_id, stored = panel.group(2), panel.group(3), panel.group(4)
+            key = load_key()
+
+            if action == "ack" and method == "POST":
+                await read_body(receive, 1024)
+                admin.acknowledge(DATA_ROOT, job_id)
+                await send_redirect(send, f"/api/open/panel/{panel.group(1)}")
+                return
+
+            if action == "file" and method == "GET" and stored:
+                source = admin.stored_file(DATA_ROOT, job_id, stored)
+                if source is None:
+                    raise IntakeError(404, "Not found.")
+                name = admin.original_name(
+                    DATA_ROOT, key, read_json_encrypted, job_id, stored
+                )
+                await send_file(send, decrypt_bytes(source, key), name)
+                return
+
+            if action is None and method == "GET":
+                jobs = admin.list_jobs(DATA_ROOT, key, read_json_encrypted)
+                await send_html(
+                    send,
+                    200,
+                    admin.panel_html(jobs, analytics.summary(DATA_ROOT), panel.group(1)),
+                )
+                return
+
+            raise IntakeError(404, "Not found.")
         key = load_key()
         if method == "POST" and path == "/api/open/drafts":
             await read_body(receive, 1024)
