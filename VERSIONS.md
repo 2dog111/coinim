@@ -4,10 +4,12 @@ This is the local place to check the current site version before edits or deploy
 
 ## Current Version
 
-- Local site version: `2026-08-18-home-cta-to-marketscan-e2`
-- Active VPS release: `/var/www/coin.im/releases/20260817T180232Z`
-- Git commit: `5f1ffc8` on `main` (restyle landed in `a98a959`, release `20260817T174427Z`)
-- Home page funnel: `/` links only to `/ms` (six links, no `/open` link at all); `/ms` and `/msru` keep their three `/open` CTAs
+- Local site version: `2026-08-18-ru-home-to-msru-e3`
+- Active VPS release: `/var/www/coin.im/releases/20260817T181416Z`
+- Git commit: `b773463` on `main` (restyle `a98a959`, home funnel `5f1ffc8`)
+- Funnel: `/` links only to `/ms` (six links, no `/open` link at all); `/ru` links to `/msru` (three links: header pill, hand-off block, closing button); `/ms` and `/msru` keep their three `/open` CTAs
+- New Russian copy on `/ru` only: heading `Market Scan целиком`, one sentence under it, button `Читать Market Scan` (twice). Everything that was on the page before is untouched
+- Russian home stylesheet cache key: `assets/ru.css?v=20260818-e3`; the other four stylesheets stay at `?v=20260818-e2`
 - Shared base CSS cache key in HTML: `assets/base.css?v=20260818-e2` (/, /ms, /msru, /open)
 - Home CSS cache key in HTML: `assets/home.css?v=20260818-e2` (also loaded by /open)
 - Russian home page stylesheet: `assets/ru.css?v=20260818-e2` (ru.html no longer loads `styles.css`; `styles.css` still serves /es and stays deployed)
