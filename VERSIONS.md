@@ -162,6 +162,14 @@ The 2026-08-15 LS1 pass replaced the baked-text object catalogue images with one
 
 The 2026-08-15 G7 rhythm pass removed stage numbers from the hero index and all four stage sections, replaced the four stage labels, and consolidated vertical rhythm around `--space-section`, `--space-block`, and `--space-tight`. The visible copy comparison changed only the approved labels and removed numbers. Checks at 375, 430, 768, 1024, 1440 and 1920 found no horizontal overflow; all four stage links reached their original anchors. Full measurements and before/after screenshots are in `audit-home-g7.md`.
 
+The 2026-08-17 release `20260817T163803Z` improved reading comfort on both Market Scan pages. Local commit `60af5ed`.
+
+Body copy moved from 1.16rem to 1.24rem on desktop and from 1.06rem to 1.13rem below 700px, with a 64ch cap so the line does not lengthen with the type, and paragraph spacing of 1.15em. Paragraphs use `text-wrap: pretty` and `hyphens: auto`, headings use `text-wrap: balance`. The width cap sits on the paragraphs, not on `.ms-prose`, so `.ms-benchmark-display` keeps its own width and its nowrap figures cannot overflow. Georgia is unchanged: no web font, no loading cost, no layout shift.
+
+`assets/ms-reading.js` was added. It stores scroll depth and the current heading in localStorage under `ms-read:<pathname>`, clears the entry past 95 per cent, and reveals a muted line in the opening screen only when a returning reader opens the page at the top with no hash. The markup is present but `hidden` by default, so a first-time reader sees the opening unchanged. localStorage access is feature-detected and wrapped, so private mode degrades silently.
+
+All sixteen HTTPS checks returned 200, including the new `assets/ms-reading.js` and the updated `assets/ms.css`. `nginx -t` passed and nginx reloaded. Verified by response codes and served file contents only; no browser, responsive or Lighthouse checks were run, so the new type scale and the resume line have not been looked at in a viewport.
+
 The 2026-08-17 releases `20260817T162332Z` and `20260817T162626Z` covered the Russian home page, an Nginx route fix and the Market Scan first screens. Local commits `f41b99d`, `993cd69`.
 
 On `ru.html`, twenty-four text nodes changed. The nine forbidden long dash characters were removed, including the two inside `og:image:alt` and `twitter:image:alt`, and replaced with commas and colons. Twenty words were normalised to the yo spelling already used by the hero line and by the Russian Market Scan page. Two `являются` constructions became direct verbs, and the abstract clause before the broken-part example was dropped, matching the English home page. Tag structure identical at 456 tags, all 27 numbers preserved.
