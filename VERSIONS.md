@@ -4,14 +4,18 @@ This is the local place to check the current site version before edits or deploy
 
 ## Current Version
 
-- Local site version: `2026-08-17-173203Z-vps-ms-msru-trim`
-- Home base CSS cache key in HTML: `assets/base.css?v=20260815-g24`
-- Home CSS cache key in HTML: `assets/home.css?v=20260815-g24`
-- Business File home CSS cache key in HTML: `assets/home.css?v=20260815-g24`
-- Business File CSS cache key in HTML: `assets/open.css?v=20260815-open3`
-- Business File JS cache key in HTML: `assets/open.js?v=20260815-open3`
-- Market Scan base CSS cache key in HTML: `assets/base.css?v=20260815-g26`
-- Market Scan CSS cache key in HTML: `assets/ms.css?v=20260815-story1`
+- Local site version: `2026-08-18-editorial-restyle-e1`
+- Active VPS release: `/var/www/coin.im/releases/20260817T174427Z`
+- Git commit: `a98a959` on `main`
+- Shared base CSS cache key in HTML: `assets/base.css?v=20260818-e1` (/, /ms, /msru, /open)
+- Home CSS cache key in HTML: `assets/home.css?v=20260818-e1` (also loaded by /open)
+- Russian home page stylesheet: `assets/ru.css?v=20260818-e1` (ru.html no longer loads `styles.css`; `styles.css` still serves /es and stays deployed)
+- Business File CSS cache key in HTML: `assets/open.css?v=20260818-e1`
+- Business File JS cache key in HTML: `assets/open.js?v=20260815-open3` (JS unchanged)
+- Market Scan CSS cache key in HTML: `assets/ms.css?v=20260818-e1`
+- Body/heading font: `assets/fonts/source-serif-4-variable.woff2` (Source Serif 4 Variable, latin + cyrillic subset, 198 KB, preloaded on /, /ru, /ms, /msru, /open)
+- 2026-08-18 deploy verified: all public URLs below return 200 over HTTPS, `/api/open/health` OK, `www` OK, nginx config test clean, reload clean
+- Note: the London microcement passage in `/ms` and `/msru` sat restored in the working tree in both languages (uncommitted parallel-session state after commit `8b0571e` cut it); it is preserved and deployed
 - Main production URL: `https://coin.im/`
 - Russian page URL: `https://coin.im/ru`
 - Spanish page URL: `https://coin.im/es`
