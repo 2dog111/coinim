@@ -4,7 +4,7 @@ This is the local place to check the current site version before edits or deploy
 
 ## Current Version
 
-- Local site version: `2026-08-15-151012Z-vps-g44-msru-g43-ms`
+- Local site version: `2026-08-17-170201Z-vps-msru-detail-restore`
 - Home base CSS cache key in HTML: `assets/base.css?v=20260815-g24`
 - Home CSS cache key in HTML: `assets/home.css?v=20260815-g24`
 - Business File home CSS cache key in HTML: `assets/home.css?v=20260815-g24`
@@ -45,9 +45,9 @@ This is the local place to check the current site version before edits or deploy
 
 ## Current Production Deployment
 
-- Deployment date: `2026-08-15`
+- Deployment date: `2026-08-17`
 - Host: `iva` / `193.181.215.57`
-- Active release: `/var/www/coin.im/releases/20260815T151012Z`
+- Active release: `/var/www/coin.im/releases/20260817T170201Z`
 - Active intake API release: `/opt/coin-im-open/releases/20260815T092516Z`
 - Current symlink: `/var/www/coin.im/current`
 - Nginx config: `/etc/nginx/conf.d/coin.im.conf`
@@ -161,6 +161,20 @@ The 2026-08-15 G10 pass added marker-fill and stamp interaction physics to both 
 The 2026-08-15 LS1 pass replaced the baked-text object catalogue images with one approved, selectable key-letter specimen; the other nine unapproved letter images were removed from active markup. Caveat is self-hosted as WOFF2 with Georgia fallback, the object crop contains no baked text, all five requested widths have no horizontal overflow, and the measured text contrast is 17.316:1. Lighthouse returned Performance 99, Accessibility 100 and SEO 100. Full evidence is in `audit-ls1.md` and `qa-screens/ls1/`.
 
 The 2026-08-15 G7 rhythm pass removed stage numbers from the hero index and all four stage sections, replaced the four stage labels, and consolidated vertical rhythm around `--space-section`, `--space-block`, and `--space-tight`. The visible copy comparison changed only the approved labels and removed numbers. Checks at 375, 430, 768, 1024, 1440 and 1920 found no horizontal overflow; all four stage links reached their original anchors. Full measurements and before/after screenshots are in `audit-home-g7.md`.
+
+The 2026-08-17 release `20260817T170201Z` restored and expanded the Russian Market Scan copy at the owner's request. Not yet committed locally at the time of writing.
+
+The 2026-08-17 tightening pass (`8d81be2`) had cut the vivid detail out of `msru.html`; the owner asked for it back with maximum specificity. All seventeen tightened sentences were restored to their fuller form, and eleven new passages were added from the source Telegram posts in `~/antropic/GladkovChanel/razbor-kanala/01-market-scan`: the LinkedIn subscription total (`$20,196` over seventeen years, `$99` a month for Sales Navigator), contacts as the most expensive part of outreach and domain karma, the six hundred and eighty businesses behind the ten-hypotheses claim, six real subject lines from benchmark runs, the London microcement deep-research example, the three-to-twenty-thousand arms range, the full address-failure list in the routing step, the model-degradation week, the eight-day fourth-version run, the two-hundred-dollar scan and the reaction the owner is aiming for, the arms-per-segment ratios (sixty, thirty-three, fourteen, eleven and a half, six) and the two failed first attempts inside the fifteen-cell matrix.
+
+Body words went from 5401 to 6127, paragraphs from 141 to 151, tag structure from 262 to 272 opening tags. No numbers were changed, no dash or arrow characters introduced, no bold added, no badges or chips added, and the author's register was kept. `msru.html` and `msru/index.html` are byte-identical at 85275 bytes and the live `/msru` response has the same length. `ms.html` (English) was deliberately left untouched, so the two language versions now differ in depth. All fourteen required HTTPS checks returned 200, `nginx -t` passed and nginx reloaded. Text-only pass: no browser, responsive or Lighthouse checks were run.
+
+The 2026-08-18 backend release `/opt/coin-im-open/releases/20260818T000000Z-admin` (activated as the current symlink) turned the private page into a working panel for form submissions. Local commit `2670981`. No static release was needed.
+
+`server/coin_open/admin.py` lists jobs from `/var/lib/coin-im-open/jobs`, newest first, decrypting each questionnaire in memory for the request only. A submission shows name, work email, phone, role, channels, website, the upload time, and its files. Files download through the panel; filenames come from the metadata and are stripped of quotes and separators before the disposition header. A submission whose notice is still in `/var/lib/coin-im-open/notifications` is marked new and carries a button that clears the notice. Deleting is deliberately absent from the panel and stays with `coin-open delete` on the host.
+
+Three routes sit behind the single secret and one regular expression, so any other shape falls through to 404: `GET /api/open/panel/<token>`, `POST /api/open/panel/<token>/ack/<job_id>`, and `GET /api/open/panel/<token>/file/<job_id>/<NN.aesgcm>`. Verified on the live host: the panel answers 200, a wrong token answers 404, a download for a job that does not exist answers 404, and `/api/open/health` still answers ok. Rendering was exercised on the host with a synthetic submission held in memory, which touched no production data.
+
+This is an MVP for a single owner by explicit decision: the secret link is the only gate, and login credentials are expected later. The page is served with `no-store` and `noindex`.
 
 The 2026-08-17 releases `20260817T165209Z` and `20260817T165338Z`, with backend release `/opt/coin-im-open/releases/20260817T165054Z`, added tracked calls to action and a private visitor panel. Local commit `92d118d`.
 
