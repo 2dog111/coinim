@@ -162,6 +162,18 @@ The 2026-08-15 LS1 pass replaced the baked-text object catalogue images with one
 
 The 2026-08-15 G7 rhythm pass removed stage numbers from the hero index and all four stage sections, replaced the four stage labels, and consolidated vertical rhythm around `--space-section`, `--space-block`, and `--space-tight`. The visible copy comparison changed only the approved labels and removed numbers. Checks at 375, 430, 768, 1024, 1440 and 1920 found no horizontal overflow; all four stage links reached their original anchors. Full measurements and before/after screenshots are in `audit-home-g7.md`.
 
+The 2026-08-17 releases `20260817T165209Z` and `20260817T165338Z`, with backend release `/opt/coin-im-open/releases/20260817T165054Z`, added tracked calls to action and a private visitor panel. Local commit `92d118d`.
+
+Both Market Scan pages now carry three buttons instead of two: after part two, after the benchmark, and a new one in the closing block. The closing pair puts the offer first and keeps Telegram beside it as a text link. Each button has a `data-cta` name: `story-mid`, `story-benchmark`, `story-end`, `story-end-telegram`.
+
+`assets/ms-track.js` sends one view per tab and one event per click through `navigator.sendBeacon`, with a `fetch` keepalive fallback. It is loaded on `ms`, `msru`, `index` and `ru`. The first static release shipped without it on `ms.html`; `20260817T165338Z` corrected that, and both mirrors stay byte-identical.
+
+`server/coin_open/analytics.py` is a separate module with its own SQLite file at `/var/lib/coin-im-open/analytics.sqlite3`. A visitor is stored as an HMAC of address and user agent under a salt that rotates daily, so no address or user agent is retained and identifiers do not carry across days. Bot filtering is двухслойное: the beacon requires JavaScript, and known crawlers including GPTBot and ClaudeBot are dropped by user agent. Verified on the live host: a browser user agent was counted, GPTBot and ClaudeBot were not.
+
+Two routes were added to the intake app behind the existing `/api/open/` proxy, so the Nginx config was not touched: `POST /api/open/beacon` and `GET /api/open/panel/<token>`. The token is stored at `/etc/coin-im-open/admin-token`, root:coinopen 640, and is not in the repository; without the file the panel answers 404. A wrong token answers 404 as well, verified.
+
+All sixteen HTTPS checks returned 200 after each static release, `nginx -t` passed, nginx reloaded, and `coin-im-open` restarted cleanly with uvicorn reporting a normal startup. The panel and the beacon were exercised over HTTPS. No browser, responsive or Lighthouse checks were run, so the new closing button pair has not been looked at in a viewport.
+
 The 2026-08-17 release `20260817T163803Z` improved reading comfort on both Market Scan pages. Local commit `60af5ed`.
 
 Body copy moved from 1.16rem to 1.24rem on desktop and from 1.06rem to 1.13rem below 700px, with a 64ch cap so the line does not lengthen with the type, and paragraph spacing of 1.15em. Paragraphs use `text-wrap: pretty` and `hyphens: auto`, headings use `text-wrap: balance`. The width cap sits on the paragraphs, not on `.ms-prose`, so `.ms-benchmark-display` keeps its own width and its nowrap figures cannot overflow. Georgia is unchanged: no web font, no loading cost, no layout shift.
