@@ -1,0 +1,349 @@
+from __future__ import annotations
+
+import os
+import sqlite3
+import tempfile
+import unittest
+from datetime import datetime, timedelta, timezone
+from pathlib import Path
+from unittest.mock import patch
+
+from coin_market.cli import process_outbox
+from coin_market.config import Settings
+from coin_market.core import MICRO, MarketError
+from coin_market.db import Database
+from coin_market.market import MarketService
+from coin_market.payments import ConfirmedTransfer, MockPaymentProvider
+from coin_market.render import render_home, render_receipt, render_reign, render_takeover, result_png
+
+UTC = timezone.utc
+
+
+class MarketIntegrationTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.temp = tempfile.TemporaryDirectory()
+        root = self.temp.name
+        environment = {
+            "SITE_URL": "http://127.0.0.1:8782",
+            "COIN_MARKET_DATA_ROOT": root,
+            "DATABASE_URL": str(Path(root) / "market.sqlite3"),
+            "TAKEOVER_MARKET_ENABLED": "true",
+            "TRON_PROVIDER": "mock",
+            "TRON_NETWORK": "mainnet",
+            "USDT_TRC20_RECEIVE_ADDRESS": "TMockReceive1111111111111111111111",
+            "USDT_TRC20_CONTRACT_ADDRESS": "TMockContract111111111111111111111",
+            "SESSION_SECRET": "test-session-secret-0123456789abcdef",
+            "ANALYTICS_SECRET": "test-analytics-secret-0123456789abcdef",
+            "ADMIN_PASSWORD": "test-admin-password",
+            "SMTP_HOST": "smtp.example.test",
+            "SMTP_FROM": "coin@example.test",
+            "TAKEOVER_QUOTE_SECONDS": "420",
+        }
+        with patch.dict(os.environ, environment, clear=False):
+            self.settings = Settings.from_env()
+        self.database = Database(self.settings)
+        self.assertEqual(
+            self.database.migrate(),
+            ["001_initial", "002_fixed_backing_window", "003_payment_credits", "004_reign_notifications", "005_three_wall_slots"],
+        )
+        self.provider = MockPaymentProvider(self.settings)
+        self.service = MarketService(self.settings, self.database, self.provider)
+        self.start = datetime(2026, 8, 28, 10, 0, tzinfo=UTC)
+
+    def tearDown(self) -> None:
+        self.temp.cleanup()
+
+    def transfer(self, intent: dict, amount_micro: int, when: datetime, suffix: str) -> ConfirmedTransfer:
+        transfer = ConfirmedTransfer(
+            txid=(suffix * 64)[:64],
+            event_index=0,
+            amount_micro=amount_micro,
+            contract_address=self.settings.contract_address,
+            receiving_address=self.settings.receive_address,
+            confirmed_at=when,
+        )
+        self.provider.add(transfer)
+        return transfer
+
+    def take(self, message: str, amount: int, when: datetime, suffix: str) -> tuple[dict, dict]:
+        state = self.service.state(when)
+        intent = self.service.create_takeover_intent({
+            "message": message,
+            "amount": str(amount),
+            "currentReignId": state.get("currentReignPublicId", ""),
+            "quotedPriceMicro": state["takeoverPriceMicro"],
+        }, f"visitor-{suffix}", now=when)
+        transfer = self.transfer(intent, amount * MICRO, when + timedelta(seconds=1), suffix)
+        result = self.service.apply_confirmed_transfer(intent["intentId"], transfer, now=when + timedelta(seconds=1), receipt_token=intent["receiptToken"])
+        return intent, result
+
+    def test_takeover_is_atomic_immediate_and_has_no_premiere(self) -> None:
+        _, receipt = self.take("The first live message.", 10, self.start, "a")
+        state = self.service.state(self.start + timedelta(seconds=1))
+        self.assertEqual(receipt["status"], "confirmed")
+        self.assertEqual(state["state"], "open")
+        self.assertEqual(state["message"]["message"], "The first live message.")
+        self.assertEqual(state["message"]["initialAmount"], "10")
+        with self.database.connect() as connection:
+            self.assertEqual(connection.execute("SELECT COUNT(*) FROM reigns WHERE status='active'").fetchone()[0], 1)
+            row = connection.execute("SELECT started_at, display_at, protection_until FROM reigns").fetchone()
+            self.assertEqual(row["started_at"], row["display_at"])
+            self.assertEqual(row["started_at"], row["protection_until"])
+
+    def test_home_is_the_fixed_three_message_wall(self) -> None:
+        wall = self.service.wall_state(self.start)
+        home = render_home(self.settings, wall)
+        self.assertEqual(len(wall["slots"]), 3)
+        self.assertEqual(wall["total"], "36")
+        self.assertIn("Every word on this page was <em>paid for.</em>", home)
+        self.assertIn('href="https://www.pen.dev/"', home)
+        self.assertIn('href="https://x.com/midnightdrafter"', home)
+        self.assertIn("Design on a canvas, ship it as code.", home)
+        self.assertIn("@midnightdrafter", home)
+        self.assertIn("On silence.", home)
+        self.assertIn("Outbid website · <span data-outbid-price>15</span> USDT", home)
+        self.assertIn("Outbid social · <span data-outbid-price>13</span> USDT", home)
+        self.assertIn("Outbid message · <span data-outbid-price>11</span> USDT", home)
+        self.assertIn("How to take a place on coin.im", home)
+        self.assertIn("The replacement is automatic.", home)
+        self.assertEqual(home.count('class="slot '), 3)
+        self.assertNotIn("open" + " slot", home)
+        self.assertNotIn("Claim" + " slot", home)
+        self.assertNotIn("The internet finally", home)
+        self.assertNotIn("data-open-dialog", home)
+        self.assertNotIn("form data-takeover-form", home)
+
+    def test_wall_outbid_replaces_only_the_target_slot(self) -> None:
+        wall = self.service.wall_state(self.start)
+        slot_two = wall["slots"][1]
+        message = (
+            "A small independent profile paid for this exact social slot and left enough real detail "
+            "to satisfy the wall limit without filler or invented claims."
+        )
+        intent = self.service.create_takeover_intent(
+            {
+                "wallSlot": 2,
+                "message": message,
+                "signature": "new profile",
+                "url": "https://x.com/newprofile",
+                "amount": slot_two["outbidAmount"],
+                "quotedPriceMicro": slot_two["outbidAmountMicro"],
+            },
+            "wall-visitor",
+            now=self.start,
+        )
+        transfer = self.transfer(intent, 13 * MICRO, self.start + timedelta(seconds=1), "w")
+        receipt = self.service.apply_confirmed_transfer(
+            intent["intentId"],
+            transfer,
+            now=self.start + timedelta(seconds=1),
+            receipt_token=intent["receiptToken"],
+        )
+        updated = self.service.wall_state(self.start + timedelta(seconds=2))
+        self.assertEqual(updated["slots"][0]["amount"], "14")
+        self.assertEqual(updated["slots"][1]["amount"], "13")
+        self.assertEqual(updated["slots"][1]["message"], message)
+        self.assertEqual(updated["slots"][2]["amount"], "10")
+        self.assertEqual(updated["total"], "37")
+        self.assertEqual(receipt["result"]["snapshot"]["wallSlotNumber"], 2)
+        archived = self.service.archive()["reigns"]
+        self.assertTrue(any(item["message"].startswith("I am not an influencer") for item in archived))
+        self.assertFalse(any(item["message"] == message for item in archived))
+
+    def test_wall_slot_forms_and_entity_validation_are_explicit(self) -> None:
+        wall = self.service.wall_state(self.start)
+        site_form = render_takeover(self.settings, self.service.state(self.start), wall_slot=wall["slots"][0])
+        social_form = render_takeover(self.settings, self.service.state(self.start), wall_slot=wall["slots"][1])
+        message_form = render_takeover(self.settings, self.service.state(self.start), wall_slot=wall["slots"][2])
+        self.assertIn("Website headline", site_form)
+        self.assertIn("Website description", site_form)
+        self.assertIn("Website URL", site_form)
+        self.assertIn("Social profile URL", social_form)
+        self.assertIn("X, Instagram, Telegram, LinkedIn, YouTube, TikTok", social_form)
+        self.assertIn("Public message", message_form)
+        self.assertNotIn('name="url"', message_form)
+        self.assertIn("Create private payment receipt", site_form)
+
+        common = {
+            "message": "A sufficiently detailed placement message contains more than one hundred and eleven non-space characters, explains the destination clearly, and gives a real visitor enough context to decide whether the published website or profile is worth opening.",
+            "amount": "15",
+            "quotedPriceMicro": 15 * MICRO,
+            "wallSlot": 1,
+        }
+        with self.assertRaisesRegex(MarketError, "requires a headline"):
+            self.service.create_takeover_intent({**common, "url": "https://example.com"}, "missing-headline", now=self.start)
+        with self.assertRaisesRegex(MarketError, "slot № 2"):
+            self.service.create_takeover_intent({**common, "signature": "Headline", "url": "https://x.com/example"}, "wrong-site", now=self.start)
+
+        social = {
+            "message": common["message"],
+            "amount": "13",
+            "quotedPriceMicro": 13 * MICRO,
+            "wallSlot": 2,
+            "url": "https://example.com/profile",
+        }
+        with self.assertRaisesRegex(MarketError, "social profile URL"):
+            self.service.create_takeover_intent(social, "wrong-social", now=self.start)
+
+    def test_receipt_prioritizes_wallet_and_hides_manual_txid(self) -> None:
+        state = self.service.state(self.start)
+        intent = self.service.create_takeover_intent({
+            "message": "Checkout copy.",
+            "amount": "7",
+            "currentReignId": "",
+            "quotedPriceMicro": state["takeoverPriceMicro"],
+        }, "receipt-ui", now=self.start)
+        receipt = self.service.receipt(intent["receiptToken"], self.start)
+        page = render_receipt(self.settings, receipt, intent["receiptToken"])
+        self.assertIn("Open in TronLink", page)
+        self.assertIn("7 USDT · TRON (TRC-20)", page)
+        self.assertIn('aria-label="Payment status"', page)
+        self.assertIn('aria-current="step"><span></span>Waiting', page)
+        self.assertIn("Payment not detected?", page)
+        self.assertIn('<details class="payment-recovery">', page)
+        self.assertNotIn('<details class="payment-recovery" open>', page)
+        self.assertIn('data-contract-address="TMockContract', page)
+
+    def test_defend_raises_price_then_decays(self) -> None:
+        self.take("Defend me.", 10, self.start, "b")
+        when = self.start + timedelta(seconds=1, hours=12)
+        state = self.service.state(when)
+        self.assertEqual(state["activeBackingMicro"], 5 * MICRO)
+        self.assertEqual(state["takeoverPriceMicro"], 6 * MICRO)
+        defend = self.service.create_defend_intent({"amount": "5", "currentReignId": state["currentReignPublicId"]}, "defender", now=when)
+        self.service.apply_confirmed_transfer(defend["intentId"], self.transfer(defend, 5 * MICRO, when, "c"), now=when)
+        raised = self.service.state(when)
+        self.assertEqual(raised["activeBackingMicro"], 10 * MICRO)
+        self.assertEqual(raised["takeoverPriceMicro"], 11 * MICRO)
+        later = self.service.state(when + timedelta(hours=12))
+        self.assertEqual(later["activeBackingMicro"], 2_500_000)
+        self.assertEqual(later["takeoverPriceMicro"], 3 * MICRO)
+
+    def test_parallel_takeover_lock_and_defend_are_blocked(self) -> None:
+        self.take("Current.", 2, self.start, "d")
+        when = self.start + timedelta(seconds=2)
+        state = self.service.state(when)
+        self.service.create_takeover_intent({"message": "First quote", "amount": state["takeoverPrice"], "currentReignId": state["currentReignPublicId"]}, "one", now=when)
+        with self.assertRaises(MarketError) as second:
+            self.service.create_takeover_intent({"message": "Second quote", "amount": state["takeoverPrice"], "currentReignId": state["currentReignPublicId"]}, "two", now=when)
+        self.assertEqual(second.exception.code, "takeover_locked")
+        with self.assertRaises(MarketError) as defend:
+            self.service.create_defend_intent({"amount": "1", "currentReignId": state["currentReignPublicId"]}, "three", now=when)
+        self.assertEqual(defend.exception.code, "takeover_locked")
+
+    def test_expired_quote_can_still_win_at_current_price(self) -> None:
+        self.take("Current.", 2, self.start, "e")
+        when = self.start + timedelta(seconds=2)
+        state = self.service.state(when)
+        intent = self.service.create_takeover_intent({"message": "Paid in time.", "amount": state["takeoverPrice"], "currentReignId": state["currentReignPublicId"]}, "late", now=when)
+        transfer = self.transfer(intent, int(state["takeoverPriceMicro"]), when + timedelta(seconds=3), "f")
+        self.service.apply_confirmed_transfer(intent["intentId"], transfer, now=when + timedelta(seconds=421))
+        self.assertEqual(self.service.state(when + timedelta(seconds=421))["message"]["message"], "Paid in time.")
+
+    def test_stale_insufficient_payment_becomes_receipt_credit(self) -> None:
+        self.take("Current.", 1, self.start, "g")
+        when = self.start + timedelta(seconds=2)
+        state = self.service.state(when)
+        old = self.service.create_takeover_intent({"message": "Old quote", "amount": state["takeoverPrice"], "currentReignId": state["currentReignPublicId"]}, "old", now=when)
+        later = when + timedelta(seconds=421)
+        self.database.cleanup_expired_locks(now=later)
+        self.take("Stronger winner", 20, later, "h")
+        transfer = self.transfer(old, int(state["takeoverPriceMicro"]), later + timedelta(seconds=2), "i")
+        with self.assertRaises(MarketError) as credited:
+            self.service.apply_confirmed_transfer(old["intentId"], transfer, now=later + timedelta(seconds=2))
+        self.assertEqual(credited.exception.code, "payment_credited")
+        receipt = self.service.receipt(old["receiptToken"], later + timedelta(seconds=2))
+        self.assertEqual(receipt["status"], "credited")
+        self.assertEqual(receipt["credit"]["status"], "available")
+
+    def test_duplicate_event_cannot_be_applied_twice(self) -> None:
+        intent, _ = self.take("One", 1, self.start, "j")
+        original = self.provider.transfers[("j" * 64)]
+        state = self.service.state(self.start + timedelta(seconds=2))
+        defend = self.service.create_defend_intent({"amount": "1", "currentReignId": state["currentReignPublicId"]}, "duplicate", now=self.start + timedelta(seconds=2))
+        with self.assertRaises(MarketError) as error:
+            self.service.apply_confirmed_transfer(defend["intentId"], original, now=self.start + timedelta(seconds=3))
+        self.assertEqual(error.exception.code, "duplicate_payment")
+
+    def test_atomic_switch_rolls_back_on_snapshot_failure(self) -> None:
+        self.take("One", 1, self.start, "k")
+        when = self.start + timedelta(seconds=2)
+        state = self.service.state(when)
+        intent = self.service.create_takeover_intent({"message": "Two", "amount": state["takeoverPrice"], "currentReignId": state["currentReignPublicId"]}, "rollback", now=when)
+        transfer = self.transfer(intent, int(state["takeoverPriceMicro"]), when, "l")
+        with patch.object(self.service, "_create_completed_snapshot", side_effect=RuntimeError("snapshot failed")):
+            with self.assertRaises(RuntimeError):
+                self.service.apply_confirmed_transfer(intent["intentId"], transfer, now=when)
+        with self.database.connect() as connection:
+            self.assertEqual(connection.execute("SELECT COUNT(*) FROM reigns WHERE status='active'").fetchone()[0], 1)
+            self.assertEqual(connection.execute("SELECT COUNT(*) FROM payments").fetchone()[0], 1)
+
+    def test_outbox_failure_after_commit_does_not_rollback(self) -> None:
+        self.take("Committed", 1, self.start, "m")
+        with patch("coin_market.cli.deliver_outbox", side_effect=RuntimeError("unavailable")):
+            report = process_outbox(self.service)
+        self.assertEqual(report["failed"], 1)
+        self.assertEqual(self.service.state(self.start + timedelta(seconds=2))["message"]["message"], "Committed")
+
+    def test_archive_reign_page_share_card_and_fixed_home(self) -> None:
+        self.take("Archive this", 3, self.start, "n")
+        first_id = self.service.state(self.start + timedelta(seconds=2))["currentReignPublicId"]
+        self.take("Replacement", 5, self.start + timedelta(seconds=3), "o")
+        archive = self.service.archive()
+        self.assertEqual(len(archive["reigns"]), 2)
+        self.assertIn("highestTakeover", archive["records"])
+        reign = self.service.reign(first_id, self.start + timedelta(seconds=5))
+        self.assertIn("TAKE IT BACK", render_reign(self.settings, reign))
+        self.assertTrue(result_png({"type": "takeover", "message": "Archive this", "amount": "3"}).startswith(b"\x89PNG"))
+        home = render_home(self.settings, self.service.state(self.start + timedelta(seconds=5)), archive)
+        self.assertNotIn("Archive this", home)
+        self.assertNotIn("Replacement", home)
+        self.assertIn("Every word on this page was <em>paid for.</em>", home)
+        self.assertIn("data-current-price>14</span> USDT", home)
+        self.assertIn("data-current-price>12</span> USDT", home)
+        self.assertIn("data-current-price>10</span> USDT", home)
+        self.assertIn("Outbid", home)
+        self.assertIn("USDT", home)
+        self.assertNotIn("Market Scan", home)
+
+    def test_receipt_discovers_exact_final_transfer_without_txid(self) -> None:
+        state = self.service.state(self.start)
+        intent = self.service.create_takeover_intent({
+            "message": "Discovered automatically.",
+            "amount": "7",
+            "currentReignId": "",
+            "quotedPriceMicro": state["takeoverPriceMicro"],
+        }, "auto", now=self.start)
+        self.transfer(intent, 7 * MICRO, self.start + timedelta(seconds=2), "q")
+        receipt = self.service.discover_intent(intent["receiptToken"], self.start + timedelta(seconds=3))
+        self.assertEqual(receipt["status"], "confirmed")
+        self.assertEqual(self.service.state(self.start + timedelta(seconds=3))["message"]["message"], "Discovered automatically.")
+
+    def test_replacement_notification_is_transactionally_enqueued(self) -> None:
+        first, _ = self.take("Notify me.", 2, self.start, "r")
+        subscribed = self.service.subscribe_replacement(first["receiptToken"], "owner@example.com", self.start + timedelta(seconds=2))
+        self.assertEqual(subscribed["contactType"], "email")
+        self.take("Replacement.", 3, self.start + timedelta(seconds=3), "s")
+        with self.database.connect() as connection:
+            row = connection.execute(
+                "SELECT type, payload_json FROM outbox WHERE type = 'reign_replaced_notification'"
+            ).fetchone()
+        self.assertIsNotNone(row)
+        self.assertIn("Takeover?", row["payload_json"].replace("takeover", "Takeover"))
+        with patch("coin_market.cli.deliver_outbox", return_value=None):
+            report = process_outbox(self.service)
+        self.assertGreaterEqual(report["completed"], 1)
+        with self.database.connect() as connection:
+            status = connection.execute("SELECT status FROM reign_notifications").fetchone()["status"]
+        self.assertEqual(status, "sent")
+
+    def test_wrong_contract_and_underpayment_are_never_applied(self) -> None:
+        intent = self.service.create_takeover_intent({"message": "No", "amount": "1", "currentReignId": "", "quotedPriceMicro": MICRO}, "invalid", now=self.start)
+        wrong = ConfirmedTransfer("p" * 64, 0, MICRO, "wrong", self.settings.receive_address, self.start)
+        with self.assertRaises(MarketError) as error:
+            self.service.apply_confirmed_transfer(intent["intentId"], wrong, now=self.start)
+        self.assertEqual(error.exception.code, "wrong_contract")
+
+
+if __name__ == "__main__":
+    unittest.main()

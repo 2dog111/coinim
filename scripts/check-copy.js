@@ -8,7 +8,7 @@ const targetName = process.argv.find((arg) => !arg.startsWith("--") && arg !== p
 const writeCopy = process.argv.includes("--write");
 const targets = {
   home: {
-    html: "index.html",
+    html: "mail.html",
     copy: "copy/home.en.md",
     sections: [
       ["Hero", "hero", /<section class="home-hero"[\s\S]*?<\/section>/],

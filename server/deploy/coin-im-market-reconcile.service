@@ -1,0 +1,21 @@
+[Unit]
+Description=Reconcile coin.im TRC20 payments and notifications
+After=network-online.target coin-im-market.service
+
+[Service]
+Type=oneshot
+User=coinmarket
+Group=coinmarket
+WorkingDirectory=/opt/coin-im-market/current
+EnvironmentFile=/etc/coin-im-market/market.env
+ExecStart=/opt/coin-im-market/venv/bin/python -m coin_market.cli reconcile-payments --apply
+ExecStart=/opt/coin-im-market/venv/bin/python -m coin_market.cli process-outbox --limit 50
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadOnlyPaths=/etc/coin-im-market
+ReadWritePaths=/var/lib/coin-im-market
+RestrictSUIDSGID=true
+LockPersonality=true
+MemoryDenyWriteExecute=true

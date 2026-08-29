@@ -1,0 +1,27 @@
+[
+  {
+    "action": "assertText",
+    "selector": "h1",
+    "text": "Every word on this page was paid for."
+  },
+  {
+    "action": "assertText",
+    "selector": ".site",
+    "text": "14 USDT"
+  },
+  {
+    "action": "assertText",
+    "selector": ".social",
+    "text": "12 USDT"
+  },
+  {
+    "action": "assertText",
+    "selector": ".message",
+    "text": "10 USDT"
+  },
+  {
+    "action": "assertText",
+    "selector": ".message",
+    "text": "Outbid message · 11 USDT"
+  }
+]

@@ -2,6 +2,7 @@
   "use strict";
 
   const endpoint = "/api/open/beacon";
+  if (window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost") return;
 
   const send = (payload) => {
     const body = JSON.stringify(payload);

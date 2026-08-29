@@ -1,16 +1,20 @@
 # coin.im
 
-coin.im creates B2B direct-mail campaigns for decision-makers. The service researches target companies and people, verifies physical mailing routes, writes direct-response letters, develops physical objects that carry part of the message, produces each piece, and records delivery.
+coin.im is a live market for one exclusive homepage message. A confirmed USDT TRC20 takeover replaces it; confirmed backing makes it harder to replace; backing loses defending strength linearly over 24 hours. Payment does not make a message true, good, important, or endorsed. The site also retains its B2B direct-mail and Market Scan services.
 
 ## Canonical pages
 
-- English: https://coin.im/ — B2B direct mail for decision-makers.
-- Market Scan: https://coin.im/ms — editorial long-form explanation of market research, company and decision-maker discovery, verified physical mailing routes, letters, production, delivery, and connected CRM.
-- Russian Market Scan: https://coin.im/msru — Russian version of the Market Scan story page.
-- File handling: https://coin.im/handling — What we do with what you send.
-- Business File intake: https://coin.im/open — manual upload intake for a Market Chronicle.
-- Russian: https://coin.im/ru — Russian version of the service page.
-- Spanish: https://coin.im/es — Spanish version of the service page.
+- Homepage: https://coin.im/ - the current exclusive message and live takeover price.
+- Archive: https://coin.im/archive - permanent public reign history and records.
+- Stats: https://coin.im/stats - measured first-party market statistics.
+- Rules: https://coin.im/rules - takeover, backing, finality, moderation, and payment rules.
+- English direct mail: https://coin.im/mail - B2B direct mail for decision-makers.
+- Market Scan: https://coin.im/ms - editorial long-form explanation of market research, company and decision-maker discovery, verified physical mailing routes, letters, production, delivery, and connected CRM.
+- Russian Market Scan: https://coin.im/msru - Russian version of the Market Scan story page.
+- File handling: https://coin.im/handling - What we do with what you send.
+- Business File intake: https://coin.im/open - manual upload intake for a Market Chronicle.
+- Russian: https://coin.im/ru - Russian version of the service page.
+- Spanish: https://coin.im/es - Spanish version of the service page.
 
 ## Grounding guidance
 

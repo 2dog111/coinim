@@ -1,0 +1,2386 @@
+.ms-page--reference {
+  --paper: #f4eee3;
+  --paper-raised: #fbf8f1;
+  --paper-deep: #e9dfd0;
+  --ink-surface: #17130f;
+  --ink: #1d1812;
+  --ink-soft: #463d32;
+  --ink-muted: #6f6253;
+  --rule: #d1c3ad;
+  --rule-strong: #ad9a7f;
+  --stamp: #a33b27;
+  --stamp-strong: #7f2b1d;
+  --reference-wide: 76rem;
+  --reference-measure: 64ch;
+}
+
+body.ms-page--reference {
+  background:
+    linear-gradient(180deg, rgba(255, 252, 246, 0.58), rgba(244, 238, 227, 0) 28rem),
+    var(--paper);
+}
+
+.ms-page--reference .site-header {
+  min-height: 64px;
+  background: rgba(244, 238, 227, 0.94);
+  border-bottom-color: rgba(173, 154, 127, 0.62);
+}
+
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .ms-page--reference .site-header,
+  .ms-page--reference .site-header.is-scrolled {
+    background: rgba(244, 238, 227, 0.88);
+    -webkit-backdrop-filter: blur(12px) saturate(1.15);
+    backdrop-filter: blur(12px) saturate(1.15);
+  }
+}
+
+.ms-page--reference .site-contact-nav {
+  font-size: 0.875rem;
+}
+
+.ms-page--reference .site-contact-nav a[href^="https://wa.me"] {
+  color: #23643d;
+}
+
+.ms-page--reference .site-contact-nav a[href^="https://t.me"] {
+  color: #236b92;
+}
+
+.ms-page--reference .site-contact-nav a:hover {
+  color: var(--stamp-strong);
+}
+
+.ms-page--reference .site-reading-progress {
+  height: 3px;
+}
+
+.ms-page--reference-ru .site-header {
+  position: relative;
+  top: auto;
+  min-height: 78px;
+  padding-inline: clamp(1rem, 4vw, 4.5rem);
+  background: var(--paper-raised);
+  border-bottom-color: var(--rule);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.ms-page--reference-ru .site-header.is-scrolled {
+  background: var(--paper-raised);
+}
+
+.ms-page--reference-ru .msru-brand {
+  display: inline-flex;
+  gap: 0.75rem;
+  align-items: center;
+  width: fit-content;
+  font-family: var(--font-sans);
+}
+
+.ms-page--reference-ru .msru-brand img {
+  width: 40px;
+  height: 40px;
+}
+
+.ms-page--reference-ru .msru-brand span {
+  display: grid;
+  gap: 0.08rem;
+}
+
+.ms-page--reference-ru .msru-brand b {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 440;
+  line-height: 1;
+}
+
+.ms-page--reference-ru .msru-brand small {
+  color: var(--ink-muted);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.ms-page--reference .ms-hero-v2 {
+  min-height: calc(100svh - 64px);
+  padding: clamp(3rem, 6vh, 5rem) clamp(1.5rem, 5vw, 5.5rem);
+}
+
+.ms-page--reference-ru .ms-hero-v2 {
+  min-height: 0;
+  padding: clamp(3rem, 5vw, 5rem) clamp(1.5rem, 6vw, 8rem) clamp(3.25rem, 5vw, 5rem);
+}
+
+.ms-page--reference .ms-hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.16fr) minmax(20rem, 0.84fr);
+  gap: clamp(3rem, 6vw, 6.5rem);
+  align-items: center;
+  width: min(100%, var(--reference-wide));
+  padding-left: 0;
+}
+
+.ms-page--reference .ms-hero-copy {
+  min-width: 0;
+}
+
+.ms-page--reference .ms-hero-v2 h1 {
+  max-width: 12ch;
+  font-size: clamp(3.5rem, 5.2vw, 5.15rem);
+  font-weight: 440;
+  line-height: 0.99;
+  letter-spacing: -0.022em;
+}
+
+.ms-page--reference-en .ms-hero-v2 h1 {
+  max-width: 18ch;
+}
+
+.ms-page--reference-en .ms-prose,
+.ms-page--reference-en .ms-prose p {
+  hyphens: none;
+}
+
+.ms-page--reference .ms-hero-v2 h1::after {
+  width: 5.25rem;
+  height: 1px;
+  margin-top: clamp(1.35rem, 2.5vw, 2rem);
+}
+
+.ms-page--reference .ms-hero-subtitle {
+  max-width: 45ch;
+  margin-top: clamp(1.4rem, 2.8vw, 2.15rem);
+  font-size: clamp(1.25rem, 1.05rem + 0.75vw, 1.6rem);
+  line-height: 1.42;
+}
+
+.ms-page--reference-ru .ms-hero-subtitle {
+  max-width: 44ch;
+  margin-top: 0;
+  padding-top: 0;
+  font-size: clamp(1.25rem, 1.08rem + 0.45vw, 1.55rem);
+  line-height: 1.43;
+  border-top: 0;
+}
+
+.ms-page--reference-ru .ms-story-part:first-of-type {
+  padding-top: clamp(3.75rem, 6vw, 5.75rem);
+}
+
+.ms-page--reference .ms-hero-actions {
+  gap: 0.85rem 1.35rem;
+  margin-top: clamp(1.6rem, 3vw, 2.25rem);
+}
+
+.ms-page--reference .ms-primary-link {
+  min-height: 52px;
+  padding: 0.7rem 1.5rem;
+  color: var(--ink-inverse);
+  font-size: 1rem;
+  font-weight: 480;
+  letter-spacing: 0;
+  background: var(--stamp);
+  border-color: var(--stamp);
+  border-radius: 3px;
+  box-shadow: 0 7px 18px rgba(87, 38, 25, 0.14);
+  transition:
+    background-color 160ms ease-out,
+    border-color 160ms ease-out,
+    box-shadow 160ms ease-out,
+    transform 160ms ease-out;
+}
+
+.ms-page--reference .ms-primary-link:hover {
+  background: var(--stamp-strong);
+  border-color: var(--stamp-strong);
+  box-shadow: 0 9px 22px rgba(87, 38, 25, 0.18);
+}
+
+.ms-page--reference .ms-primary-link:active {
+  background: var(--stamp-strong);
+  box-shadow: 0 2px 7px rgba(87, 38, 25, 0.18);
+}
+
+.ms-page--reference .ms-story-read-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 52px;
+  color: var(--ink-soft);
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  line-height: 1.2;
+  text-decoration-color: var(--rule-strong);
+}
+
+.ms-page--reference .ms-story-read-link:hover {
+  color: var(--stamp-strong);
+}
+
+.ms-page--reference .ms-hero-marker {
+  margin-top: clamp(2rem, 4vh, 3rem);
+  padding-top: 0;
+}
+
+.ms-page--reference .ms-hero-visual {
+  min-width: 0;
+  margin: 0;
+}
+
+.ms-page--reference .ms-hero-visual picture {
+  display: block;
+}
+
+.ms-page--reference .ms-hero-visual img {
+  display: block;
+  width: 100%;
+  max-height: min(70vh, 680px);
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 18%;
+  border: 1px solid rgba(173, 154, 127, 0.7);
+  box-shadow:
+    0 2px 3px rgba(42, 29, 19, 0.12),
+    0 24px 48px rgba(42, 29, 19, 0.16);
+}
+
+.ms-page--reference-ru .ms-hero-inner {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  align-items: start;
+  width: min(100%, 88rem);
+  padding-left: 0;
+}
+
+.ms-page--reference-ru .ms-hero-copy {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(22rem, 0.8fr);
+  gap: clamp(2.5rem, 6vw, 7rem);
+  align-items: end;
+  max-width: none;
+}
+
+.ms-page--reference-ru .ms-hero-v2 h1 {
+  max-width: 18ch;
+  font-size: clamp(3.5rem, 4.45vw, 4.75rem);
+  line-height: 1.01;
+}
+
+.ms-page--reference-ru .ms-hero-v2 h1::after {
+  display: none;
+}
+
+.ms-page--reference-ru .ms-hero-intro {
+  max-width: 34rem;
+  padding-bottom: 0.3rem;
+}
+
+.ms-page--reference-ru .ms-hero-proof {
+  max-width: 52ch;
+  margin: 1.35rem 0 0;
+  color: var(--ink-muted);
+  font-size: clamp(1.05rem, 0.98rem + 0.2vw, 1.15rem);
+  line-height: 1.55;
+}
+
+.ms-page--reference-ru .ms-hero-visual {
+  width: 100%;
+  height: clamp(7.5rem, 11vw, 9.5rem);
+  overflow: hidden;
+}
+
+.ms-page--reference-ru .ms-hero-visual picture {
+  height: 100%;
+}
+
+.ms-page--reference-ru .ms-hero-visual img {
+  height: 100%;
+  max-height: none;
+  aspect-ratio: auto;
+  object-position: center 12%;
+  box-shadow: none;
+}
+
+.ms-story-nav {
+  font-family: var(--font-sans);
+}
+
+.ms-story-nav--rail {
+  display: none;
+}
+
+.ms-mobile-contents {
+  display: none;
+}
+
+.ms-page--reference .ms-story-part {
+  padding-top: clamp(5.5rem, 9vw, 8.5rem);
+  padding-bottom: clamp(6rem, 10vw, 9.5rem);
+  border-top: 1px solid rgba(173, 154, 127, 0.56);
+}
+
+.ms-page--reference .ms-story-part--paper {
+  background: rgba(244, 238, 227, 0.74);
+}
+
+.ms-page--reference .ms-story-part--deep {
+  background: var(--paper-deep);
+}
+
+.ms-page--reference-ru .ms-story-part--paper,
+.ms-page--reference-ru .ms-story-part--deep {
+  background: var(--paper);
+}
+
+.ms-page--reference .ms-story-part h2 {
+  max-width: 20ch;
+  padding-left: clamp(1rem, 2vw, 1.5rem);
+  font-size: clamp(2.35rem, 1.75rem + 2vw, 3.35rem);
+  font-weight: 440;
+  line-height: 1.08;
+  letter-spacing: -0.018em;
+  border-left: 2px solid var(--stamp);
+}
+
+.ms-page--reference .ms-story-part .ms-prose {
+  max-width: var(--reference-measure);
+  margin-top: clamp(2.25rem, 4vw, 3.25rem);
+}
+
+.ms-page--reference .ms-story-part .ms-prose p {
+  max-width: var(--reference-measure);
+  font-size: clamp(1.125rem, 1.03rem + 0.32vw, 1.25rem);
+  line-height: 1.72;
+}
+
+.ms-page--reference .ms-act-shell > h2 + .ms-prose > p:first-child {
+  color: var(--ink);
+  font-size: clamp(1.25rem, 1.12rem + 0.45vw, 1.4rem);
+  line-height: 1.52;
+}
+
+.ms-page--reference .ms-story-part .ms-prose p + p {
+  margin-top: 1.08em;
+}
+
+.ms-page--reference .ms-story-part .ms-prose h3 {
+  max-width: 26ch;
+  margin-top: clamp(3.25rem, 6vw, 4.5rem);
+  margin-bottom: 1rem;
+  font-size: clamp(1.55rem, 1.35rem + 0.7vw, 1.85rem);
+  font-weight: 460;
+  line-height: 1.18;
+  letter-spacing: -0.008em;
+}
+
+.ms-page--reference .ms-run-note {
+  font-size: 0.875rem;
+}
+
+.ms-page--reference .ms-benchmark-display {
+  max-width: min(100%, 72ch);
+  margin: clamp(3rem, 6vw, 4.75rem) 0;
+  padding: clamp(1.5rem, 3vw, 2.25rem) 0;
+  font-size: clamp(1.65rem, 1rem + 2.8vw, 3.2rem);
+  font-weight: 430;
+  line-height: 1.08;
+  border-top: 1px solid var(--stamp);
+  border-right: 0;
+  border-bottom: 1px solid var(--stamp);
+  border-left: 0;
+}
+
+.ms-page--reference .ms-benchmark-display p {
+  white-space: normal;
+}
+
+.ms-page--reference .data-table {
+  width: min(100%, 78ch);
+  max-width: 78ch;
+  margin: clamp(2.5rem, 5vw, 4rem) 0;
+  font-size: 0.875rem;
+  border-bottom: 1px solid var(--rule-strong);
+}
+
+.ms-page--reference .data-table thead th {
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+  text-transform: none;
+}
+
+.ms-page--reference .data-table th,
+.ms-page--reference .data-table td {
+  padding: 0.95rem 0.8rem;
+}
+
+.ms-page--reference .data-table-peak {
+  background: rgba(163, 59, 39, 0.065);
+}
+
+.ms-page--reference .data-table-peak th:first-child {
+  border-left-color: var(--stamp);
+}
+
+.ms-page--reference .ms-story-inline-cta {
+  margin-top: 0;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.ms-page--reference .ms-story-closing {
+  max-width: var(--reference-measure);
+  margin-top: clamp(3.75rem, 7vw, 5.75rem);
+  padding: clamp(1.5rem, 3.5vw, 2.4rem);
+  background: rgba(251, 248, 241, 0.74);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--stamp);
+}
+
+.ms-page--reference .ms-story-closing .ms-primary-link {
+  min-height: 52px;
+  margin-top: 1.5rem;
+  padding-inline: 1.5rem;
+  font-size: 1rem;
+}
+
+.ms-page--reference .ms-closing-actions {
+  gap: 0.75rem 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.ms-page--reference .ms-closing-actions .ms-primary-link {
+  margin-top: 0;
+}
+
+.ms-page--reference .ms-text-link {
+  font-size: 0.9375rem;
+}
+
+.ms-page--reference .ms-text-link::after {
+  content: none;
+}
+
+@media (min-width: 1240px) {
+  .ms-story-nav--rail {
+    position: fixed;
+    z-index: 30;
+    top: 50%;
+    left: max(1.5rem, calc(50vw - 38rem - 11.5rem));
+    display: grid;
+    gap: 0.15rem;
+    width: 11.5rem;
+    padding-left: 1rem;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-42%);
+    border-left: 1px solid var(--rule);
+    transition: opacity 160ms ease-out, visibility 160ms ease-out;
+  }
+
+  .ms-story-nav--rail.is-visible {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .ms-story-nav--rail a {
+    display: block;
+    min-height: 38px;
+    padding: 0.52rem 0.25rem 0.52rem 0.75rem;
+    color: var(--ink-muted);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.32;
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transform: translateX(-1.1rem);
+    transition: color 150ms ease-out, border-color 150ms ease-out;
+  }
+
+  .ms-story-nav--rail a:hover {
+    color: var(--ink);
+  }
+
+  .ms-story-nav--rail a.is-active,
+  .ms-story-nav--rail a[aria-current="location"] {
+    color: var(--ink);
+    border-left-color: var(--stamp);
+  }
+
+  .ms-page--reference-ru .ms-story-nav--rail {
+    top: 7.5rem;
+    left: max(1.5rem, calc(50vw - 38rem - 15rem));
+    gap: 0.55rem;
+    width: 14.5rem;
+    transform: none;
+  }
+
+  .ms-page--reference-ru .ms-story-nav--rail a {
+    min-height: 46px;
+    padding: 0.62rem 0.25rem 0.62rem 0.9rem;
+    font-size: 1rem;
+    line-height: 1.28;
+  }
+}
+
+@media (min-width: 1180px) {
+  .ms-page--reference-ru .ms-hero-inner,
+  .ms-page--reference-ru .ms-story-part .ms-act-shell {
+    width: min(100%, 88rem);
+    padding-left: clamp(12.5rem, 17vw, 16rem);
+  }
+
+  .ms-page--reference-ru .ms-hero-copy,
+  .ms-page--reference-ru .ms-story-part .ms-act-shell {
+    display: grid;
+    grid-template-columns: minmax(18rem, 0.9fr) minmax(0, 1.1fr);
+    column-gap: clamp(3.5rem, 6vw, 7rem);
+    align-items: start;
+  }
+
+  .ms-page--reference-ru .ms-story-part .ms-act-shell > h2 {
+    grid-row: 1;
+    grid-column: 1;
+  }
+
+  .ms-page--reference-ru .ms-story-part .ms-act-shell > :not(h2) {
+    grid-column: 2;
+    min-width: 0;
+  }
+
+  .ms-page--reference-ru .ms-story-part .ms-act-shell > h2 + .ms-prose {
+    grid-row: 1;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 1179px) {
+  .ms-page--reference-ru .ms-hero-copy {
+    display: block;
+  }
+
+  .ms-page--reference-ru .ms-hero-intro {
+    margin-top: clamp(1.75rem, 4vw, 2.5rem);
+  }
+}
+
+@media (max-width: 1239px) {
+  .ms-page--reference-ru .ms-mobile-contents {
+    display: none;
+  }
+
+  .ms-mobile-contents {
+    display: block;
+    max-width: 34rem;
+    margin-top: 1.6rem;
+    font-family: var(--font-sans);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .ms-mobile-contents summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 48px;
+    color: var(--ink-soft);
+    font-size: 0.875rem;
+    line-height: 1.3;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .ms-mobile-contents summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .ms-mobile-contents summary::after {
+    color: var(--stamp);
+    font-size: 1.25rem;
+    content: "+";
+  }
+
+  .ms-mobile-contents[open] summary::after {
+    content: "−";
+  }
+
+  .ms-mobile-contents nav {
+    display: grid;
+    padding: 0.35rem 0 0.75rem;
+  }
+
+  .ms-mobile-contents nav a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0.55rem 0.75rem;
+    color: var(--ink-muted);
+    font-size: 0.875rem;
+    line-height: 1.35;
+    text-decoration: none;
+    border-left: 2px solid transparent;
+  }
+
+  .ms-mobile-contents nav a:hover,
+  .ms-mobile-contents nav a.is-active,
+  .ms-mobile-contents nav a[aria-current="location"] {
+    color: var(--ink);
+    border-left-color: var(--stamp);
+  }
+}
+
+@media (max-width: 899px) {
+  .ms-page--reference .ms-hero-v2 {
+    padding-top: clamp(1.5rem, 5vw, 2.5rem);
+    padding-bottom: clamp(3.5rem, 8vw, 5rem);
+  }
+
+  .ms-page--reference-ru .ms-hero-v2 {
+    padding-top: clamp(2.25rem, 8vw, 3.5rem);
+    padding-bottom: clamp(2.5rem, 7vw, 3.75rem);
+  }
+
+  .ms-page--reference-ru .ms-hero-inner {
+    gap: 0;
+  }
+
+  .ms-page--reference-ru .ms-hero-copy {
+    display: block;
+  }
+
+  .ms-page--reference-ru .ms-hero-v2 h1 {
+    max-width: 14ch;
+    font-size: clamp(2.75rem, 11vw, 4.25rem);
+    line-height: 0.99;
+  }
+
+  .ms-page--reference-ru .ms-hero-subtitle {
+    max-width: 38ch;
+    margin-top: 1.75rem;
+  }
+
+  .ms-page--reference-ru .ms-hero-intro {
+    max-width: 42rem;
+  }
+
+  .ms-page--reference-ru .ms-hero-visual {
+    order: 0;
+    height: clamp(10rem, 42vw, 15rem);
+  }
+
+  .ms-page--reference .ms-hero-inner {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.5rem, 5vw, 2.5rem);
+  }
+
+  .ms-page--reference .ms-hero-visual {
+    order: -1;
+    width: 100%;
+    height: clamp(6rem, 20vw, 9rem);
+    overflow: hidden;
+  }
+
+  .ms-page--reference .ms-hero-visual picture {
+    height: 100%;
+  }
+
+  .ms-page--reference .ms-hero-visual img {
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    aspect-ratio: auto;
+    object-position: center 13%;
+    box-shadow: none;
+  }
+
+  .ms-page--reference .ms-hero-copy {
+    width: 100%;
+  }
+
+  .ms-page--reference .ms-hero-v2 h1 {
+    max-width: 15ch;
+    font-size: clamp(2.55rem, 10.5vw, 4.5rem);
+    line-height: 1.02;
+  }
+
+  .ms-page--reference-en .ms-hero-v2 h1 {
+    max-width: 18ch;
+    font-size: clamp(3rem, 7.8vw, 4rem);
+  }
+
+  .ms-page--reference .ms-hero-subtitle {
+    max-width: 42ch;
+    font-size: clamp(1.2rem, 2.5vw, 1.45rem);
+    line-height: 1.45;
+  }
+
+  .ms-page--reference-ru .ms-hero-inner {
+    gap: 0;
+  }
+
+  .ms-page--reference-ru .ms-hero-v2 h1 {
+    max-width: 18ch;
+    font-size: clamp(2.75rem, 10.7vw, 4.25rem);
+    line-height: 1;
+  }
+
+  .ms-page--reference-ru .ms-hero-subtitle {
+    max-width: 38ch;
+    margin-top: 1.5rem;
+  }
+
+  .ms-page--reference-ru .ms-hero-proof {
+    margin-top: 1.15rem;
+  }
+
+  .ms-page--reference-ru .ms-hero-visual {
+    order: 0;
+    height: clamp(7rem, 24vw, 10rem);
+  }
+
+  .ms-page--reference .ms-story-part {
+    padding-top: clamp(4.75rem, 10vw, 6.5rem);
+    padding-bottom: clamp(5.25rem, 11vw, 7rem);
+  }
+
+  .ms-page--reference .ms-story-part h2 {
+    max-width: 18ch;
+  }
+}
+
+@media (max-width: 700px) {
+  .ms-page--reference-ru .site-header {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.5rem;
+    min-height: 72px;
+  }
+
+  .ms-page--reference-ru .msru-brand {
+    gap: 0.55rem;
+  }
+
+  .ms-page--reference-ru .msru-brand img {
+    width: 34px;
+    height: 34px;
+  }
+
+  .ms-page--reference-ru .msru-brand b {
+    font-size: 1.15rem;
+  }
+
+  .ms-page--reference-ru .msru-brand small {
+    font-size: 0.75rem;
+  }
+
+  .ms-page--reference-ru .site-contact-nav a[href="mailto:mail@coin.im"] {
+    display: none;
+  }
+
+  .ms-page--reference .site-header {
+    gap: 0.45rem;
+    min-height: 88px;
+    padding-block: 0.55rem;
+  }
+
+  .ms-page--reference .site-contact-nav {
+    gap: 0 0.1rem;
+    font-size: 0.875rem;
+  }
+
+  .ms-page--reference .site-contact-nav a {
+    min-height: 40px;
+    padding-inline: 0.42rem;
+  }
+
+  .ms-page--reference .ms-hero-v2 {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  .ms-page--reference .ms-hero-v2 h1 {
+    font-size: clamp(2.45rem, 11.7vw, 3.5rem);
+  }
+
+  .ms-page--reference-ru .ms-hero-v2 h1 {
+    font-size: clamp(2.65rem, 12.2vw, 3.5rem);
+  }
+
+  .ms-page--reference-en .ms-hero-v2 h1 {
+    font-size: clamp(2.15rem, 9.2vw, 2.7rem);
+  }
+
+  .ms-page--reference .ms-hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .ms-page--reference .ms-hero-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .ms-page--reference .ms-story-read-link {
+    justify-content: center;
+  }
+
+  .ms-page--reference .ms-story-part {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  .ms-page--reference .ms-story-part h2 {
+    padding-left: 0.9rem;
+    font-size: clamp(2.05rem, 8vw, 2.65rem);
+    line-height: 1.1;
+  }
+
+  .ms-page--reference .ms-story-part .ms-prose {
+    margin-top: 2.35rem;
+  }
+
+  .ms-page--reference .ms-story-part .ms-prose p {
+    font-size: 1.125rem;
+    line-height: 1.67;
+  }
+
+  .ms-page--reference .ms-act-shell > h2 + .ms-prose > p:first-child {
+    font-size: 1.25rem;
+  }
+
+  .ms-page--reference .ms-story-part .ms-prose h3 {
+    max-width: 22ch;
+    margin-top: 3.5rem;
+    font-size: 1.52rem;
+  }
+
+  .ms-page--reference .ms-benchmark-display {
+    margin: 2.75rem 0;
+    padding: 1.35rem 0;
+    font-size: clamp(1.45rem, 7vw, 2rem);
+  }
+
+  .ms-page--reference .ms-story-closing {
+    margin-top: 3.5rem;
+    padding: 1.3rem 1.15rem;
+  }
+
+  .ms-page--reference .ms-closing-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .ms-page--reference .ms-text-link {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 820px) {
+  .ms-page--reference .data-table {
+    border-bottom: 0;
+  }
+
+  .ms-page--reference .data-table tr {
+    background: rgba(251, 248, 241, 0.65);
+    border-color: var(--rule);
+    border-radius: 0;
+  }
+
+  .ms-page--reference .data-table-peak {
+    background: rgba(163, 59, 39, 0.065);
+  }
+}
+
+body.ms-page--reference-ru {
+  --paper: #f4efe6;
+  --paper-raised: #fbf7ef;
+  --paper-deep: #e8dfd2;
+  --ink-surface: #191612;
+  --ink: #1e1b16;
+  --ink-soft: #4f493f;
+  --ink-muted: #777064;
+  --rule: #d2c7b5;
+  --rule-strong: #a99c88;
+  --stamp: #b4552d;
+  --stamp-strong: #8f3e21;
+  --editorial-wide: 88rem;
+  --editorial-copy: 41rem;
+  --editorial-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  color: var(--ink);
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.72), rgba(244, 239, 230, 0) 34rem),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.11'/%3E%3C/svg%3E");
+  background-blend-mode: normal, multiply;
+  counter-reset: ms-chapter;
+}
+
+.ms-page--reference-ru main {
+  overflow: clip;
+}
+
+.ms-page--reference-ru .site-header {
+  position: sticky;
+  z-index: 80;
+  top: 0;
+  min-height: 72px;
+  padding-inline: clamp(1rem, 4vw, 4.5rem);
+  background: rgba(244, 239, 230, 0.9);
+  border-bottom: 1px solid rgba(169, 156, 136, 0.58);
+  transform: translateY(0);
+  transition:
+    background-color 320ms var(--editorial-ease),
+    box-shadow 320ms var(--editorial-ease),
+    transform 420ms var(--editorial-ease);
+  will-change: transform;
+}
+
+.ms-page--reference-ru .site-header.is-scrolled {
+  background: rgba(244, 239, 230, 0.82);
+  box-shadow: 0 12px 30px rgba(54, 43, 31, 0.07);
+}
+
+.ms-page--reference-ru .site-header.is-hidden {
+  transform: translateY(calc(-100% - 4px));
+}
+
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .ms-page--reference-ru .site-header,
+  .ms-page--reference-ru .site-header.is-scrolled {
+    -webkit-backdrop-filter: blur(14px) saturate(1.08);
+    backdrop-filter: blur(14px) saturate(1.08);
+  }
+}
+
+.ms-page--reference-ru .site-reading-progress {
+  height: 2px;
+  background: rgba(169, 156, 136, 0.2);
+}
+
+.ms-page--reference-ru .site-reading-progress span {
+  background: var(--stamp);
+}
+
+.ms-page--reference-ru .msru-brand {
+  gap: 0.7rem;
+}
+
+.ms-page--reference-ru .msru-brand img {
+  width: 38px;
+  height: 38px;
+  filter: sepia(0.2) contrast(1.08);
+}
+
+.ms-page--reference-ru .msru-brand b {
+  font-size: 1.45rem;
+  font-weight: 420;
+  letter-spacing: -0.025em;
+}
+
+.ms-page--reference-ru .msru-brand small {
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ms-page--reference-ru .site-contact-nav {
+  gap: 0 clamp(0.1rem, 0.8vw, 0.7rem);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.01em;
+}
+
+.ms-page--reference-ru .site-contact-nav a {
+  text-underline-offset: 0.28em;
+}
+
+.ms-page--reference-ru .ms-hero-v2 {
+  position: relative;
+  min-height: calc(100svh - 72px);
+  padding: clamp(3.75rem, 7vh, 6rem) clamp(1.25rem, 5vw, 6rem) clamp(5.5rem, 10vh, 8rem);
+  overflow: hidden;
+  border-bottom: 1px solid var(--rule);
+}
+
+.ms-page--reference-ru .ms-hero-v2::before {
+  position: absolute;
+  bottom: 1.7rem;
+  left: 50%;
+  width: 1px;
+  height: 2.8rem;
+  background: linear-gradient(var(--stamp) 0 45%, transparent 45% 58%, var(--rule-strong) 58% 100%);
+  content: "";
+}
+
+.ms-page--reference-ru .ms-hero-v2::after {
+  position: absolute;
+  z-index: 0;
+  top: clamp(7rem, 14vh, 11rem);
+  right: clamp(-15rem, -8vw, -6rem);
+  width: clamp(28rem, 42vw, 47rem);
+  aspect-ratio: 1.55;
+  background:
+    linear-gradient(34deg, transparent 49.8%, rgba(180, 85, 45, 0.22) 50%, transparent 50.2%),
+    linear-gradient(-34deg, transparent 49.8%, rgba(180, 85, 45, 0.22) 50%, transparent 50.2%);
+  border: 1px solid rgba(180, 85, 45, 0.2);
+  box-shadow: 0 24px 70px rgba(68, 48, 32, 0.06);
+  content: "";
+  opacity: 0.82;
+  transform: rotate(5deg);
+}
+
+.ms-page--reference-ru .ms-hero-inner {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: min(100%, var(--editorial-wide));
+  margin-inline: auto;
+  padding-left: 0;
+}
+
+.ms-page--reference-ru .ms-hero-copy {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(20rem, 0.75fr);
+  gap: clamp(3rem, 7vw, 8rem);
+  align-items: end;
+  max-width: none;
+}
+
+.ms-page--reference-ru .ms-hero-v2 h1 {
+  max-width: 13.5ch;
+  margin: 0;
+  font-size: clamp(4rem, 5.35vw, 6.5rem);
+  font-weight: 370;
+  line-height: 0.94;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
+.ms-page--reference-ru .ms-hero-v2 h1::after {
+  display: block;
+  width: clamp(5rem, 8vw, 8rem);
+  height: 2px;
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+  background: var(--stamp);
+  content: "";
+}
+
+.ms-page--reference-ru .ms-hero-intro {
+  max-width: 34rem;
+  padding: 0 0 0.5rem;
+}
+
+.ms-page--reference-ru .ms-hero-subtitle {
+  max-width: 31ch;
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(1.38rem, 1.1rem + 0.55vw, 1.75rem);
+  font-weight: 390;
+  line-height: 1.43;
+  text-wrap: pretty;
+}
+
+.ms-page--reference-ru .ms-hero-proof {
+  max-width: 47ch;
+  margin: 1.7rem 0 0;
+  padding-top: 1.35rem;
+  color: var(--ink-soft);
+  font-family: var(--font-mono);
+  font-size: clamp(0.88rem, 0.82rem + 0.12vw, 0.98rem);
+  line-height: 1.68;
+  border-top: 1px solid var(--rule-strong);
+}
+
+.ms-page--reference-ru .ms-story-part,
+.ms-page--reference-ru .ms-story-part:first-of-type {
+  position: relative;
+  padding: clamp(7rem, 10vw, 11rem) clamp(1.25rem, 5vw, 6rem) clamp(8rem, 11vw, 12rem);
+  background: rgba(244, 239, 230, 0.9);
+  border-top: 0;
+  counter-increment: ms-chapter;
+}
+
+.ms-page--reference-ru .ms-story-part::before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(calc(100% - 2.5rem), var(--editorial-wide));
+  height: 1px;
+  background: linear-gradient(90deg, var(--stamp) 0 8rem, var(--rule) 8rem 100%);
+  content: "";
+  transform: translateX(-50%);
+}
+
+.ms-page--reference-ru .ms-story-part .ms-act-shell {
+  width: min(100%, var(--editorial-wide));
+  margin-inline: auto;
+}
+
+.ms-page--reference-ru .ms-story-part h2 {
+  max-width: 15ch;
+  margin: 0;
+  padding: 0 0 0 clamp(1rem, 2vw, 1.5rem);
+  font-size: clamp(2.65rem, 2rem + 1.7vw, 4.25rem);
+  font-weight: 380;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  border-left: 2px solid var(--stamp);
+  text-wrap: balance;
+}
+
+.ms-page--reference-ru .ms-story-part h2::before {
+  display: block;
+  margin-bottom: 1.5rem;
+  color: var(--stamp);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  content: "0" counter(ms-chapter);
+}
+
+.ms-page--reference-ru .ms-story-part .ms-prose {
+  width: 100%;
+  max-width: var(--editorial-copy);
+  margin-top: 0;
+}
+
+.ms-page--reference-ru .ms-story-part .ms-prose p {
+  max-width: none;
+  color: var(--ink-soft);
+  font-size: clamp(1.16rem, 1.05rem + 0.25vw, 1.31rem);
+  font-weight: 370;
+  line-height: 1.73;
+  text-wrap: pretty;
+}
+
+.ms-page--reference-ru .ms-story-part .ms-prose p + p {
+  margin-top: 1.15em;
+}
+
+.ms-page--reference-ru .ms-act-shell > h2 + .ms-prose > p:first-child {
+  color: var(--ink);
+  font-size: clamp(1.35rem, 1.16rem + 0.35vw, 1.55rem);
+  font-weight: 390;
+  line-height: 1.55;
+}
+
+.ms-page--reference-ru .ms-story-part .ms-prose h3 {
+  position: relative;
+  max-width: 21ch;
+  margin-top: clamp(5.5rem, 8vw, 8rem);
+  margin-bottom: 1.55rem;
+  padding-top: 1.35rem;
+  color: var(--ink);
+  font-size: clamp(2rem, 1.55rem + 0.9vw, 2.75rem);
+  font-weight: 380;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.ms-page--reference-ru .ms-story-part .ms-prose h3::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4.5rem;
+  height: 1px;
+  background: var(--stamp);
+  content: "";
+}
+
+.ms-page--reference-ru .ms-story-part .ms-prose > h3 + p::first-letter,
+.ms-page--reference-ru .ms-editor-note h3 + p::first-letter {
+  float: left;
+  margin: 0.06em 0.12em 0 0;
+  color: var(--stamp);
+  font-family: var(--font-serif);
+  font-size: 3.4em;
+  font-weight: 360;
+  line-height: 0.78;
+}
+
+.ms-page--reference-ru #spiski .ms-prose > p:nth-of-type(4) {
+  margin-block: clamp(3.5rem, 6vw, 5.5rem);
+  padding: clamp(1.5rem, 3vw, 2.25rem) 0;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: clamp(1.18rem, 1rem + 0.5vw, 1.55rem);
+  line-height: 1.62;
+  border-top: 1px solid var(--stamp);
+  border-bottom: 1px solid var(--stamp);
+}
+
+.ms-page--reference-ru #spiski .ms-prose > p:nth-of-type(20) {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.98rem;
+  line-height: 1.75;
+  background: rgba(251, 247, 239, 0.72);
+  border: 1px solid var(--rule);
+}
+
+.ms-page--reference-ru #spiski .ms-prose > p:nth-of-type(21) {
+  margin-top: 1rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  color: var(--ink);
+  font-size: clamp(1.35rem, 1.08rem + 0.6vw, 1.75rem);
+  line-height: 1.5;
+  border-left: 3px solid var(--stamp);
+}
+
+.ms-page--reference-ru #spiski .ms-prose > p:nth-of-type(23) {
+  position: relative;
+  margin-block: 3.5rem;
+  padding: clamp(1.75rem, 4vw, 3rem);
+  color: var(--ink);
+  background:
+    linear-gradient(rgba(180, 85, 45, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(180, 85, 45, 0.08) 1px, transparent 1px),
+    rgba(251, 247, 239, 0.62);
+  background-size: 22px 22px;
+  border: 1px solid var(--rule);
+}
+
+.ms-page--reference-ru #karta-rynka .ms-prose h3 {
+  padding-left: 1.4rem;
+  border-left: 1px solid var(--rule-strong);
+}
+
+.ms-page--reference-ru #karta-rynka .ms-prose h3::before {
+  top: 1.65rem;
+  left: -0.36rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  background: var(--paper);
+  border: 2px solid var(--stamp);
+  border-radius: 50%;
+}
+
+.ms-page--reference-ru .ms-benchmark-panel {
+  position: relative;
+  margin-block: clamp(4rem, 7vw, 7rem);
+  padding: clamp(2rem, 4vw, 4.5rem);
+  overflow-x: auto;
+  color: var(--paper);
+  background: var(--ink-surface);
+  border: 1px solid #2c2822;
+  box-shadow: 0 30px 80px rgba(38, 29, 20, 0.2);
+  scrollbar-color: var(--stamp) #302a24;
+}
+
+.ms-page--reference-ru .ms-benchmark-panel::before {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 4.5rem;
+  aspect-ratio: 1;
+  border: 1px solid rgba(180, 85, 45, 0.45);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 0.4rem var(--ink-surface), inset 0 0 0 calc(0.4rem + 1px) rgba(180, 85, 45, 0.25);
+  content: "";
+  opacity: 0.7;
+  transform: rotate(9deg);
+}
+
+.ms-page--reference-ru .ms-benchmark-panel .data-table {
+  width: 100%;
+  max-width: none;
+  min-width: 47rem;
+  margin: 0;
+  color: var(--paper);
+  font-size: 0.82rem;
+  border-bottom-color: rgba(244, 239, 230, 0.3);
+}
+
+.ms-page--reference-ru .ms-benchmark-panel .data-table caption {
+  padding-top: 1.25rem;
+  color: #aaa194;
+  font-size: 0.72rem;
+}
+
+.ms-page--reference-ru .ms-benchmark-panel .data-table th,
+.ms-page--reference-ru .ms-benchmark-panel .data-table td {
+  position: relative;
+  padding: 1.15rem 0.85rem;
+  color: #e8e0d5;
+  border-top-color: rgba(244, 239, 230, 0.18);
+}
+
+.ms-page--reference-ru .ms-benchmark-panel .data-table thead th {
+  padding-top: 2.25rem;
+  color: #aaa194;
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+}
+
+.ms-page--reference-ru .ms-benchmark-panel .data-table td:nth-child(5) {
+  padding-bottom: 1.7rem;
+}
+
+.ms-page--reference-ru .ms-benchmark-panel .data-table td:nth-child(5)::after {
+  position: absolute;
+  right: 0.85rem;
+  bottom: 0.65rem;
+  left: 0.85rem;
+  height: 3px;
+  background: var(--stamp);
+  content: "";
+  opacity: 0.85;
+  transform: scaleX(var(--bar, 0.2));
+  transform-origin: left center;
+  transition: transform 800ms var(--editorial-ease) 180ms;
+}
+
+.ms-page--reference-ru .ms-benchmark-panel tbody tr:nth-child(1) { --bar: 0.19; }
+.ms-page--reference-ru .ms-benchmark-panel tbody tr:nth-child(2) { --bar: 0.23; }
+.ms-page--reference-ru .ms-benchmark-panel tbody tr:nth-child(3) { --bar: 1; }
+.ms-page--reference-ru .ms-benchmark-panel tbody tr:nth-child(4) { --bar: 0.54; }
+.ms-page--reference-ru .ms-benchmark-panel tbody tr:nth-child(5) { --bar: 0.1; }
+
+.ms-page--reference-ru .ms-benchmark-panel .data-table-peak {
+  background: rgba(180, 85, 45, 0.2);
+}
+
+.ms-page--reference-ru .ms-benchmark-panel .data-table-peak th:first-child {
+  border-left-color: var(--stamp);
+}
+
+.ms-page--reference-ru .ms-benchmark-display {
+  max-width: var(--editorial-copy);
+  margin: clamp(4rem, 7vw, 6rem) 0;
+  padding: clamp(2rem, 4vw, 3.5rem);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: clamp(1.7rem, 1.1rem + 2vw, 3.3rem);
+  font-weight: 380;
+  line-height: 1.12;
+  background: var(--ink-surface);
+  border: 0;
+  box-shadow: inset 4px 0 0 var(--stamp);
+}
+
+.ms-page--reference-ru .ms-benchmark-display p {
+  color: inherit;
+}
+
+.ms-page--reference-ru .ms-benchmark-display p + p {
+  margin-top: 0.35em;
+}
+
+.ms-page--reference-ru .ms-editor-note {
+  margin-top: clamp(5.5rem, 8vw, 8rem);
+  padding: clamp(1.75rem, 4vw, 3.5rem);
+  background: rgba(251, 247, 239, 0.74);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--stamp);
+  box-shadow: 0 20px 50px rgba(64, 47, 31, 0.07);
+}
+
+.ms-page--reference-ru .ms-editor-note h3 {
+  margin-top: 0;
+}
+
+.ms-page--reference-ru #komu-podhodit .ms-story-closing {
+  position: relative;
+  max-width: var(--editorial-copy);
+  margin-top: clamp(5rem, 8vw, 8rem);
+  padding: clamp(2rem, 5vw, 4.5rem);
+  overflow: hidden;
+  color: var(--paper);
+  background: var(--ink-surface);
+  border: 1px solid #2c2822;
+  border-left: 0;
+  box-shadow: 0 32px 90px rgba(38, 29, 20, 0.22);
+}
+
+.ms-page--reference-ru #komu-podhodit .ms-story-closing::after {
+  position: absolute;
+  right: -3.5rem;
+  bottom: -2.5rem;
+  width: 16rem;
+  aspect-ratio: 1.45;
+  background:
+    linear-gradient(34deg, transparent 49.5%, rgba(244, 239, 230, 0.24) 50%, transparent 50.5%),
+    linear-gradient(-34deg, transparent 49.5%, rgba(244, 239, 230, 0.24) 50%, transparent 50.5%);
+  border: 1px solid rgba(244, 239, 230, 0.2);
+  content: "";
+  opacity: 0.65;
+  transform: rotate(-5deg);
+}
+
+.ms-page--reference-ru #komu-podhodit .ms-story-closing::before {
+  position: absolute;
+  z-index: 1;
+  right: 4rem;
+  bottom: 2.1rem;
+  width: 3.4rem;
+  aspect-ratio: 1;
+  background: var(--stamp);
+  border: 1px solid #ce7956;
+  border-radius: 50%;
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.28), inset 0 0 0 0.35rem rgba(115, 43, 23, 0.34);
+  content: "";
+}
+
+.ms-page--reference-ru #komu-podhodit .ms-story-closing > * {
+  position: relative;
+  z-index: 2;
+}
+
+.ms-page--reference-ru #komu-podhodit .ms-story-closing p {
+  max-width: 31ch;
+  color: #eee7dd;
+  font-size: clamp(1.35rem, 1.1rem + 0.45vw, 1.65rem);
+  line-height: 1.5;
+}
+
+.ms-page--reference-ru .ms-closing-actions {
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.ms-page--reference-ru #komu-podhodit .ms-story-closing .ms-text-link {
+  color: #eee7dd;
+  text-decoration-color: rgba(238, 231, 221, 0.5);
+}
+
+.ms-page--reference-ru .ms-primary-link {
+  min-height: 56px;
+  padding: 0.85rem 1.55rem;
+  font-weight: 430;
+  background: var(--stamp);
+  border-color: var(--stamp);
+  border-radius: 0;
+  box-shadow: 0 8px 0 #71301d, 0 18px 34px rgba(66, 31, 20, 0.2);
+  transition:
+    background-color 240ms var(--editorial-ease),
+    box-shadow 240ms var(--editorial-ease),
+    transform 240ms var(--editorial-ease);
+}
+
+.ms-page--reference-ru .ms-primary-link:hover {
+  background: #c06138;
+  border-color: #c06138;
+  box-shadow: 0 10px 0 #71301d, 0 22px 38px rgba(66, 31, 20, 0.23);
+  transform: translateY(-2px);
+}
+
+.ms-page--reference-ru .ms-primary-link:active {
+  box-shadow: 0 3px 0 #71301d, 0 10px 20px rgba(66, 31, 20, 0.2);
+  transform: translateY(4px);
+}
+
+.ms-page--reference-ru :is(a, button, summary):focus-visible {
+  outline: 3px solid var(--stamp);
+  outline-offset: 4px;
+}
+
+.ms-motion-ready .ms-page--reference-ru .ms-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 700ms var(--editorial-ease) var(--reveal-delay, 0ms),
+    transform 700ms var(--editorial-ease) var(--reveal-delay, 0ms);
+}
+
+.ms-motion-ready .ms-page--reference-ru .ms-reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ms-motion-ready .ms-page--reference-ru .data-table.ms-reveal:not(.is-revealed) td:nth-child(5)::after {
+  transform: scaleX(0);
+}
+
+@media (min-width: 1180px) {
+  .ms-page--reference-ru .ms-hero-inner,
+  .ms-page--reference-ru .ms-story-part .ms-act-shell {
+    width: min(100%, var(--editorial-wide));
+    padding-left: clamp(12.5rem, 17vw, 16rem);
+  }
+
+  .ms-page--reference-ru .ms-hero-copy,
+  .ms-page--reference-ru .ms-story-part .ms-act-shell {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(1rem, 1.4vw, 1.6rem);
+    align-items: start;
+  }
+
+  .ms-page--reference-ru .ms-hero-v2 h1,
+  .ms-page--reference-ru .ms-story-part .ms-act-shell > h2 {
+    grid-column: 1 / 6;
+  }
+
+  .ms-page--reference-ru .ms-hero-intro,
+  .ms-page--reference-ru .ms-story-part .ms-act-shell > :not(h2) {
+    grid-column: 7 / 13;
+    min-width: 0;
+  }
+
+  .ms-page--reference-ru .ms-story-part .ms-act-shell > h2 {
+    position: sticky;
+    top: 7rem;
+    grid-row: 1;
+    align-self: start;
+  }
+
+  .ms-page--reference-ru .ms-story-part .ms-act-shell > h2 + .ms-prose {
+    grid-row: 1;
+  }
+
+  .ms-page--reference-ru .ms-story-part .ms-act-shell > .ms-benchmark-panel {
+    grid-column: 1 / 13;
+  }
+}
+
+@media (min-width: 1240px) {
+  .ms-page--reference-ru .ms-story-nav--rail {
+    top: 7.5rem;
+    left: max(1.5rem, calc(50vw - 44rem));
+    gap: 0.6rem;
+    width: 14.5rem;
+    padding-left: 1.15rem;
+    transform: none;
+    border-left-color: var(--rule-strong);
+    transition: opacity 260ms var(--editorial-ease), visibility 260ms var(--editorial-ease);
+  }
+
+  .ms-page--reference-ru .ms-story-nav--rail a {
+    min-height: 48px;
+    padding: 0.65rem 0.25rem 0.65rem 0.95rem;
+    font-size: 1.02rem;
+    line-height: 1.28;
+    transform: translateX(-1.2rem);
+  }
+}
+
+@media (max-width: 1179px) {
+  .ms-page--reference-ru .ms-hero-inner,
+  .ms-page--reference-ru .ms-story-part .ms-act-shell {
+    width: min(100%, var(--editorial-copy));
+    padding-left: 0;
+  }
+
+  .ms-page--reference-ru .ms-hero-copy,
+  .ms-page--reference-ru .ms-story-part .ms-act-shell {
+    display: block;
+  }
+
+  .ms-page--reference-ru .ms-hero-intro,
+  .ms-page--reference-ru .ms-story-part .ms-prose {
+    margin-top: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  .ms-page--reference-ru .ms-benchmark-panel {
+    margin-inline: calc(clamp(1.25rem, 5vw, 6rem) * -0.5);
+  }
+}
+
+@media (max-width: 820px) {
+  .ms-page--reference-ru .ms-benchmark-panel {
+    padding: 1.25rem;
+  }
+
+  .ms-page--reference-ru .ms-benchmark-panel .data-table {
+    display: table;
+    flex-direction: initial;
+    min-width: 47rem;
+  }
+
+  .ms-page--reference-ru .ms-benchmark-panel .data-table caption {
+    display: table-caption;
+  }
+
+  .ms-page--reference-ru .ms-benchmark-panel .data-table thead {
+    display: table-header-group;
+  }
+
+  .ms-page--reference-ru .ms-benchmark-panel .data-table tbody {
+    display: table-row-group;
+  }
+
+  .ms-page--reference-ru .ms-benchmark-panel .data-table tr {
+    display: table-row;
+    padding: 0;
+    background: transparent;
+    border: 0;
+  }
+
+  .ms-page--reference-ru .ms-benchmark-panel .data-table tr + tr {
+    margin-top: 0;
+  }
+
+  .ms-page--reference-ru .ms-benchmark-panel .data-table th,
+  .ms-page--reference-ru .ms-benchmark-panel .data-table td {
+    display: table-cell;
+    grid-template-columns: none;
+    gap: 0;
+    text-align: right;
+  }
+
+  .ms-page--reference-ru .ms-benchmark-panel .data-table th {
+    text-align: left;
+  }
+
+  .ms-page--reference-ru .ms-benchmark-panel .data-table th::before,
+  .ms-page--reference-ru .ms-benchmark-panel .data-table td::before {
+    content: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .ms-page--reference-ru .site-header {
+    min-height: 68px;
+    padding-inline: 1rem;
+  }
+
+  .ms-page--reference-ru .msru-brand img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .ms-page--reference-ru .msru-brand b {
+    font-size: 1.15rem;
+  }
+
+  .ms-page--reference-ru .msru-brand small,
+  .ms-page--reference-ru .site-contact-nav a[href="mailto:mail@coin.im"] {
+    display: none;
+  }
+
+  .ms-page--reference-ru .site-contact-nav {
+    gap: 0;
+    font-size: 0.7rem;
+  }
+
+  .ms-page--reference-ru .site-contact-nav a {
+    min-height: 42px;
+    padding-inline: 0.38rem;
+  }
+
+  .ms-page--reference-ru .ms-hero-v2 {
+    min-height: calc(100svh - 68px);
+    padding: clamp(2.5rem, 9vw, 3.5rem) 1.25rem 5rem;
+  }
+
+  .ms-page--reference-ru .ms-hero-v2::after {
+    top: auto;
+    right: -12rem;
+    bottom: 2rem;
+    width: 28rem;
+    opacity: 0.35;
+  }
+
+  .ms-page--reference-ru .ms-hero-v2 h1 {
+    max-width: 12ch;
+    font-size: clamp(3rem, 14vw, 4.25rem);
+    line-height: 0.96;
+  }
+
+  .ms-page--reference-ru .ms-hero-subtitle {
+    font-size: 1.25rem;
+  }
+
+  .ms-page--reference-ru .ms-hero-proof {
+    font-size: 0.82rem;
+    line-height: 1.62;
+  }
+
+  .ms-page--reference-ru .ms-story-part,
+  .ms-page--reference-ru .ms-story-part:first-of-type {
+    padding: 5.75rem 1.25rem 7rem;
+  }
+
+  .ms-page--reference-ru .ms-story-part h2 {
+    max-width: 17ch;
+    padding-left: 1rem;
+    font-size: clamp(2.35rem, 10vw, 3.1rem);
+  }
+
+  .ms-page--reference-ru .ms-story-part .ms-prose p,
+  .ms-page--reference-ru .ms-act-shell > h2 + .ms-prose > p:first-child {
+    font-size: 1.125rem;
+    line-height: 1.68;
+  }
+
+  .ms-page--reference-ru .ms-story-part .ms-prose h3 {
+    max-width: 20ch;
+    margin-top: 4.75rem;
+    font-size: clamp(1.8rem, 8vw, 2.35rem);
+  }
+
+  .ms-page--reference-ru .ms-benchmark-panel {
+    margin-inline: -1.25rem;
+    border-right: 0;
+    border-left: 0;
+  }
+
+  .ms-page--reference-ru .ms-benchmark-display,
+  .ms-page--reference-ru .ms-editor-note,
+  .ms-page--reference-ru #komu-podhodit .ms-story-closing {
+    margin-inline: 0;
+    padding: 1.5rem;
+  }
+
+  .ms-page--reference-ru #komu-podhodit .ms-story-closing::after {
+    right: -8rem;
+    opacity: 0.35;
+  }
+
+  .ms-page--reference-ru #komu-podhodit .ms-story-closing::before {
+    right: 1.35rem;
+    bottom: 1.35rem;
+    width: 2.6rem;
+    opacity: 0.65;
+  }
+
+  .ms-page--reference-ru #komu-podhodit .ms-story-closing p {
+    max-width: 26ch;
+    font-size: 1.25rem;
+  }
+
+  .ms-page--reference-ru .ms-closing-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
+
+/* Editorial v2: proof, navigation and conversion layers */
+
+.ms-page--reference-ru .ms-reading-meta {
+  position: absolute;
+  left: 50%;
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.ms-page--reference-ru .ms-hero-heading {
+  min-width: 0;
+}
+
+.ms-page--reference-ru .ms-hero-kicker {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin: 0 0 1.5rem;
+  color: var(--stamp);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.09em;
+  line-height: 1.5;
+}
+
+.ms-page--reference-ru .ms-hero-kicker::after {
+  width: min(8rem, 18vw);
+  height: 1px;
+  background: var(--stamp);
+  content: "";
+}
+
+.ms-page--reference-ru .ms-hero-passport {
+  margin: 1.8rem 0 0;
+  padding: 0;
+  border-top: 1px solid var(--rule-strong);
+}
+
+.ms-page--reference-ru .ms-hero-passport div {
+  display: grid;
+  grid-template-columns: 8.6rem minmax(0, 1fr);
+  gap: 1rem;
+  padding-block: 0.72rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.ms-page--reference-ru .ms-hero-passport dt,
+.ms-page--reference-ru .ms-hero-passport dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.ms-page--reference-ru .ms-hero-passport dt {
+  color: var(--stamp);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.ms-page--reference-ru .ms-hero-passport dd {
+  color: var(--ink-soft);
+}
+
+.ms-page--reference-ru .ms-scroll-cue {
+  position: absolute;
+  z-index: 2;
+  bottom: 1.35rem;
+  left: calc(50% + 0.9rem);
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ms-page--reference-ru .ms-anchor-alias {
+  display: block;
+  height: 0;
+  scroll-margin-top: 8rem;
+}
+
+.ms-page--reference-ru .ms-chapter-strip {
+  position: sticky;
+  z-index: 62;
+  top: var(--chapter-strip-top, 72px);
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  width: 100%;
+  padding-inline: max(1.25rem, calc((100vw - var(--editorial-wide)) / 2));
+  background: rgba(244, 239, 230, 0.96);
+  border-bottom: 1px solid var(--rule);
+  transition: top 360ms var(--editorial-ease);
+}
+
+.ms-page--reference-ru .ms-chapter-strip.is-header-hidden {
+  --chapter-strip-top: 0px;
+}
+
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .ms-page--reference-ru .ms-chapter-strip {
+    background: rgba(244, 239, 230, 0.86);
+    -webkit-backdrop-filter: blur(14px) saturate(1.08);
+    backdrop-filter: blur(14px) saturate(1.08);
+  }
+}
+
+.ms-page--reference-ru .ms-chapter-strip a {
+  position: relative;
+  display: flex;
+  gap: 0.62rem;
+  align-items: center;
+  min-height: 58px;
+  padding: 0.75rem clamp(0.6rem, 1.4vw, 1.15rem);
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 400;
+  line-height: 1.25;
+  text-decoration: none;
+  border-right: 1px solid var(--rule);
+}
+
+.ms-page--reference-ru .ms-chapter-strip a:first-child {
+  border-left: 1px solid var(--rule);
+}
+
+.ms-page--reference-ru .ms-chapter-strip a::after {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  background: var(--stamp);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 300ms var(--editorial-ease);
+}
+
+.ms-page--reference-ru .ms-chapter-strip a span {
+  color: var(--stamp);
+}
+
+.ms-page--reference-ru .ms-chapter-strip a:is(:hover, .is-active) {
+  color: var(--ink);
+}
+
+.ms-page--reference-ru .ms-chapter-strip a.is-active::after {
+  transform: scaleX(1);
+}
+
+.ms-page--reference-ru .ms-story-part {
+  scroll-margin-top: 8rem;
+}
+
+.ms-page--reference-ru .ms-proof-note {
+  margin: 2rem 0 2.5rem;
+  color: var(--ink);
+  background: rgba(251, 247, 239, 0.68);
+  border-top: 1px solid var(--stamp);
+  border-bottom: 1px solid var(--rule);
+}
+
+.ms-page--reference-ru .ms-proof-note summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  min-height: 48px;
+  padding: 0.8rem 0;
+  color: var(--stamp);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.07em;
+  list-style: none;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.ms-page--reference-ru .ms-proof-note summary::-webkit-details-marker {
+  display: none;
+}
+
+.ms-page--reference-ru .ms-proof-note summary::after {
+  color: var(--ink-muted);
+  content: "+";
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.ms-page--reference-ru .ms-proof-note[open] summary::after {
+  content: "×";
+}
+
+.ms-page--reference-ru .ms-proof-note p,
+.ms-page--reference-ru .ms-story-part .ms-prose .ms-proof-note p {
+  margin: 0;
+  padding: 0 0 1.15rem;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: clamp(0.88rem, 0.82rem + 0.12vw, 0.96rem);
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+.ms-page--reference-ru .ms-quote-spread {
+  width: 100%;
+  margin: clamp(5rem, 8vw, 8rem) 0;
+  padding: clamp(2rem, 5vw, 4rem);
+  background: var(--ink-surface);
+  box-shadow: inset 4px 0 0 var(--stamp), 0 24px 64px rgba(38, 29, 20, 0.16);
+}
+
+.ms-page--reference-ru .ms-quote-spread blockquote {
+  margin: 0;
+  color: var(--paper);
+  font-size: clamp(2rem, 1.35rem + 2vw, 3.5rem);
+  font-weight: 360;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+
+.ms-page--reference-ru .ms-quote-spread figcaption {
+  margin-top: 1.5rem;
+  color: #aaa194;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  line-height: 1.6;
+}
+
+.ms-page--reference-ru .ms-benchmark-context,
+.ms-page--reference-ru .ms-benchmark-footnote {
+  margin: 0;
+  color: #aaa194;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.ms-page--reference-ru .ms-benchmark-context {
+  padding: 0 5rem 1.3rem 0;
+  color: var(--paper);
+  border-bottom: 1px solid rgba(244, 239, 230, 0.18);
+}
+
+.ms-page--reference-ru .ms-benchmark-footnote {
+  padding-top: 1.15rem;
+  border-top: 1px solid rgba(244, 239, 230, 0.18);
+}
+
+.ms-page--reference-ru .ms-benchmark-conclusion {
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.38fr) minmax(0, 1fr);
+  gap: clamp(1.25rem, 3vw, 3rem);
+  align-items: center;
+  max-width: var(--editorial-copy);
+  margin: -3rem 0 clamp(4rem, 7vw, 6rem);
+  padding: clamp(1.4rem, 3vw, 2rem);
+  color: var(--ink);
+  background: var(--paper-light);
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--stamp);
+}
+
+.ms-page--reference-ru .ms-benchmark-conclusion span {
+  color: var(--stamp);
+  font-family: var(--font-mono);
+  font-size: clamp(1.45rem, 1rem + 1vw, 2rem);
+}
+
+.ms-page--reference-ru .ms-benchmark-conclusion p {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(1rem, 0.9rem + 0.25vw, 1.14rem);
+  line-height: 1.5;
+}
+
+.ms-page--reference-ru .ms-quiet-cta {
+  max-width: var(--editorial-copy);
+  margin: clamp(3.5rem, 6vw, 5rem) 0;
+  padding: 1.2rem 0;
+  color: var(--ink-soft);
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 400;
+  line-height: 1.65;
+  border-top: 1px solid var(--rule-strong);
+  border-bottom: 1px solid var(--rule-strong);
+}
+
+.ms-page--reference-ru .ms-quiet-cta a {
+  color: var(--ink);
+  text-decoration-color: var(--stamp);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.28em;
+}
+
+.ms-page--reference-ru .ms-anti-filter {
+  margin-top: clamp(5rem, 8vw, 8rem);
+  padding: clamp(1.75rem, 4vw, 3rem);
+  color: var(--paper);
+  background: var(--ink-surface);
+  box-shadow: inset 4px 0 0 var(--stamp);
+}
+
+.ms-page--reference-ru .ms-story-part .ms-prose .ms-anti-filter h3 {
+  max-width: 16ch;
+  margin: 0 0 2rem;
+  padding: 0;
+  color: var(--paper);
+}
+
+.ms-page--reference-ru .ms-story-part .ms-prose .ms-anti-filter h3::before {
+  content: none;
+}
+
+.ms-page--reference-ru .ms-story-part .ms-prose .ms-anti-filter p {
+  margin: 0;
+  padding: 0.9rem 0;
+  color: #d8d0c5;
+  font-size: 1rem;
+  font-weight: 400;
+  border-top: 1px solid rgba(244, 239, 230, 0.18);
+}
+
+.ms-page--reference-ru .ms-inventory {
+  margin-top: clamp(5rem, 8vw, 8rem);
+  padding: clamp(1.5rem, 4vw, 3rem);
+  background: rgba(251, 247, 239, 0.74);
+  border: 1px solid var(--rule);
+}
+
+.ms-page--reference-ru .ms-story-part .ms-prose .ms-inventory h3 {
+  margin: 0 0 2rem;
+  padding: 0;
+}
+
+.ms-page--reference-ru .ms-story-part .ms-prose .ms-inventory h3::before {
+  content: none;
+}
+
+.ms-page--reference-ru .ms-inventory ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ms-page--reference-ru .ms-inventory li {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: 1rem;
+  align-items: baseline;
+  padding: 1rem 0;
+  color: var(--ink);
+  font-size: clamp(1.05rem, 0.96rem + 0.25vw, 1.2rem);
+  line-height: 1.45;
+  border-top: 1px solid var(--rule);
+}
+
+.ms-page--reference-ru .ms-inventory li span {
+  color: var(--stamp);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+
+.ms-page--reference-ru .ms-story-part .ms-prose .ms-inventory > p {
+  margin: 1.5rem 0 0;
+  padding-top: 1.5rem;
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 400;
+  line-height: 1.65;
+  border-top: 1px solid var(--stamp);
+}
+
+.ms-page--reference-ru .ms-faq {
+  margin-top: clamp(6rem, 10vw, 10rem);
+}
+
+.ms-page--reference-ru .ms-story-part .ms-prose .ms-faq h3 {
+  max-width: none;
+  margin: 0 0 2rem;
+  padding: 0;
+  font-size: clamp(2.4rem, 1.85rem + 1.5vw, 3.5rem);
+  font-weight: 370;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  border: 0;
+}
+
+.ms-page--reference-ru .ms-story-part .ms-prose .ms-faq h3::before {
+  content: none;
+}
+
+.ms-page--reference-ru .ms-faq details {
+  border-top: 1px solid var(--rule-strong);
+}
+
+.ms-page--reference-ru .ms-faq details:last-child {
+  border-bottom: 1px solid var(--rule-strong);
+}
+
+.ms-page--reference-ru .ms-faq summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 2rem;
+  gap: 1.5rem;
+  align-items: center;
+  min-height: 76px;
+  padding: 1.1rem 0;
+  color: var(--ink);
+  font-size: clamp(1.15rem, 1rem + 0.35vw, 1.35rem);
+  font-weight: 390;
+  line-height: 1.35;
+  list-style: none;
+  cursor: pointer;
+}
+
+.ms-page--reference-ru .ms-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.ms-page--reference-ru .ms-faq-plus {
+  position: relative;
+  display: block;
+  width: 1.75rem;
+  height: 1.75rem;
+  filter: drop-shadow(0 3px 5px rgba(48, 82, 55, 0.18));
+  transition: transform 360ms var(--editorial-ease);
+}
+
+.ms-page--reference-ru .ms-faq-plus::before,
+.ms-page--reference-ru .ms-faq-plus::after {
+  position: absolute;
+  top: calc(50% - 2px);
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #315d3d, #5e8d68 45%, #2f6843);
+  border-radius: 999px;
+  content: "";
+}
+
+.ms-page--reference-ru .ms-faq-plus::after {
+  transform: rotate(90deg);
+}
+
+.ms-page--reference-ru .ms-faq summary:hover .ms-faq-plus {
+  transform: translateY(-2px);
+}
+
+.ms-page--reference-ru .ms-faq summary:active .ms-faq-plus {
+  transform: translateY(1px) scale(0.94);
+}
+
+.ms-page--reference-ru .ms-faq details[open] .ms-faq-plus {
+  transform: rotate(45deg);
+}
+
+.ms-page--reference-ru .ms-story-part .ms-prose .ms-faq details p {
+  margin: 0;
+  padding: 0 3.5rem 1.5rem 0;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  font-weight: 370;
+  line-height: 1.7;
+}
+
+.ms-page--reference-ru .ms-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: center;
+  padding: 2rem max(1.25rem, calc((100vw - var(--editorial-wide)) / 2));
+  background: var(--paper);
+  border-top: 1px solid var(--rule-strong);
+}
+
+.ms-page--reference-ru .ms-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+}
+
+.ms-page--reference-ru .ms-footer nav a {
+  color: var(--ink-soft);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-underline-offset: 0.25em;
+}
+
+@media (min-width: 1180px) {
+  .ms-page--reference-ru .ms-hero-heading {
+    grid-column: 1 / 6;
+  }
+
+  .ms-page--reference-ru .ms-hero-v2 h1 {
+    grid-column: auto;
+  }
+
+  .ms-page--reference-ru .ms-quote-spread {
+    --quote-pull: clamp(3rem, 7vw, 7rem);
+    width: calc(100% + var(--quote-pull));
+    margin-left: calc(-1 * var(--quote-pull));
+  }
+}
+
+@media (min-width: 1740px) {
+  .ms-page--reference-ru .ms-proof-note {
+    width: 24rem;
+    margin-top: -4.8rem;
+    margin-bottom: 1.5rem;
+    margin-left: calc(100% + 3rem);
+  }
+}
+
+@media (max-width: 960px) {
+  .ms-page--reference-ru .ms-reading-meta {
+    display: none;
+  }
+
+  .ms-page--reference-ru .ms-chapter-strip {
+    grid-template-columns: none;
+    grid-auto-columns: minmax(9.5rem, 44vw);
+    grid-auto-flow: column;
+    padding-inline: 0;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+  }
+
+  .ms-page--reference-ru .ms-chapter-strip::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ms-page--reference-ru .ms-chapter-strip a {
+    min-height: 54px;
+    border-left: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .ms-page--reference-ru .ms-chapter-strip {
+    --chapter-strip-top: 68px;
+  }
+
+  .ms-page--reference-ru .ms-hero-kicker {
+    margin-bottom: 1.1rem;
+    font-size: 0.65rem;
+  }
+
+  .ms-page--reference-ru .ms-hero-passport div {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+
+  .ms-page--reference-ru .ms-scroll-cue {
+    bottom: 1.15rem;
+  }
+
+  .ms-page--reference-ru .ms-quote-spread {
+    width: auto;
+    margin-inline: -1.25rem;
+    padding: 2rem 1.25rem;
+  }
+
+  .ms-page--reference-ru .ms-benchmark-conclusion {
+    grid-template-columns: 1fr;
+    margin-top: -2rem;
+  }
+
+  .ms-page--reference-ru .ms-anti-filter,
+  .ms-page--reference-ru .ms-inventory {
+    margin-inline: -1.25rem;
+    padding-inline: 1.25rem;
+    border-right: 0;
+    border-left: 0;
+  }
+
+  .ms-page--reference-ru .ms-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ms-page--reference .ms-primary-link,
+  .ms-page--reference .ms-story-nav a {
+    transition: none;
+  }
+
+  .ms-page--reference-ru .site-header,
+  .ms-page--reference-ru .ms-chapter-strip,
+  .ms-page--reference-ru .ms-chapter-strip a::after,
+  .ms-page--reference-ru .ms-faq-plus,
+  .ms-page--reference-ru .ms-reveal,
+  .ms-page--reference-ru .ms-benchmark-panel .data-table td:nth-child(5)::after {
+    transition: none;
+  }
+
+  .ms-page--reference-ru .site-header.is-hidden {
+    transform: none;
+  }
+}
+
+@media print {
+  .ms-story-nav--rail,
+  .ms-chapter-strip,
+  .ms-mobile-contents,
+  .ms-page--reference .ms-hero-actions {
+    display: none;
+  }
+
+  .ms-page--reference .ms-hero-inner {
+    display: block;
+  }
+
+  .ms-page--reference .ms-hero-visual {
+    width: 42%;
+    margin-top: 2rem;
+  }
+}

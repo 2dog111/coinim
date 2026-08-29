@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <style>@font-face{font-family:SourceSerif;src:url("fonts/source-serif-4-variable.woff2")} .display{font-family:SourceSerif,Georgia,serif;font-weight:300}</style>
+  <title id="title">coin.im: one page, one message, one price to change it</title>
+  <desc id="desc">One message owns coin.im until someone pays to replace it.</desc>
+  <rect width="1200" height="630" fill="#f4efe6"/>
+  <rect x="54" y="54" width="1092" height="522" fill="none" stroke="#201d18" stroke-width="2"/>
+  <circle cx="112" cy="112" r="28" fill="none" stroke="#9a4c2d" stroke-width="4"/>
+  <text x="112" y="122" text-anchor="middle" class="display" font-size="32" fill="#201d18">c</text>
+  <text x="158" y="121" class="display" font-size="34" fill="#201d18">coin.im</text>
+  <text x="82" y="315" class="display" font-size="86" fill="#201d18">ONE PAGE.</text>
+  <text x="82" y="407" class="display" font-size="86" fill="#201d18">ONE MESSAGE.</text>
+  <text x="82" y="499" class="display" font-size="64" fill="#9a4c2d">ONE PRICE TO CHANGE IT.</text>
+</svg>

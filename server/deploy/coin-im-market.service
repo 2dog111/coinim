@@ -1,0 +1,25 @@
+[Unit]
+Description=coin.im live takeover market
+After=network.target
+
+[Service]
+Type=simple
+User=coinmarket
+Group=coinmarket
+WorkingDirectory=/opt/coin-im-market/current
+EnvironmentFile=/etc/coin-im-market/market.env
+ExecStart=/opt/coin-im-market/venv/bin/uvicorn coin_market.app:app --app-dir /opt/coin-im-market/current --host 127.0.0.1 --port 8782 --workers 1 --no-access-log --proxy-headers --forwarded-allow-ips=127.0.0.1
+Restart=on-failure
+RestartSec=2
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadOnlyPaths=/etc/coin-im-market
+ReadWritePaths=/var/lib/coin-im-market
+RestrictSUIDSGID=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+
+[Install]
+WantedBy=multi-user.target

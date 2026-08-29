@@ -1,0 +1,11 @@
+[Unit]
+Description=Check coin.im payments every 10 seconds
+
+[Timer]
+OnBootSec=15s
+OnUnitActiveSec=10s
+AccuracySec=1s
+Unit=coin-im-market-reconcile.service
+
+[Install]
+WantedBy=timers.target

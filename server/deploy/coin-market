@@ -1,0 +1,6 @@
+#!/bin/sh
+set -a
+. /etc/coin-im-market/market.env
+set +a
+export PYTHONPATH=/opt/coin-im-market/current
+exec /opt/coin-im-market/venv/bin/python -m coin_market.cli "$@"

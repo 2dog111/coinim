@@ -1,0 +1,31 @@
+[
+  {
+    "action": "assertText",
+    "selector": "h1",
+    "text": "Every word on this page was paid for."
+  },
+  {
+    "action": "assertText",
+    "selector": ".site",
+    "text": "Design on a canvas, ship it as code."
+  },
+  {
+    "action": "assertText",
+    "selector": ".social",
+    "text": "@midnightdrafter"
+  },
+  {
+    "action": "assertText",
+    "selector": ".message",
+    "text": "On silence."
+  },
+  {
+    "action": "assertText",
+    "selector": ".message",
+    "text": "Outbid message · 11 USDT"
+  },
+  {
+    "action": "screenshot",
+    "name": "three-slot-outbid-wall"
+  }
+]
