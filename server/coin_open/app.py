@@ -20,6 +20,7 @@ from urllib.parse import unquote, urlsplit
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 
 from . import admin, analytics
+from .leads import submit_lead
 
 
 DATA_ROOT = Path(os.environ.get("COIN_OPEN_DATA_ROOT", "/var/lib/coin-im-open"))
@@ -133,6 +134,7 @@ async def send_file(send, body: bytes, filename: str) -> None:
                 (b"content-disposition", disposition.encode("utf-8")),
                 (b"cache-control", b"no-store"),
                 (b"x-robots-tag", b"noindex, nofollow"),
+                (b"referrer-policy", b"no-referrer"),
             ],
         }
     )
@@ -150,6 +152,7 @@ async def send_html(send, status: int, body: str) -> None:
                 (b"content-length", str(len(payload)).encode()),
                 (b"cache-control", b"no-store"),
                 (b"x-robots-tag", b"noindex, nofollow"),
+                (b"referrer-policy", b"no-referrer"),
             ],
         }
     )
@@ -352,7 +355,7 @@ def check_rate_limit(ip: str, key: bytes) -> None:
         ).fetchone()[0]
         if count >= MAX_SUBMISSIONS_PER_HOUR:
             connection.rollback()
-            raise IntakeError(429, "No more than five files can be sent from one address in an hour. Try again later.")
+            raise IntakeError(429, "Too many requests from this connection. Please try again later.")
         connection.execute("INSERT INTO submissions (ip_hash, created) VALUES (?, ?)", (fingerprint, now))
         connection.commit()
     os.chmod(database, 0o600)
@@ -480,6 +483,10 @@ async def app(scope, receive, send) -> None:
         await send_json(send, 403, {"error": "This form must be sent from coin.im."})
         return
     try:
+        if path == "/api/open/admin" and method in {"GET", "POST"}:
+            from .admin_login import handle
+            await handle(scope, receive, send)
+            return
         if method == "GET" and path == "/api/open/health":
             await send_json(send, 200, {"status": "ok"})
             return
@@ -540,6 +547,9 @@ async def app(scope, receive, send) -> None:
 
             raise IntakeError(404, "Not found.")
         key = load_key()
+        if method == "POST" and path == "/api/open/leads":
+            await submit_lead(scope, receive, send, key)
+            return
         if method == "POST" and path == "/api/open/drafts":
             await read_body(receive, 1024)
             await create_draft(send, key)

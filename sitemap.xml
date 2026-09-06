@@ -64,4 +64,5 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url><loc>https://coin.im/message</loc></url>
 </urlset>

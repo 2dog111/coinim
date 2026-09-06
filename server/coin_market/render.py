@@ -70,19 +70,20 @@ def page_shell(
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
   <link rel="preload" href="/assets/fonts/source-serif-4-variable.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/takeover.css?v=20260829-market10">
+  <link rel="stylesheet" href="/assets/takeover.css?v=20260901-market16">
   {f'<link rel="stylesheet" href="{escape(extra_stylesheet)}">' if extra_stylesheet else ''}
 </head>
 <body class="{escape(page_class)}">
   <a class="market-skip" href="#main-content">Skip to content</a>
   {body}
-  <script src="/assets/takeover.js?v=20260829-market10" defer></script>
+  <script src="/assets/takeover.js?v=20260901-market16" defer></script>
 </body>
 </html>"""
 
 
 def header(current: str = "") -> str:
     links = [
+        ("/", "Direct mail"),
         ("/archive", "Archive"),
         ("/stats", "Stats"),
         ("/rules", "Rules"),
@@ -93,14 +94,14 @@ def header(current: str = "") -> str:
         nav_items.append(f'<a href="{path}"{current_attribute}>{label}</a>')
     nav = "".join(nav_items)
     return f"""<header class="market-header">
-  <a class="market-wordmark" href="/" aria-label="coin.im home">coin<span aria-hidden="true">.</span>im</a>
+  <a class="market-wordmark" href="/message" aria-label="coin.im message wall">coin<span aria-hidden="true">.</span>im</a>
   <nav aria-label="Market">{nav}</nav>
 </header>"""
 
 
 def footer() -> str:
     return """<footer class="market-footer">
-  <p>coin.im sells the right to replace one of three paid messages.</p>
+  <p>Three paid places. A higher payment takes one.</p>
   <nav aria-label="Other coin.im routes">
     <a href="/rules">How it works</a><a href="/archive">Archive</a><a href="/stats">Stats</a>
     <a href="mailto:mail@coin.im">Email</a><a href="https://t.me/am7am">Telegram</a>
@@ -125,6 +126,35 @@ SOCIAL_NETWORKS = (
     ("twitch", ("twitch.tv",), "#9146ff"),
     ("bluesky", ("bsky.app",), "#0085ff"),
 )
+SOCIAL_PICKER = (
+    ("youtube", "YouTube"),
+    ("facebook", "Facebook"),
+    ("instagram", "Instagram"),
+    ("tiktok", "TikTok"),
+    ("linkedin", "LinkedIn"),
+    ("reddit", "Reddit"),
+    ("snapchat", "Snapchat"),
+    ("pinterest", "Pinterest"),
+    ("x", "X"),
+    ("threads", "Threads"),
+    ("whatsapp", "WhatsApp"),
+    ("telegram", "Telegram"),
+    ("discord", "Discord"),
+    ("twitch", "Twitch"),
+    ("bluesky", "Bluesky"),
+)
+
+
+def _social_glass_icon(name: str) -> str:
+    return f'<span class="social-glass-icon social-glass-icon--{escape(name)}" aria-hidden="true"></span>'
+
+
+def _social_picker() -> str:
+    return "".join(
+        f'''<label class="social-option"><input type="radio" name="socialPlatform" value="{escape(name)}" required>
+        {_social_glass_icon(name)}<span>{escape(label)}</span></label>'''
+        for name, label in SOCIAL_PICKER
+    )
 
 
 def _social_profile(url: str) -> Optional[tuple[str, str, str, str]]:
@@ -138,6 +168,12 @@ def _social_profile(url: str) -> Optional[tuple[str, str, str, str]]:
             parts = [part for part in parsed.path.split("/") if part]
             handle = parts[0] if parts else host
             if name in {"linkedin", "youtube"} and len(parts) > 1 and parts[0] in {"in", "company", "c", "channel", "user"}:
+                handle = parts[1]
+            if name == "reddit" and len(parts) > 1 and parts[0] in {"u", "user"}:
+                handle = parts[1]
+            if name == "bluesky" and len(parts) > 1 and parts[0] == "profile":
+                handle = parts[1]
+            if name == "snapchat" and len(parts) > 1 and parts[0] in {"add", "p"}:
                 handle = parts[1]
             if name == "x" and handle == "intent":
                 handle = host
@@ -201,12 +237,12 @@ def _render_wall_slot(settings: Settings, reign: dict, rank: int, active_public_
     if active_public_id and str(reign.get("publicId") or "") == active_public_id:
         defend = '<button class="wall-defend-button" type="button" data-open-dialog="defend-dialog">Back this message</button>'
     if social:
-        name, color, handle, host = social
+        name, _color, handle, host = social
         kind = f"social · {name}"
         meta = _slot_meta(reign, rank, kind)
         label = str(reign.get("ctaLabel") or f"{host}/{handle}")
         body = f'''<div class="wall-social-card">
-  <div class="wall-social-icon" style="--social-color:{escape(color)}">{_social_icon(name)}</div>
+  <div class="wall-social-icon">{_social_glass_icon(name)}</div>
   <div><h3>@{escape(handle)}{f' <span>· {escape(signature)}</span>' if signature else ''}</h3>
   <p>{escape(message)}</p><a class="wall-link-button wall-link-button--light" href="{tracked_url}" target="_blank" rel="noopener noreferrer">{escape(label)}</a>{defend}</div>
 </div>'''
@@ -232,60 +268,73 @@ def _render_wall_slot(settings: Settings, reign: dict, rank: int, active_public_
 
     meta = _slot_meta(reign, rank, "message")
     paragraphs = "".join(f"<p>{escape(part)}</p>" for part in message.split("\n\n") if part.strip()) or f"<p>{escape(message)}</p>"
-    byline = escape(signature) if signature else "anonymous"
-    share_text = quote((message[:220] + ("..." if len(message) > 220 else "") + f"\n\n{settings.site_url}/m/{reign.get('publicId', '')}"), safe="")
-    body = f'''<div class="wall-message-card"><div class="wall-message-copy">{paragraphs}</div>
-<p class="wall-message-signature">{byline} · <a href="https://x.com/intent/post?text={share_text}" target="_blank" rel="noopener noreferrer">quote this message on x</a></p>{defend}</div>'''
+    body = f'''<div class="wall-message-card"><div class="wall-message-copy">{paragraphs}</div>{defend}</div>'''
     return f'<article class="wall-slot wall-slot--message">{meta}{body}</article>'
 
 
 def _wall_time_label(slot: dict) -> str:
     location = str(slot.get("location") or "")
-    if location:
+    if location and location not in {name for name, _label in SOCIAL_PICKER}:
         return location
     try:
         started = parse_iso(str(slot.get("startedAt") or ""))
-        day = "today" if started.date() == utc_now().date() else started.strftime("%Y-%m-%d")
+        day = "сегодня" if started.date() == utc_now().date() else started.strftime("%Y-%m-%d")
         return f"{day}, {started.strftime('%H:%M')} UTC"
     except (TypeError, ValueError):
-        return "today"
+        return "сегодня"
 
 
 def _wall_action(slot: dict, kind: str) -> str:
     slot_number = int(slot["slotNumber"])
+    labels = {"website": "сайт", "social": "соцсеть", "message": "сообщение"}
     return f'''<div class="slot-action">
-          <a class="outbid-button" href="/takeover?slot={slot_number}" data-outbid data-slot="{slot_number}">Outbid {escape(kind)} · <span data-outbid-price>{escape(slot["outbidAmount"])}</span> USDT</a>
-          <p>+1 USDT over the current price. Final after on-chain confirmation — the current message moves to the Archive.</p>
+          <a class="outbid-button" href="/takeover?slot={slot_number}" data-outbid data-slot="{slot_number}">Занять место: {escape(labels[kind])} · <span data-outbid-price>{escape(slot["outbidAmount"])}</span> USDT</a>
         </div>'''
 
 
 def _wall_meta(slot: dict, kind: str) -> str:
     return f'''<div class="slot-line">
         <span><span class="slot-number">№ {int(slot["slotNumber"])}</span> · {kind}</span>
-        <span class="slot-price"><span data-current-price>{escape(slot["amount"])}</span> USDT<span class="date"> · on the wall since {_wall_time_label(slot)}</span></span>
+        <span class="slot-price"><span data-current-price>{escape(slot["amount"])}</span> USDT<span class="date"> · на стене: {_wall_time_label(slot)}</span></span>
       </div>'''
+
+
+def _wall_paragraphs(value: object) -> str:
+    return "".join(f"<p>{escape(part.strip())}</p>" for part in str(value or "").split("\n\n") if part.strip())
 
 
 def _wall_site_slot(slot: dict) -> str:
     url = str(slot.get("url") or "")
     host = (urlsplit(url).hostname or "website").removeprefix("www.")
-    seed = str(slot.get("slug")) == "pen-dev-wall-seed"
-    headline = "Design on a canvas, ship it as code." if seed else str(slot.get("signature") or "").strip()
+    slug = str(slot.get("slug"))
+    seed = slug == "pen-dev-wall-seed"
+    owner_seed = slug == "owner-website-20260901"
+    headline = "Draw it. Ship the code." if seed else str(slot.get("signature") or "").strip()
     if not headline:
         headline = str(slot.get("message") or "").split(".", 1)[0].strip()
         headline = (headline[:76].rstrip() + ("…" if len(headline) > 76 else "")) or host
+    screenshot_url = str(slot.get("screenshotUrl") or "")
     screenshot = '''<div class="shot" aria-hidden="true">
           <div class="shot-chrome"><i></i><i></i><i></i><span class="shot-url">https://www.pen.dev</span></div>
           <img src="/assets/pen-screenshot.png" alt="" width="1600" height="1050">
-        </div>''' if seed else f'''<div class="shot site-placeholder" aria-hidden="true"><span>{escape(host)}</span></div>'''
+        </div>''' if seed else ('''<div class="shot" aria-hidden="true">
+          <div class="shot-chrome"><i></i><i></i><i></i><span class="shot-url">https://coin.im</span></div>
+          <img src="/assets/coin-im-wall-screenshot.webp" alt="" width="1600" height="1050">
+        </div>''' if owner_seed else (
+        f'''<div class="shot" aria-hidden="true"><div class="shot-chrome"><i></i><i></i><i></i><span class="shot-url">{escape(host)}</span></div>
+          <img src="{escape(screenshot_url)}" alt="" width="1600" height="1050"></div>'''
+        if screenshot_url else f'''<div class="shot site-placeholder" aria-hidden="true"><span>{escape(host)}</span></div>'''
+    ))
+    favicon_url = "/assets/favicon-32.png" if owner_seed else str(slot.get("faviconUrl") or "")
+    favicon = f'<img class="site-favicon" src="{escape(favicon_url)}" alt="" width="32" height="32">' if favicon_url else ""
     label = str(slot.get("ctaLabel") or host)
     return f'''<article class="slot site" data-wall-slot="1" data-current-price-micro="{int(slot["amountMicro"])}">
       {_wall_meta(slot, "website")}
       <div class="block">
-        <a class="card-hit" href="{escape(url)}" target="_blank" rel="noopener noreferrer" aria-label="Visit {escape(host)}"></a>
+        <a class="card-hit" href="{escape(url)}" target="_blank" rel="noopener noreferrer" aria-label="Открыть {escape(host)}"></a>
         <div class="site-copy">
-          <h2>{escape(headline)}</h2>
-          <p class="copy">{escape(slot["message"])}</p>
+          <div class="site-title-row">{favicon}<h2>{escape(headline)}</h2></div>
+          <div class="copy">{_wall_paragraphs(slot["message"])}</div>
           <a class="go" href="{escape(url)}" target="_blank" rel="noopener noreferrer">{escape(label)}</a>
         </div>
         {screenshot}
@@ -297,22 +346,19 @@ def _wall_site_slot(slot: dict) -> str:
 def _wall_social_slot(slot: dict) -> str:
     url = str(slot.get("url") or "")
     profile = _social_profile(url)
-    network, color, handle, host = profile or ("social", "#141414", "profile", urlsplit(url).hostname or "social profile")
+    network, _color, handle, host = profile or ("social", "#141414", "profile", urlsplit(url).hostname or "social profile")
     display_handle = handle if handle.startswith("@") else f"@{handle}"
-    message = escape(slot["message"])
-    final_phrase = "If you are tired of loud people, my quiet corner is here."
-    if final_phrase in str(slot["message"]):
-        message = message.replace(escape(final_phrase), f"<em>{escape(final_phrase)}</em>")
-    followers = f' <span>— {escape(slot["signature"])}</span>' if slot.get("signature") else ""
+    message = _wall_paragraphs(slot["message"])
+    followers = f' <span>· {escape(slot["signature"])}</span>' if slot.get("signature") else ""
     label = str(slot.get("ctaLabel") or f"{host}/{handle}")
     return f'''<article class="slot social" data-wall-slot="2" data-current-price-micro="{int(slot["amountMicro"])}">
       {_wall_meta(slot, f"social · {network}")}
       <div class="block">
-        <a class="card-hit" href="{escape(url)}" target="_blank" rel="noopener noreferrer" aria-label="Open the {escape(network)} profile"></a>
-        <div class="x-tile social-network-{escape(network)}" aria-hidden="true">{_social_icon(network)}</div>
+        <a class="card-hit" href="{escape(url)}" target="_blank" rel="noopener noreferrer" aria-label="Открыть профиль {escape(network)}"></a>
+        <div class="x-tile social-glass-icon social-glass-icon--{escape(network)}" aria-hidden="true"></div>
         <div class="social-copy">
           <h2>{escape(display_handle)}{followers}</h2>
-          <p class="copy">{message}</p>
+          <div class="copy">{message}</div>
           <a class="go" href="{escape(url)}" target="_blank" rel="noopener noreferrer">{escape(label)}</a>
         </div>
         {_wall_action(slot, "social")}
@@ -321,18 +367,25 @@ def _wall_social_slot(slot: dict) -> str:
 
 
 def _wall_message_slot(slot: dict) -> str:
-    paragraphs = [part.strip() for part in str(slot.get("message") or "").split("\n\n") if part.strip()]
-    title = "On silence." if str(slot.get("slug")) == "on-silence-wall-seed" else (paragraphs[0].split(".", 1)[0].strip() + ".")
+    message = str(slot.get("message") or "").strip()
+    if str(slot.get("slug")) == "on-silence-wall-seed":
+        title = "On silence."
+        body_message = message
+    elif str(slot.get("slug")) == "owner-message-20260901":
+        title = "Просто сообщение"
+        body_message = message
+    else:
+        opening = re.match(r"^(.{1,120}?[.!?])(?:\s+|$)(.*)$", message, flags=re.DOTALL)
+        title = opening.group(1).strip() if opening else ""
+        body_message = opening.group(2).strip() if opening else message
+    paragraphs = [part.strip() for part in body_message.split("\n\n") if part.strip()]
+    title_html = f"<h2>{escape(title)}</h2>" if title else ""
     body = "".join(f"<p>{escape(part)}</p>" for part in paragraphs)
-    quote_url = str(slot.get("url") or "https://x.com/intent/post?text=" + quote(str(slot.get("message") or "")[:220] + " — coin.im"))
-    signature = str(slot.get("signature") or "anonymous")
-    label = str(slot.get("ctaLabel") or "quote this on x ↗")
     return f'''<article class="slot message" data-wall-slot="3" data-current-price-micro="{int(slot["amountMicro"])}">
-      {_wall_meta(slot, "message · anonymous")}
+      {_wall_meta(slot, "message")}
       <div class="block">
-        <a class="card-hit" href="{escape(quote_url)}" target="_blank" rel="noopener noreferrer" aria-label="Quote this message on X"></a>
-        <h2>{escape(title)}</h2>
-        <div class="message-body">{body}<p class="signature">— {escape(signature)} · <a href="{escape(quote_url)}" target="_blank" rel="noopener noreferrer">{escape(label)}</a></p></div>
+        {title_html}
+        <div class="message-body">{body}</div>
         {_wall_action(slot, "message")}
       </div>
     </article>'''
@@ -372,107 +425,119 @@ def render_home_defend_dialog(state: dict) -> str:
 <p>Payment uses USDT on TRON (TRC-20). Your confirmed payment raises this message's live backing, then gradually decays.</p><p class="form-error" data-form-error role="alert"></p><button class="take-page" type="submit">Continue to USDT payment</button></form></dialog>"""
 
 
+def render_wall_picker(settings: Settings, wall_state: dict) -> str:
+    slots = wall_state["slots"]
+    choices = (
+        (1, "website", "Website", "Paste the link and text. We add the title, favicon and screenshot automatically."),
+        (2, "social", "Social profile", "Choose a network. Add your profile link and 100 to 888 characters."),
+        (3, "message", "Message", "Publish 100 to 888 characters. No link needed."),
+    )
+    cards = []
+    for slot_number, kind_name, title, description in choices:
+        slot = slots[slot_number - 1]
+        if slot_number == 1:
+            icon = '<span class="type-choice-icon type-choice-icon--website" aria-hidden="true"><i></i></span>'
+        elif slot_number == 2:
+            icon = f'<span class="type-choice-icon type-choice-icon--social" aria-hidden="true">{_social_glass_icon("instagram")}{_social_glass_icon("x")}{_social_glass_icon("tiktok")}</span>'
+        else:
+            icon = '<span class="type-choice-icon type-choice-icon--message" aria-hidden="true"><i></i></span>'
+        cards.append(f'''<a class="placement-choice placement-choice--{kind_name}" href="/takeover?slot={slot_number}">
+      {icon}<span class="placement-choice-copy"><strong>{escape(title)}</strong><span>{escape(description)}</span></span>
+      <span class="placement-choice-price">{escape(slot["outbidAmount"])} USDT</span>
+    </a>''')
+    body = f"""{header()}
+<main id="main-content" class="slot-picker-page">
+  <header><h1>What do you want to publish?</h1><p>Choose one. You fill the form before you pay.</p></header>
+  <div class="placement-choices">{''.join(cards)}</div>
+</main>{footer()}"""
+    return page_shell(
+        settings,
+        "Publish on coin.im",
+        "Choose a website, social profile or message, then pay in USDT on TRON.",
+        body,
+        canonical_path="/takeover",
+        noindex=True,
+    )
+
+
 def render_takeover(
     settings: Settings,
     state: dict,
     kind: str = "takeover",
     return_message: Optional[dict] = None,
     wall_slot: Optional[dict] = None,
+    wall_state: Optional[dict] = None,
 ) -> str:
     if not state["marketEnabled"]:
         body = f"""{header()}
-<main id="main-content" class="narrow-page"><p class="takeover-kicker">LIVE TAKEOVER</p>
-<h1>Payments are not open yet.</h1>
-<p>The market service is deployed, but it will not create payment requests until the production TRON provider and receiving address are configured.</p>
-<a class="market-button market-button--quiet" href="/">Return to the homepage</a></main>{footer()}"""
+<main id="main-content" class="narrow-page"><h1>Payments are closed.</h1>
+<p>coin.im cannot create a payment receipt right now.</p>
+<a class="market-button market-button--quiet" href="/message">Return to the message wall</a></main>{footer()}"""
         return page_shell(settings, "Payments are not open: coin.im", "The coin.im market is not accepting payments yet.", body, canonical_path="/takeover", noindex=True)
     if wall_slot is not None:
         slot_number = int(wall_slot["slotNumber"])
-        slot_kind = {1: "website", 2: "social profile", 3: "text-only message"}[slot_number]
-        slot_label = {1: "website", 2: "social", 3: "message"}[slot_number]
+        slot_kind = {1: "website", 2: "social profile", 3: "message"}[slot_number]
         price = escape(wall_slot["outbidAmount"])
-        current_price = escape(wall_slot["amount"])
-        current_url = str(wall_slot.get("url") or "")
-        if slot_number == 1:
-            current_placement = (urlsplit(current_url).hostname or "current website").removeprefix("www.")
-        elif slot_number == 2:
-            social = _social_profile(current_url)
-            current_placement = f"@{social[2].lstrip('@')} on {social[0]}" if social else "current social profile"
-        else:
-            current_placement = str(wall_slot.get("message") or "current message")[:72].strip()
-            if len(str(wall_slot.get("message") or "")) > 72:
-                current_placement += "..."
+        prices = {
+            int(item["slotNumber"]): escape(item["outbidAmount"])
+            for item in ((wall_state or {}).get("slots") or [wall_slot])
+        }
+        switcher_parts = []
+        for number, label in ((1, "Website"), (2, "Social"), (3, "Message")):
+            current = ' aria-current="page"' if number == slot_number else ""
+            switcher_parts.append(
+                f'''<a class="publish-type-tab" href="/takeover?slot={number}"{current}>
+  <span class="publish-type-icon publish-type-icon--{number}" aria-hidden="true"></span>
+  <span><strong>{label}</strong><small>{prices.get(number, "")} USDT</small></span>
+</a>'''
+            )
+        switcher = "".join(switcher_parts)
         if return_message:
             message_fields = f'''<input type="hidden" name="targetMessageSlug" value="{escape(return_message['slug'])}">
     <input type="hidden" name="signature" value="{escape(return_message.get('signature', ''))}">
     <input type="hidden" name="url" value="{escape(return_message.get('url', ''))}">
     <input type="hidden" name="ctaLabel" value="{escape(return_message.get('cta_label', ''))}">
-    <label>Archived content<textarea name="message" readonly dir="auto" data-message-input aria-describedby="message-help">{escape(return_message['message'])}</textarea></label>
-    <p id="message-help" class="field-help">This archived placement is immutable. A confirmed payment returns the same content to slot № {slot_number}.</p>'''
+    <label class="form-field"><span class="field-label">Archived content</span><textarea name="message" readonly dir="auto" data-message-input>{escape(return_message['message'])}</textarea></label>'''
+        elif slot_number == 1:
+            message_fields = '''<label class="form-field"><span class="field-label">Website link</span><input name="url" type="text" inputmode="url" autocomplete="url" placeholder="yourwebsite.com" required data-website-url><span class="field-help">The title, favicon and a fresh first-screen screenshot are added automatically.</span></label>
+    <label class="form-field"><span class="field-label-line"><span>Website text</span><span><span data-grapheme-count>0</span> / 888</span></span><textarea name="message" required dir="auto" data-message-input aria-describedby="message-help" placeholder="Why should someone open this website?"></textarea><span id="message-help" class="field-help">Minimum 100 characters without spaces.</span></label>'''
+        elif slot_number == 2:
+            message_fields = f'''<fieldset class="social-picker" aria-describedby="social-picker-help"><legend>Social network</legend><p id="social-picker-help" class="field-help">Paste the profile link and it selects itself, or tap an icon.</p><div class="social-options">{_social_picker()}</div></fieldset>
+    <label class="form-field"><span class="field-label">Profile link</span><input name="url" type="url" inputmode="url" autocomplete="url" placeholder="https://" required data-social-url></label>
+    <label class="form-field"><span class="field-label-line"><span>Profile text</span><span><span data-grapheme-count>0</span> / 888</span></span><textarea name="message" required dir="auto" data-message-input aria-describedby="message-help" placeholder="Why should someone open this profile?"></textarea><span id="message-help" class="field-help">Minimum 100 characters without spaces.</span></label>'''
         else:
-            if slot_number == 1:
-                message_fields = '''<label>Website headline<input name="signature" maxlength="80" dir="auto" required placeholder="What should people notice first?"></label>
-    <label>Website description<textarea name="message" required dir="auto" data-message-input aria-describedby="message-help" placeholder="Explain what the website is and why someone should open it."></textarea></label>
-    <p id="message-help" class="field-help"><span data-grapheme-count>0</span> / 888 characters without spaces. Minimum 111.</p>
-    <label>Website URL<input name="url" type="url" inputmode="url" placeholder="https://example.com" required></label>
-    <p class="field-help">A social profile belongs in slot № 2.</p>'''
-            elif slot_number == 2:
-                message_fields = '''<label>Social pitch<textarea name="message" required dir="auto" data-message-input aria-describedby="message-help" placeholder="Tell people why this profile is worth opening."></textarea></label>
-    <p id="message-help" class="field-help"><span data-grapheme-count>0</span> / 888 characters without spaces. Minimum 111.</p>
-    <label>Name or short note <span>optional</span><input name="signature" maxlength="80" dir="auto" placeholder="For example: independent writer"></label>
-    <label>Social profile URL<input name="url" type="url" inputmode="url" placeholder="https://x.com/yourname" required></label>
-    <p class="field-help">X, Instagram, Telegram, LinkedIn, YouTube, TikTok and other major public social profiles are supported.</p>'''
-            else:
-                message_fields = '''<label>Public message<textarea name="message" required dir="auto" data-message-input aria-describedby="message-help" placeholder="Write the message that should occupy slot № 3."></textarea></label>
-    <p id="message-help" class="field-help"><span data-grapheme-count>0</span> / 888 characters without spaces. Minimum 111.</p>
-    <label>Name <span>optional</span><input name="signature" maxlength="80" dir="auto" placeholder="Leave empty to publish anonymously"></label>
-    <p class="field-help">This is a text-only place. It cannot contain a public link.</p>'''
+            message_fields = '''<label class="form-field"><span class="field-label-line"><span>Your message</span><span><span data-grapheme-count>0</span> / 888</span></span><textarea name="message" required dir="auto" data-message-input aria-describedby="message-help" placeholder="Write exactly what should stay on coin.im."></textarea><span id="message-help" class="field-help">Minimum 100 characters without spaces. No name. No link.</span></label>'''
+        headings = {
+            1: ("Put your website here.", "Paste the link. Write the text. We do the rest."),
+            2: ("Put your profile here.", "Choose the network, paste the profile link, and write the text."),
+            3: ("Put your words here.", "Just the message. No name. No link."),
+        }
+        heading, intro = headings[slot_number]
         body = f"""{header()}
-<main id="main-content" class="checkout-page">
-  <section class="checkout-copy">
-    <p class="takeover-kicker">Selected: slot № {slot_number}, {escape(slot_label)}</p>
-    <h1>Replace slot № {slot_number} with your {escape(slot_kind)}.</h1>
-    <p>You are replacing only this place. Slots № 1, № 2 and № 3 always keep their own content and price.</p>
-    <dl class="selected-slot-summary">
-      <div><dt>Current placement</dt><dd>{escape(current_placement)}</dd></div>
-      <div><dt>Current price</dt><dd>{current_price} USDT</dd></div>
-      <div><dt>Your exact outbid</dt><dd>{price} USDT</dd></div>
-    </dl>
-    <p>The price is fixed at exactly 1 USDT above the current price. Creating the receipt does not charge you.</p>
-    <div class="checkout-sequence">
-      <p>Fill the placement form.</p>
-      <p>Create a private seven-minute receipt.</p>
-      <p>Send the exact amount in USDT on TRON (TRC-20).</p>
-      <p>After final confirmation, your placement appears automatically and the previous one moves to Archive.</p>
-    </div>
+<main id="main-content" class="checkout-page checkout-page--slot-{slot_number} publish-page">
+  <nav class="publish-type-switcher" aria-label="What do you want to publish?">{switcher}</nav>
+  <section class="publish-form-shell">
+    <header class="publish-form-header">
+      <div><h1>{heading}</h1><p>{intro}</p></div>
+      <div class="publish-price"><span>You pay</span><strong>{price} USDT</strong></div>
+    </header>
+    <form class="takeover-form takeover-form--slot-{slot_number}" data-takeover-form data-kind="takeover" data-wall-slot="{slot_number}" data-current-reign="{escape(wall_slot['publicId'])}" data-price-micro="{int(wall_slot['outbidAmountMicro'])}">
+      {message_fields}
+      <input type="hidden" name="amountChoice" value="custom"><input type="hidden" name="customAmount" value="{price}">
+      <p class="form-error" data-form-error role="alert" aria-live="assertive"></p>
+      <button class="market-button publish-submit" type="submit">Continue to payment <span>{price} USDT</span></button>
+      <p class="submit-help">The 7-minute payment window starts next. Nothing is published until payment is confirmed.</p>
+    </form>
   </section>
-  <form class="takeover-form" data-takeover-form data-kind="takeover" data-wall-slot="{slot_number}" data-current-reign="{escape(wall_slot['publicId'])}" data-price-micro="{int(wall_slot['outbidAmountMicro'])}">
-    <h2>What will appear in slot № {slot_number}</h2>
-    <p class="form-intro">Complete the fields below. You will see the payment details before sending anything.</p>
-    {message_fields}
-    <input type="hidden" name="amountChoice" value="custom">
-    <input type="hidden" name="customAmount" value="{price}">
-    <div class="message-preview" aria-live="polite"><span>Content preview</span><p class="preview-name" dir="auto" data-preview-name></p><p dir="auto" data-message-preview>Your content will appear here.</p></div>
-    <p class="form-error" data-form-error role="alert"></p>
-    <button class="market-button" type="submit">Create private payment receipt</button>
-    <p class="submit-help">Next you will receive the exact TRON address, QR code and TronLink button. Nothing is published until the payment is final on-chain.</p>
-  </form>
 </main>{footer()}"""
-        return page_shell(
-            settings,
-            f"Outbid slot № {slot_number}: coin.im",
-            f"Replace paid slot № {slot_number} for {price} USDT.",
-            body,
-            canonical_path="/takeover",
-            noindex=True,
-        )
+        return page_shell(settings, f"Publish your {slot_kind}: coin.im", f"Replace the {slot_kind} place for {price} USDT.", body, canonical_path="/takeover", noindex=True)
     if kind == "defend":
         return render_defend(settings, state)
     message = state.get("message")
     if state["state"] not in {"unclaimed", "open"}:
         body = f"""{header()}<main id="main-content" class="narrow-page">
 <p class="takeover-kicker">LIVE TAKEOVER</p><h1>A takeover cannot start right now.</h1>
-<p>Return to the homepage for the current live state.</p><a class="market-button" href="/">View the live homepage</a></main>{footer()}"""
+<p>Return to the message wall for the current live state.</p><a class="market-button" href="/message">View the live message wall</a></main>{footer()}"""
         return page_shell(settings, "Takeover unavailable: coin.im", "The current coin.im takeover state.", body, canonical_path="/takeover", noindex=True)
     if return_message:
         message_fields = f"""<input type="hidden" name="targetMessageSlug" value="{escape(return_message['slug'])}">
@@ -484,7 +549,7 @@ def render_takeover(
     <p id="message-help" class="field-help"><span data-grapheme-count>0</span> / 888 characters without spaces</p>
     <label>Name <span>optional</span><input name="signature" maxlength="80" dir="auto"></label>
     <label>URL <span>optional</span><input name="url" type="url" inputmode="url" placeholder="https://"></label>"""
-        takeover_heading = "Make the whole homepage your message."
+        takeover_heading = "Put your message on the wall."
     body = f"""{header()}
 <main id="main-content" class="checkout-page">
   <section class="checkout-copy">
@@ -492,7 +557,7 @@ def render_takeover(
     <h1>{takeover_heading}</h1>
     <p>Keep it short. Make it worth the whole page.</p>
     <div class="checkout-price"><span>Current takeover price</span><strong>{escape(state['takeoverPrice'])} USDT</strong><small>Payment uses USDT on TRON (TRC-20).</small></div>
-    <p>You are buying the whole homepage, not a guaranteed duration.</p>
+    <p>Your placement stays on the wall until a higher payment replaces it.</p>
     <p>A higher confirmed payment can replace your message immediately.</p>
   </section>
   <form class="takeover-form" data-takeover-form data-kind="takeover" data-current-reign="{escape(state.get('currentReignPublicId', ''))}" data-price-micro="{int(state['takeoverPriceMicro'])}">
@@ -550,20 +615,20 @@ def render_receipt(settings: Settings, receipt: dict, token: str) -> str:
     wall_kind = {1: "website", 2: "social profile", 3: "message"}.get(wall_slot_number, "")
     receipt_type = f"Slot № {wall_slot_number}, {wall_kind}" if wall_slot_number else receipt["kind"]
     receipt_context = (
-        f"This private receipt controls the payment for slot № {wall_slot_number}. Keep this link. After final confirmation, your {wall_kind} replaces only that slot."
+        f"Keep this link. A confirmed payment puts your {wall_kind} in slot № {wall_slot_number}."
         if wall_slot_number
-        else "Keep this private link. It is the only account for this payment."
+        else "Keep this link. It is your payment record."
     )
     status_copy = {
         "created": "Waiting for payment",
         "payment_found": "Payment detected",
         "confirmed": "Payment confirmed",
-        "expired": "This payment quote expired.",
-        "underpaid": "The transfer was under the required amount and is awaiting review.",
-        "requires_review": "This payment needs manual review.",
-        "credited": "Your confirmed payment is safe as credit.",
-        "failed": "The payment could not be verified.",
-        "cancelled": "This payment request was cancelled.",
+        "expired": "Payment expired",
+        "underpaid": "Payment is too small",
+        "requires_review": "Payment needs review",
+        "credited": "Payment saved as credit",
+        "failed": "Payment could not be verified",
+        "cancelled": "Payment cancelled",
     }.get(status, status.replace("_", " ").title())
     address = receipt.get("receivingAddress") or ""
     contract = receipt.get("contractAddress") or ""
@@ -581,69 +646,76 @@ def render_receipt(settings: Settings, receipt: dict, token: str) -> str:
             steps.append(f'<li class="payment-step{step_class}"{current}><span></span>{label}</li>')
         progress = f'<ol class="payment-progress" aria-label="Payment status">{"".join(steps)}</ol>'
     payment_block = ""
+    payment_recovery = f"""<details class="payment-recovery"><summary>Can't see your payment?</summary>
+    <form data-verify-payment data-receipt-token="{escape(token)}">
+      <label>TRON transaction ID<input name="txid" autocomplete="off" minlength="64" maxlength="64" spellcheck="false" required></label>
+      <p class="field-help">Paste the 64-character transaction ID.</p>
+      <p class="form-error" data-form-error role="alert"></p>
+      <button class="market-button market-button--quiet" type="submit">Check transaction</button>
+    </form>
+  </details>"""
     if status in {"created", "payment_found"} and address:
         payment_effect = (
-            f"Final confirmation publishes your {wall_kind} in slot № {wall_slot_number}. The current placement moves to Archive, and the other two slots stay unchanged."
+            f"Confirmation puts your {wall_kind} in slot № {wall_slot_number} and moves the old placement to Archive."
             if wall_slot_number
-            else "This page applies the confirmed payment automatically."
+            else "Confirmation applies the payment automatically."
         )
         payment_block = f"""<section class="payment-instructions">
   <div class="payment-amount"><span>Send exactly</span><strong>{escape(amount)} USDT</strong><small>{escape(amount)} USDT · TRON (TRC-20)</small></div>
   <p class="payment-effect">{escape(payment_effect)}</p>
-  <a class="market-button wallet-open" href="{escape(wallet_url)}" data-open-wallet>Open in TronLink</a>
-  <p class="wallet-status" data-wallet-status role="status">Opens this exact payment in TronLink. You approve the transfer in your wallet.</p>
+  <a class="market-button wallet-open" href="{escape(wallet_url)}" data-open-wallet>Pay in TronLink</a>
+  <p class="wallet-status" data-wallet-status role="status">You approve {escape(amount)} USDT in your wallet.</p>
   <div class="payment-qr" data-qr-value="{escape(request_url)}" aria-label="QR code for this exact USDT payment"></div>
-  <p class="payment-qr-help">Scan with your phone to open this payment. The QR includes the address, amount, network and USDT contract.</p>
+  <p class="payment-qr-help">Or scan the QR with your phone.</p>
   <label>Receiving address<input readonly value="{escape(address)}"><button type="button" data-copy-value="{escape(address)}">Copy address</button></label>
   <label>Amount<input readonly value="{escape(amount)}"><button type="button" data-copy-value="{escape(amount)}">Copy amount</button></label>
-  <p class="field-help">This page checks TRON automatically. Keep it open while the transfer reaches final confirmation.</p>
-  <details class="payment-recovery"><summary>Payment not detected?</summary>
-    <form data-verify-payment data-receipt-token="{escape(token)}">
-      <label>TRON transaction ID<input name="txid" autocomplete="off" minlength="64" maxlength="64" spellcheck="false" required></label>
-      <p class="field-help">Paste the transaction ID only if automatic detection is taking too long.</p>
-      <p class="form-error" data-form-error role="alert"></p>
-      <button class="market-button market-button--quiet" type="submit">CHECK TRANSACTION</button>
-    </form>
-  </details>
+  <p class="field-help">We check TRON automatically. Keep this page open.</p>
+  {payment_recovery}
+</section>"""
+    elif status == "expired" and address:
+        payment_block = f"""<section class="receipt-result expired-payment-recovery">
+  <h2>Already paid?</h2>
+  <p>Do not pay this expired receipt again. Paste the transaction ID from the payment you already sent.</p>
+  {payment_recovery}
 </section>"""
     result_block = ""
     if receipt.get("credit"):
         credit = receipt["credit"]
-        result_block += f'<section class="receipt-result"><h2>{escape(credit["amount"])} USDT CREDITED</h2><p>The quote became stale before this payment could safely win. This confirmed amount is attached to this private receipt and has not been lost or applied to another message.</p></section>'
+        result_block += f'<section class="receipt-result"><h2>{escape(credit["amount"])} USDT saved</h2><p>The place changed before this payment could take it. The confirmed amount stays attached to this receipt for review.</p></section>'
     if receipt.get("result"):
         result = receipt["result"]
         snapshot = result["snapshot"]
         if result["type"] == "takeover":
             if snapshot.get("wallSlotNumber"):
-                headline = f"YOU TOOK SLOT № {int(snapshot['wallSlotNumber'])} ON coin.im."
-                detail = "Your message now occupies one of the three paid slots."
+                headline = f"Slot № {int(snapshot['wallSlotNumber'])} is yours."
+                detail = "Your placement is live on coin.im."
             else:
-                headline = "YOU TOOK OVER coin.im."
+                headline = "coin.im is yours."
                 detail = "Your message is now the only message on the page."
             verified = f"{escape(snapshot.get('amount'))} USDT verified on-chain"
         else:
-            headline = "YOU KEPT THIS MESSAGE HERE"
-            detail = f"Change price: {escape(snapshot.get('takeoverPriceBefore'))} to {escape(snapshot.get('takeoverPriceAfter'))} USDT"
+            headline = "The message stays."
+            detail = f"The next price moved from {escape(snapshot.get('takeoverPriceBefore'))} to {escape(snapshot.get('takeoverPriceAfter'))} USDT."
             verified = f"{escape(snapshot.get('amount'))} USDT verified"
         wall_result = bool(snapshot.get("wallSlotNumber"))
         secondary_actions = (
             f'<a href="/m/{escape(snapshot.get("reignPublicId"))}">Permanent message page</a>'
             if wall_result
-            else f'''<a class="market-button market-button--quiet" href="/takeover?kind=defend&amp;reign={escape(snapshot.get('reignPublicId'))}">{'DEFEND MY MESSAGE' if result['type'] == 'takeover' else 'KEEP IT ALIVE'}</a>
-  <a href="/badge/reign/{escape(snapshot.get('reignPublicId'))}.svg">Get live badge</a>
+            else f'''<a class="market-button market-button--quiet" href="/takeover?kind=defend&amp;reign={escape(snapshot.get('reignPublicId'))}">{'Back my message' if result['type'] == 'takeover' else 'Keep it live'}</a>
+  <a href="/badge/reign/{escape(snapshot.get('reignPublicId'))}.svg">Live badge</a>
   <a href="/m/{escape(snapshot.get('reignPublicId'))}">Permanent message page</a>'''
         )
         result_block = f"""<section class="receipt-result">
-  <p class="takeover-kicker">PAYMENT VERIFIED ON-CHAIN</p><h2>{headline}</h2><p>{detail}</p>
+  <h2>{headline}</h2><p>{detail}</p>
   <p>{verified}</p>
-  <div class="result-actions"><button class="market-button" type="button" data-share-result data-share-type="{escape(result['type'])}" data-share-text="I took over coin.im.&#10;My message stays until someone pays more." data-share-url="{escape(result['shareUrl'])}">{'SHARE MY SLOT' if wall_result else ('SHARE MY TAKEOVER' if result['type'] == 'takeover' else 'SHARE')}</button>
-  <a href="/">View the live homepage</a>
+  <div class="result-actions"><button class="market-button" type="button" data-share-result data-share-type="{escape(result['type'])}" data-share-text="I took over coin.im.&#10;My message stays until someone pays more." data-share-url="{escape(result['shareUrl'])}">{'Share my place' if wall_result else ('Share my takeover' if result['type'] == 'takeover' else 'Share')}</button>
+  <a href="/message">View the live message wall</a>
   {secondary_actions}</div>
-  {f'''<form class="replacement-notice" data-replacement-notice><label>Tell me when I’m replaced<input name="contact" placeholder="Email or Telegram chat ID" required></label><p class="field-help">One notification. No account.</p><p class="form-error" data-form-error role="alert"></p><button class="market-button market-button--quiet" type="submit">NOTIFY ME</button></form>''' if result['type'] == 'takeover' and receipt.get('notificationChannels') else ''}
+  {f'''<form class="replacement-notice" data-replacement-notice><label>Tell me when I’m replaced<input name="contact" placeholder="Email or Telegram chat ID" required></label><p class="field-help">One message. No account.</p><p class="form-error" data-form-error role="alert"></p><button class="market-button market-button--quiet" type="submit">Notify me</button></form>''' if result['type'] == 'takeover' and receipt.get('notificationChannels') else ''}
 </section>"""
     body = f"""{header()}
 <main id="main-content" class="receipt-page" data-receipt-status="{escape(status)}" data-receipt-token="{escape(token)}" data-payment-url="{escape(request_url)}" data-callback-url="{escape(callback_url)}" data-receiving-address="{escape(address)}" data-contract-address="{escape(contract)}" data-amount="{escape(amount)}" data-amount-micro="{int(receipt['amountMicro'])}">
-  <p class="takeover-kicker">PRIVATE RECEIPT</p><h1>{escape(status_copy)}</h1>
+  <h1>{escape(status_copy)}</h1>
   <p class="receipt-private">{escape(receipt_context)}</p>
   {progress}
   <dl><div><dt>Placement</dt><dd>{escape(receipt_type)}</dd></div><div><dt>Exact amount</dt><dd>{escape(receipt['amount'])} USDT</dd></div>
@@ -662,9 +734,9 @@ def render_reign(settings: Settings, reign: dict) -> str:
 <time>{escape(item['confirmedAt'])}</time></li>"""
         for item in reign["ledger"]
     )
-    status = "LIVE ON COIN.IM" if reign["status"] == "active" else "YOUR MESSAGE HELD COIN.IM"
+    status = "Live on coin.im" if reign["status"] == "active" else "This message held coin.im"
     slot_query = f'slot={int(reign["wallSlotNumber"])}&amp;' if reign.get("wallSlotNumber") else ""
-    bring_back = "" if reign["status"] == "active" else f'<a class="market-button market-button--quiet" href="/takeover?{slot_query}message={escape(reign["slug"])}">TAKE IT BACK: {escape(reign.get("currentTakeoverPrice", "1"))} USDT</a>'
+    bring_back = "" if reign["status"] == "active" else f'<a class="market-button market-button--quiet" href="/takeover?{slot_query}message={escape(reign["slug"])}">Take it back: {escape(reign.get("currentTakeoverPrice", "1"))} USDT</a>'
     impact = ""
     if reign["status"] != "active":
         facts = [escape(reign['duration'])]
@@ -711,7 +783,7 @@ def render_archive(settings: Settings, archive: dict) -> str:
         ) + "</ul></section>"
     empty = '<p class="empty-state">No reign has been confirmed yet.</p>'
     body = f"""{header('/archive')}<main id="main-content" class="archive-page">
-<p class="takeover-kicker">PUBLIC ARCHIVE</p><h1>Every message that held coin.im.</h1>{records}
+<h1>The messages that were here before.</h1>{records}
 <section class="archive-list">{''.join(items) if items else empty}</section></main>{footer()}"""
     return page_shell(settings, "Public archive: coin.im", "The permanent archive of messages that held the coin.im homepage.", body, canonical_path="/archive")
 
@@ -730,38 +802,32 @@ def render_stats(settings: Settings, stats: dict) -> str:
     ]
     cards = "".join(f'<div><dt>{escape(label)}</dt><dd>{escape(value)}</dd></div>' for label, value in values)
     body = f"""{header('/stats')}<main id="main-content" class="stats-page">
-<p class="takeover-kicker">PUBLIC STATS</p><h1>Measured attention, not invented reach.</h1>
+<h1>What coin.im measured.</h1>
 <nav class="periods" aria-label="Stats period"><a href="/stats?period=24h">24 hours</a><a href="/stats?period=7d">7 days</a><a href="/stats?period=all">All time</a></nav>
-<dl>{cards}</dl><p>Only measured first-party events are shown. Preview bots and known crawlers are excluded.</p></main>{footer()}"""
+<dl>{cards}</dl><p>These are first-party events from coin.im. Preview bots and known crawlers are excluded.</p></main>{footer()}"""
     return page_shell(settings, "Public stats: coin.im", "Measured coin.im visitors, readers, payments and reigns.", body, canonical_path="/stats")
 
 
 RULES = [
-    "The homepage always has exactly three paid slots: website, social and message.",
-    "Every place is occupied. To get on the wall, outbid one current slot.",
-    "Each outbid costs exactly 1 USDT more than the current price of that slot.",
-    "Slot № 1 publishes a website headline, description and public website URL.",
-    "Slot № 2 publishes a social profile URL, pitch and optional short note.",
-    "Slot № 3 publishes a text-only message with an optional name and no public link.",
-    "Submitting the form creates a private payment receipt. It does not charge a wallet or publish content.",
-    "The receipt reserves the selected slot and exact price for seven minutes.",
-    "The receipt shows the exact USDT amount, TRON (TRC-20) address, QR code and TronLink action.",
-    "A confirmed outbid replaces only the selected slot. The other two slots do not change.",
-    "The previous message moves to the permanent public Archive.",
-    "A message stays on the wall until a higher payment replaces it.",
-    "All prices and payments use USDT on TRON (TRC-20).",
-    "A replacement becomes final only after on-chain confirmation.",
-    "Payments buy visibility inside coin.im. They are not transferred to the message author.",
-    "Paid visibility does not guarantee readers, clicks, customers or revenue.",
+    "coin.im has 3 occupied places: website, social profile and message.",
+    "To take a place, pay exactly 1 USDT more than its current price.",
+    "Slot № 1 needs a headline, description and public website URL.",
+    "Slot № 2 needs a pitch and public social profile URL. A short note is optional.",
+    "Slot № 3 needs text. A name is optional, and the place has no public link.",
+    "The form creates a private receipt and charges nothing. It holds the price for 7 minutes.",
+    "The receipt contains the exact USDT amount, TRON address, QR code and TronLink payment.",
+    "The selected place changes after final on-chain confirmation. The old placement moves to Archive. The other 2 stay unchanged.",
+    "Payments buy visibility on coin.im. The money does not go to the author of the placement.",
+    "Visibility does not guarantee readers, clicks, customers or revenue.",
     "Messages containing threats, doxxing, impersonation, phishing, malware, illegal sales or clearly unlawful material may be hidden.",
-    "coin.im does not endorse a message merely because it appears on the page.",
-    "If another valid payment takes the target slot first, the receipt shows the payment state for review.",
+    "Publication on coin.im is not an endorsement.",
+    "If another confirmed payment takes the place first, your receipt keeps the payment state for review.",
 ]
 
 
 def render_rules(settings: Settings) -> str:
     body = f"""{header('/rules')}<main id="main-content" class="rules-page">
-<p class="takeover-kicker">RULES</p><h1>How coin.im works</h1>
+<h1>How coin.im works</h1>
 <ol>{''.join(f'<li>{escape(rule)}</li>' for rule in RULES)}</ol></main>{footer()}"""
     return page_shell(settings, "How coin.im works", "The rules for three paid slots and confirmed USDT outbids.", body, canonical_path="/rules")
 
@@ -807,7 +873,7 @@ def render_badge_svg(reign: dict, takeover_price_value: str = "") -> bytes:
 def render_poster(settings: Settings, reign: dict, qr_svg: str) -> str:
     live = reign["status"] == "active"
     heading = "WE ARE LIVE ON COIN.IM" if live else "WE HELD COIN.IM"
-    detail = "The whole homepage is our message right now." if live else f"{reign['duration']} live"
+    detail = "Our message is on the wall right now." if live else f"{reign['duration']} live"
     stats: list[str] = []
     if reign.get("verifiedReaders"):
         stats.append(f"{int(reign['verifiedReaders']):,} verified readers")
@@ -836,7 +902,7 @@ def result_png(snapshot: dict, vertical: bool = False) -> bytes:
     title, sub = result_card_copy(snapshot)
     draw.text((margin + 48, margin + 48), title, font=title_font, fill=ink)
     draw.line((margin + 48, margin + 124, size[0] - margin - 48, margin + 124), fill=accent, width=4)
-    message = str(snapshot.get("message") or "One message. The whole homepage.")
+    message = str(snapshot.get("message") or "One message on the message wall.")
     max_width = size[0] - 2 * (margin + 48)
     wrapped = wrap_text(draw, message, message_font, max_width, 8 if vertical else 5)
     draw.multiline_text((margin + 48, margin + 175), wrapped, font=message_font, fill=ink, spacing=16)

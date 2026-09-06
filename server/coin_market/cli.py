@@ -12,6 +12,7 @@ from urllib.error import URLError
 from urllib.request import Request, urlopen
 
 from .config import Settings
+from .capture_client import service_health
 from .core import MarketError, parse_iso, utc_now
 from .db import Database
 from .market import MarketService
@@ -44,11 +45,13 @@ def verify_environment(settings: Settings, *, production: bool) -> dict:
         "linearDecay24h": settings.power_lifetime_seconds == 86400,
         "quoteSevenMinutes": settings.quote_seconds == 420,
         "noProtectedPremiere": settings.protection_seconds == 0 and settings.incoming_countdown_seconds == 0,
+        "screenshotService": service_health(settings.screenshot_service_url) if production and settings.market_enabled else True,
     }
     return {"ok": all(checks.values()), "marketEnabled": settings.market_enabled, "checks": checks}
 
 
 def reconcile_payments(service: MarketService, *, apply: bool) -> dict:
+    service.database.cleanup_expired_locks(mutate=True)
     discovery_since = (utc_now() - timedelta(days=7)).isoformat(timespec="seconds").replace("+00:00", "Z")
     connection = service.database.connect()
     try:
@@ -56,7 +59,7 @@ def reconcile_payments(service: MarketService, *, apply: bool) -> dict:
             """SELECT id, submitted_txid, status, created_at, requested_amount_micro
                FROM payment_intents
                WHERE status IN ('created', 'payment_found')
-                  OR (status = 'expired' AND created_at >= ?)""",
+                  OR (status = 'expired' AND submitted_txid IS NOT NULL AND created_at >= ?)""",
             (discovery_since,),
         ).fetchall()
     finally:
@@ -191,6 +194,8 @@ def deliver_outbox(settings: Settings, job_type: str, payload: dict) -> None:
 def production_smoke(settings: Settings) -> dict:
     urls = [
         "/",
+        "/message",
+        "/message/",
         "/takeover",
         "/archive",
         "/stats",

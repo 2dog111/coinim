@@ -17,6 +17,7 @@ except ImportError:  # pragma: no cover - environment verification rejects this 
 MICRO = 1_000_000
 UTC = timezone.utc
 MAX_MESSAGE_NONSPACE_GRAPHEMES = 888
+MIN_WALL_MESSAGE_NONSPACE_GRAPHEMES = 100
 TXID_RE = re.compile(r"^[0-9a-fA-F]{64}$")
 TRON_ADDRESS_RE = re.compile(r"^T[1-9A-HJ-NP-Za-km-z]{33}$")
 
@@ -92,9 +93,15 @@ def validate_public_url(value: object) -> str:
     if not isinstance(value, str) or len(value) > 2048:
         raise MarketError(422, "Enter a valid public link.", "invalid_url")
     candidate = value.strip()
+    if "://" not in candidate:
+        candidate = "https://" + candidate
     parsed = urlsplit(candidate)
     if parsed.scheme not in {"http", "https"} or not parsed.hostname or parsed.username or parsed.password:
         raise MarketError(422, "Enter a public link beginning with http:// or https://.", "invalid_url")
+    try:
+        parsed.port
+    except ValueError as error:
+        raise MarketError(422, "Enter a valid public link.", "invalid_url") from error
     hostname = parsed.hostname.lower().rstrip(".")
     if hostname == "localhost" or hostname.endswith(".localhost") or hostname.endswith(".local"):
         raise MarketError(422, "The link must use a public address.", "private_url")

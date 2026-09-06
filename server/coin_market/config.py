@@ -51,6 +51,7 @@ class Settings:
     quote_rate_limit_per_hour: int
     quote_expiry_cooldown_count: int
     quote_expiry_cooldown_seconds: int
+    screenshot_service_url: str
 
     @classmethod
     def from_env(cls) -> "Settings":
@@ -92,6 +93,7 @@ class Settings:
             quote_rate_limit_per_hour=env_int("TAKEOVER_QUOTE_RATE_LIMIT_PER_HOUR", 5),
             quote_expiry_cooldown_count=env_int("TAKEOVER_QUOTE_EXPIRY_COOLDOWN_COUNT", 3),
             quote_expiry_cooldown_seconds=env_int("TAKEOVER_QUOTE_EXPIRY_COOLDOWN_SECONDS", 3600),
+            screenshot_service_url=os.environ.get("SCREENSHOT_SERVICE_URL", "http://127.0.0.1:8783").rstrip("/"),
         )
 
     @property

@@ -1,18 +1,48 @@
 # coin.im Project Specification
 
-## Purpose
+## Homepage editorial contract, 2026-09-07
 
-`coin.im` is a one-page wall with exactly three occupied paid-message slots. Slot one starts as the linked `pen.dev` website placement at `14 USDT`, slot two starts as the linked `@midnightdrafter` X placement at `12 USDT`, and slot three starts as the `On silence.` message at `10 USDT`. No fourth or unoccupied placement exists. Each placement remains until a confirmed USDT payment outbids that slot by exactly `1 USDT`.
+The owner-supplied editorial brief was applied with explicit exceptions: the Market Scan section and all five own/five historical examples remain byte-identical to the pre-edit version. They are protected by AGENTS.md and recorded hashes in docs/private/home-protected-sections-20260906.json. They are not to be shortened, hidden or polished with writing skills by a general editing instruction.
+
+The supplied brief explicitly restores the Send your website CTA to /open on the hero and final section. The hero retains How it works to #business-file. This supersedes the earlier no-early-intake instruction for these two links. The existing enquiry form and its handler remain unchanged. Business introduction and report introduction use the supplied English text; a distinct approval/production section sits between objects and delivery. Standalone employee comparison removed, while the same argument inside a protected sample remains untouched. Homepage navigation excludes Message wall and old mail links. Market Scan link remains in its protected section and footer. No Telegram contact was restored.
+
+/open gets only the supplied replacement opening explanation. Its form, file limits, notices, handlers and existing 72-hour text remain unchanged. The repository does not establish fulfilment of that timetable. Exact enclosure inclusion, video coverage and commercial terms for waiting/revisits also remain unspecified; no new promises were introduced.
+
+## Campaign enquiry and contacts, 2026-09-06
+
+The homepage now has a real short enquiry form at its end. Required: name, company, phone, work email and one reply channel (WhatsApp, SMS, Phone or Email). Office address is optional. There is no upload requirement. Corporate email is suggested by placeholder, without rejecting personal domains. POST `/api/open/leads` validates and stores encrypted metadata in the existing intake jobs directory, shares the owner notification/admin workflow and deduplicates retries by request identifier. Successful UI requires `received: true` from the server. Failed submissions retain fields.
+
+The stable admin entrance is `/api/open/admin`, using the existing server admin key. Successful login sets an eight-hour HttpOnly Secure SameSite=Strict signed cookie. Existing secret panel links continue to work. Admin now includes company, office address and form source; existing jobs/files remain readable. Key contents are never published. Private data is outside static/backend releases.
+
+Shared non-sticky header on homepage, English and Russian Market Scan: existing coin logo, 96px desktop wordmark, WhatsApp and SMS with generated glass icons. On narrow screens wordmark is 72px. Owner Telegram contact links removed across other public static pages; historical article mentions of Telegram remain source content. Phone/email are available as form reply preferences. New asset master and prompt notes are local in design/masters and docs/private/contact-ui-assets-20260906.md; only four optimized WebP icons deploy.
+
+## Current route contract. 2026-09-06
+
+The direct-mail service is now the English homepage at `/`. The paid three-slot wall is at `/message` and `/message/`, with all current placement data, checkout, receipts, archive, stats, rules and API routes preserved. `/message/<slug>` continues to serve individual message pages. The homepage is a static editorial landing; Nginx serves its `index.html`. The market service serves the wall at `/message` and `/message/`, retaining an internal `/` compatibility alias so old Nginx workers remain functional during a graceful reload. Public `/` is served statically by Nginx.
+
+Homepage sources: `index.html`, `assets/direct-mail.css`, `assets/direct-mail.js`, and the optimized `assets/coin-letter-20260906.webp`. Source image master lives in `design/masters/`, outside the deploy allowlist. `message.html` and `message/index.html` are byte-identical local wall fallbacks and match the local backend `home.html`; root `index.html` no longer matches that template. The active production wall preserves its existing English content; the local fallback retains the pre-existing Russian work. Do not deploy unrelated local backend changes to reconcile that distinction.
+
+Owner-set commercial offer: 10,000 letters for $30,000, or $3 per letter. Includes business research, Market Scan, recipient selection, copy, physical grabbers, printing, packaging, delivery and reporting. This price is supplied by the owner, not an independently validated cost estimate. The owner explicitly rejected the prior 500-letter model, calculator and quantity qualifications. They are removed from the landing and metadata. No legal disclaimers are to be added. Historical economics notes remain private and superseded. Reporting is handled with the team; no customer portal was implemented.
+
+Homepage layout: no contents sidebar or contents disclosure. A single centred text column up to 75ch, with 22px desktop body text and at least 18px visible text throughout. Copy refined with the explicitly requested Anton skill. Market Scan and all ten original/historical examples remain. Homepage intake links belong only in the final start section and footer. The hero and header lead to the service explanation. Avoid repeating inventories, research subsections and full-story invitations; the single Market Scan continuation sits after its explanation.
+
+`/mail` and `/mail/` retain the previous complete service page unchanged as the original longread. `/ms`, `/ms/`, `/msru`, `/msru/`, `/open` and `/handling` remain intact. The older route and product descriptions below document the previous state and are superseded by this contract where they disagree.
+
+## Previous specification
+
+`coin.im` is a one-page wall with exactly three occupied paid-message slots. The owner-published Russian wall has the linked Coin.im platform description in slot one at `14 USDT`, the linked Instagram profile `@adrieves19` in slot two at `12 USDT`, and the linkless `Просто сообщение` text in slot three at `10 USDT`. These placements were published by direct owner instruction without an on-chain receipt; that instruction does not imply or fabricate a payment. The prior seed placements remain in `/archive`. No fourth or unoccupied placement exists. Each current placement remains until a confirmed USDT payment outbids that slot by exactly `1 USDT`.
 
 The ASGI service renders all three slots from the persistent market database. `index.html` and `server/coin_market/home.html` remain byte-identical emergency seed fallbacks. A confirmed outbid replaces only its selected slot, moves the prior placement to `/archive`, and leaves the other two slots unchanged.
 
 The three slot numbers are permanent entity types:
 
-- slot № 1 is a website and requires a headline, a 111 to 888 non-space-character description, and a public non-social URL;
-- slot № 2 is a social placement and requires a 111 to 888 non-space-character pitch plus a supported public social-profile URL; its optional short note appears after the profile handle;
-- slot № 3 is a text-only message with an optional name and must not contain a public URL.
+- slot № 1 is a website and requires only a public non-social URL plus a 100 to 888 non-space-character description from the customer. Before a payment intent is created, the backend opens the public URL, extracts the page title and favicon, captures the visible first screen at `1600x1050`, optimizes the favicon and screenshot to WebP, keeps the screenshot under `700 KB`, and stores both images with the private intent. The captured title, favicon, and screenshot are published inside the website card only after payment confirmation. A failed page capture stops checkout and leaves no payment intent; a website without a usable favicon may still publish with its title and screenshot;
+- slot № 2 is a social placement and requires a supported network choice, a matching public profile URL, and a 100 to 888 non-space-character pitch;
+- slot № 3 is only a 100 to 888 non-space-character message. It has no name, URL, CTA, card-wide link, or share link. The server clears message-slot signature, location, and CTA metadata even if a client submits them directly.
 
-Every card displays the exact next price, calculated as that slot's current confirmed price plus `1 USDT`. The selected form creates a private seven-minute payment receipt but does not charge or publish anything. The receipt provides the exact amount, the owner-approved USDT TRC-20 address, QR code, TronLink action, automatic chain monitoring, and manual transaction-ID fallback. A final matching transfer replaces the selected slot atomically. The previous placement moves to `/archive`; the other two placements and prices do not change.
+The root hero exposes a direct `Publish here` action. `/takeover` is one publisher screen, not a chooser followed by a second form screen. It defaults to Message and keeps Website, Social, and Message as three large icon tabs with live prices above the active single-column form. Every type displays the exact next price, calculated as that slot's current confirmed price plus `1 USDT`. The form creates a private seven-minute payment receipt but does not charge or publish anything. The receipt provides the exact amount, the owner-approved USDT TRC-20 address, QR code, TronLink action, automatic chain monitoring, and manual transaction-ID fallback. A final matching transfer replaces the selected slot atomically. The previous placement moves to `/archive`; the other two placements and prices do not change.
+
+Automatic amount-only discovery is limited to a live seven-minute receipt. Two live receipts may not reserve the same exact USDT amount at once. After a receipt expires, an already-sent transfer can be recovered only with its exact TRON transaction ID; a new payment must start from the current slot price. This prevents an unrelated or later transfer with the same amount from being attached to the wrong placement.
 
 The complete English B2B direct-mail service remains at `/mail`; Market Scan remains at `/ms`; encrypted Business File intake remains at `/open`. Those routes and the existing intake API are separate from the takeover market.
 
@@ -21,11 +51,14 @@ The complete English B2B direct-mail service remains at `/mail`; Market Scan rem
 - `index.html`: canonical static source and emergency fallback for the initial three-slot wall.
 - `server/coin_market/home.html`: byte-identical root template whose three marked slot blocks are replaced from SQLite at request time.
 - `assets/wall.css` and `assets/wall.js`: root wall layout, typography, dynamic total, and per-slot outbid links.
-- `assets/pen-screenshot.png`: optimized real Chromium screenshot used by the `pen.dev` placement.
+- `assets/coin-im-wall-screenshot.webp`: optimized local Chromium screenshot used by the owner-published Coin.im website placement.
+- `assets/pen-screenshot.png`: retained optimized Chromium screenshot for the archived `pen.dev` seed placement.
 - `assets/takeover.css` and `assets/takeover.js`: slot-aware checkout, receipt verification, live updates, sharing, and first-party metrics.
+- `assets/social-glass-atlas.webp`: optimized GPT Image atlas for the 15 supported social-network choices and published social cards.
 - `assets/logo.png`, `assets/logo-512.png`, `assets/logo-192.png`, `assets/apple-touch-icon.png`, and the favicon PNGs: the three-slot coin.im app icon and its production sizes.
 - `assets/mock-site.html` and `assets/sreda-screenshot.png`: retained legacy mock assets; the fixed root does not load them.
-- `server/coin_market/`: SQLite-backed takeover market, payment verification, atomic reign switching, receipts, archive, stats, badges, posters, admin, and operational CLI.
+- `server/coin_market/`: SQLite-backed takeover market, payment verification, isolated automatic website capture, atomic reign switching, receipts, archive, stats, badges, posters, admin, and operational CLI.
+- `server/deploy/coin-im-screenshot.service`: local-only Chromium capture worker. It runs as `coinscreenshot` without market secrets or database access.
 - `server/coin_market/migrations/`: append-safe market schema migrations.
 - `server/tests_market/`: business-logic, integration, and browser-journey tests.
 - `mail.html` and `mail/index.html`: full English direct-mail landing, served at `/mail` and `/mail/`.
@@ -136,7 +169,7 @@ Do not deploy unless the current user message explicitly says to deploy.
 
 Current production deployment is the VPS flow in `DEPLOY.md`.
 
-The root, market pages, and `/api/market/` are served by the isolated `coin-im-market` service. Persistent market data is outside the release tree at `/var/lib/coin-im-market/market.sqlite3`. Static routes and the existing `coin-im-open` service keep their separate release and data paths.
+The root, market pages, and `/api/market/` are served by the isolated `coin-im-market` service. The local-only `coin-im-screenshot` service captures public website titles, favicons, and first screens on `127.0.0.1:8783` in an isolated Chromium process before checkout. Its browser files live at `/var/lib/coin-im-screenshot/browsers`; it has no market environment file or database access. Persistent market data, including optimized website screenshots and favicons stored as SQLite blobs, is outside the release tree at `/var/lib/coin-im-market/market.sqlite3`. Static routes and the existing `coin-im-open` service keep their separate release and data paths.
 
 Use a clean temporary static directory for deployment. Include only the files needed for the site:
 

@@ -69,6 +69,7 @@ class ValidationTests(unittest.TestCase):
         result = validate_message_fields({"message": "<script>alert(1)</script>", "url": "https://example.com/a"})
         self.assertEqual(result["message"], "<script>alert(1)</script>")
         self.assertEqual(result["url"], "https://example.com/a")
+        self.assertEqual(validate_public_url("example.com/a"), "https://example.com/a")
 
     def test_private_and_non_http_urls_are_rejected(self) -> None:
         for value in ("javascript:alert(1)", "http://127.0.0.1", "http://localhost/a", "file:///etc/passwd"):

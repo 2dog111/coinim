@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import base64
+import io
 import os
 import sqlite3
 import tempfile
@@ -8,7 +10,9 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from unittest.mock import patch
 
-from coin_market.cli import process_outbox
+from PIL import Image
+
+from coin_market.cli import process_outbox, reconcile_payments
 from coin_market.config import Settings
 from coin_market.core import MICRO, MarketError
 from coin_market.db import Database
@@ -44,11 +48,11 @@ class MarketIntegrationTests(unittest.TestCase):
         self.database = Database(self.settings)
         self.assertEqual(
             self.database.migrate(),
-            ["001_initial", "002_fixed_backing_window", "003_payment_credits", "004_reign_notifications", "005_three_wall_slots"],
+            ["001_initial", "002_fixed_backing_window", "003_payment_credits", "004_reign_notifications", "005_three_wall_slots", "006_wall_copy_polish", "007_wall_screenshots", "008_owner_prompt_favicons"],
         )
         self.provider = MockPaymentProvider(self.settings)
         self.service = MarketService(self.settings, self.database, self.provider)
-        self.start = datetime(2026, 8, 28, 10, 0, tzinfo=UTC)
+        self.start = datetime(2026, 9, 1, 10, 0, tzinfo=UTC)
 
     def tearDown(self) -> None:
         self.temp.cleanup()
@@ -95,17 +99,20 @@ class MarketIntegrationTests(unittest.TestCase):
         home = render_home(self.settings, wall)
         self.assertEqual(len(wall["slots"]), 3)
         self.assertEqual(wall["total"], "36")
-        self.assertIn("Every word on this page was <em>paid for.</em>", home)
-        self.assertIn('href="https://www.pen.dev/"', home)
-        self.assertIn('href="https://x.com/midnightdrafter"', home)
-        self.assertIn("Design on a canvas, ship it as code.", home)
-        self.assertIn("@midnightdrafter", home)
-        self.assertIn("On silence.", home)
-        self.assertIn("Outbid website · <span data-outbid-price>15</span> USDT", home)
-        self.assertIn("Outbid social · <span data-outbid-price>13</span> USDT", home)
-        self.assertIn("Outbid message · <span data-outbid-price>11</span> USDT", home)
-        self.assertIn("How to take a place on coin.im", home)
-        self.assertIn("The replacement is automatic.", home)
+        self.assertIn("Каждое слово здесь <em>куплено.</em>", home)
+        self.assertIn('class="publish-cta" href="/takeover"', home)
+        self.assertIn('href="https://coin.im/"', home)
+        self.assertIn('href="https://www.instagram.com/adrieves19/"', home)
+        self.assertIn("Coin.im не доска объявлений.", home)
+        self.assertIn("@adrieves19", home)
+        self.assertIn("Просто сообщение", home)
+        self.assertIn("Занять место: сайт · <span data-outbid-price>15</span> USDT", home)
+        self.assertIn("Занять место: соцсеть · <span data-outbid-price>13</span> USDT", home)
+        self.assertIn("Занять место: сообщение · <span data-outbid-price>11</span> USDT", home)
+        self.assertNotIn("Quote on X", home)
+        self.assertNotIn("message · anonymous", home)
+        self.assertIn("Поставь свои слова здесь.", home)
+        self.assertIn("Оплати из кошелька.", home)
         self.assertEqual(home.count('class="slot '), 3)
         self.assertNotIn("open" + " slot", home)
         self.assertNotIn("Claim" + " slot", home)
@@ -147,22 +154,74 @@ class MarketIntegrationTests(unittest.TestCase):
         self.assertEqual(updated["total"], "37")
         self.assertEqual(receipt["result"]["snapshot"]["wallSlotNumber"], 2)
         archived = self.service.archive()["reigns"]
-        self.assertTrue(any(item["message"].startswith("I am not an influencer") for item in archived))
+        self.assertTrue(any(item["message"].startswith("Майами не город") for item in archived))
         self.assertFalse(any(item["message"] == message for item in archived))
+
+    def test_wall_identical_payment_amounts_are_serialized(self) -> None:
+        with self.database.transaction() as connection:
+            connection.execute(
+                """UPDATE reigns SET initial_amount_micro = ?
+                   WHERE id = (
+                       SELECT r.id FROM reigns r
+                       JOIN messages m ON m.id = r.message_id
+                       WHERE m.wall_slot_number = 2
+                       ORDER BY r.started_at DESC, r.id DESC LIMIT 1
+                   )""",
+                (14 * MICRO,),
+            )
+        message = (
+            "A sufficiently detailed placement explains the destination, the intended reader, and the useful reason "
+            "to open it while remaining clear enough for a real visitor to understand before paying."
+        )
+        wall = self.service.wall_state(self.start)
+        self.service.create_takeover_intent(
+            {
+                "wallSlot": 1,
+                "message": message,
+                "signature": "Website headline",
+                "url": "https://example.com",
+                "amount": wall["slots"][0]["outbidAmount"],
+                "quotedPriceMicro": wall["slots"][0]["outbidAmountMicro"],
+            },
+            "website-visitor",
+            now=self.start,
+        )
+        with self.assertRaises(MarketError) as collision:
+            self.service.create_takeover_intent(
+                {
+                    "wallSlot": 2,
+                    "message": message,
+                    "url": "https://t.me/example",
+                    "amount": wall["slots"][1]["outbidAmount"],
+                    "quotedPriceMicro": wall["slots"][1]["outbidAmountMicro"],
+                },
+                "social-visitor",
+                now=self.start,
+            )
+        self.assertEqual(collision.exception.code, "amount_temporarily_reserved")
 
     def test_wall_slot_forms_and_entity_validation_are_explicit(self) -> None:
         wall = self.service.wall_state(self.start)
-        site_form = render_takeover(self.settings, self.service.state(self.start), wall_slot=wall["slots"][0])
-        social_form = render_takeover(self.settings, self.service.state(self.start), wall_slot=wall["slots"][1])
-        message_form = render_takeover(self.settings, self.service.state(self.start), wall_slot=wall["slots"][2])
-        self.assertIn("Website headline", site_form)
-        self.assertIn("Website description", site_form)
-        self.assertIn("Website URL", site_form)
-        self.assertIn("Social profile URL", social_form)
-        self.assertIn("X, Instagram, Telegram, LinkedIn, YouTube, TikTok", social_form)
-        self.assertIn("Public message", message_form)
+        site_form = render_takeover(self.settings, self.service.state(self.start), wall_slot=wall["slots"][0], wall_state=wall)
+        social_form = render_takeover(self.settings, self.service.state(self.start), wall_slot=wall["slots"][1], wall_state=wall)
+        message_form = render_takeover(self.settings, self.service.state(self.start), wall_slot=wall["slots"][2], wall_state=wall)
+        self.assertIn("Website text", site_form)
+        self.assertIn("Website link", site_form)
+        self.assertIn("The title, favicon and a fresh first-screen screenshot are added automatically.", site_form)
+        self.assertNotIn('type="file"', site_form)
+        self.assertNotIn('name="signature"', site_form)
+        self.assertIn("Profile link", social_form)
+        self.assertIn("Social network", social_form)
+        self.assertEqual(social_form.count('class="social-option"'), 15)
+        self.assertIn("Your message", message_form)
         self.assertNotIn('name="url"', message_form)
-        self.assertIn("Create private payment receipt", site_form)
+        self.assertNotIn('name="signature"', message_form)
+        self.assertIn("No name. No link.", message_form)
+        self.assertIn("Continue to payment", site_form)
+        self.assertIn('href="/takeover?slot=1"', message_form)
+        self.assertIn('href="/takeover?slot=2"', message_form)
+        self.assertIn('href="/takeover?slot=3"', message_form)
+        self.assertIn("Put your words here.", message_form)
 
         common = {
             "message": "A sufficiently detailed placement message contains more than one hundred and eleven non-space characters, explains the destination clearly, and gives a real visitor enough context to decide whether the published website or profile is worth opening.",
@@ -174,6 +233,12 @@ class MarketIntegrationTests(unittest.TestCase):
             self.service.create_takeover_intent({**common, "url": "https://example.com"}, "missing-headline", now=self.start)
         with self.assertRaisesRegex(MarketError, "slot № 2"):
             self.service.create_takeover_intent({**common, "signature": "Headline", "url": "https://x.com/example"}, "wrong-site", now=self.start)
+        with self.assertRaisesRegex(MarketError, "at least 100"):
+            self.service.create_takeover_intent(
+                {**common, "message": "x" * 99, "signature": "Headline", "url": "https://example.com"},
+                "too-short",
+                now=self.start,
+            )
 
         social = {
             "message": common["message"],
@@ -184,6 +249,86 @@ class MarketIntegrationTests(unittest.TestCase):
         }
         with self.assertRaisesRegex(MarketError, "social profile URL"):
             self.service.create_takeover_intent(social, "wrong-social", now=self.start)
+        with self.assertRaisesRegex(MarketError, "does not match"):
+            self.service.create_takeover_intent(
+                {**social, "url": "https://t.me/example", "location": "x"},
+                "mismatched-social",
+                now=self.start,
+            )
+
+        message_slot = wall["slots"][2]
+        message_intent = self.service.create_takeover_intent(
+            {
+                "wallSlot": 3,
+                "message": common["message"],
+                "signature": "This must not be published",
+                "location": "x",
+                "ctaLabel": "This must not become a link",
+                "amount": message_slot["outbidAmount"],
+                "quotedPriceMicro": message_slot["outbidAmountMicro"],
+            },
+            "plain-message",
+            now=self.start,
+        )
+        with self.database.connect() as connection:
+            stored = connection.execute(
+                "SELECT draft_signature, draft_location, draft_url, draft_cta_label FROM payment_intents WHERE id = ?",
+                (message_intent["intentId"],),
+            ).fetchone()
+        self.assertEqual(dict(stored), {"draft_signature": "", "draft_location": "", "draft_url": "", "draft_cta_label": ""})
+
+    def test_website_screenshot_is_published_only_after_confirmation(self) -> None:
+        source = io.BytesIO()
+        Image.new("RGB", (640, 400), (244, 219, 70)).save(source, "PNG")
+        screenshot_data = "data:image/png;base64," + base64.b64encode(source.getvalue()).decode("ascii")
+        favicon_source = io.BytesIO()
+        Image.new("RGBA", (64, 64), (244, 219, 70, 180)).save(favicon_source, "PNG")
+        favicon_data = "data:image/png;base64," + base64.b64encode(favicon_source.getvalue()).decode("ascii")
+        wall = self.service.wall_state(self.start)
+        slot = wall["slots"][0]
+        message = (
+            "A clear website placement explains what the visitor will find, who it is for, and why the destination "
+            "is worth opening before the payment publishes it on the homepage."
+        )
+        intent = self.service.create_takeover_intent(
+            {
+                "wallSlot": 1,
+                "message": message,
+                "signature": "A useful website",
+                "url": "https://example.com",
+                "amount": slot["outbidAmount"],
+                "quotedPriceMicro": slot["outbidAmountMicro"],
+                "screenshotData": screenshot_data,
+                "faviconData": favicon_data,
+            },
+            "website-screenshot",
+            now=self.start,
+        )
+        before = self.service.wall_state(self.start)
+        self.assertEqual(before["slots"][0]["screenshotUrl"], "")
+        with self.database.connect() as connection:
+            pending = connection.execute(
+                "SELECT screenshot_blob, screenshot_mime, favicon_blob, favicon_mime FROM payment_intents WHERE id = ?",
+                (intent["intentId"],),
+            ).fetchone()
+            self.assertGreater(len(pending["screenshot_blob"]), 0)
+            self.assertEqual(pending["screenshot_mime"], "image/webp")
+            self.assertGreater(len(pending["favicon_blob"]), 0)
+            self.assertEqual(pending["favicon_mime"], "image/webp")
+        transfer = self.transfer(intent, 15 * MICRO, self.start + timedelta(seconds=1), "s")
+        self.service.apply_confirmed_transfer(intent["intentId"], transfer, now=self.start + timedelta(seconds=1))
+        after = self.service.wall_state(self.start + timedelta(seconds=2))
+        self.assertRegex(after["slots"][0]["screenshotUrl"], r"^/media/market/[a-z0-9-]+$")
+        self.assertRegex(after["slots"][0]["faviconUrl"], r"^/media/market/[a-z0-9-]+/favicon$")
+        with self.database.connect() as connection:
+            published = connection.execute(
+                "SELECT screenshot_blob, screenshot_mime, favicon_blob, favicon_mime FROM messages WHERE slug = ?",
+                (after["slots"][0]["slug"],),
+            ).fetchone()
+            self.assertGreater(len(published["screenshot_blob"]), 0)
+            self.assertEqual(published["screenshot_mime"], "image/webp")
+            self.assertGreater(len(published["favicon_blob"]), 0)
+            self.assertEqual(published["favicon_mime"], "image/webp")
 
     def test_receipt_prioritizes_wallet_and_hides_manual_txid(self) -> None:
         state = self.service.state(self.start)
@@ -195,11 +340,11 @@ class MarketIntegrationTests(unittest.TestCase):
         }, "receipt-ui", now=self.start)
         receipt = self.service.receipt(intent["receiptToken"], self.start)
         page = render_receipt(self.settings, receipt, intent["receiptToken"])
-        self.assertIn("Open in TronLink", page)
+        self.assertIn("Pay in TronLink", page)
         self.assertIn("7 USDT · TRON (TRC-20)", page)
         self.assertIn('aria-label="Payment status"', page)
         self.assertIn('aria-current="step"><span></span>Waiting', page)
-        self.assertIn("Payment not detected?", page)
+        self.assertIn("Can't see your payment?", page)
         self.assertIn('<details class="payment-recovery">', page)
         self.assertNotIn('<details class="payment-recovery" open>', page)
         self.assertIn('data-contract-address="TMockContract', page)
@@ -290,19 +435,19 @@ class MarketIntegrationTests(unittest.TestCase):
         first_id = self.service.state(self.start + timedelta(seconds=2))["currentReignPublicId"]
         self.take("Replacement", 5, self.start + timedelta(seconds=3), "o")
         archive = self.service.archive()
-        self.assertEqual(len(archive["reigns"]), 2)
+        self.assertEqual(len([item for item in archive["reigns"] if item["wallSlotNumber"] is None]), 2)
         self.assertIn("highestTakeover", archive["records"])
         reign = self.service.reign(first_id, self.start + timedelta(seconds=5))
-        self.assertIn("TAKE IT BACK", render_reign(self.settings, reign))
+        self.assertIn("Take it back", render_reign(self.settings, reign))
         self.assertTrue(result_png({"type": "takeover", "message": "Archive this", "amount": "3"}).startswith(b"\x89PNG"))
         home = render_home(self.settings, self.service.state(self.start + timedelta(seconds=5)), archive)
         self.assertNotIn("Archive this", home)
         self.assertNotIn("Replacement", home)
-        self.assertIn("Every word on this page was <em>paid for.</em>", home)
+        self.assertIn("Каждое слово здесь <em>куплено.</em>", home)
         self.assertIn("data-current-price>14</span> USDT", home)
         self.assertIn("data-current-price>12</span> USDT", home)
         self.assertIn("data-current-price>10</span> USDT", home)
-        self.assertIn("Outbid", home)
+        self.assertIn("Занять место", home)
         self.assertIn("USDT", home)
         self.assertNotIn("Market Scan", home)
 
@@ -318,6 +463,40 @@ class MarketIntegrationTests(unittest.TestCase):
         receipt = self.service.discover_intent(intent["receiptToken"], self.start + timedelta(seconds=3))
         self.assertEqual(receipt["status"], "confirmed")
         self.assertEqual(self.service.state(self.start + timedelta(seconds=3))["message"]["message"], "Discovered automatically.")
+
+    def test_expired_wall_receipt_requires_txid_for_late_payment(self) -> None:
+        slot = self.service.wall_state(self.start)["slots"][2]
+        message = (
+            "A complete public message can still be recovered safely after the short automatic-discovery window "
+            "when its owner supplies the exact confirmed TRON transaction identifier from the private receipt."
+        )
+        intent = self.service.create_takeover_intent(
+            {
+                "wallSlot": 3,
+                "message": message,
+                "amount": slot["outbidAmount"],
+                "quotedPriceMicro": slot["outbidAmountMicro"],
+            },
+            "late-wall-visitor",
+            now=self.start,
+        )
+        transfer = self.transfer(intent, 11 * MICRO, self.start + timedelta(seconds=421), "z")
+        expired = self.service.discover_intent(intent["receiptToken"], self.start + timedelta(seconds=422))
+        self.assertEqual(expired["status"], "expired")
+        expired_page = render_receipt(self.settings, expired, intent["receiptToken"])
+        self.assertIn("Already paid?", expired_page)
+        self.assertIn("Check transaction", expired_page)
+        self.assertNotIn("Send exactly", expired_page)
+        self.assertEqual(self.service.wall_state(self.start + timedelta(seconds=422))["slots"][2]["amount"], "10")
+        with self.database.connect() as connection:
+            self.assertEqual(connection.execute("SELECT COUNT(*) FROM payments").fetchone()[0], 0)
+        reconciled = reconcile_payments(self.service, apply=True)
+        self.assertEqual(reconciled["applied"], 0)
+        confirmed = self.service.verify_intent(
+            intent["receiptToken"], transfer.txid, self.start + timedelta(seconds=423)
+        )
+        self.assertEqual(confirmed["status"], "confirmed")
+        self.assertEqual(self.service.wall_state(self.start + timedelta(seconds=424))["slots"][2]["amount"], "11")
 
     def test_replacement_notification_is_transactionally_enqueued(self) -> None:
         first, _ = self.take("Notify me.", 2, self.start, "r")

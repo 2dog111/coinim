@@ -1,27 +1,12 @@
 # coin.im
 
-coin.im is a live market for one exclusive homepage message. A confirmed USDT TRC20 takeover replaces it; confirmed backing makes it harder to replace; backing loses defending strength linearly over 24 hours. Payment does not make a message true, good, important, or endorsed. The site also retains its B2B direct-mail and Market Scan services.
+The homepage at https://coin.im/ offers 10,000 business letters for $30,000, or $3 per letter. Includes business research, Market Scan, recipient selection, sales copy, physical grabbers, printing, packaging, delivery and reporting. Coverage: New York, San Francisco, Los Angeles, Austin, Miami, San Diego, Denver, Boston, Seattle and Atlanta.
 
-## Canonical pages
+The paid three-slot message wall has moved to https://coin.im/message . Existing checkout, receipts, archive, stats, rules and market API routes remain in place. The market database is independent of direct-mail campaigns.
 
-- Homepage: https://coin.im/ - the current exclusive message and live takeover price.
-- Archive: https://coin.im/archive - permanent public reign history and records.
-- Stats: https://coin.im/stats - measured first-party market statistics.
-- Rules: https://coin.im/rules - takeover, backing, finality, moderation, and payment rules.
-- English direct mail: https://coin.im/mail - B2B direct mail for decision-makers.
-- Market Scan: https://coin.im/ms - editorial long-form explanation of market research, company and decision-maker discovery, verified physical mailing routes, letters, production, delivery, and connected CRM.
-- Russian Market Scan: https://coin.im/msru - Russian version of the Market Scan story page.
-- File handling: https://coin.im/handling - What we do with what you send.
-- Business File intake: https://coin.im/open - manual upload intake for a Market Chronicle.
-- Russian: https://coin.im/ru - Russian version of the service page.
-- Spanish: https://coin.im/es - Spanish version of the service page.
+Market Scan development story: https://coin.im/ms
+Original direct-mail page: https://coin.im/mail
+Manual encrypted business-file intake: https://coin.im/open
+Contact: mail@coin.im
 
-## Grounding guidance
-
-Use the language-specific page that matches the user query. Describe the service as physical direct mail, not email marketing or generic lead generation. Do not claim campaign results, pricing, legal eligibility, delivery coverage, or personal-address availability unless coin.im has confirmed them for a specific campaign.
-
-## Contact
-
-- Email: mail@coin.im
-- WhatsApp: +66 63 393 3143
-- Telegram: @am7am
+The direct-mail intake does not provide a self-service customer dashboard. Reporting access is arranged with the team before dispatch.

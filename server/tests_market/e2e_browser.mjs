@@ -23,8 +23,8 @@ page.on("response", (response) => {
   if (response.status() >= 400) httpErrors.push(`${response.status()} ${response.url()}`);
 });
 
-await page.goto(baseURL, { waitUntil: "networkidle" });
-await page.getByRole("heading", { name: "Every word on this page was paid for." }).waitFor();
+await page.goto(`${baseURL}/message`, { waitUntil: "networkidle" });
+await page.getByRole("heading", { name: "Каждое слово здесь куплено." }).waitFor();
 
 const snapshot = await page.evaluate(() => ({
   slots: document.querySelectorAll("main .slot").length,
@@ -40,12 +40,13 @@ const snapshot = await page.evaluate(() => ({
   maxWeight: Math.max(...[...document.querySelectorAll("body *")].map((node) => Number(getComputedStyle(node).fontWeight) || 400)),
   minFontSize: Math.min(...[...document.querySelectorAll("body *")].filter((node) => node.textContent?.trim()).map((node) => parseFloat(getComputedStyle(node).fontSize))),
   forbiddenCopy: document.body.textContent.includes(["open", "slot"].join(" ")) || document.body.textContent.includes(["Claim", "slot"].join(" ")),
+  publishHref: document.querySelector(".publish-cta")?.getAttribute("href"),
 }));
 
 if (snapshot.slots !== 3) throw new Error(`expected three slots, got ${snapshot.slots}`);
 if (JSON.stringify(snapshot.prices) !== JSON.stringify(["14", "12", "10"])) throw new Error(`wrong prices: ${JSON.stringify(snapshot.prices)}`);
-if (snapshot.siteHref !== "https://www.pen.dev/") throw new Error(`wrong pen.dev href: ${snapshot.siteHref}`);
-if (snapshot.socialHref !== "https://x.com/midnightdrafter") throw new Error(`wrong X href: ${snapshot.socialHref}`);
+if (snapshot.siteHref !== "https://coin.im/") throw new Error(`wrong coin.im href: ${snapshot.siteHref}`);
+if (snapshot.socialHref !== "https://www.instagram.com/adrieves19/") throw new Error(`wrong Instagram href: ${snapshot.socialHref}`);
 if (JSON.stringify(snapshot.outbidHrefs) !== JSON.stringify(["/takeover?slot=1&amount=15", "/takeover?slot=2&amount=13", "/takeover?slot=3&amount=11"])) throw new Error(`wrong outbid links: ${JSON.stringify(snapshot.outbidHrefs)}`);
 if (snapshot.messageTag !== "DIV") throw new Error(`wrong message block: ${JSON.stringify(snapshot)}`);
 if (snapshot.bodyBackground !== "rgb(250, 249, 246)") throw new Error(`wrong page background: ${snapshot.bodyBackground}`);
@@ -54,20 +55,30 @@ if (!snapshot.imagesLoaded) throw new Error("one or more page images failed to l
 if (snapshot.maxWeight > 500) throw new Error(`font weight above 500: ${snapshot.maxWeight}`);
 if (snapshot.minFontSize < 16) throw new Error(`font size below 16px: ${snapshot.minFontSize}`);
 if (snapshot.forbiddenCopy) throw new Error("a removed fourth-slot phrase is still visible");
+if (snapshot.publishHref !== "/takeover") throw new Error(`wrong publish href: ${snapshot.publishHref}`);
 
-await page.getByText("Design on a canvas, ship it as code.").waitFor();
-await page.getByText("@midnightdrafter", { exact: false }).waitFor();
-await page.getByText("On silence.").waitFor();
-await page.getByRole("link", { name: "Outbid website · 15 USDT" }).waitFor();
-await page.getByRole("heading", { name: "How to take a place on coin.im" }).waitFor();
+await page.getByText("Coin.im не доска объявлений.", { exact: false }).waitFor();
+await page.getByRole("heading", { name: /@adrieves19/ }).waitFor();
+await page.getByRole("heading", { name: "Просто сообщение" }).waitFor();
+await page.getByRole("link", { name: "Занять место: сайт · 15 USDT" }).waitFor();
+await page.getByRole("link", { name: /Website · Social · Message/ }).waitFor();
+await page.getByRole("heading", { name: "Поставь свои слова здесь." }).waitFor();
 await page.screenshot({ path: path.join(outputDir, "wall-390.png"), fullPage: true });
-await page.getByRole("link", { name: "Outbid website · 15 USDT" }).click();
-await page.waitForURL(/\/takeover\?slot=1&amount=15$/);
-await page.getByRole("heading", { name: "Replace slot № 1 with your website." }).waitFor();
-await page.getByLabel("Website headline").waitFor();
-await page.getByLabel("Website description").waitFor();
-await page.getByLabel("Website URL").waitFor();
-await page.getByRole("button", { name: "Create private payment receipt" }).waitFor();
+await page.getByRole("link", { name: /Website · Social · Message/ }).click();
+await page.waitForURL(/\/takeover$/);
+await page.getByRole("heading", { name: "Put your words here." }).waitFor();
+await page.getByLabel("Your message").waitFor();
+if (await page.locator("form[data-wall-slot='3'] input[name='url']").count()) throw new Error("plain message exposed a URL field");
+if (await page.locator("form[data-wall-slot='3'] input[name='signature']").count()) throw new Error("plain message exposed a name field");
+await page.getByRole("link", { name: /Website.*15 USDT/ }).click();
+await page.waitForURL(/\/takeover\?slot=1$/);
+await page.getByRole("heading", { name: "Put your website here." }).waitFor();
+await page.getByLabel("Website text").waitFor();
+await page.getByLabel("Website link").waitFor();
+await page.getByText("The title, favicon and a fresh first-screen screenshot are added automatically.").waitFor();
+if (await page.locator("input[type='file']").count()) throw new Error("website form still exposes a screenshot upload");
+if (await page.locator("input[name='signature']").count()) throw new Error("website form still exposes a headline field");
+await page.getByRole("button", { name: /Continue to payment.*15 USDT/ }).waitFor();
 if (await page.locator("form[data-wall-slot='1'] input[name='customAmount']").inputValue() !== "15") throw new Error("slot one amount was not prefilled");
 await page.screenshot({ path: path.join(outputDir, "outbid-slot-1-390.png"), fullPage: true });
 

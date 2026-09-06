@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import base64
 import hashlib
 import hmac
 import json
@@ -13,13 +14,14 @@ from datetime import datetime, timedelta
 from http.cookies import SimpleCookie
 from pathlib import Path
 from typing import Optional
-from urllib.parse import parse_qs
+from urllib.parse import parse_qs, urlsplit
 
 from . import __version__
 from .config import Settings
+from .capture_client import capture_from_service
 from .core import MarketError, TXID_RE, iso, parse_iso, random_id, token_hash, utc_now, validate_public_url
 from .db import Database, active_reign, reign_by_public_id, snapshot_by_public_id
-from .market import MarketService
+from .market import MarketService, is_social_profile_url
 from .payments import ConfirmedTransfer, MockPaymentProvider, PaymentPending, provider_from_settings
 from .qr import payment_request_url, svg as qr_svg
 from .render import (
@@ -72,7 +74,7 @@ def security_headers(*, noindex: bool = False, receipt: bool = False) -> list[tu
         (b"permissions-policy", b"camera=(), microphone=(), geolocation=(), payment=()"),
         (
             b"content-security-policy",
-            b"default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
+            b"default-src 'self'; img-src 'self' data: blob:; style-src 'self'; script-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
         ),
     ]
     if noindex:
@@ -138,8 +140,8 @@ async def read_body(receive, limit: int) -> bytes:
             return b"".join(chunks)
 
 
-async def read_json(receive) -> dict:
-    body = await read_body(receive, MAX_JSON_BYTES)
+async def read_json(receive, limit: int = MAX_JSON_BYTES) -> dict:
+    body = await read_body(receive, limit)
     try:
         value = json.loads(body or b"{}")
     except json.JSONDecodeError as error:
@@ -282,7 +284,66 @@ async def app(scope: dict, receive, send) -> None:
             require_same_origin(headers)
             payload = await read_json(receive)
             visitor = market.visitor_hash(client_ip(scope, headers), headers.get("user-agent", ""), purpose="quote")
+            try:
+                wall_slot = int(payload.get("wallSlot"))
+            except (TypeError, ValueError):
+                wall_slot = 0
+            if wall_slot == 1:
+                website_url = validate_public_url(payload.get("url"))
+                if not website_url:
+                    raise HTTPError(422, "Enter the website link.", "url_required")
+                if is_social_profile_url(website_url):
+                    raise HTTPError(422, "Use Social for a profile link.", "wrong_slot_type")
+                capture = await capture_from_service(settings.screenshot_service_url, website_url)
+                payload["url"] = website_url
+                payload["screenshotData"] = "data:image/webp;base64," + base64.b64encode(capture.image).decode("ascii")
+                if capture.favicon:
+                    payload["faviconData"] = "data:image/webp;base64," + base64.b64encode(capture.favicon).decode("ascii")
+                if not str(payload.get("signature") or "").strip():
+                    payload["signature"] = capture.title or (urlsplit(website_url).hostname or "Website").removeprefix("www.")
             await send_json(send, 201, market.create_takeover_intent(payload, visitor))
+            return
+        media_match = re.fullmatch(r"/media/market/([a-z0-9][a-z0-9-]{1,90})", path)
+        if media_match and method == "GET":
+            connection = database.connect()
+            try:
+                row = connection.execute(
+                    """SELECT screenshot_blob, screenshot_mime FROM messages
+                       WHERE slug = ? AND status = 'published' AND screenshot_blob IS NOT NULL""",
+                    (media_match.group(1),),
+                ).fetchone()
+            finally:
+                connection.close()
+            if row is None:
+                raise HTTPError(404, "Screenshot not found.", "screenshot_not_found")
+            await send_response(
+                send,
+                200,
+                bytes(row["screenshot_blob"]),
+                row["screenshot_mime"] or "image/webp",
+                cache_control="public, max-age=31536000, immutable",
+            )
+            return
+        favicon_match = re.fullmatch(r"/media/market/([a-z0-9][a-z0-9-]{1,90})/favicon", path)
+        if favicon_match and method == "GET":
+            connection = database.connect()
+            try:
+                row = connection.execute(
+                    """SELECT favicon_blob, favicon_mime FROM messages
+                       WHERE slug = ? AND status = 'published' AND favicon_blob IS NOT NULL""",
+                    (favicon_match.group(1),),
+                ).fetchone()
+            finally:
+                connection.close()
+            if row is None:
+                raise HTTPError(404, "Favicon not found.", "favicon_not_found")
+            await send_response(
+                send,
+                200,
+                bytes(row["favicon_blob"]),
+                row["favicon_mime"] or "image/webp",
+                cache_control="public, max-age=31536000, immutable",
+            )
             return
         if path == "/api/market/defend-intents" and method == "POST":
             require_same_origin(headers)
@@ -383,6 +444,7 @@ async def app(scope: dict, receive, send) -> None:
         if settings.is_local and method == "GET":
             project_root = Path(__file__).resolve().parents[2]
             local_static = {
+                "/": project_root / "index.html",
                 "/mail": project_root / "mail.html",
                 "/mail/": project_root / "mail" / "index.html",
                 "/ms": project_root / "ms.html",
@@ -401,26 +463,23 @@ async def app(scope: dict, receive, send) -> None:
                 await send_response(send, 200, local_static.read_bytes(), content_type, cache_control="no-cache")
                 return
 
-        if path == "/" and method == "GET":
+        if path in {"/", "/message", "/message/"} and method == "GET":
             await send_html(send, 200, render_home(settings, market.wall_state()))
             return
         if path == "/takeover" and method == "GET":
             return_message = None
             wall_slot = None
-            slot_value = query.get("slot", "")
+            slot_value = query.get("slot", "3")
             message_slug = query.get("message", "")
-            if not slot_value and not message_slug:
-                await send_redirect(send, "/#how-it-works", 302, noindex=True)
-                return
-            if slot_value:
-                try:
-                    slot_number = int(slot_value)
-                except ValueError as error:
-                    raise HTTPError(404, "The wall slot was not found.", "wall_slot_not_found") from error
-                wall_slots = market.wall_state()["slots"]
-                wall_slot = next((item for item in wall_slots if item["slotNumber"] == slot_number), None)
-                if wall_slot is None:
-                    raise HTTPError(404, "The wall slot was not found.", "wall_slot_not_found")
+            try:
+                slot_number = int(slot_value)
+            except ValueError as error:
+                raise HTTPError(404, "The wall slot was not found.", "wall_slot_not_found") from error
+            wall_state = market.wall_state()
+            wall_slots = wall_state["slots"]
+            wall_slot = next((item for item in wall_slots if item["slotNumber"] == slot_number), None)
+            if wall_slot is None:
+                raise HTTPError(404, "The wall slot was not found.", "wall_slot_not_found")
             if message_slug:
                 connection = database.connect()
                 try:
@@ -443,6 +502,7 @@ async def app(scope: dict, receive, send) -> None:
                     query.get("kind", "takeover"),
                     return_message,
                     wall_slot,
+                    wall_state,
                 ),
                 noindex=True,
             )

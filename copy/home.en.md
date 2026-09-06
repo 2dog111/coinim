@@ -60,4 +60,4 @@ What people ask before they ask anything else. What does it cost? A Market Scan 
 
 ## Start here {#contact}
 
-Tell us who you are trying to reach. Three lines is enough to begin: what you sell, who you think should answer, and what you have already tried. mail@coin.im WhatsApp Telegram
+Tell us who you are trying to reach. Three lines is enough to begin: what you sell, who you think should answer, and what you have already tried. mail@coin.im WhatsApp SMS

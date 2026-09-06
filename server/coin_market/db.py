@@ -149,7 +149,7 @@ def insert_outbox(connection: sqlite3.Connection, job_type: str, payload: dict, 
 def active_reign(connection: sqlite3.Connection) -> Optional[sqlite3.Row]:
     return connection.execute(
         """SELECT r.*, m.slug, m.message, m.signature, m.location, m.url, m.cta_label,
-                  m.status AS message_status
+                  m.status AS message_status, m.screenshot_mime
            FROM reigns r JOIN messages m ON m.id = r.message_id
            WHERE r.status = 'active' LIMIT 1"""
     ).fetchone()
@@ -158,7 +158,7 @@ def active_reign(connection: sqlite3.Connection) -> Optional[sqlite3.Row]:
 def wall_slot_reign(connection: sqlite3.Connection, slot_number: int) -> Optional[sqlite3.Row]:
     return connection.execute(
         """SELECT r.*, m.slug, m.message, m.signature, m.location, m.url, m.cta_label,
-                  m.status AS message_status, m.wall_slot_number
+                  m.status AS message_status, m.wall_slot_number, m.screenshot_mime, m.favicon_mime
            FROM reigns r JOIN messages m ON m.id = r.message_id
            WHERE m.wall_slot_number = ?
            ORDER BY r.started_at DESC, r.id DESC LIMIT 1""",
@@ -169,7 +169,7 @@ def wall_slot_reign(connection: sqlite3.Connection, slot_number: int) -> Optiona
 def reign_by_public_id(connection: sqlite3.Connection, public_id: str) -> Optional[sqlite3.Row]:
     return connection.execute(
         """SELECT r.*, m.slug, m.message, m.signature, m.location, m.url, m.cta_label,
-                  m.status AS message_status, m.wall_slot_number
+                  m.status AS message_status, m.wall_slot_number, m.screenshot_mime
            FROM reigns r JOIN messages m ON m.id = r.message_id
            WHERE r.public_id = ?""",
         (public_id,),

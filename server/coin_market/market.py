@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+import base64
+import binascii
 import hashlib
 import hmac
+import io
 import json
 import re
 import sqlite3
@@ -9,12 +12,16 @@ from datetime import datetime, timedelta
 from typing import Optional
 from urllib.parse import urlsplit
 
+from PIL import Image, ImageOps, UnidentifiedImageError
+
 from .config import Settings
 from .core import (
     MICRO,
+    MIN_WALL_MESSAGE_NONSPACE_GRAPHEMES,
     MarketError,
     duration_text,
     format_usdt,
+    grapheme_count,
     iso,
     live_strength,
     parse_iso,
@@ -68,11 +75,99 @@ SOCIAL_PROFILE_HOSTS = (
     "twitch.tv",
     "bsky.app",
 )
+SOCIAL_PLATFORM_HOSTS = {
+    "youtube": ("youtube.com", "youtu.be"),
+    "facebook": ("facebook.com", "fb.com"),
+    "instagram": ("instagram.com",),
+    "tiktok": ("tiktok.com",),
+    "linkedin": ("linkedin.com",),
+    "reddit": ("reddit.com",),
+    "snapchat": ("snapchat.com",),
+    "pinterest": ("pinterest.com", "pin.it"),
+    "x": ("x.com", "twitter.com"),
+    "threads": ("threads.net",),
+    "whatsapp": ("whatsapp.com", "wa.me"),
+    "telegram": ("t.me", "telegram.me"),
+    "discord": ("discord.com", "discord.gg"),
+    "twitch": ("twitch.tv",),
+    "bluesky": ("bsky.app",),
+}
+MAX_SCREENSHOT_BYTES = 700 * 1024
+MAX_SCREENSHOT_PIXELS = 24_000_000
 
 
 def is_social_profile_url(url: str) -> bool:
     host = (urlsplit(url).hostname or "").lower().removeprefix("www.")
     return any(host == candidate or host.endswith("." + candidate) for candidate in SOCIAL_PROFILE_HOSTS)
+
+
+def social_platform_for_url(url: str) -> str:
+    host = (urlsplit(url).hostname or "").lower().removeprefix("www.")
+    for platform, candidates in SOCIAL_PLATFORM_HOSTS.items():
+        if any(host == candidate or host.endswith("." + candidate) for candidate in candidates):
+            return platform
+    return ""
+
+
+def prepare_screenshot(value: object) -> tuple[bytes | None, str | None]:
+    if value in (None, ""):
+        return None, None
+    if not isinstance(value, str) or len(value) > 1_500_000:
+        raise MarketError(422, "The screenshot is too large.", "screenshot_too_large")
+    match = re.fullmatch(r"data:image/(?:png|jpeg|webp);base64,([A-Za-z0-9+/=\s]+)", value)
+    if match is None:
+        raise MarketError(422, "Use a PNG, JPEG or WebP screenshot.", "invalid_screenshot")
+    try:
+        source = base64.b64decode(match.group(1), validate=True)
+    except (binascii.Error, ValueError) as error:
+        raise MarketError(422, "The screenshot could not be read.", "invalid_screenshot") from error
+    if len(source) > 1_000_000:
+        raise MarketError(422, "The screenshot is too large.", "screenshot_too_large")
+    try:
+        with Image.open(io.BytesIO(source)) as opened:
+            if opened.width * opened.height > MAX_SCREENSHOT_PIXELS:
+                raise MarketError(422, "The screenshot dimensions are too large.", "screenshot_too_large")
+            image = ImageOps.exif_transpose(opened).convert("RGB")
+    except (UnidentifiedImageError, OSError, Image.DecompressionBombError) as error:
+        raise MarketError(422, "The screenshot could not be read.", "invalid_screenshot") from error
+    image.thumbnail((1600, 1050), Image.Resampling.LANCZOS)
+    for quality in (84, 78, 72, 66, 60):
+        output = io.BytesIO()
+        image.save(output, format="WEBP", quality=quality, method=6)
+        screenshot = output.getvalue()
+        if len(screenshot) <= MAX_SCREENSHOT_BYTES:
+            return screenshot, "image/webp"
+    raise MarketError(422, "The screenshot is too detailed to publish. Use a smaller image.", "screenshot_too_large")
+
+
+def prepare_favicon(value: object) -> tuple[bytes | None, str | None]:
+    if value in (None, ""):
+        return None, None
+    if not isinstance(value, str) or len(value) > 180_000:
+        raise MarketError(422, "The favicon is too large.", "favicon_too_large")
+    match = re.fullmatch(r"data:image/(?:png|jpeg|webp|x-icon|vnd.microsoft.icon);base64,([A-Za-z0-9+/=\s]+)", value)
+    if match is None:
+        raise MarketError(422, "The favicon could not be read.", "invalid_favicon")
+    try:
+        source = base64.b64decode(match.group(1), validate=True)
+    except (binascii.Error, ValueError) as error:
+        raise MarketError(422, "The favicon could not be read.", "invalid_favicon") from error
+    if len(source) > 128 * 1024:
+        raise MarketError(422, "The favicon is too large.", "favicon_too_large")
+    try:
+        with Image.open(io.BytesIO(source)) as opened:
+            image = ImageOps.exif_transpose(opened).convert("RGBA")
+    except (UnidentifiedImageError, OSError, Image.DecompressionBombError) as error:
+        raise MarketError(422, "The favicon could not be read.", "invalid_favicon") from error
+    image.thumbnail((96, 96), Image.Resampling.LANCZOS)
+    canvas = Image.new("RGBA", (96, 96), (255, 255, 255, 0))
+    canvas.alpha_composite(image, ((96 - image.width) // 2, (96 - image.height) // 2))
+    output = io.BytesIO()
+    canvas.save(output, format="WEBP", lossless=True, method=6)
+    favicon = output.getvalue()
+    if len(favicon) > 64 * 1024:
+        raise MarketError(422, "The favicon is too detailed to publish.", "favicon_too_large")
+    return favicon, "image/webp"
 
 
 class UnappliedPayment(Exception):
@@ -210,6 +305,8 @@ class MarketService:
                         "location": row["location"] or "",
                         "url": row["url"] or "",
                         "ctaLabel": row["cta_label"] or "",
+                        "screenshotUrl": f"/media/market/{row['slug']}" if row["screenshot_mime"] else "",
+                        "faviconUrl": f"/media/market/{row['slug']}/favicon" if row["favicon_mime"] else "",
                         "amountMicro": amount_micro,
                         "amount": format_usdt(amount_micro),
                         "outbidAmountMicro": amount_micro + MICRO,
@@ -237,6 +334,7 @@ class MarketService:
             "location": row["location"] or "",
             "url": row["url"] or "",
             "ctaLabel": row["cta_label"] or "",
+            "screenshotUrl": f"/media/market/{row['slug']}" if row["screenshot_mime"] else "",
             "startedAt": row["started_at"],
             "status": row["status"],
             "initialAmount": format_usdt(int(row["initial_amount_micro"])),
@@ -385,9 +483,21 @@ class MarketService:
             raise MarketError(422, "Choose one of the three wall slots.", "invalid_wall_slot") from error
         if slot_number not in (1, 2, 3):
             raise MarketError(422, "Choose one of the three wall slots.", "invalid_wall_slot")
-        fields = validate_message_fields(payload)
-        if len(re.sub(r"\s", "", fields["message"])) < 111:
-            raise MarketError(422, "Your message must contain at least 111 characters without spaces.", "too_short")
+        normalized_payload = payload if slot_number != 3 else {
+            **payload,
+            "signature": "",
+            "location": "",
+            "ctaLabel": "",
+        }
+        fields = validate_message_fields(normalized_payload)
+        if grapheme_count(re.sub(r"\s", "", fields["message"])) < MIN_WALL_MESSAGE_NONSPACE_GRAPHEMES:
+            raise MarketError(
+                422,
+                f"Your message must contain at least {MIN_WALL_MESSAGE_NONSPACE_GRAPHEMES} characters without spaces.",
+                "too_short",
+            )
+        screenshot_blob, screenshot_mime = prepare_screenshot(payload.get("screenshotData"))
+        favicon_blob, favicon_mime = prepare_favicon(payload.get("faviconData"))
         if slot_number in (1, 2) and not fields["url"]:
             raise MarketError(422, "This slot requires a public link.", "url_required")
         if slot_number == 3 and fields["url"]:
@@ -396,8 +506,23 @@ class MarketService:
             raise MarketError(422, "The website slot requires a headline.", "headline_required")
         if slot_number == 1 and is_social_profile_url(fields["url"]):
             raise MarketError(422, "Use slot № 2 for a social profile URL.", "wrong_slot_type")
-        if slot_number == 2 and not is_social_profile_url(fields["url"]):
-            raise MarketError(422, "Enter a public social profile URL for slot № 2.", "social_url_required")
+        if slot_number != 1 and screenshot_blob:
+            raise MarketError(422, "Screenshots are available only for website placements.", "screenshot_not_allowed")
+        if slot_number != 1 and favicon_blob:
+            raise MarketError(422, "Favicons are available only for website placements.", "favicon_not_allowed")
+        if slot_number == 2:
+            platform = social_platform_for_url(fields["url"])
+            if not platform:
+                raise MarketError(422, "Enter a public social profile URL for slot № 2.", "social_url_required")
+            if fields["location"] and fields["location"] not in SOCIAL_PLATFORM_HOSTS:
+                raise MarketError(422, "Choose one of the supported social networks.", "invalid_social_platform")
+            if fields["location"] and fields["location"] != platform:
+                raise MarketError(422, "The profile URL does not match the selected social network.", "social_platform_mismatch")
+            fields["location"] = platform
+        if slot_number == 3:
+            fields["signature"] = ""
+            fields["location"] = ""
+            fields["cta_label"] = ""
         if fields["url"] and not fields["cta_label"]:
             fields["cta_label"] = (urlsplit(fields["url"]).hostname or "open link").removeprefix("www.")
         self.database.cleanup_expired_locks(mutate=True, now=now)
@@ -424,6 +549,19 @@ class MarketService:
                 raise MarketError(429, "Too many takeover checkouts were started. Try again later.", "quote_rate_limit")
 
             price = int(current["initial_amount_micro"]) + MICRO
+            amount_collision = connection.execute(
+                """SELECT id FROM payment_intents
+                   WHERE status IN ('created', 'payment_found')
+                     AND requested_amount_micro = ?
+                   LIMIT 1""",
+                (price,),
+            ).fetchone()
+            if amount_collision is not None:
+                raise MarketError(
+                    409,
+                    "Another checkout is temporarily using this exact USDT amount. Try again in up to seven minutes.",
+                    "amount_temporarily_reserved",
+                )
             requested = parse_usdt(payload.get("amount"), minimum_micro=price)
             quoted_client = payload.get("quotedPriceMicro")
             if requested != price or (quoted_client is not None and int(quoted_client) != price):
@@ -436,8 +574,9 @@ class MarketService:
                 """INSERT INTO payment_intents
                    (id, kind, current_reign_id, target_message_id, draft_message, draft_signature, draft_location,
                     draft_url, draft_cta_label, quoted_amount_micro, requested_amount_micro,
-                    quote_expires_at, secret_token_hash, status, visitor_hash, created_at, wall_slot_number)
-                   VALUES (?, 'takeover', ?, NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'created', ?, ?, ?)""",
+                    quote_expires_at, secret_token_hash, status, visitor_hash, created_at, wall_slot_number,
+                    screenshot_blob, screenshot_mime, favicon_blob, favicon_mime)
+                   VALUES (?, 'takeover', ?, NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'created', ?, ?, ?, ?, ?, ?, ?)""",
                 (
                     intent_id,
                     current_id,
@@ -453,6 +592,10 @@ class MarketService:
                     visitor_hash,
                     iso(now),
                     slot_number,
+                    screenshot_blob,
+                    screenshot_mime,
+                    favicon_blob,
+                    favicon_mime,
                 ),
             )
             connection.execute(
@@ -646,15 +789,29 @@ class MarketService:
 
     def discover_intent(self, token: str, now: Optional[datetime] = None) -> dict:
         now = now or utc_now()
+        self.database.cleanup_expired_locks(mutate=True, now=now)
         intent = self.intent_for_token(token)
         if intent["status"] not in DISCOVERABLE_INTENT_STATUSES:
             return self.receipt(token, now)
+        submitted_txid = str(intent["submitted_txid"] or "")
+        if intent["status"] == "expired" and not submitted_txid:
+            return self.receipt(token, now)
         try:
+            if submitted_txid:
+                transfer = self.provider.verify(
+                    submitted_txid,
+                    intent_created_at=parse_iso(intent["created_at"]),
+                )
+                return self.apply_confirmed_transfer(
+                    intent["id"], transfer, now=now, receipt_token=token
+                )
             matches = self.provider.find_matching_transfers(
                 intent_created_at=parse_iso(intent["created_at"]),
                 amount_micro=int(intent["requested_amount_micro"]),
             )
-        except PaymentPending:
+        except PaymentPending as pending:
+            if submitted_txid and getattr(pending, "found", False):
+                self.mark_payment_found(intent["id"], submitted_txid, now)
             return self.receipt(token, now)
         if not matches:
             return self.receipt(token, now)
@@ -938,8 +1095,9 @@ class MarketService:
         slug = slug_from_message(intent["draft_message"])
         message_cursor = connection.execute(
             """INSERT INTO messages
-               (slug, message, signature, location, url, cta_label, status, created_at, wall_slot_number)
-               VALUES (?, ?, ?, ?, ?, ?, 'published', ?, ?)""",
+               (slug, message, signature, location, url, cta_label, status, created_at, wall_slot_number,
+                screenshot_blob, screenshot_mime, favicon_blob, favicon_mime)
+               VALUES (?, ?, ?, ?, ?, ?, 'published', ?, ?, ?, ?, ?, ?)""",
             (
                 slug,
                 intent["draft_message"],
@@ -949,6 +1107,10 @@ class MarketService:
                 intent["draft_cta_label"],
                 iso(now),
                 slot_number,
+                intent["screenshot_blob"],
+                intent["screenshot_mime"],
+                intent["favicon_blob"],
+                intent["favicon_mime"],
             ),
         )
         message_id = int(message_cursor.lastrowid)

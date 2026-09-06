@@ -1,6 +1,7 @@
 [Unit]
 Description=coin.im live takeover market
-After=network.target
+Wants=coin-im-screenshot.service
+After=network.target coin-im-screenshot.service
 
 [Service]
 Type=simple

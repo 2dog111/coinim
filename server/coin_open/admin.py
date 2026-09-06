@@ -67,6 +67,9 @@ def list_jobs(data_root: Path, key: bytes, decrypt_json) -> list[dict]:
                 "email": data.get("work_email", ""),
                 "phone": data.get("phone", ""),
                 "role": data.get("role", ""),
+                "company": data.get("company", ""),
+                "office_address": data.get("office_address", ""),
+                "source": data.get("source", "business-file"),
                 "channels": data.get("channels", ""),
                 "website": data.get("website", ""),
                 "files": files,
@@ -139,6 +142,9 @@ def job_block(job: dict, token: str) -> str:
 
     rows = [
         ("Имя", job.get("name")),
+        ("Компания", job.get("company")),
+        ("Адрес офиса", job.get("office_address")),
+        ("Форма", job.get("source")),
         ("Почта", job.get("email")),
         ("Телефон", job.get("phone")),
         ("Роль", job.get("role")),
@@ -230,7 +236,7 @@ def panel_html(jobs: list[dict], stats: dict, token: str) -> str:
 <style>
   body { margin: 0 auto; padding: 2.5rem 1.25rem 6rem; max-width: 62rem;
          background: #f8f4ee; color: #241f1b;
-         font: 400 16px/1.6 Georgia, "Times New Roman", serif; }
+         font: 400 18px/1.6 Georgia, "Times New Roman", serif; }
   h1 { font-size: 1.6rem; font-weight: 400; margin: 0 0 0.25rem; }
   h2 { font-size: 1.15rem; font-weight: 400; margin: 3rem 0 0.75rem; }
   h3 { font-size: 1.05rem; font-weight: 400; margin: 0 0 0.2rem; }
@@ -255,6 +261,7 @@ def panel_html(jobs: list[dict], stats: dict, token: str) -> str:
   table.grid th { color: #6f665e; font-weight: 400; }
   table.grid td:nth-child(n+2) { font-variant-numeric: tabular-nums; }
   a { color: #241f1b; }
+  .muted,.warn,.new,.job th,.job td,ul.files,button,table.grid {font-size:18px} .job{border-radius:14px} .job td{overflow-wrap:anywhere} button{min-height:48px;border-radius:24px;background:linear-gradient(#fff,#edf0e4)} button:focus-visible,a:focus-visible{outline:3px solid #52775c;outline-offset:3px} @media(max-width:540px){.job{padding:20px 16px}.job th{width:6rem}table.grid{display:block;overflow:auto}}
 </style></head><body>
 <h1>Заявки с формы</h1>
 <p class="muted">Всего """ + escape(len(jobs)) + ", новых " + escape(new_count) + ". Обновлено " + escape(stamp) + """.

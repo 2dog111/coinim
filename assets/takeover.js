@@ -13,7 +13,7 @@
     } catch (_error) {
       payload = {};
     }
-    if (!response.ok) {
+    if (!response.ok || payload.ok === false) {
       const error = new Error(payload.error || "The request could not be completed.");
       error.code = payload.code || "request_failed";
       error.status = response.status;
@@ -25,10 +25,10 @@
   const tronlinkUri = (payload) => `tronlinkoutside://pull.activity?param=${encodeURIComponent(JSON.stringify(payload))}`;
 
   const walletErrorCopy = (error) => {
-    if (error?.code === 4001) return "Wallet connection was cancelled. Try again or use the payment details below.";
-    if (error?.code === -32000 || error?.code === -32002) return "TronLink already has a request open. Finish it in the wallet, then try again.";
-    if (error?.code === 4200) return "This TronLink version cannot start the payment here. Use the payment details below.";
-    return "TronLink could not open the payment. Use the address and amount below.";
+    if (error?.code === 4001) return "Cancelled in TronLink. Try again or copy the address and amount.";
+    if (error?.code === -32000 || error?.code === -32002) return "TronLink already has a request open. Finish it there, then try again.";
+    if (error?.code === 4200) return "This TronLink version cannot open the payment. Copy the address and amount.";
+    return "TronLink did not open. Copy the address and amount below.";
   };
 
   const segmenter = typeof Intl !== "undefined" && Intl.Segmenter
@@ -39,11 +39,20 @@
     ? [...segmenter.segment(value)].map((item) => item.segment)
     : Array.from(value);
 
+  const normalizeUrlInput = (input) => {
+    if (!input) return;
+    const value = input.value.trim();
+    if (value && !/^[a-z][a-z0-9+.-]*:\/\//i.test(value)) input.value = `https://${value}`;
+  };
+
   document.querySelectorAll("[data-takeover-form]").forEach((form) => {
     const messageInput = form.querySelector("[data-message-input]");
     const preview = form.querySelector("[data-message-preview]");
     const count = form.querySelector("[data-grapheme-count]");
     const errorNode = form.querySelector("[data-form-error]");
+    const websiteUrl = form.querySelector("[data-website-url]");
+    const socialUrl = form.querySelector("[data-social-url]");
+    const socialPreviewIcon = form.querySelector("[data-social-preview-icon]");
 
     const updatePreview = () => {
       if (!messageInput) return;
@@ -63,15 +72,82 @@
       const amountInput = form.querySelector("[name='customAmount']");
       if (previewAmount && amountInput) previewAmount.textContent = amountInput.value;
     };
-    messageInput?.addEventListener("input", updatePreview);
+    messageInput?.addEventListener("input", () => {
+      updatePreview();
+      messageInput.removeAttribute("aria-invalid");
+      if (errorNode?.textContent === "Write at least 100 characters without spaces.") errorNode.textContent = "";
+    });
     form.querySelector("[name='signature']")?.addEventListener("input", updatePreview);
     form.querySelector("[name='customAmount']")?.addEventListener("input", updatePreview);
+    const socialExamples = {
+      youtube: "https://youtube.com/@yourname",
+      facebook: "https://facebook.com/yourname",
+      instagram: "https://instagram.com/yourname",
+      tiktok: "https://tiktok.com/@yourname",
+      linkedin: "https://linkedin.com/in/yourname",
+      reddit: "https://reddit.com/user/yourname",
+      snapchat: "https://snapchat.com/add/yourname",
+      pinterest: "https://pinterest.com/yourname",
+      x: "https://x.com/yourname",
+      threads: "https://threads.net/@yourname",
+      whatsapp: "https://wa.me/15551234567",
+      telegram: "https://t.me/yourname",
+      discord: "https://discord.gg/yourinvite",
+      twitch: "https://twitch.tv/yourname",
+      bluesky: "https://bsky.app/profile/yourname.bsky.social",
+    };
+    const socialHosts = {
+      "youtube.com": "youtube", "youtu.be": "youtube", "facebook.com": "facebook", "fb.com": "facebook",
+      "instagram.com": "instagram", "tiktok.com": "tiktok", "linkedin.com": "linkedin", "reddit.com": "reddit",
+      "snapchat.com": "snapchat", "pinterest.com": "pinterest", "pin.it": "pinterest", "x.com": "x",
+      "twitter.com": "x", "threads.net": "threads", "wa.me": "whatsapp", "whatsapp.com": "whatsapp",
+      "t.me": "telegram", "telegram.me": "telegram", "discord.com": "discord", "discord.gg": "discord",
+      "twitch.tv": "twitch", "bsky.app": "bluesky",
+    };
+    const selectSocialFromUrl = () => {
+      if (!socialUrl?.value) return;
+      try {
+        const host = new URL(socialUrl.value).hostname.toLowerCase().replace(/^www\./, "");
+        const platform = Object.entries(socialHosts).find(([candidate]) => host === candidate || host.endsWith(`.${candidate}`))?.[1];
+        const input = platform ? form.querySelector(`[name='socialPlatform'][value='${platform}']`) : null;
+        if (input && !input.checked) {
+          input.checked = true;
+          input.dispatchEvent(new Event("change", { bubbles: true }));
+        }
+      } catch (_error) {}
+    };
+    form.querySelectorAll("[name='socialPlatform']").forEach((input) => {
+      input.addEventListener("change", () => {
+        if (!input.checked) return;
+        if (socialPreviewIcon) socialPreviewIcon.className = `social-glass-icon social-glass-icon--${input.value}`;
+        if (socialUrl) socialUrl.placeholder = socialExamples[input.value] || "https://";
+      });
+    });
+    socialUrl?.addEventListener("input", () => {
+      socialUrl.removeAttribute("aria-invalid");
+      selectSocialFromUrl();
+    });
+    socialUrl?.addEventListener("change", () => {
+      normalizeUrlInput(socialUrl);
+      selectSocialFromUrl();
+    });
+    websiteUrl?.addEventListener("input", () => websiteUrl.removeAttribute("aria-invalid"));
+    websiteUrl?.addEventListener("change", () => normalizeUrlInput(websiteUrl));
     updatePreview();
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
+      normalizeUrlInput(websiteUrl || socialUrl);
       if (!form.reportValidity()) return;
+      const nonspaceCount = messageInput ? graphemes(messageInput.value).filter((part) => !/^\s+$/u.test(part)).length : 0;
+      if (form.dataset.wallSlot && nonspaceCount < 100) {
+        if (errorNode) errorNode.textContent = "Write at least 100 characters without spaces.";
+        messageInput?.setAttribute("aria-invalid", "true");
+        messageInput?.focus();
+        return;
+      }
       const submit = form.querySelector("button[type='submit']");
+      const submitMarkup = submit?.innerHTML || "";
       const data = new FormData(form);
       const kind = form.dataset.kind;
       const choice = String(data.get("amountChoice") || "minimum");
@@ -88,13 +164,17 @@
             amount,
             message: String(data.get("message") || ""),
             signature: String(data.get("signature") || ""),
-            location: String(data.get("location") || ""),
+            location: String(data.get("socialPlatform") || data.get("location") || ""),
             url: String(data.get("url") || ""),
             ctaLabel: String(data.get("ctaLabel") || ""),
             targetMessageSlug: String(data.get("targetMessageSlug") || ""),
             wallSlot: form.dataset.wallSlot ? Number(form.dataset.wallSlot) : null,
           };
-      if (submit) submit.disabled = true;
+      if (submit) {
+        submit.disabled = true;
+        submit.setAttribute("aria-busy", "true");
+        submit.textContent = form.dataset.wallSlot === "1" ? "Photographing website..." : "Creating payment...";
+      }
       if (errorNode) errorNode.textContent = "";
       try {
         const endpoint = kind === "defend" ? "/api/market/defend-intents" : "/api/market/takeover-intents";
@@ -102,11 +182,22 @@
         window.location.assign(result.receiptUrl);
       } catch (error) {
         if (errorNode) errorNode.textContent = error.message;
+        const target = ["url_required", "wrong_slot_type", "social_url_required", "social_platform_mismatch", "invalid_url", "private_url", "website_unreachable", "website_timeout", "screenshot_capture_failed", "screenshot_unavailable", "screenshot_busy"].includes(error.code)
+          ? form.querySelector("[name='url']")
+          : error.code === "too_short" ? messageInput : null;
+        if (target) {
+          target.setAttribute("aria-invalid", "true");
+          target.focus();
+        }
         if (error.code === "price_changed" || error.code === "stale_reign") {
           window.setTimeout(() => window.location.reload(), 1800);
         }
       } finally {
-        if (submit) submit.disabled = false;
+        if (submit) {
+          submit.disabled = false;
+          submit.removeAttribute("aria-busy");
+          submit.innerHTML = submitMarkup;
+        }
       }
     });
   });
@@ -168,7 +259,7 @@
     const showDetectedWallet = () => {
       if (!walletButton || !tronProvider) return;
       walletButton.textContent = `Pay ${receiptRoot.dataset.amount} USDT in TronLink`;
-      if (walletStatus) walletStatus.textContent = "TronLink detected. You will confirm the exact recipient and amount inside the wallet.";
+      if (walletStatus) walletStatus.textContent = "TronLink found. Check the address and amount before you approve.";
     };
     window.addEventListener("TIP6963:announceProvider", (event) => {
       if (event.detail?.info?.name === "TronLink" || event.detail?.provider?.isTronLink) {
@@ -184,7 +275,7 @@
       event.preventDefault();
       if (walletButton.getAttribute("aria-busy") === "true") return;
       walletButton.setAttribute("aria-busy", "true");
-      if (walletStatus) walletStatus.textContent = "Opening secure confirmation in TronLink.";
+      if (walletStatus) walletStatus.textContent = "Opening TronLink.";
       try {
         const accounts = await tronProvider.request({ method: "eth_requestAccounts" });
         await tronProvider.request({
@@ -260,7 +351,7 @@
           method: "POST",
           body: JSON.stringify({ contact }),
         });
-        form.innerHTML = "<p>You’ll get one message when this reign is replaced.</p>";
+        form.innerHTML = "<p>We’ll message you once when your place is replaced.</p>";
       } catch (error) {
         if (errorNode) errorNode.textContent = error.message;
         if (submit) submit.disabled = false;
@@ -272,7 +363,7 @@
     return {
       title: "I took over coin.im",
       text: "I took over coin.im.\nMy message stays until someone pays more.",
-      url: `${window.location.origin}/`,
+      url: `${window.location.origin}/message`,
     };
   };
 
@@ -296,7 +387,7 @@
     button.addEventListener("click", async () => {
       const text = button.dataset.shareText || (button.dataset.shareType === "defend"
         ? "I kept this message here on coin.im."
-        : "I changed coin.im. The whole homepage is now my message.");
+        : "I changed coin.im. My message is now on the message wall.");
       const data = { title: "coin.im", text, url: button.dataset.shareUrl };
       if (navigator.share) {
         try {
