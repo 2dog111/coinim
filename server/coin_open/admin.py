@@ -72,6 +72,8 @@ def list_jobs(data_root: Path, key: bytes, decrypt_json) -> list[dict]:
                 "source": data.get("source", "business-file"),
                 "channels": data.get("channels", ""),
                 "website": data.get("website", ""),
+                "campaign_interest": data.get("campaign_interest", ""),
+                "audience": data.get("audience", ""),
                 "files": files,
                 "broken": False,
             }
@@ -150,6 +152,8 @@ def job_block(job: dict, token: str) -> str:
         ("Роль", job.get("role")),
         ("Связь", channels_text(job.get("channels"))),
         ("Сайт", job.get("website")),
+        ("Кампания", job.get("campaign_interest")),
+        ("Аудитория", job.get("audience")),
     ]
     table = "".join(
         "<tr><th>" + escape(label) + "</th><td>" + escape(value) + "</td></tr>"

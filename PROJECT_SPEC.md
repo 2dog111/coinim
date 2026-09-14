@@ -1,5 +1,17 @@
 # coin.im Project Specification
 
+## Campaign evidence and inquiry contract, 2026-09-14
+
+The owner's explicit first and second briefs supersede earlier homepage pricing,
+protected-example replacement exceptions and form-field requirements below. The
+current source has Pilot (1,000 letters/$3,800) and Scale (10,000/$30,000), a labeled
+field guide, local exact-decimal cost calculator and an inquiry requiring only
+website, name and work email. Phone is conditional on the selected reply channel.
+The five letters now use the exact first brief; the second brief preserves them.
+Research details and the historical library remain available in disclosures.
+See CHANGE_REPORT.md and reference/brief2.txt for the exact current scope.
+Production deployment is authorized but awaiting working VPS SSH authentication.
+
 ## Homepage editorial contract, 2026-09-07
 
 The owner-supplied editorial brief was applied with explicit exceptions: the Market Scan section and all five own/five historical examples remain byte-identical to the pre-edit version. They are protected by AGENTS.md and recorded hashes in docs/private/home-protected-sections-20260906.json. They are not to be shortened, hidden or polished with writing skills by a general editing instruction.

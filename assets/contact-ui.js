@@ -15,28 +15,66 @@
   if (!form) return;
   const status = document.querySelector('#enquiry-status');
   const button = form.querySelector('button[type="submit"]');
+  const buttonLabel = button.textContent;
   const phone = form.elements.phone;
+  const website = form.elements.website;
+  const interest = form.elements.campaign_interest;
+  const event = name => window.coinCampaignEvent?.(name);
   const requestId = [...crypto.getRandomValues(new Uint8Array(16))].map(n => n.toString(16).padStart(2,'0')).join('');
+  const errorMessage = 'We could not confirm that your details were received. Your entries are still here. Please try again or use one of the contact options below.';
+  function normalizeWebsite() {
+    if (!website) return true;
+    let value = website.value.trim();
+    if (value && !/^[a-z][a-z0-9+.-]*:/i.test(value)) value = 'https://' + value;
+    try {
+      const url = new URL(value);
+      if (!['http:', 'https:'].includes(url.protocol) || !url.hostname || url.username || url.password) throw new Error();
+      website.value = value;
+      website.setCustomValidity('');
+      return true;
+    } catch (_) {
+      website.setCustomValidity('Enter a valid HTTP or HTTPS website.');
+      return false;
+    }
+  }
+  function updatePhone() {
+    const channel = form.elements.channel.value || 'Email';
+    phone.required = channel !== 'Email';
+    phone.setCustomValidity('');
+  }
+  form.querySelectorAll('[name="channel"]').forEach(input => input.addEventListener('change', updatePhone));
   phone.addEventListener('input', () => phone.setCustomValidity(''));
+  website?.addEventListener('input', () => website.setCustomValidity(''));
+  website?.addEventListener('blur', normalizeWebsite);
+  updatePhone();
+  form.addEventListener('invalid', validationEvent => {
+    const details = validationEvent.target.closest('details');
+    if (details) details.open = true;
+  }, true);
   let busy = false;
-  form.addEventListener('submit', async event => {
-    event.preventDefault(); if (busy) return;
+  form.addEventListener('submit', async submitEvent => {
+    submitEvent.preventDefault(); if (busy) return;
+    updatePhone();
+    if (!normalizeWebsite()) { website.reportValidity(); return; }
     const digits = phone.value.replace(/\D/g,'');
-    if (!/^[+\d() .-]+$/.test(phone.value) || digits.length < 7 || digits.length > 15) {
-      phone.setCustomValidity('Enter your phone number with its country code.');phone.reportValidity();return;
+    if ((phone.required || phone.value.trim()) && (!/^[+\d() .-]+$/.test(phone.value) || digits.length < 7 || digits.length > 15)) {
+      phone.setCustomValidity('Add a phone number for your selected contact method.');phone.reportValidity();return;
     }
     if (!form.reportValidity()) return;
-    busy=true;button.disabled=true;button.textContent='Sending your enquiry…';form.setAttribute('aria-busy','true');status.textContent='';status.classList.remove('is-error');
+    busy=true;button.disabled=true;button.textContent='Sending…';form.setAttribute('aria-busy','true');status.textContent='';status.classList.remove('is-error');
     const payload=Object.fromEntries(new FormData(form));payload.request_id=requestId;
+    payload.channel ||= 'Email';
+    if (interest) payload.campaign_interest = interest.value;
     const controller = new AbortController();const timer=setTimeout(()=>controller.abort(),25000);
     try {
       const response=await fetch('/api/open/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),signal:controller.signal});
       const result=await response.json();
-      if (!response.ok || result.received!==true) throw new Error(result.error || 'Your enquiry could not be sent. Please try again.');
-      document.querySelector('#success-channel').textContent=`We’ll contact you by ${payload.channel === 'Phone' ? 'phone' : payload.channel === 'Email' ? 'email' : payload.channel}.`;
+      if (!response.ok || result.received!==true) throw new Error('Unconfirmed');
       form.hidden=true;const success=document.querySelector('#enquiry-success');success.hidden=false;success.focus();
-    } catch (error) {
-      status.classList.add('is-error');status.textContent=error.name==='AbortError'?'The connection took too long. Your details are still here. Please try again.':error.message==='Failed to fetch'?'Connection lost. Your details are still here. Please try again.':error.message;
-    } finally {clearTimeout(timer);busy=false;button.disabled=false;button.textContent='Request a conversation';form.removeAttribute('aria-busy');}
+      event('lead_submitted');
+    } catch (_) {
+      status.classList.add('is-error');status.textContent=errorMessage;
+      event('lead_submit_failed');
+    } finally {clearTimeout(timer);busy=false;button.disabled=false;button.textContent=buttonLabel;form.removeAttribute('aria-busy');}
   });
 })();

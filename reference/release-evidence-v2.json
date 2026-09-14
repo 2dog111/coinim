@@ -1,0 +1,13 @@
+{
+  "version": "20260914-campaign-evidence-v2",
+  "status": "validated-locally-awaiting-vps-access",
+  "static": [
+    "index.html",
+    "assets/pilot-scale.css",
+    "assets/contact-ui.js",
+    "assets/campaign-pricing.js",
+    "assets/campaign-tools.js"
+  ],
+  "intake": ["server/coin_open/leads.py", "server/coin_open/admin.py"],
+  "deployment": "Overlay these files on clones of the active VPS releases. Back up persistent intake data. Verify the staged backend and frontend before switching. Do not upload this manifest or any reference, test or tooling files into the public web root."
+}

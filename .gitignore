@@ -1,10 +1,17 @@
-node_modules/
+.venv/
+__pycache__/
 .DS_Store
+.preview.log
+node_modules/
 *.log
 .env
 .env.*
 .wrangler/
 qa-screens/
-__pycache__/
 *.py[cod]
-.venv/
+# Local prompt material and first-pass reconstruction helpers are not public source.
+reference/brief*.txt
+reference/design-catalog.json
+reference/homepage*.html
+scripts/restore_public.py
+scripts/update_homepage.py

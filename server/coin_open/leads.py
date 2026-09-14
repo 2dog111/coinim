@@ -24,22 +24,36 @@ async def submit_lead(scope, receive, send, key):
             raise intake.IntakeError(422, f"{label} is required.")
         return value
     name = field("name", "Your name", 200)
-    company = field("company", "Company", 200)
+    company = field("company", "Company", 200, False)
     email = field("work_email", "Work email", 320)
-    phone = field("phone", "Phone", 80)
+    phone = field("phone", "Phone", 80, False)
     office = field("office_address", "Office address", 600, False)
     if not re.fullmatch(r"[^\s@]+@[^\s@]+\.[^\s@]+", email):
         raise intake.IntakeError(422, "Enter a valid work email.")
-    if not re.fullmatch(r"[+\d() .-]+", phone) or not 7 <= len(re.sub(r"\D", "", phone)) <= 15:
-        raise intake.IntakeError(422, "Enter your phone number with its country code.")
-    channel = data.get("channel")
-    if channel not in {"WhatsApp", "SMS", "Phone", "Email"}:
+    channel = data.get("channel", "Email")
+    if not isinstance(channel, str) or channel not in {"WhatsApp", "SMS", "Phone", "Email"}:
         raise intake.IntakeError(422, "Choose how you would like us to contact you.")
+    if channel != "Email" and not phone:
+        raise intake.IntakeError(422, "Add a phone number for your selected contact method.")
+    if phone and (not re.fullmatch(r"[+\d() .-]+", phone) or not 7 <= len(re.sub(r"\D", "", phone)) <= 15):
+        raise intake.IntakeError(422, "Add a phone number for your selected contact method.")
+    interest = data.get("campaign_interest", "help")
+    if not isinstance(interest, str) or interest not in {"pilot", "scale", "help"}:
+        raise intake.IntakeError(422, "Choose a campaign interest.")
+    audience = field("audience", "Audience", 2000, False)
+    website_input = field("website", "Company website", 2048)
+    if not re.match(r"^[a-z][a-z0-9+.-]*:", website_input, re.I):
+        website_input = "https://" + website_input
+    try:
+        website = await intake.validate_website(website_input)
+    except ValueError as error:
+        raise intake.IntakeError(422, "Enter a valid HTTP or HTTPS website.") from error
     request_id = field("request_id", "Request identifier", 64)
     if not re.fullmatch(r"[a-f0-9]{32}", request_id):
         raise intake.IntakeError(422, "Please reload the form and try again.")
     payload = dict(name=name, company=company, work_email=email, phone=phone,
                    office_address=office, channels=[channel], source="homepage", files=[])
+    payload.update(website=website, campaign_interest=interest, audience=audience)
     fingerprint = hmac.new(key, json.dumps(payload, sort_keys=True).encode(), hashlib.sha256).hexdigest()
     request_hash = hmac.new(key, request_id.encode(), hashlib.sha256).hexdigest()
     intake.prepare_root()

@@ -2,6 +2,20 @@
 
 This is the local place to check the current site version before edits or deployment.
 
+## Campaign evidence checkpoint, 2026-09-14
+
+- Source version `20260914-campaign-evidence-v2`; checkpoint tag `coin-im-campaign-evidence-20260914` on `codex/local-development`.
+- Includes the first Pilot/Scale iteration and the second evidence, economics and inquiry brief. See CHANGE_REPORT.md for actual changes, checks and unresolved commercial questions.
+- npm lint/typecheck/tests/build, 47 server tests, calculator assertions and Chromium/WebKit at 360/390/768/1440 pass. Test storage is local and temporary.
+- No production release is claimed. Deployment is authorized but blocked by missing VPS authentication; `ops@193.181.215.57` rejects the available login. The active VPS release has not been changed or reverified in this iteration.
+
+## Local workspace import, 2026-09-14
+
+- Imported the complete GitHub repository and Git history from `2dog111/coinim`, baseline `81f219c324f632f081e60879dda857d89e604b0f`, into `coin-im-15-09-28`. Working branch: `codex/local-development`.
+- Preserved all 37 pre-existing working files before merging ignore rules. In particular, retained the current homepage with the 1,000-letter pilot offer and the local contact handler. Added 395 missing repository files; preserved the existing Python environment. Route mirrors match.
+- Backup of the original workspace, including its initial Git metadata and excluding the Python environment: `../coin-im-15-09-28-backup-before-github-20260914-100412.tar.gz`.
+- No new commit, push, deployment, migration or production change. Historical release statements below were imported and have not been reverified against production in this task.
+
 ## Git rollback checkpoint before pilot offer
 
 - Tag `rollback-before-pilot-20260907` records the reviewed local source and public web assets before the new offer. Existing production static release remains `20260906T170240Z-editorial-v6`; use the retained VPS release for an exact production rollback because the local message-wall backend also contains earlier pending work. Private source corpora, economics, image masters and generated QA were excluded from this commit.

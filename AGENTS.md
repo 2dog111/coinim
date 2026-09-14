@@ -1,5 +1,14 @@
 # Project Rules
 
+## Current local workspace, 2026-09-14
+
+- This workspace imports `2dog111/coinim` at `81f219c324f632f081e60879dda857d89e604b0f` and preserves the local homepage, contact handler, assets, brief and preview scripts. Existing local changes are intentional; do not overwrite them with the older GitHub version.
+- Work locally. Copying, building, editing and previewing do not authorize deployment or pushing source.
+- The owner prohibits all publication on `chatgpt.site` and every subdomain, including private previews, hosted version saving and source uploads. Use local previews. Existing hosting configuration or historical permissions do not override this prohibition. Only an explicit new revocation by the owner can change it.
+- Historical production status in the imported documents is a record, not a fresh verification of the live server. Newer dated route contracts supersede older descriptions.
+
+## Repository rules
+
 - Start by reading `PROJECT_SPEC.md`, `VERSIONS.md`, and `DEPLOY.md` if they exist.
 - Do not deploy, publish, push, or change production unless the current user message explicitly authorizes that action.
 - The product has no separate `demo`, `test`, `seed`, `manual`, or `real` placement classes. Treat every published website, social profile, or message as an ordinary real public placement unless the user explicitly requests a draft or test state.
