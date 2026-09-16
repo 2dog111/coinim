@@ -30,7 +30,8 @@
   const events = new Set(['campaign_selected', 'calculator_used', 'lead_form_started', 'lead_submitted', 'lead_submit_failed']);
   root.coinCampaignEvent = name => {
     if (!events.has(name) || ['localhost', '127.0.0.1'].includes(location.hostname)) return;
-    const body = JSON.stringify({type:'click', page:'/', target:name});
+    const page = document.body.dataset.campaignSource === '/ms' ? '/ms' : '/';
+    const body = JSON.stringify({type:'click', page, target:name});
     try {
       if (navigator.sendBeacon && navigator.sendBeacon('/api/open/beacon', new Blob([body], {type:'application/json'}))) return;
       fetch('/api/open/beacon', {method:'POST', headers:{'Content-Type':'application/json'}, body, keepalive:true}).catch(() => {});
@@ -48,6 +49,7 @@
   const contribution = document.querySelector('#customer-contribution');
   const other = document.querySelector('#other-costs');
   const result = document.querySelector('#cost-result');
+  if (!campaign || !contribution || !other || !result) return;
   let used = false;
   function update(event) {
     const value = calculate(campaign.value, contribution.value, other.value);

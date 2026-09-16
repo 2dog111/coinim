@@ -1,0 +1,57 @@
+/* Market Scan composes the homepage tokens, typography, controls and components. */
+.ms-campaign .ms-intro{align-items:start}
+.ms-campaign .ms-intro .hero-copy{max-width:none;margin:0}
+.ms-campaign .ms-intro .eyebrow{font:13px/1.5 var(--sans);letter-spacing:.13em;margin:0 0 24px}
+.ms-campaign .ms-intro .hero-object{margin:30px 0 0}
+.ms-campaign .ms-intro .hero-object img{aspect-ratio:4/3;object-fit:contain;box-shadow:none}
+.ms-campaign .ms-intro .ms-offer{font:16px/1.65 var(--sans);max-width:65ch;margin-top:26px}
+.ms-campaign .chapter>.eyebrow{margin-bottom:24px}
+.ms-spread{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:start}
+.ms-spread>div,.ms-spread>figure{min-width:0}
+.ms-spread h2{font-size:clamp(36px,3.65vw,52px)}
+.ms-spread p{max-width:65ch}
+.ms-spread .file-sheet{margin:0}
+.ms-path{margin-top:8px!important;padding:35px}
+.ms-path .record-chain{font-size:24px}
+.ms-campaign figcaption,.ms-caption{font:16px/1.6 var(--sans);color:var(--muted)}
+.ms-campaign figcaption{margin-top:24px}
+.ms-subchapter{max-width:65ch;margin-top:48px}
+.ms-subchapter h3{font-size:32px;margin-top:0;max-width:30ch}
+.ms-exercise>div{display:grid;grid-template-columns:1fr 1.8fr;gap:30px;padding:23px 0;border-bottom:1px solid var(--line)}
+.ms-exercise dt,.ms-exercise dd{margin:0}
+.ms-exercise+p{margin-top:24px}
+.ms-layers{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.ms-layers dt{margin:0 0 10px;font-size:24px}
+.ms-layers dd{font-size:19px}
+.ms-pull{font-size:clamp(28px,3vw,38px);line-height:1.3;margin:35px 0;padding:28px 0;border-block:1px solid var(--line);max-width:32ch}
+.ms-dossier h3{font-size:32px}
+.ms-review{border-left:1px solid var(--line);padding-left:28px}
+.ms-review ul{list-style:none;padding:0;margin:14px 0 0;font:16px/1.5 var(--sans)}
+.ms-review li{padding:14px 0 24px;border-bottom:1px solid var(--line)}
+.ms-contrast{display:grid;grid-template-columns:1fr 1.2fr;gap:40px}
+.ms-contrast>div+div{border-left:1px solid var(--line);padding-left:30px}
+.ms-contrast dt{margin-top:0}.ms-contrast dd{font-size:27px;color:var(--ink)}
+.ms-signature{font-style:italic}
+.ms-campaign #campaign .pricing-grid{margin-top:35px}
+.ms-campaign #ms-faq>.ms-caption{margin-top:25px}
+.ms-archive{font-size:20px}
+.ms-archive>details{margin-top:28px;border-block:1px solid var(--line)}
+.ms-archive>details>summary{cursor:pointer;font-size:26px;padding:24px 0}
+.ms-archive-context{max-width:65ch;margin:16px 0 45px;color:var(--muted)}
+.ms-chronicle{max-width:65ch}
+.ms-story-part+.ms-story-part{margin-top:64px;padding-top:45px;border-top:1px solid var(--line)}
+.ms-story-part h2{font-size:34px}.ms-source-story{margin:28px 0;padding-left:24px;border-left:1px solid var(--line)}
+.ms-story-part p{overflow-wrap:anywhere}.ms-chronicle strong,.ms-chronicle b{font-weight:400}
+@media(max-width:850px){.ms-spread{grid-template-columns:1fr;gap:30px}.ms-intro .hero-object{align-self:center}.ms-review{border-left:0;border-top:1px solid var(--line);padding:24px 0 0}}
+@media(max-width:700px){.ms-campaign .ms-intro{padding-top:36px}.ms-campaign .ms-intro .eyebrow{font-size:12px}.ms-campaign .ms-intro .hero-object{margin-top:0}.ms-path{padding:25px}.ms-exercise>div{grid-template-columns:1fr;gap:12px}.ms-layers,.ms-contrast{grid-template-columns:1fr;gap:25px}.ms-contrast>div+div{border-left:0;border-top:1px solid var(--line);padding:24px 0 0}.ms-campaign .file-sheet{padding:25px 22px}.ms-campaign .ms-intro .ms-offer{font-size:15px}.ms-archive>details>summary{font-size:23px}}
+/* These dossiers group each term with its explanation; override the homepage's flat dl grid. */
+.ms-campaign .file-sheet dl.ms-exercise{display:block}
+.ms-campaign .file-sheet dl.ms-layers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}
+.ms-campaign .file-sheet dl.ms-contrast{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:40px}
+.ms-campaign .file-sheet dt,.ms-campaign .file-sheet dd{border:0;padding:0;margin:0}
+.ms-campaign .file-sheet dt{font-size:18px}
+.ms-campaign .file-sheet dd{font-size:20px}
+.ms-campaign .file-sheet .ms-layers dt{font-size:24px;margin-bottom:12px}
+.ms-campaign .file-sheet .ms-contrast dt{margin-bottom:16px}
+.ms-campaign .file-sheet .ms-contrast dd{font-size:27px}
+@media(max-width:700px){.ms-campaign .file-sheet dl.ms-layers,.ms-campaign .file-sheet dl.ms-contrast{grid-template-columns:1fr;gap:25px}}

@@ -16,6 +16,7 @@ sys.path.insert(0, str(ROOT / 'server'))
 
 def main():
     import uvicorn
+    port = int(os.environ.get('COIN_PREVIEW_PORT', '4173'))
     with tempfile.TemporaryDirectory(prefix='coin-im-preview-') as directory:
         storage = Path(directory)
         key = storage / 'encryption.key'
@@ -28,7 +29,7 @@ def main():
             COIN_OPEN_DATA_ROOT=str(storage / 'data'),
             COIN_OPEN_KEY_PATH=str(key),
             COIN_OPEN_ADMIN_TOKEN_PATH=str(token),
-            COIN_OPEN_ALLOWED_ORIGINS='http://127.0.0.1:4173,http://localhost:4173',
+            COIN_OPEN_ALLOWED_ORIGINS=f'http://127.0.0.1:{port},http://localhost:{port}',
         )
         from coin_open.app import app as intake
 
@@ -61,9 +62,9 @@ def main():
             ]})
             await send({'type': 'http.response.body', 'body': b'' if scope['method'] == 'HEAD' else body})
 
-        print('Local preview: http://127.0.0.1:4173', flush=True)
+        print(f'Local preview: http://127.0.0.1:{port}', flush=True)
         print(f'Local enquiry storage (temporary): {storage / "data"}', flush=True)
-        uvicorn.run(app, host='127.0.0.1', port=4173, lifespan='off', access_log=False)
+        uvicorn.run(app, host='127.0.0.1', port=port, lifespan='off', access_log=False)
 
 if __name__ == '__main__':
     main()

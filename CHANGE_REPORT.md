@@ -1,5 +1,9 @@
 # Campaign evidence, economics and inquiry
 
+Deployment update: briefs №1–№3 are now integrated and live in release
+`20260914T065214Z-campaign-v3`. The earlier SSH blocker recorded below is resolved.
+See VERSIONS.md and MS_CHANGE_REPORT.md for deployment verification.
+
 Version: `20260914-campaign-evidence-v2`. Implements the owner's second brief
 incrementally on the first iteration. The source checkpoint includes both iterations.
 

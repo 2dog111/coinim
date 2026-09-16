@@ -1,0 +1,41 @@
+{
+  "version": "20260914-ms-campaign-v3",
+  "status": "deployed-and-verified",
+  "integration_order": [
+    "brief-1",
+    "brief-2",
+    "brief-3"
+  ],
+  "static": [
+    "index.html",
+    "ms.html",
+    "ms/index.html",
+    "assets/pilot-scale.css",
+    "assets/contact-ui.js",
+    "assets/campaign-pricing.js",
+    "assets/campaign-tools.js",
+    "assets/ms-campaign.css",
+    "assets/ms-campaign.js"
+  ],
+  "intake": [
+    "server/coin_open/leads.py",
+    "server/coin_open/admin.py"
+  ],
+  "sha256": {
+    "index.html": "c4bd1c2ddfa53422e050ee3710dcfd5e71890d171b245afdbc98d12b97e571fb",
+    "ms.html": "bf552165d9d736d516860e9427ba6c641120a304f9c29be4cb421e49bb1ec997",
+    "ms/index.html": "bf552165d9d736d516860e9427ba6c641120a304f9c29be4cb421e49bb1ec997",
+    "assets/pilot-scale.css": "71ba909ba899a47cb08d4c141856682c619deb4cbb1f1316b3b691e9fe9e31f3",
+    "assets/contact-ui.js": "77570439cacb79e9eaa40cf317326c59e5cc0a2d15a3f3cc052c8b9955991473",
+    "assets/campaign-pricing.js": "7aa8e1b1c18fc4ecbab780728b23b22bfa44e1ae8d278ef37cfdd539d5e2244b",
+    "assets/campaign-tools.js": "abd1f2e24030f4c889cdf6dc4e650bdf5b7441354b0fe718e68e39b85125f37f",
+    "assets/ms-campaign.css": "7e379305b6fe73b3445090c170c77d8f7e5677f49a87ef37add52ac64eeb65d7",
+    "assets/ms-campaign.js": "d87e775886661e0ec8414ae76cdafef96426089df29799c23d8055ea1ccf17cb",
+    "server/coin_open/leads.py": "8cf7c7f306ccc2c75335b92fc9a3ec4f15538388b7ec01c82ff1d1dc8a1e1069",
+    "server/coin_open/admin.py": "9b67d4c6c2ef9bfbf702cb0b0df688eef4a7b3d8bd7cf6c3251363f728d1298e"
+  },
+  "deployment": "Overlay on clones of the active static and intake VPS releases. Back up persistent intake data. Verify actual staged frontend and backend before switching. Preserve all unrelated production files and services. Exclude this manifest and source/QA materials from the public web root.",
+  "release": "20260914T065214Z-campaign-v3",
+  "active_static": "/var/www/coin.im/releases/20260914T065214Z-campaign-v3",
+  "active_intake": "/opt/coin-im-open/releases/20260914T065214Z-campaign-v3"
+}

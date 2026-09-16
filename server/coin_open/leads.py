@@ -40,6 +40,9 @@ async def submit_lead(scope, receive, send, key):
     interest = data.get("campaign_interest", "help")
     if not isinstance(interest, str) or interest not in {"pilot", "scale", "help"}:
         raise intake.IntakeError(422, "Choose a campaign interest.")
+    source = data.get("source", "homepage")
+    if not isinstance(source, str) or source not in {"homepage", "/ms"}:
+        raise intake.IntakeError(422, "Please reload the form and try again.")
     audience = field("audience", "Audience", 2000, False)
     website_input = field("website", "Company website", 2048)
     if not re.match(r"^[a-z][a-z0-9+.-]*:", website_input, re.I):
@@ -52,7 +55,7 @@ async def submit_lead(scope, receive, send, key):
     if not re.fullmatch(r"[a-f0-9]{32}", request_id):
         raise intake.IntakeError(422, "Please reload the form and try again.")
     payload = dict(name=name, company=company, work_email=email, phone=phone,
-                   office_address=office, channels=[channel], source="homepage", files=[])
+                   office_address=office, channels=[channel], source=source, files=[])
     payload.update(website=website, campaign_interest=interest, audience=audience)
     fingerprint = hmac.new(key, json.dumps(payload, sort_keys=True).encode(), hashlib.sha256).hexdigest()
     request_hash = hmac.new(key, request_id.encode(), hashlib.sha256).hexdigest()

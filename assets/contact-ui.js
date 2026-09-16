@@ -64,6 +64,7 @@
     busy=true;button.disabled=true;button.textContent='Sending…';form.setAttribute('aria-busy','true');status.textContent='';status.classList.remove('is-error');
     const payload=Object.fromEntries(new FormData(form));payload.request_id=requestId;
     payload.channel ||= 'Email';
+    if (document.body.dataset.campaignSource === '/ms') payload.source = '/ms';
     if (interest) payload.campaign_interest = interest.value;
     const controller = new AbortController();const timer=setTimeout(()=>controller.abort(),25000);
     try {

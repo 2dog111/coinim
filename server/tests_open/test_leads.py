@@ -57,6 +57,17 @@ class LeadsTest(unittest.TestCase):
         for interest in ['unknown',[],{}]:
             self.assertEqual(self.request('/api/open/leads','POST',{**data,'campaign_interest':interest})[0],422)
         self.assertEqual(self.request('/api/open/leads','POST',{**data,'audience':'x'*2001})[0],422)
+    def test_market_scan_source_is_allowlisted_encrypted_and_idempotent(self):
+        data={**self.payload, 'source':'/ms'}
+        first=self.request('/api/open/leads','POST',data)
+        self.assertEqual(first[0],201)
+        self.assertEqual(self.request('/api/open/leads','POST',data)[1],first[1])
+        job=admin.list_jobs(intake.DATA_ROOT,intake.load_key(),intake.read_json_encrypted)[0]
+        self.assertEqual(job['source'],'/ms')
+        self.assertEqual(job['website'],'https://example.com')
+        self.assertEqual(self.request('/api/open/leads','POST',{**data,'source':'homepage'})[0],409)
+        for source in ['/ms?email=qa@example.com', 'arbitrary', [], {}]:
+            self.assertEqual(self.request('/api/open/leads','POST',{**data,'source':source})[0],422)
     def test_conflicting_retry(self):
         self.assertEqual(self.request('/api/open/leads','POST',self.payload)[0],201)
         self.payload['company']='Changed';self.assertEqual(self.request('/api/open/leads','POST',self.payload)[0],409)

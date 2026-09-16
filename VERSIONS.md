@@ -2,6 +2,42 @@
 
 This is the local place to check the current site version before edits or deployment.
 
+## Git checkpoint, 2026-09-16
+
+- Checkpoint tag: `checkpoint-20260916-ms-campaign-v3`. Preserves the integrated
+  homepage and Market Scan source, intake source attribution, release manifest,
+  preservation references and QA scripts from the existing working tree.
+- Local verification: lint, typecheck, Git whitespace checks, 38 market tests,
+  10 intake tests and exact-decimal calculator assertions passed. All four
+  required HTML route mirrors match byte-for-byte. Credential-pattern scan of
+  tracked and non-ignored source found no matches; this is not a full audit of
+  historical Git objects.
+- Added a repository README. Removed previously tracked Wrangler cache files
+  from the Git index while preserving local copies; `.wrangler/` remains ignored.
+- This checkpoint publishes source only. No production deployment, server,
+  DNS or mail change. The 2026-09-14 production verification below is historical.
+
+## Production release, 2026-09-14
+
+- Deployed integrated briefs №1, №2 and №3. Source version `20260914-ms-campaign-v3`. Active static release `/var/www/coin.im/releases/20260914T065214Z-campaign-v3` and active intake release `/opt/coin-im-open/releases/20260914T065214Z-campaign-v3`. Previous static `20260906T170240Z-editorial-v6` and intake `20260906T165444Z-contact-v5` retained for rollback. Market remains `/opt/coin-im-market/releases/20260906T155058Z-direct-mail`.
+- SSH access restored through Webdock with the owner's explicit permission. Public key `coinim-deploy-mac-20260914` assigned only to `admin` on `193.181.215.57`. The private key remains at `~/.ssh/coinim_deploy_ed25519`; local SSH alias `coinim-vps` is configured. No passwords or private key material stored in the project.
+- Cloned the actual active static and intake releases and overlaid exactly the 9 static files and 2 intake files in `reference/release-ms-campaign-v3.json`. Remote hashes match the verified bundle. Unrelated files and production data preserved; no pending local migrations, dependency updates, DNS or mail changes.
+- Backup: `/var/backups/coin-im-open/20260914T065214Z-campaign-v3/intake-data.tgz`, root-only directory and mode 600 archive, plus unchanged Nginx configuration. Market database backup `/var/lib/coin-im-market/backups/market-20260914T065237Z.sqlite3`. Existing encryption/admin keys retained.
+- Staged code passed 10 intake tests with temporary local storage and Chromium/WebKit on both pages at 360/390/768/1440, including confirmed local receipt and same-record timeout retry. Activated intake first, verified health and rejection of an empty inquiry, then atomically switched static release. Nginx validation and reload passed; nginx, intake, market and screenshot services are active.
+- Public verification: all 25 required/extended HTTPS checks returned 200; all 9 published static files match local SHA-256. `/ms` and `/ms/` match. Handling routes retain `Referrer-Policy: no-referrer`. Nginx config hash matches its backup. Market environment verification, reconciliation and production smoke pass; all three message-wall slot bodies/prices/links and market state match before deployment. Coin.im/www certificate valid until 2026-11-13.
+- Public Chromium/WebKit at 390x844 and 1440x900 pass homepage, /ms and /message layout and JS checks, pricing selection/preservation, calculator and archive keyboard/deep-link behavior. Form error checks intercepted the request locally, so no public test lead or payment was created. Screenshots reviewed; evidence is generated locally in `qa-screens/ms3-deploy/` and excluded from Git/deployment.
+- Cache keys: shared contact/campaign JS and new MS CSS/JS use `20260914-p3`; pilot-scale CSS remains `20260914-p2`. No Git commit or push in this deployment.
+
+## Market Scan campaign integration, 2026-09-14
+
+- Local version `20260914-ms-campaign-v3`, built on checkpoint `315fe06` for briefs №1/№2. No new Git checkpoint or push. See MS_CHANGE_REPORT.md.
+- /ms now explains research before the physical campaign, with the supplied argument sequence, labeled illustrative exercise, evidence/exclusion guide, founder note, FAQ, common pricing and one common inquiry. Six historical sections are preserved byte-for-byte inside a closed, keyboard-accessible archive with working deep links.
+- Shared homepage pricing, form, navigation and contacts render into both /ms mirrors at build time. Prices and MS metadata use the existing config. Inquiry source `/ms` is allowlisted by the existing encrypted intake. Homepage prose changes only in the explicitly requested Market Scan link caption; protected article and example checks pass.
+- npm lint/typecheck/tests/build pass: 38 market and 10 intake tests plus calculator assertions. Build uses temporary local storage. Chromium and WebKit pass / and /ms at 360/390/768/1440, including 390x844 and 1440x900, archive hashes, pricing selections, form errors and idempotent timeout retry. Homepage calculator/form regression passes in a separate temporary store. Dossier screenshots visually reviewed after CSS correction. Named global desktop-browser-qa runner unavailable; equivalent isolated headless checks used. Native Safari not separately tested.
+- Deployment explicitly authorized but blocked: ops@193.181.215.57 rejects SSH authentication; iva alias is unavailable. Production files, active release and services were not changed or newly verified. Do not interpret this local entry as a production release.
+- Prepared overlay manifest: reference/release-ms-campaign-v3.json. Bundle: /tmp/coin-im-20260914-ms-campaign-v3.tar.gz. It combines the outstanding №1/№2 dependency changes with №3; deploy on clones of active VPS releases with intake backup and staged/public checks per DEPLOY.md after SSH access is restored. No uploads to any hosting provider.
+- New MS CSS/JS and shared JS cache keys: `20260914-p3`. Existing pilot-scale CSS key remains `20260914-p2`.
+
 ## Campaign evidence checkpoint, 2026-09-14
 
 - Source version `20260914-campaign-evidence-v2`; checkpoint tag `coin-im-campaign-evidence-20260914` on `codex/local-development`.

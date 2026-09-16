@@ -11,6 +11,19 @@ Production is served from the VPS.
 - DNS: Cloudflare DNS-only `A` records for `coin.im` and `www.coin.im` to `193.181.215.57`
 - TLS: Let's Encrypt certificate for `coin.im` and `www.coin.im`, renewed by certbot
 
+## Verified access from this Mac, 2026-09-14
+
+Use `ssh coinim-vps`. The local SSH config points to `admin@193.181.215.57`
+with `~/.ssh/coinim_deploy_ed25519` and `IdentitiesOnly yes`. The owner explicitly
+authorized saving the key and assigning it through Webdock. `admin` login and
+noninteractive sudo are verified. Private key material stays outside the project.
+The historical `iva` alias and `ops` instructions below are not configured access
+methods on this Mac.
+
+Latest active static and intake release: `20260914T065214Z-campaign-v3`. Use the exact
+manifest in `reference/release-ms-campaign-v3.json`; the release preserves active
+production files outside the manifest. See VERSIONS.md for backups and checks.
+
 ## Homepage and message-wall release, 2026-09-06
 
 The current root is static direct mail; `/message` and `/message/` proxy to the existing market service. Individual `/message/<slug>` routes keep their old behavior. Use the current `server/deploy/nginx-market-locations.conf` for this route split.

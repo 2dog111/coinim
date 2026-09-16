@@ -1,5 +1,16 @@
 # coin.im Project Specification
 
+## Market Scan campaign page contract, 2026-09-14
+
+The owner's third brief builds on the first two locally. /ms explains audience
+research for the same physical Pilot/Scale campaigns. Shared homepage markup is
+rendered into /ms by scripts/build-homepage.cjs, using the existing pricing
+configuration and inquiry handler. /ms contains exactly one inquiry form;
+its allowlisted source is `/ms`. Historical notes remain intact below the form
+inside a closed disclosure with deep-link support. See MS_CHANGE_REPORT.md and
+reference/release-ms-campaign-v3.json. Integrated briefs №1–№3 are deployed in VPS release `20260914T065214Z-campaign-v3`.
+See VERSIONS.md for active paths, backups and verified public state.
+
 ## Campaign evidence and inquiry contract, 2026-09-14
 
 The owner's explicit first and second briefs supersede earlier homepage pricing,
@@ -10,7 +21,7 @@ website, name and work email. Phone is conditional on the selected reply channel
 The five letters now use the exact first brief; the second brief preserves them.
 Research details and the historical library remain available in disclosures.
 See CHANGE_REPORT.md and reference/brief2.txt for the exact current scope.
-Production deployment is authorized but awaiting working VPS SSH authentication.
+Production deployment completed as part of release `20260914T065214Z-campaign-v3`.
 
 ## Homepage editorial contract, 2026-09-07
 

@@ -3,7 +3,7 @@
   "private": true,
   "version": "2026.8.29",
   "scripts": {
-    "lint": "node --check assets/takeover.js && PYTHONPATH=server ${COIN_PYTHON:-.venv/bin/python} -m tabnanny server/coin_market server/tests_market && node --check assets/contact-ui.js && node --check assets/campaign-tools.js && node --check assets/campaign-pricing.js",
+    "lint": "node --check assets/takeover.js && PYTHONPATH=server ${COIN_PYTHON:-.venv/bin/python} -m tabnanny server/coin_market server/tests_market && node --check assets/contact-ui.js && node --check assets/campaign-tools.js && node --check assets/campaign-pricing.js && node --check assets/ms-campaign.js && node --check scripts/build-homepage.cjs",
     "test": "PYTHONPATH=server ${COIN_PYTHON:-.venv/bin/python} -m unittest discover -s server/tests_market -v && PYTHONPATH=server ${COIN_PYTHON:-.venv/bin/python} -m unittest discover -s server/tests_open -v && node scripts/test-calculator.cjs",
     "typecheck": "PYTHONPATH=server ${COIN_PYTHON:-.venv/bin/python} -m compileall -q server/coin_market server/tests_market",
     "build": "node scripts/build-homepage.cjs && PYTHONPATH=server ${COIN_PYTHON:-.venv/bin/python} -m coin_market.cli migrate",
