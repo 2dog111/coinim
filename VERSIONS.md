@@ -2,6 +2,59 @@
 
 This is the local place to check the current site version before edits or deployment.
 
+## Git checkpoint, 2026-09-22
+
+- Checkpoint tag: `checkpoint-20260922-investor-match-mvp`, branch
+  `codex/local-development`. Records the Investor Match implementation and the
+  verified production release below, including the incomplete 40/100 catalogue.
+- Private research and rights-review records, local screenshots and runtime
+  files are excluded from Git. This checkpoint does not change production.
+
+## Investor Match production release, 2026-09-22
+
+- Source version `20260922-investor-match-mvp`. Active static release
+  `/var/www/coin.im/releases/20260922T153944Z-investor-match`. Previous
+  `/var/www/coin.im/releases/20260914T065214Z-campaign-v3` is retained for rollback.
+- Implements `/investors/`, one compact homepage promotion and footer link,
+  four-criterion evidence-based matching, search, filters, 25-result pagination,
+  native profiles, a 20-profile shortlist, existing inquiry-field handoff and
+  private draft-only CSV/JSON import. No backend change.
+- Published catalogue: 40 sourced organisation profiles, 6 business addresses,
+  0 confirmed paper-pitch routes. The 100-profile goal is incomplete: 19 named
+  candidates remain in private research and another 41 have not been researched.
+  Private home addresses and personal wealth estimates are not collected.
+- Local lint, typecheck, 38 market tests, 10 intake tests, calculator checks,
+  matching/evidence/import tests, private draft-only writes and full build using
+  isolated data pass. Isolated Chromium at 390/768/1440 passed locally and against
+  the actual staged VPS artifact. Checks include criteria, empty/reset states,
+  pagination, out-of-filter deep links, storage denial, deleted ids, shortlist
+  limits/persistence, no-JS reading and mocked inquiry error/success. No real lead
+  or payment was submitted.
+- Deployed exactly the 7-file overlay in `reference/release-investor-match.json`
+  on a clone of the active VPS release. All other files match the previous release.
+  Market remains `/opt/coin-im-market/releases/20260906T155058Z-direct-mail`;
+  intake remains `/opt/coin-im-open/releases/20260914T065214Z-campaign-v3`.
+- Backups: `/var/lib/coin-im-market/backups/market-20260922T154009Z.sqlite3` and
+  `/var/backups/coin-im/20260922T153944Z-investor-match/nginx.conf`. Nginx config
+  is unchanged. Validation/reload succeeded and all four services are active.
+- Public verification from the VPS: 32 HTTPS checks pass, including the new route
+  and its slash redirect. All seven published SHA-256 values match the manifest.
+  Handling retains `Referrer-Policy: no-referrer`; all three message-wall slot
+  blocks are unchanged. Private data-source, review, research and importer paths
+  return 404. Market environment verification, reconciliation and production
+  smoke pass. The coin.im/www certificate is valid through 2026-11-13.
+- The three protected homepage sections and all required route mirrors remain
+  byte-identical. Initial SSH/network timeouts resolved on retry using the existing
+  connection; no credentials, access permissions, DNS or mail settings changed.
+- Public Chromium smoke at 390x844 and 1440x900 passed for investor search,
+  profiles, shortlist handoff to the homepage form and message-wall layout,
+  with no JavaScript errors or real submissions. The full public browser matrix
+  encountered an intermittent navigation timeout; the full local and staged
+  artifact matrices passed as recorded above.
+- Archive: `/tmp/coin-im-20260922-investor-match-mvp.tar.gz`. New asset cache keys:
+  `20260922-1`. Documentation: `docs/investor-match-mvp.md`. Screenshots stay in
+  ignored `qa-screens/investors/`. No Git checkpoint or push.
+
 ## Git checkpoint, 2026-09-16
 
 - Checkpoint tag: `checkpoint-20260916-ms-campaign-v3`. Preserves the integrated

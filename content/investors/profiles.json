@@ -1,0 +1,3216 @@
+[
+  {
+    "id": "hustle-fund",
+    "slug": "hustle-fund",
+    "displayName": "Hustle Fund",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "hustle-fund",
+    "organisationName": "Hustle Fund",
+    "officialWebsite": "https://www.hustlefund.vc/",
+    "summary": "Hustle Fund backs companies at the beginning of their development and publishes a direct pitch form. Its website lists Webflow, Gamma and Contra among companies it has backed. The published postal address is useful for route research, but the site does not establish acceptance of unsolicited paper pitches.",
+    "sectors": [],
+    "stages": [
+      "pre-seed"
+    ],
+    "investmentGeographies": [],
+    "publishedCheckRange": null,
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": "Webflow",
+        "fact": "Listed by Hustle Fund among companies it has backed.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": {
+      "type": "form",
+      "url": "https://www.hustlefund.vc/",
+      "sourceId": "mandate"
+    },
+    "businessAddress": {
+      "organisation": "Hustle Fund",
+      "lines": [
+        "1180 San Carlos Ave",
+        "Suite 337"
+      ],
+      "city": "San Carlos, CA",
+      "postalCode": "94070",
+      "country": "US",
+      "addressType": "type-not-established",
+      "sourceId": "mandate",
+      "checkedAt": "2026-09-22"
+    },
+    "officeCountry": "US",
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "stages": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      },
+      "officeCountry": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://www.hustlefund.vc/",
+        "publisher": "Hustle Fund",
+        "title": "Hustle Fund published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "stages",
+          "officeCountry",
+          "preferredPitchChannel",
+          "businessAddress"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2048-ventures",
+    "slug": "2048-ventures",
+    "displayName": "2048 Ventures",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "2048-ventures",
+    "organisationName": "2048 Ventures",
+    "officialWebsite": "https://2048.vc/about",
+    "summary": "2048 Ventures describes its first investments as pre-seed and seed rounds in AI, deep technology, healthcare and biotechnology. The firm publishes a $500,000 to $3,000,000 check range and invests across the United States, with particular roots in New York and Boston. Its interest in data advantages is relevant when preparing a company-specific introduction.",
+    "sectors": [
+      "ai",
+      "deep-tech",
+      "health",
+      "biotech"
+    ],
+    "stages": [
+      "pre-seed",
+      "seed"
+    ],
+    "investmentGeographies": [
+      "US"
+    ],
+    "publishedCheckRange": {
+      "min": 500000,
+      "max": 3000000,
+      "currency": "USD",
+      "sourceId": "mandate"
+    },
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": null,
+        "fact": "The firm announced Fund III and its focus on pre-seed and seed investments. This does not confirm remaining available capital.",
+        "eventDate": "2026-01-29",
+        "datePrecision": "day",
+        "sourceIds": [
+          "fund-iii"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": null,
+    "officeCountry": null,
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "sectors": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "stages": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": true
+      },
+      "investmentGeographies": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://2048.vc/about",
+        "publisher": "2048 Ventures",
+        "title": "2048 Ventures published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "sectors",
+          "stages",
+          "investmentGeographies",
+          "publishedCheckRange"
+        ]
+      },
+      {
+        "id": "fund-iii",
+        "url": "https://www.2048.vc/blog/2048-ventures-fund-iii",
+        "publisher": "2048 Ventures",
+        "title": "2048 Ventures Fund III announcement",
+        "publishedAt": "2026-01-29",
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "investmentEvidence"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "everywhere-ventures",
+    "slug": "everywhere-ventures",
+    "displayName": "Everywhere Ventures",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "everywhere-ventures",
+    "organisationName": "Everywhere Ventures",
+    "officialWebsite": "https://www.everywhere.vc/",
+    "summary": "Everywhere Ventures publishes a $250,000 investment amount for pre-seed rounds. Its portfolio page includes Pair Eyewear and describes an early investment in that company. The breadth of countries represented in its portfolio is historical evidence, so this profile leaves the current investment geography open for a separate mandate check.",
+    "sectors": [],
+    "stages": [
+      "pre-seed"
+    ],
+    "investmentGeographies": [],
+    "publishedCheckRange": {
+      "min": 250000,
+      "max": 250000,
+      "currency": "USD",
+      "sourceId": "mandate"
+    },
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": "Pair Eyewear",
+        "fact": "The official site describes an early pre-seed investment in Pair Eyewear.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": null,
+    "officeCountry": null,
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "stages": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://www.everywhere.vc/",
+        "publisher": "Everywhere Ventures",
+        "title": "Everywhere Ventures published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "stages",
+          "publishedCheckRange"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "precursor-ventures",
+    "slug": "precursor-ventures",
+    "displayName": "Precursor Ventures",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "precursor-ventures",
+    "organisationName": "Precursor Ventures",
+    "officialWebsite": "https://www.precursorvc.com/",
+    "summary": "Precursor Ventures states a pre-seed and seed investment focus, emphasizing its relationship with the founding team at the beginning of a company. Its public portfolio includes Afriex and AgVend. The reviewed homepage does not establish a check range or complete geographic mandate, so those criteria remain unknown in this directory.",
+    "sectors": [],
+    "stages": [
+      "pre-seed",
+      "seed"
+    ],
+    "investmentGeographies": [],
+    "publishedCheckRange": null,
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": "Afriex",
+        "fact": "Included in the firm’s published list of backed companies.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": null,
+    "officeCountry": null,
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "stages": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://www.precursorvc.com/",
+        "publisher": "Precursor Ventures",
+        "title": "Precursor Ventures published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "stages"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "uncork-capital",
+    "slug": "uncork-capital",
+    "displayName": "Uncork Capital",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "uncork-capital",
+    "organisationName": "Uncork Capital",
+    "officialWebsite": "https://uncorkcapital.com/",
+    "summary": "Uncork Capital identifies itself as a seed investor and describes an interest in companies built around AI. Its public company list includes GPTZero and Tailscale, alongside investments now at later stages. Those later portfolio stages are not treated here as proof of the stage at which Uncork would make a new investment.",
+    "sectors": [
+      "ai"
+    ],
+    "stages": [
+      "seed"
+    ],
+    "investmentGeographies": [],
+    "publishedCheckRange": null,
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": "Tailscale",
+        "fact": "The portfolio page lists Tailscale as a company backed by Uncork.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": null,
+    "officeCountry": null,
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "sectors": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "stages": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://uncorkcapital.com/",
+        "publisher": "Uncork Capital",
+        "title": "Uncork Capital published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "sectors",
+          "stages"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "homebrew",
+    "slug": "homebrew",
+    "displayName": "Homebrew",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "homebrew",
+    "organisationName": "Homebrew",
+    "officialWebsite": "https://www.homebrew.co/",
+    "summary": "Homebrew invests its partners’ own capital and says most of its activity consists of pre-seed and seed investments. It publishes a usual early check range of $100,000 to $500,000, while also describing occasional larger or later investments. Its stated geographic focus is companies located in and initially serving North or South America.",
+    "sectors": [],
+    "stages": [
+      "pre-seed",
+      "seed"
+    ],
+    "investmentGeographies": [
+      "US",
+      "CA"
+    ],
+    "publishedCheckRange": {
+      "min": 100000,
+      "max": 500000,
+      "currency": "USD",
+      "sourceId": "mandate"
+    },
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": "Plaid",
+        "fact": "Plaid appears in Homebrew’s published portfolio.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": null,
+    "officeCountry": null,
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "stages": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "investmentGeographies": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://www.homebrew.co/",
+        "publisher": "Homebrew",
+        "title": "Homebrew published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "stages",
+          "investmentGeographies",
+          "publishedCheckRange"
+        ]
+      }
+    ],
+    "researchNotes": "The displayed range covers its usual early investments; larger and later exceptions are described separately. Geographic coverage shown here is partial."
+  },
+  {
+    "id": "unshackled-ventures",
+    "slug": "unshackled-ventures",
+    "displayName": "Unshackled Ventures",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "unshackled-ventures",
+    "organisationName": "Unshackled Ventures",
+    "officialWebsite": "https://www.unshackledvc.com/faq",
+    "summary": "Unshackled Ventures focuses on immigrant founders and describes investing when a company is still an idea and team. It states that it is sector agnostic and includes software, hardware, life sciences and materials. Its preferred initial contact is a pitch form; founder eligibility and immigration-related requirements need their own review before an approach.",
+    "sectors": [
+      "*"
+    ],
+    "stages": [
+      "pre-seed"
+    ],
+    "investmentGeographies": [],
+    "publishedCheckRange": null,
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": null,
+        "fact": "The firm states that many of its investments were made when there was only an idea and a team.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": {
+      "type": "form",
+      "url": "https://www.unshackledvc.com/faq",
+      "sourceId": "mandate"
+    },
+    "businessAddress": null,
+    "officeCountry": null,
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "sectors": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "stages": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://www.unshackledvc.com/faq",
+        "publisher": "Unshackled Ventures",
+        "title": "Unshackled Ventures published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "sectors",
+          "stages",
+          "preferredPitchChannel"
+        ]
+      }
+    ],
+    "researchNotes": "At least one immigrant founder is central to the firm’s stated focus. The four matching criteria do not verify founder eligibility."
+  },
+  {
+    "id": "haystack",
+    "slug": "haystack",
+    "displayName": "Haystack",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "haystack",
+    "organisationName": "Haystack",
+    "officialWebsite": "https://haystack.vc/",
+    "summary": "Haystack describes its work as investing during the formation of software and technology companies. It publishes a typical initial check of $1,000,000 to $3,000,000 and says it may lead or participate in a round. DoorDash, Figma and Ironclad appear in the firm’s selected investments, which provide context rather than a complete current mandate.",
+    "sectors": [],
+    "stages": [],
+    "investmentGeographies": [],
+    "publishedCheckRange": {
+      "min": 1000000,
+      "max": 3000000,
+      "currency": "USD",
+      "sourceId": "mandate"
+    },
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": "Ironclad",
+        "fact": "Included in the firm’s selected investments.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": null,
+    "officeCountry": null,
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://haystack.vc/",
+        "publisher": "Haystack",
+        "title": "Haystack published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "publishedCheckRange"
+        ]
+      }
+    ],
+    "researchNotes": "The source says early stage without naming a complete set of funding rounds; stage remains unknown."
+  },
+  {
+    "id": "founder-collective",
+    "slug": "founder-collective",
+    "displayName": "Founder Collective",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "founder-collective",
+    "organisationName": "Founder Collective",
+    "officialWebsite": "https://foundercollective.com/",
+    "summary": "Founder Collective concentrates on pre-seed and seed investing and describes itself as sector agnostic. It may lead or participate in a financing and does not publish a rigid ownership target on the reviewed page. Those statements support a broad initial research shortlist, while investment geography, check size and paper routing still need verification.",
+    "sectors": [
+      "*"
+    ],
+    "stages": [
+      "pre-seed",
+      "seed"
+    ],
+    "investmentGeographies": [],
+    "publishedCheckRange": null,
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": null,
+        "fact": "The firm’s published mandate names pre-seed and seed and allows leading or participating in a round.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": null,
+    "officeCountry": null,
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "sectors": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "stages": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": true
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://foundercollective.com/",
+        "publisher": "Founder Collective",
+        "title": "Founder Collective published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "sectors",
+          "stages"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bonfire-ventures",
+    "slug": "bonfire-ventures",
+    "displayName": "Bonfire Ventures",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "bonfire-ventures",
+    "organisationName": "Bonfire Ventures",
+    "officialWebsite": "https://www.bonfirevc.com/investment-criteria",
+    "summary": "Bonfire Ventures leads seed rounds in business software built around AI, with a stated emphasis on products that improve through use. Its criteria page lists initial checks of $2,000,000 to $6,000,000 and requires a US business entity. Founders should distinguish that entity requirement from where their team physically works.",
+    "sectors": [
+      "b2b-software",
+      "ai",
+      "fintech",
+      "developer-tools"
+    ],
+    "stages": [
+      "seed"
+    ],
+    "investmentGeographies": [],
+    "publishedCheckRange": {
+      "min": 2000000,
+      "max": 6000000,
+      "currency": "USD",
+      "sourceId": "mandate"
+    },
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": null,
+        "fact": "The criteria page states that Bonfire leads seed rounds in AI-native business software.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": null,
+    "officeCountry": null,
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "sectors": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "stages": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": true
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://www.bonfirevc.com/investment-criteria",
+        "publisher": "Bonfire Ventures",
+        "title": "Bonfire Ventures published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "sectors",
+          "stages",
+          "publishedCheckRange"
+        ]
+      }
+    ],
+    "researchNotes": "A US entity is required, but the team may be located elsewhere. Company location alone does not verify that requirement."
+  },
+  {
+    "id": "fika-ventures",
+    "slug": "fika-ventures",
+    "displayName": "Fika Ventures",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "fika-ventures",
+    "organisationName": "Fika Ventures",
+    "officialWebsite": "https://www.fika.vc/",
+    "summary": "Fika Ventures focuses on business software and primarily invests at seed, with occasional pre-seed investments. Its published criteria include the United States and Canada and an initial check range of $1,000,000 to $5,000,000. The firm discusses areas including fintech, developer tools, manufacturing, supply chains, energy and healthcare, which help frame a specific introduction.",
+    "sectors": [
+      "b2b-software",
+      "ai",
+      "fintech",
+      "developer-tools",
+      "industrial",
+      "climate",
+      "health"
+    ],
+    "stages": [
+      "pre-seed",
+      "seed"
+    ],
+    "investmentGeographies": [
+      "US",
+      "CA"
+    ],
+    "publishedCheckRange": {
+      "min": 1000000,
+      "max": 5000000,
+      "currency": "USD",
+      "sourceId": "mandate"
+    },
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": null,
+        "fact": "The firm publishes a pre-Series A mandate and says most of its investments are seed rounds.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": null,
+    "officeCountry": "US",
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "sectors": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "stages": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": true
+      },
+      "investmentGeographies": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": true
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      },
+      "officeCountry": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://www.fika.vc/",
+        "publisher": "Fika Ventures",
+        "title": "Fika Ventures published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "sectors",
+          "stages",
+          "investmentGeographies",
+          "publishedCheckRange",
+          "officeCountry"
+        ]
+      }
+    ],
+    "researchNotes": "Pre-seed investments are described as occasional, usually in familiar categories or founders."
+  },
+  {
+    "id": "pear-vc",
+    "slug": "pear-vc",
+    "displayName": "Pear VC",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "pear-vc",
+    "organisationName": "Pear VC",
+    "officialWebsite": "https://pear.vc/how-we-invest/",
+    "summary": "Pear VC describes leading pre-seed rounds through its PearX program and leading or co-leading seed investments. It publishes early checks from $250,000 to $6,000,000. The investment page also identifies biotechnology and technologies for decarbonization among its interests. Program participation, sector-specific requirements and the appropriate submission route should be reviewed with the firm.",
+    "sectors": [
+      "biotech",
+      "climate",
+      "deep-tech"
+    ],
+    "stages": [
+      "pre-seed",
+      "seed"
+    ],
+    "investmentGeographies": [],
+    "publishedCheckRange": {
+      "min": 250000,
+      "max": 6000000,
+      "currency": "USD",
+      "sourceId": "mandate"
+    },
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": null,
+        "fact": "The firm states that it leads pre-seed rounds and leads or co-leads seed investments.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": null,
+    "officeCountry": null,
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "sectors": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "stages": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://pear.vc/how-we-invest/",
+        "publisher": "Pear VC",
+        "title": "Pear VC published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "sectors",
+          "stages",
+          "publishedCheckRange"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "1984-ventures",
+    "slug": "1984-ventures",
+    "displayName": "1984 Ventures",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "1984-ventures",
+    "organisationName": "1984 Ventures",
+    "officialWebsite": "https://1984.vc/apply",
+    "summary": "1984 Ventures publishes a pre-seed investment route with a $1,000,000 check to lead a larger round. Its stated primary interests include business applications, infrastructure, developer tools and digital health. The application page discusses technical co-founders and early customer evidence, so those considerations belong in the research brief alongside the four matching criteria.",
+    "sectors": [
+      "b2b-software",
+      "developer-tools",
+      "health"
+    ],
+    "stages": [
+      "pre-seed"
+    ],
+    "investmentGeographies": [],
+    "publishedCheckRange": {
+      "min": 1000000,
+      "max": 1000000,
+      "currency": "USD",
+      "sourceId": "mandate"
+    },
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": null,
+        "fact": "The application page offers a $1,000,000 investment to lead a pre-seed round.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": {
+      "type": "form",
+      "url": "https://1984.vc/apply",
+      "sourceId": "mandate"
+    },
+    "businessAddress": null,
+    "officeCountry": null,
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "sectors": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "stages": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://1984.vc/apply",
+        "publisher": "1984 Ventures",
+        "title": "1984 Ventures published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "sectors",
+          "stages",
+          "publishedCheckRange",
+          "preferredPitchChannel"
+        ]
+      }
+    ],
+    "researchNotes": "This profile describes the published application route; confirm co-founder expectations and design-partner evidence."
+  },
+  {
+    "id": "boldstart-ventures",
+    "slug": "boldstart-ventures",
+    "displayName": "Boldstart Ventures",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "boldstart-ventures",
+    "organisationName": "Boldstart Ventures",
+    "officialWebsite": "https://boldstart.vc/",
+    "summary": "Boldstart Ventures seeks technical founders at company inception, including before incorporation. Its published areas include cybersecurity, AI infrastructure, physical AI and agents. The firm lists an initial check range of $500,000 to $15,000,000 and identifies companies such as Snyk and Clay among its inception investments. Specific round structure and recipient routing still need research.",
+    "sectors": [
+      "security",
+      "ai",
+      "deep-tech"
+    ],
+    "stages": [
+      "pre-seed"
+    ],
+    "investmentGeographies": [],
+    "publishedCheckRange": {
+      "min": 500000,
+      "max": 15000000,
+      "currency": "USD",
+      "sourceId": "mandate"
+    },
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": "Snyk",
+        "fact": "The site identifies Snyk as an inception investment backed since 2015.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": null,
+    "officeCountry": null,
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "sectors": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "stages": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://boldstart.vc/",
+        "publisher": "Boldstart Ventures",
+        "title": "Boldstart Ventures published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "sectors",
+          "stages",
+          "publishedCheckRange"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "notation-capital",
+    "slug": "notation-capital",
+    "displayName": "Notation Capital",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "notation-capital",
+    "organisationName": "Notation Capital",
+    "officialWebsite": "https://notation.vc/",
+    "summary": "Notation Capital describes itself as a dedicated pre-seed investor based in Brooklyn and works with teams at the beginning of product development. Its published portfolio includes Bison Trails, Livepeer and nTopology. The firm invites direct email contact, while the reviewed page does not establish a current check range, full geographic mandate or paper-pitch policy.",
+    "sectors": [],
+    "stages": [
+      "pre-seed"
+    ],
+    "investmentGeographies": [],
+    "publishedCheckRange": null,
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": "Livepeer",
+        "fact": "Listed among the firm’s portfolio companies.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": {
+      "type": "email-page",
+      "url": "https://notation.vc/",
+      "sourceId": "mandate"
+    },
+    "businessAddress": null,
+    "officeCountry": "US",
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "stages": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      },
+      "officeCountry": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://notation.vc/",
+        "publisher": "Notation Capital",
+        "title": "Notation Capital published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "stages",
+          "officeCountry",
+          "preferredPitchChannel"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "work-bench",
+    "slug": "work-bench",
+    "displayName": "Work-Bench",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "work-bench",
+    "organisationName": "Work-Bench",
+    "officialWebsite": "https://www.work-bench.com/",
+    "summary": "Work-Bench leads pre-seed and seed rounds in business software, with an emphasis on applied AI and infrastructure. It is based in New York and describes supporting founders seeking enterprise customers there. The firm publishes a pitch email and street address; neither the office location nor its portfolio establishes an exclusive investment geography.",
+    "sectors": [
+      "b2b-software",
+      "ai",
+      "developer-tools"
+    ],
+    "stages": [
+      "pre-seed",
+      "seed"
+    ],
+    "investmentGeographies": [],
+    "publishedCheckRange": null,
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": "Cockroach Labs",
+        "fact": "Included among the firm’s published portfolio companies.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": {
+      "type": "email-page",
+      "url": "https://www.work-bench.com/",
+      "sourceId": "mandate"
+    },
+    "businessAddress": {
+      "organisation": "Work-Bench",
+      "lines": [
+        "915 Broadway",
+        "Suite 1200"
+      ],
+      "city": "New York, NY",
+      "postalCode": "10010",
+      "country": "US",
+      "addressType": "type-not-established",
+      "sourceId": "mandate",
+      "checkedAt": "2026-09-22"
+    },
+    "officeCountry": "US",
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "sectors": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "stages": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      },
+      "officeCountry": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://www.work-bench.com/",
+        "publisher": "Work-Bench",
+        "title": "Work-Bench published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "sectors",
+          "stages",
+          "officeCountry",
+          "preferredPitchChannel",
+          "businessAddress"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "harrison-metal",
+    "slug": "harrison-metal",
+    "displayName": "Harrison Metal",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "harrison-metal",
+    "organisationName": "Harrison Metal",
+    "officialWebsite": "https://www.harrisonmetal.com/",
+    "summary": "Harrison Metal identifies Michael Dearing as its founder and describes a portfolio of private technology investments across six funds. Its public website also provides business education resources. The reviewed page confirms investment activity but does not specify current new-investment stages, check sizes or geographic criteria, which should be established before treating it as a close match.",
+    "sectors": [],
+    "stages": [],
+    "investmentGeographies": [],
+    "publishedCheckRange": null,
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": null,
+        "fact": "The official biography describes management of private technology investments across six Harrison Metal funds.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": null,
+    "officeCountry": null,
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://www.harrisonmetal.com/",
+        "publisher": "Harrison Metal",
+        "title": "Harrison Metal published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "afore-capital",
+    "slug": "afore-capital",
+    "displayName": "Afore Capital",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "afore-capital",
+    "organisationName": "Afore Capital",
+    "officialWebsite": "https://www.afore.vc/",
+    "summary": "Afore Capital explicitly targets pre-seed companies, including teams before commercial traction. The firm describes product and investment support at company formation and publishes an investment amount starting at $500,000 and reaching $2,000,000 or more. Because that upper figure is open ended, this directory does not convert it into a closed matching range.",
+    "sectors": [],
+    "stages": [
+      "pre-seed"
+    ],
+    "investmentGeographies": [],
+    "publishedCheckRange": null,
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": null,
+        "fact": "The homepage states an investment focus on pre-seed companies before traction.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": null,
+    "officeCountry": null,
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "stages": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://www.afore.vc/",
+        "publisher": "Afore Capital",
+        "title": "Afore Capital published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "stages"
+        ]
+      }
+    ],
+    "researchNotes": "Published amount: $500,000 to $2,000,000 or more. A finite upper bound is not established, so automated check matching remains unknown."
+  },
+  {
+    "id": "contrary",
+    "slug": "contrary",
+    "displayName": "Contrary",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "contrary",
+    "organisationName": "Contrary",
+    "officialWebsite": "https://contrary.com/",
+    "summary": "Contrary describes an investment approach built around identifying entrepreneurs and supporting their companies from seed through later growth. It also operates a public research publication. Those research topics are not automatically investment mandates: this profile records the stated seed entry point while leaving sector, check size and geographic restrictions for further verification.",
+    "sectors": [],
+    "stages": [
+      "seed"
+    ],
+    "investmentGeographies": [],
+    "publishedCheckRange": null,
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": null,
+        "fact": "The official site states that Contrary invests in entrepreneurs and their companies from seed to scale.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": null,
+    "officeCountry": null,
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "stages": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://contrary.com/",
+        "publisher": "Contrary",
+        "title": "Contrary published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "stages"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "felicis",
+    "slug": "felicis",
+    "displayName": "Felicis",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "felicis",
+    "organisationName": "Felicis",
+    "officialWebsite": "https://www.felicis.com/",
+    "summary": "Felicis publishes focus areas spanning AI, cybersecurity, energy resilience, healthcare and biotechnology. It reports that most investments are at seed or Series A and describes leading the Series A of n8n. Its international investment history offers context, but this profile does not treat portfolio coverage as a promise to invest in every country.",
+    "sectors": [
+      "ai",
+      "security",
+      "climate",
+      "health",
+      "biotech"
+    ],
+    "stages": [
+      "seed",
+      "series-a"
+    ],
+    "investmentGeographies": [],
+    "publishedCheckRange": null,
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": "n8n",
+        "fact": "The firm states that it led n8n’s Series A.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": null,
+    "officeCountry": null,
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "sectors": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "stages": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://www.felicis.com/",
+        "publisher": "Felicis",
+        "title": "Felicis published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "sectors",
+          "stages"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "unusual-ventures",
+    "slug": "unusual-ventures",
+    "displayName": "Unusual Ventures",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "unusual-ventures",
+    "organisationName": "Unusual Ventures",
+    "officialWebsite": "https://www.unusual.vc/",
+    "summary": "Unusual Ventures focuses on enterprise founders and emphasizes the work required to establish product-market fit. Its official website publishes an announcement about leading the seed round of Helios and describes resources for early company development. A past seed investment supports research relevance, but a complete current stage mandate and check range still require confirmation.",
+    "sectors": [
+      "b2b-software"
+    ],
+    "stages": [],
+    "investmentGeographies": [],
+    "publishedCheckRange": null,
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": "Helios",
+        "fact": "The firm’s website lists an announcement about leading the Helios seed round.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": null,
+    "officeCountry": null,
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "sectors": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://www.unusual.vc/",
+        "publisher": "Unusual Ventures",
+        "title": "Unusual Ventures published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "sectors"
+        ]
+      }
+    ],
+    "researchNotes": "A past seed transaction is recorded as activity, not converted into a complete current stage mandate."
+  },
+  {
+    "id": "collab-capital",
+    "slug": "collab-capital",
+    "displayName": "Collab Capital",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "collab-capital",
+    "organisationName": "Collab Capital",
+    "officialWebsite": "https://www.collab.capital/",
+    "summary": "Collab Capital organizes its investment interests around healthcare access, economic mobility and community infrastructure. The firm was built by founders and publishes an application route for prospective companies. These themes can guide a specific outreach rationale, while a suitable stage, check size, geographic mandate and business mailing route still require individual verification.",
+    "sectors": [
+      "health"
+    ],
+    "stages": [],
+    "investmentGeographies": [],
+    "publishedCheckRange": null,
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": null,
+        "fact": "The firm publishes thematic investment focuses including healthcare access and economic mobility.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": {
+      "type": "form",
+      "url": "https://www.collab.capital/",
+      "sourceId": "mandate"
+    },
+    "businessAddress": null,
+    "officeCountry": null,
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "sectors": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://www.collab.capital/",
+        "publisher": "Collab Capital",
+        "title": "Collab Capital published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "sectors",
+          "preferredPitchChannel"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "floodgate",
+    "slug": "floodgate",
+    "displayName": "Floodgate",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "floodgate",
+    "organisationName": "Floodgate",
+    "officialWebsite": "https://www.floodgate.com/",
+    "summary": "Floodgate publicly identifies pre-seed and seed as the stages at which it backs founders. Its homepage also publishes an address in Menlo Park. That combination establishes a starting point for research into early financing and a business contact location, while sector criteria, check size and acceptance of paper pitches remain unverified here.",
+    "sectors": [],
+    "stages": [
+      "pre-seed",
+      "seed"
+    ],
+    "investmentGeographies": [],
+    "publishedCheckRange": null,
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": null,
+        "fact": "The firm’s homepage explicitly states a pre-seed and seed investment focus.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": {
+      "organisation": "Floodgate",
+      "lines": [
+        "506 Santa Cruz Ave.",
+        "Suite 200"
+      ],
+      "city": "Menlo Park, CA",
+      "postalCode": "94025",
+      "country": "US",
+      "addressType": "type-not-established",
+      "sourceId": "mandate",
+      "checkedAt": "2026-09-22"
+    },
+    "officeCountry": "US",
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "stages": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      },
+      "officeCountry": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://www.floodgate.com/",
+        "publisher": "Floodgate",
+        "title": "Floodgate published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "stages",
+          "officeCountry",
+          "businessAddress"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lerer-hippeau",
+    "slug": "lerer-hippeau",
+    "displayName": "Lerer Hippeau",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "lerer-hippeau",
+    "organisationName": "Lerer Hippeau",
+    "officialWebsite": "https://www.lererhippeau.com/",
+    "summary": "Lerer Hippeau maintains a public portfolio and publishes investment and company updates, including Type and Symbiotic Security. These provide evidence of professional investing without establishing one uniform mandate for every new opportunity. The reviewed page does not specify a check range or complete stage policy, so founders should investigate those details before preparing an approach.",
+    "sectors": [],
+    "stages": [],
+    "investmentGeographies": [],
+    "publishedCheckRange": null,
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": "Type",
+        "fact": "The official homepage identifies Type as a new investment.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": null,
+    "officeCountry": null,
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://www.lererhippeau.com/",
+        "publisher": "Lerer Hippeau",
+        "title": "Lerer Hippeau published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "liquid-2-ventures",
+    "slug": "liquid-2-ventures",
+    "displayName": "Liquid 2 Ventures",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "liquid-2-ventures",
+    "organisationName": "Liquid 2 Ventures",
+    "officialWebsite": "https://www.liquid2.vc/",
+    "summary": "Liquid 2 Ventures distinguishes an early fund for pre-seed and seed companies from a separate growth strategy starting at Series B. It describes investing across technology sectors and publishes an early median check band of $250,000 to $500,000. Its Mercury founder account offers investment context; the median is not treated as a hard eligibility limit.",
+    "sectors": [
+      "*"
+    ],
+    "stages": [
+      "pre-seed",
+      "seed"
+    ],
+    "investmentGeographies": [],
+    "publishedCheckRange": null,
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": "Mercury",
+        "fact": "The website includes a Mercury founder account describing Liquid 2 as its first fund investor.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": null,
+    "officeCountry": null,
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "sectors": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "stages": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://www.liquid2.vc/",
+        "publisher": "Liquid 2 Ventures",
+        "title": "Liquid 2 Ventures published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "sectors",
+          "stages"
+        ]
+      }
+    ],
+    "researchNotes": "Published early median check band: $250,000 to $500,000. A median band is not a confirmed minimum or maximum, so automated check matching remains unknown."
+  },
+  {
+    "id": "inspired-capital",
+    "slug": "inspired-capital",
+    "displayName": "Inspired Capital",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "inspired-capital",
+    "organisationName": "Inspired Capital",
+    "officialWebsite": "https://www.inspiredcapital.com/",
+    "summary": "Inspired Capital describes itself as a generalist investor leading early rounds and publishes checks from $500,000 to $20,000,000. Its investment information spans several industries rather than a single sector. A founder can research its stated early-stage approach, but the page does not establish a precise round-stage boundary or a complete geographic mandate.",
+    "sectors": [
+      "*"
+    ],
+    "stages": [],
+    "investmentGeographies": [],
+    "publishedCheckRange": {
+      "min": 500000,
+      "max": 20000000,
+      "currency": "USD",
+      "sourceId": "mandate"
+    },
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": null,
+        "fact": "The firm publishes an early-stage lead-investment approach and a $500,000 to $20,000,000 check range.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": null,
+    "officeCountry": null,
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "sectors": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://www.inspiredcapital.com/",
+        "publisher": "Inspired Capital",
+        "title": "Inspired Capital published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "sectors",
+          "publishedCheckRange"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "flybridge",
+    "slug": "flybridge",
+    "displayName": "Flybridge",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "flybridge",
+    "organisationName": "Flybridge",
+    "officialWebsite": "https://www.flybridge.com/",
+    "summary": "Flybridge leads or co-leads seed investments and publishes a $1,000,000 to $3,000,000 check range for that strategy. It focuses on AI infrastructure, developer platforms and business applications. Its pre-seed activity is described through separately managed Next Wave funds, so this profile keeps the main firm’s seed mandate distinct from those independent investment decisions.",
+    "sectors": [
+      "ai",
+      "developer-tools",
+      "b2b-software",
+      "security"
+    ],
+    "stages": [
+      "seed"
+    ],
+    "investmentGeographies": [],
+    "publishedCheckRange": {
+      "min": 1000000,
+      "max": 3000000,
+      "currency": "USD",
+      "sourceId": "mandate"
+    },
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": null,
+        "fact": "The firm states that its investment team leads or co-leads seed rounds.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": null,
+    "officeCountry": null,
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "sectors": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "stages": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://www.flybridge.com/",
+        "publisher": "Flybridge",
+        "title": "Flybridge published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "sectors",
+          "stages",
+          "publishedCheckRange"
+        ]
+      }
+    ],
+    "researchNotes": "This record describes the main seed strategy. Next Wave pre-seed funds have independent investment partners; later investments may be follow-ons."
+  },
+  {
+    "id": "cowboy-ventures",
+    "slug": "cowboy-ventures",
+    "displayName": "Cowboy Ventures",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "cowboy-ventures",
+    "organisationName": "Cowboy Ventures",
+    "officialWebsite": "https://www.cowboy.vc/",
+    "summary": "Cowboy Ventures describes supporting pre-seed and seed companies and publishes areas of expertise including enterprise software, fintech, developer tools, healthcare and consumer businesses. The site includes an Arcol founder account of a pre-product investment. A business address is published in Palo Alto, while check size and paper-pitch acceptance still need verification.",
+    "sectors": [
+      "b2b-software",
+      "fintech",
+      "developer-tools",
+      "health",
+      "consumer",
+      "ai",
+      "security"
+    ],
+    "stages": [
+      "pre-seed",
+      "seed"
+    ],
+    "investmentGeographies": [],
+    "publishedCheckRange": null,
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": "Arcol",
+        "fact": "The published founder account describes Cowboy backing Arcol at pre-seed before a product.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": {
+      "organisation": "Cowboy Ventures",
+      "lines": [
+        "525 Lytton Ave"
+      ],
+      "city": "Palo Alto, CA",
+      "postalCode": "94301",
+      "country": "US",
+      "addressType": "type-not-established",
+      "sourceId": "mandate",
+      "checkedAt": "2026-09-22"
+    },
+    "officeCountry": "US",
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "sectors": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "stages": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      },
+      "officeCountry": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://www.cowboy.vc/",
+        "publisher": "Cowboy Ventures",
+        "title": "Cowboy Ventures published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "sectors",
+          "stages",
+          "officeCountry",
+          "businessAddress"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "underscore-vc",
+    "slug": "underscore-vc",
+    "displayName": "Underscore VC",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "underscore-vc",
+    "organisationName": "Underscore VC",
+    "officialWebsite": "https://underscore.vc/",
+    "summary": "Underscore VC combines investing with a community of operating experts who support portfolio companies. Its official site identifies Moltin and Mautic among its early investments and publishes a Boston business address. These facts support further research, while this profile leaves the current round stages, check range and investment geography unconfirmed rather than deriving them from office location.",
+    "sectors": [],
+    "stages": [],
+    "investmentGeographies": [],
+    "publishedCheckRange": null,
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": "Moltin",
+        "fact": "The official site identifies Moltin as one of the firm’s early investments.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": {
+      "organisation": "Underscore VC",
+      "lines": [
+        "131 Oliver Street (within 125 High Street)",
+        "3rd Floor"
+      ],
+      "city": "Boston, MA",
+      "postalCode": "02110",
+      "country": "US",
+      "addressType": "type-not-established",
+      "sourceId": "mandate",
+      "checkedAt": "2026-09-22"
+    },
+    "officeCountry": "US",
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      },
+      "officeCountry": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://underscore.vc/",
+        "publisher": "Underscore VC",
+        "title": "Underscore VC published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "officeCountry",
+          "businessAddress"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mgv",
+    "slug": "mgv",
+    "displayName": "MGV",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "mgv",
+    "organisationName": "MGV",
+    "officialWebsite": "https://www.mgv.vc/",
+    "summary": "MGV focuses on enterprise technology and describes supporting founders with sales and commercial development expertise at early company stages. An original announcement by 2048 Ventures names MGV as a participant in Pocket’s pre-seed financing. That transaction adds specific activity evidence, while the firm’s full geographic mandate and typical check remain separate research questions.",
+    "sectors": [
+      "b2b-software"
+    ],
+    "stages": [],
+    "investmentGeographies": [],
+    "publishedCheckRange": null,
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": "Pocket",
+        "fact": "The lead investor’s original announcement names MGV among participants in the pre-seed round.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "pocket"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": null,
+    "officeCountry": null,
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "sectors": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://www.mgv.vc/",
+        "publisher": "MGV",
+        "title": "MGV published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "sectors"
+        ]
+      },
+      {
+        "id": "pocket",
+        "url": "https://2048.vc/blog/our-investment-in-pocket",
+        "publisher": "2048 Ventures",
+        "title": "Pocket pre-seed investment announcement",
+        "publishedAt": "2026-03-30",
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "investmentEvidence"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "1517-fund",
+    "slug": "1517-fund",
+    "displayName": "1517 Fund",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "1517-fund",
+    "organisationName": "1517 Fund",
+    "officialWebsite": "https://www.1517fund.com/",
+    "summary": "1517 Fund focuses on founders outside conventional academic credentials and scientists developing deep technology. Its public site invites submissions from dropouts, students and deep-tech scientists, and describes investing at the earliest company stages. Those founder-specific conditions matter beyond the four matching filters; a published contact form provides the starting point for checking eligibility.",
+    "sectors": [
+      "deep-tech"
+    ],
+    "stages": [],
+    "investmentGeographies": [],
+    "publishedCheckRange": null,
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": null,
+        "fact": "The firm states that it backs dropouts and scientists working on difficult technical problems at early stages.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": {
+      "type": "form",
+      "url": "https://www.1517fund.com/",
+      "sourceId": "mandate"
+    },
+    "businessAddress": null,
+    "officeCountry": null,
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "sectors": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://www.1517fund.com/",
+        "publisher": "1517 Fund",
+        "title": "1517 Fund published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "sectors",
+          "preferredPitchChannel"
+        ]
+      }
+    ],
+    "researchNotes": "Review the founder and scientific eligibility conditions; the four criteria alone cannot confirm them."
+  },
+  {
+    "id": "true-ventures",
+    "slug": "true-ventures",
+    "displayName": "True Ventures",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "true-ventures",
+    "organisationName": "True Ventures",
+    "officialWebsite": "https://www.trueventures.com/",
+    "summary": "True Ventures describes investing from the earliest stages of product and company creation and maintaining involvement as its companies develop. The firm reports a substantial history of backing founders. This profile records that professional investment mandate without converting historical portfolio totals into current available capital, a fixed check size or a complete stage policy.",
+    "sectors": [],
+    "stages": [],
+    "investmentGeographies": [],
+    "publishedCheckRange": null,
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": null,
+        "fact": "The official site states that the firm partners with founders at the earliest stages of company development.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": null,
+    "officeCountry": null,
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://www.trueventures.com/",
+        "publisher": "True Ventures",
+        "title": "True Ventures published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "amplify-partners",
+    "slug": "amplify-partners",
+    "displayName": "Amplify Partners",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "amplify-partners",
+    "organisationName": "Amplify Partners",
+    "officialWebsite": "https://www.amplifypartners.com/",
+    "summary": "Amplify Partners focuses on technical founders building applications, models, developer tools and infrastructure. Its public portfolio includes Temporal, Modal and Chainguard, and a Temporal founder account describes Amplify as the first investor. The technical focus provides a reason for research, while a current round-stage definition, check range and contact route still need confirmation.",
+    "sectors": [
+      "ai",
+      "developer-tools"
+    ],
+    "stages": [],
+    "investmentGeographies": [],
+    "publishedCheckRange": null,
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": "Temporal",
+        "fact": "The official portfolio includes a founder account describing Amplify as Temporal’s first investor.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": null,
+    "officeCountry": null,
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "sectors": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://www.amplifypartners.com/",
+        "publisher": "Amplify Partners",
+        "title": "Amplify Partners published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "sectors"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tau-ventures",
+    "slug": "tau-ventures",
+    "displayName": "Tau Ventures",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "tau-ventures",
+    "organisationName": "Tau Ventures",
+    "officialWebsite": "https://www.tauventures.com/",
+    "summary": "Tau Ventures is based in Palo Alto and describes investing in AI applied to healthcare, enterprise work and automation. Its public materials discuss support from pre-seed and seed through company growth. That gives early-stage founders a specific thematic starting point, while the current check range, geographic mandate and paper contact policy remain unverified here.",
+    "sectors": [
+      "ai",
+      "health",
+      "b2b-software"
+    ],
+    "stages": [
+      "pre-seed",
+      "seed"
+    ],
+    "investmentGeographies": [],
+    "publishedCheckRange": null,
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": null,
+        "fact": "The public investment information names AI in healthcare, enterprise and automation, including pre-seed and seed support.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": null,
+    "officeCountry": "US",
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "sectors": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "stages": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      },
+      "officeCountry": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://www.tauventures.com/",
+        "publisher": "Tau Ventures",
+        "title": "Tau Ventures published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "sectors",
+          "stages",
+          "officeCountry"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fifty-years",
+    "slug": "fifty-years",
+    "displayName": "Fifty Years",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "fifty-years",
+    "organisationName": "Fifty Years",
+    "officialWebsite": "https://fiftyyears.com/",
+    "summary": "Fifty Years states a pre-seed and seed focus on companies using technology to address major problems, including climate and disease. Its public examples include Solugen and Astranis, and it also supports company formation. Scientific or engineering relevance can inform the introduction, but the firm’s programs should be distinguished from a confirmed offer of investment.",
+    "sectors": [
+      "deep-tech",
+      "climate",
+      "health"
+    ],
+    "stages": [
+      "pre-seed",
+      "seed"
+    ],
+    "investmentGeographies": [],
+    "publishedCheckRange": null,
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": "Solugen",
+        "fact": "The official site presents Solugen among its backed companies.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": null,
+    "officeCountry": null,
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "sectors": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "stages": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://fiftyyears.com/",
+        "publisher": "Fifty Years",
+        "title": "Fifty Years published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "sectors",
+          "stages"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "root-ventures",
+    "slug": "root-ventures",
+    "displayName": "Root Ventures",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "root-ventures",
+    "organisationName": "Root Ventures",
+    "officialWebsite": "https://root.vc/",
+    "summary": "Root Ventures is a San Francisco deep-tech seed investor that describes leading initial financing for technical founders. Its published typical initial check is $3,000,000 to $5,000,000. The portfolio includes Particle and Dusty Robotics, offering useful technical context, while the office location does not establish the countries in which the firm will invest.",
+    "sectors": [
+      "deep-tech"
+    ],
+    "stages": [
+      "seed"
+    ],
+    "investmentGeographies": [],
+    "publishedCheckRange": {
+      "min": 3000000,
+      "max": 5000000,
+      "currency": "USD",
+      "sourceId": "mandate"
+    },
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": "Particle",
+        "fact": "Included in the firm’s public portfolio.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": null,
+    "officeCountry": "US",
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "sectors": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "stages": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      },
+      "officeCountry": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://root.vc/",
+        "publisher": "Root Ventures",
+        "title": "Root Ventures published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "sectors",
+          "stages",
+          "publishedCheckRange",
+          "officeCountry"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lemnos",
+    "slug": "lemnos",
+    "displayName": "Lemnos",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "lemnos",
+    "organisationName": "Lemnos",
+    "officialWebsite": "https://www.lemnos.vc/",
+    "summary": "Lemnos describes investing in hardware and deep technology at the earliest stages of company development. Its stated work with founders spans engineering, manufacturing, marketing and financing. That hardware emphasis is useful for an initial relevance check, while the reviewed site leaves precise funding stages, investment geography and the amount of a new check unspecified.",
+    "sectors": [
+      "deep-tech",
+      "industrial"
+    ],
+    "stages": [],
+    "investmentGeographies": [],
+    "publishedCheckRange": null,
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": null,
+        "fact": "The official site describes an early-stage hardware and deep-technology investment focus.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": null,
+    "officeCountry": null,
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "sectors": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://www.lemnos.vc/",
+        "publisher": "Lemnos",
+        "title": "Lemnos published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "sectors"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "congruent-ventures",
+    "slug": "congruent-ventures",
+    "displayName": "Congruent Ventures",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "congruent-ventures",
+    "organisationName": "Congruent Ventures",
+    "officialWebsite": "https://www.congruentvc.com/",
+    "summary": "Congruent Ventures backs climate technology companies based in North America, with initial investments from company formation through Series A. It describes interest in physical technology, software and business-model innovation. The firm publishes an office address and a dedicated email for investment submissions, but does not confirm personal receipt or acceptance of unsolicited paper pitches.",
+    "sectors": [
+      "climate"
+    ],
+    "stages": [
+      "pre-seed",
+      "seed",
+      "series-a"
+    ],
+    "investmentGeographies": [
+      "US",
+      "CA"
+    ],
+    "publishedCheckRange": null,
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": null,
+        "fact": "The firm publishes a North America mandate and initial investments from company formation to Series A.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": {
+      "type": "email-page",
+      "url": "https://www.congruentvc.com/",
+      "sourceId": "mandate"
+    },
+    "businessAddress": {
+      "organisation": "Congruent Ventures",
+      "lines": [
+        "201 Mission St",
+        "Suite 650"
+      ],
+      "city": "San Francisco, CA",
+      "postalCode": "94105",
+      "country": "US",
+      "addressType": "operating-office",
+      "sourceId": "mandate",
+      "checkedAt": "2026-09-22"
+    },
+    "officeCountry": "US",
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "sectors": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "stages": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "investmentGeographies": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      },
+      "officeCountry": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://www.congruentvc.com/",
+        "publisher": "Congruent Ventures",
+        "title": "Congruent Ventures published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "sectors",
+          "stages",
+          "investmentGeographies",
+          "officeCountry",
+          "preferredPitchChannel",
+          "businessAddress"
+        ]
+      }
+    ],
+    "researchNotes": "The listed countries are a partial normalization of North America; other countries in the region require individual review."
+  },
+  {
+    "id": "climactic",
+    "slug": "climactic",
+    "displayName": "Climactic",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "climactic",
+    "organisationName": "Climactic",
+    "officialWebsite": "https://www.climactic.vc/",
+    "summary": "Climactic focuses on physical AI, energy technology and businesses that convert waste into useful value. Its published portfolio includes Copper, Gritt Robotics and WeaveGrid. Those examples establish concrete areas for researching a company-specific connection, while the reviewed page does not provide a complete new-investment stage policy, check range or geography for automated matching.",
+    "sectors": [
+      "ai",
+      "climate"
+    ],
+    "stages": [],
+    "investmentGeographies": [],
+    "publishedCheckRange": null,
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": "Gritt Robotics",
+        "fact": "Included in Climactic’s featured investments.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": null,
+    "officeCountry": null,
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "sectors": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://www.climactic.vc/",
+        "publisher": "Climactic",
+        "title": "Climactic published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "sectors"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lowercarbon-capital",
+    "slug": "lowercarbon-capital",
+    "displayName": "Lowercarbon Capital",
+    "entityType": "organisation",
+    "investorType": "vc",
+    "organisationId": "lowercarbon-capital",
+    "organisationName": "Lowercarbon Capital",
+    "officialWebsite": "https://lowercarbon.com/",
+    "summary": "Lowercarbon Capital invests in technologies intended to reduce emissions, remove atmospheric carbon or limit climate damage. Its public examples include Antora, Crux and Solugen. The climate focus offers a clear research rationale, but this profile does not infer a particular funding stage, check amount or geographic mandate from the firm’s portfolio examples.",
+    "sectors": [
+      "climate"
+    ],
+    "stages": [],
+    "investmentGeographies": [],
+    "publishedCheckRange": null,
+    "publicContactPeople": [],
+    "investmentEvidence": [
+      {
+        "company": "Antora",
+        "fact": "The firm presents Antora among its backed companies.",
+        "eventDate": null,
+        "datePrecision": null,
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    ],
+    "preferredPitchChannel": null,
+    "businessAddress": null,
+    "officeCountry": null,
+    "recipientRoutingStatus": {
+      "status": "not-confirmed"
+    },
+    "paperPitchPolicy": {
+      "status": "unknown"
+    },
+    "editorialUpdatedAt": "2026-09-22",
+    "publicationStatus": "published",
+    "fieldEvidence": {
+      "sectors": {
+        "sourceIds": [
+          "mandate"
+        ],
+        "exhaustive": false
+      },
+      "summary": {
+        "sourceIds": [
+          "mandate"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "id": "mandate",
+        "url": "https://lowercarbon.com/",
+        "publisher": "Lowercarbon Capital",
+        "title": "Lowercarbon Capital published investment information",
+        "publishedAt": null,
+        "checkedAt": "2026-09-22",
+        "supportsFields": [
+          "summary",
+          "investmentEvidence",
+          "sectors"
+        ]
+      }
+    ]
+  }
+]

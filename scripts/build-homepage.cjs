@@ -33,7 +33,8 @@ const shared = {
   pricing: element(home, home.indexOf('<div class="pricing-grid">', campaign), 'div'),
   form: home.slice(formStart, successStart) + element(home, successStart, 'div'),
   contacts: element(home, home.indexOf('<div class="after-form">'), 'div'),
-  footer: element(home, home.indexOf('<footer>'), 'footer').replace('href="#main"', 'href="#main-content"')
+  // Investor Match's compact promotion belongs on the homepage only.
+  footer: element(home, home.indexOf('<footer>'), 'footer').replace('href="#main"', 'href="#main-content"').replace('\n    <a href="/investors/">Investor Match</a>', '')
 };
 let ms = fs.readFileSync(path.join(root, 'ms.html'), 'utf8');
 for (const [name, html] of Object.entries(shared)) {

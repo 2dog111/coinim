@@ -1,5 +1,22 @@
 # coin.im Project Specification
 
+## Investor Match, 2026-09-22
+
+The new module at `/investors/` is a directory of professional early investors,
+with deterministic matching on sector, funding stage, investment geography and
+published USD check size. It does not classify personal wealth, predict risk
+appetite or publish private residential contact data. The owner specified US
+outreach and authorized VPS deployment. Deployed as static release
+`20260922T153944Z-investor-match`, with the previous release retained for rollback.
+
+The deployed catalogue contains 40 researched organisation profiles, 6 business
+addresses and no confirmed paper-pitch routes. The target of 100 remains incomplete.
+The shortlist uses the existing homepage inquiry's `audience` field after an
+explicit user action; no new API or sending service is added. Canonical data and
+editorial workflow are documented in `docs/investor-match-mvp.md`. Previous
+millionaire/wealth-ranking concepts are not MVP features; there was no legacy
+`/millionaires/` route in this workspace to redirect.
+
 ## Market Scan campaign page contract, 2026-09-14
 
 The owner's third brief builds on the first two locally. /ms explains audience

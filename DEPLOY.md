@@ -1,5 +1,26 @@
 # coin.im VPS Deploy
 
+## Investor Match production release, 2026-09-22
+
+Deployed static release `/var/www/coin.im/releases/20260922T153944Z-investor-match`.
+The previous `20260914T065214Z-campaign-v3` release remains for rollback. The
+configured `coinim-vps` connection initially timed out, then succeeded without
+changing credentials or network configuration.
+
+`reference/release-investor-match.json` contains the exact seven public files and
+hashes. The matching overlay is `/tmp/coin-im-20260922-investor-match-mvp.tar.gz`.
+The active baseline was cloned and only those seven files changed. Existing
+Nginx `try_files` serves `/investors/` and redirects `/investors`; configuration
+was unchanged. Backend releases, persistent data, DNS and mail remain unchanged.
+Public verification passed 32 HTTPS checks, all seven file hashes, handling headers
+and unchanged message-wall slots. See VERSIONS.md for the exact backup paths.
+
+Additional allowlist: `investors/index.html`, `assets/investor-core.js`,
+`assets/investors.js`, `assets/investors.css`, `assets/investor-handoff.js`.
+Never deploy `content/`, private publication reviews, research queues, raw imports,
+scripts or screenshots. The 40-profile catalogue is incomplete against the target
+of 100; it does not claim paper-route readiness.
+
 Production is served from the VPS.
 
 - Host: `iva`

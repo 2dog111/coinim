@@ -3,15 +3,17 @@
   "private": true,
   "version": "2026.8.29",
   "scripts": {
-    "lint": "node --check assets/takeover.js && PYTHONPATH=server ${COIN_PYTHON:-.venv/bin/python} -m tabnanny server/coin_market server/tests_market && node --check assets/contact-ui.js && node --check assets/campaign-tools.js && node --check assets/campaign-pricing.js && node --check assets/ms-campaign.js && node --check scripts/build-homepage.cjs",
-    "test": "PYTHONPATH=server ${COIN_PYTHON:-.venv/bin/python} -m unittest discover -s server/tests_market -v && PYTHONPATH=server ${COIN_PYTHON:-.venv/bin/python} -m unittest discover -s server/tests_open -v && node scripts/test-calculator.cjs",
+    "lint": "node --check assets/takeover.js && PYTHONPATH=server ${COIN_PYTHON:-.venv/bin/python} -m tabnanny server/coin_market server/tests_market && node --check assets/contact-ui.js && node --check assets/campaign-tools.js && node --check assets/campaign-pricing.js && node --check assets/ms-campaign.js && node --check scripts/build-homepage.cjs && node --check assets/investor-core.js && node --check assets/investors.js && node --check assets/investor-handoff.js && node --check scripts/build-investors.cjs && node --check scripts/import-investors.cjs",
+    "test": "PYTHONPATH=server ${COIN_PYTHON:-.venv/bin/python} -m unittest discover -s server/tests_market -v && PYTHONPATH=server ${COIN_PYTHON:-.venv/bin/python} -m unittest discover -s server/tests_open -v && node scripts/test-calculator.cjs && node scripts/test-investors.cjs",
     "typecheck": "PYTHONPATH=server ${COIN_PYTHON:-.venv/bin/python} -m compileall -q server/coin_market server/tests_market",
-    "build": "node scripts/build-homepage.cjs && PYTHONPATH=server ${COIN_PYTHON:-.venv/bin/python} -m coin_market.cli migrate",
+    "build": "node scripts/build-investors.cjs && node scripts/build-homepage.cjs && PYTHONPATH=server ${COIN_PYTHON:-.venv/bin/python} -m coin_market.cli migrate",
     "verify-environment": "PYTHONPATH=server .venv/bin/python -m coin_market.cli verify-environment",
     "reconcile-payments": "PYTHONPATH=server .venv/bin/python -m coin_market.cli reconcile-payments",
     "reconcile-reigns": "PYTHONPATH=server .venv/bin/python -m coin_market.cli reconcile-reigns",
     "clear-expired-takeover-locks": "PYTHONPATH=server .venv/bin/python -m coin_market.cli clear-expired-takeover-locks",
     "process-outbox": "PYTHONPATH=server .venv/bin/python -m coin_market.cli process-outbox",
-    "production-smoke": "PYTHONPATH=server .venv/bin/python -m coin_market.cli production-smoke"
+    "production-smoke": "PYTHONPATH=server .venv/bin/python -m coin_market.cli production-smoke",
+    "build:investors": "node scripts/build-investors.cjs",
+    "import:investors": "node scripts/import-investors.cjs"
   }
 }

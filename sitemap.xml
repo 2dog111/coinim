@@ -65,4 +65,5 @@
     <priority>0.8</priority>
   </url>
   <url><loc>https://coin.im/message</loc></url>
+  <url><loc>https://coin.im/investors/</loc><lastmod>2026-09-22</lastmod></url>
 </urlset>

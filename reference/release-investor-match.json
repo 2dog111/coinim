@@ -1,0 +1,28 @@
+{
+  "version": "20260922-investor-match-mvp",
+  "status": "deployed",
+  "destination": "coin.im VPS via coinim-vps",
+  "route": "/investors/",
+  "staticFiles": {
+    "index.html": "e8b06452abb85621adecf57a5dad83489a9731e926c9a1d3f6ffa93fb366cf09",
+    "sitemap.xml": "9020d280738724b006511221ca746cde77da6fe41888496ecf94b570eddc96a2",
+    "investors/index.html": "162fa413da317e28494b5908fbf3a305cf627e47d44cf1658a714511be4c29e3",
+    "assets/investor-core.js": "ce9962c2d4229015de2f2dc0e102544e8d48a99972c9b03f15a6d57662cc891e",
+    "assets/investor-handoff.js": "12df27960462903a0e4e87d9cd0b465ca9c32c7bfae3316d73a7267b604725b3",
+    "assets/investors.css": "3c6a4fd175f3d6f5f8452b116c07050873ebdd5a3473f1894655257a15383524",
+    "assets/investors.js": "74d4f744287ea209867c59416057ac9f593594f140156059a0f354045d09fc53"
+  },
+  "baselineFiles": {
+    "index.html": "c4bd1c2ddfa53422e050ee3710dcfd5e71890d171b245afdbc98d12b97e571fb",
+    "sitemap.xml": "bf3309907eb995e13c2716ca7b45067ce788e509049cef3bf5a8da970190ea56"
+  },
+  "publishedProfileCount": 40,
+  "businessAddressCount": 6,
+  "confirmedPaperRouteCount": 0,
+  "remainingTo100": 60,
+  "activeRelease": "/var/www/coin.im/releases/20260922T153944Z-investor-match",
+  "previousRelease": "/var/www/coin.im/releases/20260914T065214Z-campaign-v3",
+  "verifiedPublicHttpChecks": 32,
+  "marketBackup": "/var/lib/coin-im-market/backups/market-20260922T154009Z.sqlite3",
+  "nginxBackup": "/var/backups/coin-im/20260922T153944Z-investor-match/nginx.conf"
+}
