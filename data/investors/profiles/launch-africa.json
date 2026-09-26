@@ -1,0 +1,78 @@
+{
+  "id": "org-launch-africa",
+  "slug": "launch-africa",
+  "displayName": "Launch Africa Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.launchafrica.vc/",
+  "summary": "Launch Africa Ventures is a pan-African fund addressing the funding gap between seed and pre-Series A. Its FAQ states a focus on pre-seed, seed, pre-Series A and Series A investments in companies whose core operations and teams are located in Africa. The site lists two seed fund portfolios and a pitch form, and publishes an info email. Check size, sector focus and a street address are not stated.",
+  "sectors": [],
+  "stages": [
+    "pre-seed",
+    "seed",
+    "series-a"
+  ],
+  "investmentGeographies": [
+    "africa"
+  ],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "stages": [
+      "faq"
+    ],
+    "investmentGeographies": [
+      "faq"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Seed Fund I and II portfolios",
+      "fact": "The homepage links portfolio pages for two seed funds; individual companies and dates are not listed on the homepage.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://v7ssvh9rrnd.typeform.com/to/pjBZX4SM",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "faq",
+      "url": "https://www.launchafrica.vc/faqs",
+      "publisher": "Launch Africa Ventures",
+      "title": "FAQ: stages, African operations requirement and Series A readiness",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "investmentGeographies"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://www.launchafrica.vc/",
+      "publisher": "Launch Africa Ventures",
+      "title": "Homepage: pan-African positioning, fund portfolios, pitch link and email",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence",
+        "preferredPitchChannel"
+      ]
+    }
+  ],
+  "geographyScope": "exhaustive"
+}

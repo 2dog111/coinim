@@ -1,0 +1,103 @@
+{
+  "id": "org-hetz-ventures",
+  "slug": "hetz-ventures",
+  "displayName": "Hetz Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.hetz.vc/",
+  "summary": "Hetz Ventures describes itself as Israel's seed fund for AI infrastructure and cyber. Its homepage says it leads rounds, puts founders in front of a network of data and security executives, and highlights partner programmes with Databricks, Snowflake, Confluent and Grafana. The news section links seed rounds such as Keewano ($12,000,000) and Arrakis ($8,000,000). The team page names the managing partner and general partners. Check size, an application form and a street address are not stated on the pages reviewed.",
+  "sectors": [
+    "ai",
+    "developer-tools",
+    "security"
+  ],
+  "stages": [
+    "seed"
+  ],
+  "investmentGeographies": [
+    "israel"
+  ],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "stages": [
+      "home"
+    ],
+    "investmentGeographies": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [
+    {
+      "name": "Judah Taub",
+      "role": "Co-founder and Managing Partner",
+      "sourceId": "team",
+      "reviewedAt": "2026-09-17"
+    },
+    {
+      "name": "Pavel Livshiz",
+      "role": "General Partner, cyber",
+      "sourceId": "team",
+      "reviewedAt": "2026-09-17"
+    }
+  ],
+  "investmentEvidence": [
+    {
+      "company": "Keewano",
+      "fact": "The homepage links a news item on Keewano raising a $12 million seed round to build a database for AI agents. The date is not shown on the homepage.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Arrakis",
+      "fact": "The homepage links a news item on Arrakis raising an $8M seed round to secure AI agents. The date is not shown on the homepage.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": null,
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.hetz.vc/",
+      "publisher": "Hetz Ventures",
+      "title": "Homepage: Israel seed fund for AI infrastructure and cyber, lead role, news links",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "investmentGeographies",
+        "investmentEvidence"
+      ]
+    },
+    {
+      "id": "team",
+      "url": "https://www.hetz.vc/our-team",
+      "publisher": "Hetz Ventures",
+      "title": "Our team: partners and roles",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "publicContactPeople"
+      ]
+    }
+  ],
+  "sectorScope": "exhaustive",
+  "geographyScope": "exhaustive"
+}

@@ -1,0 +1,99 @@
+{
+  "id": "org-harlem-capital",
+  "slug": "harlem-capital",
+  "displayName": "Harlem Capital",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://harlem.capital/",
+  "summary": "Harlem Capital is a New York venture firm with a stated mission of backing women and diverse entrepreneurs. Its Pitch page says the firm manages $230,000,000 and is currently making investments of $1,000,000 to $2,500,000 in priced or capped pre-seed and seed rounds, only in United States based companies, with at least one full-time founder and a $1B+ market. It says it generally does not invest in biotech, consumer products or cannabis. Founders submit an investment form on that page.",
+  "sectors": [],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [
+    "us"
+  ],
+  "publishedCheckRange": {
+    "min": 1000000,
+    "max": 2500000,
+    "currency": "USD",
+    "sourceId": "pitch",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "stages": [
+      "pitch"
+    ],
+    "investmentGeographies": [
+      "pitch"
+    ]
+  },
+  "publicContactPeople": [
+    {
+      "name": "Henri Pierre-Jacques",
+      "role": "Managing Partner (named on the homepage)",
+      "sourceId": "home",
+      "reviewedAt": "2026-09-17"
+    },
+    {
+      "name": "Jarrid Tingle",
+      "role": "Managing Partner (named on the homepage)",
+      "sourceId": "home",
+      "reviewedAt": "2026-09-17"
+    }
+  ],
+  "investmentEvidence": [
+    {
+      "company": "Portfolio of 70+ investments",
+      "fact": "The homepage states more than 70 investments spanning more than 10 cities; individual companies are listed on the portfolio page. Dates are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://harlem.capital/pitch/",
+    "sourceId": "pitch"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "pitch",
+      "url": "https://harlem.capital/pitch/",
+      "publisher": "Harlem Capital",
+      "title": "Pitch page: check size, stage, US-only rule, exclusions and investment form",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "investmentGeographies",
+        "publishedCheckRange",
+        "preferredPitchChannel"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://harlem.capital/",
+      "publisher": "Harlem Capital",
+      "title": "Homepage: partners, 70+ investments across 10+ cities",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "publicContactPeople",
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "geographyScope": "exhaustive"
+}

@@ -1,0 +1,94 @@
+{
+  "id": "org-microtraction",
+  "slug": "microtraction",
+  "displayName": "Microtraction",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.microtraction.com/",
+  "summary": "Microtraction provides pre-seed funding for African technology entrepreneurs. Its homepage says it invests $100,000 in teams with a technical founder at the earliest stage, and lists fit criteria such as identified customers, a built MVP and a two-to-three person team. The FAQ states standard terms of $100,000 for 7%, up to $350,000 more in later rounds, a sector-agnostic view, and a focus on African founders building global businesses. Founders apply through a form. A street address is not stated.",
+  "sectors": [
+    "agnostic"
+  ],
+  "stages": [
+    "pre-seed"
+  ],
+  "investmentGeographies": [
+    "africa"
+  ],
+  "publishedCheckRange": {
+    "min": 100000,
+    "max": 100000,
+    "currency": "USD",
+    "sourceId": "home",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "faq"
+    ],
+    "stages": [
+      "home"
+    ],
+    "investmentGeographies": [
+      "home",
+      "faq"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Portfolio",
+      "fact": "The FAQ and homepage describe Microtraction as a first check into African founders; individual companies such as LemFi and Risevest are linked from the homepage without round or date.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "faq",
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://microtraction.typeform.com/to/XxhWNJ",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.microtraction.com/",
+      "publisher": "Microtraction",
+      "title": "Homepage: $100k pre-seed checks for African technical founders and application link",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "investmentGeographies",
+        "publishedCheckRange",
+        "preferredPitchChannel"
+      ]
+    },
+    {
+      "id": "faq",
+      "url": "https://www.microtraction.com/frequently-asked-questions",
+      "publisher": "Microtraction",
+      "title": "FAQ: standard terms, follow-on, sector-agnostic view and geography",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "publishedCheckRange",
+        "investmentGeographies",
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "geographyScope": "exhaustive"
+}

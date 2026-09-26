@@ -1,0 +1,87 @@
+{
+  "id": "org-wischoff-ventures",
+  "slug": "wischoff-ventures",
+  "displayName": "Wischoff Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.wischoff.com/",
+  "summary": "Wischoff Ventures is a small firm led by founder and managing partner Nichole Wischoff. Its About page states that it invests in early-stage, high-growth technology companies and leads rounds at pre-seed and seed, and it publishes a deals email for founders. The homepage lists portfolio companies including Coast, Culdesac and Cargado. The website does not state a sector focus, geography, check size or street address, so those remain to be confirmed directly.",
+  "sectors": [],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "stages": [
+      "about"
+    ]
+  },
+  "publicContactPeople": [
+    {
+      "name": "Nichole Wischoff",
+      "role": "Founder and Managing Partner",
+      "sourceId": "about",
+      "reviewedAt": "2026-09-17"
+    }
+  ],
+  "investmentEvidence": [
+    {
+      "company": "Coast",
+      "fact": "Linked on the homepage as a portfolio company. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Culdesac",
+      "fact": "Linked on the homepage as a portfolio company. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "email",
+    "url": "mailto:deals@wischoff.com",
+    "sourceId": "about"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "about",
+      "url": "https://www.wischoff.com/about",
+      "publisher": "Wischoff Ventures",
+      "title": "About page: stage, team and contact email",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "publicContactPeople",
+        "preferredPitchChannel"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://www.wischoff.com/",
+      "publisher": "Wischoff Ventures",
+      "title": "Homepage: portfolio company links",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence"
+      ]
+    }
+  ]
+}

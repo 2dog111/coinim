@@ -64,17 +64,19 @@
     busy=true;button.disabled=true;button.textContent='Sending…';form.setAttribute('aria-busy','true');status.textContent='';status.classList.remove('is-error');
     const payload=Object.fromEntries(new FormData(form));payload.request_id=requestId;
     payload.channel ||= 'Email';
-    if (document.body.dataset.campaignSource === '/ms') payload.source = '/ms';
+    const source = document.body.dataset.campaignSource;
+    if (source === '/ms' || source === '/investors') payload.source = source;
+    if ('investor_slugs' in payload) payload.investor_slugs = payload.investor_slugs ? String(payload.investor_slugs).split(',') : [];
     if (interest) payload.campaign_interest = interest.value;
     const controller = new AbortController();const timer=setTimeout(()=>controller.abort(),25000);
     try {
       const response=await fetch('/api/open/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),signal:controller.signal});
       const result=await response.json();
-      if (!response.ok || result.received!==true) throw new Error('Unconfirmed');
+      if (!response.ok || result.received!==true) throw new Error(response.status===422 && source==='/investors' && typeof result.error==='string' ? 'validation:'+result.error : 'Unconfirmed');
       form.hidden=true;const success=document.querySelector('#enquiry-success');success.hidden=false;success.focus();
       event('lead_submitted');
-    } catch (_) {
-      status.classList.add('is-error');status.textContent=errorMessage;
+    } catch (error) {
+      status.classList.add('is-error');status.textContent=String(error.message).startsWith('validation:') ? error.message.slice(11)+' Your entries are still here.' : errorMessage;
       event('lead_submit_failed');
     } finally {clearTimeout(timer);busy=false;button.disabled=false;button.textContent=buttonLabel;form.removeAttribute('aria-busy');}
   });

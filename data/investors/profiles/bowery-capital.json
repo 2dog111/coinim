@@ -1,0 +1,68 @@
+{
+  "id": "org-bowery-capital",
+  "slug": "bowery-capital",
+  "displayName": "Bowery Capital",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://bowerycap.com/",
+  "summary": "Bowery Capital is a venture firm with offices in New York and San Francisco that describes a thesis-driven focus on next-generation business software and founders modernizing business through technology. Its Philosophy page says it raises modestly sized funds and specialises in go-to-market and early talent support. The site publishes portfolio announcements such as Enata and insights on vertical AI. Stage, check size, geography, an application route and a street address are not stated on the site.",
+  "sectors": [
+    "b2b-software",
+    "ai"
+  ],
+  "stages": [],
+  "investmentGeographies": [],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "sectors": [
+      "philosophy",
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Enata",
+      "fact": "The homepage links a post announcing the firm’s investment in Enata. The round and date are not stated in the listing.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": null,
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "philosophy",
+      "url": "https://bowerycap.com/philosophy",
+      "publisher": "Bowery Capital",
+      "title": "Philosophy page: business software thesis, offices and fund approach",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://bowerycap.com/",
+      "publisher": "Bowery Capital",
+      "title": "Homepage: B2B focus, team approach and portfolio announcements",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "sectorScope": "examples"
+}

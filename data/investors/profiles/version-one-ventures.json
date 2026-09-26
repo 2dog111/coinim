@@ -1,0 +1,81 @@
+{
+  "id": "org-version-one-ventures",
+  "slug": "version-one-ventures",
+  "displayName": "Version One Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://versionone.vc/",
+  "summary": "Version One Ventures backs mission-driven founders who are early in new areas and says it can make the greatest impact as a seed investor. Its Core Beliefs page states that it typically leads or co-leads with an investment of $500,000 to $1,500,000, often follows on through multiple rounds, and that generational companies are not limited by geography. Sector focus, a formal geography, an application route and a street address are not stated on the pages reviewed.",
+  "sectors": [],
+  "stages": [
+    "seed"
+  ],
+  "investmentGeographies": [],
+  "publishedCheckRange": {
+    "min": 500000,
+    "max": 1500000,
+    "currency": "USD",
+    "sourceId": "beliefs",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "stages": [
+      "beliefs"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Mowito",
+      "fact": "The homepage links a post announcing the investment in Mowito (physical AI for robot arms). The date is not shown on the homepage.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Pilot",
+      "fact": "The homepage links a post announcing the investment in Pilot (the internet for agents). The date is not shown on the homepage.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": null,
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "beliefs",
+      "url": "https://versionone.vc/core-beliefs/",
+      "publisher": "Version One Ventures",
+      "title": "Core Beliefs: seed focus, lead or co-lead, investment size",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "publishedCheckRange"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://versionone.vc/",
+      "publisher": "Version One Ventures",
+      "title": "Homepage: mission-driven founders and investment announcements",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence"
+      ]
+    }
+  ]
+}

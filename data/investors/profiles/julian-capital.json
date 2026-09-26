@@ -1,0 +1,96 @@
+{
+  "id": "org-julian-capital",
+  "slug": "julian-capital",
+  "displayName": "Julian Capital",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.julian.capital/",
+  "summary": "Julian Capital is a deep tech seed fund run by Julian Shapiro that says it takes bets on crazy ideas very early across every hardware sector. Its homepage states pre-seed and seed stage, investments of $500,000 to $2,000,000 roughly once a month, up to $15,000,000 of follow-on into its best companies, and a promise to read every submitted deck, including idea-stage submissions. Geography and a street address are not stated.",
+  "sectors": [
+    "deep-tech",
+    "hardware",
+    "space",
+    "biotech",
+    "climate"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [],
+  "publishedCheckRange": {
+    "min": 500000,
+    "max": 2000000,
+    "currency": "USD",
+    "sourceId": "home",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "stages": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [
+    {
+      "name": "Julian Shapiro",
+      "role": "Founder (listed on the team section)",
+      "sourceId": "home",
+      "reviewedAt": "2026-09-17"
+    }
+  ],
+  "investmentEvidence": [
+    {
+      "company": "Extropic",
+      "fact": "Featured on the homepage as a pre-seed investment in 2022 (probabilistic chips, founder Guillaume Verdon).",
+      "eventDate": "2022",
+      "datePrecision": "year",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Aalo",
+      "fact": "Featured on the homepage as a seed investment in 2023 (nuclear reactors, founder Matt Loszak).",
+      "eventDate": "2023",
+      "datePrecision": "year",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://www.julian.capital/",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.julian.capital/",
+      "publisher": "Julian Capital",
+      "title": "Homepage: stage, check size, cadence, follow-on, deck submission and dated featured portfolio",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "publishedCheckRange",
+        "preferredPitchChannel",
+        "investmentEvidence",
+        "publicContactPeople"
+      ]
+    }
+  ],
+  "sectorScope": "exhaustive"
+}

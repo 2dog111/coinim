@@ -1,0 +1,108 @@
+{
+  "id": "org-ascension",
+  "slug": "ascension",
+  "displayName": "Ascension",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.ascension.vc/",
+  "summary": "Ascension is a London-based venture firm backing founders at pre-seed and seed across the United Kingdom, Europe and North America through generalist and institutional thesis-driven funds. Its Founders page states a ticket size of £150,000 to £850,000, and an application form that it says receives a reply within a week. The homepage shows portfolio timelines such as Credit Kudos, seed 2019 and acquired by Apple in 2022. The site shows a Great Portland Street address.",
+  "sectors": [],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [
+    "uk",
+    "europe",
+    "north-america"
+  ],
+  "publishedCheckRange": {
+    "min": 150000,
+    "max": 850000,
+    "currency": "GBP",
+    "sourceId": "founders",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "stages": [
+      "founders"
+    ],
+    "investmentGeographies": [
+      "founders"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Credit Kudos",
+      "fact": "Homepage timeline says Ascension invested in the seed round in 2019 and the company was acquired by Apple in 2022.",
+      "eventDate": "2019",
+      "datePrecision": "year",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Stream",
+      "fact": "Shown on the homepage as a growing fintech portfolio company. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://www.ascension.vc/founders",
+    "sourceId": "founders"
+  },
+  "businessAddress": {
+    "organisation": "Ascension",
+    "lines": [
+      "99 Great Portland Street"
+    ],
+    "city": "London",
+    "postalCode": null,
+    "country": "GB",
+    "addressType": "type-not-established",
+    "sourceId": "founders",
+    "checkedAt": "2026-09-17"
+  },
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "founders",
+      "url": "https://www.ascension.vc/founders",
+      "publisher": "Ascension",
+      "title": "Founders page: stage, ticket size, geography, process, application form and address",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "investmentGeographies",
+        "publishedCheckRange",
+        "preferredPitchChannel",
+        "businessAddress"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://www.ascension.vc/",
+      "publisher": "Ascension",
+      "title": "Homepage: portfolio examples with investment timelines",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "geographyScope": "exhaustive"
+}

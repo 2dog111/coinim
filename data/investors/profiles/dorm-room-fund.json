@@ -1,0 +1,71 @@
+{
+  "id": "org-dorm-room-fund",
+  "slug": "dorm-room-fund",
+  "displayName": "Dorm Room Fund",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.dormroomfund.com/",
+  "summary": "Dorm Room Fund writes the first check for founders who are still in school or recently graduated, generally up to two years after graduation, and has done so since 2012. Its homepage reports more than 339 companies backed with more than $14,000,000,000 in follow-on capital, and profiles alumni such as Cursor founder Michael Truell. Founders apply through a linked form. Check size, sector focus, geography and a street address are not stated on the pages reviewed.",
+  "sectors": [],
+  "stages": [
+    "pre-seed"
+  ],
+  "investmentGeographies": [],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "stages": [
+      "home",
+      "how"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Cursor",
+      "fact": "The homepage says the fund backed Michael Truell (MIT, 2022) before he had an idea or product.",
+      "eventDate": "2022",
+      "datePrecision": "year",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://airtable.com/appP6NRnqNGp9XyEH/shrIkIQTZqkdcS05v",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.dormroomfund.com/",
+      "publisher": "Dorm Room Fund",
+      "title": "Homepage: first-check focus, student founders, numbers and application link",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "investmentEvidence",
+        "preferredPitchChannel"
+      ]
+    },
+    {
+      "id": "how",
+      "url": "https://www.dormroomfund.com/how",
+      "publisher": "Dorm Room Fund",
+      "title": "How we work: eligibility and process",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages"
+      ]
+    }
+  ]
+}

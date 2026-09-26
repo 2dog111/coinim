@@ -1,0 +1,56 @@
+{
+  "id": "org-ludlow-ventures",
+  "slug": "ludlow-ventures",
+  "displayName": "Ludlow Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.ludlowventures.com/",
+  "summary": "Ludlow Ventures is an early-stage venture firm established in 2010 whose homepage says its approach has not changed since: meet exceptional founders early, build real relationships and back them. Founder testimonials on the site describe the firm as a first investor and seed investor in companies such as Honey, StockX and Density. The website publishes a portfolio list and team names, but no stage definition, sector focus, geography, check size, application route or street address.",
+  "sectors": [],
+  "stages": [],
+  "investmentGeographies": [],
+  "publishedCheckRange": null,
+  "fieldEvidence": {},
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Honey",
+      "fact": "Co-founder Ryan Hudson is quoted on the homepage saying Ludlow was among the first investors in the seed round. The date is not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "StockX",
+      "fact": "Co-founder Greg Schwartz is quoted on the homepage describing Ludlow as a partner since the beginning. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": null,
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.ludlowventures.com/",
+      "publisher": "Ludlow Ventures",
+      "title": "Homepage: approach, founder testimonials and portfolio links",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence"
+      ]
+    }
+  ]
+}

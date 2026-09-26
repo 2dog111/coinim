@@ -1,0 +1,109 @@
+{
+  "id": "org-tall-order",
+  "slug": "tall-order",
+  "displayName": "Tall Order",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://tallorder.vc/",
+  "summary": "Tall Order, formerly Skalata, is a Melbourne fund writing first cheques for AI-native founders. Its Founders page states a first cheque of up to A$1,000,000 followed by hands-on support toward the first ten customers and the next round, and the site notes that fund interests are for wholesale investors only. The portfolio lists companies such as Tability and Restoke. Founders use a pitch form. Stage, geography and sector beyond AI-native are not stated; the footer shows a South Yarra address.",
+  "sectors": [
+    "ai"
+  ],
+  "stages": [],
+  "investmentGeographies": [],
+  "publishedCheckRange": {
+    "min": null,
+    "max": 1000000,
+    "currency": "AUD",
+    "sourceId": "founders",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Tability",
+      "fact": "Linked from the homepage portfolio. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Restoke",
+      "fact": "Linked from the homepage portfolio. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://tallorder.vc/pitch",
+    "sourceId": "contact"
+  },
+  "businessAddress": {
+    "organisation": "Tall Order",
+    "lines": [
+      "237 Toorak Rd"
+    ],
+    "city": "South Yarra VIC",
+    "postalCode": "3141",
+    "country": "AU",
+    "addressType": "type-not-established",
+    "sourceId": "home",
+    "checkedAt": "2026-09-17"
+  },
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "founders",
+      "url": "https://tallorder.vc/founders",
+      "publisher": "Tall Order",
+      "title": "Founders page: first cheque up to A$1M and support model",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "publishedCheckRange"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://tallorder.vc/",
+      "publisher": "Tall Order",
+      "title": "Homepage: AI-native first cheques positioning, portfolio links and footer address",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "investmentEvidence",
+        "businessAddress"
+      ]
+    },
+    {
+      "id": "contact",
+      "url": "https://tallorder.vc/contact",
+      "publisher": "Tall Order",
+      "title": "Contact page: founders directed to the pitch form",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "preferredPitchChannel"
+      ]
+    }
+  ],
+  "sectorScope": "examples"
+}

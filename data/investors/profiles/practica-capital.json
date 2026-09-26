@@ -1,0 +1,100 @@
+{
+  "id": "org-practica-capital",
+  "slug": "practica-capital",
+  "displayName": "Practica Capital",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.practica.vc/",
+  "summary": "Practica Capital is a Baltic venture investor based in Vilnius Tech Park that has backed entrepreneurs for more than 12 years across three fund generations, with €132,000,000 under management and more than 70 investments. Its homepage states a stage focus spanning pre-seed, seed and Series A and features portfolio founders such as PVcase, Ovoko and Atrandi Biosciences. The contact page publishes a visiting address and an info email. Ticket size and sector focus are not stated on the pages reviewed.",
+  "sectors": [],
+  "stages": [
+    "pre-seed",
+    "seed",
+    "series-a"
+  ],
+  "investmentGeographies": [
+    "baltics"
+  ],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "stages": [
+      "home"
+    ],
+    "investmentGeographies": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "PVcase",
+      "fact": "Featured on the homepage as a portfolio company (solar design software). Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Atrandi Biosciences",
+      "fact": "Featured on the homepage as a portfolio company (droplet microfluidics). Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "email",
+    "url": "mailto:info@practica.vc",
+    "sourceId": "contact"
+  },
+  "businessAddress": {
+    "organisation": "Practica Capital",
+    "lines": [
+      "Vilnius Tech Park",
+      "Antakalnio 17-2"
+    ],
+    "city": "Vilnius",
+    "postalCode": "LT-10312",
+    "country": "LT",
+    "addressType": "operating-office",
+    "sourceId": "contact",
+    "checkedAt": "2026-09-17"
+  },
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.practica.vc/",
+      "publisher": "Practica Capital",
+      "title": "Homepage: Baltic focus, funds, stage focus and portfolio founders",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "investmentGeographies",
+        "investmentEvidence"
+      ]
+    },
+    {
+      "id": "contact",
+      "url": "https://www.practica.vc/en/contact",
+      "publisher": "Practica Capital",
+      "title": "Contact page: Vilnius Tech Park address and email",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "businessAddress",
+        "preferredPitchChannel"
+      ]
+    }
+  ],
+  "geographyScope": "exhaustive"
+}

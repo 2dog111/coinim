@@ -68,6 +68,28 @@ class LeadsTest(unittest.TestCase):
         self.assertEqual(self.request('/api/open/leads','POST',{**data,'source':'homepage'})[0],409)
         for source in ['/ms?email=qa@example.com', 'arbitrary', [], {}]:
             self.assertEqual(self.request('/api/open/leads','POST',{**data,'source':source})[0],422)
+    def test_investor_match_source_saves_shortlist_text_in_audience(self):
+        brief='Investor Match shortlist: 1 profiles\n1. Hustle Fund [hustle-fund]: Needs more research. Check: Recipient routing not confirmed'
+        data={**self.payload,'source':'/investors','audience':brief}
+        first=self.request('/api/open/leads','POST',data)
+        self.assertEqual(first[0],201)
+        job=admin.list_jobs(intake.DATA_ROOT,intake.load_key(),intake.read_json_encrypted)[0]
+        self.assertEqual(job['source'],'/investors')
+        self.assertEqual(job['audience'],brief)
+        self.assertEqual(self.request('/api/open/leads','POST',{**data,'source':'/investors/'})[0],422)
+    def test_investor_brief_and_slugs_are_optional_bounded_and_ignored_elsewhere(self):
+        data={**self.payload,'source':'/investors','investor_brief':'Brief line','investor_slugs':['hustle-fund','2048-ventures']}
+        self.assertEqual(self.request('/api/open/leads','POST',data)[0],201)
+        job=admin.list_jobs(intake.DATA_ROOT,intake.load_key(),intake.read_json_encrypted)[0]
+        self.assertEqual(job['investor_brief'],'Brief line');self.assertEqual(job['investor_slugs'],['hustle-fund','2048-ventures'])
+        for bad in [['<script>'],['a']*21,'hustle-fund',[1],['x'*81]]:
+            self.assertEqual(self.request('/api/open/leads','POST',{**data,'investor_slugs':bad,'request_id':secrets.token_hex(16)})[0],422)
+        self.assertEqual(self.request('/api/open/leads','POST',{**data,'investor_brief':'x'*8001,'request_id':secrets.token_hex(16)})[0],422)
+        home={**self.payload,'investor_brief':'ignored','investor_slugs':['hustle-fund'],'request_id':secrets.token_hex(16)}
+        self.assertEqual(self.request('/api/open/leads','POST',home)[0],201)
+        raw=[intake.read_json_encrypted(p,intake.load_key()) for p in (intake.DATA_ROOT/'jobs').glob('*/metadata.json.aesgcm')]
+        homepage=next(j for j in raw if j['source']=='homepage')
+        self.assertNotIn('investor_brief',homepage);self.assertNotIn('investor_slugs',homepage)
     def test_conflicting_retry(self):
         self.assertEqual(self.request('/api/open/leads','POST',self.payload)[0],201)
         self.payload['company']='Changed';self.assertEqual(self.request('/api/open/leads','POST',self.payload)[0],409)

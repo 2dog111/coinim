@@ -1,0 +1,116 @@
+{
+  "id": "org-bee-partners",
+  "slug": "bee-partners",
+  "displayName": "Bee Partners",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://beepartners.vc/",
+  "summary": "Bee Partners is a San Francisco Bay Area pre-seed firm. Its Work With Us page states checks of $300,000 to $500,000 at pre-seed for technical founders before product and revenue, with a thesis across AI-native infrastructure, agent orchestration, next-generation manufacturing and frontier materials, with robotics and synthetic biology in its history. The firm says the best way to reach it is through its network and links only LinkedIn and X. No address or geography is published.",
+  "sectors": [
+    "ai",
+    "deep-tech",
+    "hardware",
+    "biotech"
+  ],
+  "stages": [
+    "pre-seed"
+  ],
+  "investmentGeographies": [],
+  "publishedCheckRange": {
+    "min": 300000,
+    "max": 500000,
+    "currency": "USD",
+    "sourceId": "work",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "stages": [
+      "work"
+    ],
+    "sectors": [
+      "work",
+      "about"
+    ]
+  },
+  "publicContactPeople": [
+    {
+      "name": "Michael Berolzheimer",
+      "role": "Founder",
+      "sourceId": "about",
+      "reviewedAt": "2026-09-17"
+    }
+  ],
+  "investmentEvidence": [
+    {
+      "company": "InnerPlant",
+      "fact": "Named on the homepage among companies the firm backed at inception. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "DeepScribe",
+      "fact": "Named on the homepage among featured portfolio companies. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "warm-intro",
+    "url": null,
+    "sourceId": "work"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "work",
+      "url": "https://beepartners.vc/work-with-us",
+      "publisher": "Bee Partners",
+      "title": "Work With Us: check size, stage, thesis and preferred contact route",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "sectors",
+        "publishedCheckRange",
+        "preferredPitchChannel"
+      ]
+    },
+    {
+      "id": "about",
+      "url": "https://beepartners.vc/about-us",
+      "publisher": "Bee Partners",
+      "title": "About page: founder, history and sector history",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "publicContactPeople"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://beepartners.vc/",
+      "publisher": "Bee Partners",
+      "title": "Homepage: featured portfolio companies",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "sectorScope": "examples"
+}

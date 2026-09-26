@@ -1,0 +1,86 @@
+{
+  "id": "org-uncork-capital",
+  "slug": "uncork-capital",
+  "displayName": "Uncork Capital",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://uncorkcapital.com/",
+  "summary": "Uncork Capital is a Silicon Valley seed-stage firm that says it has focused on one stage, seed, for more than 20 years. Its Approach page states that it is often the first major check on the cap table, leading seed rounds with an initial investment of about $3,000,000 to $5,000,000 and simple terms. The homepage lists companies such as Tailscale and GPTZero. A pitches email is published. Sector focus and a street address are not stated.",
+  "sectors": [],
+  "stages": [
+    "seed"
+  ],
+  "investmentGeographies": [],
+  "publishedCheckRange": {
+    "min": 3000000,
+    "max": 5000000,
+    "currency": "USD",
+    "sourceId": "approach",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "stages": [
+      "approach"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Tailscale",
+      "fact": "Homepage lists Tailscale, founded 2019, partners since 2019.",
+      "eventDate": "2019",
+      "datePrecision": "year",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "GPTZero",
+      "fact": "Homepage lists GPTZero, founded 2023, partners since 2023.",
+      "eventDate": "2023",
+      "datePrecision": "year",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "email",
+    "url": "mailto:pitches@uncorkcapital.com",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "approach",
+      "url": "https://uncorkcapital.com/approach",
+      "publisher": "Uncork Capital",
+      "title": "Approach: seed-only focus, first major check, initial investment size and history",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "publishedCheckRange"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://uncorkcapital.com/",
+      "publisher": "Uncork Capital",
+      "title": "Homepage: portfolio with partnership years and pitches email",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence",
+        "preferredPitchChannel"
+      ]
+    }
+  ]
+}

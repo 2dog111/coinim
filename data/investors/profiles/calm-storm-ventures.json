@@ -1,0 +1,115 @@
+{
+  "id": "org-calm-storm-ventures",
+  "slug": "calm-storm-ventures",
+  "displayName": "Calm/Storm Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.calmstorm.vc/",
+  "summary": "Calm/Storm Ventures is a Vienna boutique venture firm that describes itself as the most active HealthTech investor in Europe. Its homepage says it invests super early, usually in a company's first fundraising round, in purpose-driven founders across digital health, well-being, prevention and care, B2B and B2C. Founders submit a pitch through the website form, and the firm says it reads every application. Check size and formal geography are not stated. The legal notice gives a Vienna address.",
+  "sectors": [
+    "healthcare"
+  ],
+  "stages": [
+    "pre-seed"
+  ],
+  "investmentGeographies": [],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "stages": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [
+    {
+      "name": "Lucanus Polagnoli",
+      "role": "Managing Director",
+      "sourceId": "legal",
+      "reviewedAt": "2026-09-17"
+    }
+  ],
+  "investmentEvidence": [
+    {
+      "company": "Fertifa",
+      "fact": "Listed among portfolio pages linked from the homepage. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Clicks",
+      "fact": "Listed among portfolio pages linked from the homepage. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://www.calmstorm.vc/pitch",
+    "sourceId": "pitch"
+  },
+  "businessAddress": {
+    "organisation": "Calm Storm Management GmbH",
+    "lines": [
+      "Goldeggasse 26"
+    ],
+    "city": "Wien",
+    "postalCode": "1040",
+    "country": "AT",
+    "addressType": "type-not-established",
+    "sourceId": "legal",
+    "checkedAt": "2026-09-17"
+  },
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.calmstorm.vc/",
+      "publisher": "Calm/Storm Ventures",
+      "title": "Homepage: HealthTech focus, super-early stage, diversity commitment and pitch link",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "investmentEvidence"
+      ]
+    },
+    {
+      "id": "pitch",
+      "url": "https://www.calmstorm.vc/pitch",
+      "publisher": "Calm/Storm Ventures",
+      "title": "Submit your pitch: application form",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "preferredPitchChannel"
+      ]
+    },
+    {
+      "id": "legal",
+      "url": "https://www.calmstorm.vc/legal/imprint",
+      "publisher": "Calm/Storm Ventures",
+      "title": "Legal notice: Calm Storm Management GmbH, Vienna address and managing directors",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "businessAddress",
+        "publicContactPeople"
+      ]
+    }
+  ],
+  "sectorScope": "exhaustive"
+}

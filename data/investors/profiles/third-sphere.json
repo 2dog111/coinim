@@ -1,0 +1,76 @@
+{
+  "id": "org-third-sphere",
+  "slug": "third-sphere",
+  "displayName": "Third Sphere",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://thirdsphere.com/",
+  "summary": "Third Sphere is an early-stage investor in founders upgrading broken global systems, from infrastructure and supply chains to energy, water and cities. Its Funds page says it invests at pre-seed and seed and stays close to founders, and describes related initiatives such as a non-dilutive capital database and the URBAN-X programme it ran from 2017 to 2021. Check size, geography, an application route and a street address are not stated on the pages reviewed.",
+  "sectors": [
+    "climate",
+    "logistics",
+    "proptech"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "sectors": [
+      "funds",
+      "home"
+    ],
+    "stages": [
+      "funds"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "URBAN-X startups",
+      "fact": "The Funds page says Third Sphere ran sourcing, selection and investment at URBAN-X from 2017 to 2021 and that over 90% of backed startups raised follow-on funding.",
+      "eventDate": "2021",
+      "datePrecision": "year",
+      "sourceIds": [
+        "funds"
+      ]
+    }
+  ],
+  "preferredPitchChannel": null,
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "funds",
+      "url": "https://thirdsphere.com/funds/",
+      "publisher": "Third Sphere",
+      "title": "Funds page: pre-seed and seed stage, climate systems thesis and initiatives",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "investmentEvidence"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://thirdsphere.com/",
+      "publisher": "Third Sphere",
+      "title": "Homepage: mission and portfolio themes",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors"
+      ]
+    }
+  ],
+  "sectorScope": "examples"
+}

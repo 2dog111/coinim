@@ -1,0 +1,78 @@
+{
+  "id": "org-founder-collective",
+  "slug": "founder-collective",
+  "displayName": "Founder Collective",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://foundercollective.com/",
+  "summary": "Founder Collective states that its mission is to build the most aligned venture fund for founders at the seed stage and that it intentionally keeps its fund sizes below $100,000,000. The Ethos page explains the seed-stage focus, the founder backgrounds of the partners and an enthusiasm for exits of all sizes. The homepage cites early investments in SeatGeek, Uber and WHOOP. Sector focus, geography, check size and a street address are not published, and contact is by published email.",
+  "sectors": [],
+  "stages": [
+    "seed"
+  ],
+  "investmentGeographies": [],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "stages": [
+      "ethos"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "WHOOP",
+      "fact": "The homepage says the firm backed WHOOP when founder Will Ahmed pitched it and other VCs passed. The round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "SeatGeek",
+      "fact": "The homepage says the firm has spent 15 years and counting with the founders of SeatGeek. The initial round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "email",
+    "url": "mailto:contact@foundercollective.com",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "ethos",
+      "url": "https://foundercollective.com/ethos/",
+      "publisher": "Founder Collective",
+      "title": "Ethos page: seed-stage mission, fund size and philosophy",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://foundercollective.com/",
+      "publisher": "Founder Collective",
+      "title": "Homepage: examples of early investments and contact email",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence",
+        "preferredPitchChannel"
+      ]
+    }
+  ]
+}

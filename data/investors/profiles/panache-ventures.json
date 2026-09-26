@@ -1,0 +1,92 @@
+{
+  "id": "org-panache-ventures",
+  "slug": "panache-ventures",
+  "displayName": "Panache Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.panache.vc/",
+  "summary": "Panache Ventures describes itself as Canada's leading pre-seed and seed fund, backing technology founders from day one across all sectors and often as the first institutional investor. Its homepage states first cheques of up to $1,500,000 from a $100,000,000 second fund, operator-led support with no board seats, and more than 100 founders backed. Founders submit a deck through the Pitch Us page. The currency of the cheque and a street address are not stated on the pages reviewed.",
+  "sectors": [
+    "agnostic"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [
+    "canada"
+  ],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "stages": [
+      "home"
+    ],
+    "investmentGeographies": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Sanctuary AI",
+      "fact": "Linked from the homepage as a company backed from day one. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "FISPAN",
+      "fact": "Linked from the homepage as a company backed from day one. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://www.panache.vc/pitch-us",
+    "sourceId": "pitch"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.panache.vc/",
+      "publisher": "Panache Ventures",
+      "title": "Homepage: Canada focus, first cheque size, fund size, all-sector mandate and portfolio",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "investmentGeographies",
+        "investmentEvidence"
+      ]
+    },
+    {
+      "id": "pitch",
+      "url": "https://www.panache.vc/pitch-us",
+      "publisher": "Panache Ventures",
+      "title": "Pitch Us: deck submission form",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "preferredPitchChannel"
+      ]
+    }
+  ],
+  "geographyScope": "exhaustive"
+}

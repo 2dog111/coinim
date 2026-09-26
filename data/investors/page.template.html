@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Investor Match: Angels &amp; Early-Stage Funds | coin.im
+  </title>
+  <meta content="Explore researched angel investors and early-stage funds by sector, stage, geography and published check size. Build a shortlist for thoughtful business outreach." name="description"/>
+  <link href="https://coin.im/investors/" rel="canonical"/>
+  <meta content="website" property="og:type"/>
+  <meta content="Investor Match: Angels &amp; Early-Stage Funds | coin.im" property="og:title"/>
+  <meta content="Explore researched angel investors and early-stage funds by sector, stage, geography and published check size. Build a shortlist for thoughtful business outreach." property="og:description"/>
+  <meta content="https://coin.im/investors/" property="og:url"/>
+  <meta content="https://coin.im/assets/coin-letter-20260906.webp" property="og:image"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="#f8f6f0" name="theme-color"/>
+  <link href="/assets/favicon.ico" rel="icon"/>
+  <link as="font" crossorigin="" href="/assets/fonts/source-serif-4-variable.woff2" rel="preload" type="font/woff2"/>
+  <link href="/assets/direct-mail.css?v=20260906-home3" rel="stylesheet"/>
+  <script defer="" src="/assets/direct-mail.js?v=20260906-home3">
+  </script>
+  <link href="/assets/contact-ui.css?v=20260906-v5" rel="stylesheet"/>
+  <script defer="" src="/assets/contact-ui.js?v=20260917-im1">
+  </script>
+  <link href="/assets/pilot-scale.css?v=20260917-im1" rel="stylesheet"/>
+  <link href="/assets/investor-match.css?v={{version}}" rel="stylesheet"/>
+  <script defer="" src="/assets/investor-match-core.js?v={{version}}">
+  </script>
+  <script defer="" src="/assets/investor-match.js?v={{version}}">
+  </script>
+ </head>
+ <body class="investor-match" data-campaign-source="/investors" data-release="{{release}}">
+  <a class="skip-link" href="#main">
+   Skip to content
+  </a>
+  <header class="coin-top">
+   <a aria-label="coin.im home" class="coin-brand" href="/">
+    <img alt="" height="96" src="/assets/msru-generated/coin-mark.webp" width="96"/>
+    <span>
+     coin.im
+    </span>
+   </a>
+   <nav aria-label="Contact us" class="coin-contact-nav">
+    <a class="contact-glass contact-whatsapp" data-native="whatsapp://send?phone=66633933143" href="https://wa.me/66633933143">
+     <img alt="" height="56" src="/assets/contact-glass/whatsapp.webp" width="56"/>
+     <span>
+      WhatsApp
+     </span>
+    </a>
+    <a class="contact-glass contact-sms" href="sms:+66633933143">
+     <img alt="" height="56" src="/assets/contact-glass/sms.webp" width="56"/>
+     <span>
+      SMS
+     </span>
+    </a>
+   </nav>
+  </header>
+  <main id="main">
+   <section class="im-hero">
+    <div class="im-hero-copy">
+     <p class="eyebrow">
+      INVESTOR MATCH
+     </p>
+     <h1>
+      Find investors with a reason to read your pitch.
+     </h1>
+     <p class="im-lead">
+      Match your startup with investors by stage, sector, geography and published check size. Build a shortlist for a researched business approach.
+     </p>
+     <div class="actions">
+      <a class="glass primary" href="#catalog">
+       Explore investors
+      </a>
+      <a class="glass secondary" href="#outreach-plan">
+       Request an investor outreach plan
+      </a>
+     </div>
+     <p class="im-status">
+      A growing, researched directory. Not a complete investor list.
+     </p>
+     <p class="im-stats">
+      <span>{{count}} investment profiles</span>
+      <span class="im-stats-separator" aria-hidden="true">·</span>
+      <span>Updated <time datetime="{{updatedIso}}">{{updated}}</time></span>
+     </p>
+     <ol class="im-process" aria-label="How Investor Match works">
+      <li>Find the fit</li>
+      <li>Check the evidence</li>
+      <li>Plan the approach</li>
+     </ol>
+    </div>
+   </section>
+   <div class="reading-layout">
+    <article class="longread">
+     <section class="chapter im-match" id="match">
+      <h2>
+       Who are you building for?
+      </h2>
+      <p class="im-nojs">
+       Filtering and matching need JavaScript. The full catalog with every published profile and its sources is listed below.
+      </p>
+      <form class="im-criteria" id="investor-criteria" hidden="">
+       <div class="im-criteria-grid">
+        <label for="criteria-sector">
+         Sector
+         <select id="criteria-sector" name="sector">
+          <option value="">Any sector</option>
+{{sectorOptions}}
+         </select>
+        </label>
+        <label for="criteria-stage">
+         Funding stage
+         <select id="criteria-stage" name="stage">
+          <option value="">Any stage</option>
+{{stageOptions}}
+         </select>
+        </label>
+        <label for="criteria-country">
+         Where your company is based
+         <select id="criteria-country" name="country">
+          <option value="">Not specified</option>
+{{countryOptions}}
+         </select>
+        </label>
+        <label for="criteria-check">
+         Target check from one investor, USD (optional)
+         <input aria-describedby="check-help check-error" id="criteria-check" inputmode="numeric" name="checkUsd" placeholder="250000" type="text"/>
+         <span class="field-hint" id="check-help">
+          The amount you are seeking from one investor, not your total round.
+         </span>
+         <span class="field-error" hidden="" id="check-error" role="alert">
+         </span>
+        </label>
+       </div>
+       <div class="im-criteria-actions">
+        <button class="contact-submit im-find" type="submit">
+         Find potential matches
+        </button>
+        <button class="im-reset" type="reset">
+         Reset
+        </button>
+        <label class="im-check-label im-mismatch-toggle" for="criteria-mismatches">
+         <input id="criteria-mismatches" name="includeMismatches" type="checkbox" value="1"/>
+         Show profiles outside my selected criteria
+        </label>
+       </div>
+       <label class="im-search" for="criteria-query">
+        Search investors, firms or portfolio companies
+        <input autocomplete="off" id="criteria-query" maxlength="120" name="query" type="search"/>
+       </label>
+       <details class="im-more">
+        <summary>
+         More filters
+        </summary>
+        <div class="im-criteria-grid">
+         <label for="criteria-type">
+          Investor type
+          <select id="criteria-type" name="investorType">
+           <option value="">Any type</option>
+{{typeOptions}}
+          </select>
+         </label>
+         <label for="criteria-office">
+          Office country
+          <select id="criteria-office" name="officeCountry">
+           <option value="">Any office country</option>
+{{officeOptions}}
+          </select>
+         </label>
+         <label class="im-check-label" for="criteria-address">
+          <input id="criteria-address" name="addressAvailable" type="checkbox" value="1"/>
+          Public business address available
+         </label>
+        </div>
+        <p class="im-note">
+         Office country is where the investor is based. Investment geography, used for matching, is where the investor says it invests. The two are different fields.
+        </p>
+       </details>
+      </form>
+     </section>
+     <section class="chapter im-catalog" id="catalog">
+      <h2>
+       Investor directory
+      </h2>
+      <p aria-live="polite" class="im-summary" id="catalog-summary" role="status">
+       {{count}} published profiles, sorted by name.
+      </p>
+      <p class="im-hash-notice" hidden="" id="hash-notice" role="status">
+      </p>
+      <p class="im-hash-notice" hidden="" id="relax-notice" role="status">
+      </p>
+      <ol class="im-rows" id="investor-rows">
+{{rows}}
+      </ol>
+      <div class="im-empty" hidden="" id="catalog-empty">
+       <p>
+        No matches for these criteria yet. Try changing one filter, or ask us to research beyond the current directory.
+       </p>
+       <ul class="im-suggestions" id="catalog-suggestions">
+       </ul>
+       <p class="im-note" id="catalog-empty-note">
+        An empty result here means the current directory has no confirmed match, not that no such investor exists.
+       </p>
+       <div class="actions">
+        <button class="glass secondary" data-tailored="" id="tailored-search" type="button">
+         Request a tailored investor search
+        </button>
+       </div>
+      </div>
+      <nav aria-label="Catalog pages" class="im-pagination" hidden="" id="catalog-pagination">
+      </nav>
+     </section>
+     <section class="chapter im-shortlist" id="shortlist">
+      <h2>
+       Your shortlist
+      </h2>
+      <p class="im-nojs">
+       The shortlist is kept in your browser and needs JavaScript. Without it, note the profile names you want to discuss and add them to the inquiry below.
+      </p>
+      <div hidden="" id="shortlist-review">
+       <p id="shortlist-intro">
+       </p>
+       <p class="im-note" id="shortlist-restore-notice" hidden="" role="status">
+       </p>
+       <div id="shortlist-groups">
+       </div>
+       <p class="im-note" id="shortlist-undo" hidden="">
+       </p>
+       <div class="im-shortlist-actions">
+        <button class="glass primary" id="shortlist-to-form" type="button">
+         Request an investor outreach plan
+        </button>
+        <button class="glass secondary" id="copy-brief" type="button">
+         Copy research brief
+        </button>
+        <button class="glass secondary" id="print-brief" type="button">
+         Print research brief
+        </button>
+        <button class="im-text-button" id="shortlist-clear" type="button">
+         Clear shortlist
+        </button>
+       </div>
+       <p aria-live="polite" class="im-copy-status" id="copy-status" role="status">
+       </p>
+       <label class="im-fallback" for="brief-fallback" hidden="" id="brief-fallback-label">
+        Copying did not work in this browser. Select the text below and copy it manually.
+        <textarea id="brief-fallback" readonly="" rows="8"></textarea>
+       </label>
+       <p class="im-note">
+        Your shortlist is a starting point. We will review the fit, contact routes and scope with you. Nothing is sent to investors at this stage. Delivery availability is checked separately for each business address.
+       </p>
+      </div>
+      <div hidden="" id="shortlist-empty">
+       <p>
+        No investors selected yet. Use Add to shortlist on any profile above. Up to 20 profiles can go into a first outreach plan.
+       </p>
+       <p class="im-note">
+        Looking for investors the directory does not cover yet? Ask for a tailored search: your criteria go into the inquiry, no shortlist needed.
+       </p>
+       <div class="actions">
+        <button class="glass secondary" data-tailored="" id="tailored-search-shortlist" type="button">
+         Request a tailored investor search
+        </button>
+       </div>
+      </div>
+     </section>
+     <section class="chapter im-approach" id="approach">
+      <h2>
+       A researched approach. Not a mass pitch.
+      </h2>
+      <p>
+       The shortlist is the starting point. We review why each investor may be relevant, check the appropriate business contact route, and prepare a concise letter around your strongest supported facts. You review the audience and the copy before anything is sent.
+      </p>
+      <div class="actions section-action">
+       <a class="glass primary" href="#outreach-plan">
+        Request an investor outreach plan
+       </a>
+      </div>
+      <p class="im-note">
+       An inquiry, not an order. Scope, delivery availability and any compliance requirements are reviewed separately.
+      </p>
+      <details class="im-letter-parts">
+       <summary>
+        What makes the letter specific?
+       </summary>
+       <dl>
+        <dt>Why you</dt>
+        <dd>A sourced connection to the investor's stated focus or relevant portfolio.</dd>
+        <dt>What we are building</dt>
+        <dd>A clear explanation of the company and problem.</dd>
+        <dt>What we can prove</dt>
+        <dd>Supported product or business evidence, with its limits.</dd>
+        <dt>One next step</dt>
+        <dd>A small, specific request that respects the recipient's contact preferences.</dd>
+       </dl>
+      </details>
+     </section>
+     <section class="chapter im-method" id="how-we-research">
+      <details>
+       <summary>
+        How we research
+       </summary>
+       <p>
+        We use public professional information to document investment focus, relevant activity and business contact routes. Matches reflect the criteria and evidence shown, not a prediction of interest or an assessment of personal risk tolerance. Information may be incomplete or change over time.
+       </p>
+      </details>
+      <p class="im-note">
+       This directory is a research tool, not an endorsement, an offer of securities or confirmation of investor eligibility. Any investment-related outreach requires a separate review of the applicable rules and the recipient's contact preferences.
+      </p>
+      <p class="im-note">
+       To suggest a correction or request removal of a profile, write to
+       <a href="mailto:mail@coin.im?subject=Investor%20Match%20correction">mail@coin.im</a>.
+      </p>
+     </section>
+     <section class="chapter" id="outreach-plan">
+      <div class="enquiry-panel">
+       <div class="form-brand">
+        <img alt="" height="60" src="/assets/msru-generated/coin-mark.webp" width="60"/>
+        <span>
+         coin.im
+        </span>
+       </div>
+       <h2>
+        Request an investor outreach plan.
+       </h2>
+       <p>
+        Send your company website and a way to reach you. Add the investors you shortlisted and the criteria you used, or describe who you are looking for. We reply with questions and a proposed scope, not with letters already sent.
+       </p>
+       <p>
+        Your website, name and work email are enough to start. Everything else is optional.
+       </p>
+       <form action="/api/open/leads" id="campaign-enquiry" method="post">
+        <div class="enquiry-fields">
+         <label class="website-field" for="lead-website">
+          Company website
+          <input aria-describedby="website-help" autocomplete="url" id="lead-website" inputmode="url" maxlength="2048" name="website" placeholder="yourcompany.com" required="" type="text"/>
+          <span class="field-hint" id="website-help">
+           Your homepage or product page is fine.
+          </span>
+         </label>
+         <label for="lead-name">
+          Your name
+          <input autocomplete="name" id="lead-name" maxlength="200" name="name" placeholder="Alex Morgan" required=""/>
+         </label>
+         <label for="lead-email">
+          Work email
+          <input autocomplete="email" id="lead-email" inputmode="email" maxlength="320" name="work_email" placeholder="alex@yourcompany.com" required="" type="email"/>
+         </label>
+        </div>
+        <div class="inquiry-context">
+         <label for="lead-brief">
+          Research brief from your shortlist (generated, read only)
+          <textarea aria-describedby="brief-help" id="lead-brief" maxlength="8000" name="investor_brief" readonly="" rows="6"></textarea>
+          <span class="field-hint" id="brief-help">
+           Filled in when you use Request an investor outreach plan or Request a tailored investor search. Empty means only your notes below are sent.
+          </span>
+         </label>
+         <input id="lead-slugs" name="investor_slugs" type="hidden" value=""/>
+         <label for="lead-audience">
+          Notes for coin.im (optional)
+          <textarea aria-describedby="audience-help" id="lead-audience" maxlength="2000" name="audience" placeholder="Who you are looking for, what you can share now, or anything the brief does not cover." rows="4"></textarea>
+          <span class="field-hint" id="audience-help">
+           Up to 2,000 characters. Do not paste confidential material here.
+          </span>
+         </label>
+        </div>
+        <input name="campaign_interest" type="hidden" value="help"/>
+        <details class="contact-preferences">
+         <summary>
+          Add contact preferences (optional)
+         </summary>
+         <fieldset class="contact-choice">
+          <legend>
+           How would you like us to contact you?
+          </legend>
+          <div class="contact-options">
+           <label class="channel-option">
+            <input name="channel" type="radio" value="WhatsApp"/>
+            <span class="channel-face">
+             <img alt="" height="56" src="/assets/contact-glass/whatsapp.webp" width="56"/>
+             <span>
+              WhatsApp
+             </span>
+             <span aria-hidden="true" class="selection-dot">
+             </span>
+            </span>
+           </label>
+           <label class="channel-option">
+            <input name="channel" type="radio" value="SMS"/>
+            <span class="channel-face">
+             <img alt="" height="56" src="/assets/contact-glass/sms.webp" width="56"/>
+             <span>
+              SMS
+             </span>
+             <span aria-hidden="true" class="selection-dot">
+             </span>
+            </span>
+           </label>
+           <label class="channel-option">
+            <input name="channel" type="radio" value="Phone"/>
+            <span class="channel-face">
+             <img alt="" height="56" src="/assets/contact-glass/phone.webp" width="56"/>
+             <span>
+              Phone call
+             </span>
+             <span aria-hidden="true" class="selection-dot">
+             </span>
+            </span>
+           </label>
+           <label class="channel-option">
+            <input checked="" name="channel" type="radio" value="Email"/>
+            <span class="channel-face">
+             <img alt="" height="56" src="/assets/contact-glass/email.webp" width="56"/>
+             <span>
+              Email
+             </span>
+             <span aria-hidden="true" class="selection-dot">
+             </span>
+            </span>
+           </label>
+          </div>
+         </fieldset>
+         <label for="lead-company">
+          Company
+          <input autocomplete="organization" id="lead-company" maxlength="200" name="company" placeholder="Company name"/>
+         </label>
+         <label for="lead-phone">
+          Phone
+          <input aria-describedby="phone-help" autocomplete="tel" id="lead-phone" inputmode="tel" maxlength="80" name="phone" placeholder="+1 212 555 0123" type="tel"/>
+          <span class="field-hint" id="phone-help">
+           Add a phone number for your selected contact method.
+          </span>
+         </label>
+        </details>
+        <div hidden="">
+         <label>
+          Fax
+          <input autocomplete="off" name="fax" tabindex="-1"/>
+         </label>
+        </div>
+        <button class="contact-submit" type="submit">
+         Request an outreach plan
+        </button>
+        <p class="form-microcopy">
+         An inquiry, not an order. Nothing is sent to investors.
+        </p>
+        <p aria-live="polite" class="enquiry-status" id="enquiry-status" role="status">
+        </p>
+       </form>
+       <div aria-live="polite" hidden="" id="enquiry-success" role="status" tabindex="-1">
+        <h3>
+         Your request is with us.
+        </h3>
+        <p id="success-channel">
+         Thank you. We have received your details and will use your contact information to continue the conversation. The shortlist you included is part of that message.
+        </p>
+       </div>
+      </div>
+      <div class="after-form">
+       <p>
+        Prefer to start the conversation yourself?
+       </p>
+       <div class="coin-contact-nav">
+        <a class="contact-glass contact-whatsapp" data-native="whatsapp://send?phone=66633933143" href="https://wa.me/66633933143">
+         <img alt="" height="56" src="/assets/contact-glass/whatsapp.webp" width="56"/>
+         <span>
+          WhatsApp
+         </span>
+        </a>
+        <a class="contact-glass contact-sms" href="sms:+66633933143">
+         <img alt="" height="56" src="/assets/contact-glass/sms.webp" width="56"/>
+         <span>
+          SMS
+         </span>
+        </a>
+       </div>
+      </div>
+     </section>
+    </article>
+   </div>
+  </main>
+  <div class="im-bar" hidden="" id="shortlist-bar">
+   <p class="im-bar-count" id="shortlist-count" role="status">
+    0 selected
+   </p>
+   <a class="im-bar-link" href="#shortlist">
+    Review shortlist
+   </a>
+   <button class="im-bar-link im-bar-primary" id="shortlist-bar-request" type="button">
+    Request an outreach plan
+   </button>
+  </div>
+  <footer>
+   <a class="wordmark" href="/">
+    coin.im
+   </a>
+   <nav aria-label="Footer">
+    <a href="/">
+     Business letters
+    </a>
+    <a href="/ms">
+     The Market Scan story
+    </a>
+    <a href="/investors/">
+     Investor Match
+    </a>
+    <a href="#outreach-plan">
+     Contact
+    </a>
+    <a href="#main">
+     Back to the top
+    </a>
+   </nav>
+  </footer>
+  <section aria-hidden="true" class="im-print" id="brief-print" hidden="">
+  </section>
+  <script id="investor-data" type="application/json">
+{{data}}
+  </script>
+ </body>
+</html>

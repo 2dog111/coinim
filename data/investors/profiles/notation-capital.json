@@ -1,0 +1,82 @@
+{
+  "id": "org-notation-capital",
+  "slug": "notation-capital",
+  "displayName": "Notation Capital",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://notation.vc/",
+  "summary": "Notation Capital describes itself as the first dedicated pre-seed fund in New York City, based in Brooklyn, working with product-obsessed teams from day zero. The homepage names the partners and their focus areas, including hard tech and infrastructure, lists portfolio companies such as Clay, Livepeer and Parsec, and invites founders to reach out through the network or by emailing hello@notation.vc. Sector mandate, geography, check size and a street address are not published on the site.",
+  "sectors": [],
+  "stages": [
+    "pre-seed"
+  ],
+  "investmentGeographies": [],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "stages": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [
+    {
+      "name": "Alex Lines",
+      "role": "Partner: hard tech, infrastructure and product",
+      "sourceId": "home",
+      "reviewedAt": "2026-09-17"
+    },
+    {
+      "name": "Nicholas Chirls",
+      "role": "Partner: product, growth and capital raising",
+      "sourceId": "home",
+      "reviewedAt": "2026-09-17"
+    }
+  ],
+  "investmentEvidence": [
+    {
+      "company": "Clay",
+      "fact": "Listed on the homepage among portfolio companies. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Livepeer",
+      "fact": "Listed on the homepage among portfolio companies. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "email",
+    "url": "mailto:hello@notation.vc",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://notation.vc/",
+      "publisher": "Notation Capital",
+      "title": "Homepage: pre-seed focus, team, companies and contact email",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "publicContactPeople",
+        "investmentEvidence",
+        "preferredPitchChannel"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "id": "org-cherry-ventures",
+  "slug": "cherry-ventures",
+  "displayName": "Cherry Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.cherry.vc/",
+  "summary": "Cherry Ventures is an early-stage, pan-European venture firm founded in 2012 by Filip Dames and Christian Meermann, with teams in Berlin, London and Stockholm. Its About page says it is pan-European rather than country-focused and run by former founders and operators; the founders page profiles companies such as Moss, Swap and The Exploration Company. An opportunity email is published and the imprint gives the Berlin office address. Check size and stage definition are not stated on the pages reviewed.",
+  "sectors": [],
+  "stages": [],
+  "investmentGeographies": [
+    "europe"
+  ],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "investmentGeographies": [
+      "about"
+    ]
+  },
+  "publicContactPeople": [
+    {
+      "name": "Filip Dames",
+      "role": "Co-founder",
+      "sourceId": "about",
+      "reviewedAt": "2026-09-17"
+    },
+    {
+      "name": "Christian Meermann",
+      "role": "Co-founder",
+      "sourceId": "about",
+      "reviewedAt": "2026-09-17"
+    }
+  ],
+  "investmentEvidence": [
+    {
+      "company": "Moss",
+      "fact": "Profiled among founder companies linked from the homepage (expense management). Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "The Exploration Company",
+      "fact": "The homepage links a post on the company raising $450M, with Cherry as an investor. Cherry’s initial round date is not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "email",
+    "url": "mailto:opportunity@cherry.vc",
+    "sourceId": "home"
+  },
+  "businessAddress": {
+    "organisation": "Cherry Ventures Management GmbH",
+    "lines": [
+      "Linienstr. 214"
+    ],
+    "city": "Berlin",
+    "postalCode": "10119",
+    "country": "DE",
+    "addressType": "operating-office",
+    "sourceId": "imprint",
+    "checkedAt": "2026-09-17"
+  },
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "about",
+      "url": "https://www.cherry.vc/about",
+      "publisher": "Cherry Ventures",
+      "title": "About page: founding, pan-European focus and team locations",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentGeographies",
+        "publicContactPeople"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://www.cherry.vc/",
+      "publisher": "Cherry Ventures",
+      "title": "Homepage: founder companies and news, contact emails",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence",
+        "preferredPitchChannel"
+      ]
+    },
+    {
+      "id": "imprint",
+      "url": "https://www.cherry.vc/imprint",
+      "publisher": "Cherry Ventures",
+      "title": "Imprint: Cherry Ventures Management GmbH office address in Berlin",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "businessAddress"
+      ]
+    }
+  ],
+  "geographyScope": "examples"
+}

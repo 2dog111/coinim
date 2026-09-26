@@ -41,9 +41,19 @@ async def submit_lead(scope, receive, send, key):
     if not isinstance(interest, str) or interest not in {"pilot", "scale", "help"}:
         raise intake.IntakeError(422, "Choose a campaign interest.")
     source = data.get("source", "homepage")
-    if not isinstance(source, str) or source not in {"homepage", "/ms"}:
+    if not isinstance(source, str) or source not in {"homepage", "/ms", "/investors"}:
         raise intake.IntakeError(422, "Please reload the form and try again.")
     audience = field("audience", "Audience", 2000, False)
+    # Investor Match only: an optional research brief and up to 20 public profile slugs.
+    # Client-side fit statuses inside the brief are text for the owner, never trusted data.
+    brief = field("investor_brief", "Research brief", 8000, False) if source == "/investors" else ""
+    slugs = data.get("investor_slugs", [])
+    if source != "/investors":
+        slugs = []
+    if not isinstance(slugs, list) or len(slugs) > 20 or any(
+        not isinstance(slug, str) or not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", slug) or len(slug) > 80 for slug in slugs
+    ):
+        raise intake.IntakeError(422, "Please reload the shortlist and try again.")
     website_input = field("website", "Company website", 2048)
     if not re.match(r"^[a-z][a-z0-9+.-]*:", website_input, re.I):
         website_input = "https://" + website_input
@@ -57,6 +67,8 @@ async def submit_lead(scope, receive, send, key):
     payload = dict(name=name, company=company, work_email=email, phone=phone,
                    office_address=office, channels=[channel], source=source, files=[])
     payload.update(website=website, campaign_interest=interest, audience=audience)
+    if source == "/investors":
+        payload.update(investor_brief=brief, investor_slugs=slugs)
     fingerprint = hmac.new(key, json.dumps(payload, sort_keys=True).encode(), hashlib.sha256).hexdigest()
     request_hash = hmac.new(key, request_id.encode(), hashlib.sha256).hexdigest()
     intake.prepare_root()

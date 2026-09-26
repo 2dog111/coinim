@@ -1,0 +1,99 @@
+{
+  "id": "org-bonfire-ventures",
+  "slug": "bonfire-ventures",
+  "displayName": "Bonfire Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.bonfirevc.com/",
+  "summary": "Bonfire Ventures is a Los Angeles seed-stage firm backing founders building AI-native B2B software. Its homepage says it leads nearly every round, invests $2,000,000 to $6,000,000 at seed and continues investing as companies grow; the Investment Criteria page adds a board seat in about 95% of rounds and criteria such as workflow depth and a builder-CEO. Founders pitch through a linked form, and the site footer shows a San Vicente Boulevard address. Geography is not stated.",
+  "sectors": [
+    "b2b-software",
+    "ai"
+  ],
+  "stages": [
+    "seed"
+  ],
+  "investmentGeographies": [],
+  "publishedCheckRange": {
+    "min": 2000000,
+    "max": 6000000,
+    "currency": "USD",
+    "sourceId": "home",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "stages": [
+      "home",
+      "criteria"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Risotto",
+      "fact": "The homepage links a news post on Risotto (internal support), a portfolio company. Round and date are not shown on the homepage.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "criteria"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://bonfireventures.fillout.com/submission1026",
+    "sourceId": "home"
+  },
+  "businessAddress": {
+    "organisation": "Bonfire Ventures",
+    "lines": [
+      "11611 San Vicente Blvd. #650"
+    ],
+    "city": "Los Angeles, CA",
+    "postalCode": null,
+    "country": "US",
+    "addressType": "type-not-established",
+    "sourceId": "criteria",
+    "checkedAt": "2026-09-17"
+  },
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.bonfirevc.com/",
+      "publisher": "Bonfire Ventures",
+      "title": "Homepage: AI-native B2B software focus, lead role and check size",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "publishedCheckRange",
+        "preferredPitchChannel"
+      ]
+    },
+    {
+      "id": "criteria",
+      "url": "https://www.bonfirevc.com/investment-criteria",
+      "publisher": "Bonfire Ventures",
+      "title": "Investment Criteria: seed lead, board seats, criteria and footer address",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "businessAddress",
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "sectorScope": "exhaustive"
+}

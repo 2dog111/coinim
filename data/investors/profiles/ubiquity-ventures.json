@@ -1,0 +1,99 @@
+{
+  "id": "org-ubiquity-ventures",
+  "slug": "ubiquity-ventures",
+  "displayName": "Ubiquity Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.ubiquity.vc/",
+  "summary": "Ubiquity Ventures is a seed-stage firm for technical founders building software that reaches into the physical world, which it calls software beyond the screen. Its Thesis page states a check size of $1,000,000 to $3,000,000 as lead or co-lead, pre-seed and seed stage, typical companies of one to three technical founders often pre-product, and a single general partner as decision maker. Founders are asked to email a concise note. Geography and a street address are not stated.",
+  "sectors": [
+    "deep-tech",
+    "hardware",
+    "space",
+    "b2b-software"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [],
+  "publishedCheckRange": {
+    "min": 1000000,
+    "max": 3000000,
+    "currency": "USD",
+    "sourceId": "thesis",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "thesis",
+      "home"
+    ],
+    "stages": [
+      "thesis"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Rocket Lab",
+      "fact": "Listed on the homepage as a track-record company, now public. Ubiquity’s round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Loft Orbital",
+      "fact": "Listed on the homepage among track-record companies. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "email",
+    "url": "mailto:hello@ubiquity.vc",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "thesis",
+      "url": "https://www.ubiquity.vc/thesis",
+      "publisher": "Ubiquity Ventures",
+      "title": "Thesis page: check size, stage, typical company and decision process",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "publishedCheckRange"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://www.ubiquity.vc/",
+      "publisher": "Ubiquity Ventures",
+      "title": "Homepage: software beyond the screen thesis, track record and contact emails",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "investmentEvidence",
+        "preferredPitchChannel"
+      ]
+    }
+  ],
+  "sectorScope": "exhaustive"
+}

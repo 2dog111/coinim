@@ -1,0 +1,76 @@
+{
+  "id": "org-rampersand",
+  "slug": "rampersand",
+  "displayName": "Rampersand",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://rampersand.vc/",
+  "summary": "Rampersand backs ambitious founders from Australia and New Zealand from day zero, wherever they are building. Its homepage describes inception, pre-seed and seed cheques into ANZ founders including the global diaspora, a lead or co-lead role with deep follow-on reserves, more than $100,000,000 deployed, and a concentration in AI-native software, vertical AI and deep tech, with locations in Sydney, Melbourne and San Francisco. Founders pitch through the site. Cheque size and a street address are not stated.",
+  "sectors": [
+    "ai",
+    "b2b-software",
+    "deep-tech"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [
+    "australia-nz"
+  ],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "stages": [
+      "home"
+    ],
+    "investmentGeographies": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Cor",
+      "fact": "The homepage links a Substack investment note on Cor. The round and date are not shown on the homepage.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "website",
+    "url": "https://rampersand.vc/",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://rampersand.vc/",
+      "publisher": "Rampersand",
+      "title": "Homepage: ANZ founder focus, stages, role, sectors, locations and pitch link",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "investmentGeographies",
+        "preferredPitchChannel",
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "sectorScope": "examples",
+  "geographyScope": "examples"
+}

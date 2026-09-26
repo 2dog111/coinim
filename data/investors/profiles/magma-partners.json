@@ -1,0 +1,87 @@
+{
+  "id": "org-magma-partners",
+  "slug": "magma-partners",
+  "displayName": "Magma Partners",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://magmapartners.com/",
+  "summary": "Magma Partners backs entrepreneurs in Latin America from pre-seed to Series A and says it would love to be a company's first investor. Its homepage reports more than 125 startups backed with more than $80,000,000 invested, describes the firm as a generalist best known for fintech, insurtech and marketplaces, and asks founders to create a Magma Memo rather than use the general contact form. Check size and a street address are not stated on the pages reviewed.",
+  "sectors": [
+    "agnostic",
+    "fintech",
+    "marketplaces"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed",
+    "series-a"
+  ],
+  "investmentGeographies": [
+    "latam"
+  ],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "stages": [
+      "home"
+    ],
+    "investmentGeographies": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "125+ startups",
+      "fact": "The homepage states more than 125 startups backed with more than $80M over eight years; the companies page lists them without dates on the homepage.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://magmapartners.com/magma-memo/home",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://magmapartners.com/",
+      "publisher": "Magma Partners",
+      "title": "Homepage: Latin America focus, stages, generalist view with fintech and marketplaces, Magma Memo route",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "investmentGeographies",
+        "preferredPitchChannel",
+        "investmentEvidence"
+      ]
+    },
+    {
+      "id": "contact",
+      "url": "https://magmapartners.com/contact-us",
+      "publisher": "Magma Partners",
+      "title": "Contact page: founders directed to the Magma Memo instead of the form",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "preferredPitchChannel"
+      ]
+    }
+  ],
+  "geographyScope": "exhaustive"
+}

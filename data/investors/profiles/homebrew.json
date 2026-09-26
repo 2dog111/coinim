@@ -1,0 +1,94 @@
+{
+  "id": "org-homebrew",
+  "slug": "homebrew",
+  "displayName": "Homebrew",
+  "entityType": "organisation",
+  "investorType": "entrepreneur-investor",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.homebrew.co/",
+  "summary": "Homebrew is the investing partnership of Satya Patel and Hunter Walk, who say they now invest their own capital with the flexibility of angels and institutional experience. Its homepage states that 90% of its activity is pre-seed and seed investments of $100,000 to $500,000, with 10% larger or later, no ownership targets, and a requirement that the startup be located in North or South America and initially target those markets. A pitch route and a street address are not stated.",
+  "sectors": [],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [
+    "north-america",
+    "latam"
+  ],
+  "publishedCheckRange": {
+    "min": 100000,
+    "max": 500000,
+    "currency": "USD",
+    "sourceId": "home",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "stages": [
+      "home"
+    ],
+    "investmentGeographies": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [
+    {
+      "name": "Satya Patel",
+      "role": "Partner (named on the homepage)",
+      "sourceId": "home",
+      "reviewedAt": "2026-09-17"
+    },
+    {
+      "name": "Hunter Walk",
+      "role": "Partner (named on the homepage)",
+      "sourceId": "home",
+      "reviewedAt": "2026-09-17"
+    }
+  ],
+  "investmentEvidence": [
+    {
+      "company": "Plaid",
+      "fact": "Linked from the homepage portfolio. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Mercury",
+      "fact": "Linked from the homepage portfolio. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": null,
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.homebrew.co/",
+      "publisher": "Homebrew",
+      "title": "Homepage: principles, investment size and share, geography requirement and portfolio links",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "investmentGeographies",
+        "publishedCheckRange",
+        "investmentEvidence",
+        "publicContactPeople"
+      ]
+    }
+  ],
+  "geographyScope": "exhaustive"
+}

@@ -1,0 +1,19 @@
+{
+  "displayName": "name",
+  "entityType": "entity_type",
+  "investorType": "investor_type",
+  "organisationName": "organisation",
+  "officialWebsite": "website",
+  "summary": "summary",
+  "sectors": "sectors",
+  "stages": "stages",
+  "investmentGeographies": "investment_geographies",
+  "checkMin": "check_min",
+  "checkMax": "check_max",
+  "checkCurrency": "check_currency",
+  "pitchUrl": "pitch_url",
+  "sourceUrl": "source_url",
+  "sourceTitle": "source_title",
+  "sourcePublisher": "source_publisher",
+  "checkedAt": "checked_at"
+}

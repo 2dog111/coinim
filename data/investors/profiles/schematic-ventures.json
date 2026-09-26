@@ -1,0 +1,78 @@
+{
+  "id": "org-schematic-ventures",
+  "slug": "schematic-ventures",
+  "displayName": "Schematic Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.schematicventures.com/",
+  "summary": "Schematic Ventures is an early-stage fund in San Francisco investing in technology companies within supply chain, manufacturing and software infrastructure, with the tagline technology that makes and moves the world. Its homepage lists the portfolio with stage and year for each company, for example Altana at seed in 2021, Axle Mobility at pre-seed in 2023 and Chassy at pre-seed in 2024. The site has a pitch page. Check size, geography and a street address are not stated.",
+  "sectors": [
+    "logistics",
+    "hardware",
+    "developer-tools"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "stages": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Altana",
+      "fact": "Homepage lists Altana (supply chain intelligence) at seed, 2021.",
+      "eventDate": "2021",
+      "datePrecision": "year",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Chassy",
+      "fact": "Homepage lists Chassy (robot software infrastructure) at pre-seed, 2024.",
+      "eventDate": "2024",
+      "datePrecision": "year",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "website",
+    "url": "https://www.schematicventures.com/",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.schematicventures.com/",
+      "publisher": "Schematic Ventures",
+      "title": "Homepage: sector focus, location and portfolio with stage and year",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "investmentEvidence",
+        "preferredPitchChannel"
+      ]
+    }
+  ],
+  "sectorScope": "exhaustive"
+}

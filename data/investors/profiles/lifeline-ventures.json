@@ -1,0 +1,93 @@
+{
+  "id": "org-lifeline-ventures",
+  "slug": "lifeline-ventures",
+  "displayName": "Lifeline Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.lifelineventures.com/",
+  "summary": "Lifeline Ventures is a Finland-based early-stage firm founded by serial entrepreneurs. Its homepage describes a sector-agnostic pre-seed and seed investor that wants to partner with founders from the very beginning, and lists recent pre-seed rounds such as Proteins.1, CRACI and Elva. The team page says founders who want to partner should email one of the partners directly at a firstname address. Check size, formal geography and a street address are not published on the pages reviewed.",
+  "sectors": [
+    "agnostic"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "stages": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [
+    {
+      "name": "Timo Ahopelto",
+      "role": "Founding Partner",
+      "sourceId": "team",
+      "reviewedAt": "2026-09-17"
+    }
+  ],
+  "investmentEvidence": [
+    {
+      "company": "Proteins.1",
+      "fact": "Listed on the homepage under new investments as a pre-seed round. The date is not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Elva",
+      "fact": "Listed on the homepage under new investments as a pre-seed round. The date is not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "email",
+    "url": "mailto:sonja@lifelineventures.com",
+    "sourceId": "team"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.lifelineventures.com/",
+      "publisher": "Lifeline Ventures",
+      "title": "Homepage: sector-agnostic pre-seed and seed focus and new pre-seed investments",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "investmentEvidence"
+      ]
+    },
+    {
+      "id": "team",
+      "url": "https://www.lifelineventures.com/contact-our-team/",
+      "publisher": "Lifeline Ventures",
+      "title": "Our team: Finland base, partner names and email route",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "publicContactPeople",
+        "preferredPitchChannel"
+      ]
+    }
+  ]
+}

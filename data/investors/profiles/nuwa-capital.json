@@ -1,0 +1,91 @@
+{
+  "id": "org-nuwa-capital",
+  "slug": "nuwa-capital",
+  "displayName": "Nuwa Capital",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.nuwacapital.io/",
+  "summary": "Nuwa Capital is a Dubai-based venture firm with offices listed in Dubai, Riyadh and Cairo that describes itself as a founder-first investment platform for the MENA technology ecosystem, supported by strategic investor Al Faisaliah Group. Its homepage features portfolio companies such as Tapper, Mantas and Gowit and insight posts on investment decisions. Stage, cheque size, sector focus, an application route and a street address are not stated on the pages reviewed, so those points need direct confirmation.",
+  "sectors": [],
+  "stages": [],
+  "investmentGeographies": [
+    "middle-east"
+  ],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "investmentGeographies": [
+      "who"
+    ]
+  },
+  "publicContactPeople": [
+    {
+      "name": "Khaled Talhouni",
+      "role": "Managing Partner",
+      "sourceId": "who",
+      "reviewedAt": "2026-09-17"
+    }
+  ],
+  "investmentEvidence": [
+    {
+      "company": "Mantas",
+      "fact": "Listed on the homepage portfolio (parametric insurance, Dubai). Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Gowit",
+      "fact": "Listed on the homepage portfolio (retail media platform, Istanbul). Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": null,
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "who",
+      "url": "https://www.nuwacapital.io/who-we-are",
+      "publisher": "Nuwa Capital",
+      "title": "Who we are: founder-first platform, MENA focus, strategic investor and partners",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentGeographies",
+        "publicContactPeople"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://www.nuwacapital.io/",
+      "publisher": "Nuwa Capital",
+      "title": "Homepage: portfolio companies and insights",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence"
+      ]
+    },
+    {
+      "id": "contact",
+      "url": "https://www.nuwacapital.io/contact",
+      "publisher": "Nuwa Capital",
+      "title": "Contact page: Dubai, Riyadh and Cairo and regulatory note",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": []
+    }
+  ],
+  "geographyScope": "examples"
+}

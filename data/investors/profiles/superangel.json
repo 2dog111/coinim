@@ -1,0 +1,86 @@
+{
+  "id": "org-superangel",
+  "slug": "superangel",
+  "displayName": "Superangel",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://superangel.io/",
+  "summary": "Superangel is an early-stage fund founded, run and backed by tech entrepreneurs, offering funding in the Baltics and Nordics. Its homepage asks whether a founder is raising a pre-seed or seed round, states a typical ticket of €300,000 to €1,000,000, and names three focus areas: AI and robotics, data and infrastructure, and deep tech and science. Portfolio founder Markus Lember of Montonio is quoted. Startups apply through a submission form. A street address is not stated on the pages reviewed.",
+  "sectors": [
+    "ai",
+    "hardware",
+    "developer-tools",
+    "deep-tech"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [
+    "baltics",
+    "nordics"
+  ],
+  "publishedCheckRange": {
+    "min": 300000,
+    "max": 1000000,
+    "currency": "EUR",
+    "sourceId": "home",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "stages": [
+      "home"
+    ],
+    "investmentGeographies": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Montonio",
+      "fact": "CEO Markus Lember is quoted on the homepage on Superangel helping the company find first customers. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://superangel.io/submit-your-startup/",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://superangel.io/",
+      "publisher": "Superangel",
+      "title": "Homepage: stages, ticket size, focus areas, Baltics and Nordics and submission link",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "investmentGeographies",
+        "publishedCheckRange",
+        "preferredPitchChannel",
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "sectorScope": "examples",
+  "geographyScope": "exhaustive"
+}

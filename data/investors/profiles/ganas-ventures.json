@@ -1,0 +1,85 @@
+{
+  "id": "org-ganas-ventures",
+  "slug": "ganas-ventures",
+  "displayName": "Ganas Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.ganas.vc/",
+  "summary": "Ganas Ventures is a Latina-led fund run by general partner Lolita Taub that invests in pre-seed and seed community-driven startups across the United States and Latin America. Its homepage gives a portfolio snapshot of 40% pre-seed and 60% seed, split between the United States and Latin America including Mexico, Costa Rica, El Salvador and Brazil, and describes a scout and community network. Founders apply through a linked form. Check size, sector focus and a street address are not published.",
+  "sectors": [],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [
+    "us",
+    "latam"
+  ],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "stages": [
+      "home"
+    ],
+    "investmentGeographies": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [
+    {
+      "name": "Lolita Taub",
+      "role": "General Partner",
+      "sourceId": "home",
+      "reviewedAt": "2026-09-17"
+    }
+  ],
+  "investmentEvidence": [
+    {
+      "company": "Latitud",
+      "fact": "Portfolio founder Gina Gotthilf is quoted on the homepage on Ganas being a fit for Latitud. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Storybook",
+      "fact": "Named on the homepage among portfolio companies sourced through deal partners. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://lolitataub.typeform.com/startups",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.ganas.vc/",
+      "publisher": "Ganas Ventures",
+      "title": "Homepage: stage, US and Latin America focus, general partner, portfolio snapshot and application link",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "investmentGeographies",
+        "publicContactPeople",
+        "investmentEvidence",
+        "preferredPitchChannel"
+      ]
+    }
+  ],
+  "geographyScope": "exhaustive"
+}

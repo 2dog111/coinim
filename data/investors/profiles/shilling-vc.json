@@ -1,0 +1,70 @@
+{
+  "id": "org-shilling-vc",
+  "slug": "shilling-vc",
+  "displayName": "Shilling VC",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.shilling.vc/",
+  "summary": "Shilling is a Portuguese early-stage firm backed by more than 35 founder limited partners. Its homepage states a typical investment of €100,000 to €1,000,000, a founders fund that shares profits with portfolio founders, and a community platform. The Pitch page says Shilling was the first institutional investor in companies that later raised more than €200,000,000 and that it looks for tech-driven ideas and well-balanced teams. Stage, sector, geography and a street address are not stated on the pages reviewed.",
+  "sectors": [],
+  "stages": [],
+  "investmentGeographies": [],
+  "publishedCheckRange": {
+    "min": 100000,
+    "max": 1000000,
+    "currency": "EUR",
+    "sourceId": "home",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {},
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Kencko",
+      "fact": "Founder Ricardo Vice Santos is quoted on the homepage as a founder LP; the site also lists portfolio insights such as Luca and Vitaance. Rounds and dates are not stated on the homepage.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://www.shilling.vc/pitch",
+    "sourceId": "pitch"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.shilling.vc/",
+      "publisher": "Shilling VC",
+      "title": "Homepage: typical investment size, founders fund and community",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "publishedCheckRange",
+        "investmentEvidence"
+      ]
+    },
+    {
+      "id": "pitch",
+      "url": "https://www.shilling.vc/pitch",
+      "publisher": "Shilling VC",
+      "title": "Pitch to us: first-institutional-investor positioning and pitch form",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "preferredPitchChannel"
+      ]
+    }
+  ]
+}

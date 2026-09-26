@@ -1,0 +1,75 @@
+{
+  "id": "org-loftyinc-capital",
+  "slug": "loftyinc-capital",
+  "displayName": "LoftyInc Capital",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://loftyinc.vc/",
+  "summary": "LoftyInc Capital backs early-stage African entrepreneurs building tech-enabled solutions for what it calls the everyday economy, and announced a $43,000,000 first close of a new pan-African seed fund. Its Learn and Apply page describes criteria such as massive markets, defensible revenues and replicable growth models, and the site links a Submit Deck form. Portfolio highlights on the homepage include Flutterwave. Check size, formal stage definition and a street address are not stated on the pages reviewed.",
+  "sectors": [],
+  "stages": [
+    "seed"
+  ],
+  "investmentGeographies": [
+    "africa"
+  ],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "stages": [
+      "home"
+    ],
+    "investmentGeographies": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Flutterwave",
+      "fact": "Featured on the homepage as a portfolio company founded in 2016. LoftyInc’s round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://airtable.com/app0MrGMoB17dGexE/pagkURkMT6T6Gg6ij/form",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://loftyinc.vc/",
+      "publisher": "LoftyInc Capital",
+      "title": "Homepage: African early-stage focus, seed fund announcement, portfolio and Submit Deck link",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "investmentGeographies",
+        "investmentEvidence",
+        "preferredPitchChannel"
+      ]
+    },
+    {
+      "id": "learn",
+      "url": "https://loftyinc.vc/learn-and-apply/",
+      "publisher": "LoftyInc Capital",
+      "title": "Learn and Apply: investment criteria",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": []
+    }
+  ],
+  "geographyScope": "exhaustive"
+}

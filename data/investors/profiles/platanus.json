@@ -1,0 +1,83 @@
+{
+  "id": "org-platanus",
+  "slug": "platanus",
+  "displayName": "Platanus",
+  "entityType": "organisation",
+  "investorType": "accelerator",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://platan.us/",
+  "summary": "Platanus is a Latin American accelerator programme for technical founders. Its Spanish-language homepage states that selected startups receive an investment of $200,000 for 7% of the company and join a three-month programme with a community of Spanish-speaking founders, mentors from companies such as Toku and Buk, and a demo day. Portfolio pages include Fintoc and Toku. Founders apply through the site. Sector, geography beyond Latin America and a street address are not stated.",
+  "sectors": [],
+  "stages": [
+    "pre-seed"
+  ],
+  "investmentGeographies": [
+    "latam"
+  ],
+  "publishedCheckRange": {
+    "min": 200000,
+    "max": 200000,
+    "currency": "USD",
+    "sourceId": "home",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "stages": [
+      "home"
+    ],
+    "investmentGeographies": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Toku",
+      "fact": "Linked from the homepage as a portfolio startup (Platanus 2021 batch per the mentor note). The investment date is not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Fintoc",
+      "fact": "Linked from the homepage as a portfolio startup. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://platan.us/apply",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://platan.us/",
+      "publisher": "Platanus",
+      "title": "Homepage (Spanish): $200,000 for 7%, programme structure, mentors, portfolio and apply link",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "investmentGeographies",
+        "publishedCheckRange",
+        "preferredPitchChannel",
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "geographyScope": "exhaustive"
+}

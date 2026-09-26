@@ -1,0 +1,78 @@
+{
+  "id": "org-ripple-ventures",
+  "slug": "ripple-ventures",
+  "displayName": "Ripple Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.rippleventures.com/",
+  "summary": "Ripple Ventures is a Toronto-based inception-stage investor in founders building advanced technologies, and announced its fourth fund. Its homepage states a cheque size of $250,000 to $1,000,000, a stage that can be pre-incorporation, pre-product or pre-traction, a typical lead or co-lead role, and a geography of Canadian and US startups selling to global markets. Portfolio entries are tagged deep tech and AI plus science or services. A pitch route and a street address are not stated on the homepage.",
+  "sectors": [
+    "deep-tech",
+    "ai"
+  ],
+  "stages": [
+    "pre-seed"
+  ],
+  "investmentGeographies": [
+    "canada",
+    "us"
+  ],
+  "publishedCheckRange": {
+    "min": 250000,
+    "max": 1000000,
+    "currency": "USD",
+    "sourceId": "home",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "stages": [
+      "home"
+    ],
+    "investmentGeographies": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Portfolio",
+      "fact": "The homepage lists portfolio companies tagged deep tech, AI and science, and AI and services, mostly in Toronto; individual rounds and dates are not stated on the homepage.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": null,
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.rippleventures.com/",
+      "publisher": "Ripple Ventures",
+      "title": "Homepage: cheque size, stage, round involvement, geography and portfolio tags",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "investmentGeographies",
+        "publishedCheckRange",
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "sectorScope": "examples",
+  "geographyScope": "exhaustive"
+}

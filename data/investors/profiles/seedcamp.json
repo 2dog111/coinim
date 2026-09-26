@@ -1,0 +1,96 @@
+{
+  "id": "org-seedcamp",
+  "slug": "seedcamp",
+  "displayName": "Seedcamp",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://seedcamp.com/",
+  "summary": "Seedcamp is a London-based early-stage investor that says it is a founder's first backer. Its FAQ states a first cheque usually between $350,000 and $1,250,000, a sector-agnostic approach, a preference to lead or co-lead alongside angels and funds, and a focus on companies based in Europe and Israel or with a distinctively European angle. A street address is not stated on the pages reviewed.",
+  "sectors": [
+    "agnostic"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [
+    "europe",
+    "israel"
+  ],
+  "publishedCheckRange": {
+    "min": 350000,
+    "max": 1250000,
+    "currency": "USD",
+    "sourceId": "faq",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "faq"
+    ],
+    "stages": [
+      "faq"
+    ],
+    "investmentGeographies": [
+      "faq"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Synthesia",
+      "fact": "Co-founder Victor Riparbelli is quoted on the homepage saying Seedcamp believed in the company when others did not. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Bioorbit",
+      "fact": "The homepage links a post on Bioorbit raising a $13.2M seed round for space manufacturing. The date is not shown on the homepage.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": null,
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "faq",
+      "url": "https://seedcamp.com/faqs/",
+      "publisher": "Seedcamp",
+      "title": "FAQ: first cheque size, sector-agnostic view, syndicate role and geography",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "investmentGeographies",
+        "publishedCheckRange"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://seedcamp.com/",
+      "publisher": "Seedcamp",
+      "title": "Homepage: portfolio and founder testimonials",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "geographyScope": "examples"
+}

@@ -1,0 +1,98 @@
+{
+  "id": "org-boldstart-ventures",
+  "slug": "boldstart-ventures",
+  "displayName": "boldstart ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://boldstart.vc/",
+  "summary": "boldstart ventures calls itself the inception fund, writing first checks for technical founders since 2010. Its homepage lists areas it wants to hear about, cybersecurity, AI infrastructure, physical AI, agents and unusual ideas, and shows inception investments with the year backing began, such as Snyk since 2015, Clay since 2017 and Tessl since 2024. Check size, geography and a street address are not stated on the pages reviewed.",
+  "sectors": [
+    "security",
+    "ai",
+    "developer-tools",
+    "hardware"
+  ],
+  "stages": [
+    "pre-seed"
+  ],
+  "investmentGeographies": [],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "stages": [
+      "home",
+      "dont"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Snyk",
+      "fact": "Homepage shows Snyk (developer-first security) backed since 2015.",
+      "eventDate": "2015",
+      "datePrecision": "year",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Clay",
+      "fact": "Homepage shows Clay (GTM engineering) backed since 2017.",
+      "eventDate": "2017",
+      "datePrecision": "year",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Tessl",
+      "fact": "Homepage shows Tessl (AI-native development) backed since 2024.",
+      "eventDate": "2024",
+      "datePrecision": "year",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "website",
+    "url": "https://boldstart.vc/contact-us/",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://boldstart.vc/",
+      "publisher": "boldstart ventures",
+      "title": "Homepage: inception focus, areas of interest and backed-since years",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "investmentEvidence"
+      ]
+    },
+    {
+      "id": "dont",
+      "url": "https://boldstart.vc/what-we-dont-do/",
+      "publisher": "boldstart ventures",
+      "title": "What we don’t do: process commitments, inception-only investing",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages"
+      ]
+    }
+  ],
+  "sectorScope": "examples"
+}

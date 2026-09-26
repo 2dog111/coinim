@@ -1,0 +1,129 @@
+{
+  "id": "org-angel-invest",
+  "slug": "angel-invest",
+  "displayName": "Angel Invest",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://angelinvest.ventures/",
+  "summary": "Angel Invest is a Berlin-based fund that calls itself the most active super angel fund in Europe, investing in about 75 startups a year with a typical check of €125,000. Its homepage says it co-invests in angel, pre-seed and seed rounds in AI, fintech and deep tech, occasionally outside those areas, and coaches teams for at least a year after investing. Founders reach it through a contact form checked daily. The imprint publishes the company's Berlin address and managing directors.",
+  "sectors": [
+    "ai",
+    "fintech",
+    "deep-tech"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [
+    "europe"
+  ],
+  "publishedCheckRange": {
+    "min": 125000,
+    "max": 125000,
+    "currency": "EUR",
+    "sourceId": "home",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "stages": [
+      "home"
+    ],
+    "investmentGeographies": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [
+    {
+      "name": "Jens Lapinski",
+      "role": "Managing Director",
+      "sourceId": "imprint",
+      "reviewedAt": "2026-09-17"
+    },
+    {
+      "name": "Oliver Clasen",
+      "role": "Managing Director",
+      "sourceId": "imprint",
+      "reviewedAt": "2026-09-17"
+    }
+  ],
+  "investmentEvidence": [
+    {
+      "company": "Peec AI",
+      "fact": "Founder Marius Meiners is quoted on the homepage saying Angel Invest came into the company’s first angel round. The date is not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Bling",
+      "fact": "Founders are quoted on the homepage on Angel Invest backing the company early. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://angelinvest.ventures/",
+    "sourceId": "home"
+  },
+  "businessAddress": {
+    "organisation": "Angel Invest GmbH",
+    "lines": [
+      "Dircksenstr. 4"
+    ],
+    "city": "Berlin",
+    "postalCode": "10179",
+    "country": "DE",
+    "addressType": "type-not-established",
+    "sourceId": "imprint",
+    "checkedAt": "2026-09-17"
+  },
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://angelinvest.ventures/",
+      "publisher": "Angel Invest",
+      "title": "Homepage: check size, pace, stages, sectors, European focus and contact form",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "investmentGeographies",
+        "publishedCheckRange",
+        "preferredPitchChannel",
+        "investmentEvidence"
+      ]
+    },
+    {
+      "id": "imprint",
+      "url": "https://angelinvest.ventures/imprint",
+      "publisher": "Angel Invest",
+      "title": "Imprint: Angel Invest GmbH, Berlin address, managing directors and contact",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "businessAddress",
+        "publicContactPeople"
+      ]
+    }
+  ],
+  "sectorScope": "examples",
+  "geographyScope": "examples"
+}

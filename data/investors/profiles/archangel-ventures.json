@@ -1,0 +1,94 @@
+{
+  "id": "org-archangel-ventures",
+  "slug": "archangel-ventures",
+  "displayName": "Archangel Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.archangel.vc/",
+  "summary": "Archangel Ventures partners with founders across Australia from day one. Its Our Approach page says the firm deploys the majority of its capital at pre-seed and seed, is generalist by design and sector-agnostic but mission-aligned, and offers candid advice and network access. Portfolio pages include Heidi Health, Atelier and Pearler, and the homepage links application forms and a 2026 fund. Cheque size and a street address are not stated on the pages reviewed.",
+  "sectors": [
+    "agnostic"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [
+    "australia-nz"
+  ],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "sectors": [
+      "approach"
+    ],
+    "stages": [
+      "approach"
+    ],
+    "investmentGeographies": [
+      "approach",
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Heidi Health",
+      "fact": "Featured on the homepage as a portfolio company (AI care partner for clinicians), with a post on backing Heidi. Round and date are not stated on the homepage.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Atelier",
+      "fact": "Featured on the homepage as a portfolio company (supply chain as a service). Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://form.typeform.com/to/d4LWz4vD",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "approach",
+      "url": "https://www.archangel.vc/our-approach",
+      "publisher": "Archangel Ventures",
+      "title": "Our Approach: pre-seed and seed emphasis, generalist mandate, Australian roots",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "investmentGeographies"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://www.archangel.vc/",
+      "publisher": "Archangel Ventures",
+      "title": "Homepage: Australia focus, portfolio companies and application form links",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence",
+        "preferredPitchChannel",
+        "investmentGeographies"
+      ]
+    }
+  ],
+  "geographyScope": "exhaustive"
+}

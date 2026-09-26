@@ -1,0 +1,119 @@
+{
+  "id": "org-episode-1-ventures",
+  "slug": "episode-1-ventures",
+  "displayName": "Episode 1 Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.episode1.com/",
+  "summary": "Episode 1 Ventures is a London fund that describes itself as an AI and infrastructure investor focused on defensible software solving technical problems in large markets, with a portfolio across infrastructure, computational biology, robotics, developer tools and quantum. Its FAQ states cheques of £250,000 to £2,000,000, investment at pre-seed and seed across the UK and Europe, and a Submit your Deck route for cold pitches. The site publishes a registered address.",
+  "sectors": [
+    "ai",
+    "developer-tools",
+    "deep-tech",
+    "biotech",
+    "hardware"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [
+    "uk",
+    "europe"
+  ],
+  "publishedCheckRange": {
+    "min": 250000,
+    "max": 2000000,
+    "currency": "GBP",
+    "sourceId": "faq",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "faq"
+    ],
+    "stages": [
+      "faq"
+    ],
+    "investmentGeographies": [
+      "faq"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Adsum",
+      "fact": "Homepage lists Adsum (business tax refunds) with first investment in 2023.",
+      "eventDate": "2023",
+      "datePrecision": "year",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Sano Genetics",
+      "fact": "Homepage lists Sano Genetics with first investment in 2020.",
+      "eventDate": "2020",
+      "datePrecision": "year",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://www.episode1.com/",
+    "sourceId": "faq"
+  },
+  "businessAddress": {
+    "organisation": "Episode 1 Ventures LLP",
+    "lines": [
+      "4th floor",
+      "112-116 New Oxford St"
+    ],
+    "city": "London",
+    "postalCode": "WC1A 1HH",
+    "country": "GB",
+    "addressType": "registered-office",
+    "sourceId": "faq",
+    "checkedAt": "2026-09-17"
+  },
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "faq",
+      "url": "https://www.episode1.com/faq",
+      "publisher": "Episode 1 Ventures",
+      "title": "FAQ: cheque size, stage, geographies, sectors, cold pitch route and registered address",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "investmentGeographies",
+        "publishedCheckRange",
+        "preferredPitchChannel",
+        "businessAddress"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://www.episode1.com/",
+      "publisher": "Episode 1 Ventures",
+      "title": "Homepage: portfolio with first-invested years",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "sectorScope": "exhaustive",
+  "geographyScope": "exhaustive"
+}

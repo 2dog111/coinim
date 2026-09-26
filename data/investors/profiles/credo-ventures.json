@@ -1,0 +1,82 @@
+{
+  "id": "org-credo-ventures",
+  "slug": "credo-ventures",
+  "displayName": "Credo Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.credoventures.com/",
+  "summary": "Credo Ventures says it backs the most ambitious founders from Central and Eastern Europe and its global diaspora, pre-everything, and has led rounds since 2009. Its homepage lists how it operates: backing exceptional people rather than a thesis, leading pre-seed rounds, checks of $1,000,000 to $5,000,000, and hands-on work with technical founders, with more than 100 companies backed. An info email is published. Sector focus and a street address are not stated on the pages reviewed.",
+  "sectors": [
+    "agnostic"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [
+    "cee",
+    "baltics"
+  ],
+  "publishedCheckRange": {
+    "min": 1000000,
+    "max": 5000000,
+    "currency": "USD",
+    "sourceId": "home",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "stages": [
+      "home"
+    ],
+    "investmentGeographies": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "100+ companies backed",
+      "fact": "The homepage states more than 100 companies backed and two decacorns; individual companies are listed on the portfolio page without dates on the homepage.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "email",
+    "url": "mailto:info@credoventures.com",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.credoventures.com/",
+      "publisher": "Credo Ventures",
+      "title": "Homepage: CEE focus, pre-seed leading, check size, operating principles and contact email",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "investmentGeographies",
+        "publishedCheckRange",
+        "preferredPitchChannel",
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "geographyScope": "exhaustive"
+}

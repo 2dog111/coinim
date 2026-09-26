@@ -49,8 +49,8 @@ def main():
                     target = target.with_suffix('.html')
                 public = target == ROOT / 'index.html' or (
                     target.is_relative_to(ROOT / 'assets') or
-                    target.name in {'index.html', 'ms.html', 'open.html', 'handling.html', 'mail.html', 'msru.html'}
-                    and target.parent in {ROOT, *(ROOT / p for p in ('ms', 'open', 'handling', 'mail', 'msru'))}
+                    target.name in {'index.html', 'ms.html', 'open.html', 'handling.html', 'mail.html', 'msru.html', 'investors.html'}
+                    and target.parent in {ROOT, *(ROOT / p for p in ('ms', 'open', 'handling', 'mail', 'msru', 'investors'))}
                 )
                 if public and target.is_relative_to(ROOT) and target.is_file():
                     status, body = 200, target.read_bytes()

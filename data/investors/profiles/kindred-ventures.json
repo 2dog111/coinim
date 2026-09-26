@@ -1,0 +1,86 @@
+{
+  "id": "org-kindred-ventures",
+  "slug": "kindred-ventures",
+  "displayName": "Kindred Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://kindredventures.com/",
+  "summary": "Kindred Ventures is a San Francisco firm that says it backs founders at the earliest stage building with technology and science. Its About page states the location, an earliest-stage focus and more than 100 startups backed, and groups the portfolio into AI, climate tech, consumer, crypto and web3, fintech, health and wellness, mobility and logistics, and tools and infrastructure. Check size, geography, an application route and a street address are not published on the site.",
+  "sectors": [
+    "ai",
+    "climate",
+    "consumer",
+    "crypto",
+    "fintech",
+    "healthcare",
+    "logistics",
+    "developer-tools"
+  ],
+  "stages": [],
+  "investmentGeographies": [],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [
+    {
+      "name": "Steve Jang",
+      "role": "Founder and Managing Partner",
+      "sourceId": "about",
+      "reviewedAt": "2026-09-17"
+    },
+    {
+      "name": "Kanyi Maqubela",
+      "role": "Managing Partner",
+      "sourceId": "about",
+      "reviewedAt": "2026-09-17"
+    }
+  ],
+  "investmentEvidence": [
+    {
+      "company": "Sandbar",
+      "fact": "The homepage links a March 2026 announcement about Sandbar, an AI interface company in the portfolio, and a report of its $23M Series A. Kindred’s initial round is not stated.",
+      "eventDate": "2026-03",
+      "datePrecision": "month",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": null,
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "about",
+      "url": "https://kindredventures.com/about/",
+      "publisher": "Kindred Ventures",
+      "title": "About page: location, stage, team",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "publicContactPeople"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://kindredventures.com/",
+      "publisher": "Kindred Ventures",
+      "title": "Homepage: sector groupings and portfolio announcements",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "sectorScope": "examples"
+}

@@ -1,0 +1,91 @@
+{
+  "id": "org-faber",
+  "slug": "faber",
+  "displayName": "Faber",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.faber.vc/",
+  "summary": "Faber is a Lisbon-linked early-stage firm that invests in teams transforming industries with frontier technology. Its homepage states pre-seed and seed stages, a first ticket of up to €2,500,000, and a geography of Southern Europe with selective investments across Europe, and its Approach page adds selective investing in the US and a deep tech focus on applied science, digital transformation, and climate and ocean tech. A street address is not stated on the pages reviewed.",
+  "sectors": [
+    "deep-tech",
+    "climate"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [
+    "iberia",
+    "europe"
+  ],
+  "publishedCheckRange": {
+    "min": null,
+    "max": 2500000,
+    "currency": "EUR",
+    "sourceId": "home",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "stages": [
+      "home"
+    ],
+    "investmentGeographies": [
+      "home",
+      "approach"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Atmos Space Cargo",
+      "fact": "The homepage reports a €25.7M Series A led by Balnord and Expansion Ventures with participation from Faber. Faber’s initial investment date is not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": null,
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.faber.vc/",
+      "publisher": "Faber",
+      "title": "Homepage: stages, first ticket, geographies and specialist focus",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "investmentGeographies",
+        "publishedCheckRange",
+        "investmentEvidence"
+      ]
+    },
+    {
+      "id": "approach",
+      "url": "https://www.faber.vc/approach/",
+      "publisher": "Faber",
+      "title": "Approach page: Southern Europe launchpad, selective Europe and US investing, lead preference",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentGeographies"
+      ]
+    }
+  ],
+  "sectorScope": "examples",
+  "geographyScope": "examples"
+}

@@ -1,0 +1,97 @@
+{
+  "id": "org-launch",
+  "slug": "launch",
+  "displayName": "LAUNCH",
+  "entityType": "organisation",
+  "investorType": "accelerator",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://launch.co/",
+  "summary": "LAUNCH is the founder-support organisation of Jason Calacanis, backing early-stage startups through programmes, funds, The Syndicate and a media network. Its homepage lists funding paths: a 12-week pre-accelerator investing $25,000 or $125,000 in top participants, a 14-week accelerator at $125,000, and a growth path at $250,000 and above, alongside portfolio names such as Calm, Vanta and Superhuman. Founders apply through an online form. Geography and a street address are not stated.",
+  "sectors": [],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [],
+  "publishedCheckRange": {
+    "min": 25000,
+    "max": 250000,
+    "currency": "USD",
+    "sourceId": "home",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "stages": [
+      "home",
+      "syndicate"
+    ]
+  },
+  "publicContactPeople": [
+    {
+      "name": "Jason Calacanis",
+      "role": "Founder (angel investing with Jason Calacanis, per The Syndicate)",
+      "sourceId": "syndicate",
+      "reviewedAt": "2026-09-17"
+    }
+  ],
+  "investmentEvidence": [
+    {
+      "company": "Vanta",
+      "fact": "Listed on the homepage among companies LAUNCH backed. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Superhuman",
+      "fact": "Listed on the homepage among companies LAUNCH backed. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://forms.launch.co/apply",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://launch.co/",
+      "publisher": "LAUNCH",
+      "title": "Homepage: funding paths with amounts, portfolio and application link",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "publishedCheckRange",
+        "preferredPitchChannel",
+        "investmentEvidence"
+      ]
+    },
+    {
+      "id": "syndicate",
+      "url": "https://thesyndicate.com/",
+      "publisher": "LAUNCH",
+      "title": "The Syndicate: pre-seed through late-stage angel syndicate with Jason Calacanis",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "publicContactPeople"
+      ]
+    }
+  ]
+}

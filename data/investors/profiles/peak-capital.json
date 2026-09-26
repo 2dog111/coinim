@@ -1,0 +1,88 @@
+{
+  "id": "org-peak-capital",
+  "slug": "peak-capital",
+  "displayName": "Peak",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://peak.capital/",
+  "summary": "Peak is a founder-backed early-stage fund with a €125,000,000 fund size and offices in Amsterdam, Berlin and Stockholm. Its Focus page says it invests in early-stage SaaS, marketplace and platform companies rather than particular industry verticals, that hardware is generally out of scope, and that it is a European investor. The homepage reports more than 50 investments across Europe and features companies such as VoiceLine and Gardia. Check size is not stated.",
+  "sectors": [
+    "b2b-software",
+    "marketplaces"
+  ],
+  "stages": [],
+  "investmentGeographies": [
+    "europe"
+  ],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "sectors": [
+      "focus"
+    ],
+    "investmentGeographies": [
+      "focus",
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "VoiceLine",
+      "fact": "Featured on the homepage as a portfolio company (voice-first AI for field sales) with Peak among the investors; the site also links a Series A post. Peak’s initial round date is not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Gardia",
+      "fact": "Featured on the homepage as a portfolio company (emergency response for the elderly) with Peak among the investors. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://peak.capital/founders/",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "focus",
+      "url": "https://peak.capital/focus/",
+      "publisher": "Peak",
+      "title": "Focus page: SaaS, marketplace and platform models, hardware exclusion, European offices",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "investmentGeographies"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://peak.capital/",
+      "publisher": "Peak",
+      "title": "Homepage: fund size, investment count, office cities and portfolio examples",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence",
+        "investmentGeographies"
+      ]
+    }
+  ],
+  "sectorScope": "exhaustive",
+  "geographyScope": "exhaustive"
+}

@@ -1,0 +1,71 @@
+{
+  "id": "org-space-capital",
+  "slug": "space-capital",
+  "displayName": "Space Capital",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.spacecapital.com/",
+  "summary": "Space Capital is a venture firm founded in 2012 with more than $1,000,000,000 under management that invests at the intersection of space technology and global markets, from satellites and GPS to geospatial intelligence. Its site asks founders to email business plans to launch@spacecapital.com with a clear description of operations and progress. Stage, check size, geography and a street address are not stated on the pages reviewed, so the fit beyond sector must be confirmed directly.",
+  "sectors": [
+    "space",
+    "deep-tech"
+  ],
+  "stages": [],
+  "investmentGeographies": [],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Portfolio",
+      "fact": "The About page states investing in the space economy for more than ten years with over $1B under management; individual companies are on the portfolio page without dates on the pages reviewed.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "about"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "email",
+    "url": "mailto:launch@spacecapital.com",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.spacecapital.com/",
+      "publisher": "Space Capital",
+      "title": "Homepage: space technology thesis and submission email",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "preferredPitchChannel"
+      ]
+    },
+    {
+      "id": "about",
+      "url": "https://www.spacecapital.com/about",
+      "publisher": "Space Capital",
+      "title": "About page: founding year, assets under management and team background",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "sectorScope": "exhaustive"
+}

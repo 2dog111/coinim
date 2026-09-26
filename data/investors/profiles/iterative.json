@@ -1,0 +1,100 @@
+{
+  "id": "org-iterative",
+  "slug": "iterative",
+  "displayName": "Iterative",
+  "entityType": "organisation",
+  "investorType": "accelerator",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.iterative.vc/",
+  "summary": "Iterative is a Southeast Asia accelerator run by founders that invests $150,000 to $500,000 in each startup of a batch twice a year, using a post-money SAFE for roughly 10% to 15%, then works with the founders for three months before a demo day. Its FAQ describes an online application, interviews with venture partners and general partners Brian Ma and Hsu Ken Ooi,. Sector focus and a street address are not stated on the pages reviewed.",
+  "sectors": [],
+  "stages": [
+    "pre-seed"
+  ],
+  "investmentGeographies": [
+    "southeast-asia"
+  ],
+  "publishedCheckRange": {
+    "min": 150000,
+    "max": 500000,
+    "currency": "USD",
+    "sourceId": "home",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "stages": [
+      "home"
+    ],
+    "investmentGeographies": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [
+    {
+      "name": "Brian Ma",
+      "role": "General Partner",
+      "sourceId": "faq",
+      "reviewedAt": "2026-09-17"
+    },
+    {
+      "name": "Hsu Ken Ooi",
+      "role": "General Partner",
+      "sourceId": "faq",
+      "reviewedAt": "2026-09-17"
+    }
+  ],
+  "investmentEvidence": [
+    {
+      "company": "Batch portfolio",
+      "fact": "The homepage and blog list batch companies such as the Summer 2025 batch; individual rounds beyond the programme investment are not stated on the pages reviewed.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "faq",
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://www.iterative.vc/apply",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.iterative.vc/",
+      "publisher": "Iterative",
+      "title": "Homepage: investment size, batch model and Southeast Asia focus",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "investmentGeographies",
+        "publishedCheckRange",
+        "preferredPitchChannel"
+      ]
+    },
+    {
+      "id": "faq",
+      "url": "https://www.iterative.vc/frequently-asked-questions",
+      "publisher": "Iterative",
+      "title": "FAQ: SAFE terms, application process, general partners",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "publishedCheckRange",
+        "publicContactPeople",
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "geographyScope": "exhaustive"
+}

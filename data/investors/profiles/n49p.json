@@ -1,0 +1,94 @@
+{
+  "id": "org-n49p",
+  "slug": "n49p",
+  "displayName": "N49P",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://n49p.com/",
+  "summary": "N49P is a Canadian fund that says it powers Canada's top founders from the start. Its Founders page states typical investments of $500,000 to $750,000 in early-stage Canadian tech startups at inception, pre-seed and early seed, with reinvestment support, a founder community and a network of more than 50 leaders. Case studies on the homepage include EvenUp and Safekeep. Founders apply through the site. Sector focus and a street address are not stated on the pages reviewed.",
+  "sectors": [],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [
+    "canada"
+  ],
+  "publishedCheckRange": {
+    "min": 500000,
+    "max": 750000,
+    "currency": "USD",
+    "sourceId": "founders",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "stages": [
+      "founders"
+    ],
+    "investmentGeographies": [
+      "founders"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "EvenUp",
+      "fact": "Featured on the homepage as a case study (AI for litigation). Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Safekeep",
+      "fact": "Featured on the homepage as a case study. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://n49p.com/apply",
+    "sourceId": "founders"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "founders",
+      "url": "https://n49p.com/founders",
+      "publisher": "N49P",
+      "title": "Founders page: investment size, stage and Canadian focus",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "investmentGeographies",
+        "publishedCheckRange",
+        "preferredPitchChannel"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://n49p.com/",
+      "publisher": "N49P",
+      "title": "Homepage: case studies and apply link",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "geographyScope": "exhaustive"
+}

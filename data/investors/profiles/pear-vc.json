@@ -1,0 +1,89 @@
+{
+  "id": "org-pear-vc",
+  "slug": "pear-vc",
+  "displayName": "Pear VC",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://pear.vc/",
+  "summary": "Pear VC describes itself as a specialist in pre-seed and seed, run by founders and operators turned investors. Its How We Invest page says it leads pre-seed rounds, with pre-seed companies joining the PearX accelerator, and leads or co-leads seed investments before helping companies reach Series A. The contact page publishes studio addresses in San Francisco and Menlo Park. Check size, sector list beyond its verticals page and geography are not stated on the pages reviewed.",
+  "sectors": [],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "stages": [
+      "how",
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Seeded companies",
+      "fact": "The homepage states the firm has seeded companies worth over $300B; individual companies are listed on the companies page without dates on the pages reviewed.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": null,
+  "businessAddress": {
+    "organisation": "Pear VC (Pear Studio SF)",
+    "lines": [
+      "600 Townsend Street"
+    ],
+    "city": "San Francisco, CA",
+    "postalCode": "94103",
+    "country": "US",
+    "addressType": "operating-office",
+    "sourceId": "contact",
+    "checkedAt": "2026-09-17"
+  },
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "how",
+      "url": "https://pear.vc/how-we-invest/",
+      "publisher": "Pear VC",
+      "title": "How We Invest: pre-seed via PearX and seed leadership",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://pear.vc/",
+      "publisher": "Pear VC",
+      "title": "Homepage: pre-seed and seed specialism and team background",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "investmentEvidence"
+      ]
+    },
+    {
+      "id": "contact",
+      "url": "https://pear.vc/contact-us/",
+      "publisher": "Pear VC",
+      "title": "Contact Us: Pear Studio addresses",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "businessAddress"
+      ]
+    }
+  ]
+}

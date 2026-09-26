@@ -1,0 +1,98 @@
+{
+  "id": "org-future-africa",
+  "slug": "future-africa",
+  "displayName": "Future Africa",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.future.africa/",
+  "summary": "Future Africa is a Lagos-based fund that calls itself the first investor in leaders building global businesses that solve Africa's biggest challenges. Its Investment Approach page says it works with founders from an idea or problem statement, describes the team as founding investors with checks of $100,000 to $500,000 and significant follow-on capital, and relies on a 300-plus member community. Portfolio stories include Moove. The homepage publishes a Lagos street address, a hello email and an Apply Now route.",
+  "sectors": [],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [
+    "africa"
+  ],
+  "publishedCheckRange": {
+    "min": 100000,
+    "max": 500000,
+    "currency": "USD",
+    "sourceId": "approach",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "stages": [
+      "approach"
+    ],
+    "investmentGeographies": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Moove",
+      "fact": "Featured on the homepage as a company story (vehicle financing for gig drivers). Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "email",
+    "url": "mailto:hello@future.africa",
+    "sourceId": "home"
+  },
+  "businessAddress": {
+    "organisation": "Future Africa",
+    "lines": [
+      "6 Elsie Femi Pearse St",
+      "Victoria Island"
+    ],
+    "city": "Lagos",
+    "postalCode": "106104",
+    "country": "NG",
+    "addressType": "type-not-established",
+    "sourceId": "home",
+    "checkedAt": "2026-09-17"
+  },
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "approach",
+      "url": "https://www.future.africa/investment-approach",
+      "publisher": "Future Africa",
+      "title": "Investment Approach: idea-stage entry, check size, follow-on and community",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "publishedCheckRange"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://www.future.africa/",
+      "publisher": "Future Africa",
+      "title": "Homepage: Africa focus, company stories, Lagos address, email and Apply Now",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentGeographies",
+        "investmentEvidence",
+        "businessAddress",
+        "preferredPitchChannel"
+      ]
+    }
+  ],
+  "geographyScope": "exhaustive"
+}

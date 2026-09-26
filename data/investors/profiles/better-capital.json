@@ -1,0 +1,75 @@
+{
+  "id": "org-better-capital",
+  "slug": "better-capital",
+  "displayName": "Better Capital",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.bettercapital.vc/",
+  "summary": "Better Capital describes itself as a global venture capital firm that backs bold innovators on day zero. Its homepage groups holdings by valuation band and names companies such as Slice, Open, Khatabook and Jupiter, most of them Indian; founder testimonials on the Founders page describe Vaibhav Domkundwar's role at seed. Stage definition, check size, sector focus, geography, an application route and a street address are not stated on the pages reviewed.",
+  "sectors": [],
+  "stages": [],
+  "investmentGeographies": [],
+  "publishedCheckRange": null,
+  "fieldEvidence": {},
+  "publicContactPeople": [
+    {
+      "name": "Vaibhav Domkundwar",
+      "role": "Named by founders on the Founders page as the investor behind Better Capital (formal title not stated on the pages reviewed)",
+      "sourceId": "founders",
+      "reviewedAt": "2026-09-17"
+    }
+  ],
+  "investmentEvidence": [
+    {
+      "company": "Open",
+      "fact": "A founder testimonial on the Founders page says Better Capital played a role from the seed round. The date is not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "founders"
+      ]
+    },
+    {
+      "company": "Slice",
+      "fact": "Listed on the homepage in the $1B to $10B holdings band. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": null,
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.bettercapital.vc/",
+      "publisher": "Better Capital",
+      "title": "Homepage: day-zero positioning, portfolio by valuation band and links",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence"
+      ]
+    },
+    {
+      "id": "founders",
+      "url": "https://www.bettercapital.vc/founders/",
+      "publisher": "Better Capital",
+      "title": "Founders page: testimonials naming Vaibhav Domkundwar at seed rounds",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence",
+        "publicContactPeople"
+      ]
+    }
+  ]
+}

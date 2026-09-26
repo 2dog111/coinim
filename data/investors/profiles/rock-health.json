@@ -1,0 +1,73 @@
+{
+  "id": "org-rock-health",
+  "slug": "rock-health",
+  "displayName": "Rock Health",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://rockhealth.com/",
+  "summary": "Rock Health describes itself as a pre-seed, seed and Series A digital health venture fund investing in entrepreneurs at the intersection of healthcare and technology, alongside an enterprise advisory group and a non-profit. Its site publishes digital health funding research, for example an H1 2026 funding overview. Check size, geography, an application route, portfolio examples on the homepage and a street address are not stated on the pages reviewed, so those points need direct confirmation.",
+  "sectors": [
+    "healthcare"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed",
+    "series-a"
+  ],
+  "investmentGeographies": [],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "stages": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Fund activity",
+      "fact": "The Capital page states the fund invests in entrepreneurs at the intersection of healthcare and technology; individual portfolio companies are not listed on the pages reviewed.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "capital"
+      ]
+    }
+  ],
+  "preferredPitchChannel": null,
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://rockhealth.com/",
+      "publisher": "Rock Health",
+      "title": "Homepage: fund description, stages and sector, advisory and non-profit arms",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages"
+      ]
+    },
+    {
+      "id": "capital",
+      "url": "https://rockhealth.com/capital/",
+      "publisher": "Rock Health",
+      "title": "Capital page: investment focus statement and research",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "sectorScope": "exhaustive"
+}

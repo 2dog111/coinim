@@ -1,0 +1,98 @@
+{
+  "id": "org-weekend-fund",
+  "slug": "weekend-fund",
+  "displayName": "Weekend Fund",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://weekend.fund/",
+  "summary": "Weekend Fund is a small early-stage fund run by Product Hunt founder Ryan Hoover and Vedika Jain, formerly of Stripe and TrueLayer. Its homepage says it backs early-stage startups around the world, from consumer to B2B, with checks of $250,000 to $500,000, and that it works alongside more than 400 founder and operator limited partners. The site lists portfolio companies and a published email for founders. The stage is described only as early-stage, and no street address is given.",
+  "sectors": [
+    "consumer",
+    "b2b-software"
+  ],
+  "stages": [],
+  "investmentGeographies": [
+    "global"
+  ],
+  "publishedCheckRange": {
+    "min": 250000,
+    "max": 500000,
+    "currency": "USD",
+    "sourceId": "home",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "investmentGeographies": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [
+    {
+      "name": "Ryan Hoover",
+      "role": "Runs Weekend Fund (co-lead)",
+      "sourceId": "home",
+      "reviewedAt": "2026-09-17"
+    },
+    {
+      "name": "Vedika Jain",
+      "role": "Runs Weekend Fund (co-lead)",
+      "sourceId": "home",
+      "reviewedAt": "2026-09-17"
+    }
+  ],
+  "investmentEvidence": [
+    {
+      "company": "Deel",
+      "fact": "Listed on the homepage among companies the fund backed. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Voiceflow",
+      "fact": "Listed on the homepage among portfolio companies. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "email",
+    "url": "mailto:team@weekend.fund",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://weekend.fund/",
+      "publisher": "Weekend Fund",
+      "title": "Homepage: check size, focus, team, portfolio and contact email",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "investmentGeographies",
+        "publishedCheckRange",
+        "publicContactPeople",
+        "investmentEvidence",
+        "preferredPitchChannel"
+      ]
+    }
+  ],
+  "sectorScope": "examples"
+}

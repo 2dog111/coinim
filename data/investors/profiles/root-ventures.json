@@ -1,0 +1,80 @@
+{
+  "id": "org-root-ventures",
+  "slug": "root-ventures",
+  "displayName": "Root Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://root.vc/",
+  "summary": "Root Ventures is a San Francisco deep tech seed fund run by engineers that specialises in leading initial funding for founders tackling new technical opportunities. Its homepage states initial investments typically of $3,000,000 to $5,000,000, a selective few new deals a year and two thirds of its funds held in reserve. Portfolio descriptions include Esper, Particle, Mashgin, Zed and Kayhan. Geography, an application route and a street address are not stated on the page.",
+  "sectors": [
+    "deep-tech",
+    "hardware",
+    "developer-tools"
+  ],
+  "stages": [
+    "seed"
+  ],
+  "investmentGeographies": [],
+  "publishedCheckRange": {
+    "min": 3000000,
+    "max": 5000000,
+    "currency": "USD",
+    "sourceId": "home",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "stages": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Zed",
+      "fact": "Described on the homepage as a portfolio company (code editor). Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Particle",
+      "fact": "Described on the homepage as a portfolio company (IoT platform). Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": null,
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://root.vc/",
+      "publisher": "Root Ventures",
+      "title": "Homepage: deep tech seed focus, initial investment size, reserves and portfolio",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "publishedCheckRange",
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "sectorScope": "exhaustive"
+}

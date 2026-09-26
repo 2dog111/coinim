@@ -14,8 +14,9 @@
 - The product has no separate `demo`, `test`, `seed`, `manual`, or `real` placement classes. Treat every published website, social profile, or message as an ordinary real public placement unless the user explicitly requests a draft or test state.
 - A direct instruction from the owner to publish or place specific content is sufficient publication authority even when the site has no corresponding payment or TRON transaction. Payment may have been settled through another channel. Do not require, fabricate, or imply an on-chain receipt; publish the content normally and use only price or payment facts the user explicitly supplies.
 - Production is the VPS release flow in `DEPLOY.md`.
+- Investor Match (`/investors/`) is documented in `docs/investor-match-mvp.md`. Profiles are editorial data in `data/investors/profiles/`; drafts, imports, rights notes and the suppression list stay in `data/investors/private/` outside Git.
 - Do not change DNS, MX, TXT, SRV, DKIM, DMARC, or mail routing without a separate explicit command.
-- Keep route mirrors byte-identical: `mail.html` with `mail/index.html`, `ms.html` with `ms/index.html`, `handling.html` with `handling/index.html`, and `open.html` with `open/index.html`.
+- Keep route mirrors byte-identical: `mail.html` with `mail/index.html`, `ms.html` with `ms/index.html`, `handling.html` with `handling/index.html`, and `open.html` with `open/index.html`; `investors.html` with `investors/index.html` is generated, so edit `data/investors/` and `data/investors/page.template.html` and run `node scripts/build-investors.cjs` instead of the output.
 - Preserve unrelated and parallel-session changes. Do not use destructive Git commands to create or restore a checkpoint.
 - After a production deploy or Git checkpoint, update `VERSIONS.md` with the exact release or tag and the verified state.
 - Do not add badges, eyebrow labels, small section labels, or standalone numeric chips unless the user explicitly asks for them.

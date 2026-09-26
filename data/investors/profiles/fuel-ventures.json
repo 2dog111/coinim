@@ -1,0 +1,96 @@
+{
+  "id": "org-fuel-ventures",
+  "slug": "fuel-ventures",
+  "displayName": "Fuel Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.fuel.ventures/",
+  "summary": "Fuel Ventures is a UK venture investor operating SEIS and EIS funds for early-stage technology companies. Its Founders page says the funds have invested in more than 161 concept and pre-seed companies and 99 seed to Series A companies, and lists a pre-seed SEIS fund with tickets of up to £250,000 and a seed fund at £1,000,000 to £3,000,000. Founders submit a pitch through a linked form. Sector focus and a street address are not stated on the pages reviewed.",
+  "sectors": [],
+  "stages": [
+    "pre-seed",
+    "seed",
+    "series-a"
+  ],
+  "investmentGeographies": [
+    "uk"
+  ],
+  "publishedCheckRange": {
+    "min": null,
+    "max": 3000000,
+    "currency": "GBP",
+    "sourceId": "founders",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "stages": [
+      "founders"
+    ],
+    "investmentGeographies": [
+      "founders"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Deaku",
+      "fact": "The homepage links a post on Deaku closing a £480k pre-seed round led by Fuel Ventures. The date is not shown on the homepage.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "AI Score",
+      "fact": "The homepage links a post on the UK AI startup raising $5.4M, a portfolio company. The date is not shown on the homepage.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://www.fuel.ventures/submit-pitch",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "founders",
+      "url": "https://www.fuel.ventures/founders",
+      "publisher": "Fuel Ventures",
+      "title": "Founders page: fund structure, stages, ticket sizes and investment counts",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "publishedCheckRange",
+        "investmentEvidence",
+        "investmentGeographies"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://www.fuel.ventures/",
+      "publisher": "Fuel Ventures",
+      "title": "Homepage: news on portfolio rounds and pitch submission link",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "preferredPitchChannel",
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "geographyScope": "examples"
+}

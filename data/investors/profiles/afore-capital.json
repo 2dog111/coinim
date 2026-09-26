@@ -1,0 +1,95 @@
+{
+  "id": "org-afore-capital",
+  "slug": "afore-capital",
+  "displayName": "Afore Capital",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.afore.vc/",
+  "summary": "Afore Capital is a pre-seed firm that describes itself on its homepage as a $500,000,000 fund investing $500,000 to more than $2,000,000 in pre-traction companies, with a founders-in-residence programme for people who are not yet sure their idea is venture-ready. The portfolio page tags investments by region (Bay Area, New York, Canada, Denver) and category (SaaS, consumer, fintech, AI) but the site does not state a sector or geographic mandate, an application form or a street address.",
+  "sectors": [],
+  "stages": [
+    "pre-seed"
+  ],
+  "investmentGeographies": [],
+  "publishedCheckRange": {
+    "min": 500000,
+    "max": 2000000,
+    "currency": "USD",
+    "sourceId": "home",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "stages": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [
+    {
+      "name": "Gaurav Jain",
+      "role": "Co-founder, Managing Partner",
+      "sourceId": "home",
+      "reviewedAt": "2026-09-17"
+    },
+    {
+      "name": "Anamitra Banerji",
+      "role": "Co-founder, Managing Partner",
+      "sourceId": "home",
+      "reviewedAt": "2026-09-17"
+    }
+  ],
+  "investmentEvidence": [
+    {
+      "company": "Hightouch",
+      "fact": "Portfolio page marks Hightouch (customer data syncing) as an Afore pre-seed investment. The date is not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "portfolio"
+      ]
+    },
+    {
+      "company": "Gamma",
+      "fact": "Portfolio page marks the AI presentation tool as an Afore pre-seed investment. The date is not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "portfolio"
+      ]
+    }
+  ],
+  "preferredPitchChannel": null,
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.afore.vc/",
+      "publisher": "Afore Capital",
+      "title": "Homepage: pre-seed focus, check size and team",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "publishedCheckRange",
+        "publicContactPeople"
+      ]
+    },
+    {
+      "id": "portfolio",
+      "url": "https://www.afore.vc/portfolio",
+      "publisher": "Afore Capital",
+      "title": "Portfolio page: pre-seed investments tagged by region and category",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence"
+      ]
+    }
+  ]
+}

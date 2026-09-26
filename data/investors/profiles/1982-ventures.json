@@ -1,0 +1,103 @@
+{
+  "id": "org-1982-ventures",
+  "slug": "1982-ventures",
+  "displayName": "1982 Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.1982.vc/",
+  "summary": "1982 Ventures is a Singapore firm that calls itself the most active fintech investor in Southeast Asia, investing first money at early stage in enterprise AI and fintech founders from Asia building for the world. Founder testimonials on the homepage credit it with leading first venture rounds. The site has a start-up form under Work with us and publishes an info email and a Shenton Way office address. Cheque size and a stage definition beyond early stage are not stated.",
+  "sectors": [
+    "fintech",
+    "ai",
+    "b2b-software"
+  ],
+  "stages": [],
+  "investmentGeographies": [
+    "southeast-asia"
+  ],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "sectors": [
+      "home",
+      "about"
+    ],
+    "investmentGeographies": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Brick",
+      "fact": "A founder is quoted on the homepage saying 1982 Ventures led the company’s first VC round. The date is not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Homebase",
+      "fact": "Co-founder JunYuan Tan is quoted on the homepage about the investment. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://www.1982.vc/form/start-ups",
+    "sourceId": "home"
+  },
+  "businessAddress": {
+    "organisation": "1982 Ventures",
+    "lines": [
+      "3 Shenton Way",
+      "#12-12"
+    ],
+    "city": "Singapore",
+    "postalCode": "068805",
+    "country": "SG",
+    "addressType": "type-not-established",
+    "sourceId": "home",
+    "checkedAt": "2026-09-17"
+  },
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.1982.vc/",
+      "publisher": "1982 Ventures",
+      "title": "Homepage: fintech and enterprise AI focus, Southeast Asia, testimonials, Singapore address and email",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "investmentGeographies",
+        "investmentEvidence",
+        "businessAddress",
+        "preferredPitchChannel"
+      ]
+    },
+    {
+      "id": "about",
+      "url": "https://www.1982.vc/about-us",
+      "publisher": "1982 Ventures",
+      "title": "About Us: early-stage enterprise AI and fintech thesis",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors"
+      ]
+    }
+  ],
+  "sectorScope": "exhaustive",
+  "geographyScope": "examples"
+}

@@ -1,0 +1,130 @@
+{
+  "id": "org-atlantic",
+  "slug": "atlantic",
+  "displayName": "Atlantic",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://atlantic.vc/",
+  "summary": "Atlantic is a Berlin venture firm, founded in 2016, that says it has backed more than 200 European teams as their first-round lead investor. Its Approach page describes a generalist mandate focused on leading pre-seed rounds for Europe's most ambitious founders, with four themes where it is particularly active: AI and compute, energy and climate, industrial and robotics, and space and security. Check size is not stated. The imprint publishes the Berlin office address of the management company.",
+  "sectors": [
+    "agnostic",
+    "ai",
+    "climate",
+    "hardware",
+    "space"
+  ],
+  "stages": [
+    "pre-seed"
+  ],
+  "investmentGeographies": [
+    "europe"
+  ],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "sectors": [
+      "approach"
+    ],
+    "stages": [
+      "approach"
+    ],
+    "investmentGeographies": [
+      "approach"
+    ]
+  },
+  "publicContactPeople": [
+    {
+      "name": "Christophe F. Maire",
+      "role": "Managing Director, Atlantic Labs Manager GmbH",
+      "sourceId": "imprint",
+      "reviewedAt": "2026-09-17"
+    },
+    {
+      "name": "Marc-Olivier Lücke",
+      "role": "Managing Director, Atlantic Labs Manager GmbH",
+      "sourceId": "imprint",
+      "reviewedAt": "2026-09-17"
+    }
+  ],
+  "investmentEvidence": [
+    {
+      "company": "Choco",
+      "fact": "Homepage quotes CEO Daniel Khachab saying Atlantic fully funded the company early when no one else would. The round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Wandelbots",
+      "fact": "Listed on the homepage under Industrial and Robotics as a portfolio company. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "email",
+    "url": "mailto:info@atlanticlabs.de",
+    "sourceId": "imprint"
+  },
+  "businessAddress": {
+    "organisation": "Atlantic Labs Manager GmbH",
+    "lines": [
+      "Rosenthaler Str. 13"
+    ],
+    "city": "Berlin",
+    "postalCode": "10119",
+    "country": "DE",
+    "addressType": "operating-office",
+    "sourceId": "imprint",
+    "checkedAt": "2026-09-17"
+  },
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "approach",
+      "url": "https://atlantic.vc/approach",
+      "publisher": "Atlantic",
+      "title": "Approach page: first-round lead investor, pre-seed focus, Europe and four themes",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "investmentGeographies"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://atlantic.vc/",
+      "publisher": "Atlantic",
+      "title": "Homepage: portfolio examples by theme",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence"
+      ]
+    },
+    {
+      "id": "imprint",
+      "url": "https://atlantic.vc/imprint",
+      "publisher": "Atlantic",
+      "title": "Imprint: Atlantic Labs Manager GmbH, Berlin address and managing directors",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "businessAddress",
+        "publicContactPeople"
+      ]
+    }
+  ],
+  "geographyScope": "exhaustive"
+}

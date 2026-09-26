@@ -1,0 +1,102 @@
+{
+  "id": "org-playfair-capital",
+  "slug": "playfair-capital",
+  "displayName": "Playfair Capital",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://playfair.vc/",
+  "summary": "Playfair Capital is a London firm investing exclusively at pre-seed in the United Kingdom and Europe from a £57,000,000 third fund. Its homepage says it makes about six investments a year, writes cheques from £100,000 for angel rounds to £1,500,000 for the largest pre-seed rounds and reserves 60% of the fund for follow-on. The Pitch Us page states a sector-agnostic approach, that every application is reviewed, and hosts the submission form. The footer publishes a London address.",
+  "sectors": [
+    "agnostic"
+  ],
+  "stages": [
+    "pre-seed"
+  ],
+  "investmentGeographies": [
+    "uk",
+    "europe"
+  ],
+  "publishedCheckRange": {
+    "min": 100000,
+    "max": 1500000,
+    "currency": "GBP",
+    "sourceId": "home",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "pitch"
+    ],
+    "stages": [
+      "home"
+    ],
+    "investmentGeographies": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Portfolio follow-on rounds",
+      "fact": "The homepage lists recent follow-on rounds into portfolio companies led by Kinnevik, DCVC and GV, without naming the companies on that page. Initial investment dates are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://playfair.vc/pitch-us.php",
+    "sourceId": "pitch"
+  },
+  "businessAddress": {
+    "organisation": "Playfair Capital LLP",
+    "lines": [
+      "8 Warner Yard"
+    ],
+    "city": "London",
+    "postalCode": "EC1R 5EY",
+    "country": "GB",
+    "addressType": "type-not-established",
+    "sourceId": "pitch",
+    "checkedAt": "2026-09-17"
+  },
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://playfair.vc/",
+      "publisher": "Playfair Capital",
+      "title": "Homepage: pre-seed only, UK and Europe, cheque range, fund size and pace",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "investmentGeographies",
+        "publishedCheckRange"
+      ]
+    },
+    {
+      "id": "pitch",
+      "url": "https://playfair.vc/pitch-us.php",
+      "publisher": "Playfair Capital",
+      "title": "Pitch Us: sector-agnostic statement, review promise, submission form and footer address",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "preferredPitchChannel",
+        "businessAddress"
+      ]
+    }
+  ],
+  "geographyScope": "exhaustive"
+}

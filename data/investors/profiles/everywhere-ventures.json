@@ -1,0 +1,115 @@
+{
+  "id": "org-everywhere-ventures",
+  "slug": "everywhere-ventures",
+  "displayName": "Everywhere Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.everywhere.vc/",
+  "summary": "Everywhere Ventures is a pre-seed firm headquartered in New York and backed by a community of founder and operator limited partners. Its FAQ states a $250,000 first check into pre-seed rounds, a generalist mandate across fintech, health, enterprise AI, deep tech, supply chain, energy, security and space, and a global geography with portfolio companies in more than 30 countries. Founders apply through a form linked from the homepage. No street address is published on the site.",
+  "sectors": [
+    "agnostic"
+  ],
+  "stages": [
+    "pre-seed"
+  ],
+  "investmentGeographies": [
+    "global"
+  ],
+  "publishedCheckRange": {
+    "min": 250000,
+    "max": 250000,
+    "currency": "USD",
+    "sourceId": "faq",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "faq"
+    ],
+    "stages": [
+      "faq",
+      "home"
+    ],
+    "investmentGeographies": [
+      "faq"
+    ]
+  },
+  "publicContactPeople": [
+    {
+      "name": "Jenny Fielding",
+      "role": "Co-founder and General Partner",
+      "sourceId": "faq",
+      "reviewedAt": "2026-09-17"
+    },
+    {
+      "name": "Scott Hartley",
+      "role": "Co-founder and General Partner",
+      "sourceId": "faq",
+      "reviewedAt": "2026-09-17"
+    }
+  ],
+  "investmentEvidence": [
+    {
+      "company": "Pair Eyewear",
+      "fact": "The homepage quotes the founders saying Everywhere Ventures wrote one of the first pre-seed checks into the company. The date is not stated there.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Cube",
+      "fact": "Founder testimonial on the homepage names Everywhere Ventures among the earliest backers. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://airtable.com/appeY02X0EMCQQ19G/shrjpNqWOj0SJP1ix",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.everywhere.vc/",
+      "publisher": "Everywhere Ventures",
+      "title": "Homepage: $250k into pre-seed rounds, general partners, portfolio and application link",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "publishedCheckRange",
+        "stages",
+        "preferredPitchChannel",
+        "investmentEvidence"
+      ]
+    },
+    {
+      "id": "faq",
+      "url": "https://everywhere.vc/faqs",
+      "publisher": "Everywhere Ventures",
+      "title": "FAQ: stage, check size, sectors, geographies and general partners",
+      "publishedAt": "2026-06",
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "investmentGeographies",
+        "publishedCheckRange",
+        "publicContactPeople"
+      ]
+    }
+  ]
+}

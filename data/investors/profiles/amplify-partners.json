@@ -1,0 +1,97 @@
+{
+  "id": "org-amplify-partners",
+  "slug": "amplify-partners",
+  "displayName": "Amplify Partners",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.amplifypartners.com/",
+  "summary": "Amplify Partners describes itself as the first investor for technical founders building applications, models, tools and infrastructure,investing since 2012. Its About page says it leads investments from a company's first round through Series A, is based in the Bay Area, and was an early backer of Datadog, Fastly, dbt, Temporal and Chainguard. The site publishes San Francisco and Menlo Park office addresses. Check size, a formal geography and an application route are not stated.",
+  "sectors": [
+    "developer-tools",
+    "ai",
+    "b2b-software"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed",
+    "series-a"
+  ],
+  "investmentGeographies": [],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "sectors": [
+      "about"
+    ],
+    "stages": [
+      "about"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Temporal",
+      "fact": "Co-founder Samar Abbas is quoted on the homepage saying Amplify was the first investor. The date is not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Allium",
+      "fact": "The homepage links a post announcing the investment in Allium (onchain finance data). The date is not shown on the homepage.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": null,
+  "businessAddress": {
+    "organisation": "Amplify Partners",
+    "lines": [
+      "457 Bryant St"
+    ],
+    "city": "San Francisco, CA",
+    "postalCode": null,
+    "country": "US",
+    "addressType": "operating-office",
+    "sourceId": "about",
+    "checkedAt": "2026-09-17"
+  },
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "about",
+      "url": "https://www.amplifypartners.com/about-amplify",
+      "publisher": "Amplify Partners",
+      "title": "About page: technical founder thesis, first round through Series A, Bay Area base, early investments and office addresses",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "investmentEvidence",
+        "businessAddress"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://www.amplifypartners.com/",
+      "publisher": "Amplify Partners",
+      "title": "Homepage: portfolio spotlight and investment announcements",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "sectorScope": "examples"
+}

@@ -1,0 +1,128 @@
+{
+  "id": "org-speedinvest",
+  "slug": "speedinvest",
+  "displayName": "Speedinvest",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.speedinvest.com/",
+  "summary": "Speedinvest is a Vienna-headquartered venture firm investing in pre-seed, seed and growth-stage companies across Europe and beyond through sector-specialist teams in AI and infrastructure, climate and industrial tech, deep tech, fintech, health and bio, and marketplaces and consumer. Its How We Work page states typical checks of €250,000 to €5,000,000 at inception to seed, with each team backing four to six new companies a year and leading 85% of initial rounds. The imprint gives the Vienna address of Speedinvest GmbH.",
+  "sectors": [
+    "ai",
+    "climate",
+    "deep-tech",
+    "fintech",
+    "healthcare",
+    "marketplaces",
+    "consumer"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed",
+    "series-a"
+  ],
+  "investmentGeographies": [
+    "europe",
+    "middle-east",
+    "africa"
+  ],
+  "publishedCheckRange": {
+    "min": 250000,
+    "max": 5000000,
+    "currency": "EUR",
+    "sourceId": "how",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "stages": [
+      "how"
+    ],
+    "investmentGeographies": [
+      "how"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Bitpanda",
+      "fact": "A founder is quoted on the How We Work page saying Speedinvest was the first institutional investor in 2019 and continued to invest later.",
+      "eventDate": "2019",
+      "datePrecision": "year",
+      "sourceIds": [
+        "how"
+      ]
+    },
+    {
+      "company": "Moove",
+      "fact": "Listed on the homepage among portfolio companies. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": null,
+  "businessAddress": {
+    "organisation": "Speedinvest GmbH",
+    "lines": [
+      "Nordbergstraße 1/1/71"
+    ],
+    "city": "Wien",
+    "postalCode": "1090",
+    "country": "AT",
+    "addressType": "type-not-established",
+    "sourceId": "imprint",
+    "checkedAt": "2026-09-17"
+  },
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "how",
+      "url": "https://www.speedinvest.com/how-we-work",
+      "publisher": "Speedinvest",
+      "title": "How We Work: stages, geography, check sizes and pace",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "investmentGeographies",
+        "publishedCheckRange",
+        "investmentEvidence"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://www.speedinvest.com/",
+      "publisher": "Speedinvest",
+      "title": "Homepage: sector teams and portfolio",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "investmentEvidence"
+      ]
+    },
+    {
+      "id": "imprint",
+      "url": "https://www.speedinvest.com/legal/imprint",
+      "publisher": "Speedinvest",
+      "title": "Imprint: Speedinvest GmbH, Vienna address",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "businessAddress"
+      ]
+    }
+  ],
+  "sectorScope": "examples",
+  "geographyScope": "examples"
+}

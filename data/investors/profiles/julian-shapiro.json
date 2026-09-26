@@ -1,0 +1,84 @@
+{
+  "id": "person-julian-shapiro",
+  "slug": "julian-shapiro",
+  "displayName": "Julian Shapiro",
+  "entityType": "person",
+  "investorType": "entrepreneur-investor",
+  "organisationId": "org-julian-capital",
+  "organisationName": "Julian Capital",
+  "officialWebsite": "https://www.julian.capital/",
+  "summary": "Julian Shapiro is the founder of Julian Capital, a deep tech seed fund, and previously built Demand Curve and worked with companies including Webflow, Heap and Clearbit. Through the fund he invests $500,000 to $2,000,000 at pre-seed and seed across hardware sectors and reads every submitted deck. This person profile is linked to the organisation profile; investments are made by the fund, not attributed to him personally without a source. No personal address is collected.",
+  "sectors": [
+    "deep-tech",
+    "hardware"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [],
+  "publishedCheckRange": {
+    "min": 500000,
+    "max": 2000000,
+    "currency": "USD",
+    "sourceId": "home",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "stages": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [
+    {
+      "name": "Julian Shapiro",
+      "role": "Founder, Julian Capital",
+      "sourceId": "home",
+      "reviewedAt": "2026-09-17"
+    }
+  ],
+  "investmentEvidence": [
+    {
+      "company": "Julian Capital portfolio",
+      "fact": "Investments such as Extropic (pre-seed 2022) and Aalo (seed 2023) are attributed on the site to the fund; see the Julian Capital profile.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://www.julian.capital/",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.julian.capital/",
+      "publisher": "Julian Capital",
+      "title": "Julian Capital homepage: team section naming Julian Shapiro, fund criteria and deck submission",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "publishedCheckRange",
+        "publicContactPeople",
+        "investmentEvidence",
+        "preferredPitchChannel"
+      ]
+    }
+  ],
+  "sectorScope": "exhaustive"
+}

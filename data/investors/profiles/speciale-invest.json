@@ -1,0 +1,107 @@
+{
+  "id": "org-speciale-invest",
+  "slug": "speciale-invest",
+  "displayName": "Speciale Invest",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.specialeinvest.com/",
+  "summary": "Speciale Invest is an Indian deep tech fund that comes in at pre-seed and seed with a sweet spot of about $750,000 to $1,000,000 and reserves 60% of its corpus for follow-on. Its site lists focus areas in novel energy, longevity and synthetic biology, space, AI-led software and advanced manufacturing, and says it invests globally with a strong focus on India. Portfolio examples include Agnikul and Ultraviolette. Founders pitch through a linked form. A street address is not stated.",
+  "sectors": [
+    "deep-tech",
+    "climate",
+    "biotech",
+    "space",
+    "ai",
+    "hardware"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [
+    "india",
+    "global"
+  ],
+  "publishedCheckRange": {
+    "min": 750000,
+    "max": 1000000,
+    "currency": "USD",
+    "sourceId": "about",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "stages": [
+      "home"
+    ],
+    "investmentGeographies": [
+      "about"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Agnikul Cosmos",
+      "fact": "The homepage links a news report on Agnikul’s sub-orbital test flight, a portfolio company. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Ultraviolette",
+      "fact": "The homepage links news on Ultraviolette, a portfolio company. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://form.typeform.com/to/yYgnIq1Z",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.specialeinvest.com/",
+      "publisher": "Speciale Invest",
+      "title": "Homepage: stages, investment size, deep tech focus areas and pitch link",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "publishedCheckRange",
+        "preferredPitchChannel",
+        "investmentEvidence"
+      ]
+    },
+    {
+      "id": "about",
+      "url": "https://www.specialeinvest.com/about",
+      "publisher": "Speciale Invest",
+      "title": "About page: sweet spot, follow-on reserve and global with India focus",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "publishedCheckRange",
+        "investmentGeographies"
+      ]
+    }
+  ],
+  "sectorScope": "exhaustive"
+}

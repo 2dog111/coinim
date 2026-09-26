@@ -1,0 +1,100 @@
+{
+  "id": "org-golden-ventures",
+  "slug": "golden-ventures",
+  "displayName": "Golden Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.golden.ventures/",
+  "summary": "Golden Ventures is a Toronto-headquartered seed-stage, sector-agnostic fund that invests throughout North America. Its FAQ says it is investing from Fund V, a $100,000,000 fund, targets initial commitments of $500,000 to $2,500,000 for 8% to 15% of a company, reserves capital for follow-on, and counts pre-seed, seed and seed extensions as its core. The homepage features portfolio companies such as Float and ResQ and publishes an info email. A street address is not stated on the pages reviewed.",
+  "sectors": [
+    "agnostic"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [
+    "north-america"
+  ],
+  "publishedCheckRange": {
+    "min": 500000,
+    "max": 2500000,
+    "currency": "USD",
+    "sourceId": "faq",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "faq"
+    ],
+    "stages": [
+      "faq"
+    ],
+    "investmentGeographies": [
+      "faq"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Float",
+      "fact": "Featured on the homepage as a portfolio company (spend management for Canadian finance teams). Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "ResQ",
+      "fact": "Featured on the homepage as a portfolio company (restaurant operations). Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "email",
+    "url": "mailto:info@golden.ventures",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "faq",
+      "url": "https://faq.golden.ventures",
+      "publisher": "Golden Ventures",
+      "title": "FAQ: stage definition, sector-agnostic view, North America geography, fund and check size",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "investmentGeographies",
+        "publishedCheckRange"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://www.golden.ventures/",
+      "publisher": "Golden Ventures",
+      "title": "Homepage: portfolio examples and contact email",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence",
+        "preferredPitchChannel"
+      ]
+    }
+  ],
+  "geographyScope": "exhaustive"
+}

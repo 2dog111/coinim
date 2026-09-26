@@ -1,0 +1,92 @@
+{
+  "id": "org-salkantay-ventures",
+  "slug": "salkantay-ventures",
+  "displayName": "Salkantay Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.salkantay.vc/",
+  "summary": "Salkantay is an early-stage fund focused on Latin American founders and startups targeting Spanish-speaking countries, with 23 portfolio companies listed on its homepage. It groups its interest into human improvement (edtech, jobtech, healthtech), economic development (fintech, proptech, SaaS) and a sustainable planet (agtech, climate tech, smart cities). The contact page hosts a form that asks for industry and round from pre-seed to Series B. Check size and a street address are not stated.",
+  "sectors": [
+    "edtech",
+    "healthcare",
+    "fintech",
+    "proptech",
+    "b2b-software",
+    "agrifood",
+    "climate"
+  ],
+  "stages": [],
+  "investmentGeographies": [
+    "latam"
+  ],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "investmentGeographies": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Manzana Verde",
+      "fact": "Linked from the homepage as a portfolio company. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Mercately",
+      "fact": "Linked from the homepage as a portfolio company. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://www.salkantay.vc/contact",
+    "sourceId": "contact"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.salkantay.vc/",
+      "publisher": "Salkantay Ventures",
+      "title": "Homepage: Spanish-speaking Latin America focus, themes and portfolio count",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "investmentGeographies",
+        "investmentEvidence"
+      ]
+    },
+    {
+      "id": "contact",
+      "url": "https://www.salkantay.vc/contact",
+      "publisher": "Salkantay Ventures",
+      "title": "Contact page: founder form with industry and round fields",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "preferredPitchChannel"
+      ]
+    }
+  ],
+  "sectorScope": "examples",
+  "geographyScope": "exhaustive"
+}

@@ -1,0 +1,104 @@
+{
+  "id": "org-better-tomorrow-ventures",
+  "slug": "better-tomorrow-ventures",
+  "displayName": "Better Tomorrow Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.btv.vc/",
+  "summary": "Better Tomorrow Ventures says its sweet spot is leading pre-seed and seed rounds with a check of $500,000 to $4,000,000 and that it is built for a multi-decade horizon by former founders. The homepage features partnerships such as Unit, Coast and Relay, and its essays and portfolio are centred on fintech, although the site does not state a formal sector or geographic mandate. Team members and roles are listed. No application form or street address is published.",
+  "sectors": [],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [],
+  "publishedCheckRange": {
+    "min": 500000,
+    "max": 4000000,
+    "currency": "USD",
+    "sourceId": "home",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "stages": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [
+    {
+      "name": "Jake Gibson",
+      "role": "Founding Partner",
+      "sourceId": "home",
+      "reviewedAt": "2026-09-17"
+    },
+    {
+      "name": "Sheel Mohnot",
+      "role": "Co-founder and General Partner",
+      "sourceId": "home",
+      "reviewedAt": "2026-09-17"
+    },
+    {
+      "name": "Nihar Bobba",
+      "role": "Partner",
+      "sourceId": "home",
+      "reviewedAt": "2026-09-17"
+    }
+  ],
+  "investmentEvidence": [
+    {
+      "company": "Unit",
+      "fact": "Featured on the homepage as a partnership now at Series C. The initial round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Coast",
+      "fact": "Featured on the homepage as a partnership now at Series C and listed on the partnerships page.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home",
+        "partnerships"
+      ]
+    }
+  ],
+  "preferredPitchChannel": null,
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.btv.vc/",
+      "publisher": "Better Tomorrow Ventures",
+      "title": "Homepage: stage, check size, featured partnerships and team",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "publishedCheckRange",
+        "investmentEvidence",
+        "publicContactPeople"
+      ]
+    },
+    {
+      "id": "partnerships",
+      "url": "https://www.btv.vc/partnerships",
+      "publisher": "Better Tomorrow Ventures",
+      "title": "Partnerships page: full portfolio with acquired and pre-BTV markers",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence"
+      ]
+    }
+  ]
+}

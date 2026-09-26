@@ -1,0 +1,92 @@
+{
+  "id": "org-costanoa-ventures",
+  "slug": "costanoa-ventures",
+  "displayName": "Costanoa Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.costanoa.vc/",
+  "summary": "Costanoa Ventures is an early-stage firm with offices in San Francisco and Palo Alto that leads at seed and Series A, backing teams solving big problems in complex, high-impact markets. Its Our Approach page says each partner invests in just two or three companies a year and describes operator-heavy support. Portfolio pages include Lively, Vannevar Labs and Muon Space. An info email and both office addresses are published on the site. Check size, sector list and geography are not stated.",
+  "sectors": [],
+  "stages": [
+    "seed",
+    "series-a"
+  ],
+  "investmentGeographies": [],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "stages": [
+      "approach"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Vannevar Labs",
+      "fact": "Linked from the homepage portfolio. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Lively",
+      "fact": "Linked from the homepage portfolio (health savings accounts). Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "email",
+    "url": "mailto:info@costanoa.vc",
+    "sourceId": "home"
+  },
+  "businessAddress": {
+    "organisation": "Costanoa Ventures",
+    "lines": [
+      "185 Berry St.",
+      "Lobby 3, Suite 2300"
+    ],
+    "city": "San Francisco, CA",
+    "postalCode": "94107",
+    "country": "US",
+    "addressType": "operating-office",
+    "sourceId": "home",
+    "checkedAt": "2026-09-17"
+  },
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "approach",
+      "url": "https://www.costanoa.vc/our-approach",
+      "publisher": "Costanoa Ventures",
+      "title": "Our Approach: seed and Series A lead role, pace and support model",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://www.costanoa.vc/",
+      "publisher": "Costanoa Ventures",
+      "title": "Homepage: portfolio, contact email and office addresses",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence",
+        "preferredPitchChannel",
+        "businessAddress"
+      ]
+    }
+  ]
+}

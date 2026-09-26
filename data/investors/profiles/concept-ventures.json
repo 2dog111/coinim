@@ -1,0 +1,105 @@
+{
+  "id": "org-concept-ventures",
+  "slug": "concept-ventures",
+  "displayName": "Concept Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://concept.vc/",
+  "summary": "Concept Ventures calls itself Europe's largest pre-seed fund and a generalist investor with no verticals. Its About page states cheques of up to $1,500,000 in first rounds, typically as lead or co-lead, a current fund of $88,000,000 and reserved follow-on capital. The homepage features early investments such as ElevenLabs. The site links a Notion page with more details and a team page; no application form or street address was found on the pages reviewed.",
+  "sectors": [
+    "agnostic"
+  ],
+  "stages": [
+    "pre-seed"
+  ],
+  "investmentGeographies": [
+    "europe"
+  ],
+  "publishedCheckRange": {
+    "min": null,
+    "max": 1500000,
+    "currency": "USD",
+    "sourceId": "about",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "about"
+    ],
+    "stages": [
+      "about",
+      "home"
+    ],
+    "investmentGeographies": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [
+    {
+      "name": "Reece Chowdhry",
+      "role": "Team member (role not stated on the About page)",
+      "sourceId": "about",
+      "reviewedAt": "2026-09-17"
+    }
+  ],
+  "investmentEvidence": [
+    {
+      "company": "ElevenLabs",
+      "fact": "Featured on the homepage as an early investment (childhood friends solving dubbing), now at an $11bn valuation. The initial round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Anam",
+      "fact": "The About page describes the investment process using the Anam investment as a case study, including a $9m seed round with Redpoint. The date is not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "about"
+      ]
+    }
+  ],
+  "preferredPitchChannel": null,
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "about",
+      "url": "https://concept.vc/about-us",
+      "publisher": "Concept Ventures",
+      "title": "About Us: cheque size, position, fund size, generalist mandate and process",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "publishedCheckRange",
+        "publicContactPeople"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://concept.vc/",
+      "publisher": "Concept Ventures",
+      "title": "Homepage: Europe pre-seed positioning, up to $1.5m first rounds and featured portfolio",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "investmentGeographies",
+        "publishedCheckRange",
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "geographyScope": "examples"
+}

@@ -1,0 +1,61 @@
+{
+  "id": "org-moxxie-ventures",
+  "slug": "moxxie-ventures",
+  "displayName": "Moxxie Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.moxxie.vc/",
+  "summary": "Moxxie Ventures says on its homepage that it invests early and works alongside founders building something meaningful and enduring, with a team of networked engineers, marketers, product managers, founders and sales leaders. The site lists a broad portfolio spanning health operations, climate, fintech, legal AI and logistics, and publishes a hello email. Stage definition, check size, sector mandate, geography and a street address are not stated, so a match on those criteria cannot be confirmed from the website.",
+  "sectors": [],
+  "stages": [],
+  "investmentGeographies": [],
+  "publishedCheckRange": null,
+  "fieldEvidence": {},
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Heirloom Carbon",
+      "fact": "Listed on the homepage as a portfolio company building direct air capture. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Spellbook",
+      "fact": "Listed on the homepage as a portfolio company (AI for contract law). Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "email",
+    "url": "mailto:hello@moxxie.vc",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.moxxie.vc/",
+      "publisher": "Moxxie Ventures",
+      "title": "Homepage: mission, portfolio list and contact email",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence",
+        "preferredPitchChannel"
+      ]
+    }
+  ]
+}

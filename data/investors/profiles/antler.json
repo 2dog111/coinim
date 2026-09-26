@@ -1,0 +1,92 @@
+{
+  "id": "org-antler",
+  "slug": "antler",
+  "displayName": "Antler",
+  "entityType": "organisation",
+  "investorType": "accelerator",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.antler.co/",
+  "summary": "Antler is a global early-stage investor that runs cohort programmes and invests from the idea stage in locations across Asia Pacific, Europe, the Americas, and the Middle East and Africa. Its pitch page asks founders for their stage, from idea to pre-seed up to Series A to C, and their region and city. Check size, sector focus and a street address are not stated on the pages reviewed, and terms vary by location.",
+  "sectors": [
+    "agnostic"
+  ],
+  "stages": [
+    "pre-seed"
+  ],
+  "investmentGeographies": [
+    "global"
+  ],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "stages": [
+      "pitch"
+    ],
+    "investmentGeographies": [
+      "pitch",
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Airalo",
+      "fact": "Linked from the homepage founder stories as a portfolio company. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Treyd",
+      "fact": "Linked from the homepage founder stories as a portfolio company. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://www.antler.co/pitch",
+    "sourceId": "pitch"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "pitch",
+      "url": "https://www.antler.co/pitch",
+      "publisher": "Antler",
+      "title": "Pitch page: stage options and location selection for applications",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "investmentGeographies",
+        "preferredPitchChannel"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://www.antler.co/",
+      "publisher": "Antler",
+      "title": "Homepage: locations, cohort start dates and founder stories",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentGeographies",
+        "investmentEvidence",
+        "sectors"
+      ]
+    }
+  ]
+}

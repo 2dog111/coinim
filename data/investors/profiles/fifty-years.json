@@ -1,0 +1,79 @@
+{
+  "id": "org-fifty-years",
+  "slug": "fifty-years",
+  "displayName": "Fifty Years",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://fiftyyears.com/",
+  "summary": "Fifty Years is a pre-seed and seed focused venture firm that backs founders using technology to solve the world's biggest problems, from climate and disease to connectivity and malnutrition, and says it also helps start companies through its 5050 programme for scientists. The homepage says the firm is backed by 46 founders of $1B+ technology companies. Check size, geography, and a street address are not stated; applications for 5050 are linked.",
+  "sectors": [
+    "deep-tech",
+    "climate",
+    "biotech",
+    "space"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "stages": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Solugen",
+      "fact": "Linked from the homepage as a portfolio company. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Astranis",
+      "fact": "Linked from the homepage as a portfolio company. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://www.fiftyyears.com/5050",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://fiftyyears.com/",
+      "publisher": "Fifty Years",
+      "title": "Homepage: stage, problem areas, founder LPs, 5050 programme and portfolio links",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "investmentEvidence",
+        "preferredPitchChannel"
+      ]
+    }
+  ],
+  "sectorScope": "examples"
+}

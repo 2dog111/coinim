@@ -1,0 +1,91 @@
+{
+  "id": "org-heavybit",
+  "slug": "heavybit",
+  "displayName": "Heavybit",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.heavybit.com/",
+  "summary": "Heavybit calls itself the leading investor in enterprise infrastructure, investing from day zero in technical startups since 2013. Its homepage states $500,000 to $5,000,000 from inception to Series A; the FAQ describes a typical initial check of $500,000 to $3,000,000 in a pre-seed round, scaling up at seed and Series A, and a focus on developer tools, AI, cloud-native infrastructure, open source, DevOps and DevSecOps. Geography and a street address are not stated.",
+  "sectors": [
+    "developer-tools",
+    "ai",
+    "security"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed",
+    "series-a"
+  ],
+  "investmentGeographies": [],
+  "publishedCheckRange": {
+    "min": 500000,
+    "max": 3000000,
+    "currency": "USD",
+    "sourceId": "faq",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "home",
+      "faq"
+    ],
+    "stages": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "90+ startups",
+      "fact": "The homepage states more than 90 startups launched since 2013; individual portfolio companies are listed on the portfolio page without dates on the homepage.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "website",
+    "url": "https://www.heavybit.com/faq",
+    "sourceId": "faq"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.heavybit.com/",
+      "publisher": "Heavybit",
+      "title": "Homepage: enterprise infrastructure focus, check range and stage span",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "publishedCheckRange"
+      ]
+    },
+    {
+      "id": "faq",
+      "url": "https://www.heavybit.com/faq",
+      "publisher": "Heavybit",
+      "title": "FAQ: company types, typical investment and year-round applications",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "publishedCheckRange",
+        "preferredPitchChannel",
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "sectorScope": "exhaustive"
+}

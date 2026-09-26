@@ -1,0 +1,95 @@
+{
+  "id": "org-angular-ventures",
+  "slug": "angular-ventures",
+  "displayName": "Angular Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://angularventures.com/",
+  "summary": "Angular Ventures is an inception-stage fund for technical founders in Europe and Israel building hard tech for hard markets. Its How We Invest page says it prefers the first institutional round and is often a company's first investor, that the first check is usually $500,000 to $5,000,000 with follow-on capacity, and that it focuses on founders originating from Europe or Israel with a planned US go-to-market. Contact is by published email. A street address is not stated.",
+  "sectors": [
+    "deep-tech",
+    "b2b-software",
+    "ai"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [
+    "europe",
+    "israel"
+  ],
+  "publishedCheckRange": {
+    "min": 500000,
+    "max": 5000000,
+    "currency": "USD",
+    "sourceId": "how",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "stages": [
+      "how"
+    ],
+    "investmentGeographies": [
+      "how"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Portfolio",
+      "fact": "The homepage links a portfolio page; individual investments and dates are not listed on the pages reviewed.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "email",
+    "url": "mailto:info@angularventures.com",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "how",
+      "url": "https://angularventures.com/how-we-invest",
+      "publisher": "Angular Ventures",
+      "title": "How we invest: inception stage, first check range, Europe and Israel origin focus",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "investmentGeographies",
+        "publishedCheckRange"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://angularventures.com/",
+      "publisher": "Angular Ventures",
+      "title": "Homepage: hard tech positioning and contact email",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "preferredPitchChannel",
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "sectorScope": "examples",
+  "geographyScope": "exhaustive"
+}

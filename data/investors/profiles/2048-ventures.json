@@ -1,0 +1,129 @@
+{
+  "id": "org-2048-ventures",
+  "slug": "2048-ventures",
+  "displayName": "2048 Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://2048.vc/",
+  "summary": "2048 Ventures is a small early-stage firm with its deepest roots in New York City and Boston that invests in companies across the United States. Its About page states a check of $500,000 to $3,000,000, a willingness to lead or follow in pre-seed and seed rounds, and a thesis around systems of record and data moats across AI, deep tech, health and bio. The site lists partners and select investments but no application form or street address.",
+  "sectors": [
+    "ai",
+    "deep-tech",
+    "healthcare",
+    "biotech"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [
+    "us"
+  ],
+  "publishedCheckRange": {
+    "min": 500000,
+    "max": 3000000,
+    "currency": "USD",
+    "sourceId": "about",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "about"
+    ],
+    "stages": [
+      "about"
+    ],
+    "investmentGeographies": [
+      "about"
+    ]
+  },
+  "publicContactPeople": [
+    {
+      "name": "Alex Iskold",
+      "role": "Founder and Partner",
+      "sourceId": "team",
+      "reviewedAt": "2026-09-17"
+    },
+    {
+      "name": "Zann Ali",
+      "role": "Partner",
+      "sourceId": "team",
+      "reviewedAt": "2026-09-17"
+    },
+    {
+      "name": "Julie Wolf",
+      "role": "Partner, bio and health",
+      "sourceId": "team",
+      "reviewedAt": "2026-09-17"
+    }
+  ],
+  "investmentEvidence": [
+    {
+      "company": "Laminar",
+      "fact": "Listed as a select deep tech investment (precision automation for industrials and data centers) with co-investors named on the companies page. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "companies"
+      ]
+    },
+    {
+      "company": "TwoStep Therapeutics",
+      "fact": "Listed as a select bio investment (peptide-drug conjugates) on the companies page. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "companies"
+      ]
+    }
+  ],
+  "preferredPitchChannel": null,
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "about",
+      "url": "https://2048.vc/about",
+      "publisher": "2048 Ventures",
+      "title": "About page: check size, stage, geography and thesis",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "investmentGeographies",
+        "publishedCheckRange"
+      ]
+    },
+    {
+      "id": "team",
+      "url": "https://2048.vc/team",
+      "publisher": "2048 Ventures",
+      "title": "Team page: partners and roles",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "publicContactPeople"
+      ]
+    },
+    {
+      "id": "companies",
+      "url": "https://2048.vc/companies",
+      "publisher": "2048 Ventures",
+      "title": "Companies page: select investments and co-investors",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "sectorScope": "examples",
+  "geographyScope": "exhaustive"
+}

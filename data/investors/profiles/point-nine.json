@@ -1,0 +1,101 @@
+{
+  "id": "org-point-nine",
+  "slug": "point-nine",
+  "displayName": "Point Nine",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.pointnine.com/",
+  "summary": "Point Nine is a thesis-driven early-stage venture firm and small equal partnership based in Berlin that invests globally in AI for the digital, physical and biological world. Its homepage states investments of $1,000,000 to $10,000,000 per company, and lists companies such as Attio, Preply and Sereact. The imprint gives the management company's Berlin address. Stage definition, an application route and sector limits beyond the thesis are not stated.",
+  "sectors": [
+    "ai",
+    "b2b-software"
+  ],
+  "stages": [],
+  "investmentGeographies": [
+    "global"
+  ],
+  "publishedCheckRange": {
+    "min": 1000000,
+    "max": 10000000,
+    "currency": "USD",
+    "sourceId": "home",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "investmentGeographies": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Attio",
+      "fact": "Linked from the homepage portfolio. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Sereact",
+      "fact": "Linked from the homepage portfolio (robotics AI). Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": null,
+  "businessAddress": {
+    "organisation": "Point Nine Management GmbH",
+    "lines": [
+      "Torstr. 19"
+    ],
+    "city": "Berlin",
+    "postalCode": "10119",
+    "country": "DE",
+    "addressType": "type-not-established",
+    "sourceId": "imprint",
+    "checkedAt": "2026-09-17"
+  },
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.pointnine.com/",
+      "publisher": "Point Nine",
+      "title": "Homepage: thesis, global investing, investment size and portfolio",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "investmentGeographies",
+        "publishedCheckRange",
+        "investmentEvidence"
+      ]
+    },
+    {
+      "id": "imprint",
+      "url": "https://www.pointnine.com/imprint",
+      "publisher": "Point Nine",
+      "title": "Imprint: Point Nine Management GmbH, Berlin address",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "businessAddress"
+      ]
+    }
+  ],
+  "sectorScope": "examples"
+}

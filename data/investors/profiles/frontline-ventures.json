@@ -1,0 +1,104 @@
+{
+  "id": "org-frontline-ventures",
+  "slug": "frontline-ventures",
+  "displayName": "Frontline Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://frontline.vc/",
+  "summary": "Frontline backs B2B technology companies in the United States and Europe and positions them to win the transatlantic market through two funds. Frontline Seed is for European founders at pre-seed or seed who are prioritising US expansion, while Frontline Growth is for US companies at Series B to D expanding into Europe. The contact page routes founders to the investment team. Cheque size and a street address are not stated on the pages reviewed.",
+  "sectors": [
+    "b2b-software"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [
+    "europe"
+  ],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "stages": [
+      "seed"
+    ],
+    "investmentGeographies": [
+      "seed"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Workvivo",
+      "fact": "A founder is quoted on the Frontline Seed page saying Frontline first backed the company in its seed round and supported it through its acquisition by Zoom. The date is not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "seed"
+      ]
+    },
+    {
+      "company": "Clay",
+      "fact": "Named on the homepage among founder success stories (US to Europe). Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "website",
+    "url": "https://frontline.vc/contact-us/",
+    "sourceId": "contact"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "seed",
+      "url": "https://frontline.vc/frontline-seed/",
+      "publisher": "Frontline Ventures",
+      "title": "Frontline Seed: European founders at pre-seed and seed with US ambition",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "investmentGeographies",
+        "investmentEvidence"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://frontline.vc/",
+      "publisher": "Frontline Ventures",
+      "title": "Homepage: B2B focus, two funds and founder success stories",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "investmentEvidence"
+      ]
+    },
+    {
+      "id": "contact",
+      "url": "https://frontline.vc/contact-us/",
+      "publisher": "Frontline Ventures",
+      "title": "Contact page: routes for seed and growth enquiries",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "preferredPitchChannel"
+      ]
+    }
+  ],
+  "sectorScope": "examples",
+  "geographyScope": "exhaustive"
+}

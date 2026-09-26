@@ -1,0 +1,89 @@
+{
+  "id": "org-ventures-platform",
+  "slug": "ventures-platform",
+  "displayName": "Ventures Platform",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.venturesplatform.com/",
+  "summary": "Ventures Platform is a pan-African fund that backs founders solving for non-consumption and infrastructure gaps in Africa. Its FAQ says the initial investment ranges from $100,000 to $1,000,000 with higher follow-ons, that it invests anywhere on the continent, and that non-African founders qualify if the market served is mainly African. The homepage lists portfolio founders including Paystack and Piggyvest. Founders apply through a linked form. A street address is not stated.",
+  "sectors": [],
+  "stages": [],
+  "investmentGeographies": [
+    "africa"
+  ],
+  "publishedCheckRange": {
+    "min": 100000,
+    "max": 1000000,
+    "currency": "USD",
+    "sourceId": "faq",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "investmentGeographies": [
+      "faq",
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Paystack",
+      "fact": "Listed on the homepage among portfolio companies with founder Shola Akinlade. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Piggyvest",
+      "fact": "Listed on the homepage among portfolio companies with founder Odunayo Eweniyi. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://it1j673lesy.typeform.com/to/piDzHmqS",
+    "sourceId": "faq"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "faq",
+      "url": "https://www.venturesplatform.com/faq",
+      "publisher": "Ventures Platform",
+      "title": "FAQ: cheque size, pan-African geography, founder criteria and application route",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentGeographies",
+        "publishedCheckRange",
+        "preferredPitchChannel"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://www.venturesplatform.com/",
+      "publisher": "Ventures Platform",
+      "title": "Homepage: thesis, Fund II close and portfolio founders",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence",
+        "investmentGeographies"
+      ]
+    }
+  ],
+  "geographyScope": "exhaustive"
+}

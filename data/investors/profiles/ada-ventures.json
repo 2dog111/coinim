@@ -1,0 +1,99 @@
+{
+  "id": "org-ada-ventures",
+  "slug": "ada-ventures",
+  "displayName": "Ada Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.adaventures.com/",
+  "summary": "Ada Ventures is a London and Bristol based pre-seed firm that says it backs European founders building businesses for a better human future. The homepage shows portfolio companies backed at pre-seed, including Materials Nexus, Flexa and BlakBear, and the site has a funding application page and research themes in healthy ageing, climate and economic empowerment. Cheque size is not stated on the pages reviewed. The footer publishes office and registered office addresses.",
+  "sectors": [],
+  "stages": [
+    "pre-seed"
+  ],
+  "investmentGeographies": [
+    "europe"
+  ],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "stages": [
+      "home"
+    ],
+    "investmentGeographies": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Materials Nexus",
+      "fact": "Shown on the homepage as backed by Ada at pre-seed. The date is not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Flexa",
+      "fact": "Shown on the homepage as backed by Ada at seed. The date is not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://www.adaventures.com/send-us-your-pitch",
+    "sourceId": "pitch"
+  },
+  "businessAddress": {
+    "organisation": "Ada Ventures (Ada Partners LLP)",
+    "lines": [
+      "United House",
+      "9 Pembridge Road",
+      "Notting Hill"
+    ],
+    "city": "London",
+    "postalCode": "W11 3JY",
+    "country": "GB",
+    "addressType": "registered-office",
+    "sourceId": "home",
+    "checkedAt": "2026-09-17"
+  },
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.adaventures.com/",
+      "publisher": "Ada Ventures",
+      "title": "Homepage: pre-seed focus, European founders, portfolio examples and footer addresses",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "investmentGeographies",
+        "investmentEvidence",
+        "businessAddress"
+      ]
+    },
+    {
+      "id": "pitch",
+      "url": "https://www.adaventures.com/send-us-your-pitch",
+      "publisher": "Ada Ventures",
+      "title": "Send us your pitch: funding application page",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "preferredPitchChannel"
+      ]
+    }
+  ],
+  "geographyScope": "examples"
+}

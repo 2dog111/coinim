@@ -1,0 +1,89 @@
+{
+  "id": "person-scott-belsky",
+  "slug": "scott-belsky",
+  "displayName": "Scott Belsky",
+  "entityType": "person",
+  "investorType": "angel",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.scottbelsky.com/",
+  "summary": "Scott Belsky is a founder, author and product leader who describes himself on his website as an early-stage angel investor since 2010, focused on consumer, marketplace and interface-driven companies including enterprise and B2B software. His investing page lists early-stage investments such as Clay, EvenUp, Flexport and Liquid Death, and exited investments including Airtable, Pinterest and Superhuman. Check size, stage definition, geography and an application route are not stated; the site publishes a contact email. No personal address is collected.",
+  "sectors": [
+    "consumer",
+    "marketplaces",
+    "b2b-software"
+  ],
+  "stages": [],
+  "investmentGeographies": [],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "sectors": [
+      "investing"
+    ]
+  },
+  "publicContactPeople": [
+    {
+      "name": "Scott Belsky",
+      "role": "Angel investor (self-described on his website)",
+      "sourceId": "home",
+      "reviewedAt": "2026-09-17"
+    }
+  ],
+  "investmentEvidence": [
+    {
+      "company": "Clay",
+      "fact": "Listed on the investing page among early-stage enterprise, developer and consumer tech investments. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "investing"
+      ]
+    },
+    {
+      "company": "Liquid Death",
+      "fact": "Listed on the investing page among consumer and DTC brand investments. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "investing"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "email",
+    "url": "mailto:scott@belsky.com",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "investing",
+      "url": "https://www.scottbelsky.com/investing-backup",
+      "publisher": "Scott Belsky",
+      "title": "Investing page: angel since 2010, focus areas and lists of early-stage and exited investments",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "investmentEvidence"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://www.scottbelsky.com/",
+      "publisher": "Scott Belsky",
+      "title": "Homepage: seed investor description and contact email",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "preferredPitchChannel",
+        "publicContactPeople"
+      ]
+    }
+  ],
+  "sectorScope": "examples"
+}

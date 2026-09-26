@@ -1,0 +1,96 @@
+{
+  "id": "org-haatch",
+  "slug": "haatch",
+  "displayName": "Haatch",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://haatch.com/",
+  "summary": "Haatch is an operator-led UK investor that says it backs UK founders early, at pre-seed and seed, in B2B software across the future of enterprise, fintech and vertical SaaS, targeting minimum annual contracts of £12,000. Its site reports 197 active portfolio companies and £155,000,000 raised and invested to date across SEIS, EIS and syndicate funds. Founders pitch through a linked form. Cheque size and a street address are not stated on the pages reviewed.",
+  "sectors": [
+    "b2b-software",
+    "fintech"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [
+    "uk"
+  ],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "sectors": [
+      "founders",
+      "home"
+    ],
+    "stages": [
+      "founders"
+    ],
+    "investmentGeographies": [
+      "founders"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Supo",
+      "fact": "Quoted on the homepage as a portfolio company (professional services intelligence). Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Bodyswaps",
+      "fact": "Named on the homepage as a company Haatch backed. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://haatch.typeform.com/pitch",
+    "sourceId": "founders"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "founders",
+      "url": "https://haatch.com/founders",
+      "publisher": "Haatch",
+      "title": "Founders page: pre-seed and seed B2B SaaS focus, UK founders, criteria and pitch link",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "investmentGeographies",
+        "preferredPitchChannel"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://haatch.com/",
+      "publisher": "Haatch",
+      "title": "Homepage: portfolio scale, sectors and funds under management",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "sectorScope": "exhaustive",
+  "geographyScope": "exhaustive"
+}

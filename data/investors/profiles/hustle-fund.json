@@ -1,0 +1,150 @@
+{
+  "id": "org-hustle-fund",
+  "slug": "hustle-fund",
+  "displayName": "Hustle Fund",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.hustlefund.vc/",
+  "summary": "Hustle Fund is a small pre-seed venture firm based in San Carlos, California. Its FAQ describes the firm as a software generalist that writes a first check of $150,000, mostly in the United States, Canada and Southeast Asia, and is comfortable setting terms as the first investor. It says it does not invest in pharmaceutical or medical device companies, film, land, restaurants or physical retail. Founders apply through an online form.",
+  "sectors": [
+    "b2b-software",
+    "consumer",
+    "marketplaces",
+    "fintech",
+    "developer-tools",
+    "ai"
+  ],
+  "stages": [
+    "pre-seed"
+  ],
+  "investmentGeographies": [
+    "us",
+    "canada",
+    "southeast-asia"
+  ],
+  "publishedCheckRange": {
+    "min": 150000,
+    "max": 150000,
+    "currency": "USD",
+    "sourceId": "hf-faq",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "hf-faq"
+    ],
+    "stages": [
+      "hf-faq"
+    ],
+    "investmentGeographies": [
+      "hf-faq"
+    ]
+  },
+  "publicContactPeople": [
+    {
+      "name": "Elizabeth Yin",
+      "role": "Co-Founder, General Partner",
+      "sourceId": "hf-team",
+      "reviewedAt": "2026-09-17"
+    },
+    {
+      "name": "Shiyan Koh",
+      "role": "Co-Founder, General Partner",
+      "sourceId": "hf-team",
+      "reviewedAt": "2026-09-17"
+    },
+    {
+      "name": "Eric Bahn",
+      "role": "Co-Founder, General Partner",
+      "sourceId": "hf-team",
+      "reviewedAt": "2026-09-17"
+    }
+  ],
+  "investmentEvidence": [
+    {
+      "company": "Webflow",
+      "fact": "Listed by Hustle Fund on its homepage among portfolio companies. The listing does not state the round or date of the investment.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "hf-home"
+      ]
+    },
+    {
+      "company": "Gamma",
+      "fact": "Listed by Hustle Fund on its homepage among portfolio companies. Round and date are not stated there.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "hf-home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://hustlefund.typeform.com/to/UGTnIt",
+    "sourceId": "hf-home"
+  },
+  "businessAddress": {
+    "organisation": "Hustle Fund",
+    "lines": [
+      "1180 San Carlos Ave",
+      "Suite 337"
+    ],
+    "city": "San Carlos, CA",
+    "postalCode": "94070",
+    "country": "US",
+    "addressType": "type-not-established",
+    "sourceId": "hf-faq",
+    "checkedAt": "2026-09-17"
+  },
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "hf-home",
+      "url": "https://www.hustlefund.vc/",
+      "publisher": "Hustle Fund",
+      "title": "Hustle Fund homepage: pre-seed focus, portfolio logos and application form",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence",
+        "preferredPitchChannel"
+      ]
+    },
+    {
+      "id": "hf-faq",
+      "url": "https://www.hustlefund.vc/faq",
+      "publisher": "Hustle Fund",
+      "title": "Founder FAQ: check size, stage, geography, exclusions and footer address",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "investmentGeographies",
+        "publishedCheckRange",
+        "businessAddress"
+      ]
+    },
+    {
+      "id": "hf-team",
+      "url": "https://www.hustlefund.vc/team",
+      "publisher": "Hustle Fund",
+      "title": "Team page: general partners and roles",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "publicContactPeople"
+      ]
+    }
+  ],
+  "sectorScope": "examples",
+  "geographyScope": "examples"
+}

@@ -5,6 +5,7 @@ The homepage at https://coin.im/ offers 10,000 business letters for $30,000, or 
 The paid three-slot message wall has moved to https://coin.im/message . Existing checkout, receipts, archive, stats, rules and market API routes remain in place. The market database is independent of direct-mail campaigns.
 
 Market Scan development story: https://coin.im/ms
+Investor Match, a researched directory of early-stage investors with shortlist and outreach-plan inquiry: https://coin.im/investors/
 Original direct-mail page: https://coin.im/mail
 Manual encrypted business-file intake: https://coin.im/open
 Contact: mail@coin.im

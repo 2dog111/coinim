@@ -1,0 +1,92 @@
+{
+  "id": "org-titan-capital",
+  "slug": "titan-capital",
+  "displayName": "Titan Capital",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://titancapital.vc/",
+  "summary": "Titan Capital is a founder-first, operator-led venture firm in India that partners with entrepreneurs from day one and points to a 15-year network of more than 650 founders. Its portfolio pages include Razorpay, Urban Company, OfBusiness and Mamaearth. The Get Investment page hosts an application form asking for sector, stage and prior funding, and shows a Gurugram office location. Cheque size, formal stage definition and sector mandate are not stated on the pages reviewed.",
+  "sectors": [],
+  "stages": [],
+  "investmentGeographies": [
+    "india"
+  ],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "investmentGeographies": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Razorpay",
+      "fact": "Linked from the homepage as a portfolio company with a founder story. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Urban Company",
+      "fact": "Linked from the homepage as a portfolio company with a founder story. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://titancapital.vc/getinvestment",
+    "sourceId": "apply"
+  },
+  "businessAddress": {
+    "organisation": "Titan Capital",
+    "lines": [
+      "M3M Urbana",
+      "Sector 67"
+    ],
+    "city": "Gurugram",
+    "postalCode": null,
+    "country": "IN",
+    "addressType": "type-not-established",
+    "sourceId": "apply",
+    "checkedAt": "2026-09-17"
+  },
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://titancapital.vc/",
+      "publisher": "Titan Capital",
+      "title": "Homepage: founder-first positioning, ecosystem and portfolio links",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence",
+        "investmentGeographies"
+      ]
+    },
+    {
+      "id": "apply",
+      "url": "https://titancapital.vc/getinvestment",
+      "publisher": "Titan Capital",
+      "title": "Get Investment: application form, FAQ headings and Gurugram office line",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "preferredPitchChannel",
+        "businessAddress"
+      ]
+    }
+  ],
+  "geographyScope": "examples"
+}

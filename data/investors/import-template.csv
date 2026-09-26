@@ -1,0 +1,2 @@
+name,entity_type,investor_type,organisation,website,summary,sectors,stages,investment_geographies,check_min,check_max,check_currency,pitch_url,source_url,source_title,source_publisher,checked_at
+Example Ventures,organisation,vc,,https://example.com/,,b2b-software;fintech,pre-seed;seed,us;canada,100000,500000,USD,https://example.com/apply,https://example.com/about,About page: thesis and check size,Example Ventures,2026-09-17

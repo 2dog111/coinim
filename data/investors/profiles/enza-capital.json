@@ -1,0 +1,85 @@
+{
+  "id": "org-enza-capital",
+  "slug": "enza-capital",
+  "displayName": "Enza Capital",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.enza.capital/",
+  "summary": "Enza Capital is a multi-stage investor in African technology companies with offices in Nairobi, Cairo, Johannesburg, London and New York. Its homepage lists a sector focus on fintech, AI, logistics, human capital, education, energy and climate, cybersecurity and healthcare, investment stages from pre-seed to Series B, and a geographic focus on ten African countries including Nigeria, Kenya, Egypt and South Africa. Portfolio names include SeamlessHR and Djamo. Check size, an application route and a street address are not stated.",
+  "sectors": [
+    "fintech",
+    "ai",
+    "logistics",
+    "edtech",
+    "climate",
+    "security",
+    "healthcare"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed",
+    "series-a"
+  ],
+  "investmentGeographies": [
+    "africa"
+  ],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "stages": [
+      "home"
+    ],
+    "investmentGeographies": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "SeamlessHR",
+      "fact": "Listed on the homepage among portfolio companies. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Djamo",
+      "fact": "Listed on the homepage among portfolio companies. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": null,
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.enza.capital/",
+      "publisher": "Enza Capital",
+      "title": "Homepage: sectors, stages, geographic focus, offices and portfolio",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "investmentGeographies",
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "sectorScope": "examples",
+  "geographyScope": "exhaustive"
+}

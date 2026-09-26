@@ -1,0 +1,81 @@
+{
+  "id": "org-inovo-vc",
+  "slug": "inovo-vc",
+  "displayName": "Inovo VC",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://inovo.vc/",
+  "summary": "Inovo is a seed-stage fund focused on founders from Central and Eastern Europe and its diaspora. Its homepage states a first ticket of €500,000 to €4,000,000 with follow-ons up to €10,000,000, a pre-seed and seed stage with mainly seed investments, a multi-vertical industry view, and a geography covering CEE countries from Poland to Albania plus founders from the region building anywhere. Founders reach the team through a linked form. A street address is not stated.",
+  "sectors": [
+    "agnostic"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [
+    "cee",
+    "baltics"
+  ],
+  "publishedCheckRange": {
+    "min": 500000,
+    "max": 4000000,
+    "currency": "EUR",
+    "sourceId": "home",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "stages": [
+      "home"
+    ],
+    "investmentGeographies": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Portfolio",
+      "fact": "The homepage links a portfolio page and Medium posts on CEE seed and Series A rounds; individual investment dates are not stated on the homepage.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://docs.google.com/forms/d/e/1FAIpQLSfKsP2tFAUoId5V27AMyLFyEpFWBZHhrfJ3Zsw0iYHYk272Bg/viewform",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://inovo.vc/",
+      "publisher": "Inovo VC",
+      "title": "Homepage: ticket size, stage, CEE geography, industry view and contact form",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "investmentGeographies",
+        "publishedCheckRange",
+        "preferredPitchChannel"
+      ]
+    }
+  ],
+  "geographyScope": "exhaustive"
+}

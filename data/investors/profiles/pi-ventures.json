@@ -1,0 +1,99 @@
+{
+  "id": "org-pi-ventures",
+  "slug": "pi-ventures",
+  "displayName": "pi Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.piventures.in/",
+  "summary": "pi Ventures describes itself as India's pioneering deep tech and AI fund, making early-stage bets on Indian innovators solving global problems. Its homepage gives a fund at a glance: nine years, more than 25 portfolio companies, a current fund of $85,000,000 and a cheque size of $250,000 to $3,000,000, with portfolio examples such as Agnikul Cosmos, Locus and Quanfluence. Contact is by published email. Stage definition beyond early stage, an application form and a street address are not stated.",
+  "sectors": [
+    "deep-tech",
+    "ai",
+    "hardware",
+    "space"
+  ],
+  "stages": [],
+  "investmentGeographies": [
+    "india"
+  ],
+  "publishedCheckRange": {
+    "min": 250000,
+    "max": 3000000,
+    "currency": "USD",
+    "sourceId": "home",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "investmentGeographies": [
+      "home",
+      "about"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Agnikul Cosmos",
+      "fact": "Listed on the homepage as a portfolio company (3D printed rockets). Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Locus",
+      "fact": "Listed on the homepage as a portfolio company (AI logistics). Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "email",
+    "url": "mailto:info@piventures.in",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.piventures.in/",
+      "publisher": "pi Ventures",
+      "title": "Homepage: deep tech and AI focus, fund at a glance, cheque size, portfolio and email",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "investmentGeographies",
+        "publishedCheckRange",
+        "investmentEvidence",
+        "preferredPitchChannel"
+      ]
+    },
+    {
+      "id": "about",
+      "url": "https://www.piventures.in/about",
+      "publisher": "pi Ventures",
+      "title": "About page: Indian roots, global problems, evolving focus",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentGeographies"
+      ]
+    }
+  ],
+  "sectorScope": "exhaustive",
+  "geographyScope": "exhaustive"
+}

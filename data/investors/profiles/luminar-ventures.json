@@ -1,0 +1,102 @@
+{
+  "id": "org-luminar-ventures",
+  "slug": "luminar-ventures",
+  "displayName": "Luminar Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.luminarventures.com/",
+  "summary": "Luminar Ventures is a Stockholm fund that publishes its criteria on the homepage: a ticket range of €500,000 to €2,500,000 with a sweet spot of €1,000,000 to €2,000,000, pre-seed and seed stage, a generalist sector view and a Nordic geography. It reports 45 portfolio companies and €125,000,000 under management. Founders submit a pitch through a form that asks for a Nordic country and a short video. The footer gives a Stockholm address.",
+  "sectors": [
+    "agnostic"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [
+    "nordics"
+  ],
+  "publishedCheckRange": {
+    "min": 500000,
+    "max": 2500000,
+    "currency": "EUR",
+    "sourceId": "home",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "stages": [
+      "home"
+    ],
+    "investmentGeographies": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Fika Jobs",
+      "fact": "The homepage links a post about Fika Jobs raising $4M for an AI hiring platform, a portfolio company. The initial investment date is not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://www.luminarventures.com/pitch",
+    "sourceId": "pitch"
+  },
+  "businessAddress": {
+    "organisation": "Luminar Ventures",
+    "lines": [
+      "Sveavägen 17"
+    ],
+    "city": "Stockholm",
+    "postalCode": "111 57",
+    "country": "SE",
+    "addressType": "type-not-established",
+    "sourceId": "pitch",
+    "checkedAt": "2026-09-17"
+  },
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.luminarventures.com/",
+      "publisher": "Luminar Ventures",
+      "title": "Homepage: ticket range, stage, sector, geography and numbers",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "investmentGeographies",
+        "publishedCheckRange"
+      ]
+    },
+    {
+      "id": "pitch",
+      "url": "https://www.luminarventures.com/pitch",
+      "publisher": "Luminar Ventures",
+      "title": "Submit Your Pitch: application form and footer address",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "preferredPitchChannel",
+        "businessAddress"
+      ]
+    }
+  ],
+  "geographyScope": "exhaustive"
+}

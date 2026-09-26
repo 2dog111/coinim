@@ -1,0 +1,90 @@
+{
+  "id": "org-byfounders",
+  "slug": "byfounders",
+  "displayName": "byFounders",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.byfounders.vc/",
+  "summary": "byFounders is a community-powered venture fund for what it calls the New Nordics. Its FAQ says it likes to be a company's first investor, with a sweet spot at pre-seed and seed, leads rounds with tickets of about €500,000 to €4,000,000, and backs founders from or based in the Nordic and Baltic countries, occasionally elsewhere for an extraordinary team. It publishes its standard seed term sheet. A street address is not stated on the pages reviewed.",
+  "sectors": [],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [
+    "nordics",
+    "baltics"
+  ],
+  "publishedCheckRange": {
+    "min": 500000,
+    "max": 4000000,
+    "currency": "EUR",
+    "sourceId": "faq",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "stages": [
+      "faq"
+    ],
+    "investmentGeographies": [
+      "faq"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Lovable",
+      "fact": "Linked from the homepage as a portfolio company (seed, developer and design tools, Sweden). The date is not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Corti",
+      "fact": "Linked from the homepage as a portfolio company (seed, health, Denmark). The date is not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": null,
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "faq",
+      "url": "https://www.byfounders.vc/faq",
+      "publisher": "byFounders",
+      "title": "FAQ: ticket size, stage, New Nordics geography and term sheet",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "investmentGeographies",
+        "publishedCheckRange"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://www.byfounders.vc/",
+      "publisher": "byFounders",
+      "title": "Homepage: seed investments by sector and country",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "geographyScope": "examples"
+}

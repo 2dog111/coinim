@@ -1,0 +1,65 @@
+{
+  "id": "org-k-fund",
+  "slug": "k-fund",
+  "displayName": "K Fund",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.kfund.vc/",
+  "summary": "K Fund is a Spanish venture firm whose homepage is a dated list of investments from 2016 onward, including Factorial (2018), Abacum (2020), Barkibu (2022), Theker Robotics (2025) and HappyRobot (2026), with exits marked such as Arengu to Okta. The page shows the year of each investment but does not state stage, check size, sector focus, geography, an application route or a street address, so those criteria remain to be confirmed with the firm directly.",
+  "sectors": [],
+  "stages": [],
+  "investmentGeographies": [],
+  "publishedCheckRange": null,
+  "fieldEvidence": {},
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "HappyRobot",
+      "fact": "Listed on the homepage as a featured investment dated 2026.",
+      "eventDate": "2026",
+      "datePrecision": "year",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Factorial",
+      "fact": "Listed on the homepage as a featured investment dated 2018.",
+      "eventDate": "2018",
+      "datePrecision": "year",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Theker Robotics",
+      "fact": "Listed on the homepage as a featured investment dated 2025.",
+      "eventDate": "2025",
+      "datePrecision": "year",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": null,
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.kfund.vc/",
+      "publisher": "K Fund",
+      "title": "Homepage: featured and full investment list with years and exits",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence"
+      ]
+    }
+  ]
+}

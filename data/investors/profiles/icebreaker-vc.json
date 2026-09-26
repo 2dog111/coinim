@@ -1,0 +1,127 @@
+{
+  "id": "org-icebreaker-vc",
+  "slug": "icebreaker-vc",
+  "displayName": "Icebreaker.vc",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.icebreaker.vc/",
+  "summary": "Icebreaker.vc is a Helsinki-based fund that says it has supported more than 150 teams from idea to seed since 2017 and invests first tickets of up to €1,500,000 in Estonia, Finland and Sweden. Its homepage lists portfolio follow-on rounds and exits such as ReOrbit, Aibidia and Klaus, and the contact page publishes office locations in Helsinki, Stockholm and Tallinn together with the partners' names. Founders apply through a linked form. A minimum ticket and sector focus are not stated.",
+  "sectors": [],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [
+    "nordics",
+    "baltics"
+  ],
+  "publishedCheckRange": {
+    "min": null,
+    "max": 1500000,
+    "currency": "EUR",
+    "sourceId": "home",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "stages": [
+      "home"
+    ],
+    "investmentGeographies": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [
+    {
+      "name": "Lasse Lehtinen",
+      "role": "Co-founder and General Partner",
+      "sourceId": "contact",
+      "reviewedAt": "2026-09-17"
+    },
+    {
+      "name": "Aleksi Partanen",
+      "role": "Co-founder and General Partner",
+      "sourceId": "contact",
+      "reviewedAt": "2026-09-17"
+    },
+    {
+      "name": "Riku Seppälä",
+      "role": "Co-founder and General Partner",
+      "sourceId": "contact",
+      "reviewedAt": "2026-09-17"
+    }
+  ],
+  "investmentEvidence": [
+    {
+      "company": "ReOrbit",
+      "fact": "Homepage lists ReOrbit’s €45M Series A among portfolio events. Icebreaker’s initial investment date is not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Klaus",
+      "fact": "Homepage lists the acquisition of Klaus by Zendesk among portfolio events. The initial investment date is not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://airtable.com/appQ5bZ5xXF33G2A5/shrSaCszlW1Z4UVfw/tblYEgViHK0mRBlE1",
+    "sourceId": "home"
+  },
+  "businessAddress": {
+    "organisation": "Icebreaker.vc",
+    "lines": [
+      "Eteläesplanadi 2"
+    ],
+    "city": "Helsinki",
+    "postalCode": null,
+    "country": "FI",
+    "addressType": "operating-office",
+    "sourceId": "contact",
+    "checkedAt": "2026-09-17"
+  },
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.icebreaker.vc/",
+      "publisher": "Icebreaker.vc",
+      "title": "Homepage: ticket size, countries, idea-to-seed positioning and portfolio events",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "investmentGeographies",
+        "publishedCheckRange",
+        "investmentEvidence",
+        "preferredPitchChannel"
+      ]
+    },
+    {
+      "id": "contact",
+      "url": "https://www.icebreaker.vc/contact",
+      "publisher": "Icebreaker.vc",
+      "title": "Contact page: office addresses in Helsinki, Stockholm and Tallinn and partner names",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "businessAddress",
+        "publicContactPeople"
+      ]
+    }
+  ],
+  "geographyScope": "exhaustive"
+}

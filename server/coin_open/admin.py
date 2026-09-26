@@ -74,6 +74,8 @@ def list_jobs(data_root: Path, key: bytes, decrypt_json) -> list[dict]:
                 "website": data.get("website", ""),
                 "campaign_interest": data.get("campaign_interest", ""),
                 "audience": data.get("audience", ""),
+                "investor_brief": data.get("investor_brief", ""),
+                "investor_slugs": data.get("investor_slugs", []),
                 "files": files,
                 "broken": False,
             }
@@ -154,6 +156,8 @@ def job_block(job: dict, token: str) -> str:
         ("Сайт", job.get("website")),
         ("Кампания", job.get("campaign_interest")),
         ("Аудитория", job.get("audience")),
+        ("Investor Match: профили", ", ".join(job.get("investor_slugs") or [])),
+        ("Investor Match: бриф", job.get("investor_brief")),
     ]
     table = "".join(
         "<tr><th>" + escape(label) + "</th><td>" + escape(value) + "</td></tr>"

@@ -1,0 +1,100 @@
+{
+  "id": "org-curiosity-vc",
+  "slug": "curiosity-vc",
+  "displayName": "Curiosity VC",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.curiosityvc.com/",
+  "summary": "Curiosity is a community-powered venture firm that invests in Nordic, Baltic and Benelux founders building B2B AI software. Its homepage says it backs early-stage software companies that have launched a first product and are gaining customer momentum, across four themes: sustainable living, trusted society, future of work and future of commerce. Founders send a pitch deck through a linked form. Check size and a street address are not stated on the pages reviewed.",
+  "sectors": [
+    "ai",
+    "b2b-software",
+    "climate",
+    "security",
+    "fintech"
+  ],
+  "stages": [
+    "seed"
+  ],
+  "investmentGeographies": [
+    "nordics",
+    "baltics",
+    "benelux"
+  ],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "stages": [
+      "home"
+    ],
+    "investmentGeographies": [
+      "home",
+      "about"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Dreamdata",
+      "fact": "Linked from the homepage as a portfolio company. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Strise",
+      "fact": "Linked from the homepage as a portfolio company. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://docs.google.com/forms/d/e/1FAIpQLSfN4faQvYG_sTv5CFc4B0kQDLC8JuS-tpkWiqYFcGOTVp5Djg/viewform",
+    "sourceId": "home"
+  },
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.curiosityvc.com/",
+      "publisher": "Curiosity VC",
+      "title": "Homepage: geography, AI B2B software focus, themes, stage description and pitch form link",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "investmentGeographies",
+        "preferredPitchChannel",
+        "investmentEvidence"
+      ]
+    },
+    {
+      "id": "about",
+      "url": "https://www.curiosityvc.com/about",
+      "publisher": "Curiosity VC",
+      "title": "About page: community-powered early-stage firm and regional focus",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentGeographies"
+      ]
+    }
+  ],
+  "sectorScope": "exhaustive",
+  "geographyScope": "exhaustive"
+}

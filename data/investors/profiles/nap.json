@@ -1,0 +1,148 @@
+{
+  "id": "org-nap",
+  "slug": "nap",
+  "displayName": "NAP",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://nap.vc/",
+  "summary": "NAP, formerly Cavalry Ventures, is a Berlin fund for expert founders building vertical AI in high-stakes industries such as manufacturing, energy, logistics, compliance, construction and healthcare. Its How We Invest page states pre-seed and seed stage, an initial check of €1,000,000 to €3,000,000 plus follow-on, Europe only, a lead role, and explicit exclusions: no consumer, no horizontal infrastructure and no Series A or later. Founders outside its network can email founders@nap.vc. The imprint publishes a Berlin contact address.",
+  "sectors": [
+    "ai",
+    "b2b-software"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [
+    "europe"
+  ],
+  "publishedCheckRange": {
+    "min": 1000000,
+    "max": 3000000,
+    "currency": "EUR",
+    "sourceId": "how",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "how"
+    ],
+    "stages": [
+      "how"
+    ],
+    "investmentGeographies": [
+      "how"
+    ]
+  },
+  "publicContactPeople": [
+    {
+      "name": "Stefan Walter",
+      "role": "Managing Director",
+      "sourceId": "imprint",
+      "reviewedAt": "2026-09-17"
+    },
+    {
+      "name": "Claude Ritter",
+      "role": "Managing Director",
+      "sourceId": "imprint",
+      "reviewedAt": "2026-09-17"
+    }
+  ],
+  "investmentEvidence": [
+    {
+      "company": "Aleph Alpha",
+      "fact": "Homepage names Aleph Alpha among portfolio companies backed at pre-seed or seed. The date is not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "PlanRadar",
+      "fact": "Homepage names PlanRadar among portfolio companies backed at pre-seed or seed. The date is not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "email",
+    "url": "mailto:founders@nap.vc",
+    "sourceId": "founders"
+  },
+  "businessAddress": {
+    "organisation": "NAP Investment Management GmbH",
+    "lines": [
+      "Novalisstraße 12"
+    ],
+    "city": "Berlin",
+    "postalCode": "10115",
+    "country": "DE",
+    "addressType": "operating-office",
+    "sourceId": "imprint",
+    "checkedAt": "2026-09-17"
+  },
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "how",
+      "url": "https://nap.vc/src/how-we-invest",
+      "publisher": "NAP",
+      "title": "How We Invest: stage, check size, geography, focus and exclusions",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "investmentGeographies",
+        "publishedCheckRange"
+      ]
+    },
+    {
+      "id": "founders",
+      "url": "https://nap.vc/api/founders",
+      "publisher": "NAP",
+      "title": "Founders page: cold-inbound email for founders",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "preferredPitchChannel"
+      ]
+    },
+    {
+      "id": "imprint",
+      "url": "https://nap.vc/config/imprint",
+      "publisher": "NAP",
+      "title": "Imprint: NAP Investment Management GmbH, Berlin contact address, managing directors, no pitches to hello@",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "businessAddress",
+        "publicContactPeople"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://nap.vc/",
+      "publisher": "NAP",
+      "title": "Homepage: portfolio examples backed at pre-seed or seed",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "sectorScope": "exhaustive",
+  "geographyScope": "exhaustive"
+}

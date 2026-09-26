@@ -15,3 +15,6 @@ reference/design-catalog.json
 reference/homepage*.html
 scripts/restore_public.py
 scripts/update_homepage.py
+# Investor Match: drafts, import sources, rights notes and the suppression list are not public source.
+data/investors/private/
+!data/investors/private/README.md

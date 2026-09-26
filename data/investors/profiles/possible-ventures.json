@@ -1,0 +1,97 @@
+{
+  "id": "org-possible-ventures",
+  "slug": "possible-ventures",
+  "displayName": "Possible Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.possible.ventures/",
+  "summary": "Possible Ventures is a Munich-registered investor that backs mission-driven teams using frontier technology on humanity-scale problems. Its portfolio pages feature The Exploration Company (reusable orbital vehicles), Orbem (AI imaging for food and agriculture), Reverion (fuel cells) and Marvel Fusion, and the network page lists a large member community. The site does not state a stage, check size, sector list or investment geography, and the imprint gives only a care-of registered address, so those points need direct confirmation.",
+  "sectors": [
+    "deep-tech"
+  ],
+  "stages": [],
+  "investmentGeographies": [],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "sectors": [
+      "about"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "The Exploration Company",
+      "fact": "Featured on the homepage as a portfolio company building a modular reusable orbital vehicle. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Marvel Fusion",
+      "fact": "Featured on the homepage as a portfolio company working on fusion energy. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": null,
+  "businessAddress": {
+    "organisation": "Possible Ventures Verwaltungs GmbH",
+    "lines": [
+      "c/o A.L.B. Leitl GmbH",
+      "Baierbrunner Straße 25"
+    ],
+    "city": "München",
+    "postalCode": "81379",
+    "country": "DE",
+    "addressType": "registered-office",
+    "sourceId": "imprint",
+    "checkedAt": "2026-09-17"
+  },
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "about",
+      "url": "https://www.possible.ventures/about",
+      "publisher": "Possible Ventures",
+      "title": "About page: frontier tech mission and community of scientists and founders",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://www.possible.ventures/",
+      "publisher": "Possible Ventures",
+      "title": "Homepage: featured portfolio companies",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentEvidence"
+      ]
+    },
+    {
+      "id": "imprint",
+      "url": "https://www.possible.ventures/legals/imprint",
+      "publisher": "Possible Ventures",
+      "title": "Imprint: Possible Ventures Verwaltungs GmbH, care-of registered address in Munich",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "businessAddress"
+      ]
+    }
+  ],
+  "sectorScope": "examples"
+}

@@ -1,0 +1,120 @@
+{
+  "id": "org-galileo-ventures",
+  "slug": "galileo-ventures",
+  "displayName": "Galileo Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://galileo.ventures/",
+  "summary": "Galileo Ventures is an Australian pre-seed firm established in 2020 that says it backs emerging founders when others are afraid. Its homepage states first cheques of A$200,000 to A$500,000 written from Sydney, Melbourne and San Francisco, a pre-seed and seed stage, and sectors of AI, software and hardware including deep tech products. The contact page publishes a Sydney office address, a team email and an application portal that promises feedback from a partner.",
+  "sectors": [
+    "ai",
+    "b2b-software",
+    "hardware",
+    "deep-tech"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed"
+  ],
+  "investmentGeographies": [
+    "australia-nz",
+    "us"
+  ],
+  "publishedCheckRange": {
+    "min": 200000,
+    "max": 500000,
+    "currency": "AUD",
+    "sourceId": "home",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "stages": [
+      "home"
+    ],
+    "investmentGeographies": [
+      "home",
+      "contact"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Relevance AI",
+      "fact": "Linked from the homepage as a portfolio company. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Fluent BCI",
+      "fact": "The homepage links a post announcing the firm’s investment in Fluent BCI. The date is not shown on the homepage.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "online-form",
+    "url": "https://apply.galileo.ventures",
+    "sourceId": "contact"
+  },
+  "businessAddress": {
+    "organisation": "Galileo Ventures",
+    "lines": [
+      "Level 4",
+      "1 Castlereagh St"
+    ],
+    "city": "Sydney NSW",
+    "postalCode": "2000",
+    "country": "AU",
+    "addressType": "operating-office",
+    "sourceId": "contact",
+    "checkedAt": "2026-09-17"
+  },
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://galileo.ventures/",
+      "publisher": "Galileo Ventures",
+      "title": "Homepage: cheque size, stage, sectors and office cities",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "stages",
+        "publishedCheckRange",
+        "investmentGeographies",
+        "investmentEvidence"
+      ]
+    },
+    {
+      "id": "contact",
+      "url": "https://galileo.ventures/contact",
+      "publisher": "Galileo Ventures",
+      "title": "Contact page: application portal, emails and Sydney and Melbourne addresses",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "preferredPitchChannel",
+        "businessAddress",
+        "investmentGeographies"
+      ]
+    }
+  ],
+  "sectorScope": "examples",
+  "geographyScope": "exhaustive"
+}

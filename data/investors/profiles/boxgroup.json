@@ -1,0 +1,95 @@
+{
+  "id": "org-boxgroup",
+  "slug": "boxgroup",
+  "displayName": "BoxGroup",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.boxgroup.com/",
+  "summary": "BoxGroup is a New York early-stage investor that wants to be a founder's first conversation and first commitment. Its About page says it invests as early as the pre-seed round and as late as Series A, invests up to $1,000,000 alongside other investors without sharp elbows, and reserves capital to follow on. The homepage lists interests spanning software, fintech, marketplaces, climate, frontier tech and developer tools,. A pitch route and a street address are not stated.",
+  "sectors": [
+    "b2b-software",
+    "fintech",
+    "marketplaces",
+    "climate",
+    "deep-tech",
+    "developer-tools"
+  ],
+  "stages": [
+    "pre-seed",
+    "seed",
+    "series-a"
+  ],
+  "investmentGeographies": [],
+  "publishedCheckRange": {
+    "min": null,
+    "max": 1000000,
+    "currency": "USD",
+    "sourceId": "about",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "sectors": [
+      "home"
+    ],
+    "stages": [
+      "about"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Cursor",
+      "fact": "Named on the homepage among earliest-stage investments. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Ramp",
+      "fact": "Named on the homepage among earliest-stage investments. Round and date are not stated.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": null,
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "about",
+      "url": "https://www.boxgroup.com/about",
+      "publisher": "BoxGroup",
+      "title": "About page: earliest-stage focus, stage span, up to $1M investments and follow-on",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "publishedCheckRange"
+      ]
+    },
+    {
+      "id": "home",
+      "url": "https://www.boxgroup.com/",
+      "publisher": "BoxGroup",
+      "title": "Homepage: interest areas and portfolio examples",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "sectors",
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "sectorScope": "examples"
+}

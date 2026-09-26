@@ -1,0 +1,84 @@
+{
+  "id": "org-delta-partners",
+  "slug": "delta-partners",
+  "displayName": "Delta Partners",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.deltapartners.com/",
+  "summary": "Delta Partners is an early-stage venture firm in Ireland that describes partner-led investment for category-defining companies, with more than 140 investments and €1,800,000,000 in exit returns, and says it is actively investing. Its homepage names the partners and lists recent news such as an investment in Audrey AI and a lead investment in Vox Talk AI in April 2026. Stage definition, cheque size, sector focus, an application route and a street address are not stated on the pages reviewed.",
+  "sectors": [],
+  "stages": [],
+  "investmentGeographies": [
+    "europe"
+  ],
+  "publishedCheckRange": null,
+  "fieldEvidence": {
+    "investmentGeographies": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [
+    {
+      "name": "Dermot Berkery",
+      "role": "Partner (listed under Meet a Partner)",
+      "sourceId": "home",
+      "reviewedAt": "2026-09-17"
+    },
+    {
+      "name": "Amy Neale",
+      "role": "Partner (listed under Meet a Partner)",
+      "sourceId": "home",
+      "reviewedAt": "2026-09-17"
+    },
+    {
+      "name": "Maurice Roche",
+      "role": "Partner (listed under Meet a Partner)",
+      "sourceId": "home",
+      "reviewedAt": "2026-09-17"
+    }
+  ],
+  "investmentEvidence": [
+    {
+      "company": "Vox Talk AI",
+      "fact": "Homepage news item dated 13 April 2026: Delta leads investment in Vox Talk AI.",
+      "eventDate": "2026-04-13",
+      "datePrecision": "day",
+      "sourceIds": [
+        "home"
+      ]
+    },
+    {
+      "company": "Audrey AI",
+      "fact": "Homepage news item dated 16 April 2026: Delta investment in Audrey AI.",
+      "eventDate": "2026-04-16",
+      "datePrecision": "day",
+      "sourceIds": [
+        "home"
+      ]
+    }
+  ],
+  "preferredPitchChannel": null,
+  "businessAddress": null,
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.deltapartners.com/",
+      "publisher": "Delta Partners",
+      "title": "Homepage: Ireland early-stage positioning, partners, numbers and recent investment news",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "investmentGeographies",
+        "publicContactPeople",
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "geographyScope": "examples"
+}

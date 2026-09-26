@@ -1,0 +1,96 @@
+{
+  "id": "org-techstart-ventures",
+  "slug": "techstart-ventures",
+  "displayName": "Techstart Ventures",
+  "entityType": "organisation",
+  "investorType": "vc",
+  "organisationId": null,
+  "organisationName": null,
+  "officialWebsite": "https://www.techstart.vc/",
+  "summary": "Techstart Ventures invests from inception to pre-seed in founders in Scotland and Northern Ireland, with first cheques of up to £750,000 plus follow-on capacity, leading, co-leading or selectively co-investing. Its Investment page says the team loves cold inbound and looks at everything, prefers short answers on insight, team and plans over decks, and publishes a Northern Ireland email plus Edinburgh and Belfast office addresses. Sector focus is not stated on the pages reviewed.",
+  "sectors": [],
+  "stages": [
+    "pre-seed"
+  ],
+  "investmentGeographies": [
+    "uk"
+  ],
+  "publishedCheckRange": {
+    "min": null,
+    "max": 750000,
+    "currency": "GBP",
+    "sourceId": "home",
+    "constraint": "typical",
+    "checkType": "initial"
+  },
+  "fieldEvidence": {
+    "stages": [
+      "home"
+    ],
+    "investmentGeographies": [
+      "home"
+    ]
+  },
+  "publicContactPeople": [],
+  "investmentEvidence": [
+    {
+      "company": "Portfolio",
+      "fact": "The Investment page invites introductions through founders the firm has already backed; individual companies are on the portfolio page without dates on the pages reviewed.",
+      "eventDate": null,
+      "datePrecision": "unknown",
+      "sourceIds": [
+        "investment"
+      ]
+    }
+  ],
+  "preferredPitchChannel": {
+    "type": "email",
+    "url": "mailto:northernireland@techstart.vc",
+    "sourceId": "investment"
+  },
+  "businessAddress": {
+    "organisation": "Techstart Ventures",
+    "lines": [
+      "15 Queen St"
+    ],
+    "city": "Edinburgh",
+    "postalCode": "EH2 1JE",
+    "country": "GB",
+    "addressType": "type-not-established",
+    "sourceId": "investment",
+    "checkedAt": "2026-09-17"
+  },
+  "recipientRoutingStatus": "not-confirmed",
+  "paperPitchPolicy": "unknown",
+  "editorialUpdatedAt": "2026-09-17",
+  "publicationStatus": "published",
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.techstart.vc/",
+      "publisher": "Techstart Ventures",
+      "title": "Homepage: stage, first cheque size, role and geography",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "stages",
+        "investmentGeographies",
+        "publishedCheckRange"
+      ]
+    },
+    {
+      "id": "investment",
+      "url": "https://www.techstart.vc/investment",
+      "publisher": "Techstart Ventures",
+      "title": "Investment page: cold inbound welcome, what to include, email and office addresses",
+      "publishedAt": null,
+      "checkedAt": "2026-09-17",
+      "supportsFields": [
+        "preferredPitchChannel",
+        "businessAddress",
+        "investmentEvidence"
+      ]
+    }
+  ],
+  "geographyScope": "exhaustive"
+}
