@@ -2,6 +2,22 @@
 
 This is the local place to check the current site version before edits or deployment.
 
+## Git checkpoint, 2026-09-26
+
+- Commit `ee2c585` on `main` (pushed to GitHub): local Investor Match
+  (`/investors/`, 100 profiles, shortlist sent through `/api/open/leads` with
+  `source=/investors`) and the matching intake change in `server/coin_open`.
+  Fix: the sticky shortlist bar hides while the form is on screen and after a
+  confirmed send.
+- Checks: lint, 38 market tests, 12 intake tests, Investor Match tests, headless
+  Chromium path homepage > /investors/ > filters > shortlist > form (mocked
+  submit) at 390x844 and 1440x900: no console errors, no overflow.
+- Not deployed. Production static release is `20260922T153944Z-investor-match`,
+  a different Investor Match build (hands off to `/#start`) whose source is not
+  in this repository; intake backend remains `20260914T065214Z-campaign-v3`.
+  Production homepage and `/ms` also differ from this tree. Owner decision
+  2026-09-26: leave production untouched until that source is found.
+
 ## Git checkpoint, 2026-09-16
 
 - Checkpoint tag: `checkpoint-20260916-ms-campaign-v3`. Preserves the integrated
