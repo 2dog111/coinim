@@ -12,11 +12,31 @@ This is the local place to check the current site version before edits or deploy
 - Checks: lint, 38 market tests, 12 intake tests, Investor Match tests, headless
   Chromium path homepage > /investors/ > filters > shortlist > form (mocked
   submit) at 390x844 and 1440x900: no console errors, no overflow.
-- Not deployed. Production static release is `20260922T153944Z-investor-match`,
-  a different Investor Match build (hands off to `/#start`) whose source is not
-  in this repository; intake backend remains `20260914T065214Z-campaign-v3`.
-  Production homepage and `/ms` also differ from this tree. Owner decision
-  2026-09-26: leave production untouched until that source is found.
+- Superseded the same day by the production release below.
+
+## Investor Match v2 production release, 2026-09-26
+
+- Owner decision 2026-09-26: the local Investor Match (100 profiles, on-page
+  form) replaces the 2026-09-22 build from branch `codex/local-development`
+  (40 profiles, handoff to `/#start`). That branch stays on GitHub unmerged.
+- Static release `/var/www/coin.im/releases/20260926T045443Z-investor-match2`:
+  clone of `20260922T153944Z-investor-match` plus overlay of `index.html`,
+  `ms.html`, `ms/index.html`, `llms.txt`, `sitemap.xml`, `investors.html`,
+  `investors/index.html`, `assets/contact-ui.js`, `assets/pilot-scale.css`,
+  `assets/investor-match-core.js`, `assets/investor-match.js`,
+  `assets/investor-match.css`. Production `assets/wall.css` and the old
+  `assets/investors*.js/css` files were kept as they were.
+- Intake release `/opt/coin-im-open/releases/20260926T045443Z-investor-match2`:
+  clone of `20260914T065214Z-campaign-v3` with `coin_open/leads.py` and
+  `coin_open/admin.py` overlaid. Previous releases retained for rollback.
+- Backups: `/var/backups/coin-im/20260926T045443Z-investor-match2/`
+  (`coin-im-open-data.tgz`, `nginx.conf`). Nginx config unchanged, `nginx -t` ok.
+- Public checks: 18 routes and health endpoints answer 200/301; live
+  `/investors/` is byte-identical to the local build; live validation accepts
+  `source=/investors` (probed with an invalid email, no lead created). Headless
+  Chromium on https://coin.im at 390x844 and 1440x900: homepage link, filters,
+  shortlist, form, mocked send, bar hidden near form and after send, no console
+  errors, no overflow. No real lead was submitted.
 
 ## Git checkpoint, 2026-09-16
 
