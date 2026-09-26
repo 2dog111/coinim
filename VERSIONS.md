@@ -14,6 +14,21 @@ This is the local place to check the current site version before edits or deploy
   submit) at 390x844 and 1440x900: no console errors, no overflow.
 - Superseded the same day by the production release below.
 
+## Homepage copy and Market Scan link release, 2026-09-26
+
+- Commit `d09e07d`. Static release `/var/www/coin.im/releases/20260926T051512Z-gary`
+  (clone of `20260926T050950Z-funnel` plus `index.html`, `ms.html`,
+  `ms/index.html`, `investors.html`, `investors/index.html`, `assets/pilot-scale.css`).
+- Owner-requested `/gary` rework of homepage copy outside `#market-scan`,
+  `#letters` and `#classic-letters` (hashes unchanged): new headline, pilot,
+  how-it-works, grabber and review copy, a fit question in the FAQ. Prices,
+  cities, delivery terms and form unchanged.
+- Owner instruction: Market Scan text stays on the homepage; new block
+  `#market-scan-product` after it and a footer link point to the main Market
+  Scan project https://mscan.biz/ (mscan.biz links back to coin.im).
+- Live: deployed files identical to the commit; Chromium 390x844 and 1440x900 on
+  https://coin.im without console errors, overflow or text under 18px.
+
 ## Homepage funnel release, 2026-09-26
 
 - Commit `3323378`. Static release `/var/www/coin.im/releases/20260926T050950Z-funnel`
