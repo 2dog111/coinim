@@ -231,3 +231,17 @@ h1 em { color: var(--ink); }
 .investor-match-link { margin-top: 22px; font: 18px/1.5 var(--sans); }
 .investor-match-link a { display: inline-flex; align-items: center; min-height: 44px; }
 .investor-match-link a::after { content: '\2192'; margin-left: 8px; }
+
+/* 2026-09-26: visible text on the homepage and shared pricing/form is at least 18px. */
+html body .hero-offer, html body .hero-unit, html body .text-action, html body figcaption,
+html body .field-guide-caption, html body .pilot-decisions dt, html body .unit-price,
+html body .included li, html body .glass, html body .form-microcopy, html body .input-help,
+html body .field-hint, html body #campaign-enquiry label, html body .contact-panel label,
+html body .pilot-price-link, html body .approval-flow, html body .approval-flow p, html body main dt,
+html body .calculator-inputs label { font-size: 18px !important; }
+.plan-name { font: 22px/1.3 var(--serif, Georgia, serif); color: var(--muted, #6b6b60); margin: 0 0 8px; }
+.pilot-price-link { margin: 32px 0 0; }
+.mobile-cta { display: none; }
+@media (max-width: 700px) {
+  .mobile-cta:not([hidden]) { display: flex; align-items: center; justify-content: center; position: fixed; z-index: 40; left: 16px; right: 16px; bottom: calc(12px + env(safe-area-inset-bottom)); min-height: 52px; box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+}

@@ -20,3 +20,13 @@
     });
   });
 })();
+
+// Mobile shortcut to the form: shown once the hero button has scrolled away, hidden while the form is on screen.
+(() => {
+  const cta = document.querySelector('.mobile-cta'), hero = document.querySelector('.hero-copy .actions'), start = document.querySelector('#start');
+  if (!cta || !hero || !start || !('IntersectionObserver' in window)) return;
+  let heroVisible = true, startVisible = false;
+  const update = () => { cta.hidden = heroVisible || startVisible; };
+  new IntersectionObserver(([e]) => { heroVisible = e.isIntersecting || e.boundingClientRect.top > 0; update(); }).observe(hero);
+  new IntersectionObserver(([e]) => { startVisible = e.isIntersecting; update(); }).observe(start);
+})();
