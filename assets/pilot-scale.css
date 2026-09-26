@@ -225,9 +225,9 @@ h1 em { color: var(--ink); }
   .form-microcopy { text-align: left; font-size: 13px; }
 }
 /* Compact Investor Match note between Market Scan and the letters. */
-.investor-match-note { max-width: 760px; }
-.investor-match-note > h2 { font-size: 34px; max-width: 24ch; }
-.investor-match-note > p { max-width: 65ch; }
+.investor-match-note, .market-scan-bridge { max-width: 760px; }
+.investor-match-note > h2, .market-scan-bridge > h2 { font-size: 34px; max-width: 24ch; }
+.investor-match-note > p, .market-scan-bridge > p { max-width: 65ch; }
 .investor-match-link { margin-top: 22px; font: 18px/1.5 var(--sans); }
 .investor-match-link a { display: inline-flex; align-items: center; min-height: 44px; }
 .investor-match-link a::after { content: '\2192'; margin-left: 8px; }
