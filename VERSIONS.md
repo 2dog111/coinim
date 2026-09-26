@@ -14,6 +14,24 @@ This is the local place to check the current site version before edits or deploy
   submit) at 390x844 and 1440x900: no console errors, no overflow.
 - Superseded the same day by the production release below.
 
+## Homepage funnel release, 2026-09-26
+
+- Commit `3323378`. Static release `/var/www/coin.im/releases/20260926T050950Z-funnel`
+  (clone of `20260926T045443Z-investor-match2` plus `index.html`, `ms.html`,
+  `ms/index.html`, `investors.html`, `investors/index.html`,
+  `assets/pilot-scale.css`, `assets/direct-mail.js`, `assets/campaign-pricing.js`).
+  Backend unchanged.
+- Changes: the early duplicate price cards are replaced by a link to `#campaign`
+  (prices stay in the hero); the Investor Match note moved after the form;
+  eyebrows and step numerals removed, plan names as `.plan-name`; mobile
+  "Send your website" shortcut (hidden on the hero and at the form); 18px floor
+  for homepage text; dashes and arrows replaced outside protected sections.
+- Protected `#market-scan`, `#letters`, `#classic-letters` hashes unchanged.
+  Lint, tests, calculator and copy checks pass. Live checks: routes 200, deployed
+  files identical to the commit; Chromium 390x844 and 1440x900 on https://coin.im:
+  no small text, no overflow, no console errors, shortcut and anchors work,
+  Investor Match path unchanged. `/ms` keeps its own eyebrows (not in scope).
+
 ## Investor Match v2 production release, 2026-09-26
 
 - Owner decision 2026-09-26: the local Investor Match (100 profiles, on-page
