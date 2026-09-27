@@ -125,26 +125,14 @@ assert.ok(relax2.every(s => ['sector', 'stage', 'country', 'checkUsd'].includes(
 const loaded = data.loadProfiles();
 assert.deepEqual(loaded.errors, [], loaded.errors.join('\n'));
 const { html, published } = build({ write: false });
-assert.equal((html.match(/class="im-row"/g) || []).length, published.length);
-assert.ok(html.includes(`<span>${published.length} investment profiles</span>`));
-const bundle = JSON.parse(html.slice(html.indexOf('<script id="investor-data" type="application/json">') + 52, html.indexOf('</script>', html.indexOf('<script id="investor-data"'))));
-assert.equal(bundle.profiles.length, published.length);
-assert.ok(bundle.profiles.every(p => p.publicationStatus === 'published'));
+// The page no longer renders the catalog: the base is closed and reached through a Market Scan.
+assert.ok(!html.includes('class="im-row"') && !html.includes('id="investor-data"') && !html.includes('id="investor-criteria"'), 'catalog leaked into the page');
 for (const key of ['privateNotes', 'importSource', 'internalReview', 'suppression', 'reviewNotes', 'rightsNote']) assert.ok(!html.includes(key), `${key} leaked into the page`);
-assert.ok(!html.includes('"publicationStatus":"draft"') && !html.includes('"publicationStatus":"hidden"'));
-// Every published profile in the bundle carries per-field sources and check dates for the matching criteria.
-for (const p of bundle.profiles) {
-  for (const field of ['sectors', 'stages', 'investmentGeographies']) if (p[field].length) assert.ok(p.fieldEvidence[field] && p.fieldEvidence[field].length && p.criteriaCheckedAt[field], `${p.slug} ${field} evidence`);
-  if (p.publishedCheckRange) assert.ok(p.publishedCheckRange.sourceId && p.criteriaCheckedAt.publishedCheckRange, `${p.slug} check evidence`);
-  assert.ok(p.sources.every(s => /^https?:/.test(s.url)));
-}
+for (const p of published) assert.ok(!html.includes(p.displayName), `${p.slug} named on the closed-base page`);
+assert.ok(html.includes('1,000,000 entrepreneurs with capital from $1,000,000'));
 assert.ok(!/javascript:/i.test(html));
 assert.ok(!/href="(?!https?:|#|\/|mailto:|sms:|whatsapp:)/.test(html), 'unexpected link scheme');
-for (const p of published) {
-  assert.ok(html.includes(`id="${p.slug}"`));
-  if (p.paperPitchPolicy === 'not-accepted') assert.ok(html.includes('excluded from any paper plan'));
-  if (!p.businessAddress) assert.ok(html.includes('Address not yet verified'));
-}
+assert.ok(!/[\u2013\u2014\u2192]/.test(html), 'dash or arrow in page text');
 assert.equal(fs.readFileSync(path.join(__dirname, '..', 'investors', 'index.html'), 'utf8'), fs.readFileSync(path.join(__dirname, '..', 'investors.html'), 'utf8'), 'investors mirror differs');
 assert.equal(fs.readFileSync(path.join(__dirname, '..', 'investors', 'index.html'), 'utf8'), html, 'investors/index.html is stale: run node scripts/build-investors.cjs');
 

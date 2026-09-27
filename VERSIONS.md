@@ -2,6 +2,46 @@
 
 This is the local place to check the current site version before edits or deployment.
 
+## No captions release, 2026-09-27
+
+- Static release `/var/www/coin.im/releases/20260927T092434Z-no-captions`
+  (clone of `20260927T092156Z-investor-letters` plus `index.html`,
+  `investors.html`, `investors/index.html`). Committed together with the letters-to-investors release; the unrendered profile-card address disclaimer and its `.im-disclaimer` style were removed from the build script afterwards (live CSS still has the unused rule).
+- Owner rule: no captions under photos and no legal disclaimers. Removed four
+  homepage figcaptions ("Concept illustration", "AI-generated concept",
+  "An enclosure example") and the `/investors/` "not an endorsement, an offer
+  of securities" note plus "Information may be incomplete". Rule added to
+  `AGENTS.md` and the global Claude/Codex rules.
+- Checks: Investor Match tests pass, live `/` and `/investors/` hash-identical
+  to local, `/ms`, `/open`, `/api/open/health` 200, `nginx -t` passed. No
+  browser QA run.
+
+## Letters to investors release, 2026-09-27
+
+- Static release
+  `/var/www/coin.im/releases/20260927T092156Z-investor-letters` (clone of
+  `20260926T051512Z-gary` plus `index.html`, `investors.html`,
+  `investors/index.html`, `assets/investor-match.css`, `llms.txt`). Backend
+  unchanged. Deployed through the `ops` SSH alias; `iva` and `admin` keys are
+  rejected from this Mac.
+- Owner repositioning: the investor base is closed. `/investors/` no longer
+  shows the catalog, filters, shortlist, profile count or data bundle and does
+  not load `investor-match.js`. New copy (`/gary`): 1,000,000 entrepreneurs
+  with capital from $1,000,000 who are inclined to invest; every visitor is
+  sent to order a Market Scan through the same intake form; paper letters to a
+  selection only if the client wants them afterwards. Homepage note
+  `#investor-match` and footer link rewritten the same way; protected sections
+  `#market-scan`, `#letters`, `#classic-letters` hash-identical.
+- Profiles, loader, import and quality check remain internal tooling; tests
+  updated so the page must contain no catalog rows, bundle or profile names.
+  Build version `20260927-im2`; `.im-note`, `.im-status`, `.im-disclaimer`
+  raised to 18px.
+- Checks: lint, Investor Match tests, headless Chromium 390x844 and 1440x900 on
+  the local preview and on https://coin.im for `/` and `/investors/`: no console
+  errors, no overflow, no text under 18px, no bold, form success state with a
+  mocked submit. Live `/` and `/investors/` hash-identical to the local files;
+  `/ms`, `/open`, `/api/open/health` return 200; `nginx -t` passed.
+
 ## Git checkpoint, 2026-09-26
 
 - Commit `ee2c585` on `main` (pushed to GitHub): local Investor Match

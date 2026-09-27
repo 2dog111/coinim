@@ -1,5 +1,7 @@
 # Investor Match MVP (`/investors/`)
 
+Status on 2026-09-27: by the owner's decision the public page no longer shows the catalog, filters or shortlist. `/investors/` positions a closed base (1,000,000 entrepreneurs with capital from $1,000,000 who are inclined to invest) and sends every visitor to order a Market Scan through the same intake form; paper letters to a selection follow only if the client wants them. The profiles, loader, validator, import and tests below stay as internal tooling and still gate `npm test`; `investor-match.js` and `investor-match-core.js` are no longer loaded by the page. The description below documents the earlier public catalog.
+
 Status on 2026-09-17 (second pass): local implementation, not deployed. 100 published profiles researched from the investors' own websites; see "Current data" below for the honest counts and "Readiness" for what still blocks a launch.
 
 ## What it is

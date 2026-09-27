@@ -95,12 +95,10 @@ function run({ today } = {}) {
   let bundleCount = null;
   try {
     const { html } = build({ write: false });
-    const rendered = (html.match(/class="im-row"/g) || []).length;
-    const start = html.indexOf('<script id="investor-data" type="application/json">') + 52;
-    const bundle = JSON.parse(html.slice(start, html.indexOf('</script>', start)));
-    publishedCount = published.length; bundleCount = bundle.profiles.length;
-    if (rendered !== published.length || bundle.profiles.length !== published.length) errors.push(`published count mismatch: data ${published.length}, rows ${rendered}, bundle ${bundle.profiles.length}`);
-    if (!html.includes(`<span>${published.length} investment profiles</span>`)) errors.push('page counter does not equal the published count');
+    // Since 2026-09-27 the public page is a closed-base landing: no catalog rows, no data bundle, no names.
+    publishedCount = published.length; bundleCount = 0;
+    if (html.includes('class="im-row"') || html.includes('id="investor-data"')) errors.push('catalog or data bundle appears in the public artifact');
+    for (const p of published) if (html.includes(p.displayName)) errors.push(`published profile ${p.slug} is named in the public artifact`);
     for (const key of PRIVATE_KEYS) if (html.includes(key)) errors.push(`private field "${key}" appears in the public artifact`);
     if (/"publicationStatus":"(draft|hidden)"/.test(html)) errors.push('draft or hidden status appears in the public artifact');
     const privateDir = path.join(data.PRIVATE_DIR, 'queue');

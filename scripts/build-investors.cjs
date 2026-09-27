@@ -6,7 +6,7 @@ const core = require('../assets/investor-match-core.js');
 const data = require('./lib/investors-data.cjs');
 
 const root = path.resolve(__dirname, '..');
-const VERSION = '20260917-im1';
+const VERSION = '20260927-im2';
 
 function esc(value) {
   return String(value ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -101,7 +101,6 @@ ${evidenceHtml}
          <div><dt>Paper pitches</dt><dd>${esc(paper)}</dd></div>
         </dl>
         ${addressHtml}
-        <p class="im-disclaimer">A published business address does not confirm that this person works there, accepts unsolicited letters, or will personally receive or read your pitch. Delivery availability is checked separately for each business address.</p>
         ${people ? `<h4>Publicly listed people</h4>\n        <ul class="im-people">\n${people}\n        </ul>` : ''}
         <h4>Sources and dates</h4>
         <ol class="im-sources">

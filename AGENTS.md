@@ -21,6 +21,7 @@
 - After a production deploy or Git checkpoint, update `VERSIONS.md` with the exact release or tag and the verified state.
 - Do not add badges, eyebrow labels, small section labels, or standalone numeric chips unless the user explicitly asks for them.
 - Do not add visible story-part numerals such as `01`, `02`, `03`, `04`, or `05`; use section headings and spacing instead unless the user explicitly asks for numbered markers.
+- Never add captions under photos or illustrations ("Concept illustration", "AI-generated concept", "An enclosure example") and never add legal disclaimers ("not an offer", "information may be incomplete"). Owner rule, 2026-09-27.
 - Never add decorative or technical-term badge lists, pills, or chips such as “Entity discovery,” “Role mapping,” or similar AI-generated taxonomy. Put essential meaning into clear body copy instead.
 - Do not use long dash characters, en dash characters, or arrow symbols in Russian or English site text. Use periods, commas, or colons instead.
 - Write monetary amounts with digits and the currency symbol, for example `$20,196`, `$99 в месяц`, or `¥80`. Do not spell out prices or currency amounts in words. Generic nouns such as `деньги`, `рубли`, or `доллар` may remain when no amount is stated.

@@ -5,7 +5,7 @@
 .im-hero h1 { font-size: clamp(42px, 4.15vw, 64px); line-height: 1.08; max-width: 18ch; }
 .im-lead { font-size: 22px; line-height: 1.55; margin-top: 26px; max-width: 60ch; }
 .im-hero .actions { margin-top: 30px; }
-.im-status { font: 16px/1.6 var(--sans); color: var(--muted); margin-top: 30px; }
+.im-status { font: 18px/1.6 var(--sans); color: var(--muted); margin-top: 30px; }
 .im-stats { font: 16px/1.6 var(--sans); margin-top: 6px; display: flex; flex-wrap: wrap; gap: 0 10px; }
 .im-process { list-style: none; padding: 0; margin: 26px 0 0; display: flex; flex-wrap: wrap; gap: 8px 6px; font: 16px/1.6 var(--sans); color: var(--muted); }
 .im-process li + li::before { content: '\2192'; margin-right: 6px; color: #8c8b74; }
@@ -13,7 +13,7 @@
 .investor-match .chapter + .chapter { margin-top: 64px; padding-top: 56px; }
 .investor-match .chapter > h2 { font-size: clamp(32px, 3.2vw, 44px); }
 .im-nojs { font-size: 19px; color: var(--muted); }
-.im-note { font: 16px/1.6 var(--sans); color: var(--muted); margin-top: 22px; max-width: 65ch; }
+.im-note { font: 18px/1.6 var(--sans); color: var(--muted); margin-top: 22px; max-width: 65ch; }
 
 /* Criteria form */
 .im-criteria { margin-top: 8px; }
@@ -78,7 +78,6 @@
 .im-why { max-width: 65ch; }
 .im-why ul { margin: 8px 0 0; padding-left: 22px; }
 .im-address { font: 17px/1.6 var(--sans); margin-top: 10px; }
-.im-disclaimer { font: 15px/1.6 var(--sans); color: var(--muted); margin-top: 14px; max-width: 65ch; }
 .im-sources { font-size: 16px; font-family: var(--sans); overflow-wrap: anywhere; }
 .im-empty { font-size: 19px; color: var(--muted); margin-top: 26px; }
 .im-pagination { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 30px; font: 16px/1.5 var(--sans); }
