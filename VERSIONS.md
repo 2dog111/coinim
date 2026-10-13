@@ -2,6 +2,32 @@
 
 This is the local place to check the current site version before edits or deployment.
 
+## Tighter homepage release, 2026-10-13
+
+- Static release `/var/www/coin.im/releases/20261013T110218Z-tighten` (clone of
+  `20260927T092434Z-no-captions` plus `index.html`, `ms.html`, `ms/index.html`,
+  `investors.html`, `investors/index.html`, `assets/pilot-scale.css`). Backend
+  unchanged. Deployed through the `ops` SSH alias.
+- Homepage copy pass with `/gary` and `/anton` outside the protected sections:
+  editable text 1,987 to 1,768 words (11%). Removed the third copy of the
+  coin-letter illustration, the "Field guide: not a completed campaign" caption,
+  the calculator "not a forecast" disclaimer, the third restatement of the
+  per-letter price in `#campaign`, the duplicate grabber explanation, the double
+  intro to the city list and three of four intro paragraphs before the form.
+  Courier, production, cities, report and FAQ sentences tightened. Prices,
+  cities, contacts, form fields and handlers unchanged; `#market-scan`,
+  `#letters`, `#classic-letters` hash-identical. `.record-chain-wrap` spacing
+  rule added, `pilot-scale.css` version `20261013-h1` on all pages.
+- Checks: lint, calculator and Investor Match tests, `qa-evidence.cjs`
+  (Chromium and WebKit, 360 to 1440) pass; headless Chromium 1440x900 on the
+  local preview and on https://coin.im/: no console errors, failed requests
+  or overflow, calculator and hero CTA work. Live `/`, `/ms/`, `/investors/`
+  and `pilot-scale.css` hash-identical to local; `/open`, `/handling`,
+  `/api/open/health`, `/api/market/health` 200, `nginx -t` passed. Mobile
+  viewports were not reviewed visually (owner rule, 2026-10-03).
+  `scripts/qa-homepage.cjs` still asserts two `.pricing-grid` blocks and has
+  failed since the single-pricing-block release of 2026-09-26.
+
 ## No captions release, 2026-09-27
 
 - Static release `/var/www/coin.im/releases/20260927T092434Z-no-captions`

@@ -3,6 +3,7 @@
 .pilot-decisions{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:30px 0 0;padding-top:24px;border-top:1px solid var(--line)}
 .pilot-decisions dt{font-size:26px}.pilot-decisions dd{margin:8px 0 0;font-size:18px;line-height:1.5}
 .field-guide-caption{font:14px/1.6 var(--sans);margin:28px 0 22px}
+.record-chain-wrap{margin-top:24px}
 .campaign-dossier{display:grid;grid-template-columns:1fr 1.05fr;gap:40px;align-items:start;margin-top:24px}
 .campaign-dossier figure{position:sticky;top:28px}.campaign-dossier img{aspect-ratio:4/5;object-fit:cover;border:1px solid #ddd6c4}
 .campaign-dossier figcaption{font:13px/1.5 var(--sans);color:var(--muted);margin-top:12px}
