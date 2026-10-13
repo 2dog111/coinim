@@ -19,6 +19,10 @@ python3.12 -m venv .venv
 Open http://127.0.0.1:4173. The preview uses temporary local enquiry storage and
 does not send enquiries to production. Stop it with Ctrl+C.
 
+## Outreach links
+
+The homepage form reads three query parameters so an outreach email or message can land on a form that is already filled in: `https://coin.im/?site=example.com&name=Alex&plan=pilot`. `site` fills the website field, `name` the name field, `plan` (`pilot` or `scale`) the campaign interest; the page then scrolls to the form. Values are plain text, trimmed to the field limits, and never overwrite what a visitor has already typed. The same parameters work on `/ms`.
+
 ## Checks
 
 ```sh

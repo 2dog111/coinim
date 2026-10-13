@@ -13,7 +13,12 @@
   const freeMailNames = new Set(["gmail", "yahoo", "hotmail", "outlook", "icloud", "proton", "protonmail", "yandex"]);
   const uploadState = new Map();
   const submitButton = form.querySelector(".submit-file");
+  const submitLabel = submitButton.textContent;
+  const jsonTimeoutMs = 30 * 1000;
+  const uploadTimeoutMs = 20 * 60 * 1000;
+  const draftIdPattern = /^draft_[a-f0-9]{32}$/;
   let freeEmailSubmitAttempts = 0;
+  let submitting = false;
 
   const getField = (id) => document.getElementById(id);
   const setError = (id, message = "") => {
@@ -32,9 +37,8 @@
     const field = getField("website");
     const value = field.value.trim();
     if (!value) return "";
-    if (/^https?:\/\//i.test(value)) return value;
-    const normalized = `https://${value}`;
-    if (mutate) field.value = normalized;
+    const normalized = /^[a-z][a-z0-9+.-]*:\/\//i.test(value) ? value : `https://${value}`;
+    if (mutate && normalized !== value) field.value = normalized;
     return normalized;
   };
 
@@ -80,7 +84,7 @@
     } else {
       try {
         const parsed = new URL(value);
-        valid = parsed.protocol === "https:" || parsed.protocol === "http:";
+        valid = (parsed.protocol === "https:" || parsed.protocol === "http:") && Boolean(parsed.hostname) && !parsed.username && !parsed.password;
       } catch {
         valid = false;
       }
@@ -194,10 +198,7 @@
     const field = getField(id);
     field.addEventListener("blur", () => {
       if (id === "name") validateName(true);
-      if (id === "work-email") {
-        freeEmailSubmitAttempts = 0;
-        validateEmail(true, false);
-      }
+      if (id === "work-email") validateEmail(true, false);
       if (id === "website") validateWebsite(true);
       refreshSubmitState();
     });
@@ -207,14 +208,22 @@
     });
   });
 
-  form.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" && event.target.matches("input:not([type='file'])")) {
-      event.preventDefault();
-    }
+  getField("anything-else").addEventListener("input", () => {
+    validateFiles(true);
+    refreshSubmitState();
   });
 
   const fetchJson = async (url, options) => {
-    const response = await fetch(url, options);
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), jsonTimeoutMs);
+    let response;
+    try {
+      response = await fetch(url, { ...options, signal: controller.signal });
+    } catch (error) {
+      throw new Error(error.name === "AbortError" ? "The server did not answer in time. Please try again." : "The connection failed. Please try again.");
+    } finally {
+      clearTimeout(timer);
+    }
     const payload = await response.json().catch(() => ({}));
     if (!response.ok) throw new Error(payload.error || "The file could not be received.");
     return payload;
@@ -238,16 +247,25 @@
         reject(new Error(request.response?.error || "The file could not be received."));
       }
     });
-    request.addEventListener("error", () => reject(new Error("The upload failed.")));
+    request.timeout = uploadTimeoutMs;
+    request.addEventListener("error", () => reject(new Error(`${file.name} could not be uploaded. Please try again.`)));
+    request.addEventListener("abort", () => reject(new Error(`The upload of ${file.name} was interrupted.`)));
+    request.addEventListener("timeout", () => reject(new Error(`The upload of ${file.name} took too long. Please try again.`)));
     request.send(file);
   });
 
   const setSubmitLabel = (label) => {
     submitButton.textContent = label;
   };
+  const lockFields = (locked) => {
+    form.querySelectorAll("input, textarea, button.remove-file").forEach((node) => {
+      node.disabled = locked;
+    });
+  };
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
+    if (submitting) return;
     setError("form-error");
     const hardValid = validateName(true) && validateEmail(true, false) && validateWebsite(true) && validateFiles(true);
     if (!hardValid) {
@@ -263,14 +281,26 @@
       return;
     }
 
+    submitting = true;
     submitButton.disabled = true;
     submitButton.classList.add("is-busy");
+    lockFields(true);
+    // One snapshot of the form: later typing cannot change what is sent.
+    const snapshot = {
+      website: websiteValue(true),
+      name: getField("name").value.trim(),
+      work_email: email,
+      phone: getField("alternate-contact").value.trim().slice(0, 100) || "email",
+      role: getField("role").value.trim(),
+      channels: ["Email"]
+    };
+    const uploads = selectedUploads();
+    const note = getField("anything-else").value.trim();
     let draftId = "";
     try {
       const draft = await fetchJson("/api/open/drafts", { method: "POST", headers: { "Content-Type": "application/json" }, body: "{}" });
+      if (!draftIdPattern.test(String(draft.draft_id || ""))) throw new Error("The server did not open a draft. Please try again.");
       draftId = draft.draft_id;
-      const uploads = selectedUploads();
-      const note = getField("anything-else").value.trim();
       if (note) {
         uploads.push({
           file: new File([note], "anything-else.txt", { type: "text/plain" }),
@@ -285,18 +315,12 @@
         if (progressNode) progressNode.style.setProperty("--progress", "100%");
       }
       setSubmitLabel("Sending…");
-      await fetchJson(`/api/open/drafts/${draftId}/submit`, {
+      const receipt = await fetchJson(`/api/open/drafts/${draftId}/submit`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          website: websiteValue(true),
-          name: getField("name").value.trim(),
-          work_email: email,
-          phone: getField("alternate-contact").value.trim() || "email",
-          role: getField("role").value.trim(),
-          channels: ["Email"]
-        })
+        body: JSON.stringify(snapshot)
       });
+      if (receipt.received !== true) throw new Error("We could not confirm that your file was received. Your entries are still here. Please try again.");
       getField("confirmation-email").textContent = email;
       getField("open-form-view").hidden = true;
       getField("confirmation-view").hidden = false;
@@ -306,8 +330,10 @@
     } catch (error) {
       setError("form-error", error.message);
       if (draftId) fetch(`/api/open/drafts/${draftId}`, { method: "DELETE" }).catch(() => {});
-      setSubmitLabel("Send and start the scan");
+      setSubmitLabel(submitLabel);
       submitButton.classList.remove("is-busy");
+      lockFields(false);
+      submitting = false;
       refreshSubmitState();
     }
   });

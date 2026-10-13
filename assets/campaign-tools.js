@@ -22,7 +22,12 @@
     const scale = Math.max(2, c.scale, o.scale);
     const total = BigInt(plans[plan].priceCents) * 10n ** BigInt(scale - 2) + o.units * 10n ** BigInt(scale - o.scale);
     const divisor = c.units * 10n ** BigInt(scale - c.scale);
-    return { customers: ((total + divisor - 1n) / divisor).toString(), total: formatAmount(total, scale) };
+    const customers = (total + divisor - 1n) / divisor;
+    // Share of the run: how many of the delivered letters must turn into customers.
+    const letters = BigInt(plans[plan].letters);
+    const basisPoints = (customers * 10000n + letters / 2n) / letters;
+    const share = basisPoints > 10000n ? null : `${basisPoints / 100n}${basisPoints % 100n ? '.' + String(basisPoints % 100n).padStart(2, '0').replace(/0$/, '') : ''}%`;
+    return { customers: customers.toString(), total: formatAmount(total, scale), share, letters: plans[plan].letters };
   }
   if (typeof module !== 'undefined' && module.exports) { module.exports = { calculate }; return; }
 
@@ -59,8 +64,11 @@
     document.querySelector('#other-costs-error').hidden = !otherError;
     contribution.setAttribute('aria-invalid', String(firstError));
     other.setAttribute('aria-invalid', String(otherError));
+    const count = value.customers ? value.customers.replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '';
     result.textContent = value.customers
-      ? `At your inputs, ${value.customers.replace(/\B(?=(\d{3})+(?!\d))/g, ',')} additional customers would cover $${value.total} in costs.`
+      ? `At your inputs, ${count} additional customers would cover $${value.total} in costs.` + (value.share
+        ? ` That is ${count} out of ${value.letters.toLocaleString('en-US')} letters: ${value.share} of the run.`
+        : ` That is more customers than letters in the run.`)
       : value.empty ? 'Enter your contribution per customer to see the calculation.' : '';
     if (event && !used) { used = true; root.coinCampaignEvent('calculator_used'); }
   }

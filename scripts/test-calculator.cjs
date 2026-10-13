@@ -3,7 +3,12 @@ const {calculate} = require('../assets/campaign-tools.js');
 for (const [plan, costs, count] of [['pilot','0','4'],['scale','0','30'],['pilot','1000','5'],['scale','1000','31']]) {
   assert.equal(calculate(plan,'1000',costs).customers,count);
 }
-assert.deepEqual(calculate('pilot','0.1','0.2'),{customers:'38002',total:'3,800.20'});
+assert.deepEqual(calculate('pilot','0.1','0.2'),{customers:'38002',total:'3,800.20',share:null,letters:1000});
+assert.equal(calculate('pilot','500','0').share,'0.8%');
+assert.equal(calculate('scale','3000','0').share,'0.1%');
+assert.equal(calculate('pilot','3.8','0').share,'100%');
+assert.equal(calculate('scale','3','0').share,'100%');
+assert.equal(calculate('pilot','1','0').share,null);
 assert.equal(calculate('pilot','3800.01','0.01').customers,'1');
 assert.equal(calculate('pilot','3800','0.01').customers,'2');
 assert.equal(calculate('pilot','.01','').customers,'380000');

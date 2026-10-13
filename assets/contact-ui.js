@@ -21,11 +21,18 @@
   const interest = form.elements.campaign_interest;
   const event = name => window.coinCampaignEvent?.(name);
   const requestId = [...crypto.getRandomValues(new Uint8Array(16))].map(n => n.toString(16).padStart(2,'0')).join('');
+  // Outreach links: /?site=example.com&name=Alex&plan=pilot land on the form already filled in.
+  const params = new URLSearchParams(location.search);
+  const prefill = {site: params.get('site'), name: params.get('name'), plan: params.get('plan')};
+  if (prefill.site && website && !website.value) website.value = prefill.site.trim().slice(0, 2048);
+  if (prefill.name && form.elements.name && !form.elements.name.value) form.elements.name.value = prefill.name.trim().slice(0, 200);
+  if (interest && ['pilot', 'scale'].includes(prefill.plan)) interest.value = prefill.plan;
+  if ((prefill.site || prefill.plan) && !location.hash) requestAnimationFrame(() => document.querySelector('#start')?.scrollIntoView({block: 'start'}));
   const errorMessage = 'We could not confirm that your details were received. Your entries are still here. Please try again or use one of the contact options below.';
   function normalizeWebsite() {
     if (!website) return true;
     let value = website.value.trim();
-    if (value && !/^[a-z][a-z0-9+.-]*:/i.test(value)) value = 'https://' + value;
+    if (value && !/^[a-z][a-z0-9+.-]*:\/\//i.test(value)) value = 'https://' + value;
     try {
       const url = new URL(value);
       if (!['http:', 'https:'].includes(url.protocol) || !url.hostname || url.username || url.password) throw new Error();

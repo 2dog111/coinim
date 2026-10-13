@@ -2,6 +2,41 @@
 
 This is the local place to check the current site version before edits or deployment.
 
+## Intake fixes and outreach links release, 2026-10-13
+
+- Static release `/var/www/coin.im/releases/20261013T133543Z-intake` (clone of
+  `20261013T110218Z-tighten` plus `index.html`, `ms.html`, `ms/index.html`,
+  `open.html`, `open/index.html`, `assets/open.js`, `assets/campaign-tools.js`,
+  `assets/contact-ui.js`). Backend unchanged. Deployed through `ops`.
+- `/open` (`open.js` version `20261013-open4`), the points of the Codex audit
+  of 2026-09-27 re-verified against the code and fixed here: the free-mail
+  warning no longer re-arms on blur, so the second Submit goes through; Enter
+  submits again; a submit in flight blocks a second one and freezes the fields,
+  one snapshot of the data is sent; the draft id is checked against the server
+  pattern and the final answer must carry `received: true`, otherwise the
+  entries stay and the button returns; 30 s fetch timeout, 20 min upload
+  timeout, abort and timeout messages per file; `ftp://` and `user:pass@`
+  addresses rejected, `example.com:8443` normalised to https (the old scheme
+  test took `example.com:` for a scheme, on the homepage form too); the note
+  counts toward the 20 file limit as it is typed; optional contact cut to the
+  server's 100 characters.
+- Calculator (`campaign-tools.js` `20261013-p4`): the result also states the
+  share of the run, for example "8 out of 1,000 letters: 0.8% of the run";
+  100% when customers equal letters, a plain sentence when they exceed them.
+  Exact integer arithmetic, tests extended.
+- Outreach links (`contact-ui.js` `20261013-im2`): `/?site=&name=&plan=` fill
+  the enquiry and scroll to it on `/` and `/ms`; documented in README.
+- `npm run build` no longer runs the database migration; `npm run db:migrate`
+  does. `scripts/qa-homepage.cjs` expects one pricing block again.
+- Checks: lint, 38 market and 12 intake server tests, calculator and Investor
+  Match tests pass; headless Chromium 1440x900 on the local preview: `/open`
+  journey (ftp and credential URLs rejected, port accepted, Gmail warned once,
+  second submit confirmed) and `/` with a prefilled link and both calculator
+  shares; on https://coin.im the same without submitting. Live files
+  hash-identical to local, `nginx -t` passed, health endpoints 200. Mobile
+  viewports not reviewed visually (owner rule, 2026-10-03). Concurrency and
+  timeout paths are covered by code, not by a browser test.
+
 ## Tighter homepage release, 2026-10-13
 
 - Static release `/var/www/coin.im/releases/20261013T110218Z-tighten` (clone of

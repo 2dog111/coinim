@@ -30,7 +30,7 @@ const url = 'http://127.0.0.1:4173';
       }
       await page.waitForFunction(() => [...document.images].every(i => i.complete && i.naturalWidth > 0));
       const grids = await page.locator('.pricing-grid').evaluateAll(elements => elements.map(el => getComputedStyle(el).gridTemplateColumns.split(' ').length));
-      assert.deepEqual(grids, width <= 600 ? [1, 1] : [2, 2]);
+      assert.deepEqual(grids, width <= 600 ? [1] : [2]);
       if ([390, 1440].includes(width)) {
         for (const id of ['pilot-scale', 'how-it-works', 'objects', 'market-scan', 'letters', 'production', 'delivery', 'report', 'campaign', 'start']) {
           await page.locator(`#${id}`).evaluate(el => el.scrollIntoView({ block: 'start' }));
