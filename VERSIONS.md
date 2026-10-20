@@ -2,6 +2,20 @@
 
 This is the local place to check the current site version before edits or deployment.
 
+## Atom ownership verification, 2026-10-20
+
+- The Atom marketplace listing for `coin.im` was verified by adding the TXT
+  value supplied by Atom at the zone apex in Cloudflare. Both authoritative
+  Cloudflare nameservers and the public `1.1.1.1` and `8.8.8.8` resolvers return
+  the new value together with the pre-existing SPF record.
+- Atom confirmed domain ownership in the seller dashboard. The domain remains
+  on the existing Cloudflare nameservers instead of `ns1.atom.com` and
+  `ns2.atom.com`; Atom labels it as externally hosted, with ownership verified.
+- Existing A, MX, SPF, DKIM, DMARC, TLS reporting and mail auto-configuration
+  records were preserved. `coin.im` still resolves to `193.181.215.57`, the
+  homepage returns HTTP 200, and `www.coin.im` continues to redirect to it.
+  No static or backend VPS release was needed. Mobile was not checked.
+
 ## Intake fixes and outreach links release, 2026-10-13
 
 - Static release `/var/www/coin.im/releases/20261013T133543Z-intake` (clone of
