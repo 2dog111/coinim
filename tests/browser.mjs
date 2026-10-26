@@ -44,8 +44,8 @@ for (const width of widths) {
   );
   assert.equal(await page.locator("main > section").count(), 3);
   assert.equal(await page.locator("#idea").inputValue(), "");
-  await page.getByRole("button", { name: "Should I buy SOL with $5,000?" }).click();
-  assert.equal(await page.locator("#idea").inputValue(), "Should I buy SOL with $5,000?");
+  await page.getByRole("button", { name: "I have $5,000 for SOL" }).click();
+  assert.equal(await page.locator("#idea").inputValue(), "I have $5,000 for SOL");
   await page.locator("#idea").fill("");
   assert.equal(
     await page.getByRole("button", { name: /Budget Add/ }).count(),
@@ -250,12 +250,12 @@ for (const width of widths) {
   await page.unroute("**/api/chat");
 
   await page.screenshot({
-    path: `qa-artifacts/v3-workspace-${width}.png`,
+    path: `qa-artifacts/v5-workspace-${width}.png`,
     fullPage: true,
   });
   await page.getByRole("button", { name: "coin.im home" }).click();
   await page.screenshot({
-    path: `qa-artifacts/v3-home-${width}.png`,
+    path: `qa-artifacts/v5-home-${width}.png`,
     fullPage: true,
   });
   assert.ok(
@@ -275,7 +275,7 @@ for (const width of widths) {
 }
 
 await fs.writeFile(
-  "qa-artifacts/v3-browser-report.json",
+  "qa-artifacts/v5-browser-report.json",
   JSON.stringify({ browser: browser.version(), base, report }, null, 2),
 );
 await browser.close();

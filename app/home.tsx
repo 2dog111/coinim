@@ -33,7 +33,7 @@ type Setting = "budget" | "time" | "loss";
 const greeting = "What trade would you like to explore?";
 
 const starters = [
-  "Should I buy SOL with $5,000?",
+  "I have $5,000 for SOL",
   "How much could I lose on BTC?",
   "Help me plan an exit",
 ];
@@ -514,7 +514,7 @@ export default function Home({
                   maxLength={4000}
                   value={inputs.thesis}
                   onChange={(event) => update({ thesis: event.target.value })}
-                  placeholder="I’m thinking of buying SOL with $5,000. What could go wrong?"
+                  placeholder="I have $5,000 for SOL and can afford to lose $1,000. What is the plan?"
                   onKeyDown={(event) => {
                     if (event.key === "Enter" && !event.shiftKey && !event.nativeEvent.isComposing) {
                       event.preventDefault();

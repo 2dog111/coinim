@@ -259,18 +259,34 @@ export function extractExplicit(text: string): Partial<TradeInputs> {
   const patch: Partial<TradeInputs> = {};
   if (/\b(?:not|never|don.t|cannot|can.t|unless|maybe|perhaps)\b/i.test(text))
     return patch;
-  const budget = matchNumber(
-    text,
-    `(?:(?<!loss )budget(?: is| of| to)?|capital available(?: is| of| to)?)\\s*\\$${numberText}`,
-  );
+  const budget =
+    matchNumber(
+      text,
+      `(?:(?<!loss )budget(?: is| of| to)?|capital available(?: is| of| to)?)\\s*\\$${numberText}`,
+    ) ??
+    matchNumber(
+      text,
+      `(?:I (?:have|can invest)|I[’']ve got|\\bwith)\\s*\\$${numberText}(?![\\d,.]|\\s*(?:price[- ]loss|loss|risk)\\b)`,
+    ) ??
+    matchNumber(
+      text,
+      `(?:I (?:have|can invest)|I[’']ve got|\\bwith)\\s*\\$${numberText}\\s*(?:available(?: to invest)?|to invest|(?:total )?budget)\\b`,
+    );
   const committed = matchNumber(
     text,
     `(?:I (?:want to |plan to |will )?(?:buy|invest|commit|spend)|(?:set|change) my (?:spot )?commitment to)\\s*\\$${numberText}`,
   );
-  const loss = matchNumber(
-    text,
-    `(?:I(?: am|[’']m)(?: only)? (?:willing to lose|comfortable losing)|I (?:can|will|would) (?:lose|risk)(?: up to)?|my loss (?:budget|limit)(?: is| of| to)?|(?:set|change|increase|raise|lower|reduce|update) (?:my )?loss (?:budget|limit)(?: is| of| to)?|^loss (?:budget|limit)(?: is| of| to)?)\\s*\\$${numberText}`,
-  );
+  const loss =
+    matchNumber(
+      text,
+      `(?:I(?: am|[’']m)(?: only)? (?:willing to lose|comfortable losing)|I (?:can|will|would) (?:lose|risk)(?: up to)?|I (?:can|could) afford to lose(?: up to)?|my loss (?:budget|limit)(?: is| of| to)?|(?:set|change|increase|raise|lower|reduce|update) (?:my )?loss (?:budget|limit)(?: is| of| to)?|^loss (?:budget|limit)(?: is| of| to)?)\\s*\\$${numberText}`,
+    ) ??
+    (!/\b(?:my friend|friend's|their|his|her)\b/i.test(text)
+      ? matchNumber(
+          text,
+          `(?:,|;|\\bwith|\\bI have)\\s*(?:a\\s*)?\\$${numberText}\\s*(?:price[- ]loss|loss|risk)\\s+(?:limit|budget)\\b`,
+        )
+      : undefined);
   const target = matchNumber(
     text,
     `(?:rises?|rise only|rises only|rise by|rises by|upside(?: is| of| to)?|target(?: is| of| to)?)\\s*${numberText}\\s*%`,
@@ -283,9 +299,10 @@ export function extractExplicit(text: string): Partial<TradeInputs> {
   if (loss !== undefined) patch.loss = loss;
   if (target !== undefined && target > 0) patch.target = target;
   if (asset) patch.asset = asset.toUpperCase();
-  const months = text
-    .match(/\b(?:within|in|for) (1|3|6|one|three|six) months?\b/i)?.[1]
-    ?.toLowerCase();
+  const months = (
+    text.match(/\b(?:within|in|for) (1|3|6|one|three|six) months?\b/i)?.[1] ??
+    text.match(/\b(?:a|my) (1|3|6|one|three|six)[ -]month (?:exit|deadline|horizon)\b/i)?.[1]
+  )?.toLowerCase();
   if (months) {
     patch.horizon = ({ one: "1", three: "3", six: "6" }[months] ??
       months) as TradeInputs["horizon"];

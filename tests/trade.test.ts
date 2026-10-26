@@ -100,6 +100,21 @@ test("formatted financial input and default deadline provenance remain distinct"
   });
   assert.match(conflict.conflicts[0], /form says 6 months/);
 });
+test("a natural chat sentence sets available capital, price-loss limit and exit", () => {
+  const sentence =
+    "I want to buy SOL with $5,000 available, a $1,000 price-loss limit and a six-month exit.";
+  const result = reconcile({ ...emptyInputs, thesis: sentence });
+  assert.equal(result.inputs.asset, "SOL");
+  assert.equal(result.inputs.budget, 5000);
+  assert.equal(result.inputs.loss, 1000);
+  assert.equal(result.inputs.committed, null);
+  assert.equal(result.inputs.horizon, "6");
+  assert.equal(result.inputs.horizonSource, "user");
+  assert.deepEqual(result.conflicts, []);
+  assert.equal(extractExplicit("My friend has a $50,000 loss limit.").loss, undefined);
+  assert.equal(extractExplicit("I have $1,000 price-loss limit.").budget, undefined);
+  assert.equal(extractExplicit("My friend has $50,000 available.").budget, undefined);
+});
 test("follow-up updates only explicit fields", () => {
   assert.deepEqual(extractExplicit("What if it rises only 20%?"), {
     target: 20,
