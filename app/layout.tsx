@@ -1,14 +1,15 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import "./chat-design.css";
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   interactiveWidget: "resizes-content",
 };
 export const metadata: Metadata = {
-  title: "coin.im — You picked the coin. Now choose the trade.",
+  title: "What trade are you considering? — coin.im",
   description:
-    "Test your crypto trade against your budget, loss limit, and deadline. Compare outcomes, understand the trade-offs, and plan your exit.",
+    "Ask about a crypto trade. Compare potential loss, position size and exit plans before you buy.",
 };
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (

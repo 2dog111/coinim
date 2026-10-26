@@ -1,10 +1,11 @@
 "use client";
-import { useState } from "react";
+
+import { useState, type CSSProperties } from "react";
 import {
   callExpiry,
   money,
+  parseFinancialInput,
   spot,
-  makeBrief,
   type TradeBrief,
 } from "@/lib/trade";
 import {
@@ -17,6 +18,22 @@ import {
 } from "@/lib/plan";
 
 type Example = ReturnType<typeof createExample>;
+
+function signedPercent(value: number) {
+  if (value === 0) return "0";
+  return `${value > 0 ? "+" : "−"}${Math.abs(value)}`;
+}
+
+function friendlyDate(value: string) {
+  const [year, month, day] = value.split("-").map(Number);
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(Date.UTC(year, month - 1, day)));
+}
+
 export function Thresholds({
   value,
 }: {
@@ -24,406 +41,405 @@ export function Thresholds({
 }) {
   if (!value)
     return (
-      <p className="small">
-        Cannot calculate this threshold without verified contract terms and a
-        premium.
+      <p className="small muted">
+        Verified contract terms and a premium are needed to calculate these
+        thresholds.
       </p>
     );
   return (
     <>
-      <dl className="thresholds">
+      <dl className="threshold-pair">
         <div>
-          <dt>Break-even at expiry</dt>
+          <dt>Call breaks even</dt>
           <dd>
-            {Number(value.breakEvenReturn) > 0 ? "+" : ""}
+            +
             {Number(value.breakEvenReturn).toLocaleString("en-US", {
               maximumFractionDigits: 2,
             })}
-            %
+            % <small>at expiry</small>
           </dd>
-          <small>{money(Number(value.breakEvenPrice))} per unit</small>
         </div>
         <div>
-          <dt>Overtakes the spot example</dt>
+          <dt>Call beats spot</dt>
           <dd>
             {value.crossover
-              ? `Above approximately +${Number(value.crossover.returnPercent).toFixed(1)}% at expiry`
-              : "No valid upside crossover"}
+              ? `Above approximately +${Number(value.crossover.returnPercent).toFixed(1)}%`
+              : "No valid upside crossover"}{" "}
+            {value.crossover && <small>at expiry</small>}
           </dd>
         </div>
       </dl>
-      <p className="small">
-        Becoming profitable and becoming the better-paying route are two
-        different thresholds.
-      </p>
-      <p className="scope">
-        Calculated from this example’s assumptions. Not a forecast. The routes
-        have equal modeled PnL at the exact crossover; the displayed percentage
-        is rounded.
-      </p>
-      <p className="small equal-risk">
-        Equal loss limits do not mean equal risk.
+      <p className="threshold-note">
+        Profitability and outperforming spot are different thresholds. The
+        displayed crossover is rounded; the engine compares full-precision
+        values.
       </p>
     </>
   );
 }
+
 export function InteractiveExample({ example }: { example: Example }) {
-  const [scenario, setScenario] = useState(0.2);
-  const { inputs: i } = example,
-    q = i.hypothetical!;
-  const spotResult = spot(i.budget!, i.committed!, scenario, i.fee),
-    call = callExpiry(q, scenario),
-    wait = example.calculations.wait;
+  const [scenario, setScenario] = useState(20);
+  const [draft, setDraft] = useState("+20");
+  const [scenarioError, setScenarioError] = useState("");
+  const i = example.inputs;
+  const quote = i.hypothetical!;
+  const change = scenario / 100;
+  const spotResult = spot(i.budget!, i.committed!, change, i.fee);
+  const callResult = callExpiry(quote, change);
+  const thresholds = callThresholds({
+    ...quote,
+    spotAllocation: i.committed!,
+    callAllocation: callResult.maxLoss,
+    feePercent: i.fee,
+  });
+
+  function applyScenario(value: number) {
+    if (!Number.isFinite(value) || value < -50 || value > 100) {
+      setScenarioError("Enter a price change from −50% to +100%.");
+      return;
+    }
+    setScenario(value);
+    setDraft(signedPercent(value));
+    setScenarioError("");
+  }
+
+  function changeExact(value: string) {
+    setDraft(value);
+    const parsed = parseFinancialInput(value);
+    if (
+      parsed !== null &&
+      Number.isFinite(parsed) &&
+      parsed >= -50 &&
+      parsed <= 100
+    ) {
+      setScenario(parsed);
+      setScenarioError("");
+    }
+  }
+
+  const explanation =
+    scenario === 20
+      ? "The coin rose 20%. The call still lost its full premium."
+      : scenario === 50
+        ? "The call earns more here. It needed the larger move by expiry."
+        : scenario === 0
+          ? "Spot is unchanged before costs. The call expires worthless."
+          : scenario === -30
+            ? "Both routes lose. The call loses its premium; spot retains $700."
+            : scenario > 0 && callResult.pnl < 0
+              ? "The coin is up. The call still loses money at expiry."
+              : callResult.pnl > spotResult.pnl
+                ? "The call pays more in this scenario—not in every outcome."
+                : scenario < 0
+                  ? "Both routes lose. The call loses its full premium at expiry."
+                  : "Profit and outperformance are different thresholds.";
+
   const rows = [
     {
-      name: `Buy ${money(i.committed!)} of the coin`,
-      sub: `${money(spotResult.cash)} stays uncommitted`,
+      name: "Buy the coin",
+      context: "$1,000 position · $4,000 uncommitted",
+      detail: "Own the asset directly.",
       pnl: spotResult.pnl,
-      maxLoss: spotResult.maxLoss,
     },
     {
-      name: `Spend ${money(call.maxLoss)} on an illustrative call`,
-      sub: `${money(i.budget! - call.maxLoss)} stays uncommitted`,
-      pnl: call.pnl,
-      maxLoss: call.maxLoss,
+      name: "Buy a call option",
+      context: "$1,000 premium · $4,000 uncommitted",
+      detail: "Can benefit from a rise; the full premium can be lost.",
+      pnl: callResult.pnl,
     },
     {
       name: "Wait",
-      sub: "No market exposure in this model",
-      pnl: wait.pnl,
-      maxLoss: wait.maxLoss,
+      context: "$5,000 remains uncommitted",
+      detail: "No market exposure or assumed interest in this example.",
+      pnl: 0,
     },
   ];
-  const thresholds = callThresholds({
-    ...q,
-    spotAllocation: i.committed!,
-    callAllocation: call.maxLoss,
-    feePercent: i.fee,
-  });
-  const explanation =
-    scenario === 0.2
-      ? `The coin rose ${scenario * 100}%. Spot made ${money(spotResult.pnl)}. The call lost its entire ${money(call.maxLoss)} premium.`
-      : scenario === 0.5
-        ? "The call earns more here. It needed the larger move to happen by expiry."
-        : scenario === 0
-          ? "Spot is unchanged before costs. The call expires worthless."
-          : `Both routes lose. The call loses its full premium; spot retains ${money(spotResult.saleValue)}.`;
+
   return (
-    <>
-      <fieldset className="scenario-selector">
-        <legend>What happens to the coin’s price?</legend>
-        <div>
+    <div className="scenario-card">
+      <div className="scenario-card-top">
+        <span className="source-tag">Illustrative example</span>
+        <span className="small muted">Not live prices · At expiry</span>
+      </div>
+      <p className="example-summary">
+        $5,000 available · $1,000 loss limit · 6 months
+      </p>
+      <div className="scenario-control">
+        <div className="scenario-label-row">
+          <label htmlFor="scenario-range">If the coin moves</label>
+          <div className="percent-entry">
+            <input
+              id="scenario-exact"
+              inputMode="decimal"
+              aria-label="Exact coin price change percentage"
+              value={draft}
+              onChange={(event) => changeExact(event.target.value)}
+              onBlur={() => applyScenario(parseFinancialInput(draft) ?? scenario)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter") event.currentTarget.blur();
+              }}
+            />
+            <span aria-hidden="true">%</span>
+          </div>
+        </div>
+        <input
+          id="scenario-range"
+          className="range"
+          type="range"
+          min="-50"
+          max="100"
+          step="1"
+          value={scenario}
+          aria-valuetext={`${Math.abs(scenario)} percent ${scenario < 0 ? "decrease" : scenario > 0 ? "increase" : "change"}`}
+          style={
+            { "--fill": `${((scenario + 50) / 150) * 100}%` } as CSSProperties
+          }
+          onChange={(event) => applyScenario(Number(event.target.value))}
+        />
+        <div className="range-limits" aria-hidden="true">
+          <span>−50%</span>
+          <span>+100%</span>
+        </div>
+        {scenarioError && (
+          <p id="scenario-error" className="field-error" role="alert">
+            {scenarioError}
+          </p>
+        )}
+        <div className="scenario-presets" aria-label="Scenario presets">
           {[
-            [0.5, "+50%"],
-            [0.2, "+20%"],
+            [-30, "−30%"],
             [0, "No change"],
-            [-0.3, "−30%"],
+            [20, "+20%"],
+            [50, "+50%"],
           ].map(([value, label]) => (
-            <label key={value}>
-              <input
-                type="radio"
-                name="example-scenario"
-                value={value}
-                checked={scenario === value}
-                onChange={() => setScenario(Number(value))}
-              />
-              <span>{label}</span>
-            </label>
+            <button
+              type="button"
+              className="preset"
+              aria-pressed={scenario === value}
+              key={value}
+              onClick={() => applyScenario(Number(value))}
+            >
+              {label}
+            </button>
           ))}
         </div>
-      </fieldset>
-      <div className="comparison outcome-comparison">
-        <table>
-          <caption className="sr-only">
-            Hypothetical profit and loss at expiry, not final capital
-          </caption>
-          <thead>
-            <tr>
-              <th>Route</th>
-              <th>Profit / loss</th>
-              <th>Maximum modeled price loss</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((row) => (
-              <tr key={row.name}>
-                <th scope="row">
-                  {row.name}
-                  <small>{row.sub}</small>
-                </th>
-                <td
-                  data-label="Profit / loss"
-                  className={row.pnl > 0 ? "positive" : ""}
-                >
-                  {money(row.pnl, true)}
-                </td>
-                <td data-label="Maximum modeled price loss">
-                  {money(row.maxLoss)}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
       </div>
-      <p className="scenario-explanation" aria-live="polite" aria-atomic="true">
+      <div className="outcome-head" aria-hidden="true">
+        <span>Route</span>
+        <span>Profit / loss</span>
+      </div>
+      <div className="outcome-rows">
+        {rows.map((row) => (
+          <div className="outcome-row" key={row.name}>
+            <div>
+              <strong>{row.name}</strong>
+              <span>{row.context}</span>
+              <small>{row.detail}</small>
+            </div>
+            <b className={row.pnl > 0 ? "gain" : row.pnl < 0 ? "loss" : ""}>
+              {money(row.pnl, true)}
+            </b>
+          </div>
+        ))}
+      </div>
+      <p className="scenario-insight" aria-live="polite" aria-atomic="true">
         {explanation}
       </p>
-      <p className="small muted">
-        Waiting avoids this price exposure, but it also misses a rally.
+      <Thresholds value={thresholds} />
+      <p className="same-risk-note">
+        Same maximum price loss does not mean the same risk. Waiting misses a
+        rally.
       </p>
-      <div className="threshold-block">
-        <h3>What this call needs</h3>
-        <Thresholds value={thresholds} />
-      </div>
-      <details>
-        <summary>Show the assumptions</summary>
-        <div className="assumption-copy">
+      <details className="assumptions-disclosure">
+        <summary>How this example works</summary>
+        <div className="disclosure-copy">
           <p>
-            This example uses an imaginary coin and a linear USD option payoff.
+            The example uses an imaginary coin priced at $100. Buying the coin
+            commits $1,000 for 10 units.
           </p>
           <p>
-            Reference asset price: {money(q.reference)}. Spot allocation:{" "}
-            {money(i.committed!)} ({i.committed! / q.reference} units).
-            Available capital: {money(i.budget!)}. Loss limit: {money(i.loss!)}.
+            The illustrative linear USD call has a $120 strike, a $10 premium
+            per underlying unit, and 100 underlying units. Its total premium is
+            $1,000. The payoff shown applies only at expiry; early-sale value is
+            unavailable.
           </p>
           <p>
-            Call strike: {money(q.strike)}. Premium per underlying unit:{" "}
-            {money(q.premium)}. Underlying units covered: {q.units}. Total
-            premium: {money(call.maxLoss)}.
+            The example starts on {example.startDate} and expires on{" "}
+            {example.deadline}, six calendar months later. Fees, slippage,
+            taxes, and returns on uncommitted capital are zero.
           </p>
           <p>
-            Example start date (UTC): {example.startDate}. Expiry:{" "}
-            {example.deadline}, six calendar months later. Target thesis: +
-            {i.target}%.
-          </p>
-          <p>
-            The option results apply at expiry only. They are not estimates of
-            what the option could be sold for earlier.
-          </p>
-          <p>No executable quote is provided.</p>
-          <p>
-            Fees, slippage, taxes, and returns on uncommitted capital are set to
-            zero.
+            The slider is an exploration range, not a bound on real outcomes. A
+            coin can fall to zero or rise beyond it. No executable quote is
+            provided.
           </p>
         </div>
       </details>
-    </>
+    </div>
   );
 }
-export function ExitRows({ brief }: { brief: TradeBrief }) {
-  const plan = exitPlan(brief);
-  return (
-    <dl className="exit-rows">
-      <div>
-        <dt>Entry assumption</dt>
-        <dd>{plan.entry}</dd>
-      </div>
-      <div>
-        <dt>Target condition</dt>
-        <dd>
-          {plan.target}
-          <small>
-            A target is a condition to act on, not a guaranteed fill.
-          </small>
-        </dd>
-      </div>
-      <div>
-        <dt>Time limit</dt>
-        <dd>{plan.time}</dd>
-      </div>
-      <div>
-        <dt>Reason to reconsider</dt>
-        <dd>
-          {plan.reconsider}
-          <small>
-            What evidence would make you stop believing this trade is worth
-            taking?
-          </small>
-        </dd>
-      </div>
-      <div>
-        <dt>Downside</dt>
-        <dd>
-          {plan.downside}
-          <small>
-            An earlier exit may reduce the loss. A stop order does not guarantee
-            a cap.
-          </small>
-        </dd>
-      </div>
-      <div>
-        <dt>Still unverified</dt>
-        <dd>{plan.unverified}</dd>
-      </div>
-    </dl>
-  );
-}
+
 export function ExampleExit({ example }: { example: Example }) {
   return (
-    <div className="exit-card">
-      <p className="eyebrow">Illustrative plan · spot route</p>
-      <h3>The six-month plan</h3>
-      <ExitRows brief={makeBrief(example.inputs)} />
+    <div className="plan-receipt">
+      <div className="receipt-head">
+        <h3>Your trade plan</h3>
+        <span className="source-tag">Illustrative · Spot</span>
+      </div>
+      <dl className="receipt-amounts">
+        <div>
+          <dt>Put in</dt>
+          <dd>$1,000</dd>
+        </div>
+        <div>
+          <dt>Keep uncommitted</dt>
+          <dd>$4,000</dd>
+        </div>
+      </dl>
+      <dl className="receipt-rows">
+        <div>
+          <dt>Target condition</dt>
+          <dd>
+            Consider an exit at +50%
+            <small>A condition to act on, not a guaranteed fill.</small>
+          </dd>
+        </div>
+        <div>
+          <dt>Exit by</dt>
+          <dd>
+            {friendlyDate(example.deadline)}
+            <small>Even if the target has not been reached.</small>
+          </dd>
+        </div>
+        <div>
+          <dt>Reconsider if</dt>
+          <dd>
+            Not defined yet
+            <small>What would change your reason for buying?</small>
+          </dd>
+        </div>
+        <div>
+          <dt>Downside</dt>
+          <dd>
+            Up to $1,000 in modeled price loss
+            <small>A stop order does not guarantee a loss cap.</small>
+          </dd>
+        </div>
+        <div>
+          <dt>Still to check</dt>
+          <dd>The thesis and current market data</dd>
+        </div>
+      </dl>
+      <p className="receipt-foot">A plan, not an order. Nothing is executed.</p>
     </div>
   );
 }
+
 export function WorkspaceArtifacts({ brief }: { brief: TradeBrief }) {
-  const c = brief.calculations,
-    i = brief.inputs,
-    thresholds = thresholdsForBrief(brief);
-  const routes = c
-    ? [
-        {
-          label: "Full available capital in spot · comparison only",
-          value: c.full,
-        },
-        ...(c.intended
-          ? [{ label: "Your intended spot commitment", value: c.intended }]
-          : []),
-        ...(c.smaller &&
-        (!c.intended ||
-          c.intended.target.committed !== c.smaller.target.committed)
-          ? [{ label: "Loss-limited spot alternative", value: c.smaller }]
-          : []),
-      ]
-    : [];
+  const calculations = brief.calculations;
+  const inputs = brief.inputs;
+  const route =
+    calculations?.intended ?? calculations?.smaller ?? calculations?.full ?? null;
+  const thresholds = thresholdsForBrief(brief);
+  const plan = exitPlan(brief);
+
   return (
-    <div className="workspace-artifacts">
-      <dl className="evidence-status">
-        <div>
-          <dt>Scenario fit</dt>
-          <dd>{scenarioFit(brief)}</dd>
-          <small>
-            Intended spot commitment
-            {i.committed === null ? " not yet specified" : ""}
-          </small>
-        </div>
-        <div>
-          <dt>Market evidence</dt>
-          <dd>Not verified</dd>
-          <small>A modeled fit is not a verified investment case.</small>
-        </div>
-      </dl>
-      <div className="key-issue">
-        <h3>The key issue</h3>
-        <p>{keyIssue(brief)}</p>
+    <section className="analysis-summary" aria-label="Calculated trade plan">
+      <div className="key-finding">
+        <span className="assistant-label">Your numbers</span>
+        <h2>{keyIssue(brief)}</h2>
       </div>
-      <details open className="workspace-comparison">
-        <summary>Scenario comparison</summary>
-        {!c ? (
-          <p className="small">
-            Add a capital budget to calculate scenarios. Loss tolerance can
-            remain unknown.
-          </p>
-        ) : (
-          <>
-            <p className="small muted">
-              Profit / loss in USD.{" "}
-              {c.targetIllustrative
-                ? "The +50% scenario is illustrative; your target is unknown."
-                : `Target scenario: +${i.target}%.`}{" "}
-              Fees: {i.fee.toFixed(2)}% per side · Assumed
-            </p>
-            {routes.map(({ label, value }) => (
-              <div className="route-result" key={label}>
-                <h4>{label}</h4>
-                <p className="small">
-                  {money(value.target.committed)} committed ·{" "}
-                  {money(value.target.cash)} uncommitted
-                </p>
-                <dl className="small-numbers">
-                  <div>
-                    <dt>
-                      At{" "}
-                      {c.targetIllustrative
-                        ? "+50% · illustrative"
-                        : `+${i.target}%`}
-                    </dt>
-                    <dd>{money(value.target.pnl, true)}</dd>
-                  </div>
-                  <div>
-                    <dt>At −30%</dt>
-                    <dd>{money(value.drop.pnl, true)}</dd>
-                  </div>
-                  <div>
-                    <dt>Maximum modeled price loss</dt>
-                    <dd>{money(value.target.maxLoss)}</dd>
-                  </div>
-                  <div>
-                    <dt>Final capital at target scenario</dt>
-                    <dd>{money(value.target.final)}</dd>
-                  </div>
-                </dl>
-                <p className="small muted">
-                  {i.loss === null
-                    ? "Needs more information: loss limit unknown."
-                    : value.target.maxLoss > i.loss
-                      ? "Exceeds the stated price-loss limit."
-                      : value.target.committed === 0
-                        ? "No market position in this model."
-                        : "Fits the stated price-loss limit in the model."}
-                </p>
-              </div>
-            ))}
-            {c.call && (
-              <div className="route-result">
-                <h4>Illustrative call · expiry only</h4>
-                <p>
-                  {money(c.call.atExpiry.pnl, true)} scenario PnL ·{" "}
-                  {money(c.call.atExpiry.maxLoss)} maximum modeled price loss.
-                </p>
-                <p className="small">{c.call.label}</p>
-                <p className="small">
-                  {i.loss === null
-                    ? "Loss-limit fit unknown."
-                    : c.call.atExpiry.maxLoss > i.loss
-                      ? "Exceeds the stated price-loss limit."
-                      : "Fits the stated price-loss limit in the model."}{" "}
-                  Equal loss limits do not mean equal risk.
-                </p>
-              </div>
-            )}
-            <div className="route-result">
-              <h4>Wait</h4>
-              <p>
-                {money(c.wait.pnl)} market PnL · {money(c.wait.final)} final
-                capital.
-              </p>
-              <p className="small">
-                No market exposure or assumed interest in this model. Other
-                risks are excluded.
-              </p>
+      {route ? (
+        <div className="mini-comparison">
+          <div>
+            <span>
+              At{" "}
+              {calculations!.targetIllustrative
+                ? "+50% · illustrative"
+                : `+${inputs.target}%`}
+            </span>
+            <small>
+              {money(route.target.committed)} spot position · {inputs.fee}%
+              assumed fees per side
+            </small>
+            <b className={route.target.pnl > 0 ? "gain" : ""}>
+              {money(route.target.pnl, true)}
+            </b>
+          </div>
+          <div>
+            <span>At a 30% fall</span>
+            <b className={route.drop.pnl < 0 ? "loss" : ""}>
+              {money(route.drop.pnl, true)}
+            </b>
+          </div>
+          <div>
+            <span>Maximum modeled price loss</span>
+            <small>If the asset falls to zero</small>
+            <b className="loss">{money(-route.target.maxLoss, true)}</b>
+          </div>
+          <div>
+            <span>Capital left uncommitted</span>
+            <b>{money(route.target.cash)}</b>
+          </div>
+        </div>
+      ) : (
+        <p className="status-note">
+          Add a capital budget to calculate a spot comparison. Your loss limit
+          can remain unknown while you ask a question.
+        </p>
+      )}
+      <details className="workspace-details">
+        <summary>See the exit plan and assumptions</summary>
+        <div className="workspace-detail-grid">
+          <dl className="evidence-status">
+            <div>
+              <dt>Scenario fit</dt>
+              <dd>{scenarioFit(brief)}</dd>
             </div>
-          </>
-        )}
-      </details>
-      <details className="route-needs">
-        <summary>What this route needs</summary>
-        {thresholds ? (
-          <>
-            <p className="small">
-              Hypothetical linear USD call versus the loss-limited spot
-              alternative. Zero fees; expiry only.
-            </p>
-            <Thresholds value={thresholds} />
-          </>
-        ) : (
-          <p className="small">
-            {i.hypothetical && i.fee !== 0
-              ? "The zero-fee call example is not applied to your nonzero-fee plan. Its thresholds and option scenario are unavailable under these assumptions."
-              : "Cannot calculate this threshold without verified contract terms and a premium."}
-          </p>
-        )}
-      </details>
-      <details className="workspace-exit" open>
-        <summary>Your exit plan</summary>
-        <ExitRows brief={brief} />
-        <p className="small">{exitPlan(brief).late}</p>
-        <p className="scope">
-          Your stated conditions only. No price monitoring, alerts or orders are
-          active.
+            <div>
+              <dt>Market evidence</dt>
+              <dd>Not verified</dd>
+            </div>
+          </dl>
+          <div>
+            <h3>What this route needs</h3>
+            {thresholds ? (
+              <Thresholds value={thresholds} />
+            ) : (
+              <p className="small muted">
+                An option comparison needs verified contract terms, fees, and a
+                premium. The current spot scenarios remain available.
+              </p>
+            )}
+          </div>
+          <div>
+            <h3>Your exit plan</h3>
+            <dl className="workspace-plan">
+              <div>
+                <dt>Entry</dt>
+                <dd>{plan.entry}</dd>
+              </div>
+              <div>
+                <dt>Target</dt>
+                <dd>{plan.target}</dd>
+              </div>
+              <div>
+                <dt>Exit by</dt>
+                <dd>{plan.time}</dd>
+              </div>
+              <div>
+                <dt>Reconsider if</dt>
+                <dd>{plan.reconsider}</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <p className="scope-note">
+          User inputs and illustrative calculations only. No monitoring, alerts,
+          or orders are active.
         </p>
       </details>
-    </div>
+    </section>
   );
 }

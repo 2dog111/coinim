@@ -39,3 +39,29 @@ Release `20261026-conditional-plan-v2-final` uses the same real provider, with a
 Final local and Linux production builds pass, as do 36 tests, TypeScript and ESLint. The final public synthetic conversation completed three requests (initial comparison, +20% target follow-up and late-thesis follow-up), each HTTP 200 with a done event and no stream error. The target changed to 20%, while the loss limit and resolved deadline were retained. The final late answer described closing spot as a user action required by the plan and an expired call as unable to benefit from a later rally. These probes establish working integration and observed behaviors, not a guarantee of model accuracy; qualitative prose can still simplify the alternatives or threshold boundary. Engine artifacts remain authoritative.
 
 A public browser run caught a test timing race: focus was asserted before the scheduled composer-focus callback. The test now waits for actual focus before asserting it, without manually moving focus. The final public rerun passed at 360, 390, 430, 768 and 1440px with zero unexpected console errors and no horizontal page overflow. No real iPhone/Safari, external market quote, alert or execution integration was tested or added.
+
+## Prompt 3 local verification
+
+The conversation-first implementation passes 37 unit/API tests, TypeScript, ESLint and a local production build. New coverage verifies formatted financial entry and deadline provenance: an explicit prose horizon replaces the visible six-month default, while an explicitly edited control produces a conflict instead of being overwritten.
+
+The isolated Chromium interaction suite passes at 360, 390, 430, 768 and 1440px with zero unexpected console errors and no horizontal page overflow. It checks the compact editor exclusivity, unknown budget/risk state, exact and range input synchronization, cleared-value behavior, preserved loss consent after a lower budget, the independent scenario explorer without model requests, all four example outcomes, central workspace, draft navigation, example replacement confirmation, quote invalidation, plan copy and stale-response rejection. At 390×844 the initial primary action ends at approximately 645px and is visible without reducing input text below 16px.
+
+Screenshots `qa-artifacts/v3-initial-*`, `v3-home-*`, `v3-workspace-*` and `v3-real-chat-complete-390.png` were visually inspected. The supplied package was treated as a design reference; its standalone no-AI state was not imported.
+
+A real local provider probe returned HTTP 200, a completion event, no error, a server-validated version-two brief and 1,772 characters of prose. A separate rendered Chromium run loaded the example, submitted through the real UI and completed a 1,617-character Gemini response with no console error; the central composer remained usable. These checks prove the configured integration worked for those requests, not that qualitative model prose is always correct. No live quote, wallet, monitoring or execution integration exists.
+
+This evidence is local. Prompt 3 was not deployed, and the public domain was not used as acceptance evidence for these changes. Chromium responsive testing is not real Mobile Safari, VoiceOver or an accessibility audit.
+
+## Compact AI-chat refinement — local verification
+
+The owner-feedback pass keeps the same 37 unit/API tests and safety boundaries. TypeScript and ESLint pass. Browser coverage now also drives the budget slider by keyboard and verifies that its exact amount stays synchronized.
+
+The full isolated Chromium suite passes at 360, 390, 430, 768 and 1440px with zero unexpected console errors and no horizontal overflow. Screenshots `qa-artifacts/v4-first-*`, `v4-workspace-390.png` and `v4-real-chat-390.png` were visually inspected. The first 390×844 viewport contains the product promise, complete composer, three quick controls, the primary action and the beginning of the scenario section. The workspace uses a separate scroll region and a persistent composer without covering its history.
+
+Two real rendered Gemini requests completed locally in 7–10 seconds with 905–1,124 characters of accepted prose, no browser errors and a usable composer. These observed responses do not guarantee future model accuracy. Mobile coverage remains Chromium responsive testing, not Mobile Safari or a physical iPhone.
+
+## Reference-led redesign — local verification
+
+Perplexity's catalog card and first-screen contact sheet at `https://lll.bz/ii` were reviewed for the input-first interaction. The implementation uses its own copy, controls and calculated plan. Local 360, 390, 430, 768 and 1440px Chromium interaction runs passed; the 390px screenshot shows the complete input, optional settings and start prompts within the first viewport. Budget slider keyboard movement, exact risk entry, deadline selection, example independence, draft preservation, stale response rejection, copy and error recovery remain covered. Screenshots are ignored under `qa-artifacts/v5-*`.
+
+37 unit/API tests, TypeScript, ESLint and local production build passed. A real Gemini request through the rendered 390px interface completed with 1,071 accepted answer characters and no browser errors. The server brief retained SOL, $5,000 available capital, $1,000 loss limit and the six-month deadline. The browser was scrolled to inspect the long answer and its bottom composer. This is local evidence; public verification follows deployment.

@@ -67,3 +67,29 @@ Implementation: extend shared typed inputs with an explicitly chosen commitment 
 - Final public Chromium suite passed at all five widths with no unexpected console errors or horizontal overflow. The focus assertion waits for the actual scheduled focus callback.
 - Superseded server releases and the temporary Linux build directory removed after public verification. The final release is the only application code release on the server; legacy working data and R2 retirement archives remain unchanged.
 - Delivering the verified source to the existing GitHub main branch without rewriting history.
+
+## Prompt 3 — local implementation
+
+- Replaced the full questionnaire-first layout with one thought, three compact constraint editors and progressive assumptions. Budget and loss start unknown; the calendar horizon records whether it is still the default or a user choice.
+- Added exact-entry loss and scenario sliders, formatted currency parsing, preserved zero/unknown distinctions, and kept all financial outputs in the existing deterministic engine.
+- Replaced the modal/right-side chat with a central conversation workspace. Drafts survive home/workspace navigation, edits mark prose stale, and only an explicit update sends a new AI request.
+- Used the supplied design package as a visual and interaction reference. Its disconnected prototype was not copied over the live provider integration.
+- Local verification: 37 unit/API tests, TypeScript, ESLint and production build pass. Isolated Chromium passes at 360, 390, 430, 768 and 1440px with no unexpected console errors or horizontal overflow. A real local Gemini request completed through the API and through the rendered mobile workspace.
+- This Prompt 3 implementation has not been deployed or pushed. The active public release and Cloudflare R2 legacy retirement set are unchanged.
+
+## Compact AI-chat refinement — local
+
+- Reworked the first viewport after owner review: one literal product promise, one AI-style composer, three inline controls and one primary action. The next interactive section now begins inside a normal mobile viewport instead of leaving a decorative blank screen.
+- Added a native budget slider and fast presets while retaining exact currency entry, the existing loss slider, deadline segments, unknown-value semantics and explicit user provenance.
+- Converted the result screen into a bounded AI workspace: independently scrolling history, persistent bottom composer, compact assumptions and calculations, and no footer or result overlap while chatting.
+- Tightened the scenario explorer into a two-column desktop workbench and a task-ordered mobile stack; compressed the exit plan and shared visual hierarchy.
+- Local checks: 37 tests, TypeScript and ESLint pass. Isolated Chromium passes the complete interaction suite at 360, 390, 430, 768 and 1440px with no unexpected console errors or horizontal overflow. Real rendered Gemini responses completed with the composer remaining visible and usable.
+- This refinement remains local and uncommitted; public coin.im and the R2 retirement set were not changed.
+
+## Reference-led chat redesign — release in progress
+
+- Owner screenshot showed the older live Prompt 2 first screen; the subsequent local refinements had never been deployed.
+- Chose Perplexity from `https://lll.bz/ii/s/perplexity.md` as the interaction reference: the working question input leads, with short example prompts and a visible path to an answer. No reference branding or assets were copied.
+- Rebuilt the entry around one question, a real input, three optional budget/loss/deadline controls and concrete starter prompts. The result now starts with the user's message, a deterministic calculation, and the streamed AI response in one conversation.
+- Local evidence: 37 unit/API tests, TypeScript, ESLint and production build pass; isolated Chromium passes 360, 390, 430, 768 and 1440px with no unexpected console errors or horizontal overflow. A real local Gemini answer completed with the $5,000 budget and $1,000 loss limit preserved; the composer remained usable.
+- Next: build on Linux, check the new release before switch, verify public interaction and provider, remove superseded server code, and push the checked source to the existing GitHub main branch.

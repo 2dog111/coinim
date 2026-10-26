@@ -24,11 +24,11 @@ npm run build
 npm start -- --port 3216
 ```
 
-`tests/browser.mjs` uses the owner's isolated Playwright runtime and checks Chromium at 360, 390, 430, 768 and 1440px. Adapt its runtime and executable paths on another machine. `QA_URL` selects a different deployment. Screenshots and synthetic provider responses are ignored under `qa-artifacts/`.
+`tests/browser.mjs` uses the owner's isolated Playwright runtime and checks Chromium at 360, 390, 430, 768 and 1440px. `QA_WIDTHS` can narrow a diagnostic run. Adapt its runtime and executable paths on another machine. `QA_URL` selects a different deployment. Screenshots and synthetic provider responses are ignored under `qa-artifacts/`.
 
 ## Structure
 
-- `app/page.tsx`, `app/home.tsx`, `app/trade-artifacts.tsx`, `app/globals.css`: three-section homepage, form, comparisons, accessible native modal chat and safe Markdown.
+- `app/page.tsx`, `app/home.tsx`, `app/trade-artifacts.tsx`, `app/globals.css`: three-section conversation-first homepage, compact constraint editors, central workspace, comparisons and safe Markdown.
 - `lib/trade.ts`: schemas, one versioned brief, Decimal calculations, calendar deadlines, conservative explicit-input extraction and conflict checks.
 - `lib/plan.ts`: full-precision hypothetical call thresholds, independent example calendar, route-fit assessment, conditional exit plan and readable plan snapshot.
 - `lib/server.ts`: bounded request/history parsing, origin checks, rate/concurrency limits, timeout/cancellation and streaming provider adapter.
@@ -61,3 +61,15 @@ Available capital and the user's explicitly intended spot commitment are separat
 Call break-even and the valid upside crossover use Decimal arithmetic at 60 significant digits. Crossover equality can be evaluated as an exact numerator/denominator ratio; only display values are rounded. The helper is restricted to the hypothetical linear USD, zero-fee example. No valid upside crossover, invalid inputs and nonzero fees are handled explicitly. Real instruments still require verified contract terms and a premium.
 
 Copy plan produces a timestamped plain-text snapshot of current assumptions, deterministic scenarios, data provenance and exit conditions. It excludes chat transcripts. Edits cancel pending analysis, mark previous narrative as stale, and recalculate the persistent artifacts locally. Transport failures preserve server-validated brief updates. Financial figures and dates appear only in deterministic artifacts. The real model provides prose; the stream buffers each line and rejects detected numeric claims before publishing that line. A rejected explanation leaves the calculated plan available. This is a presentation boundary, not a semantic truth verifier. Gemini uses low reasoning effort and temperature 0.2; a real smoke test is required after changing its instructions.
+
+## Conversation-first interface (Prompt 3)
+
+The first screen asks for one thought and exposes budget, deadline and loss limit as three compact editors. Budget and risk begin unknown; the six-month deadline is marked as a default. Formatted currency input is parsed without converting a cleared field to zero. Loss has both a native range input and exact dollar entry; lowering the budget does not silently change accepted risk.
+
+The homepage scenario uses an independent −50% to +100% explorer with exact entry and presets. It reuses the Decimal-backed spot/call engine and does not modify the user's brief or call the model. The central workspace replaces the former side dialog: returning to the homepage preserves the draft, local edits immediately update calculations, and one explicit update action refreshes model prose.
+
+The supplied standalone design package informed layout and interaction only. Its disconnected assistant was not copied. The application retains the real server-side provider, validation, source states, stale-response protection, bounded history, safe Markdown and readable plan export.
+
+The current local refinement makes the AI composer—not the marketing copy—the dominant first-screen object. Budget now has a native range control, exact entry and fast presets; deadline and loss remain equally close. On the result screen, history scrolls independently above a persistent composer, matching a focused AI-chat workflow without hiding deterministic calculations or editable assumptions.
+
+The next redesign follows the input-first mechanism in [Perplexity's LLL.bz reference](https://lll.bz/ii/s/perplexity.md). Visitors can type immediately or pick a concrete starter question. Budget, loss limit and exit deadline remain optional controls within the same composer. The conversation begins with the visitor's question, followed by the deterministic numbers and streamed model explanation. The reference's branding, copy and assets are not used.

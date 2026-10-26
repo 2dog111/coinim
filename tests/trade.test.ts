@@ -11,6 +11,7 @@ import {
   reconcile,
   validateInputs,
   inputSchema,
+  parseFinancialInput,
 } from "../lib/trade";
 import { handle, systemPrompt } from "../lib/server";
 test("spot zero-fee scenarios and final account value", () => {
@@ -75,9 +76,29 @@ test("free text extracts explicit constraints; conflicts stay visible", () => {
   assert.equal(r.inputs.loss, 1000);
   assert.equal(r.inputs.asset, "SOL");
   assert.equal(r.inputs.target, 50);
+  assert.equal(r.inputs.horizonSource, "user");
   const conflict = reconcile({ ...r.inputs, committed: 6000 });
   assert.match(conflict.conflicts[0], /form says 6000/);
   assert.equal(conflict.inputs.committed, 6000);
+});
+test("formatted financial input and default deadline provenance remain distinct", () => {
+  assert.equal(parseFinancialInput("$5,000.25"), 5000.25);
+  assert.equal(parseFinancialInput(""), null);
+  assert.ok(Number.isNaN(parseFinancialInput("five thousand")));
+  const extracted = reconcile({
+    ...emptyInputs,
+    thesis: "I want to buy SOL within three months.",
+  });
+  assert.equal(extracted.inputs.horizon, "3");
+  assert.equal(extracted.inputs.horizonSource, "user");
+  assert.deepEqual(extracted.conflicts, []);
+  const conflict = reconcile({
+    ...emptyInputs,
+    horizon: "6",
+    horizonSource: "user",
+    thesis: "I want to buy SOL within three months.",
+  });
+  assert.match(conflict.conflicts[0], /form says 6 months/);
 });
 test("follow-up updates only explicit fields", () => {
   assert.deepEqual(extractExplicit("What if it rises only 20%?"), {

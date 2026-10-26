@@ -12,6 +12,7 @@ export const inputSchema = z
     loss: amount,
     target: z.number().finite().positive().max(100000).nullable(),
     horizon: z.enum(["1", "3", "6", "date"]),
+    horizonSource: z.enum(["default", "user"]).default("default"),
     date: z.string().max(10),
     resolvedDate: z
       .string()
@@ -43,6 +44,7 @@ export const emptyInputs: TradeInputs = {
   loss: null,
   target: null,
   horizon: "6",
+  horizonSource: "default",
   date: "",
   resolvedDate: null,
   exit: "target",
@@ -150,6 +152,16 @@ export function validateInputs(i: TradeInputs, now = new Date()) {
   )
     errors.push("Choose a future exit date.");
   return errors;
+}
+export function parseFinancialInput(value: string) {
+  const text = value.trim();
+  if (!text) return null;
+  const normalized = text
+    .replaceAll("−", "-")
+    .replace(/[$,%\s]/g, "")
+    .replaceAll(",", "");
+  if (!/^[+-]?(?:\d+\.?\d*|\.\d+)$/.test(normalized)) return NaN;
+  return Number(normalized);
 }
 export function calculate(i: TradeInputs) {
   if (!inputSchema.safeParse(i).success || i.budget === null || i.budget <= 0)
@@ -277,6 +289,7 @@ export function extractExplicit(text: string): Partial<TradeInputs> {
   if (months) {
     patch.horizon = ({ one: "1", three: "3", six: "6" }[months] ??
       months) as TradeInputs["horizon"];
+    patch.horizonSource = "user";
     patch.resolvedDate = null;
   }
   return patch;
@@ -289,12 +302,17 @@ export function reconcile(i: TradeInputs) {
     const k = key as keyof TradeInputs;
     if (k === "resolvedDate") continue;
     if (k === "horizon") {
-      if (i.horizon !== value)
+      if (i.horizonSource === "default") {
+        next.horizon = value as TradeInputs["horizon"];
+        next.horizonSource = "user";
+        next.resolvedDate = null;
+      } else if (i.horizon !== value)
         conflicts.push(
           `Latest exit: form says ${i.horizon === "date" ? i.date : i.horizon + " months"}; your idea says ${value} months.`,
         );
       continue;
     }
+    if (k === "horizonSource") continue;
     if (i[k] === null || i[k] === "") Object.assign(next, { [k]: value });
     else if (i[k] !== value)
       conflicts.push(`${key}: form says ${i[k]}; your idea says ${value}.`);
