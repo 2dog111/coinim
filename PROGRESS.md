@@ -93,3 +93,12 @@ Implementation: extend shared typed inputs with an explicitly chosen commitment 
 - Rebuilt the entry around one question, a real input, three optional budget/loss/deadline controls and concrete starter prompts. The result now starts with the user's message, a deterministic calculation, and the streamed AI response in one conversation.
 - Local evidence: 37 unit/API tests, TypeScript, ESLint and production build pass; isolated Chromium passes 360, 390, 430, 768 and 1440px with no unexpected console errors or horizontal overflow. A real local Gemini answer completed with the $5,000 budget and $1,000 loss limit preserved; the composer remained usable.
 - Next: build on Linux, check the new release before switch, verify public interaction and provider, remove superseded server code, and push the checked source to the existing GitHub main branch.
+
+### Public release and correction
+
+- The first deployed build exposed a natural-language extraction gap: a question stating "$5,000 available" and "$1,000 price-loss limit" left both settings unknown. Expanded the explicit parser, added a regression test and changed the sample question to a supported phrasing.
+- Final source and Linux builds, 38 unit/API tests, TypeScript and ESLint passed. Local and public isolated Chromium interaction suites passed at 360, 390, 430, 768 and 1440px with no unexpected console errors or horizontal overflow.
+- The final release is `20261026-chat-first-7818a5e`. Its first systemd start failed because the package lacked the `.next/cache` directory required by `ReadWritePaths`; creating that directory restored service. Public homepage and `/api/status` then returned 200, with calculator/chat available and market data unavailable.
+- A real public 390px browser run parsed SOL, $5,000 budget, $1,000 price-loss limit and the six-month exit from a single sentence. The first answer completed at 1,311 characters, and the +20% follow-up at 980 characters. Both retained all three constraints and produced no browser errors.
+- The final public first-screen screenshots at 390px and 1440px show the question, input, controls and start prompts. Narrow Chromium is responsive emulation, not Mobile Safari.
+- Superseded code releases and temporary build directories are removed only after the final public checks; the R2 legacy retirement set and working data are untouched.

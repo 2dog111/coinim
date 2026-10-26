@@ -4,7 +4,7 @@ Target: aiagentiva, IP 193.181.215.57, SSH alias `ops`. The live OS hostname cur
 
 New service: `coin-im-planner`, isolated account `coinplanner`, loopback port 3216. Code: `/opt/coin-im-planner/current`, releases in `/opt/coin-im-planner/releases/`. Secrets: `/etc/coin-im-planner/planner.env` (root only). Reverse proxy: `/etc/nginx/conf.d/coin.im.conf`.
 
-Build with the lockfile on the Linux host in a temporary staging directory. Copy `.next/standalone`, `.next/static` and `public` into a fresh release. Do not copy `.env*`, source archives or developer evidence into the release. Start the service and check loopback status and homepage before switching Nginx. Run `nginx -t`, reload and verify HTTPS, assets, same-origin API requests and a real synthetic chat. Remove superseded code and staging directories only after successful public checks.
+Build with the lockfile on the Linux host in a temporary staging directory. Copy `.next/standalone` and `.next/static` into a fresh release, plus `public` if it exists. Create `.next/cache` in the release, owned by `coinplanner`, before starting the service; the systemd `ReadWritePaths` setting requires that path. Do not copy `.env*`, source archives or developer evidence into the release. Start the service and check loopback status and homepage before switching Nginx. Run `nginx -t`, reload and verify HTTPS, assets, same-origin API requests and a real synthetic chat. Remove superseded code and staging directories only after successful public checks.
 
 ## Retired product
 
@@ -22,7 +22,7 @@ Do not restart the old payment/outbox services as part of routine recovery. Rest
 
 ## Verified release: 2026-10-26
 
-`/opt/coin-im-planner/releases/20261026-conditional-plan-v2-final` is the active Prompt 2 release. The three-section interface adds interactive examples, conditional thresholds and an exit plan. Real production Gemini analysis and two follow-ups streamed to completion. Market data remains intentionally unavailable. Legacy retirement archives below are unchanged. Final release verification and cleanup are recorded in `docs/VERIFICATION.md` and `PROGRESS.md`.
+`/opt/coin-im-planner/releases/20261026-chat-first-7818a5e` is the active question-first chat release. A single input and three compact optional settings lead to the conversation and deterministic trade brief. Real production Gemini analysis and a follow-up streamed to completion with the user's budget, loss limit and deadline preserved. Market data remains intentionally unavailable. Legacy retirement archives below are unchanged. Final release verification and cleanup are recorded in `docs/VERIFICATION.md` and `PROGRESS.md`.
 
 Retirement archive checksums:
 
