@@ -7,7 +7,7 @@ export const viewport: Viewport = {
   interactiveWidget: "resizes-content",
 };
 export const metadata: Metadata = {
-  title: "What trade are you considering? — coin.im",
+  title: "Ask about a crypto trade — coin.im",
   description:
     "Ask about a crypto trade. Compare potential loss, position size and exit plans before you buy.",
 };

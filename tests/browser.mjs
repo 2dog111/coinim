@@ -35,30 +35,27 @@ for (const width of widths) {
   await page.goto(base);
   await page
     .getByRole("heading", {
-      name: "What trade are you considering?",
+      name: "Ask about a crypto trade.",
     })
     .waitFor();
   assert.equal(
     await page.title(),
-    "What trade are you considering? — coin.im",
+    "Ask about a crypto trade — coin.im",
   );
   assert.equal(await page.locator("main > section").count(), 3);
   assert.equal(await page.locator("#idea").inputValue(), "");
   await page.getByRole("button", { name: "I have $5,000 for SOL" }).click();
   assert.equal(await page.locator("#idea").inputValue(), "I have $5,000 for SOL");
   await page.locator("#idea").fill("");
-  assert.equal(
-    await page.getByRole("button", { name: /Budget Add/ }).count(),
-    1,
-  );
-  assert.equal(
-    await page.getByRole("button", { name: /Loss limit Add/ }).count(),
-    1,
-  );
-  assert.equal(
-    await page.getByRole("button", { name: /Exit within 6 months/ }).count(),
-    1,
-  );
+  for (const selector of ["#budget", "#budget-range", "#loss-exact", "#loss-range", "#horizon-options", "#exit-date", "#asset"])
+    assert.equal(await page.locator(selector).isVisible(), true, selector);
+  assert.equal(await page.locator("#trade-form details").count(), 0);
+  assert.equal(await page.locator("#loss-range").isEnabled(), true);
+  await page.locator("#loss-range").focus();
+  await page.locator("#loss-range").press("ArrowRight");
+  assert.equal(await page.locator("#loss-exact").inputValue(), "1");
+  await page.getByRole("button", { name: "Clear", exact: true }).click();
+  assert.equal(await page.locator("#loss-exact").inputValue(), "");
   if (width === 390) {
     const primary = await page
       .locator("#trade-form .primary-action")
@@ -66,18 +63,12 @@ for (const width of widths) {
     assert.ok(primary && primary.y + primary.height <= 844);
   }
 
-  const budgetButton = page.locator('button[aria-controls="budget-panel"]');
-  const lossButton = page.locator('button[aria-controls="loss-panel"]');
-  await budgetButton.click();
-  assert.equal(await budgetButton.getAttribute("aria-expanded"), "true");
-  assert.equal(await page.locator("#budget-panel").isVisible(), true);
   await page.locator("#budget-range").focus();
   await page.locator("#budget-range").press("ArrowRight");
-  assert.equal(await page.locator("#budget").inputValue(), "5100");
+  assert.equal(await page.locator("#budget").inputValue(), "200");
   await page.locator("#budget").fill("$5,000");
   assert.equal(await page.locator("#budget").inputValue(), "$5,000");
-  await lossButton.click();
-  assert.equal(await page.locator("#budget-panel").isVisible(), false);
+  assert.equal(await page.locator("#budget-panel").isVisible(), true);
   assert.equal(await page.locator("#loss-panel").isVisible(), true);
   assert.equal(await page.locator("#loss-exact").inputValue(), "");
   await page.locator("#loss-exact").fill("1000");
@@ -85,12 +76,7 @@ for (const width of widths) {
   await page.locator("#loss-exact").fill("");
   assert.equal(await page.locator("#loss-panel").isVisible(), true);
   assert.equal(await page.locator("#loss-exact").inputValue(), "");
-  assert.equal(
-    await page.getByRole("button", { name: /Loss limit Add/ }).count(),
-    1,
-  );
   await page.locator("#loss-exact").fill("1000");
-  await budgetButton.click();
   await page.locator("#budget").fill("500");
   await page
     .getByText(
@@ -100,16 +86,16 @@ for (const width of widths) {
   assert.equal(await page.locator("#loss-exact").inputValue(), "1000");
   await page.locator("#budget").fill("5000");
 
-  const timeButton = page.locator('button[aria-controls="time-panel"]');
-  await timeButton.click();
+  await page.locator("#exit-date").fill("2027-02-20");
+  assert.equal(await page.getByRole("button", { name: "Choose a date" }).getAttribute("aria-pressed"), "true");
   await page.getByRole("button", { name: "3 months" }).click();
+  assert.equal(await page.locator("#exit-date").inputValue(), "");
   assert.equal(
-    await page.getByRole("button", { name: /Exit within 3 months/ }).count(),
-    1,
+    await page.getByRole("button", { name: "3 months" }).getAttribute("aria-pressed"),
+    "true",
   );
 
   await page.locator("#idea").fill("I want to buy SOL within three months.");
-  await page.locator(".more-assumptions summary").click();
   await page.locator("#asset").fill("SOL");
   const realBudgetBefore = await page.locator("#budget").inputValue();
   const requestsBeforeScenario = aiRequests.length;
@@ -193,18 +179,17 @@ for (const width of widths) {
   assert.equal(await page.locator("#budget").inputValue(), "5,000");
   assert.equal(await page.locator("#loss-exact").inputValue(), "1,000");
   assert.equal(await page.locator("#committed").inputValue(), "1,000");
-  if (!(await page.locator("#asset").isVisible()))
-    await page.locator(".more-assumptions summary").click();
+  assert.equal(await page.locator("#asset").isVisible(), true);
   await page.locator("#asset").fill("ETH");
   assert.equal(
-    await page.getByText("Illustrative example", { exact: true }).count(),
+    await page.locator(".scenario-card .source-tag").count(),
     1,
   );
 
   await page.getByRole("button", { name: /Back to conversation/ }).click();
   await page.route("**/api/chat", async (route) => {
     const body = route.request().postDataJSON();
-    await new Promise((resolve) => setTimeout(resolve, 900));
+    await new Promise((resolve) => setTimeout(resolve, 1400));
     try {
       await route.fulfill({
         contentType: "application/x-ndjson",
@@ -236,11 +221,12 @@ for (const width of widths) {
     } catch {}
   });
   await page.locator("#chat-message").fill("Explain my plan.");
+  const pendingChat = page.waitForRequest("**/api/chat");
   await page.getByRole("button", { name: "Send", exact: true }).click();
+  await pendingChat;
   await page.getByRole("button", { name: "Edit trade" }).click();
-  await page.locator(".more-assumptions summary").click();
   await page.locator("#target").fill("25");
-  await page.waitForTimeout(1100);
+  await page.waitForTimeout(1600);
   assert.equal(await page.locator("#target").inputValue(), "25");
   await page.getByRole("button", { name: /Back to conversation/ }).click();
   await page

@@ -652,3 +652,272 @@ footer {
     font-size: 11px;
   }
 }
+
+/* The question and its trade limits are one visible form, with no disclosure controls. */
+.hero {
+  padding-top: clamp(34px, 5vh, 64px);
+}
+
+.product-kicker {
+  margin-bottom: 8px;
+}
+
+.hero h1 {
+  letter-spacing: -2.35px;
+}
+
+.hero-lead {
+  margin: 10px auto 22px;
+}
+
+.intake-card {
+  padding-bottom: 19px;
+}
+
+.idea-label-row {
+  justify-content: space-between;
+}
+
+.idea-label-row label {
+  color: #52675f;
+  font-size: 14px;
+  font-weight: 620;
+}
+
+#idea {
+  min-height: 83px;
+  padding: 7px 2px 11px;
+}
+
+.visible-settings {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 2px;
+  padding-top: 13px;
+  border-top: 1px solid #e9eeea;
+}
+
+.visible-settings .setting-panel {
+  min-width: 0;
+  margin: 0;
+  padding: 12px;
+  border: 1px solid #dce7df;
+  border-radius: 13px;
+  background: #f6faf7;
+}
+
+.visible-settings label,
+.visible-settings .field-label {
+  font-size: 13px;
+  line-height: 1.25;
+  font-weight: 640;
+}
+
+.visible-settings .currency-entry {
+  min-width: 0;
+  width: 100%;
+  min-height: 41px;
+  margin-top: 4px;
+  padding: 0 7px;
+  border: 1px solid #d6e0d9;
+  border-radius: 9px;
+  background: #fff;
+  font-size: 21px;
+}
+
+.visible-settings .currency-entry input {
+  min-height: 40px;
+  font-size: 21px;
+  font-weight: 580;
+}
+
+.visible-settings .range {
+  height: 39px;
+  margin-top: 2px;
+}
+
+.visible-settings .range-limits {
+  font-size: 11px;
+}
+
+.visible-settings .quick-values {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 5px;
+  margin-top: 8px;
+}
+
+.visible-settings .quick-values button {
+  min-width: 0;
+  min-height: 44px;
+  padding: 3px;
+  border-color: #d1ded5;
+  border-radius: 8px;
+  background: #fff;
+  color: #24463b;
+  font-size: 12px;
+}
+
+.visible-settings .quick-values button[aria-pressed="true"] {
+  border-color: #78ad99;
+  background: #dff1e8;
+  color: #124d3e;
+}
+
+.visible-settings .loss-editor-head {
+  gap: 4px;
+}
+
+.visible-settings .loss-editor-head .text-action {
+  min-height: 44px;
+  color: #3a6b5b;
+  font-size: 12px;
+}
+
+.visible-settings .segments {
+  gap: 4px;
+  margin-top: 12px;
+  background: #e7eeea;
+}
+
+.visible-settings .segment {
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 3px;
+  font-size: 12px;
+}
+
+.visible-settings .date-choice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.visible-settings .date-choice label {
+  flex: 1;
+  color: #52675f;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.visible-settings .date-entry {
+  width: min(154px, 68%);
+  min-width: 0;
+  min-height: 44px;
+  margin: 0;
+  padding: 5px 8px;
+  font-size: 12px;
+}
+
+.visible-settings .helper {
+  margin-top: 5px;
+  font-size: 11px;
+}
+
+.settings-note {
+  margin-top: 8px;
+  color: #61716a;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.intake-actions {
+  margin-top: 12px;
+}
+
+.intake-card .starter-row {
+  margin-top: 13px;
+}
+
+.intake-card .under-form {
+  margin-top: 11px;
+  text-align: center;
+}
+
+.advanced-fields {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid #e6ece8;
+}
+
+.advanced-fields h2 {
+  margin-bottom: 11px;
+  font-size: 18px;
+  font-weight: 620;
+  letter-spacing: -0.3px;
+}
+
+@media (max-width: 720px) {
+  .hero {
+    padding-top: 17px;
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 8.5vw, 39px);
+    letter-spacing: -1.6px;
+  }
+
+  .hero-lead {
+    margin-bottom: 10px;
+    font-size: 15px;
+  }
+
+  .intake-card {
+    padding: 12px;
+  }
+
+  #idea {
+    min-height: 66px;
+    font-size: 16px;
+  }
+
+  .visible-settings {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+    padding-top: 10px;
+  }
+
+  .visible-settings .setting-panel {
+    padding: 9px;
+  }
+
+  .visible-settings .setting-panel#time-panel {
+    grid-column: 1 / -1;
+  }
+
+  .visible-settings .quick-values {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .visible-settings .loss-editor-head {
+    min-height: 30px;
+  }
+
+  .visible-settings .loss-editor-head .text-action {
+    min-height: 30px;
+  }
+
+  .visible-settings .currency-entry,
+  .visible-settings .currency-entry input {
+    min-height: 38px;
+    font-size: 18px;
+  }
+
+  .visible-settings .segments {
+    margin-top: 6px;
+  }
+
+  .visible-settings #time-panel .helper {
+    margin-top: 0;
+  }
+
+  .settings-note {
+    font-size: 11px;
+  }
+
+  .advanced-fields .assumption-grid {
+    grid-template-columns: 1fr;
+  }
+}

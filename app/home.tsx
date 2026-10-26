@@ -104,7 +104,6 @@ export default function Home({
   );
   const inputs = brief.inputs;
   const [view, setView] = useState<"home" | "workspace">("home");
-  const [activeSetting, setActiveSetting] = useState<Setting | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [composer, setComposer] = useState("");
   const [busy, setBusy] = useState(false);
@@ -208,8 +207,13 @@ export default function Home({
   }
 
   function showHome(setting?: Setting) {
+    if (busy) {
+      requestId.current++;
+      abort.current?.abort();
+      abort.current = null;
+      setBusy(false);
+    }
     setView("home");
-    if (setting) setActiveSetting(setting);
     requestAnimationFrame(() => {
       const target = setting
         ? document.getElementById(
@@ -445,18 +449,9 @@ export default function Home({
   const budgetValue = parseFinancialInput(budgetDraft);
   const validBudget =
     budgetValue !== null && Number.isFinite(budgetValue) && budgetValue > 0;
-  const sliderMax = validBudget ? budgetValue : 100;
+  const sliderMax = validBudget ? budgetValue : 50000;
   const sliderValue =
     inputs.loss === null ? 0 : Math.min(inputs.loss, sliderMax);
-  const settingValues = {
-    budget: inputs.budget === null ? "Add" : money(inputs.budget),
-    time:
-      inputs.horizon === "date"
-        ? inputs.date || "Choose a date"
-        : `${inputs.horizon} month${inputs.horizon === "1" ? "" : "s"}`,
-    loss: inputs.loss === null ? "Add" : money(inputs.loss),
-  };
-
   return (
     <>
       <a className="skip-link" href="#main-content">
@@ -490,10 +485,10 @@ export default function Home({
         <main id="main-content">
           <section className="hero" id="start" aria-labelledby="headline">
             <div className="composer-width">
-              <p className="product-kicker">Your crypto trade, thought through</p>
-              <h1 id="headline">What trade are you considering?</h1>
+              <p className="product-kicker">Crypto trade planning, in a conversation</p>
+              <h1 id="headline">Ask about a crypto trade.</h1>
               <p className="hero-lead">
-                Ask about a coin. See your potential loss, position size, and exit plan.
+                Tell us the coin and your limits. See a plan, then ask what happens next.
               </p>
               <form
                 id="trade-form"
@@ -503,7 +498,7 @@ export default function Home({
                 aria-describedby={formError ? "form-error" : undefined}
               >
                 <div className="idea-label-row">
-                  <label className="sr-only" htmlFor="idea">Describe your trade idea</label>
+                  <label htmlFor="idea">Your question</label>
                   {inputs.hypothetical && (
                     <span className="source-tag">Illustrative example</span>
                   )}
@@ -523,44 +518,9 @@ export default function Home({
                   }}
                 />
 
-                <div
-                  className="setting-chips"
-                  role="group"
-                  aria-label="Optional trade settings"
-                >
-                  {(
-                    [
-                      ["budget", "Budget"],
-                      ["loss", "Loss limit"],
-                      ["time", "Exit within"],
-                    ] as const
-                  ).map(([key, label]) => (
-                    <button
-                      key={key}
-                      type="button"
-                      className="setting-chip"
-                      aria-expanded={activeSetting === key}
-                      aria-controls={`${key}-panel`}
-                      onClick={() =>
-                        setActiveSetting(activeSetting === key ? null : key)
-                      }
-                    >
-                      <span>{label}</span>
-                      <b>{settingValues[key]}</b>
-                      {key === "time" && inputs.horizonSource === "default" && (
-                        <small>Default</small>
-                      )}
-                      <i aria-hidden="true">⌄</i>
-                    </button>
-                  ))}
-                </div>
-
-                <div
-                  className="setting-panel"
-                  id="budget-panel"
-                  hidden={activeSetting !== "budget"}
-                >
-                  <label htmlFor="budget">How much can you invest?</label>
+                <div className="visible-settings" aria-label="Trade settings">
+                <div className="setting-panel" id="budget-panel">
+                  <label htmlFor="budget">Budget · USD</label>
                   <div className="currency-entry">
                     <span aria-hidden="true">$</span>
                     <input
@@ -568,7 +528,7 @@ export default function Home({
                       inputMode="decimal"
                       autoComplete="off"
                       value={budgetDraft}
-                      placeholder="5,000"
+                      placeholder="Not set"
                       onChange={(event) =>
                         updateAmount("budget", event.target.value)
                       }
@@ -586,7 +546,7 @@ export default function Home({
                     min="100"
                     max="50000"
                     step="100"
-                    value={Math.min(inputs.budget ?? 5000, 50000)}
+                    value={Math.min(inputs.budget ?? 100, 50000)}
                     aria-valuetext={
                       inputs.budget === null
                         ? "Budget not set. Move the slider to choose one."
@@ -594,7 +554,7 @@ export default function Home({
                     }
                     style={
                       {
-                        "--fill": `${((Math.min(inputs.budget ?? 5000, 50000) - 100) / 49900) * 100}%`,
+                        "--fill": `${((Math.min(inputs.budget ?? 100, 50000) - 100) / 49900) * 100}%`,
                       } as CSSProperties
                     }
                     onChange={(event) =>
@@ -617,16 +577,63 @@ export default function Home({
                       </button>
                     ))}
                   </div>
-                  <p className="helper">Available cash, not an instruction to spend it all.</p>
                 </div>
 
-                <div
-                  className="setting-panel"
-                  id="time-panel"
-                  hidden={activeSetting !== "time"}
-                >
+                <div className="setting-panel loss-editor" id="loss-panel">
+                  <div className="loss-editor-head">
+                    <label htmlFor="loss-exact">Max loss · USD</label>
+                    <button
+                      type="button"
+                      className="text-action"
+                      onClick={() => updateAmount("loss", "")}
+                    >
+                      Clear
+                    </button>
+                  </div>
+                  <div className="currency-entry exact-loss">
+                    <span aria-hidden="true">$</span>
+                    <input
+                      id="loss-exact"
+                      inputMode="decimal"
+                      autoComplete="off"
+                      value={lossDraft}
+                      placeholder="Not set"
+                      onChange={(event) =>
+                        updateAmount("loss", event.target.value)
+                      }
+                    />
+                  </div>
+                  <input
+                    id="loss-range"
+                    className="range"
+                    type="range"
+                    min="0"
+                    max={sliderMax}
+                    step="1"
+                    value={sliderValue}
+                    aria-valuetext={
+                      inputs.loss === null
+                        ? "Loss limit not set"
+                        : `${money(inputs.loss)} acceptable price loss`
+                    }
+                    style={
+                      {
+                        "--fill": `${sliderMax ? (sliderValue / sliderMax) * 100 : 0}%`,
+                      } as CSSProperties
+                    }
+                    onChange={(event) =>
+                      updateAmount("loss", event.target.value)
+                    }
+                  />
+                  <div className="range-limits" aria-hidden="true">
+                    <span>$0</span>
+                    <span>{validBudget ? money(budgetValue) : "$50k+"}</span>
+                  </div>
+                </div>
+
+                <div className="setting-panel" id="time-panel">
                   <span className="field-label" id="horizon-label">
-                    When would you exit by?
+                    Exit by
                   </span>
                   <div
                     className="segments"
@@ -651,6 +658,7 @@ export default function Home({
                           update({
                             horizon: value as TradeInputs["horizon"],
                             horizonSource: "user",
+                            date: value === "date" ? inputs.date : "",
                           })
                         }
                       >
@@ -658,91 +666,51 @@ export default function Home({
                       </button>
                     ))}
                   </div>
-                  {inputs.horizon === "date" && (
-                    <>
-                      <label className="sr-only" htmlFor="exit-date">
-                        Latest exit date
-                      </label>
-                      <input
-                        className="date-entry"
-                        id="exit-date"
-                        type="date"
-                        value={inputs.date}
-                        onChange={(event) =>
-                          update({
-                            date: event.target.value,
-                            horizonSource: "user",
-                          })
-                        }
-                      />
-                    </>
-                  )}
-                  <p className="helper">You can exit earlier.</p>
-                </div>
-
-                <div
-                  className="setting-panel loss-editor"
-                  id="loss-panel"
-                  hidden={activeSetting !== "loss"}
-                >
-                  <div className="loss-editor-head">
-                    <label htmlFor="loss-exact">Most I can afford to lose</label>
-                    <button
-                      type="button"
-                      className="text-action"
-                      onClick={() => updateAmount("loss", "")}
-                    >
-                      Not sure yet
-                    </button>
-                  </div>
-                  <input
-                    id="loss-range"
-                    className="range"
-                    type="range"
-                    min="0"
-                    max={sliderMax}
-                    step="0.01"
-                    disabled={!validBudget}
-                    value={sliderValue}
-                    aria-valuetext={
-                      inputs.loss === null
-                        ? "Loss limit not set"
-                        : `${money(inputs.loss)} acceptable price loss`
-                    }
-                    style={
-                      {
-                        "--fill": `${sliderMax ? (sliderValue / sliderMax) * 100 : 0}%`,
-                      } as CSSProperties
-                    }
-                    onChange={(event) =>
-                      updateAmount("loss", event.target.value)
-                    }
-                  />
-                  <div className="range-limits" aria-hidden="true">
-                    <span>$0</span>
-                    <span>{validBudget ? money(budgetValue) : "Add a budget"}</span>
-                  </div>
-                  <div className="currency-entry exact-loss">
-                    <span aria-hidden="true">$</span>
+                  <div className="date-choice">
+                    <label htmlFor="exit-date">Or choose a date</label>
                     <input
-                      id="loss-exact"
-                      inputMode="decimal"
-                      autoComplete="off"
-                      value={lossDraft}
-                      placeholder="Not set"
+                      className="date-entry"
+                      id="exit-date"
+                      type="date"
+                      value={inputs.date}
                       onChange={(event) =>
-                        updateAmount("loss", event.target.value)
+                        update({
+                          horizon: "date",
+                          date: event.target.value,
+                          horizonSource: "user",
+                        })
                       }
                     />
                   </div>
-                  {!validBudget && (
-                    <p className="helper">Add a budget to set the slider range.</p>
-                  )}
-                  <p className="helper">This is your risk preference, not a guaranteed stop.</p>
                 </div>
 
-                <details className="more-assumptions">
-                  <summary>More details (optional)</summary>
+                </div>
+
+                <p className="settings-note">Budget is available cash; the loss limit is a preference, not a guaranteed stop.</p>
+
+                <Consequence brief={brief} />
+                {formError && (
+                  <p id="form-error" className="form-error" role="alert">
+                    {formError}
+                  </p>
+                )}
+                <div className="intake-actions">
+                  <button className="primary-action" disabled={busy}>
+                    Get my plan <span aria-hidden="true">↑</span>
+                  </button>
+                </div>
+              <div className="starter-row" aria-label="Try a question">
+                <span>Try asking</span>
+                {starters.map((starter) => (
+                  <button type="button" key={starter} onClick={() => chooseStarter(starter)}>{starter}</button>
+                ))}
+                <button type="button" onClick={loadExample}>Try an example</button>
+              </div>
+
+              <p className="under-form">No account or wallet needed · Nothing is traded</p>
+
+                <section className="advanced-fields" aria-labelledby="advanced-title">
+                  <h2 id="advanced-title">Fine-tune the comparison</h2>
                   <div className="assumption-grid">
                     <div>
                       <label htmlFor="asset">Coin</label>
@@ -846,28 +814,9 @@ export default function Home({
                     The target is your scenario, not a forecast. Fees are
                     illustrative—not a venue quote.
                   </p>
-                </details>
+                </section>
 
-                <Consequence brief={brief} />
-                {formError && (
-                  <p id="form-error" className="form-error" role="alert">
-                    {formError}
-                  </p>
-                )}
-                <div className="intake-actions">
-                  <button className="primary-action" disabled={busy}>
-                    Get my plan <span aria-hidden="true">↑</span>
-                  </button>
-                </div>
               </form>
-              <div className="starter-row" aria-label="Try a question">
-                <span>Try asking</span>
-                {starters.map((starter) => (
-                  <button key={starter} onClick={() => chooseStarter(starter)}>{starter}</button>
-                ))}
-                <button onClick={loadExample}>Try an example</button>
-              </div>
-              <p className="under-form">No account or wallet needed · Nothing is traded</p>
             </div>
           </section>
 
