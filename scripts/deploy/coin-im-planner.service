@@ -1,0 +1,26 @@
+[Unit]
+Description=coin.im trade-planning assistant
+After=network-online.target
+Wants=network-online.target
+[Service]
+Type=simple
+User=coinplanner
+Group=coinplanner
+WorkingDirectory=/opt/coin-im-planner/current
+EnvironmentFile=/etc/coin-im-planner/planner.env
+Environment=NODE_ENV=production
+Environment=HOSTNAME=127.0.0.1
+Environment=PORT=3216
+ExecStart=/usr/bin/node server.js
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/coin-im-planner/current/.next/cache
+RestrictSUIDSGID=true
+LockPersonality=true
+UMask=0027
+[Install]
+WantedBy=multi-user.target

@@ -1,239 +1,32 @@
-# coin.im VPS Deploy
+# Deployment and legacy recovery
 
-Production is served from the VPS.
+Target: aiagentiva, IP 193.181.215.57, SSH alias `ops`. The live OS hostname currently reports `mail.atm.bz`; verify IP and paths before acting. Keep DNS, certificates and mail routing unchanged.
 
-- Host: `iva`
-- IP: `193.181.215.57`
-- Web root symlink: `/var/www/coin.im/current`
-- Release directory: `/var/www/coin.im/releases/<timestamp>`
-- Nginx config: `/etc/nginx/conf.d/coin.im.conf`
-- Public URLs: `https://coin.im/`, `https://www.coin.im/`
-- DNS: Cloudflare DNS-only `A` records for `coin.im` and `www.coin.im` to `193.181.215.57`
-- TLS: Let's Encrypt certificate for `coin.im` and `www.coin.im`, renewed by certbot
+New service: `coin-im-planner`, isolated account `coinplanner`, loopback port 3216. Code: `/opt/coin-im-planner/current`, releases in `/opt/coin-im-planner/releases/`. Secrets: `/etc/coin-im-planner/planner.env` (root only). Reverse proxy: `/etc/nginx/conf.d/coin.im.conf`.
 
-## Verified access from this Mac, 2026-09-14
+Build with the lockfile on the Linux host in a temporary staging directory. Copy `.next/standalone`, `.next/static` and `public` into a fresh release. Do not copy `.env*`, source archives or developer evidence into the release. Start the service and check loopback status and homepage before switching Nginx. Run `nginx -t`, reload and verify HTTPS, assets, same-origin API requests and a real synthetic chat. Remove superseded code and staging directories only after successful public checks.
 
-Use `ssh coinim-vps`. The local SSH config points to `admin@193.181.215.57`
-with `~/.ssh/coinim_deploy_ed25519` and `IdentitiesOnly yes`. The owner explicitly
-authorized saving the key and assigning it through Webdock. `admin` login and
-noninteractive sudo are verified. Private key material stays outside the project.
-The historical `iva` alias and `ops` instructions below are not configured access
-methods on this Mac.
+## Retired product
 
-Latest active static and intake release: `20260914T065214Z-campaign-v3`. Use the exact
-manifest in `reference/release-ms-campaign-v3.json`; the release preserves active
-production files outside the manifest. See VERSIONS.md for backups and checks.
+The final encrypted legacy bundle lives in the private R2 bucket `telegamarket-backups`, prefix `aiagentiva/coin-im-retired/`. It contains the production website, old backend source, SQLite records, encrypted enquiry files, configuration, keys and service definitions. A separate encrypted local-source archive is part of the same retirement set. Both are verified by downloading and comparing bytes. The production archive is also decrypted and its tar contents checked before upload; SQLite integrity and foreign keys are checked.
 
-## Homepage and message-wall release, 2026-09-06
+The AES-256-CBC envelope uses PBKDF2 with 200,000 iterations. The random recovery passphrase is stored at `/etc/coin-im-planner/legacy-backup.pass` and on the owner's Mac at `~/.config/coin-im-backup/recovery.pass`; do not print or commit it. SHA-256 checksums in the verification report must be checked before decryption.
 
-The current root is static direct mail; `/message` and `/message/` proxy to the existing market service. Individual `/message/<slug>` routes keep their old behavior. Use the current `server/deploy/nginx-market-locations.conf` for this route split.
-
-Preserve the active production static and backend releases as the baseline. Overlay only the files in the task's release manifest when the local tree contains unrelated changes. Do not automatically deploy the full local backend or apply pending local migrations. Back up the market database and Nginx configuration, clone both active releases, patch the route and navigation files, validate with isolated local data, then switch symlinks and reload Nginx after `nginx -t`. Keep the prior releases and configuration for rollback. No DNS or mail changes are required.
-
-Additional static allowlist: `message.html`, `message/index.html`, `assets/direct-mail.css`, `assets/direct-mail.js`, `assets/coin-letter-20260906.webp`. The existing `assets/` allowlist excludes source masters. Never deploy `docs/`, `design/`, `content/`, `tools/`, `scripts/`, `qa-screens/`, `.git`, environments, database files or credentials. Production data remains outside both releases.
-
-SSH host is aiagentiva, IP 193.181.215.57. The configured `ops` account was verified to have noninteractive sudo on 2026-09-06; `iva` currently requires an interactive sudo password. Check permissions live before use.
-
-Verify `/`, `/message`, `/message/`, checkout, archive, stats, rules, health endpoints, preserved longreads and intake. Compare public slot identities, prices and text before and after. Run browser QA on the actual staged artifact and then public root/message routes. Real payments and lead submissions are excluded from public smoke.
-
-## Short enquiry form release
-
-The enquiry endpoint runs inside the existing coin-im-open service. Overlay `coin_open/app.py`, `coin_open/admin.py`, `coin_open/leads.py` and `coin_open/admin_login.py` onto a clone of the active intake release; do not overwrite its persistent data, encryption key or admin key. Back up `/var/lib/coin-im-open` before switching. The `/api/open/` Nginx proxy already serves both the leads endpoint and stable admin entrance. No new Nginx route, dependency or DNS change is required. Restart only coin-im-open, verify health and validation before publishing the form.
-
-Static additions: `assets/contact-ui.css`, `assets/contact-ui.js`, `assets/contact-glass/*.webp`. Existing brand artwork is reused. Preserve mirrored pages. Never deploy icon masters, source notes, QA scripts or tests. Admin entrance `/api/open/admin` uses the pre-existing key file `/etc/coin-im-open/admin-token`; do not print that key in logs, documentation or chat.
-
-## Files To Deploy
-
-Use a clean temporary directory. Include only:
-
-- `index.html`
-- `mail.html`
-- `mail/index.html`
-- `ru.html`
-- `es.html`
-- `ai.html`
-- `s.html`
-- `ms.html`
-- `ms/index.html`
-- `msru.html`
-- `msru/index.html`
-- `handling.html`
-- `handling/index.html`
-- `open.html`
-- `open/index.html`
-- `investors/index.html` (Investor Match, generated by `node scripts/build-investors.cjs`; `data/` is never deployed)
-- `llms.txt`
-- `styles.css`
-- `ms.css`
-- `robots.txt`
-- `sitemap.xml`
-- `assets/`
-
-Do not copy audit files, screenshots, scripts, git metadata, or local notes.
-
-## Deploy Commands
-
-Run from the repository root.
-
-```bash
-tmp=$(mktemp -d /tmp/coin-im-release.XXXXXX)
-mkdir -p "$tmp/mail" "$tmp/ms" "$tmp/msru" "$tmp/handling" "$tmp/open"
-rsync -a index.html mail.html ru.html es.html ai.html s.html ms.html msru.html handling.html open.html investors.html llms.txt styles.css ms.css robots.txt sitemap.xml assets "$tmp/"
-rsync -a mail/index.html "$tmp/mail/index.html"
-rsync -a ms/index.html "$tmp/ms/index.html"
-rsync -a msru/index.html "$tmp/msru/index.html"
-rsync -a handling/index.html "$tmp/handling/index.html"
-rsync -a open/index.html "$tmp/open/index.html"
-rsync -a investors/index.html "$tmp/investors/index.html"
-
-ts=$(date -u +%Y%m%dT%H%M%SZ)
-remote="/var/www/coin.im/releases/$ts"
-
-ssh iva "set -e; sudo mkdir -p '$remote'; sudo chown -R iva:sudo /var/www/coin.im"
-rsync -az --delete "$tmp/" "iva:$remote/"
-
-ssh iva "set -e; sudo chown -R nginx:nginx '$remote'; sudo find '$remote' -type d -exec chmod 755 {} +; sudo find '$remote' -type f -exec chmod 644 {} +; sudo ln -sfn '$remote' /var/www/coin.im/current; sudo nginx -t; sudo systemctl reload nginx; readlink -f /var/www/coin.im/current"
+```sh
+openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 \
+  -pass file:/etc/coin-im-planner/legacy-backup.pass \
+  -in legacy-production.tar.gz.enc -out legacy-production.tar.gz
 ```
 
-The intake API is a separate release under `/opt/coin-im-open/releases/<timestamp>`. Its persistent data is never stored in the static release tree:
+Do not restart the old payment/outbox services as part of routine recovery. Restoring the old product requires a new owner instruction. Legacy working data remains in `/var/lib/coin-im-market` and `/var/lib/coin-im-open`; key/config directories remain under `/etc`. Code, old runtime environments and old service definitions are removed after successful replacement. Uploaded screenshots and enquiry files must not be deleted as code.
 
-- encrypted jobs: `/var/lib/coin-im-open/jobs`
-- incomplete encrypted uploads: `/var/lib/coin-im-open/drafts`
-- owner notices: `/var/lib/coin-im-open/notifications`
-- AES-256-GCM key: `/etc/coin-im-open/encryption.key`
+## Verified release: 2026-10-26
 
-The VPS needs `python3.12-venv`. Keep `/var/lib/coin-im-open` owned by `coinopen:coinopen` with mode `711`, `jobs` and `drafts` at `700`, and `notifications` at `755`. Keep the 32-byte key owned by `root:coinopen` with mode `640`.
+`/opt/coin-im-planner/releases/20261026-trade-planner-v1` is the sole active release. Public desktop and narrow Chromium interactions passed. A real production Gemini response streamed to completion. Market data is intentionally unavailable.
 
-Deploy `server/coin_open` and `server/requirements.txt` to the backend release, point `/opt/coin-im-open/current` at it, install dependencies into `/opt/coin-im-open/venv`, install `server/deploy/coin-im-open.service`, `server/deploy/coin-open`, and `server/deploy/95-coin-open`, then restart `coin-im-open`. Preserve the `/open`, `/open/`, and `/api/open/` Nginx locations from `server/deploy/nginx-locations.conf`.
+Retirement archive checksums:
 
-## Takeover Market Service
+- `legacy-local-source.tar.gz.enc`: `6f0e48a2a498009f7db63300522bebdac6ead991b1970145c4a31e0a0e498ead`
+- `legacy-production.tar.gz.enc`: `6efdc73fb5d3174a39f72273d1968fa45e05b66ac547715f7f01e88f954a59ce`
 
-The takeover market is a separate ASGI service on `127.0.0.1:8782`:
-
-- releases: `/opt/coin-im-market/releases/<timestamp>`
-- current symlink: `/opt/coin-im-market/current`
-- virtual environment: `/opt/coin-im-market/venv`
-- persistent database: `/var/lib/coin-im-market/market.sqlite3`
-- protected environment: `/etc/coin-im-market/market.env`
-- systemd units: `coin-im-market.service`, `coin-im-market-reconcile.service`, and `coin-im-market-reconcile.timer`
-
-Automatic website capture is a separate local-only service on `127.0.0.1:8783`:
-
-- systemd unit: `coin-im-screenshot.service`
-- service account: `coinscreenshot`, with no market environment file or database access
-- browser data: `/var/lib/coin-im-screenshot/browsers`
-- Python environment and backend release: shared read-only with `coin-im-market`
-- output: public page title, optional optimized favicon, and an optimized `1600x1050` first-screen screenshot
-
-Back up an existing market database before each backend release:
-
-```bash
-ssh iva 'sudo -u coinmarket env PYTHONPATH=/opt/coin-im-market/current /opt/coin-im-market/venv/bin/python -m coin_market.cli backup /var/lib/coin-im-market/backups'
-```
-
-Deploy the backend from the repository root:
-
-```bash
-ts=$(date -u +%Y%m%dT%H%M%SZ)
-backend_release="/opt/coin-im-market/releases/$ts"
-
-ssh iva "sudo install -d -o coinmarket -g coinmarket '$backend_release'"
-rsync -az --delete server/coin_market server/requirements-market.txt "iva:/tmp/coin-im-market-$ts/"
-ssh iva "set -e; sudo rsync -a --delete '/tmp/coin-im-market-$ts/' '$backend_release/'; sudo chown -R coinmarket:coinmarket '$backend_release'; sudo find '$backend_release' -type d -exec chmod 755 {} +; sudo find '$backend_release' -type f -exec chmod 644 {} +; sudo -u coinmarket /opt/coin-im-market/venv/bin/pip install -r '$backend_release/requirements-market.txt'; sudo ln -sfn '$backend_release' /opt/coin-im-market/current; sudo -u coinmarket env PYTHONPATH='$backend_release' /opt/coin-im-market/venv/bin/python -m coin_market.cli migrate"
-```
-
-On the first automatic-capture release, create the isolated service account, install Chromium dependencies and the Playwright-managed browser, then install both changed units. Re-running these commands is safe:
-
-```bash
-ssh iva 'set -e; id coinscreenshot >/dev/null 2>&1 || sudo useradd --system --home-dir /var/lib/coin-im-screenshot --create-home --shell /usr/sbin/nologin coinscreenshot; sudo install -d -o coinscreenshot -g coinscreenshot -m 750 /var/lib/coin-im-screenshot/browsers; sudo env PLAYWRIGHT_BROWSERS_PATH=/var/lib/coin-im-screenshot/browsers /opt/coin-im-market/venv/bin/python -m playwright install-deps chromium; sudo -u coinscreenshot env PLAYWRIGHT_BROWSERS_PATH=/var/lib/coin-im-screenshot/browsers PLAYWRIGHT_SKIP_BROWSER_GC=1 /opt/coin-im-market/venv/bin/python -m playwright install chromium'
-
-scp server/deploy/coin-im-market.service server/deploy/coin-im-screenshot.service iva:/tmp/
-ssh iva 'set -e; sudo install -o root -g root -m 644 /tmp/coin-im-market.service /etc/systemd/system/coin-im-market.service; sudo install -o root -g root -m 644 /tmp/coin-im-screenshot.service /etc/systemd/system/coin-im-screenshot.service; sudo systemctl daemon-reload; sudo systemctl enable --now coin-im-screenshot; curl --fail --silent http://127.0.0.1:8783/health; sudo systemctl restart coin-im-market'
-```
-
-Install or update the unit and Nginx snippets only when those files change. Back up `/etc/nginx/conf.d/coin.im.conf` before editing it. Preserve the `/open`, `/handling`, `/mail`, `/ms`, and other static route behavior.
-
-```bash
-scp server/deploy/coin-im-market.service server/deploy/coin-im-screenshot.service server/deploy/coin-im-market-reconcile.service server/deploy/coin-im-market-reconcile.timer server/deploy/coin-im-market-proxy.conf server/deploy/nginx-market-locations.conf iva:/tmp/
-ssh iva 'set -e; sudo install -o root -g root -m 644 /tmp/coin-im-market.service /etc/systemd/system/coin-im-market.service; sudo install -o root -g root -m 644 /tmp/coin-im-screenshot.service /etc/systemd/system/coin-im-screenshot.service; sudo install -o root -g root -m 644 /tmp/coin-im-market-reconcile.service /etc/systemd/system/coin-im-market-reconcile.service; sudo install -o root -g root -m 644 /tmp/coin-im-market-reconcile.timer /etc/systemd/system/coin-im-market-reconcile.timer; sudo install -o root -g root -m 644 /tmp/coin-im-market-proxy.conf /etc/nginx/snippets/coin-im-market-proxy.conf; sudo install -o root -g root -m 644 /tmp/nginx-market-locations.conf /etc/nginx/snippets/coin-im-market-locations.conf; sudo systemctl daemon-reload; sudo systemctl enable --now coin-im-screenshot coin-im-market-reconcile.timer; sudo nginx -t; sudo systemctl reload nginx'
-```
-
-Keep `TAKEOVER_MARKET_ENABLED=false` until all real TronGrid fields pass `verify-environment --production`. Never use `TRON_PROVIDER=mock` with `SITE_URL=https://coin.im`.
-
-## Required Verification
-
-Nginx has exact `/handling` and `/handling/` locations that add `Referrer-Policy: no-referrer`. Preserve those locations when editing `/etc/nginx/conf.d/coin.im.conf`.
-
-Verify after every deploy:
-
-```bash
-python3 - <<'PY'
-from urllib.request import Request, urlopen
-
-urls = [
-    "https://coin.im/",
-    "https://coin.im/takeover",
-    "https://coin.im/archive",
-    "https://coin.im/stats",
-    "https://coin.im/rules",
-    "https://coin.im/api/market/health",
-    "https://coin.im/ru",
-    "https://coin.im/es",
-    "https://coin.im/mail",
-    "https://coin.im/mail/",
-    "https://coin.im/ms",
-    "https://coin.im/msru",
-    "https://coin.im/handling",
-    "https://coin.im/open",
-    "https://coin.im/api/open/health",
-    "https://coin.im/assets/base.css",
-    "https://coin.im/assets/home.css",
-    "https://coin.im/styles.css",
-    "https://coin.im/robots.txt",
-    "https://coin.im/sitemap.xml",
-    "https://www.coin.im/",
-]
-
-for url in urls:
-    req = Request(url, headers={"User-Agent": "coin-im-deploy-check"})
-    with urlopen(req, timeout=15) as r:
-        print(url, r.status, r.headers.get("server"), r.geturl(), r.headers.get("content-type"))
-PY
-```
-
-Also verify the active release and certificate:
-
-```bash
-ssh iva 'readlink -f /var/www/coin.im/current; readlink -f /opt/coin-im-market/current; systemctl is-active nginx coin-im-screenshot coin-im-market coin-im-open; curl --fail --silent http://127.0.0.1:8783/health; sudo nginx -t; sudo certbot certificates'
-```
-
-Run the market read-only reconciliation and public smoke after deployment:
-
-```bash
-ssh iva 'sudo -u coinmarket /usr/local/bin/coin-market verify-environment --production; sudo -u coinmarket /usr/local/bin/coin-market reconcile-reigns; sudo -u coinmarket /usr/local/bin/coin-market production-smoke'
-```
-
-Update `VERSIONS.md` after a successful deploy:
-
-- current local version
-- active VPS release path
-- public HTTPS checks
-- any changed CSS cache keys
-
-## Prompt For Other Codex Sessions
-
-Use this prompt when another session needs to deploy the current site:
-
-```text
-Read AGENTS.md, PROJECT_SPEC.md, VERSIONS.md, and DEPLOY.md first.
-
-Deploy the current coin.im static site to the VPS.
-
-Use host `iva` and create a clean release under `/var/www/coin.im/releases/<timestamp>`.
-Deploy only the production static files listed in DEPLOY.md.
-Switch `/var/www/coin.im/current` to the new release with a symlink.
-Run `sudo nginx -t` and reload Nginx.
-Verify `https://coin.im/`, `/mail`, `/mail/`, `/ru`, `/es`, `/ms`, `/msru`, `/handling`, `/open`, `/api/open/health`, CSS assets, `robots.txt`, `sitemap.xml`, and `https://www.coin.im/`.
-Do not touch MX, TXT, SRV, DKIM, DMARC, or DNS unless I explicitly ask.
-Update VERSIONS.md with the new active release and verification results.
-```
+Only these two parts of the same legacy retirement set are stored under the R2 retirement prefix. No legacy code remains on the application server or in a second local checkout. The new repository retains all prior Git history.

@@ -1,2 +1,0 @@
-cryptography>=42,<47
-uvicorn>=0.30,<1

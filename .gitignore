@@ -1,20 +1,7 @@
-.venv/
-__pycache__/
-.DS_Store
-.preview.log
 node_modules/
-*.log
-.env
-.env.*
-.wrangler/
-qa-screens/
-*.py[cod]
-# Local prompt material and first-pass reconstruction helpers are not public source.
-reference/brief*.txt
-reference/design-catalog.json
-reference/homepage*.html
-scripts/restore_public.py
-scripts/update_homepage.py
-# Investor Match: drafts, import sources, rights notes and the suppression list are not public source.
-data/investors/private/
-!data/investors/private/README.md
+.next/
+.env*
+!.env.example
+*.tsbuildinfo
+qa-artifacts/
+.DS_Store

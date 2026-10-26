@@ -1,48 +1,51 @@
 # coin.im
 
-Source for the coin.im website, Market Scan pages, encrypted enquiry intake and
-message-wall backend. The current site uses static HTML/CSS/JavaScript, Python
-ASGI services, Nginx and systemd. Production release history is in [VERSIONS.md](VERSIONS.md).
+An English crypto trade-planning assistant: shared trade brief, deterministic decimal spot/cash scenarios, a hypothetical linear USD call at expiry, and a real server-side streaming language-model adapter. No database, account, wallet connection, execution or conversation persistence.
 
-## Local preview
+## Local setup
 
-Requires Python 3.11 or newer. Node.js is used for JavaScript checks and calculators.
+Requires Node.js 22.23 or later and npm.
 
 ```sh
-git clone https://github.com/2dog111/coinim.git
-cd coinim
-python3.12 -m venv .venv
-.venv/bin/pip install -r server/requirements.txt
-.venv/bin/python scripts/preview.py
+npm ci
+cp .env.example .env.local
+npm run dev -- --port 3216
 ```
 
-Open http://127.0.0.1:4173. The preview uses temporary local enquiry storage and
-does not send enquiries to production. Stop it with Ctrl+C.
+Open http://127.0.0.1:3216. Remove `PUBLIC_ORIGIN` from `.env.local` for local development. The calculator works with empty provider variables. AI chat returns a typed `NOT_CONFIGURED` state until `LLM_API_KEY`, `LLM_MODEL`, and `LLM_BASE_URL` are set.
 
-## Outreach links
-
-The homepage form reads three query parameters so an outreach email or message can land on a form that is already filled in: `https://coin.im/?site=example.com&name=Alex&plan=pilot`. `site` fills the website field, `name` the name field, `plan` (`pilot` or `scale`) the campaign interest; the page then scrolls to the form. Values are plain text, trimmed to the field limits, and never overwrite what a visitor has already typed. The same parameters work on `/ms`.
-
-## Checks
+The provider must support the OpenAI-compatible chat-completions SSE wire format. `LLM_BASE_URL` ends before `/chat/completions`. `LLM_AUTH_MODE=google-key` sends `x-goog-api-key`; otherwise bearer authorization is used. `LLM_REASONING_EFFORT` is optional and must be supported by the selected model. Production uses a probe-verified Vertex endpoint and `google/gemini-3.5-flash`; secrets stay in `/etc/coin-im-planner/planner.env` and are never bundled or committed. `PUBLIC_ORIGIN=https://coin.im` and `TRUST_PROXY=1` apply only behind the supplied Nginx configuration, which overwrites client IP headers.
 
 ```sh
-.venv/bin/pip install -r server/requirements-market.txt
-npm run lint
-npm run typecheck
 npm test
+npm run typecheck
+npm run lint
+npm run build
+npm start -- --port 3216
 ```
 
-`COIN_PYTHON` can select another Python environment for these npm commands.
-Browser checks in `scripts/qa-ms-campaign.cjs` require Playwright with Chromium
-and WebKit and a separate local preview on port 4174.
+`tests/browser.mjs` uses the owner's isolated Playwright runtime and checks desktop and narrow Chromium layouts. Adapt its runtime and executable paths on another machine. `QA_URL` selects a different deployment. Screenshots and synthetic provider responses are ignored under `qa-artifacts/`.
 
-## Project instructions
+## Structure
 
-- [AGENTS.md](AGENTS.md): rules for changes and protected content.
-- [PROJECT_SPEC.md](PROJECT_SPEC.md): current contracts and historical context.
-- [MS_CHANGE_REPORT.md](MS_CHANGE_REPORT.md): Market Scan integration and checks.
-- [DEPLOY.md](DEPLOY.md): existing VPS release procedure.
+- `app/page.tsx`, `app/globals.css`: two-section homepage, form, comparisons, accessible native modal chat and safe Markdown.
+- `lib/trade.ts`: schemas, one versioned brief, Decimal calculations, calendar deadlines, conservative explicit-input extraction and conflict checks.
+- `lib/server.ts`: bounded request/history parsing, origin checks, rate/concurrency limits, timeout/cancellation and streaming provider adapter.
+- `app/api/{analyze,chat,status}`: server endpoints. Status exposes availability booleans only.
+- `tests/trade.test.ts`: financial, state, provenance and server boundary checks.
+- `docs/PRODUCT_SPEC.md`: owner's specification.
+- `scripts/deploy/`: systemd/Nginx configuration and the legacy retirement archive procedure.
 
-Publishing source to GitHub does not deploy the website. Production requires an
-explicit owner instruction. Keep credentials, enquiry data, local environments
-and generated QA screenshots outside Git.
+## Calculation scope and limits
+
+Percentage-based spot scenarios include entry and exit fees inside the committed amount. The smaller position commits the lesser of capital and the stated loss budget. Unknown tolerance stays unknown; zero tolerance gives zero market exposure. Cash has zero market PnL without assumed interest. Platform, custody, currency and tax risks are outside the calculation.
+
+The worked call is hypothetical, linear, USD-denominated and valid only at expiry. Changing the example asset removes its imaginary quote. No live market adapter is connected. Executable options need verified contract terms, multiplier, settlement currency, fees and quotes. Event contracts need matching settlement rules and execution prices; touch and close conditions are not interchangeable. Staged entry needs a price path or explicit fills.
+
+Chat can update explicitly stated budget, loss, target, recognized ticker and calendar-month horizon through conservative parsing. Ambiguous changes require clarification or editing the form. It cannot write verified quotes or engine results. Narrative model output remains interpretation; numerical comparisons are rendered separately from the engine. The in-memory rate limiter is designed for one Node process; multiple replicas require a shared limiter. No raw conversations or financial notes are logged by the app.
+
+## Deployment
+
+See `DEPLOY.md` and `PROGRESS.md` for the verified release and checks. The existing Git history is retained as the parent of the rebuild. No old product is served by the new application; old endpoints return 404. Existing legacy records and keys are preserved separately from retired code.
+
+Protocol references: [Next.js self-hosted application setup](https://nextjs.org/docs/app/getting-started/installation), [Google Chat Completions compatibility](https://cloud.google.com/vertex-ai/generative-ai/docs/multimodal/call-vertex-using-openai-library).
