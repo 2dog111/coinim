@@ -102,3 +102,11 @@ Implementation: extend shared typed inputs with an explicitly chosen commitment 
 - A real public 390px browser run parsed SOL, $5,000 budget, $1,000 price-loss limit and the six-month exit from a single sentence. The first answer completed at 1,311 characters, and the +20% follow-up at 980 characters. Both retained all three constraints and produced no browser errors.
 - The final public first-screen screenshots at 390px and 1440px show the question, input, controls and start prompts. Narrow Chromium is responsive emulation, not Mobile Safari.
 - Superseded code releases and temporary build directories are removed only after the final public checks; the R2 legacy retirement set and working data are untouched.
+
+## Always-visible trade form — final release
+
+- Removed click-to-expand budget, loss and deadline panels and the optional-details disclosure. Both sliders, exact amount fields, deadline buttons, date input and additional fields remain visible. The loss slider works before a budget is entered. The first-screen copy now explicitly invites a crypto trade question and follow-ups.
+- The primary action ends at about 812–813px in clean 360/390×844 Chromium screenshots. The form has no horizontal overflow. Returning to edit during an in-flight response aborts the request so a late answer cannot overwrite changes.
+- 39 unit/API tests, TypeScript, ESLint and local/Linux production builds passed. The complete local and public isolated Chromium suite passed at 360, 390, 430, 768 and 1440px with no unexpected console errors or horizontal overflow. This is responsive Chromium, not a real iPhone or Mobile Safari test.
+- During public provider QA, Google Vertex returned `429 RESOURCE_EXHAUSTED`; the UI now shows a clear retry state and retains the brief rather than surfacing a generic transport failure. A later real public request completed with HTTP 200, a 1,398-character response and the SOL, $5,000 budget, $1,000 loss limit and three-month exit intact.
+- Active release: `20261026-visible-controls-979f712`. The previous release and temporary Linux build directories were removed after public verification. The Cloudflare R2 legacy retirement set and working data were not changed.

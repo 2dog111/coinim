@@ -22,7 +22,7 @@ Do not restart the old payment/outbox services as part of routine recovery. Rest
 
 ## Verified release: 2026-10-26
 
-`/opt/coin-im-planner/releases/20261026-chat-first-7818a5e` is the active question-first chat release. A single input and three compact optional settings lead to the conversation and deterministic trade brief. Real production Gemini analysis and a follow-up streamed to completion with the user's budget, loss limit and deadline preserved. Market data remains intentionally unavailable. Legacy retirement archives below are unchanged. Final release verification and cleanup are recorded in `docs/VERIFICATION.md` and `PROGRESS.md`.
+`/opt/coin-im-planner/releases/20261026-visible-controls-979f712` is the active question-first chat release. Budget, maximum loss, deadline, date and additional fields remain visible without disclosure buttons. The first public mobile viewport contains the primary action. A real production Gemini analysis completed with the user's budget, loss limit and deadline preserved. A temporary upstream `429 RESOURCE_EXHAUSTED` is presented as a clear retry state while retaining the calculated plan. Market data remains intentionally unavailable. Legacy retirement archives below are unchanged. Final release verification and cleanup are recorded in `docs/VERIFICATION.md` and `PROGRESS.md`.
 
 Retirement archive checksums:
 
