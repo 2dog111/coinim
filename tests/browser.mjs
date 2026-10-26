@@ -225,6 +225,7 @@ for (const width of widths) {
   await page.getByRole("button", { name: "Send", exact: true }).click();
   await pendingChat;
   await page.getByRole("button", { name: "Edit trade" }).click();
+  await page.waitForFunction(() => document.activeElement?.id === "idea");
   await page.locator("#target").fill("25");
   await page.waitForTimeout(1600);
   assert.equal(await page.locator("#target").inputValue(), "25");

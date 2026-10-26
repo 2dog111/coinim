@@ -185,6 +185,7 @@ export async function handle(req: Request, analysis = false) {
         }),
       });
       if (!upstream.ok || !upstream.body) {
+        const providerLimit = upstream.status === 429;
         clearTimeout(timeout);
         active--;
         return Response.json(
@@ -192,12 +193,13 @@ export async function handle(req: Request, analysis = false) {
             brief,
             change,
             error: {
-              code: "PROVIDER",
-              message:
-                "We couldn’t complete the analysis. Your scenario calculations are still available.",
+              code: providerLimit ? "PROVIDER_LIMIT" : "PROVIDER",
+              message: providerLimit
+                ? "AI is temporarily unavailable. Your scenario calculations are still available. Try again later."
+                : "We couldn’t complete the analysis. Your scenario calculations are still available.",
             },
           },
-          { status: 502 },
+          { status: providerLimit ? 503 : 502, headers: { "Cache-Control": "no-store" } },
         );
       }
       const reader = upstream.body.getReader();

@@ -271,6 +271,31 @@ test("provider transport failure preserves validated follow-up and hides raw err
     });
   }
 });
+test("provider capacity error keeps the calculated brief and gives a clear retry state", async () => {
+  const originalFetch = globalThis.fetch;
+  const names = ["LLM_API_KEY", "LLM_MODEL", "LLM_BASE_URL"] as const;
+  const saved = names.map((n) => process.env[n]);
+  process.env.LLM_API_KEY = "synthetic-test-key";
+  process.env.LLM_MODEL = "synthetic-test-model";
+  process.env.LLM_BASE_URL = "https://provider.invalid";
+  globalThis.fetch = async () =>
+    new Response("private quota details", { status: 429 });
+  try {
+    const r = await handle(req(body), true);
+    const d = await r.json();
+    assert.equal(r.status, 503);
+    assert.equal(d.error.code, "PROVIDER_LIMIT");
+    assert.match(d.error.message, /Try again later/);
+    assert.equal(d.brief.inputs.loss, 1000);
+    assert.ok(!JSON.stringify(d).includes("private quota details"));
+  } finally {
+    globalThis.fetch = originalFetch;
+    names.forEach((n, j) => {
+      if (saved[j] === undefined) delete process.env[n];
+      else process.env[n] = saved[j];
+    });
+  }
+});
 test("late and reconsideration questions preserve constraints until explicit edits", () => {
   assert.deepEqual(extractExplicit("What if I’m right, but late?"), {});
   assert.deepEqual(extractExplicit("What would make me walk away?"), {});
