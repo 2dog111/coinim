@@ -70,13 +70,14 @@ test("free text extracts explicit constraints; conflicts stay visible", () => {
     thesis:
       "I want to buy $5,000 of SOL. It could rise 50% in six months; I am willing to lose $1,000.",
   });
-  assert.equal(r.inputs.budget, 5000);
+  assert.equal(r.inputs.budget, null);
+  assert.equal(r.inputs.committed, 5000);
   assert.equal(r.inputs.loss, 1000);
   assert.equal(r.inputs.asset, "SOL");
   assert.equal(r.inputs.target, 50);
-  const conflict = reconcile({ ...r.inputs, budget: 6000 });
+  const conflict = reconcile({ ...r.inputs, committed: 6000 });
   assert.match(conflict.conflicts[0], /form says 6000/);
-  assert.equal(conflict.inputs.budget, 6000);
+  assert.equal(conflict.inputs.committed, 6000);
 });
 test("follow-up updates only explicit fields", () => {
   assert.deepEqual(extractExplicit("What if it rises only 20%?"), {
@@ -173,6 +174,10 @@ test("server preserves risk across follow-up", async () => {
   assert.equal(d.brief.inputs.target, 20);
   assert.equal(d.brief.inputs.loss, 1000);
   assert.equal(d.brief.version, 2);
+  assert.equal(
+    d.change,
+    "Target updated from +50% to +20%. Your loss limit is unchanged.",
+  );
 });
 test("resolved deadline does not drift across follow-ups", () => {
   const submitted = makeBrief(
@@ -200,4 +205,94 @@ test("third-party risk limits do not change the user risk budget", () => {
     undefined,
   );
   assert.equal(extractExplicit("I’m only willing to lose $1,000").loss, 1000);
+});
+
+test("provider transport failure preserves validated follow-up and hides raw errors", async () => {
+  const originalFetch = globalThis.fetch;
+  const names = ["LLM_API_KEY", "LLM_MODEL", "LLM_BASE_URL"] as const;
+  const saved = names.map((n) => process.env[n]);
+  process.env.LLM_API_KEY = "synthetic-test-key";
+  process.env.LLM_MODEL = "synthetic-test-model";
+  process.env.LLM_BASE_URL = "https://provider.invalid";
+  globalThis.fetch = async () => {
+    throw new Error("private provider details");
+  };
+  try {
+    const r = await handle(
+      req({ ...body, message: "What if it rises only 20%?", followup: true }),
+    );
+    assert.equal(r.status, 502);
+    const d = await r.json();
+    assert.equal(d.brief.inputs.target, 20);
+    assert.equal(d.brief.inputs.loss, 1000);
+    assert.equal(d.error.code, "NETWORK");
+    assert.ok(!JSON.stringify(d).includes("private provider details"));
+  } finally {
+    globalThis.fetch = originalFetch;
+    names.forEach((n, j) => {
+      if (saved[j] === undefined) delete process.env[n];
+      else process.env[n] = saved[j];
+    });
+  }
+});
+test("late and reconsideration questions preserve constraints until explicit edits", () => {
+  assert.deepEqual(extractExplicit("What if I’m right, but late?"), {});
+  assert.deepEqual(extractExplicit("What would make me walk away?"), {});
+  assert.deepEqual(
+    extractExplicit(
+      "My reason to reconsider is the evidence I specified no longer holds.",
+    ),
+    { reconsider: "the evidence I specified no longer holds." },
+  );
+});
+test("missing a fifty-percent target does not imply a total call loss", () => {
+  for (const [r, pnl] of [
+    [0.25, -500],
+    [0.3, 0],
+    [0.35, 500],
+  ])
+    assert.equal(callExpiry(exampleInputs.hypothetical!, r).pnl, pnl);
+});
+test("stream with an invented financial figure is rejected before reaching narrative UI", async () => {
+  const originalFetch = globalThis.fetch;
+  const names = ["LLM_API_KEY", "LLM_MODEL", "LLM_BASE_URL"] as const,
+    saved = names.map((n) => process.env[n]);
+  process.env.LLM_API_KEY = "synthetic-test-key";
+  process.env.LLM_MODEL = "synthetic-test-model";
+  process.env.LLM_BASE_URL = "https://provider.invalid";
+  globalThis.fetch = async () =>
+    new Response(
+      "data: " +
+        JSON.stringify({
+          choices: [
+            { delta: { content: "Read the plan.\nYour target is $14" } },
+          ],
+        }) +
+        "\n\n" +
+        "data: " +
+        JSON.stringify({
+          choices: [{ delta: { content: "0.\n" }, finish_reason: "stop" }],
+        }) +
+        "\n\ndata: [DONE]\n\n",
+    );
+  try {
+    const r = await handle(req(body));
+    const events = (await r.text())
+      .trim()
+      .split("\n")
+      .map((line) => JSON.parse(line));
+    assert.equal(
+      events.find((e) => e.brief).brief.calculations.smaller.target.pnl,
+      500,
+    );
+    assert.ok(!events.some((e) => e.delta?.includes("$14")));
+    assert.equal(events.find((e) => e.error).error.code, "NARRATIVE_FIGURES");
+    assert.ok(!events.some((e) => e.done));
+  } finally {
+    globalThis.fetch = originalFetch;
+    names.forEach((n, j) => {
+      if (saved[j] === undefined) delete process.env[n];
+      else process.env[n] = saved[j];
+    });
+  }
 });

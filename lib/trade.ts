@@ -7,6 +7,8 @@ export const inputSchema = z
     asset: z.string().trim().max(180),
     thesis: z.string().max(4000),
     budget: amount,
+    committed: amount.default(null),
+    reconsider: z.string().max(2000).default(""),
     loss: amount,
     target: z.number().finite().positive().max(100000).nullable(),
     horizon: z.enum(["1", "3", "6", "date"]),
@@ -36,6 +38,8 @@ export const emptyInputs: TradeInputs = {
   asset: "",
   thesis: "",
   budget: null,
+  committed: null,
+  reconsider: "",
   loss: null,
   target: null,
   horizon: "6",
@@ -51,6 +55,7 @@ export const exampleInputs: TradeInputs = {
   ...emptyInputs,
   asset: "Example coin",
   budget: 5000,
+  committed: 1000,
   loss: 1000,
   target: 50,
   fee: 0,
@@ -62,7 +67,7 @@ export const exitLabels = {
   help: "Help me decide",
 };
 export const noMarket =
-  "No verified market data is connected. I can compare scenarios from your inputs, but I cannot verify today’s price, news, or executable instrument quotes.";
+  "Scenario analysis is available. Current prices, market evidence, and executable quotes are not verified.";
 const n = (v: Decimal) => v.toDecimalPlaces(8).toNumber();
 export function spot(B: number, A: number, r: number, feePercent = 0) {
   if (
@@ -121,7 +126,7 @@ export function validateInputs(i: TradeInputs, now = new Date()) {
     !Number.isFinite(i.fee) ||
     i.fee < 0 ||
     i.fee > 10 ||
-    [i.budget, i.loss].some(
+    [i.budget, i.loss, i.committed].some(
       (v) => v !== null && (!Number.isFinite(v) || v < 0 || v > 1e12),
     )
   )
@@ -134,6 +139,8 @@ export function validateInputs(i: TradeInputs, now = new Date()) {
     errors.push(
       "Set a loss budget between $0 and your capital budget, or choose ‘Not sure yet’.",
     );
+  if (i.committed !== null && i.budget !== null && i.committed > i.budget)
+    errors.push("Keep the intended commitment within your available capital.");
   if (
     i.horizon === "date" &&
     (!/^\d{4}-\d{2}-\d{2}$/.test(i.date) ||
@@ -153,14 +160,21 @@ export function calculate(i: TradeInputs) {
   return {
     targetIllustrative: i.target === null,
     full: { target: spot(B, B, target, i.fee), drop: spot(B, B, -0.3, i.fee) },
+    intended:
+      i.committed !== null && i.committed <= B
+        ? {
+            target: spot(B, i.committed, target, i.fee),
+            drop: spot(B, i.committed, -0.3, i.fee),
+          }
+        : null,
     smaller:
       A === null
         ? null
         : { target: spot(B, A, target, i.fee), drop: spot(B, A, -0.3, i.fee) },
-    wait: { pnl: 0, final: B },
+    wait: { pnl: 0, final: B, maxLoss: 0 },
     exceedsLoss: i.loss !== null && B > i.loss,
     call:
-      i.hypothetical && i.asset === "Example coin"
+      i.hypothetical && i.asset === "Example coin" && i.fee === 0
         ? {
             atExpiry: callExpiry(i.hypothetical, target),
             label:
@@ -235,11 +249,15 @@ export function extractExplicit(text: string): Partial<TradeInputs> {
     return patch;
   const budget = matchNumber(
     text,
-    `(?:(?<!loss )budget(?: is| of| to)?|buy|invest|commit|spend)\\s*\\$${numberText}`,
+    `(?:(?<!loss )budget(?: is| of| to)?|capital available(?: is| of| to)?)\\s*\\$${numberText}`,
+  );
+  const committed = matchNumber(
+    text,
+    `(?:I (?:want to |plan to |will )?(?:buy|invest|commit|spend)|(?:set|change) my (?:spot )?commitment to)\\s*\\$${numberText}`,
   );
   const loss = matchNumber(
     text,
-    `(?:I(?: am|[’']m)(?: only)? willing to lose|I (?:can|will|would) (?:lose|risk)(?: up to)?|my loss (?:budget|limit)(?: is| of| to)?|(?:set|change|increase|raise|lower|reduce|update) (?:my )?loss (?:budget|limit)(?: is| of| to)?|^loss (?:budget|limit)(?: is| of| to)?)\\s*\\$${numberText}`,
+    `(?:I(?: am|[’']m)(?: only)? (?:willing to lose|comfortable losing)|I (?:can|will|would) (?:lose|risk)(?: up to)?|my loss (?:budget|limit)(?: is| of| to)?|(?:set|change|increase|raise|lower|reduce|update) (?:my )?loss (?:budget|limit)(?: is| of| to)?|^loss (?:budget|limit)(?: is| of| to)?)\\s*\\$${numberText}`,
   );
   const target = matchNumber(
     text,
@@ -247,6 +265,9 @@ export function extractExplicit(text: string): Partial<TradeInputs> {
   );
   const asset = text.match(/\b(BTC|ETH|SOL)\b/i)?.[1];
   if (budget !== undefined) patch.budget = budget;
+  if (committed !== undefined) patch.committed = committed;
+  const reconsider = text.match(/^my reason to reconsider is\s+(.+)$/i)?.[1];
+  if (reconsider) patch.reconsider = reconsider;
   if (loss !== undefined) patch.loss = loss;
   if (target !== undefined && target > 0) patch.target = target;
   if (asset) patch.asset = asset.toUpperCase();

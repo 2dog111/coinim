@@ -44,3 +44,26 @@ Complete consistent production retirement archive, switch Nginx, verify public b
 - The final release is `20261026-trade-planner-v1`; the preceding new-build release and temporary build directory were removed after verification.
 - Source is published to the existing GitHub `2dog111/coinim` main branch with `9c84d75` retained in its ancestry. No force push or history rewrite.
 - No required provider environment variables are missing on production. Verified external market quotes remain intentionally unconfigured.
+
+## Prompt 2 — implementation and release
+Continue the existing application with three homepage sections, an independent interactive example, exact call thresholds, a persistent conditional plan and readable plan export. Preserve real Gemini streaming and safety boundaries. Publish to coin.im and existing GitHub main after checks. No new market-data integration or storage.
+
+Implementation: extend shared typed inputs with an explicitly chosen commitment and user-defined reconsideration condition; distinguish these from available capital. Add full-precision zero-fee hypothetical threshold helpers. Preserve the legacy retirement archive unchanged.
+
+### Prompt 2 progress
+- Three-section UI and independent interactive example implemented; confirm-before-replace, typed commitment/reconsideration inputs, deterministic workspace artifacts and plain-text copy implemented.
+- All five Chromium widths passed the complete interaction suite, including stale-response cancellation and a shortened visual viewport check. This is not real Mobile Safari/keyboard validation.
+- Initial real Gemini late-thesis probe incorrectly offered a deadline extension and overgeneralized call losses. Instructions were strengthened, deterministic late-outcome explanations were added, and reasoning effort changed from minimal to low; final real-provider retest pending.
+- Mathematical tests include exact crossover equality and neighbors, invalid/no crossover, fee isolation and partial call losses below the thesis target.
+
+### Prompt 2 ready for deployment
+35 tests, typecheck and lint pass. Five-width local browser suite passed. Final real late-thesis retest completed successfully and preserved constraints after instruction/reasoning refinement. Building the final Linux release next; then public matrix, provider smoke, superseded-code cleanup and GitHub push.
+
+### Prompt 2 final release
+- Deployed `20261026-conditional-plan-v2-final`; systemd active, loopback/public status healthy, Nginx configuration valid.
+- Final local/Linux builds, 36 tests, TypeScript and ESLint pass.
+- Numeric hallucination in a real probe led to a line-buffered prose boundary: financial figures stay in engine artifacts, rejected explanations retain the calculated plan. The guard is not a semantic truth verifier.
+- Final public real-provider analysis and both target/late follow-ups completed with no stream errors and preserved the loss limit/deadline.
+- Final public Chromium suite passed at all five widths with no unexpected console errors or horizontal overflow. The focus assertion waits for the actual scheduled focus callback.
+- Superseded server releases and the temporary Linux build directory removed after public verification. The final release is the only application code release on the server; legacy working data and R2 retirement archives remain unchanged.
+- Delivering the verified source to the existing GitHub main branch without rewriting history.

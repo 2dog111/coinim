@@ -24,12 +24,13 @@ npm run build
 npm start -- --port 3216
 ```
 
-`tests/browser.mjs` uses the owner's isolated Playwright runtime and checks desktop and narrow Chromium layouts. Adapt its runtime and executable paths on another machine. `QA_URL` selects a different deployment. Screenshots and synthetic provider responses are ignored under `qa-artifacts/`.
+`tests/browser.mjs` uses the owner's isolated Playwright runtime and checks Chromium at 360, 390, 430, 768 and 1440px. Adapt its runtime and executable paths on another machine. `QA_URL` selects a different deployment. Screenshots and synthetic provider responses are ignored under `qa-artifacts/`.
 
 ## Structure
 
-- `app/page.tsx`, `app/globals.css`: two-section homepage, form, comparisons, accessible native modal chat and safe Markdown.
+- `app/page.tsx`, `app/home.tsx`, `app/trade-artifacts.tsx`, `app/globals.css`: three-section homepage, form, comparisons, accessible native modal chat and safe Markdown.
 - `lib/trade.ts`: schemas, one versioned brief, Decimal calculations, calendar deadlines, conservative explicit-input extraction and conflict checks.
+- `lib/plan.ts`: full-precision hypothetical call thresholds, independent example calendar, route-fit assessment, conditional exit plan and readable plan snapshot.
 - `lib/server.ts`: bounded request/history parsing, origin checks, rate/concurrency limits, timeout/cancellation and streaming provider adapter.
 - `app/api/{analyze,chat,status}`: server endpoints. Status exposes availability booleans only.
 - `tests/trade.test.ts`: financial, state, provenance and server boundary checks.
@@ -49,3 +50,14 @@ Chat can update explicitly stated budget, loss, target, recognized ticker and ca
 See `DEPLOY.md` and `PROGRESS.md` for the verified release and checks. The existing Git history is retained as the parent of the rebuild. No old product is served by the new application; old endpoints return 404. Existing legacy records and keys are preserved separately from retired code.
 
 Protocol references: [Next.js self-hosted application setup](https://nextjs.org/docs/app/getting-started/installation), [Google Chat Completions compatibility](https://cloud.google.com/vertex-ai/generative-ai/docs/multimodal/call-vertex-using-openai-library).
+
+
+## Conditional plans (Prompt 2)
+
+The homepage example has independent state and four selectable price scenarios. Its initial scenario is +20%; this does not change the example's +50% thesis or the visitor's target. Sections two and three share one example with a date-only UTC start and a six-calendar-month deadline. Loading it into a nonempty workspace requires confirmation.
+
+Available capital and the user's explicitly intended spot commitment are separate inputs. A stated purchase amount does not silently become available capital. The user may adopt a reason to reconsider in Assumptions or explicitly state it in chat. The model cannot adopt its own proposal. All market evidence remains unverified.
+
+Call break-even and the valid upside crossover use Decimal arithmetic at 60 significant digits. Crossover equality can be evaluated as an exact numerator/denominator ratio; only display values are rounded. The helper is restricted to the hypothetical linear USD, zero-fee example. No valid upside crossover, invalid inputs and nonzero fees are handled explicitly. Real instruments still require verified contract terms and a premium.
+
+Copy plan produces a timestamped plain-text snapshot of current assumptions, deterministic scenarios, data provenance and exit conditions. It excludes chat transcripts. Edits cancel pending analysis, mark previous narrative as stale, and recalculate the persistent artifacts locally. Transport failures preserve server-validated brief updates. Financial figures and dates appear only in deterministic artifacts. The real model provides prose; the stream buffers each line and rejects detected numeric claims before publishing that line. A rejected explanation leaves the calculated plan available. This is a presentation boundary, not a semantic truth verifier. Gemini uses low reasoning effort and temperature 0.2; a real smoke test is required after changing its instructions.

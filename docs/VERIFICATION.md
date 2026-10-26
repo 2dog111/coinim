@@ -21,3 +21,21 @@ The final public follow-up returned HTTP 200, 1,805 answer characters and a comp
 R2 contains one retirement set with two encrypted parts. Both were downloaded and compared byte-for-byte; hashes are in `DEPLOY.md`. The production database passed SQLite integrity and foreign-key checks. Legacy code and stale runtime/service files were removed after the new public site passed checks. Legacy working records and key files remain intact outside the new release. Git history is preserved.
 
 Local evidence is intentionally ignored in `qa-artifacts/`: browser report, desktop/narrow page and panel screenshots, and synthetic real-provider transcripts.
+
+## Prompt 2 verification
+
+36 tests cover the existing safeguards plus call break-even and crossover, exact rational equality, neighbors of the crossover, invalid/nonexistent crossovers, isolation from nonzero-fee plans, date-only shared example deadlines, capital versus commitment, scenario fit versus evidence, readable snapshot contents and preservation of validated changes after provider transport failures. Additional call fixtures show partial loss, break-even and profit below the +50% target; a missed target alone cannot establish a total premium loss.
+
+The local browser suite passed at 360, 390, 430, 768 and 1440px in isolated Chromium 151.0.7922.34, with no unexpected console errors or horizontal page overflow. It covers all four example scenarios, keyboard radio navigation, independence from the user's inputs, confirmation before replacing a draft, plan-copy content, modal focus, cancellation/retry and rejection of a delayed stale response. A 390×420 visual-viewport resize checks composer visibility; it is not a real mobile-keyboard or Mobile Safari test.
+
+Real Gemini probes found an incorrect suggestion to hold spot past the deadline, followed by an overgeneralized total-premium-loss claim. The instructions now explicitly bind spot to the user deadline and distinguish call outcomes by expiry price. Reasoning effort is low and temperature is 0.2. A real retest returned HTTP 200, 2,099 answer characters and completion, explained that the spot plan misses a later rally, and conditioned the call outcome on strike/break-even. The loss budget and deadline stayed unchanged. Model prose is still interpretation; persistent financial and exit artifacts are generated deterministically.
+
+New evidence is under ignored `qa-artifacts/v2-*`; the legacy archive was not changed.
+
+### Final Prompt 2 release
+
+Release `20261026-conditional-plan-v2-final` uses the same real provider, with a prose-only explanation boundary. An additional real probe had repeated an incorrect target price. Financial amounts, dates and comparisons therefore stay in deterministic artifacts; provider lines containing numeric claims are rejected before that line is streamed. A split-chunk regression test verifies rejection without losing the computed brief. This guard does not verify the truth of qualitative model interpretations or detect every possible spelled-out quantity.
+
+Final local and Linux production builds pass, as do 36 tests, TypeScript and ESLint. The final public synthetic conversation completed three requests (initial comparison, +20% target follow-up and late-thesis follow-up), each HTTP 200 with a done event and no stream error. The target changed to 20%, while the loss limit and resolved deadline were retained. The final late answer described closing spot as a user action required by the plan and an expired call as unable to benefit from a later rally. These probes establish working integration and observed behaviors, not a guarantee of model accuracy; qualitative prose can still simplify the alternatives or threshold boundary. Engine artifacts remain authoritative.
+
+A public browser run caught a test timing race: focus was asserted before the scheduled composer-focus callback. The test now waits for actual focus before asserting it, without manually moving focus. The final public rerun passed at 360, 390, 430, 768 and 1440px with zero unexpected console errors and no horizontal page overflow. No real iPhone/Safari, external market quote, alert or execution integration was tested or added.

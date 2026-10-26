@@ -22,7 +22,7 @@ Do not restart the old payment/outbox services as part of routine recovery. Rest
 
 ## Verified release: 2026-10-26
 
-`/opt/coin-im-planner/releases/20261026-trade-planner-v1` is the sole active release. Public desktop and narrow Chromium interactions passed. A real production Gemini response streamed to completion. Market data is intentionally unavailable.
+`/opt/coin-im-planner/releases/20261026-conditional-plan-v2-final` is the active Prompt 2 release. The three-section interface adds interactive examples, conditional thresholds and an exit plan. Real production Gemini analysis and two follow-ups streamed to completion. Market data remains intentionally unavailable. Legacy retirement archives below are unchanged. Final release verification and cleanup are recorded in `docs/VERIFICATION.md` and `PROGRESS.md`.
 
 Retirement archive checksums:
 
