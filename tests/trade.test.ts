@@ -296,6 +296,55 @@ test("provider capacity error keeps the calculated brief and gives a clear retry
     });
   }
 });
+test("Market Scan Gemini web route queues and returns a safe narrative", async () => {
+  const originalFetch = globalThis.fetch;
+  const names = [
+    "LLM_PROVIDER",
+    "MARKET_SCAN_WEBCHAT_URL",
+    "MARKET_SCAN_WEBCHAT_KEY",
+    "MARKET_SCAN_WEBCHAT_TIMEOUT_MS",
+  ] as const;
+  const saved = names.map((n) => process.env[n]);
+  let answerPolls = 0;
+  process.env.LLM_PROVIDER = "market-scan-gemini-web";
+  process.env.MARKET_SCAN_WEBCHAT_URL = "https://mscan.test/scan/api/webchat";
+  process.env.MARKET_SCAN_WEBCHAT_KEY = "synthetic-market-scan-key";
+  process.env.MARKET_SCAN_WEBCHAT_TIMEOUT_MS = "30000";
+  globalThis.fetch = async (input) => {
+    const url = String(input);
+    if (url.endsWith("/ask"))
+      return new Response(JSON.stringify({ id: "job-test" }), { status: 201 });
+    answerPolls++;
+    if (answerPolls === 1)
+      return new Response(JSON.stringify({ status: "sent" }), { status: 202 });
+    return new Response(
+      JSON.stringify({
+        status: "answered",
+        complete: true,
+        a: "Start with the stated constraint.\nWaiting remains a legitimate route.",
+      }),
+      { status: 200 },
+    );
+  };
+  try {
+    const r = await handle(req(body), true);
+    assert.equal(r.status, 200);
+    const events = (await r.text())
+      .trim()
+      .split("\n")
+      .map((line) => JSON.parse(line));
+    assert.equal(events[0].brief.inputs.loss, 1000);
+    assert.ok(events.some((event) => event.delta?.includes("Waiting remains")));
+    assert.ok(events.some((event) => event.done));
+    assert.equal(answerPolls, 2);
+  } finally {
+    globalThis.fetch = originalFetch;
+    names.forEach((n, j) => {
+      if (saved[j] === undefined) delete process.env[n];
+      else process.env[n] = saved[j];
+    });
+  }
+});
 test("late and reconsideration questions preserve constraints until explicit edits", () => {
   assert.deepEqual(extractExplicit("What if I’m right, but late?"), {});
   assert.deepEqual(extractExplicit("What would make me walk away?"), {});

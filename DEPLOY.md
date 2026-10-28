@@ -4,6 +4,8 @@ Target: aiagentiva, IP 193.181.215.57, SSH alias `ops`. The live OS hostname cur
 
 New service: `coin-im-planner`, isolated account `coinplanner`, loopback port 3216. Code: `/opt/coin-im-planner/current`, releases in `/opt/coin-im-planner/releases/`. Secrets: `/etc/coin-im-planner/planner.env` (root only). Reverse proxy: `/etc/nginx/conf.d/coin.im.conf`.
 
+The normal provider is the configured Vertex-compatible endpoint. If Vertex capacity is unavailable, the service can use Market Scan's authenticated Gemini web tab by setting `LLM_PROVIDER=market-scan-gemini-web`, `MARKET_SCAN_WEBCHAT_URL=https://mscan.biz/scan/api/webchat`, and a dedicated operator `MARKET_SCAN_WEBCHAT_KEY` in the root-only environment file. The web route is asynchronous and may take minutes, so its Nginx `/api/` `proxy_read_timeout` must be increased above `MARKET_SCAN_WEBCHAT_TIMEOUT_MS` before enabling it. Never put the Market Scan key in the repository or browser bundle.
+
 Build with the lockfile on the Linux host in a temporary staging directory. Copy `.next/standalone` and `.next/static` into a fresh release, plus `public` if it exists. Create `.next/cache` in the release, owned by `coinplanner`, before starting the service; the systemd `ReadWritePaths` setting requires that path. Do not copy `.env*`, source archives or developer evidence into the release. Start the service and check loopback status and homepage before switching Nginx. Run `nginx -t`, reload and verify HTTPS, assets, same-origin API requests and a real synthetic chat. Remove superseded code and staging directories only after successful public checks.
 
 ## Retired product

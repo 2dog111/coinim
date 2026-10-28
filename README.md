@@ -12,9 +12,9 @@ cp .env.example .env.local
 npm run dev -- --port 3216
 ```
 
-Open http://127.0.0.1:3216. Remove `PUBLIC_ORIGIN` from `.env.local` for local development. The calculator works with empty provider variables. AI chat returns a typed `NOT_CONFIGURED` state until `LLM_API_KEY`, `LLM_MODEL`, and `LLM_BASE_URL` are set.
+Open http://127.0.0.1:3216. Remove `PUBLIC_ORIGIN` from `.env.local` for local development. The calculator works with empty provider variables. AI chat returns a typed `NOT_CONFIGURED` state until either the compatible provider variables (`LLM_API_KEY`, `LLM_MODEL`, `LLM_BASE_URL`) or the Market Scan Gemini web variables are set.
 
-The provider must support the OpenAI-compatible chat-completions SSE wire format. `LLM_BASE_URL` ends before `/chat/completions`. `LLM_AUTH_MODE=google-key` sends `x-goog-api-key`; otherwise bearer authorization is used. `LLM_REASONING_EFFORT` is optional and must be supported by the selected model. Production uses a probe-verified Vertex endpoint and `google/gemini-3.5-flash`; secrets stay in `/etc/coin-im-planner/planner.env` and are never bundled or committed. `PUBLIC_ORIGIN=https://coin.im` and `TRUST_PROXY=1` apply only behind the supplied Nginx configuration, which overwrites client IP headers.
+The default provider must support the OpenAI-compatible chat-completions SSE wire format. `LLM_BASE_URL` ends before `/chat/completions`. `LLM_AUTH_MODE=google-key` sends `x-goog-api-key`; otherwise bearer authorization is used. `LLM_REASONING_EFFORT` is optional and must be supported by the selected model. As an alternative to Vertex, `LLM_PROVIDER=market-scan-gemini-web` uses the authenticated Gemini web tab already running in Market Scan: set `MARKET_SCAN_WEBCHAT_URL=https://mscan.biz/scan/api/webchat` and the operator `MARKET_SCAN_WEBCHAT_KEY`. That route is asynchronous and can take minutes; its secret stays in `/etc/coin-im-planner/planner.env` and is never bundled or committed. `PUBLIC_ORIGIN=https://coin.im` and `TRUST_PROXY=1` apply only behind the supplied Nginx configuration, which overwrites client IP headers.
 
 ```sh
 npm test

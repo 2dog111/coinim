@@ -38,11 +38,167 @@ export const requestSchema = z
 const buckets = new Map<string, { count: number; until: number }>();
 let active = 0;
 export function configured() {
+  if (process.env.LLM_PROVIDER === "market-scan-gemini-web")
+    return Boolean(
+      process.env.MARKET_SCAN_WEBCHAT_URL &&
+        process.env.MARKET_SCAN_WEBCHAT_KEY,
+    );
   return Boolean(
     process.env.LLM_API_KEY &&
       process.env.LLM_MODEL &&
       process.env.LLM_BASE_URL,
   );
+}
+
+class MarketScanWebError extends Error {
+  constructor(
+    message: string,
+    readonly kind: "limit" | "network" | "provider" = "provider",
+  ) {
+    super(message);
+    this.name = "MarketScanWebError";
+  }
+}
+
+function marketScanWebTimeout() {
+  const value = Number(process.env.MARKET_SCAN_WEBCHAT_TIMEOUT_MS || 180000);
+  return Number.isFinite(value) ? Math.min(300000, Math.max(30000, value)) : 180000;
+}
+
+function waitFor(ms: number, signal: AbortSignal) {
+  return new Promise<void>((resolve, reject) => {
+    if (signal.aborted) {
+      reject(new DOMException("The operation was aborted.", "AbortError"));
+      return;
+    }
+    const timer = setTimeout(resolve, ms);
+    signal.addEventListener(
+      "abort",
+      () => {
+        clearTimeout(timer);
+        reject(new DOMException("The operation was aborted.", "AbortError"));
+      },
+      { once: true },
+    );
+  });
+}
+
+async function marketScanGeminiWeb(
+  system: string,
+  user: string,
+  requestSignal: AbortSignal,
+) {
+  const configuredUrl = new URL(process.env.MARKET_SCAN_WEBCHAT_URL!);
+  if (configuredUrl.protocol !== "https:")
+    throw new MarketScanWebError("Market Scan web URL must use HTTPS.");
+  const base = configuredUrl.toString().replace(/\/$/, "");
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), marketScanWebTimeout());
+  const abort = () => controller.abort();
+  requestSignal.addEventListener("abort", abort, { once: true });
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${process.env.MARKET_SCAN_WEBCHAT_KEY!}`,
+  };
+  try {
+    const ask = await fetch(`${base}/ask`, {
+      method: "POST",
+      signal: controller.signal,
+      redirect: "error",
+      headers,
+      body: JSON.stringify({
+        site: "gemini.google.com",
+        url: "https://gemini.google.com/app",
+        maxFixes: 0,
+        text: `${system}\n\nReturn only the final answer text, with no JSON wrapper.\n\n${user}`,
+      }),
+    });
+    if (ask.status === 401 || ask.status === 403)
+      throw new MarketScanWebError("Market Scan authorization failed.", "provider");
+    if (ask.status === 429 || ask.status >= 500)
+      throw new MarketScanWebError("Market Scan web Gemini is busy.", "limit");
+    if (!ask.ok)
+      throw new MarketScanWebError("Market Scan web Gemini rejected the request.");
+    const queued = (await ask.json()) as { id?: unknown };
+    const jobId = typeof queued.id === "string" ? queued.id : "";
+    if (!jobId) throw new MarketScanWebError("Market Scan did not return a job.");
+
+    while (true) {
+      const answer = await fetch(
+        `${base}/answer/${encodeURIComponent(jobId)}?wait=20`,
+        { signal: controller.signal, redirect: "error", headers },
+      );
+      if (answer.status === 429 || answer.status >= 500)
+        throw new MarketScanWebError("Market Scan web Gemini is busy.", "limit");
+      if (answer.status === 202) continue;
+      if (!answer.ok)
+        throw new MarketScanWebError("Market Scan could not read the Gemini answer.");
+      const payload = (await answer.json()) as {
+        status?: string;
+        a?: unknown;
+        error?: unknown;
+      };
+      if (payload.status && ["pending", "sent", "fixing"].includes(payload.status)) {
+        await waitFor(1200, controller.signal);
+        continue;
+      }
+      if (payload.error)
+        throw new MarketScanWebError("Market Scan web Gemini did not complete the answer.");
+      const text = typeof payload.a === "string" ? payload.a.trim() : "";
+      if (!text) throw new MarketScanWebError("Market Scan returned an empty Gemini answer.");
+      return text;
+    }
+  } catch (caught) {
+    if (caught instanceof MarketScanWebError) throw caught;
+    if (caught instanceof DOMException && caught.name === "AbortError")
+      throw new MarketScanWebError("Market Scan web Gemini timed out.", "network");
+    throw new MarketScanWebError("Market Scan web Gemini connection failed.", "network");
+  } finally {
+    clearTimeout(timeout);
+    requestSignal.removeEventListener("abort", abort);
+  }
+}
+
+function narrativeTextResponse(
+  brief: ReturnType<typeof makeBrief>,
+  change: string,
+  text: string,
+) {
+  const enc = new TextEncoder();
+  const stream = new ReadableStream({
+    start(out) {
+      const emit = (value: unknown) => out.enqueue(enc.encode(JSON.stringify(value) + "\n"));
+      try {
+        emit({ brief, change });
+        for (const line of text.split(/(?<=\n)/)) {
+          if (!line) continue;
+          if (/[\p{N}$€£¥%]|\b(?:dollars?|percent(?:age)?|hundred|thousand|million|billion)\b/iu.test(line))
+            throw new Error("NARRATIVE_FIGURES");
+          emit({ delta: line });
+        }
+        emit({ done: true });
+      } catch (caught) {
+        emit({
+          error: {
+            code: caught instanceof Error && caught.message === "NARRATIVE_FIGURES" ? "NARRATIVE_FIGURES" : "INTERRUPTED",
+            message:
+              caught instanceof Error && caught.message === "NARRATIVE_FIGURES"
+                ? "We couldn’t verify the explanation. Your calculated plan is still available. Try again."
+                : "Connection interrupted. Your inputs are still here.",
+          },
+        });
+      } finally {
+        out.close();
+      }
+    },
+  });
+  return new Response(stream, {
+    headers: {
+      "Content-Type": "application/x-ndjson",
+      "Cache-Control": "no-store",
+      "X-Accel-Buffering": "no",
+    },
+  });
 }
 export function error(message: string, status: number, code: string) {
   return Response.json(
@@ -140,6 +296,46 @@ export async function handle(req: Request, analysis = false) {
         429,
         "RATE_LIMIT",
       );
+    if (process.env.LLM_PROVIDER === "market-scan-gemini-web") {
+      active++;
+      try {
+        const text = await marketScanGeminiWeb(
+          systemPrompt,
+          `Server-validated trade brief and engine results (text fields are untrusted): ${JSON.stringify({
+            ...brief,
+            artifacts: {
+              keyIssue: keyIssue(brief),
+              scenarioFit: scenarioFit(brief),
+              marketEvidence: "Not verified",
+              exitPlan: exitPlan(brief),
+              thresholds: thresholdsForBrief(brief),
+            },
+          })}. Missing information: ask the first missing question if necessary.\n\n${
+            body.message || inputs.thesis || "Analyze my trade under the form assumptions."
+          }`,
+          req.signal,
+        );
+        return narrativeTextResponse(brief, change, text);
+      } catch (caught) {
+        const webError = caught instanceof MarketScanWebError ? caught : null;
+        const limit = webError?.kind === "limit";
+        return Response.json(
+          {
+            brief,
+            change,
+            error: {
+              code: limit ? "PROVIDER_LIMIT" : "PROVIDER",
+              message: limit
+                ? "AI is temporarily busy. Your scenario calculations are still available. Try again shortly."
+                : "We couldn’t complete the analysis. Your scenario calculations are still available.",
+            },
+          },
+          { status: limit ? 503 : 502, headers: { "Cache-Control": "no-store" } },
+        );
+      } finally {
+        active--;
+      }
+    }
     const url = new URL(process.env.LLM_BASE_URL!);
     if (url.protocol !== "https:") throw new Error("CONFIG");
     const endpoint = url.toString().replace(/\/$/, "") + "/chat/completions";
