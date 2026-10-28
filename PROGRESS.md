@@ -110,3 +110,12 @@ Implementation: extend shared typed inputs with an explicitly chosen commitment 
 - 39 unit/API tests, TypeScript, ESLint and local/Linux production builds passed. The complete local and public isolated Chromium suite passed at 360, 390, 430, 768 and 1440px with no unexpected console errors or horizontal overflow. This is responsive Chromium, not a real iPhone or Mobile Safari test.
 - During public provider QA, Google Vertex returned `429 RESOURCE_EXHAUSTED`; the UI now shows a clear retry state and retains the brief rather than surfacing a generic transport failure. A later real public request completed with HTTP 200, a 1,398-character response and the SOL, $5,000 budget, $1,000 loss limit and three-month exit intact.
 - Active release: `20261026-visible-controls-979f712`. The previous release and temporary Linux build directories were removed after public verification. The Cloudflare R2 legacy retirement set and working data were not changed.
+
+## Gemini web release, 2026-10-28
+
+- Added the `market-scan-gemini-web` provider mode. coin.im now sends the validated trade brief to Market Scan's authenticated `gemini-web` route, polls its asynchronous answer, and returns the existing NDJSON chat stream without exposing the operator key to the browser.
+- Built and activated `/opt/coin-im-planner/releases/20261028-geminiweb-7b62d4c` on aiagentiva. The root-only environment contains a dedicated Market Scan operator key; the previous Vertex variables remain available for rollback, but the active provider is Gemini web.
+- Nginx `/api/` read timeout is 240 seconds for the web provider's bounded 180-second wait. `nginx -t` passed and Nginx was reloaded.
+- Loopback synthetic chat returned HTTP 200 with a complete `done` event and 1,241 answer characters. Public `https://coin.im/api/analyze` returned HTTP 200 with a complete `done` event and 1,295 answer characters; both had no error events.
+- Public `/api/status` and homepage return 200; status remains `calculator=true`, `chat=true`, `marketData=false`. Isolated Chromium 390×844 and 1440×900 checks passed with no console, page, request, HTTP or overflow errors.
+- Only the active release remains on the application server; temporary Linux build and QA request files were removed. GitHub main contains commit `7b62d4c` plus this deployment record.
