@@ -32,6 +32,7 @@ const sources = [
   ["Odysseas on X: EIP-7702 transaction sequence", "https://x.com/odysseas_eth/status/2115910280140276155", "Independent analysis"],
   ["Arbiscan: Arbitrum Security Council transaction", "https://arbiscan.io/tx/0xb69c81774f507d46ce776aeaed8b4d31df96dd66ce6fd05073481011835355d6", "On-chain record"],
   ["Binance: October 2026 Proof of Reserves", "https://www.binance.com/en/proof-of-reserves", "Exchange reserve records"],
+  ["TRM Labs: ten-chain reconstruction and attribution", "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history", "Blockchain intelligence; assessment as of Oct 30, 00:30 UTC"],
 ];
 
 function SourceLink({ source }: { source: (typeof sources)[number] }) {
@@ -112,6 +113,13 @@ export default function BinanceBreakdown() {
             is an inference, not a confirmed root cause.
           </p>
           <p>
+            TRM’s cross-chain reconstruction says the other nine affected
+            networks used ordinary signed transfers; EIP-7702 describes the
+            Ethereum path only. TRM reads the wider pattern as evidence of a
+            compromise to Binance’s hot-wallet signing infrastructure. That
+            is TRM’s assessment, while Binance’s technical review remains open.
+          </p>
+          <p>
             Etherscan records 2,961.99 ETH arriving at Binance 14 at 23:55:47
             UTC, more than three hours after the authorization was created. It
             was an internal deposit consolidation while the delegation remained
@@ -153,8 +161,10 @@ export default function BinanceBreakdown() {
             markets; existing users could still repay and withdraw.
           </p>
           <p>
-            The pause limited new exposure while existing users retained the
-            ability to repay and withdraw.
+            TRM also traced $300 million USDT on Tron to a wallet that began
+            supplying it to JustLend. Its report does not quantify a loan from
+            that position. The documented Aave borrowing and the JustLend
+            deposit are separate findings.
           </p>
         </section>
 
@@ -178,9 +188,33 @@ export default function BinanceBreakdown() {
           </p>
         </section>
 
-        <section className="incident-section" aria-labelledby="unknown-title">
-          <p className="incident-eyebrow">06 · What remains unknown</p>
-          <h2 id="unknown-title">The final loss is not yet reconciled</h2>
+        <section className="incident-section" aria-labelledby="trm-title">
+          <p className="incident-eyebrow">06 · Cross-chain reconstruction · October 30, 2026</p>
+          <h2 id="trm-title">TRM traces the attack across ten networks</h2>
+          <p>
+            TRM estimates that about $6.36 billion left Binance-attributed
+            wallets across ten blockchains, mostly in roughly 20 minutes from
+            20:05 UTC on October 29. Its estimate values transfers at the
+            asset prices when they occurred; Binance separately reports an
+            estimated impact of about $6.3 billion.
+          </p>
+          <p>
+            TRM attributes the operation to TraderTraitor, a North Korean
+            hacking group, with high confidence based on its on-chain and
+            off-chain intelligence. Binance has not named an attacker. TRM’s
+            report is an analyst attribution, not Binance’s finding.
+          </p>
+          <p>
+            In its 00:30 UTC snapshot, TRM counted more than 420,000 ETH and
+            18,270 BTC in attacker-controlled wallets, then valued at about
+            $2.4 billion. This is a dated holdings estimate, not a final
+            unrecovered-loss total.
+          </p>
+        </section>
+
+        <section className="incident-section" aria-labelledby="unknown-final-title">
+          <p className="incident-eyebrow">07 · What remains unknown</p>
+          <h2 id="unknown-final-title">The final loss is not yet reconciled</h2>
           <p>
             Binance has not published the forensic chain from laptop access to
             each wallet signature or reconciled transfers against frozen,
@@ -195,8 +229,10 @@ export default function BinanceBreakdown() {
             Market Scan searched more than 100 result records through Keenable
             and SerpAPI, including X-targeted queries, and ran additional web
             searches through its two-account Gemini Web router. The register
-            lists 33 source entries; repeated reports and overlapping freeze
-            totals are not counted as independent evidence. X posts were found
+            lists 34 source entries; repeated reports and overlapping freeze
+            totals are not counted as independent evidence. The Oct 30 follow-up
+            checked TRM’s report through Keenable and Gemini Web; result records
+            are not counted as separate confirmations. X posts were found
             through search, not a direct X API.
           </p>
           <details>
