@@ -13,7 +13,7 @@ const sources = [
   ["Etherscan: later 2,961.99 ETH transfer into Binance 14", "https://etherscan.io/tx/0xc1f0fdb94fb909e3f12aa345e81c05d4adb0ea2d3243e844920d62a2936f4ae0", "On-chain record"],
   ["Etherscan: 780M USDC transfer", "https://etherscan.io/tx/0xdc102dd89dded5a83f1008906883ffb7c81ff3b7d7965d8c7277d170b5e17481", "On-chain record"],
   ["Etherscan: collection address", "https://etherscan.io/address/0x5227f603C1eE34CE3C06eFe6477003BDfCCB2f8c", "On-chain record"],
-  ["Aave Risk: response to the hot-wallet incident", "https://governance.aave.com/t/binance-hot-wallet-exploit-aaves-response/25954", "First-hand protocol response"],
+  ["Aave Risk / LlamaRisk: attacker position and cross-network freeze", "https://governance.aave.com/t/binance-hot-wallet-exploit-aaves-response/25954", "Protocol risk update and response"],
   ["Reuters: $2.54B frozen in the first public count", "https://www.reuters.com/legal/transactional/tether-circle-freeze-238-billion-after-binance-reports-security-incident-2026-10-29/", "Wire report"],
   ["Associated Press: Binance investigates the incident", "https://apnews.com/article/39cda8ceb8095e036334a18549d3d20d", "Wire report"],
   ["CoinDesk: reserve data and Binance 14", "https://www.coindesk.com/business/2026/10/30/binance-hack-drained-wallets-backing-customer-assets-reserve-data-shows", "Independent reserve-data analysis"],
@@ -24,7 +24,6 @@ const sources = [
   ["BleepingComputer: cross-chain loss estimates", "https://www.bleepingcomputer.com/news/security/binance-probes-potential-58-billion-crypto-theft-hack/", "Security news"],
   ["Sky News: reported scale and market reaction", "https://news.sky.com/story/crypto-worth-billions-frozen-over-potential-security-issue-13605627", "News report"],
   ["DRK: annotated transaction timeline and evidence ledger", "https://drk.vc/news/binance-14-eip-7702-drain", "Independent on-chain reconstruction"],
-  ["LlamaRisk: Aave freeze mechanics", "https://governance.aave.com/t/binance-hot-wallet-exploit-aaves-response/25954", "Protocol risk analysis"],
   ["Binance on X: verified frozen-asset total", "https://x.com/binance/status/2115970069696217576", "Primary update"],
   ["Binance Square: verified cumulative frozen total", "https://www.binance.com/en/square/post/10-30-2026-binance-suspends-deposits-and-withdrawals-during-security-investigation-382683663031259", "Primary update"],
   ["Arbitrum on X: Security Council action", "https://x.com/arbitrum/status/2115961730920841644", "Primary update"],
@@ -33,6 +32,8 @@ const sources = [
   ["Arbiscan: Arbitrum Security Council transaction", "https://arbiscan.io/tx/0xb69c81774f507d46ce776aeaed8b4d31df96dd66ce6fd05073481011835355d6", "On-chain record"],
   ["Binance: October 2026 Proof of Reserves", "https://www.binance.com/en/proof-of-reserves", "Exchange reserve records"],
   ["TRM Labs: ten-chain reconstruction and attribution", "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history", "Blockchain intelligence; assessment as of Oct 30, 00:30 UTC"],
+  ["Yi He on X: deposits operating, withdrawal work and 48-hour estimate", "https://x.com/heyibinance/status/2116021551262740985", "Primary service update; Oct 30, 04:17 UTC"],
+  ["Binance on X: withdrawal revamp and investigation update", "https://x.com/binance/status/2116026356740034858", "Primary service update; Oct 30, 04:36 UTC"],
 ];
 
 function SourceLink({ source }: { source: (typeof sources)[number] }) {
@@ -71,21 +72,24 @@ export default function BinanceBreakdown() {
             outflows followed across other networks.
           </p>
           <p>
-            Binance’s October 30 preliminary update traces unauthorized
-            withdrawals from a compromised DevOps laptop to a service container.
-            It reports no evidence of a wallet private-key leak. The exact route
-            from that access to the signed transactions remains unpublished.
+            Binance’s initial account linked unauthorized withdrawals to a
+            possibly compromised DevOps engineer’s laptop and service
+            container. It reported no evidence of a wallet private-key leak.
           </p>
         </div>
 
         <section className="incident-section" aria-labelledby="confirmed-title">
           <p className="incident-eyebrow">01 · Binance’s response</p>
-          <h2 id="confirmed-title">Binance suspended exchange flows during its response</h2>
+          <h2 id="confirmed-title">Withdrawals remain paused during a security revamp</h2>
           <p>
-            Binance says it revoked the affected address authorization and is
-            working with law enforcement and blockchain partners. The company
-            says it will cover all losses with SAFU and corporate funds. Its
-            published incident account remains preliminary.
+            In a service update at 04:36 UTC on October 30, Binance said
+            deposits were operating normally while withdrawals remained paused
+            during a revamp of the withdrawal service and related addresses.
+            It expected withdrawals to resume within 48 hours. Binance also
+            said the incident involved multiple factors; the compromised
+            computer may have been only the entry point. The full path is still
+            under investigation. Binance says it revoked the affected
+            authorization and will cover all losses with SAFU and company funds.
           </p>
         </section>
 
@@ -155,10 +159,17 @@ export default function BinanceBreakdown() {
           <p className="incident-eyebrow">04 · The spillover</p>
           <h2 id="spillover-title">Aave froze markets while stolen funds moved through DeFi</h2>
           <p>
-            Aave’s risk team says an address in the suspected attacker cluster
-            supplied $60 million USDT and borrowed 19,762 WETH, then valued at
-            about $44.6 million. Aave paused supply and borrowing across affected
-            markets; existing users could still repay and withdraw.
+            Aave Risk says the attacker’s only position across its networks and
+            versions holds $59.9 million USDT against debt of 19,762 WETH,
+            valued at $43.8 million in its assessment. It says the position is
+            over-collateralized, remains subject to ordinary liquidation and
+            poses no risk to Aave suppliers. No attacker wallet had interacted
+            with Aave since 21:01 UTC at the time of the report.
+          </p>
+          <p>
+            Aave froze 175 V3 reserves across 16 networks and 117 V4 reserves
+            across four. New supply and borrowing stopped; existing users could
+            still repay or withdraw, and liquidations continued.
           </p>
           <p>
             TRM also traced $300 million USDT on Tron to a wallet that began
@@ -181,10 +192,9 @@ export default function BinanceBreakdown() {
           <p>
             The transfer was valued at about $30.5 million. Binance separately
             put its cumulative verified freeze at about $3 billion, without
-            itemizing whether this Arbitrum transfer is included. The amount is
-            not added to Binance’s total here. Binance has not published a final
-            net-loss figure, and deposits and withdrawals remained suspended in
-            its latest update.
+            itemizing whether this Arbitrum transfer is included, so the
+            overlap remains unresolved and the amount is not added to Binance’s
+            total.
           </p>
         </section>
 
@@ -229,11 +239,12 @@ export default function BinanceBreakdown() {
             Market Scan searched more than 100 result records through Keenable
             and SerpAPI, including X-targeted queries, and ran additional web
             searches through its two-account Gemini Web router. The register
-            lists 34 source entries; repeated reports and overlapping freeze
+            lists 35 source entries; repeated reports and overlapping freeze
             totals are not counted as independent evidence. The Oct 30 follow-up
-            checked TRM’s report through Keenable and Gemini Web; result records
-            are not counted as separate confirmations. X posts were found
-            through search, not a direct X API.
+            checked Binance’s service update and Aave Risk’s protocol report
+            through Keenable and Gemini Web. Search results are not counted as
+            separate confirmations. X posts were found through search, not a
+            direct X API.
           </p>
           <details>
             <summary>Open the core evidence register</summary>
