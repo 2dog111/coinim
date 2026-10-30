@@ -32,6 +32,7 @@ npm start -- --port 3216
 - `lib/trade.ts`: schemas, one versioned brief, Decimal calculations, calendar deadlines, conservative explicit-input extraction and conflict checks.
 - `lib/plan.ts`: full-precision hypothetical call thresholds, independent example calendar, route-fit assessment, conditional exit plan and readable plan snapshot.
 - `lib/server.ts`: bounded request/history parsing, origin checks, rate/concurrency limits, timeout/cancellation and streaming provider adapter.
+- `lib/insights.ts`, `app/insights/[key]`: first-party visitor, country and bot counts in a private operator dashboard. It stores keyed visitor hashes and does not save IP addresses or full browser signatures. Country lookup uses country.is.
 - `app/api/{analyze,chat,status}`: server endpoints. Status exposes availability booleans only.
 - `tests/trade.test.ts`: financial, state, provenance and server boundary checks.
 - `docs/PRODUCT_SPEC.md`: owner's specification.
@@ -48,6 +49,8 @@ Chat can update explicitly stated budget, loss, target, recognized ticker and ca
 ## Deployment
 
 See `DEPLOY.md` and `PROGRESS.md` for the verified release and checks. The existing Git history is retained as the parent of the rebuild. No old product is served by the new application; old endpoints return 404. Existing legacy records and keys are preserved separately from retired code.
+
+Traffic insights require independent 32-byte random hex `INSIGHTS_SECRET` and `INSIGHTS_HASH_KEY` values. Hourly aggregates are stored in `/var/lib/coin-im-planner/insights.json` for 31 days; the secret is the dashboard URL path. Nginx access logging is disabled for `/insights/`. Country results are IP-based estimates: country.is receives the visitor IP for a country-only lookup and states that it does not log requests. Only country codes and keyed visitor hashes are persisted.
 
 Protocol references: [Next.js self-hosted application setup](https://nextjs.org/docs/app/getting-started/installation), [Google Chat Completions compatibility](https://cloud.google.com/vertex-ai/generative-ai/docs/multimodal/call-vertex-using-openai-library).
 
