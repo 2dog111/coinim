@@ -25,6 +25,7 @@ const sources = [
   ["DRK: annotated transaction timeline and evidence ledger", "https://drk.vc/news/binance-14-eip-7702-drain", "Independent on-chain reconstruction"],
   ["LlamaRisk: Aave freeze mechanics", "https://governance.aave.com/t/binance-hot-wallet-exploit-aaves-response/25954", "Protocol risk analysis"],
   ["Binance on X: verified frozen-asset total", "https://x.com/binance/status/2115970069696217576", "Primary update"],
+  ["Binance Square: verified cumulative frozen total", "https://www.binance.com/en/square/post/10-30-2026-binance-suspends-deposits-and-withdrawals-during-security-investigation-382683663031259", "Primary update"],
   ["Arbitrum on X: Security Council action", "https://x.com/arbitrum/status/2115961730920841644", "Primary update"],
   ["ZachXBT on X: Arbitrum transaction", "https://x.com/zachxbt/status/2115960582230913357", "On-chain investigator"],
   ["Odysseas on X: EIP-7702 transaction sequence", "https://x.com/odysseas_eth/status/2115910280140276155", "Independent analysis"],
@@ -160,12 +161,12 @@ export default function BinanceBreakdown() {
             show a return to Binance.
           </p>
           <p>
-            The reported value is about $30.5 million. Binance’s cumulative
-            on-chain freeze figure is about $3 billion, but the published posts
-            do not say whether the Arbitrum amount is included or additional.
-            It is therefore not added to that total here. Binance has not
-            published a final net-loss figure, and deposits and withdrawals
-            remained suspended in its latest update.
+            The transfer was valued at about $30.5 million. Binance separately
+            put its cumulative verified freeze at about $3 billion, without
+            itemizing whether this Arbitrum transfer is included. The amount is
+            not added to Binance’s total here. Binance has not published a final
+            net-loss figure, and deposits and withdrawals remained suspended in
+            its latest update.
           </p>
         </section>
 
@@ -183,11 +184,12 @@ export default function BinanceBreakdown() {
         <section id="incident-sources" className="incident-sources" aria-labelledby="sources-title">
           <h2 id="sources-title">Sources and method</h2>
           <p>
-            Market Scan searches used Keenable and SerpAPI across more than 100
-            result records, including site-restricted X queries. The register
-            links 31 core sources; repeated reports and overlapping freeze
+            Market Scan searched more than 100 result records through Keenable
+            and SerpAPI, including X-targeted queries, and ran additional web
+            searches through its two-account Gemini Web router. The register
+            lists 32 source entries; repeated reports and overlapping freeze
             totals are not counted as independent evidence. X posts were found
-            through search APIs, not a direct X API.
+            through search, not a direct X API.
           </p>
           <details>
             <summary>Open the core evidence register</summary>
