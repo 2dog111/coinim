@@ -119,3 +119,10 @@ Implementation: extend shared typed inputs with an explicitly chosen commitment 
 - Loopback synthetic chat returned HTTP 200 with a complete `done` event and 1,241 answer characters. Public `https://coin.im/api/analyze` returned HTTP 200 with a complete `done` event and 1,295 answer characters; both had no error events.
 - Public `/api/status` and homepage return 200; status remains `calculator=true`, `chat=true`, `marketData=false`. Isolated Chromium 390×844 and 1440×900 checks passed with no console, page, request, HTTP or overflow errors.
 - Only the active release remains on the application server; temporary Linux build and QA request files were removed. GitHub main contains commit `7b62d4c` plus this deployment record.
+
+## Binance report copy refresh — 2026-10-30
+
+- Tightened the report copy to remove repeated facts and reader prompts. Added the Arbitrum freeze update and kept its ~$30.5M out of Binance's ~$3B cumulative total because the sources do not establish whether it is already included. Updated title, description, canonical, Open Graph and X metadata.
+- Market Scan Keenable and SerpAPI searches yielded over 100 result records, including X-targeted queries; 31 core source links are listed in the report. Market Scan's Gemini analysis route failed to return a usable analysis, so the report uses source-by-source verification rather than claiming a Market Scan model synthesis.
+- TypeScript, ESLint, production build and isolated Chromium checks at 390×844 and 1440×900 passed. No test suite was run. Screenshots: `qa-artifacts/binance-report-refinement/`.
+- Next: commit and push the verified source, deploy that exact commit to aiagentiva, check public metadata/article/assets/status, then remove the superseded release and record release proof here and in `docs/VERIFICATION.md`.

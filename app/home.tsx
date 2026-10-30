@@ -1,6 +1,7 @@
 "use client";
 
 import Markdown from "react-markdown";
+import BinanceBreakdown from "./binance-breakdown";
 import {
   Fragment,
   useEffect,
@@ -483,6 +484,7 @@ export default function Home({
 
       {view === "home" ? (
         <main id="main-content">
+          <BinanceBreakdown />
           <section className="hero" id="start" aria-labelledby="headline">
             <div className="composer-width">
               <p className="product-kicker">Crypto trade planning, in a conversation</p>
