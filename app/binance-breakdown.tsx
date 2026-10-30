@@ -10,6 +10,7 @@ const sources = [
   ["Etherscan: Binance 14", "https://etherscan.io/address/0x28C6c06298d514Db089934071355E5743bf21d60", "On-chain record"],
   ["Etherscan: authorization transaction", "https://etherscan.io/tx/0xad99264d5532ae0dd04b2004eebda05f25657e70dacb764f7ac8d4ccd051298b", "On-chain record"],
   ["Etherscan: first sweep transaction", "https://etherscan.io/tx/0x53bd38b816c23e74134786c29a8c18d792777998a3b9326047b583100e88e2f3", "On-chain record"],
+  ["Etherscan: later 2,961.99 ETH transfer into Binance 14", "https://etherscan.io/tx/0xc1f0fdb94fb909e3f12aa345e81c05d4adb0ea2d3243e844920d62a2936f4ae0", "On-chain record"],
   ["Etherscan: 780M USDC transfer", "https://etherscan.io/tx/0xdc102dd89dded5a83f1008906883ffb7c81ff3b7d7965d8c7277d170b5e17481", "On-chain record"],
   ["Etherscan: collection address", "https://etherscan.io/address/0x5227f603C1eE34CE3C06eFe6477003BDfCCB2f8c", "On-chain record"],
   ["Aave Risk: response to the hot-wallet incident", "https://governance.aave.com/t/binance-hot-wallet-exploit-aaves-response/25954", "First-hand protocol response"],
@@ -81,8 +82,9 @@ export default function BinanceBreakdown() {
           <h2 id="confirmed-title">Binance suspended exchange flows during its response</h2>
           <p>
             Binance says it revoked the affected address authorization and is
-            working with law enforcement and blockchain partners. Its incident
-            account remains preliminary.
+            working with law enforcement and blockchain partners. The company
+            says it will cover all losses with SAFU and corporate funds. Its
+            published incident account remains preliminary.
           </p>
         </section>
 
@@ -108,6 +110,12 @@ export default function BinanceBreakdown() {
             key. That could reconcile Blockaid’s observed authorization with
             Binance’s statement that it found no key leak, but this explanation
             is an inference, not a confirmed root cause.
+          </p>
+          <p>
+            Etherscan records 2,961.99 ETH arriving at Binance 14 at 23:55:47
+            UTC, more than three hours after the authorization was created. It
+            was an internal deposit consolidation while the delegation remained
+            active. No outgoing transfer appears after it in the address record.
           </p>
         </section>
 
@@ -187,7 +195,7 @@ export default function BinanceBreakdown() {
             Market Scan searched more than 100 result records through Keenable
             and SerpAPI, including X-targeted queries, and ran additional web
             searches through its two-account Gemini Web router. The register
-            lists 32 source entries; repeated reports and overlapping freeze
+            lists 33 source entries; repeated reports and overlapping freeze
             totals are not counted as independent evidence. X posts were found
             through search, not a direct X API.
           </p>
