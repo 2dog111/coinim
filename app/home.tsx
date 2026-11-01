@@ -7,7 +7,6 @@ import {
   useEffect,
   useRef,
   useState,
-  type CSSProperties,
   type FormEvent,
 } from "react";
 import {
@@ -34,11 +33,6 @@ type Setting = "budget" | "time" | "loss";
 
 const greeting = "What trade would you like to explore?";
 
-const starters = [
-  "I have $5,000 for SOL",
-  "How much could I lose on BTC?",
-  "Help me plan an exit",
-];
 
 function amountDraft(value: number | null) {
   return value === null
@@ -257,10 +251,6 @@ export default function Home({
     confirmExample();
   }
 
-  function chooseStarter(text: string) {
-    update({ thesis: text });
-    idea.current?.focus();
-  }
 
   function keepInputs() {
     exampleDialog.current?.close();
@@ -291,7 +281,7 @@ export default function Home({
     if (draftError) {
       setFormError(draftError);
       setError(draftError);
-      openWorkspace();
+      if (view !== "home") openWorkspace();
       return;
     }
     const validation = validateInputs(inputs);
@@ -301,7 +291,7 @@ export default function Home({
     ) {
       setFormError(validation[0]);
       setError(validation[0]);
-      openWorkspace();
+      if (view !== "home") openWorkspace();
       return;
     }
     const actualInputs =
@@ -448,12 +438,6 @@ export default function Home({
     showHome();
   }
 
-  const budgetValue = parseFinancialInput(budgetDraft);
-  const validBudget =
-    budgetValue !== null && Number.isFinite(budgetValue) && budgetValue > 0;
-  const sliderMax = validBudget ? budgetValue : 50000;
-  const sliderValue =
-    inputs.loss === null ? 0 : Math.min(inputs.loss, sliderMax);
   return (
     <>
       <a className="skip-link" href="#main-content">
@@ -493,11 +477,6 @@ export default function Home({
               <p className="hero-lead">
                 Set the budget, cap the loss and choose the exit before you commit.
               </p>
-              <ul className="planner-principles" aria-label="Required plan inputs">
-                <li>Budget</li>
-                <li>Max loss</li>
-                <li>Exit</li>
-              </ul>
               <form
                 id="trade-form"
                 className="intake-card"
@@ -506,7 +485,7 @@ export default function Home({
                 aria-describedby={formError ? "form-error" : undefined}
               >
                 <div className="idea-label-row">
-                  <label htmlFor="idea">Your question</label>
+                  <label htmlFor="idea">What trade are you considering?</label>
                   {inputs.hypothetical && (
                     <span className="source-tag">Illustrative example</span>
                   )}
@@ -517,7 +496,7 @@ export default function Home({
                   maxLength={4000}
                   value={inputs.thesis}
                   onChange={(event) => update({ thesis: event.target.value })}
-                  placeholder="I have $5,000 for SOL and can afford to lose $1,000. What is the plan?"
+                  placeholder="e.g. I’m considering SOL. Help me weigh the risk and plan an exit."
                   onKeyDown={(event) => {
                     if (event.key === "Enter" && !event.shiftKey && !event.nativeEvent.isComposing) {
                       event.preventDefault();
@@ -528,7 +507,7 @@ export default function Home({
 
                 <div className="visible-settings" aria-label="Trade settings">
                 <div className="setting-panel" id="budget-panel">
-                  <label htmlFor="budget">Budget, USD</label>
+                  <label htmlFor="budget">Available budget</label>
                   <div className="currency-entry">
                     <span aria-hidden="true">$</span>
                     <input
@@ -536,7 +515,7 @@ export default function Home({
                       inputMode="decimal"
                       autoComplete="off"
                       value={budgetDraft}
-                      placeholder="Not set"
+                      placeholder="Amount in USD"
                       onChange={(event) =>
                         updateAmount("budget", event.target.value)
                       }
@@ -547,57 +526,11 @@ export default function Home({
                       }}
                     />
                   </div>
-                  <input
-                    id="budget-range"
-                    className="range budget-range"
-                    type="range"
-                    min="100"
-                    max="50000"
-                    step="100"
-                    value={Math.min(inputs.budget ?? 100, 50000)}
-                    aria-valuetext={
-                      inputs.budget === null
-                        ? "Budget not set. Move the slider to choose one."
-                        : `${money(inputs.budget)} capital available`
-                    }
-                    style={
-                      {
-                        "--fill": `${((Math.min(inputs.budget ?? 100, 50000) - 100) / 49900) * 100}%`,
-                      } as CSSProperties
-                    }
-                    onChange={(event) =>
-                      updateAmount("budget", event.target.value)
-                    }
-                  />
-                  <div className="range-limits" aria-hidden="true">
-                    <span>$100</span>
-                    <span>$50k+</span>
-                  </div>
-                  <div className="quick-values" aria-label="Budget presets">
-                    {[1000, 5000, 10000, 25000].map((value) => (
-                      <button
-                        type="button"
-                        key={value}
-                        aria-pressed={inputs.budget === value}
-                        onClick={() => updateAmount("budget", String(value))}
-                      >
-                        {value >= 1000 ? `$${value / 1000}k` : `$${value}`}
-                      </button>
-                    ))}
-                  </div>
+                  <p className="field-help">Cash available, not an order size.</p>
                 </div>
 
                 <div className="setting-panel loss-editor" id="loss-panel">
-                  <div className="loss-editor-head">
-                    <label htmlFor="loss-exact">Max loss, USD</label>
-                    <button
-                      type="button"
-                      className="text-action"
-                      onClick={() => updateAmount("loss", "")}
-                    >
-                      Clear
-                    </button>
-                  </div>
+                  <label htmlFor="loss-exact">Loss you can accept</label>
                   <div className="currency-entry exact-loss">
                     <span aria-hidden="true">$</span>
                     <input
@@ -605,43 +538,18 @@ export default function Home({
                       inputMode="decimal"
                       autoComplete="off"
                       value={lossDraft}
-                      placeholder="Not set"
+                      placeholder="Amount in USD"
                       onChange={(event) =>
                         updateAmount("loss", event.target.value)
                       }
                     />
                   </div>
-                  <input
-                    id="loss-range"
-                    className="range"
-                    type="range"
-                    min="0"
-                    max={sliderMax}
-                    step="1"
-                    value={sliderValue}
-                    aria-valuetext={
-                      inputs.loss === null
-                        ? "Loss limit not set"
-                        : `${money(inputs.loss)} acceptable price loss`
-                    }
-                    style={
-                      {
-                        "--fill": `${sliderMax ? (sliderValue / sliderMax) * 100 : 0}%`,
-                      } as CSSProperties
-                    }
-                    onChange={(event) =>
-                      updateAmount("loss", event.target.value)
-                    }
-                  />
-                  <div className="range-limits" aria-hidden="true">
-                    <span>$0</span>
-                    <span>{validBudget ? money(budgetValue) : "$50k+"}</span>
-                  </div>
+                  <p className="field-help">Maximum price loss you’re willing to accept.</p>
                 </div>
 
                 <div className="setting-panel" id="time-panel">
                   <span className="field-label" id="horizon-label">
-                    Exit by
+                    Exit deadline
                   </span>
                   <div
                     className="segments"
@@ -670,12 +578,12 @@ export default function Home({
                           })
                         }
                       >
-                        {value === "date" ? "Date" : `${value} mo`}
+                        {value === "date" ? "Custom date" : `${value} mo`}
                       </button>
                     ))}
                   </div>
-                  <div className="date-choice">
-                    <label htmlFor="exit-date">Or choose a date</label>
+                  {inputs.horizon === "date" && <div className="date-choice">
+                    <label htmlFor="exit-date">Exit date</label>
                     <input
                       className="date-entry"
                       id="exit-date"
@@ -689,34 +597,14 @@ export default function Home({
                         })
                       }
                     />
-                  </div>
+                  </div>}
                 </div>
 
                 </div>
 
-                <p className="settings-note">Budget is available cash; the loss limit is a preference, not a guaranteed stop.</p>
+                <p className="settings-note">Leave amounts blank if you’re unsure. A loss limit does not guarantee a stop.</p>
 
                 <Consequence brief={brief} />
-                {formError && (
-                  <p id="form-error" className="form-error" role="alert">
-                    {formError}
-                  </p>
-                )}
-                <div className="intake-actions">
-                  <button className="primary-action" disabled={busy}>
-                    Get the plan
-                  </button>
-                </div>
-              <div className="starter-row" aria-label="Try a question">
-                <span>Try asking</span>
-                {starters.map((starter) => (
-                  <button type="button" key={starter} onClick={() => chooseStarter(starter)}>{starter}</button>
-                ))}
-                <button type="button" onClick={loadExample}>Try an example</button>
-              </div>
-
-              <p className="under-form">No account or wallet is needed. Nothing is traded.</p>
-
                 <details className="advanced-fields">
                   <summary>Fine-tune the comparison</summary>
                   <div className="assumption-grid">
@@ -823,6 +711,21 @@ export default function Home({
                     illustrative, not a venue quote.
                   </p>
                 </details>
+                {formError && (
+                  <p id="form-error" className="form-error" role="alert">
+                    {formError}
+                  </p>
+                )}
+                <div className="intake-actions">
+                  <button type="button" className="example-action" onClick={loadExample}>Try an example</button>
+                  <button className="primary-action" disabled={busy}>
+                    Get the plan
+                  </button>
+                </div>
+
+              <p className="under-form">No account or wallet is needed. Nothing is traded.</p>
+
+
 
               </form>
             </div>
