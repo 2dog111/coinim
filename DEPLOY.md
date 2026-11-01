@@ -42,3 +42,7 @@ Only these two parts of the same legacy retirement set are stored under the R2 r
 ## Verified release: domain sale banner, 2026-11-01
 
 `/opt/coin-im-planner/releases/20261101-domain-sale-524bae3` is the active and only code release. Commit `524bae3` adds the `$70,000` sale banner and purchase email link across public pages. Local/Linux builds, 40 tests and responsive Chromium checks passed. The refreshed canonical R2 snapshot SHA-256 is `45eb5e7f0b95fe989341253392a167ba75177ef77dee5619e7e881214aaf0c91`.
+
+## Verified release: Superdesign reference redesign, 2026-11-01
+
+`/opt/coin-im-planner/releases/20261101-superdesign-04d65b7` is the active and only code release. Commit `04d65b7` rebuilds the public UI around the Superdesign reference selected from `lll.bz/ii`: a centered task promise, the real planner as the first visual object, and comparison, exit-plan and research cards below. The English `Domain for sale — $70,000` CTA, email, blog, Binance report, GA4, private insights and chat/calculator behavior remain intact. Local and Linux Node 22.23.2 builds, 40 tests, TypeScript, ESLint and responsive Chromium journeys passed. A real production chat completed with HTTP 200, one `done` event, no error event and 2,184 answer characters. The refreshed canonical R2 snapshot passed temporary upload/download comparison, decryption, archive listing and canonical re-download comparison; only `coin-im-active.tar.gz.enc` remains. Snapshot SHA-256: `aade076efe29daea7d5e3d8cc6afc333464233fa464dcd85ab71660a87dece18`.
