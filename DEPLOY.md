@@ -34,3 +34,7 @@ Retirement archive checksums:
 - `legacy-production.tar.gz.enc`: `6efdc73fb5d3174a39f72273d1968fa45e05b66ac547715f7f01e88f954a59ce`
 
 Only these two parts of the same legacy retirement set are stored under the R2 retirement prefix. No legacy code remains on the application server or in a second local checkout. The new repository retains all prior Git history.
+
+## Verified release: 2026-11-01
+
+`/opt/coin-im-planner/releases/20261101-hallmark-fc6ac5e` is the active and only application code release. It contains the Almanac redesign, the planner-first homepage, `/blog`, and the 38-source Binance incident report. Commit `fc6ac5e` is on GitHub `main`. Local and Linux builds, 40 tests, TypeScript, ESLint, Hallmark and responsive Chromium checks passed. Public homepage, blog, article, API status and GA collection were verified; production chat and Mobile Safari were not run. The canonical encrypted current R2 snapshot was replaced only after a temporary copy passed download comparison, decryption and archive listing. Snapshot SHA-256: `eee743a3d629dee72dde7e17b981eaad361cac1b80ea730b039d19b28e6252a0`.
