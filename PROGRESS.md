@@ -1,5 +1,13 @@
 # coin.im rebuild
 
+## Form simplification — 2026-11-01
+
+Source `b0feef0`: one question, exact budget/loss fields, a full-width deadline choice and a conditional calendar. Removed duplicate amount sliders/presets, empty Clear action, decorative input tabs and repeated starter prompts. Strengthened field borders and text contrast, aligned labels, placed advanced options before submission in DOM and visual order, and kept invalid input errors in the form. Local Chromium 151 journeys at 390×844 and 1440×900 passed; 40 tests, ESLint, TypeScript and production build passed.
+
+Published to https://coin.im/ as `20261101-form-b0feef0` and pushed to GitHub main. Linux production build passed; service is active. Public desktop/narrow Chromium interaction assertions passed with no console/page/HTTP errors or horizontal overflow. The network report contains only Google Analytics beacon cancellations during browser shutdown. Narrow Chromium is emulation, not Mobile Safari. No fresh provider-chat smoke was run for this frontend change.
+
+The encrypted active R2 backup was downloaded, byte-compared and decrypted successfully before replacing the canonical backup; SHA-256 `add5134acbe87def0d7a5d43c8be3e91786ab01d730aae25aad462c856349935`. Previous code release and temporary server build/archive files were removed after verification; working data and Git history remain intact.
+
 ## Objective
 Replace the old coin.im product with the English trade-planning assistant specified in the owner's attachment. Publish to the existing domain and GitHub. Keep a verified legacy website backup in Cloudflare R2 before retiring old code. Preserve working data and Git history.
 
