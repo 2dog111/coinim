@@ -38,3 +38,7 @@ Only these two parts of the same legacy retirement set are stored under the R2 r
 ## Verified release: 2026-11-01
 
 `/opt/coin-im-planner/releases/20261101-hallmark-fc6ac5e` is the active and only application code release. It contains the Almanac redesign, the planner-first homepage, `/blog`, and the 38-source Binance incident report. Commit `fc6ac5e` is on GitHub `main`. Local and Linux builds, 40 tests, TypeScript, ESLint, Hallmark and responsive Chromium checks passed. Public homepage, blog, article, API status and GA collection were verified; production chat and Mobile Safari were not run. The canonical encrypted current R2 snapshot was replaced only after a temporary copy passed download comparison, decryption and archive listing. Snapshot SHA-256: `eee743a3d629dee72dde7e17b981eaad361cac1b80ea730b039d19b28e6252a0`.
+
+## Verified release: domain sale banner, 2026-11-01
+
+`/opt/coin-im-planner/releases/20261101-domain-sale-524bae3` is the active and only code release. Commit `524bae3` adds the `$70,000` sale banner and purchase email link across public pages. Local/Linux builds, 40 tests and responsive Chromium checks passed. The refreshed canonical R2 snapshot SHA-256 is `45eb5e7f0b95fe989341253392a167ba75177ef77dee5619e7e881214aaf0c91`.
