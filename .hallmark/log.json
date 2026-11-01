@@ -1,0 +1,32 @@
+[
+ {
+  "mode": "redesign",
+  "depth": "full",
+  "scope": "page",
+  "shape": "working ledger",
+  "theme": "Almanac",
+  "axes": "mid/grotesk-sans/chromatic-magenta",
+  "hero": "left editorial promise beside the live trade worksheet",
+  "nav": "restrained masthead",
+  "footer": "editorial colophon",
+  "imagery": "the working product interface is the visual material",
+  "photos": [],
+  "entry": "question field inside the worksheet",
+  "fingerprint": "Hanging|Asymmetric spans|Hairline rule|Solid|None|None",
+  "sections": [
+   "trade worksheet",
+   "research bridge",
+   "three-way comparison",
+   "exit plan",
+   "blog index",
+   "incident report"
+  ],
+  "signature": "live trade worksheet",
+  "waived": [
+   "72: content-sized worksheet continues below the first viewport with verified inner padding"
+  ],
+  "prompt": "Redesign coin.im with Hallmark and Gorny, sharpen the trade-planning content, move the Binance incident coverage into a blog, research updates through Market Scan, deploy and push to GitHub",
+  "outcome": "Floor 0 FAIL; Reflex 0; finish-review in-thread, 2 resolved",
+  "date": "2026-11-01"
+ }
+]

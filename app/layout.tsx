@@ -1,7 +1,30 @@
 import type { Metadata, Viewport } from "next";
+import { Hanken_Grotesk, IBM_Plex_Mono, Newsreader } from "next/font/google";
 import { GoogleAnalytics } from "./google-analytics";
 import "./globals.css";
 import "./chat-design.css";
+
+const hanken = Hanken_Grotesk({
+  subsets: ["latin"],
+  weight: ["500", "600"],
+  variable: "--font-hanken",
+  display: "swap",
+});
+
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-newsreader",
+  display: "swap",
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: "500",
+  variable: "--font-plex-mono",
+  display: "swap",
+});
+
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -9,29 +32,29 @@ export const viewport: Viewport = {
 };
 export const metadata: Metadata = {
   metadataBase: new URL("https://coin.im"),
-  title: "Binance Hack Breakdown: EIP-7702 and Frozen Funds | coin.im",
+  title: "coin.im | Plan a crypto trade before you place it",
   description:
-    "A sourced breakdown of Binance’s October 29, 2026 hot-wallet drain: the withdrawal path, EIP-7702 authorization, Arbitrum freeze, and unresolved net loss.",
+    "Set a budget, maximum loss and exit date. Compare spot, call and wait scenarios, then question the plan.",
   alternates: { canonical: "/" },
   openGraph: {
-    type: "article",
+    type: "website",
     url: "/",
     siteName: "coin.im",
-    title: "Binance Hack Breakdown: EIP-7702 and Frozen Funds",
+    title: "Plan a crypto trade before you place it | coin.im",
     description:
-      "How Binance’s hot wallets were drained, what the Arbitrum freeze changed, and why the final net loss remains unknown.",
+      "Turn a crypto idea and explicit limits into a position and exit plan you can question.",
   },
   twitter: {
     card: "summary",
-    title: "Binance Hack Breakdown: EIP-7702 and Frozen Funds | coin.im",
+    title: "Plan a crypto trade before you place it | coin.im",
     description:
-      "A sourced account of the October 29 Binance wallet drain, asset freezes, and unresolved losses.",
+      "Set the budget, acceptable loss and exit date before the entry.",
   },
 };
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>
+      <body className={`${hanken.variable} ${newsreader.variable} ${plexMono.variable}`}>
         {children}
         <GoogleAnalytics />
       </body>

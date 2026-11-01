@@ -130,7 +130,7 @@ export function InteractiveExample({ example }: { example: Example }) {
             : scenario > 0 && callResult.pnl < 0
               ? "The coin is up. The call still loses money at expiry."
               : callResult.pnl > spotResult.pnl
-                ? "The call pays more in this scenario—not in every outcome."
+                ? "The call pays more in this scenario, not in every outcome."
                 : scenario < 0
                   ? "Both routes lose. The call loses its full premium at expiry."
                   : "Profit and outperformance are different thresholds.";
@@ -138,13 +138,13 @@ export function InteractiveExample({ example }: { example: Example }) {
   const rows = [
     {
       name: "Buy the coin",
-      context: "$1,000 position · $4,000 uncommitted",
+      context: "$1,000 position; $4,000 uncommitted",
       detail: "Own the asset directly.",
       pnl: spotResult.pnl,
     },
     {
       name: "Buy a call option",
-      context: "$1,000 premium · $4,000 uncommitted",
+      context: "$1,000 premium; $4,000 uncommitted",
       detail: "Can benefit from a rise; the full premium can be lost.",
       pnl: callResult.pnl,
     },
@@ -160,10 +160,10 @@ export function InteractiveExample({ example }: { example: Example }) {
     <div className="scenario-card">
       <div className="scenario-card-top">
         <span className="source-tag">Illustrative example</span>
-        <span className="small muted">Not live prices · At expiry</span>
+        <span className="small muted">Not live prices. At expiry.</span>
       </div>
       <p className="example-summary">
-        $5,000 available · $1,000 loss limit · 6 months
+        $5,000 available, $1,000 loss limit, 6 months
       </p>
       <div className="scenario-control">
         <div className="scenario-label-row">
@@ -285,7 +285,7 @@ export function ExampleExit({ example }: { example: Example }) {
     <div className="plan-receipt">
       <div className="receipt-head">
         <h3>Your trade plan</h3>
-        <span className="source-tag">Illustrative · Spot</span>
+        <span className="source-tag">Illustrative spot scenario</span>
       </div>
       <dl className="receipt-amounts">
         <div>
@@ -347,7 +347,6 @@ export function WorkspaceArtifacts({ brief }: { brief: TradeBrief }) {
   return (
     <section className="analysis-summary" aria-label="Calculated trade plan">
       <div className="key-finding">
-        <span className="assistant-label">Your numbers</span>
         <h2>{keyIssue(brief)}</h2>
       </div>
       {route ? (
@@ -356,11 +355,11 @@ export function WorkspaceArtifacts({ brief }: { brief: TradeBrief }) {
             <span>
               At{" "}
               {calculations!.targetIllustrative
-                ? "+50% · illustrative"
+                ? "+50% illustrative scenario"
                 : `+${inputs.target}%`}
             </span>
             <small>
-              {money(route.target.committed)} spot position · {inputs.fee}%
+              {money(route.target.committed)} spot position, {inputs.fee}%
               assumed fees per side
             </small>
             <b className={route.target.pnl > 0 ? "gain" : ""}>

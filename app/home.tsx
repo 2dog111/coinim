@@ -1,7 +1,7 @@
 "use client";
 
+import Link from "next/link";
 import Markdown from "react-markdown";
-import BinanceBreakdown from "./binance-breakdown";
 import {
   Fragment,
   useEffect,
@@ -83,7 +83,7 @@ function Consequence({ brief }: { brief: TradeBrief }) {
         {money(smaller.target.cash)} uncommitted.
       </p>
       <p>
-        At {calculations.targetIllustrative ? "+50% · illustrative" : `+${inputs.target}%`}: {" "}
+        At {calculations.targetIllustrative ? "+50% illustrative scenario" : `+${inputs.target}%`}: {" "}
         {money(smaller.target.pnl, true)} after assumed fees.
       </p>
       <small>
@@ -468,15 +468,16 @@ export default function Home({
             coin.im
           </button>
           <nav aria-label="Main navigation">
+            <Link href="/blog">Research</Link>
             {view === "home" ? (
               <>
                 <button onClick={() => goToSection("difference")}>See example</button>
                 {messages.length > 0 && (
-                  <button className="nav-action" onClick={openWorkspace}>Back to conversation <span aria-hidden="true">↗</span></button>
+                  <button className="nav-action" onClick={openWorkspace}>Back to conversation</button>
                 )}
               </>
             ) : (
-              <button className="nav-action" onClick={() => showHome()}>Back to start <span aria-hidden="true">↗</span></button>
+              <button className="nav-action" onClick={() => showHome()}>Back to start</button>
             )}
             <a className="header-contact" href="mailto:8@111.bz">8@111.bz</a>
           </nav>
@@ -485,13 +486,12 @@ export default function Home({
 
       {view === "home" ? (
         <main id="main-content">
-          <BinanceBreakdown />
           <section className="hero" id="start" aria-labelledby="headline">
             <div className="composer-width">
-              <p className="product-kicker">Crypto trade planning, in a conversation</p>
-              <h1 id="headline">Ask about a crypto trade.</h1>
+              <h1 id="headline">Plan the trade. Cap the loss.</h1>
               <p className="hero-lead">
-                Tell us the coin and your limits. See a plan, then ask what happens next.
+                Set the budget, the loss you can accept and the date you will exit.
+                coin.im turns those limits into a plan you can question.
               </p>
               <form
                 id="trade-form"
@@ -523,7 +523,7 @@ export default function Home({
 
                 <div className="visible-settings" aria-label="Trade settings">
                 <div className="setting-panel" id="budget-panel">
-                  <label htmlFor="budget">Budget · USD</label>
+                  <label htmlFor="budget">Budget, USD</label>
                   <div className="currency-entry">
                     <span aria-hidden="true">$</span>
                     <input
@@ -584,7 +584,7 @@ export default function Home({
 
                 <div className="setting-panel loss-editor" id="loss-panel">
                   <div className="loss-editor-head">
-                    <label htmlFor="loss-exact">Max loss · USD</label>
+                    <label htmlFor="loss-exact">Max loss, USD</label>
                     <button
                       type="button"
                       className="text-action"
@@ -699,7 +699,7 @@ export default function Home({
                 )}
                 <div className="intake-actions">
                   <button className="primary-action" disabled={busy}>
-                    Get my plan <span aria-hidden="true">↑</span>
+                    Get the plan
                   </button>
                 </div>
               <div className="starter-row" aria-label="Try a question">
@@ -710,10 +710,10 @@ export default function Home({
                 <button type="button" onClick={loadExample}>Try an example</button>
               </div>
 
-              <p className="under-form">No account or wallet needed · Nothing is traded</p>
+              <p className="under-form">No account or wallet is needed. Nothing is traded.</p>
 
-                <section className="advanced-fields" aria-labelledby="advanced-title">
-                  <h2 id="advanced-title">Fine-tune the comparison</h2>
+                <details className="advanced-fields">
+                  <summary>Fine-tune the comparison</summary>
                   <div className="assumption-grid">
                     <div>
                       <label htmlFor="asset">Coin</label>
@@ -815,12 +815,26 @@ export default function Home({
                   </div>
                   <p className="helper">
                     The target is your scenario, not a forecast. Fees are
-                    illustrative—not a venue quote.
+                    illustrative, not a venue quote.
                   </p>
-                </section>
+                </details>
 
               </form>
             </div>
+          </section>
+
+          <section className="research-brief" aria-labelledby="research-title">
+            <div>
+              <h2 id="research-title">Research the risk around the trade.</h2>
+              <p>
+                The research desk separates company claims, transaction records
+                and analyst inference. The first report reconstructs the Binance
+                hot-wallet incident and tracks what is still unknown.
+              </p>
+            </div>
+            <Link href="/blog/binance-hot-wallet-incident">
+              Read the Binance incident report
+            </Link>
           </section>
 
           <section
@@ -829,14 +843,12 @@ export default function Home({
             aria-labelledby="difference-title"
           >
             <div className="section-heading">
-              <p className="eyebrow">Try a scenario</p>
               <h2 id="difference-title">
-                Move the market.
-                <span>See the outcome.</span>
+                Compare three ways to take the same view.
               </h2>
               <p>
-                Drag one control. Compare buying the coin, using a call, or
-                waiting—in dollars.
+                Move one market assumption. Compare buying the coin, using a
+                call, or waiting in dollars.
               </p>
             </div>
             <InteractiveExample example={example} />
@@ -853,22 +865,20 @@ export default function Home({
             aria-labelledby="exit-title"
           >
             <div className="section-heading">
-              <p className="eyebrow">Leave with a plan</p>
               <h2 id="exit-title">
-                Set the exit.
-                <span>Before the entry.</span>
+                Write the exit before the entry.
               </h2>
               <p>
-                A position size. An exit date.
-                <span>A reason to change your mind.</span>
+                Leave with a position size, an exit date and a reason to
+                change your mind.
               </p>
             </div>
             <ExampleExit example={example} />
             <div className="end-action">
               <button className="primary-action" onClick={() => showHome()}>
-                Check my trade <span aria-hidden="true">→</span>
+                Check my trade
               </button>
-              <p>A smaller position—or no trade—may fit better.</p>
+              <p>A smaller position, or no trade, may fit better.</p>
             </div>
           </section>
         </main>
@@ -878,8 +888,8 @@ export default function Home({
             <div className="workspace-scroll">
             <div className="workspace-top">
               <div>
-                <span className="workspace-status"><i aria-hidden="true" /> Trade conversation</span>
                 <h1>Your trade, explained.</h1>
+                <p className="workspace-status">Trade conversation</p>
               </div>
               <button className="text-action" onClick={() => showHome()}>
                 Edit trade
@@ -1093,7 +1103,7 @@ export default function Home({
                     className="primary-action"
                     disabled={!composer.trim()}
                   >
-                    Send <span aria-hidden="true">↑</span>
+                    Send
                   </button>
                 )}
               </div>

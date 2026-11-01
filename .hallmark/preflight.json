@@ -1,0 +1,31 @@
+{
+  "project": "coin.im",
+  "stack": "Next.js 16 App Router with React client-side trade workflow",
+  "redesign": "full",
+  "scope": "public homepage and new editorial blog routes",
+  "theme": "Almanac",
+  "genre": "editorial",
+  "job": "sign up",
+  "primaryTask": "Describe a crypto trade, set budget, loss limit and exit timing, then receive a plan and continue the conversation",
+  "existingDesignSystem": "Two overlapping legacy global stylesheets; no local design.md or component library",
+  "preserve": [
+    "All trade form fields and handlers",
+    "Conversation workspace and recovery states",
+    "Deterministic calculator and API routes",
+    "Google Analytics exclusion for the private insights route",
+    "First-party traffic insights",
+    "mailto:8@111.bz",
+    "All verified Binance incident sources"
+  ],
+  "informationArchitecture": {
+    "home": "Trade planning tool with one compact research link",
+    "blog": "Research index",
+    "article": "Full Binance incident report and source register"
+  },
+  "qa": [
+    "Hallmark sloplint before and kept render tiers",
+    "TypeScript, ESLint, unit and API tests, production build",
+    "Isolated Chromium at 1440x900 with interaction, console, network and overflow checks",
+    "Public release smoke and analytics preservation"
+  ]
+}
