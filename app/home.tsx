@@ -478,6 +478,7 @@ export default function Home({
             ) : (
               <button className="nav-action" onClick={() => showHome()}>Back to start <span aria-hidden="true">↗</span></button>
             )}
+            <a className="header-contact" href="mailto:8@111.bz">8@111.bz</a>
           </nav>
         </div>
       </header>
