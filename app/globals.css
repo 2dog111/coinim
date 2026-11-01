@@ -32,6 +32,44 @@
   transform: translateY(0);
 }
 
+.domain-sale-banner {
+  display: flex;
+  min-height: 56px;
+  padding: var(--space-sm) var(--gutter);
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  border-bottom: var(--rule-bar) solid var(--color-ink);
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 500;
+  line-height: 1.15;
+  text-align: center;
+  text-decoration: none;
+}
+
+.domain-sale-banner strong {
+  font-family: var(--font-outlier);
+  font-size: var(--text-xl);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.domain-sale-banner small {
+  border-bottom: var(--rule-hair) solid currentColor;
+  font-size: var(--text-sm);
+}
+
+.domain-sale-banner:hover {
+  background: var(--color-accent-2);
+}
+
+.domain-sale-banner:active {
+  transform: translateY(1px);
+}
+
 .site-header {
   position: sticky;
   top: 0;
@@ -123,6 +161,21 @@ footer {
 }
 
 @media (max-width: 48rem) {
+  .domain-sale-banner {
+    min-height: 52px;
+    padding-inline: var(--gutter);
+    gap: var(--space-sm);
+    font-size: var(--text-md);
+  }
+
+  .domain-sale-banner strong {
+    font-size: var(--text-lg);
+  }
+
+  .domain-sale-banner small {
+    display: none;
+  }
+
   .site-header nav {
     gap: var(--space-sm);
   }

@@ -27,6 +27,7 @@ import {
   InteractiveExample,
   WorkspaceArtifacts,
 } from "./trade-artifacts";
+import { DomainSaleBanner } from "./site-chrome";
 
 type Message = { role: "user" | "assistant"; content: string };
 type Setting = "budget" | "time" | "loss";
@@ -458,6 +459,7 @@ export default function Home({
       <a className="skip-link" href="#main-content">
         Skip to content
       </a>
+      <DomainSaleBanner />
       <header className="site-header">
         <div className="header-inner">
           <button
