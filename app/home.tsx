@@ -333,7 +333,6 @@ export default function Home({
         <main id="main-content">
           <section className="chat-landing" id="start" aria-labelledby="headline">
             <div className="chat-landing-inner">
-              <p className="chat-kicker"><span aria-hidden="true" /> AI trade planner</p>
               <h1 id="headline">What trade are you considering?</h1>
               <p className="chat-lead">
                 Describe it naturally. Include the coin, budget, loss you can

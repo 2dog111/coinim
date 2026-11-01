@@ -1650,9 +1650,9 @@ summary {
 /* Chat-first entry: one natural-language input replaces the setup form. */
 .chat-landing {
   display: grid;
-  min-height: min(760px, calc(100svh - 72px));
-  padding: clamp(64px, 9vw, 112px) var(--gutter) clamp(72px, 10vw, 128px);
-  place-items: center;
+  min-height: auto;
+  padding: clamp(36px, 4vw, 56px) var(--gutter) clamp(52px, 6vw, 80px);
+  place-items: start center;
   border-bottom: var(--rule-hair) solid var(--color-rule);
   background:
     radial-gradient(circle at 50% 18%, rgb(255 255 255 / 94%) 0 18rem, transparent 36rem),
@@ -1667,39 +1667,16 @@ summary {
   text-align: center;
 }
 
-.chat-kicker {
-  display: inline-flex;
-  min-height: 32px;
-  padding: 0 12px;
-  align-items: center;
-  gap: 8px;
-  border: var(--rule-hair) solid var(--color-rule-2);
-  border-radius: 999px;
-  background: rgb(255 255 255 / 72%);
-  color: var(--color-ink-2);
-  font-size: var(--text-sm);
-  font-weight: 500;
-}
-
-.chat-kicker span {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #19a974;
-  box-shadow: 0 0 0 4px rgb(25 169 116 / 12%);
-}
-
 .chat-landing h1 {
   max-width: 14ch;
-  margin-top: var(--space-lg);
-  font-size: clamp(3rem, 7vw, 5.8rem);
-  line-height: 0.96;
+  font-size: clamp(2.8rem, 5.4vw, 4.8rem);
+  line-height: 0.98;
   letter-spacing: -0.06em;
 }
 
 .chat-lead {
   max-width: 58ch;
-  margin-top: var(--space-lg);
+  margin-top: var(--space-md);
   color: var(--color-muted);
   font-size: clamp(1.05rem, 2vw, 1.28rem);
   line-height: 1.5;
@@ -1707,7 +1684,7 @@ summary {
 
 .chat-entry {
   width: 100%;
-  margin-top: var(--space-xl);
+  margin-top: var(--space-lg);
   overflow: hidden;
   border: 1px solid #c8c8c2;
   border-radius: 28px;
@@ -1725,10 +1702,10 @@ summary {
 #trade-form.chat-entry textarea {
   display: block;
   width: 100%;
-  min-height: 148px;
+  min-height: 116px;
   max-height: 320px;
   margin: 0;
-  padding: 24px 26px 14px;
+  padding: 20px 26px 10px;
   resize: vertical;
   border: 0;
   border-radius: 0;
@@ -1750,8 +1727,8 @@ summary {
 
 .chat-entry-bottom {
   display: flex;
-  min-height: 66px;
-  padding: 10px 12px 12px 26px;
+  min-height: 58px;
+  padding: 6px 10px 10px 26px;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-md);
@@ -1899,13 +1876,13 @@ summary {
 
 @media (max-width: 48rem) {
   .chat-landing {
-    min-height: calc(100svh - 64px);
-    padding-block: 44px 64px;
+    min-height: auto;
+    padding-block: 28px 48px;
   }
 
   .chat-landing h1 {
-    max-width: 10ch;
-    font-size: clamp(2.65rem, 13vw, 4rem);
+    max-width: 11ch;
+    font-size: clamp(2.5rem, 12vw, 3.5rem);
   }
 
   .chat-lead {
@@ -1914,13 +1891,13 @@ summary {
   }
 
   .chat-entry {
-    margin-top: var(--space-lg);
+    margin-top: var(--space-md);
     border-radius: 22px;
   }
 
   #trade-form.chat-entry textarea {
-    min-height: 162px;
-    padding: 20px 18px 10px;
+    min-height: 132px;
+    padding: 18px 18px 8px;
     font-size: 1.05rem;
   }
 
