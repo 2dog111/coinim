@@ -11,11 +11,9 @@ import {
 } from "react";
 import {
   emptyInputs,
-  exitLabels,
   makeBrief,
   money,
   noMarket,
-  parseFinancialInput,
   validateInputs,
   type TradeBrief,
   type TradeInputs,
@@ -29,16 +27,13 @@ import {
 import { HeaderActions } from "./site-chrome";
 
 type Message = { role: "user" | "assistant"; content: string };
-type Setting = "budget" | "time" | "loss";
 
 const greeting = "What trade would you like to explore?";
-
-
-function amountDraft(value: number | null) {
-  return value === null
-    ? ""
-    : new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 }).format(value);
-}
+const starters = [
+  "I have $5,000 for SOL, can lose $1,000, and want to exit within six months.",
+  "I’m considering BTC. Help me decide what I still need to define.",
+  "Compare buying ETH now with waiting. Ask me one question at a time.",
+];
 
 function friendlyDate(value: string) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return value;
@@ -49,44 +44,6 @@ function friendlyDate(value: string) {
     year: "numeric",
     timeZone: "UTC",
   }).format(new Date(Date.UTC(year, month - 1, day)));
-}
-
-function Consequence({ brief }: { brief: TradeBrief }) {
-  const calculations = brief.calculations;
-  const inputs = brief.inputs;
-  if (!calculations || inputs.loss === null) return null;
-  if (inputs.loss === 0)
-    return (
-      <div className="live-consequence" role="status">
-        <strong>A zero-loss requirement does not fit a risky crypto position.</strong>
-        <p>
-          Waiting has no market price exposure in this model. Other financial
-          risks still remain.
-        </p>
-      </div>
-    );
-  const smaller = calculations.smaller!;
-  return (
-    <div className="live-consequence" role="status">
-      <strong>
-        {calculations.exceedsLoss
-          ? `Putting the full ${money(inputs.budget!)} into spot could lose more than your ${money(inputs.loss)} limit.`
-          : `A full ${money(inputs.budget!)} spot position can lose its entire value.`}
-      </strong>
-      <p>
-        A {money(smaller.target.committed)} position leaves{" "}
-        {money(smaller.target.cash)} uncommitted.
-      </p>
-      <p>
-        At {calculations.targetIllustrative ? "+50% illustrative scenario" : `+${inputs.target}%`}: {" "}
-        {money(smaller.target.pnl, true)} after assumed fees.
-      </p>
-      <small>
-        Price movements only. Platform, custody, currency, and tax risks are not
-        included.
-      </small>
-    </div>
-  );
 }
 
 export default function Home({
@@ -104,20 +61,12 @@ export default function Home({
   const [composer, setComposer] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
-  const [formError, setFormError] = useState("");
   const [copied, setCopied] = useState("");
   const [reset, setReset] = useState(false);
   const [clarify, setClarify] = useState("");
   const [changed, setChanged] = useState("");
   const [dirty, setDirty] = useState(false);
-  const [budgetDraft, setBudgetDraft] = useState("");
-  const [lossDraft, setLossDraft] = useState("");
-  const [targetDraft, setTargetDraft] = useState("");
-  const [feeDraft, setFeeDraft] = useState("0.1");
-  const [committedDraft, setCommittedDraft] = useState("");
 
-  const exampleDialog = useRef<HTMLDialogElement>(null);
-  const exampleTrigger = useRef<HTMLElement | null>(null);
   const idea = useRef<HTMLTextAreaElement>(null);
   const chatInput = useRef<HTMLTextAreaElement>(null);
   const abort = useRef<AbortController | null>(null);
@@ -133,17 +82,8 @@ export default function Home({
       requestAnimationFrame(() => chatInput.current?.focus({ preventScroll: true }));
   }, [view]);
 
-  function syncDrafts(next: TradeInputs) {
-    setBudgetDraft(amountDraft(next.budget));
-    setLossDraft(amountDraft(next.loss));
-    setTargetDraft(next.target === null ? "" : String(next.target));
-    setFeeDraft(String(next.fee));
-    setCommittedDraft(amountDraft(next.committed));
-  }
-
   function replaceBrief(next: TradeBrief) {
     setBrief(next);
-    syncDrafts(next.inputs);
   }
 
   function update(patch: Partial<TradeInputs>) {
@@ -159,50 +99,9 @@ export default function Home({
       makeBrief({ ...current.inputs, ...patch }, current.version + 1),
     );
     setClarify("");
-    setFormError("");
   }
 
-  function updateAmount(
-    key: "budget" | "loss" | "target" | "fee" | "committed",
-    value: string,
-  ) {
-    const setters = {
-      budget: setBudgetDraft,
-      loss: setLossDraft,
-      target: setTargetDraft,
-      fee: setFeeDraft,
-      committed: setCommittedDraft,
-    };
-    setters[key](value);
-    const parsed = parseFinancialInput(value);
-    if (parsed === null) {
-      update({ [key]: key === "fee" ? 0 : null });
-      return;
-    }
-    if (!Number.isFinite(parsed)) return;
-    update({ [key]: parsed });
-    if (key === "budget" && inputs.loss !== null && parsed < inputs.loss)
-      setFormError(
-        "Your budget is below the current loss limit. Edit the limit explicitly.",
-      );
-  }
-
-  function validateDrafts() {
-    const values = [
-      ["budget", budgetDraft],
-      ["loss", lossDraft],
-      ["target", targetDraft],
-      ["fee", feeDraft],
-      ["commitment", committedDraft],
-    ] as const;
-    for (const [label, value] of values) {
-      if (value.trim() && !Number.isFinite(parseFinancialInput(value)))
-        return `Enter a valid ${label} amount.`;
-    }
-    return "";
-  }
-
-  function showHome(setting?: Setting) {
+  function showHome() {
     if (busy) {
       requestId.current++;
       abort.current?.abort();
@@ -211,15 +110,7 @@ export default function Home({
     }
     setView("home");
     requestAnimationFrame(() => {
-      const target = setting
-        ? document.getElementById(
-            setting === "budget"
-              ? "budget"
-              : setting === "loss"
-                ? "loss-exact"
-                : "horizon-options",
-          )
-        : idea.current;
+      const target = idea.current;
       target?.scrollIntoView({
         behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
           ? "instant"
@@ -242,54 +133,23 @@ export default function Home({
     );
   }
 
-  function loadExample() {
-    if (hasDraft(inputs)) {
-      exampleTrigger.current = document.activeElement as HTMLElement;
-      exampleDialog.current?.showModal();
-      return;
-    }
-    confirmExample();
+  function chooseStarter(text: string) {
+    update({ thesis: text });
+    requestAnimationFrame(() => idea.current?.focus({ preventScroll: true }));
   }
 
-
-  function keepInputs() {
-    exampleDialog.current?.close();
-    exampleTrigger.current?.focus();
-  }
-
-  function confirmExample() {
-    requestId.current++;
-    abort.current?.abort();
-    setBusy(false);
-    const next = makeBrief({ ...example.inputs }, brief.version + 1);
-    replaceBrief(next);
-    setDirty(messages.length > 0);
-    setChanged(
-      "Hypothetical example loaded. Your previous conversation is preserved.",
-    );
-    setFormError("");
-    setClarify("");
-    setError("");
-    setCopied("");
-    exampleDialog.current?.close();
-    showHome();
+  function prepareChange(text: string) {
+    setComposer(text);
+    requestAnimationFrame(() => chatInput.current?.focus({ preventScroll: true }));
   }
 
   async function run(text: string, analysis = false, retry = false) {
     if (busy) return;
-    const draftError = validateDrafts();
-    if (draftError) {
-      setFormError(draftError);
-      setError(draftError);
-      if (view !== "home") openWorkspace();
-      return;
-    }
     const validation = validateInputs(inputs);
     if (
       validation.length &&
       !(!inputs.asset && !inputs.thesis && text.trim() && !analysis)
     ) {
-      setFormError(validation[0]);
       setError(validation[0]);
       if (view !== "home") openWorkspace();
       return;
@@ -399,7 +259,7 @@ export default function Home({
 
   function submit(event: FormEvent) {
     event.preventDefault();
-    void run(inputs.thesis || "Check my trade under these assumptions.", true);
+    if (inputs.thesis.trim()) void run(inputs.thesis.trim(), true);
   }
 
   async function copyPlan() {
@@ -471,32 +331,25 @@ export default function Home({
 
       {view === "home" ? (
         <main id="main-content">
-          <section className="hero" id="start" aria-labelledby="headline">
-            <div className="composer-width">
-              <h1 id="headline">Plan it. Question it.</h1>
-              <p className="hero-lead">
-                Set the budget, cap the loss and choose the exit before you commit.
+          <section className="chat-landing" id="start" aria-labelledby="headline">
+            <div className="chat-landing-inner">
+              <p className="chat-kicker"><span aria-hidden="true" /> AI trade planner</p>
+              <h1 id="headline">What trade are you considering?</h1>
+              <p className="chat-lead">
+                Describe it naturally. Include the coin, budget, loss you can
+                accept and when you want to exit — or let the chat ask.
               </p>
-              <form
-                id="trade-form"
-                className="intake-card"
-                noValidate
-                onSubmit={submit}
-                aria-describedby={formError ? "form-error" : undefined}
-              >
-                <div className="idea-label-row">
-                  <label htmlFor="idea">What trade are you considering?</label>
-                  {inputs.hypothetical && (
-                    <span className="source-tag">Illustrative example</span>
-                  )}
-                </div>
+
+              <form id="trade-form" className="chat-entry" onSubmit={submit}>
+                <label className="sr-only" htmlFor="idea">Your trade question</label>
                 <textarea
                   id="idea"
                   ref={idea}
                   maxLength={4000}
+                  autoFocus
                   value={inputs.thesis}
                   onChange={(event) => update({ thesis: event.target.value })}
-                  placeholder="e.g. I’m considering SOL. Help me weigh the risk and plan an exit."
+                  placeholder="I have $5,000 for SOL, can lose $1,000, and want to exit within six months. What should I consider?"
                   onKeyDown={(event) => {
                     if (event.key === "Enter" && !event.shiftKey && !event.nativeEvent.isComposing) {
                       event.preventDefault();
@@ -504,230 +357,29 @@ export default function Home({
                     }
                   }}
                 />
-
-                <div className="visible-settings" aria-label="Trade settings">
-                <div className="setting-panel" id="budget-panel">
-                  <label htmlFor="budget">Available budget</label>
-                  <div className="currency-entry">
-                    <span aria-hidden="true">$</span>
-                    <input
-                      id="budget"
-                      inputMode="decimal"
-                      autoComplete="off"
-                      value={budgetDraft}
-                      placeholder="Amount in USD"
-                      onChange={(event) =>
-                        updateAmount("budget", event.target.value)
-                      }
-                      onBlur={() => {
-                        const parsed = parseFinancialInput(budgetDraft);
-                        if (parsed !== null && Number.isFinite(parsed))
-                          setBudgetDraft(amountDraft(parsed));
-                      }}
-                    />
-                  </div>
-                  <p className="field-help">Cash available, not an order size.</p>
-                </div>
-
-                <div className="setting-panel loss-editor" id="loss-panel">
-                  <label htmlFor="loss-exact">Loss you can accept</label>
-                  <div className="currency-entry exact-loss">
-                    <span aria-hidden="true">$</span>
-                    <input
-                      id="loss-exact"
-                      inputMode="decimal"
-                      autoComplete="off"
-                      value={lossDraft}
-                      placeholder="Amount in USD"
-                      onChange={(event) =>
-                        updateAmount("loss", event.target.value)
-                      }
-                    />
-                  </div>
-                  <p className="field-help">Maximum price loss you’re willing to accept.</p>
-                </div>
-
-                <div className="setting-panel" id="time-panel">
-                  <span className="field-label" id="horizon-label">
-                    Exit deadline
-                  </span>
-                  <div
-                    className="segments"
-                    id="horizon-options"
-                    role="group"
-                    aria-labelledby="horizon-label"
-                    tabIndex={-1}
+                <div className="chat-entry-bottom">
+                  <span>Write everything in one message</span>
+                  <button
+                    className="chat-send"
+                    disabled={busy || !inputs.thesis.trim()}
+                    aria-label="Send trade question"
                   >
-                    {[
-                      ["1", "1 month"],
-                      ["3", "3 months"],
-                      ["6", "6 months"],
-                      ["date", "Choose a date"],
-                    ].map(([value, label]) => (
-                      <button
-                        type="button"
-                        key={value}
-                        className="segment"
-                        aria-label={label}
-                        aria-pressed={inputs.horizon === value}
-                        onClick={() =>
-                          update({
-                            horizon: value as TradeInputs["horizon"],
-                            horizonSource: "user",
-                            date: value === "date" ? inputs.date : "",
-                          })
-                        }
-                      >
-                        {value === "date" ? "Custom date" : `${value} mo`}
-                      </button>
-                    ))}
-                  </div>
-                  {inputs.horizon === "date" && <div className="date-choice">
-                    <label htmlFor="exit-date">Exit date</label>
-                    <input
-                      className="date-entry"
-                      id="exit-date"
-                      type="date"
-                      value={inputs.date}
-                      onChange={(event) =>
-                        update({
-                          horizon: "date",
-                          date: event.target.value,
-                          horizonSource: "user",
-                        })
-                      }
-                    />
-                  </div>}
-                </div>
-
-                </div>
-
-                <p className="settings-note">Leave amounts blank if you’re unsure. A loss limit does not guarantee a stop.</p>
-
-                <Consequence brief={brief} />
-                <details className="advanced-fields">
-                  <summary>Fine-tune the comparison</summary>
-                  <div className="assumption-grid">
-                    <div>
-                      <label htmlFor="asset">Coin</label>
-                      <input
-                        id="asset"
-                        value={inputs.asset}
-                        maxLength={180}
-                        placeholder="BTC, ETH, SOL, or another coin"
-                        onChange={(event) => update({ asset: event.target.value })}
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="target">Target upside, %</label>
-                      <input
-                        id="target"
-                        inputMode="decimal"
-                        value={targetDraft}
-                        placeholder="Not sure yet"
-                        onChange={(event) =>
-                          updateAmount("target", event.target.value)
-                        }
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="fee">Fee assumption, % per side</label>
-                      <input
-                        id="fee"
-                        inputMode="decimal"
-                        value={feeDraft}
-                        onChange={(event) =>
-                          updateAmount("fee", event.target.value)
-                        }
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="exit">Exit preference</label>
-                      <select
-                        id="exit"
-                        value={inputs.exit}
-                        onChange={(event) =>
-                          update({
-                            exit: event.target.value as TradeInputs["exit"],
-                          })
-                        }
-                      >
-                        {Object.entries(exitLabels).map(([value, label]) => (
-                          <option key={value} value={value}>
-                            {label}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    <div>
-                      <label htmlFor="committed">Intended commitment, USD</label>
-                      <input
-                        id="committed"
-                        inputMode="decimal"
-                        value={committedDraft}
-                        placeholder="Not specified"
-                        onChange={(event) =>
-                          updateAmount("committed", event.target.value)
-                        }
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="reconsider">Reason to reconsider</label>
-                      <input
-                        id="reconsider"
-                        maxLength={2000}
-                        value={inputs.reconsider}
-                        placeholder="Not defined yet"
-                        onChange={(event) =>
-                          update({ reconsider: event.target.value })
-                        }
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="restrictions">Restrictions</label>
-                      <input
-                        id="restrictions"
-                        maxLength={2000}
-                        value={inputs.restrictions}
-                        placeholder="Anything this plan must avoid"
-                        onChange={(event) =>
-                          update({ restrictions: event.target.value })
-                        }
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="context">Additional context</label>
-                      <input
-                        id="context"
-                        maxLength={2000}
-                        value={inputs.context}
-                        placeholder="Network, experience, or other constraints"
-                        onChange={(event) => update({ context: event.target.value })}
-                      />
-                    </div>
-                  </div>
-                  <p className="helper">
-                    The target is your scenario, not a forecast. Fees are
-                    illustrative, not a venue quote.
-                  </p>
-                </details>
-                {formError && (
-                  <p id="form-error" className="form-error" role="alert">
-                    {formError}
-                  </p>
-                )}
-                <div className="intake-actions">
-                  <button type="button" className="example-action" onClick={loadExample}>Try an example</button>
-                  <button className="primary-action" disabled={busy}>
-                    Get the plan
+                    <span aria-hidden="true">↑</span>
                   </button>
                 </div>
-
-              <p className="under-form">No account or wallet is needed. Nothing is traded.</p>
-
-
-
               </form>
+
+              <div className="chat-starters" aria-label="Example questions">
+                {starters.map((starter) => (
+                  <button type="button" key={starter} onClick={() => chooseStarter(starter)}>
+                    {starter}
+                  </button>
+                ))}
+              </div>
+
+              <p className="chat-safety">
+                No account or wallet connection. Nothing is traded.
+              </p>
             </div>
           </section>
 
@@ -811,24 +463,24 @@ export default function Home({
             <div className="workspace-scroll">
             <div className="workspace-top">
               <div>
-                <h1>Your trade, explained.</h1>
-                <p className="workspace-status">Trade conversation</p>
+                <h1>Plan it in one conversation.</h1>
+                <p className="workspace-status">Add or change any assumption below.</p>
               </div>
               <button className="text-action" onClick={() => showHome()}>
-                Edit trade
+                New question
               </button>
             </div>
             <div className="brief-chips" aria-label="Current trade brief">
-              <button onClick={() => showHome()}>
+              <button onClick={() => prepareChange("Change the coin to ")}>
                 Coin <b>{inputs.asset || "Not set"}</b>
               </button>
-              <button onClick={() => showHome("budget")}>
+              <button onClick={() => prepareChange("Set my available budget to $")}>
                 Budget <b>{inputs.budget === null ? "Not set" : money(inputs.budget)}</b>
               </button>
-              <button onClick={() => showHome("loss")}>
+              <button onClick={() => prepareChange("Set my loss limit to $")}>
                 Loss limit <b>{inputs.loss === null ? "Not set" : money(inputs.loss)}</b>
               </button>
-              <button onClick={() => showHome("time")}>
+              <button onClick={() => prepareChange("Set my exit deadline to ")}>
                 Exit by <b>{friendlyDate(brief.latestExitDate)}</b>
               </button>
               <span>
@@ -895,8 +547,11 @@ export default function Home({
                 {brief.conflicts.slice(1).map((conflict) => (
                   <p key={conflict}>{conflict}</p>
                 ))}
-                <button className="quiet-action" onClick={() => showHome()}>
-                  Resolve assumptions
+                <button
+                  className="quiet-action"
+                  onClick={() => prepareChange("Use this assumption instead: ")}
+                >
+                  Resolve in chat
                 </button>
               </div>
             )}
@@ -904,9 +559,10 @@ export default function Home({
               <div className="error-note" role="alert">
                 <p>{error}</p>
                 <small>Your inputs and calculations are still available.</small>
-                {last.current && !busy && (
+                {!busy && (
                   <button
                     className="quiet-action"
+                    disabled={!messages.length}
                     onClick={() =>
                       last.current &&
                       void run(last.current.text, last.current.analysis, true)
@@ -996,7 +652,7 @@ export default function Home({
                 maxLength={4000}
                 value={composer}
                 onChange={(event) => setComposer(event.target.value)}
-                placeholder="Ask a question or change an assumption…"
+                placeholder="Add a detail, change a limit, or ask a follow-up…"
                 onKeyDown={(event) => {
                   if (
                     event.key === "Enter" &&
@@ -1051,28 +707,6 @@ export default function Home({
         </footer>
       )}
 
-      <dialog
-        ref={exampleDialog}
-        className="confirm-dialog"
-        aria-labelledby="example-confirm-title"
-        onCancel={(event) => {
-          event.preventDefault();
-          keepInputs();
-        }}
-      >
-        <h2 id="example-confirm-title">
-          Replace your current inputs with the example?
-        </h2>
-        <p>Your current draft will be replaced by hypothetical inputs.</p>
-        <div className="dialog-actions">
-          <button className="quiet-action" autoFocus onClick={keepInputs}>
-            Keep my inputs
-          </button>
-          <button className="primary-action" onClick={confirmExample}>
-            Load example
-          </button>
-        </div>
-      </dialog>
     </>
   );
 }

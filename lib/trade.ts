@@ -281,6 +281,10 @@ export function extractExplicit(text: string): Partial<TradeInputs> {
       text,
       `(?:I(?: am|[’']m)(?: only)? (?:willing to lose|comfortable losing)|I (?:can|will|would) (?:lose|risk)(?: up to)?|I (?:can|could) afford to lose(?: up to)?|my loss (?:budget|limit)(?: is| of| to)?|(?:set|change|increase|raise|lower|reduce|update) (?:my )?loss (?:budget|limit)(?: is| of| to)?|^loss (?:budget|limit)(?: is| of| to)?)\\s*\\$${numberText}`,
     ) ??
+    matchNumber(
+      text,
+      `(?:,|;|\\band)\\s*(?:I\\s+)?can (?:afford to )?lose(?: up to)?\\s*\\$${numberText}`,
+    ) ??
     (!/\b(?:my friend|friend's|their|his|her)\b/i.test(text)
       ? matchNumber(
           text,
@@ -325,14 +329,14 @@ export function reconcile(i: TradeInputs) {
         next.resolvedDate = null;
       } else if (i.horizon !== value)
         conflicts.push(
-          `Latest exit: form says ${i.horizon === "date" ? i.date : i.horizon + " months"}; your idea says ${value} months.`,
+          `Latest exit: the current plan says ${i.horizon === "date" ? i.date : i.horizon + " months"}; your message says ${value} months.`,
         );
       continue;
     }
     if (k === "horizonSource") continue;
     if (i[k] === null || i[k] === "") Object.assign(next, { [k]: value });
     else if (i[k] !== value)
-      conflicts.push(`${key}: form says ${i[k]}; your idea says ${value}.`);
+      conflicts.push(`${key}: the current plan says ${i[k]}; your message says ${value}.`);
   }
   return { inputs: next, conflicts };
 }

@@ -25,23 +25,23 @@ export const viewport: Viewport = {
 };
 export const metadata: Metadata = {
   metadataBase: new URL("https://coin.im"),
-  title: "coin.im | Plan a crypto trade before you place it",
+  title: "coin.im | Talk through a crypto trade",
   description:
-    "Set a budget, maximum loss and exit date. Compare spot, call and wait scenarios, then question the plan.",
+    "Describe a crypto trade in one message. Turn your budget, acceptable loss and exit timing into a plan you can question.",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: "/",
     siteName: "coin.im",
-    title: "Plan a crypto trade before you place it | coin.im",
+    title: "Talk through a crypto trade | coin.im",
     description:
-      "Turn a crypto idea and explicit limits into a position and exit plan you can question.",
+      "Write the trade in your own words, then question the calculated plan.",
   },
   twitter: {
     card: "summary",
-    title: "Plan a crypto trade before you place it | coin.im",
+    title: "Talk through a crypto trade | coin.im",
     description:
-      "Set the budget, acceptable loss and exit date before the entry.",
+      "Describe the coin, budget, acceptable loss and exit timing in one message.",
   },
 };
 export default function Layout({ children }: { children: React.ReactNode }) {
