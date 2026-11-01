@@ -1,20 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Hanken_Grotesk, IBM_Plex_Mono, Newsreader } from "next/font/google";
+import { Hanken_Grotesk, IBM_Plex_Mono } from "next/font/google";
 import { GoogleAnalytics } from "./google-analytics";
 import "./globals.css";
 import "./chat-design.css";
 
 const hanken = Hanken_Grotesk({
   subsets: ["latin"],
-  weight: ["500", "600"],
+  weight: ["400", "500", "600"],
   variable: "--font-hanken",
-  display: "swap",
-});
-
-const newsreader = Newsreader({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-newsreader",
   display: "swap",
 });
 
@@ -54,7 +47,7 @@ export const metadata: Metadata = {
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${hanken.variable} ${newsreader.variable} ${plexMono.variable}`}>
+      <body className={`${hanken.variable} ${plexMono.variable}`}>
         {children}
         <GoogleAnalytics />
       </body>

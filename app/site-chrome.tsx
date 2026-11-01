@@ -5,33 +5,39 @@ export function DomainSaleBanner() {
     <a
       className="domain-sale-banner"
       href="mailto:8@111.bz?subject=coin.im%20domain%20purchase%20inquiry"
+      aria-label="This domain is for sale for $70,000. Contact the owner."
     >
-      <span>This domain is for sale</span>
+      <span>Domain for sale</span>
       <strong>$70,000</strong>
-      <small>Contact owner</small>
     </a>
+  );
+}
+
+export function HeaderActions() {
+  return (
+    <div className="header-actions">
+      <a className="header-contact" href="mailto:8@111.bz">
+        8@111.bz
+      </a>
+      <DomainSaleBanner />
+    </div>
   );
 }
 
 export function SiteHeader() {
   return (
-    <>
-      <DomainSaleBanner />
-      <header className="site-header">
-        <div className="header-inner">
-          <Link className="wordmark" href="/" aria-label="coin.im home">
-            coin.im
-          </Link>
-          <nav aria-label="Main navigation">
-            <Link href="/">Trade planner</Link>
-            <Link href="/blog">Research</Link>
-            <a className="header-contact" href="mailto:8@111.bz">
-              8@111.bz
-            </a>
-          </nav>
-        </div>
-      </header>
-    </>
+    <header className="site-header">
+      <div className="header-inner">
+        <Link className="wordmark" href="/" aria-label="coin.im home">
+          coin.im
+        </Link>
+        <nav aria-label="Main navigation">
+          <Link href="/">Trade planner</Link>
+          <Link href="/blog">Research</Link>
+        </nav>
+        <HeaderActions />
+      </div>
+    </header>
   );
 }
 

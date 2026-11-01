@@ -15,6 +15,9 @@ html {
 }
 
 body {
+  --font-display: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
+  --font-outlier: var(--font-plex-mono), ui-monospace, monospace;
   margin: 0;
   background: var(--color-paper);
   color: var(--color-ink);

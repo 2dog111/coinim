@@ -27,7 +27,7 @@ import {
   InteractiveExample,
   WorkspaceArtifacts,
 } from "./trade-artifacts";
-import { DomainSaleBanner } from "./site-chrome";
+import { HeaderActions } from "./site-chrome";
 
 type Message = { role: "user" | "assistant"; content: string };
 type Setting = "budget" | "time" | "loss";
@@ -459,7 +459,6 @@ export default function Home({
       <a className="skip-link" href="#main-content">
         Skip to content
       </a>
-      <DomainSaleBanner />
       <header className="site-header">
         <div className="header-inner">
           <button
@@ -481,8 +480,8 @@ export default function Home({
             ) : (
               <button className="nav-action" onClick={() => showHome()}>Back to start</button>
             )}
-            <a className="header-contact" href="mailto:8@111.bz">8@111.bz</a>
           </nav>
+          <HeaderActions />
         </div>
       </header>
 
@@ -490,11 +489,15 @@ export default function Home({
         <main id="main-content">
           <section className="hero" id="start" aria-labelledby="headline">
             <div className="composer-width">
-              <h1 id="headline">Plan the trade. Cap the loss.</h1>
+              <h1 id="headline">Plan it. Question it.</h1>
               <p className="hero-lead">
-                Set the budget, the loss you can accept and the date you will exit.
-                coin.im turns those limits into a plan you can question.
+                Set the budget, cap the loss and choose the exit before you commit.
               </p>
+              <ul className="planner-principles" aria-label="Required plan inputs">
+                <li>Budget</li>
+                <li>Max loss</li>
+                <li>Exit</li>
+              </ul>
               <form
                 id="trade-form"
                 className="intake-card"
@@ -825,6 +828,19 @@ export default function Home({
             </div>
           </section>
 
+          <section className="output-library" aria-labelledby="output-library-title">
+            <header className="output-library-head">
+              <div>
+                <span className="section-kicker">What the planner returns</span>
+                <h2 id="output-library-title">See the plan before you trade.</h2>
+              </div>
+              <ul aria-label="Plan output categories">
+                <li>Comparison</li>
+                <li>Exit plan</li>
+                <li>Research</li>
+              </ul>
+            </header>
+            <div className="plan-gallery">
           <section className="research-brief" aria-labelledby="research-title">
             <div>
               <h2 id="research-title">Research the risk around the trade.</h2>
@@ -881,6 +897,8 @@ export default function Home({
                 Check my trade
               </button>
               <p>A smaller position, or no trade, may fit better.</p>
+            </div>
+          </section>
             </div>
           </section>
         </main>
