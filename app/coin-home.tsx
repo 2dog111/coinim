@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import "./coin-home.css";
 import { parseUsdt, quoteRaw, formatRaw, sharePercent } from "@/lib/coin-sale";
+import type { SaleRuntime } from "@/lib/coin-runtime";
+import CoinCheckout from "./coin-checkout";
 
 function quote(value: string): { usdt: string; coin: string; percent: string } | { error: string } {
   const raw = parseUsdt(value);
@@ -15,7 +17,7 @@ function quote(value: string): { usdt: string; coin: string; percent: string } |
   return { usdt: formatRaw(raw, 6), coin: formatRaw(coinRaw, 18), percent: sharePercent(coinRaw) };
 }
 
-export default function CoinHome() {
+export default function CoinHome({ saleConfig }: { saleConfig: SaleRuntime | null }) {
   const [value, setValue] = useState("100");
   const [copied, setCopied] = useState("");
   const input = useRef<HTMLInputElement>(null);
@@ -47,7 +49,7 @@ export default function CoinHome() {
           <p className="input-help" id="amount-help" role={"error" in result ? "alert" : undefined}>{"error" in result ? result.error : "Up to 6 decimal places"}</p>
           <div className="presets" aria-label="Example fractions"><span>TRY A SHARE</span>{[["10","10"],["50","50"],["100","100"],["500","500"],["1,000","1000"]].map(([label, amount]) => <button key={label} onClick={() => choose(amount)} aria-pressed={value === amount}>{label}</button>)}</div>
           <div className="result"><span>You receive</span><strong>{"error" in result ? "—" : `${result.coin} COIN`}</strong><small>{"error" in result ? "" : `${result.percent} of total supply`}</small></div>
-          <p className="sale-availability">USDT · Avalanche C-Chain<br/>Network fees are paid in AVAX.<br/>Sale contract and inventory are not published. Purchases are unavailable.</p>
+          {saleConfig ? <CoinCheckout config={saleConfig} value={value} /> : <p className="sale-availability">USDT · Avalanche C-Chain<br/>Network fees are paid in AVAX.<br/>Sale contract and inventory are not published. Purchases are unavailable.</p>}
           <button className="copy-button" onClick={copy} disabled={"error" in result}>Copy quote <span>↗</span></button><p className="copy-feedback" aria-live="polite">{copied || "Fixed sale price. Trading has not launched."}</p>
         </div></div>
       </div></section>

@@ -24,3 +24,7 @@ The 1 COIN supply is a hard ceiling, not a promise that all of it will be availa
 No deployment transaction can be prepared with concrete `to` and constructor data until the owner supplies the addresses and confirms whether a canonical COIN already exists. The gas estimate also depends on the selected signer and live network state.
 
 Source references: https://tether.to/en/supported-protocols/ ; https://build.avax.network/docs/primary-network ; https://docs.openzeppelin.com/contracts/5.x/api/token/erc20
+
+The site contains an injected-wallet checkout path, but it is gated by server-side verification of all configured addresses, on-chain decimals, total supply, sale immutables, admin, price, pause state and inventory. Missing or mismatched data leaves the public page in pre-launch quote mode. This path has not had a real mainnet wallet purchase or a fork test against a funded USDT account; do not describe it as production-verified checkout until those checks are done.
+
+On 2026-11-03 the official Avalanche USDT `approve(address,uint256)` eth_call returned ABI-encoded `true`; `allowance(address,address)` returned an ABI-encoded uint256. This does not establish transfer behavior under every account state.
