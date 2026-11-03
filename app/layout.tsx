@@ -25,25 +25,14 @@ export const viewport: Viewport = {
 };
 export const metadata: Metadata = {
   metadataBase: new URL("https://coin.im"),
-  title: "coin.im | Talk through a crypto trade",
-  description:
-    "Describe a crypto trade in one message. Turn your budget, acceptable loss and exit timing into a plan you can question.",
+  title: "COIN — One coin. Own a fraction.",
+  description: "Explore COIN: a planned total supply of one coin, held in fractions. See exactly how each fraction relates to the whole.",
   alternates: { canonical: "/" },
-  openGraph: {
-    type: "website",
-    url: "/",
-    siteName: "coin.im",
-    title: "Talk through a crypto trade | coin.im",
-    description:
-      "Write the trade in your own words, then question the calculated plan.",
-  },
-  twitter: {
-    card: "summary",
-    title: "Talk through a crypto trade | coin.im",
-    description:
-      "Describe the coin, budget, acceptable loss and exit timing in one message.",
-  },
+  icons: { icon: "/coin-icon.png", apple: "/coin-icon.png" },
+  openGraph: { type: "website", url: "/", siteName: "COIN", title: "COIN — One coin. Own a fraction.", description: "One planned coin, held in fractions. Explore your share of the whole.", images: [{ url: "/coin-social.webp", width: 1200, height: 630 }] },
+  twitter: { card: "summary_large_image", title: "COIN — One coin. Own a fraction.", description: "One planned coin, held in fractions.", images: ["/coin-social.webp"] },
 };
+
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
