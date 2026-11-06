@@ -4,7 +4,7 @@ import { dirname, join } from "node:path";
 
 const cookieName = "coin_visit";
 const botPattern = /bot|crawl|spider|slurp|headless|lighthouse|pingdom|uptime|monitor|preview|facebookexternalhit|telegrambot|whatsapp|skypeuripreview|discordbot|twitterbot|linkedinbot|embedly|quora link|vkshare|curl\/|wget\/|python-requests|go-http-client|axios\/|node-fetch/i;
-type HourBucket = { hour: number; visitors: Record<string, string>; pageViews: number; botVisits: number };
+type HourBucket = { hour: number; visitors: Record<string, string>; pageViews: number; botVisits: number; jsVisitors?: string[]; activeVisitors?: string[] };
 type Store = { hours: HourBucket[] };
 type CookieStore = { get(name: string): { value: string } | undefined };
 
@@ -30,7 +30,7 @@ async function load(): Promise<Store> {
 }
 
 let writeQueue = Promise.resolve();
-async function record(visit: { at: number; visitor: string; country: string; bot: boolean }) {
+async function record(visit: { at: number; visitor: string; country: string; bot: boolean; signal?: "js" | "active" }) {
   const next = writeQueue.then(async () => {
     const store = await load();
     const cutoff = Date.now() - 31 * 86_400_000;
@@ -41,7 +41,11 @@ async function record(visit: { at: number; visitor: string; country: string; bot
       bucket = { hour, visitors: {}, pageViews: 0, botVisits: 0 };
       store.hours.push(bucket);
     }
-    if (visit.bot) bucket.botVisits++;
+    if (visit.signal) {
+      const field = visit.signal === "js" ? "jsVisitors" : "activeVisitors";
+      const ids = bucket[field] || (bucket[field] = []);
+      if (!ids.includes(visit.visitor) && ids.length < 10000) ids.push(visit.visitor);
+    } else if (visit.bot) bucket.botVisits++;
     else {
       bucket.pageViews++;
       if (!bucket.visitors[visit.visitor] || bucket.visitors[visit.visitor] === "Unknown")
@@ -98,6 +102,13 @@ export async function recordPageVisit(headers: Headers, cookies: CookieStore) {
   }
 }
 
+export async function recordBrowserSignal(headers: Headers, cookies: CookieStore, signal: "js" | "active") {
+  const ua = headers.get("user-agent") || "";
+  const visitor = visitorHash(cookies);
+  if (!visitor || !ua || botPattern.test(ua)) return;
+  await record({ at: Date.now(), visitor, country: "Unknown", bot: false, signal });
+}
+
 export async function readInsights(period: "24h" | "7d" | "30d") {
   const store = await load();
   const since = Date.now() - ({ "24h": 86_400_000, "7d": 7 * 86_400_000, "30d": 30 * 86_400_000 }[period]);
@@ -115,6 +126,8 @@ export async function readInsights(period: "24h" | "7d" | "30d") {
   }
   return {
     period,
+    jsVisitors: new Set(rows.flatMap((row) => row.jsVisitors || [])).size,
+    activeVisitors: new Set(rows.flatMap((row) => row.activeVisitors || [])).size,
     visitors: visitors.size,
     pageViews: rows.reduce((total, row) => total + row.pageViews, 0),
     botVisits: rows.reduce((total, row) => total + row.botVisits, 0),

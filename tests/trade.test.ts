@@ -78,7 +78,7 @@ test("free text extracts explicit constraints; conflicts stay visible", () => {
   assert.equal(r.inputs.target, 50);
   assert.equal(r.inputs.horizonSource, "user");
   const conflict = reconcile({ ...r.inputs, committed: 6000 });
-  assert.match(conflict.conflicts[0], /form says 6000/);
+  assert.match(conflict.conflicts[0], /current plan says 6000/);
   assert.equal(conflict.inputs.committed, 6000);
 });
 test("formatted financial input and default deadline provenance remain distinct", () => {
@@ -98,7 +98,7 @@ test("formatted financial input and default deadline provenance remain distinct"
     horizonSource: "user",
     thesis: "I want to buy SOL within three months.",
   });
-  assert.match(conflict.conflicts[0], /form says 6 months/);
+  assert.match(conflict.conflicts[0], /current plan says 6 months/);
 });
 test("a natural chat sentence sets available capital, price-loss limit and exit", () => {
   const sentence =
