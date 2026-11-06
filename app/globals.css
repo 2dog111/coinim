@@ -336,3 +336,8 @@ footer {
     font-size: var(--text-sm);
   }
 }
+
+.site-header { background: #f0dede; border-color: #e3cdcd; }
+.wordmark { display: inline-flex; align-items: center; gap: 8px; }
+.wordmark img { display: block; }
+.blog-index-head { background: #f0dede; border-radius: 32px; padding: 48px; }

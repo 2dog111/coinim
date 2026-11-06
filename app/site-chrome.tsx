@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export function DomainSaleBanner() {
   return (
@@ -28,11 +29,11 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <div className="header-inner">
-        <Link className="wordmark" href="/" aria-label="coin.im home">
-          coin.im
+        <Link className="wordmark" href="/" aria-label="Coin.im home">
+          <Image src="/coin-logo.svg" width="36" height="36" alt="" /> Coin.im
         </Link>
         <nav aria-label="Main navigation">
-          <Link href="/">Trade planner</Link>
+          <Link href="/">Home</Link>
           <Link href="/blog">Research</Link>
         </nav>
         <HeaderActions />
@@ -46,10 +47,10 @@ export function SiteFooter() {
     <footer>
       <div className="footer-inner">
         <Link className="wordmark" href="/">
-          coin.im
+          <Image src="/coin-logo.svg" width="36" height="36" alt="" /> Coin.im
         </Link>
         <p>
-          Plan the position. Read the evidence. Keep the final decision yours.
+          One coin, divided into fractions.
         </p>
       </div>
     </footer>

@@ -25,12 +25,12 @@ export const viewport: Viewport = {
 };
 export const metadata: Metadata = {
   metadataBase: new URL("https://coin.im"),
-  title: "COIN — One coin. Own a fraction.",
+  title: "Coin.im — One coin. Many shares.",
   description: "Explore COIN: a planned total supply of one coin, held in fractions. See exactly how each fraction relates to the whole.",
   alternates: { canonical: "/" },
-  icons: { icon: "/coin-icon.png", apple: "/coin-icon.png" },
-  openGraph: { type: "website", url: "/", siteName: "COIN", title: "COIN — One coin. Own a fraction.", description: "One planned coin, held in fractions. Explore your share of the whole.", images: [{ url: "/coin-social.webp", width: 1200, height: 630 }] },
-  twitter: { card: "summary_large_image", title: "COIN — One coin. Own a fraction.", description: "One planned coin, held in fractions.", images: ["/coin-social.webp"] },
+  icons: { icon: "/coin-logo.svg", apple: "/coin-logo.svg" },
+  openGraph: { type: "website", url: "/", siteName: "Coin.im", title: "Coin.im — One coin. Many shares.", description: "One planned coin, held in fractions. Explore your share of the whole.", images: [{ url: "/coin-social-new.png", width: 1200, height: 630 }] },
+  twitter: { card: "summary_large_image", title: "Coin.im — One coin. Many shares.", description: "One planned coin, held in fractions.", images: ["/coin-social-new.png"] },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

@@ -3,15 +3,15 @@ import Link from "next/link";
 import { SiteFooter, SiteHeader } from "../site-chrome";
 
 export const metadata: Metadata = {
-  title: "Crypto incident research | coin.im",
+  title: "Crypto incident research | Coin.im",
   description:
     "Sourced crypto incident reports that separate company statements, transaction records and analyst inference.",
   alternates: { canonical: "/blog" },
   openGraph: {
     type: "website",
     url: "/blog",
-    siteName: "coin.im",
-    title: "Crypto incident research | coin.im",
+    siteName: "Coin.im",
+    title: "Crypto incident research | Coin.im",
     description:
       "Transaction records, company statements and the questions that remain open.",
   },
@@ -26,10 +26,9 @@ export default function BlogPage() {
       <SiteHeader />
       <main id="main-content" className="blog-index">
         <header className="blog-index-head">
-          <h1>Research for the part of the trade that can break.</h1>
+          <h1>Crypto incidents, examined.</h1>
           <p>
-            Each report follows the money, names the source behind every claim
-            and leaves unresolved accounting unresolved.
+            Reports based on transaction records, company statements and independent analysis.
           </p>
         </header>
 
