@@ -15,12 +15,14 @@ test("traffic signals are deduplicated, separate from requests and ignore known 
   try {
     await recordPageVisit(browser, cookies);
     await recordPageVisit(bot, cookies);
-    await recordBrowserSignal(browser, cookies, "js");
-    await recordBrowserSignal(browser, cookies, "js");
-    await recordBrowserSignal(browser, cookies, "active");
-    await recordBrowserSignal(bot, cookies, "active");
+    await recordBrowserSignal(browser, cookies, "js", "ios");
+    await recordBrowserSignal(browser, cookies, "js", "ios");
+    await recordBrowserSignal(browser, cookies, "active", "ios");
+    await recordBrowserSignal(bot, cookies, "active", "ios");
     const data = await readInsights("24h");
     assert.deepEqual([data.visitors, data.pageViews, data.botVisits, data.jsVisitors, data.activeVisitors], [1, 1, 1, 1, 1]);
+    assert.equal(data.iosVisitors, 1);
+    assert.equal(data.macVisitors, 0);
   } finally {
     delete process.env.INSIGHTS_DATA_DIR;
     delete process.env.INSIGHTS_HASH_KEY;

@@ -15,6 +15,8 @@ export default function InsightsDashboard({ data, secret }: { data: Data; secret
       <header className="insights-head"><Link href="/" prefetch={false} aria-label="coin.im home">coin.im</Link><span>Traffic overview</span><small>Country is estimated from visitor IP. No IP addresses or browser fingerprints are saved.</small></header>
       <section className="insights-toolbar"><div><p className="insights-kicker">SITE ACTIVITY</p><h1>Traffic signals</h1></div><nav aria-label="Reporting period">{(["24h", "7d", "30d"] as const).map((p) => <button key={p} className={data.period === p ? "selected" : ""} onClick={() => changePeriod(p)}>{p === "24h" ? "24 hours" : p === "7d" ? "7 days" : "30 days"}</button>)}</nav></section>
       <section className="insights-metrics" aria-label="Traffic totals">
+        <article><span>macOS browsers</span><strong>{data.macVisitors.toLocaleString()}</strong><small>JavaScript or interaction signal; estimated OS</small></article>
+        <article><span>iOS / iPadOS browsers</span><strong>{data.iosVisitors.toLocaleString()}</strong><small>JavaScript or interaction signal; estimated OS</small></article>
         <article><span>Browsers with interaction</span><strong>{data.activeVisitors.toLocaleString()}</strong><small>Clicked, typed or scrolled; automation can imitate this</small></article>
         <article><span>Browsers running JavaScript</span><strong>{data.jsVisitors.toLocaleString()}</strong><small>New signals only; blockers and bots affect this count</small></article>
         <article><span>Homepage browsers (unverified)</span><strong>{data.visitors.toLocaleString()}</strong><small>Homepage browsers excluding known bot signatures</small></article>
@@ -25,7 +27,7 @@ export default function InsightsDashboard({ data, secret }: { data: Data; secret
         {data.countries.length ? <div className="country-list">{data.countries.map((row) => <div className="country-row" key={row.country}><span>{labels[row.country] || row.country}</span><div className="country-bar"><i style={{ width: `${Math.max(3, Math.round(row.visitors / data.visitors * 100))}%` }} /></div><strong>{row.visitors}</strong></div>)}</div> : <p className="insights-empty">No country data recorded yet. New visits will appear here.</p>}
         {data.unknownCountry > 0 && <p className="insights-note">Country unavailable for {data.unknownCountry} visitors.</p>}
       </section>
-      <footer className="insights-foot">Interaction and JavaScript signals start with the November 6, 2026 update; earlier traffic is not classified retroactively. None of these signals prove a visitor is human. Updated {new Date(data.updatedAt).toLocaleString()}.</footer>
+      <footer className="insights-foot">OS counts begin with the November 6, 2026 update; earlier traffic is not classified retroactively. None of these signals prove a visitor is human. Updated {new Date(data.updatedAt).toLocaleString()}.</footer>
     </main>
   );
 }
