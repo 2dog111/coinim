@@ -20,6 +20,9 @@ export function HeaderActions() {
       <a className="header-contact" href="mailto:8@111.bz">
         8@111.bz
       </a>
+      <a className="header-contact" href="https://t.me/simvim" rel="noopener noreferrer">
+        Telegram @simvim
+      </a>
       <DomainSaleBanner />
     </div>
   );
@@ -51,6 +54,9 @@ export function SiteFooter() {
         </Link>
         <p>
           One coin, divided into fractions.
+        </p>
+        <p>
+          Domain contacts: <a href="mailto:8@111.bz">8@111.bz</a> · <a href="https://t.me/simvim" rel="noopener noreferrer">Telegram @simvim</a>
         </p>
       </div>
     </footer>
