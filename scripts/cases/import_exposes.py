@@ -11,6 +11,8 @@ Usage: python3 scripts/cases/import_exposes.py posts.json lib/cases-data.json [-
 """
 import json
 import re
+
+from clean_text import clean_body
 import sys
 import urllib.error
 import urllib.request
@@ -74,9 +76,13 @@ def points(paragraphs, lead=""):
     return [s for _, _, s in sorted(chosen)][:3]
 
 
+RELAYS = re.compile(r"^(?:the bear cave|activ8 insights|shortfinder|breakout point)$", re.I)   # lists of other people's reports
+
+
 def investigators(names):
     keep = [n for n in names if n and not NOISE.search(n)]
-    return keep or names[:1]
+    real = [n for n in keep if not RELAYS.match(n.strip())]
+    return real or keep or names[:1]
 
 
 def report_candidates(post):
@@ -124,7 +130,7 @@ def same_research(a, b):
     wa, wb = body_words(a), body_words(b)
     overlap = len(wa & wb) / max(1, len(wa | wb))
     first = lambda c: c["investigator"].split(",")[0].strip().lower()
-    return overlap > 0.3 and (first(a) == first(b) or a["date"][:7] == b["date"][:7])
+    return overlap > 0.3 and first(a) == first(b) and min(len(wa), len(wb)) >= 40
 
 
 def dedupe(cases):
@@ -150,8 +156,9 @@ def main():
     posts = json.load(open(src))["posts"]
     cases = []
     for p in posts:
-        paras = [x for x in p.get("paragraphs") or [] if x.strip()]
-        if len(paras) < 2:
+        names = investigators(p.get("investigators") or [])
+        paras, _ = clean_body([x for x in p.get("paragraphs") or [] if x.strip()], names)
+        if len(paras) < 2 or len(" ".join(paras).split()) < 60:   # nothing of substance left after the cleaning
             continue
         cases.append({
             "slug": p["slug"],
