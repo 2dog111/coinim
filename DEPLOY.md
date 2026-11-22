@@ -58,3 +58,7 @@ Only these two parts of the same legacy retirement set are stored under the R2 r
 ## Verified release: all cases, 2026-11-22
 
 `/opt/coin-im-planner/releases/20261122-cases-f9d9bac` is the active and only code release. Commit `f9d9bac` publishes 293 cases from Market Scan exposes, newest first. `scripts/cases/import_exposes.py posts.json lib/cases-data.json` rebuilds the data: three points per card from the post's own sentences, and the investigator's own report as the only link, kept only when it opened at import time (194 of 293). The hand-edited Abivax case replaces the imported one. Typecheck, ESLint and builds passed. Public `/`, a case page, `/blog` and `/api/status` returned 200; desktop Chromium 1440×900 showed 293 cards, no console errors and no horizontal overflow. Mobile was not tested; the R2 snapshot was not refreshed.
+
+## Verified release: repeats removed, 2026-11-22
+
+`/opt/coin-im-planner/releases/20261122-cases-4751b10` is the active and only code release. Commit `4751b10` makes the import keep one post per investigation: same company under another name or ticker, or same-day text of one investigation about a neighbouring company (AMD/IEIT Systems, Sony/Ericsson). Eleven repeats were removed; 282 cases remain, 200 with the investigator's report link. 42 tests, typecheck, ESLint and builds passed. Public `/`, `/cases/amd`, `/blog` and `/api/status` returned 200, removed case URLs return 404; desktop Chromium 1440×900 showed 282 cards with no console errors or overflow. Mobile not tested; R2 snapshot not refreshed.
