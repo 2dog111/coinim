@@ -1,0 +1,67 @@
+/* Reading layout for the cases feed, after idea.bz: warm paper, one column, thin rules, nothing in the way. */
+body:has(.cx) { background: #f4f3ef; }
+.cx {
+  --cx-paper: #f4f3ef;
+  --cx-ink: #1f211c;
+  --cx-muted: #5a5e54;
+  --cx-rule: #d5d5cd;
+  --cx-accent: #2f3a28;
+  min-height: 100vh;
+  background: var(--cx-paper);
+  color: var(--cx-ink);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.cx a { color: inherit; }
+.cx a:focus-visible { outline: 2px solid var(--cx-accent); outline-offset: 4px; }
+.cx h1, .cx h2, .cx p, .cx ul, .cx ol { margin: 0; }
+.cx-skip { position: absolute; left: 16px; top: -100px; background: #fff; padding: 10px 14px; z-index: 10; }
+.cx-skip:focus { top: 8px; }
+
+.cx-notice { border-bottom: 1px solid var(--cx-rule); }
+.cx-notice p { max-width: 760px; margin: 0 auto; padding: 6px 16px; font-size: 14px; line-height: 1.4; color: var(--cx-muted); text-align: center; }
+.cx-notice a { text-decoration: underline; text-underline-offset: 2px; display: inline-block; padding: 6px 0; }
+
+.cx-header, .cx main, .cx-footer { width: calc(100% - 32px); max-width: 728px; margin: 0 auto; }
+.cx-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; border-bottom: 1px solid var(--cx-rule); }
+.cx-wordmark { font-size: 26px; font-weight: 600; letter-spacing: -1.2px; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+.cx-header nav { display: flex; gap: 22px; font-size: 16px; }
+.cx-header nav a { text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+.cx-header nav a:hover, .cx-wordmark:hover { opacity: .65; }
+
+.cx-hero { padding: 28px 0 22px; border-bottom: 1px solid var(--cx-rule); }
+.cx-hero h1 { font-size: clamp(34px, 5vw, 50px); line-height: 1.06; font-weight: 400; letter-spacing: -1.8px; }
+.cx-hero p { margin-top: 12px; max-width: 62ch; font-size: 18px; color: var(--cx-muted); }
+
+.cx-list { list-style: none; padding: 0; }
+.cx-card { padding: 26px 0 28px; border-bottom: 1px solid var(--cx-rule); }
+.cx-meta { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 14px; letter-spacing: .3px; color: var(--cx-muted); }
+.cx-meta span::before { content: "·"; margin-right: 14px; }
+.cx-card h2 { margin-top: 8px; font-size: clamp(26px, 3.2vw, 34px); line-height: 1.15; font-weight: 400; letter-spacing: -.8px; }
+.cx-card h2 a { text-decoration: none; }
+.cx-card h2 a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.cx-card ul { margin-top: 14px; padding: 0; list-style: none; display: grid; gap: 8px; }
+.cx-card ul li { position: relative; padding-left: 20px; font-size: 19px; line-height: 1.5; max-width: 68ch; }
+.cx-card ul li::before { content: ""; position: absolute; left: 0; top: .72em; width: 8px; height: 1px; background: var(--cx-ink); }
+.cx-read { display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; min-height: 44px; padding: 0 18px; background: var(--cx-ink); color: var(--cx-paper) !important; text-decoration: none; font-size: 16px; }
+.cx-read:hover { background: var(--cx-accent); }
+
+.cx-article { padding: 30px 0 40px; max-width: 70ch; }
+.cx-article h1 { margin-top: 10px; font-size: clamp(32px, 4.4vw, 46px); line-height: 1.1; font-weight: 400; letter-spacing: -1.4px; }
+.cx-article > p:not(.cx-meta) { margin-top: 22px; font-size: 21px; line-height: 1.65; }
+.cx-article h1 + p { margin-top: 28px !important; }
+.cx-article .cx-source { margin-top: 34px !important; padding-top: 18px; border-top: 1px solid var(--cx-rule); font-size: 17px !important; color: var(--cx-muted); }
+.cx-article .cx-source a, .cx-back a { text-decoration: underline; text-underline-offset: 3px; display: inline-block; padding: 10px 0; }
+.cx-back { font-size: 17px !important; margin-top: 10px !important; }
+
+.cx-footer { border-top: 1px solid var(--cx-rule); margin-top: -1px !important; padding-top: 26px; padding-bottom: 40px; font-size: 15px; color: var(--cx-muted); }
+.cx-footer p + p { margin-top: 10px; }
+.cx-footer a { text-decoration: underline; text-underline-offset: 2px; }
+
+@media (max-width: 560px) {
+  .cx-header nav { gap: 14px; font-size: 15px; }
+  .cx-article > p:not(.cx-meta) { font-size: 19px; }
+}
