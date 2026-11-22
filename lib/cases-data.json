@@ -44,23 +44,23 @@
   }
  },
  {
-  "slug": "ieit-systems",
+  "slug": "amd",
   "date": "2026-11-19",
-  "company": "IEIT Systems",
-  "ticker": "000977",
+  "company": "AMD",
+  "ticker": "AMD",
   "investigator": "Hunterbrook",
   "status": "Company denies",
-  "title": "Blacklisted Chinese server maker kept getting new AMD chip code",
+  "title": "Blacklisted Chinese server maker got six newer versions of AMD firmware",
   "points": [
-   "Hunterbrook downloaded firmware files from Maginfra, Aivres, and Singapore-based Kaytus and found them 99.94% identical to IEIT Systems code.",
-   "Corporate filings listed Aivres as an IEIT subsidiary in 2022 and named IEIT Systems as Kaytus's ultimate holding company in 2025.",
-   "The House Foreign Affairs Committee released confidential details showing eight AMD applications to export 75,000 advanced chips each to China."
+   "Investigators downloaded a software update posted on October 19, 2026 by IEIT Systems, a blacklisted Chinese server maker, and found at least six newer versions of AMD startup firmware issued after the blacklisting.",
+   "AMD said the report misrepresented its business practices and relationships, and told the New York Times it complied with applicable U.S. laws and regulations.",
+   "The House Foreign Affairs Committee released records showing AMD had applied for eight licenses for 600,000 MI325X chips as of May 11, 2026, with four approved."
   ],
   "body": [
-   "IEIT Systems is a Chinese server maker. In March 2025, the U.S. government put the company on its export blacklist.",
-   "On November 19, 2026, Hunterbrook Media reported that IEIT Systems incorporated at least six newer versions of AMD startup firmware into its products after the blacklisting. Its affiliated fund, Hunterbrook Capital, held a short position in AMD shares, earning money when the stock falls.",
-   "Hunterbrook downloaded firmware files from Maginfra, Aivres, and Singapore-based Kaytus and found them 99.94% identical to IEIT Systems code. Corporate filings listed Aivres as an IEIT subsidiary in 2022 and named IEIT Systems as Kaytus's ultimate holding company in 2025.",
-   "AMD stated that the report misrepresented its business practices and relationships. On November 20, 2026, the House Foreign Affairs Committee released confidential details showing eight AMD applications to export 75,000 advanced chips each to China."
+   "Advanced Micro Devices is a California chip designer that told the U.S. Commerce Department its license applications to export AI chips to China carried a low risk of diversion to prohibited entities. Investors and the media had treated the company as a safer alternative to Nvidia.",
+   "On November 19, 2026, Hunterbrook Media published an investigation while its affiliate Hunterbrook Capital held a short position in AMD shares, earning when the stock falls. Investigators downloaded a software update posted on October 19, 2026 by IEIT Systems, a blacklisted Chinese server maker, and found at least six newer versions of AMD startup firmware issued after the blacklisting.",
+   "Corporate filings, court records, and nearly identical firmware tied IEIT to three non-blacklisted server sellers in China, Singapore, and California. AMD said the report misrepresented its business practices and relationships, and told the New York Times it complied with applicable U.S. laws and regulations.",
+   "On November 20, 2026, the House Foreign Affairs Committee released records showing AMD had applied for eight licenses for 600,000 MI325X chips as of May 11, 2026, with four approved. The committee did not accuse AMD of wrongdoing."
   ],
   "source": {
    "label": "Hunterbrook report",
@@ -106,30 +106,6 @@
    "The organization reported that these records showed a pattern of material misrepresentations going back to October 2021. It said bond buyers were told the truth while investors received something else.",
    "Fraud News Network published these new findings on November 19, 2026, and The Manila Times carried the report on November 20, 2026."
   ]
- },
- {
-  "slug": "amd",
-  "date": "2026-11-19",
-  "company": "AMD",
-  "ticker": "AMD",
-  "investigator": "Hunterbrook",
-  "status": "Company denies",
-  "title": "Blacklisted Chinese server maker got six newer versions of AMD firmware",
-  "points": [
-   "Investigators downloaded a software update posted on October 19, 2026 by IEIT Systems, a blacklisted Chinese server maker, and found at least six newer versions of AMD startup firmware issued after the blacklisting.",
-   "AMD said the report misrepresented its business practices and relationships, and told the New York Times it complied with applicable U.S. laws and regulations.",
-   "The House Foreign Affairs Committee released records showing AMD had applied for eight licenses for 600,000 MI325X chips as of May 11, 2026, with four approved."
-  ],
-  "body": [
-   "Advanced Micro Devices is a California chip designer that told the U.S. Commerce Department its license applications to export AI chips to China carried a low risk of diversion to prohibited entities. Investors and the media had treated the company as a safer alternative to Nvidia.",
-   "On November 19, 2026, Hunterbrook Media published an investigation while its affiliate Hunterbrook Capital held a short position in AMD shares, earning when the stock falls. Investigators downloaded a software update posted on October 19, 2026 by IEIT Systems, a blacklisted Chinese server maker, and found at least six newer versions of AMD startup firmware issued after the blacklisting.",
-   "Corporate filings, court records, and nearly identical firmware tied IEIT to three non-blacklisted server sellers in China, Singapore, and California. AMD said the report misrepresented its business practices and relationships, and told the New York Times it complied with applicable U.S. laws and regulations.",
-   "On November 20, 2026, the House Foreign Affairs Committee released records showing AMD had applied for eight licenses for 600,000 MI325X chips as of May 11, 2026, with four approved. The committee did not accuse AMD of wrongdoing."
-  ],
-  "source": {
-   "label": "Hunterbrook report",
-   "url": "https://hntrbrk.com/investigations/amd-china"
-  }
  },
  {
   "slug": "groupe-dynamite-inc",
@@ -406,32 +382,6 @@
    "The investigation said Russian intermediaries imported the machinery and later supplied some of it to enterprises belonging to state-owned defense conglomerate Rostec. Importers included Finval Energo, which reportedly bought approximately €12 million of equipment, Unimatik MSK at approximately €980,000, and Alfa Machinery Group, which signed a 2023 contract for a machine valued at more than $384,000 (€342,000).",
    "The investigation also said intermediary Krona supplied a Grindex grinding machine in 2024 to Rostec subsidiary Machine-Building Design Bureau, which makes Iskander-M missile systems. In 2025, another machine imported through entrepreneur Denis Babichev was leased to a sanctioned manufacturer of military aircraft systems. Grindex itself is not subject to US or EU sanctions."
   ]
- },
- {
-  "slug": "advanced-micro-devices",
-  "date": "2026-11-11",
-  "company": "Advanced Micro Devices",
-  "ticker": "AMD",
-  "investigator": "Hunterbrook, The Bear Cave",
-  "status": "Company denies",
-  "title": "A blacklisted Chinese server maker used six newer versions of AMD code",
-  "points": [
-   "Hunterbrook downloaded an October 19, 2026 software update from blacklisted Chinese server maker IEIT Systems and found AMD startup firmware inside.",
-   "It said IEIT used at least six newer versions issued after its blacklisting, and traced $67 million in 2025 licensing income to two ventures blacklisted in 2019.",
-   "The House Foreign Affairs Committee released records showing AMD applied to export 600,000 AI chips to China, with four of eight applications approved."
-  ],
-  "body": [
-   "Advanced Micro Devices (AMD) is a Nasdaq-listed chip designer that told U.S. officials its proposed AI chip exports to China carried a low risk of diversion.",
-   "On November 19, 2026, Hunterbrook Media and The Bear Cave reported on AMD's China ties and financial commitments. Hunterbrook Capital held a short position in AMD, earning if the shares fell.",
-   "Hunterbrook downloaded an October 19, 2026 software update from blacklisted Chinese server maker IEIT Systems and found AMD startup firmware inside. It said IEIT used at least six newer versions issued after its blacklisting, and traced $67 million in 2025 licensing income to two ventures blacklisted in 2019.",
-   "The Bear Cave reported that AMD promised customers up to 320 million shares worth $161.1 billion as of November 17, while holding $15.8 billion in cash and short-term investments. Share promises and cash on hand are separate figures: the first is an equity commitment, the second is liquid funds.",
-   "AMD said Hunterbrook's reporting misrepresented its business practices and relationships.",
-   "On November 20, 2026, the House Foreign Affairs Committee released records showing AMD applied to export 600,000 AI chips to China, with four of eight applications approved. The committee did not accuse AMD of wrongdoing, and AMD told the New York Times it complied with applicable laws."
-  ],
-  "source": {
-   "label": "Hunterbrook report",
-   "url": "https://thebearcave.substack.com/archive"
-  }
  },
  {
   "slug": "ytl-ai-cloud",
@@ -768,7 +718,11 @@
    "On October 12, 2026, short seller Fugazi Research published a report examining SVRN's regulatory filings. The report said SVRN had undergone four reverse stock splits since 2022 for a cumulative factor of 100,000 to 1, and that its fiscal 2025 annual audit was missing.",
    "Fugazi Research also alleged that SVRN sold its remaining vessels to a buyer affiliated with a former chairwoman for well below their unaudited carrying value of about $40.8 million, without an independent fairness opinion. It added that part of SVRN's roughly 55.5 million NEAR tokens sat as collateral with counterparties.",
    "On October 13, 2026, SVRN shares fell 15.7% in morning trading to a session low of $39.75. The company's Co-CEO Robert Perri had resigned on October 7, leaving Chairman Salvatore Ternullo as sole CEO ahead of an October 27, 2026 Nasdaq filing deadline."
-  ]
+  ],
+  "source": {
+   "label": "Fugazi Research report",
+   "url": "https://www.fugaziresearch.com/p/svrn-100000-to-1-the-ships-gone-the"
+  }
  },
  {
   "slug": "deloitte-cyprus",
@@ -795,30 +749,6 @@
   }
  },
  {
-  "slug": "deloitte",
-  "date": "2026-10-12",
-  "company": "Deloitte",
-  "ticker": "",
-  "investigator": "The Bureau of Investigative Journalism",
-  "status": "Allegation",
-  "title": "Deloitte Cyprus backdated 1,000 documents to hide $10bn",
-  "points": [
-   "The reporting alleged that the firms used fake timestamps to rewrite the historical record between 1999 and 2013 to help Roman Abramovich conceal at least $10bn in assets.",
-   "Deloitte Cyprus stated that it acts in compliance with applicable laws and could not comment on specific correspondence from more than 20 years ago.",
-   "Cyprus police launched an investigation into the revelations."
-  ],
-  "body": [
-   "Deloitte is a global accountancy network that operates through independent firms around the world. Its Cyprus branch audited accounts and signed them off as true and fair.",
-   "The Bureau of Investigative Journalism published a report stating that staff at Deloitte Cyprus and its spin-off Meritservus falsified at least 1,000 corporate papers. The reporting alleged that the firms used fake timestamps to rewrite the historical record between 1999 and 2013 to help Roman Abramovich conceal at least $10bn in assets.",
-   "Deloitte Cyprus stated that it acts in compliance with applicable laws and could not comment on specific correspondence from more than 20 years ago. The firm added that each office is only liable for its own work.",
-   "Cyprus police launched an investigation into the revelations. Meanwhile, the country's public audit oversight board announced that it was gathering evidence into Deloitte Cyprus."
-  ],
-  "source": {
-   "label": "The Bureau of Investigative Journalism report",
-   "url": "https://thebureauinvestigates.com/stories/2026-10-22/cyprus-police-launch-investigation-into-deloitte-backdating-scandal"
-  }
- },
- {
   "slug": "shenzhen-qingcheng",
   "date": "2026-10-06",
   "company": "Shenzhen Qingcheng",
@@ -837,30 +767,6 @@
    "Australian Privacy Commissioner Carly Kind sent queries to the company following the ABC report. She said Shenzhen Qingcheng was the only company that opted to ignore the regulator completely.",
    "On October 6, 2026, the Australian Privacy Commissioner launched a formal investigation into Shenzhen Qingcheng. Kind said her office had a range of concerns, including the possible use of facial recognition technology, and now had the power to compel information from the company."
   ]
- },
- {
-  "slug": "fervo-energy-company",
-  "date": "2026-10-06",
-  "company": "Fervo Energy Company",
-  "ticker": "FRVO",
-  "investigator": "Morpheus Research",
-  "status": "Allegation",
-  "title": "Fervo lost 193 million gallons of water underground while claiming its system worked",
-  "points": [
-   "The report alleged that Fervo altered historical temperature data after injecting about 33% more water into its pilot plant in March 2024.",
-   "According to Morpheus, production temperatures fell by 90°F month-over-month and water loss rose from 21% to 57%.",
-   "State data cited in the report showed the project lost 193 million gallons of water to subsurface leak-off since December 2023."
-  ],
-  "body": [
-   "Fervo Energy Company is a Nasdaq-listed developer of enhanced geothermal power plants. In May 2026, it sold 80.5 million shares at $27.00 in an initial public offering, raising about $2.174 billion gross. The company told investors that its technology was proven at scale.",
-   "On October 6, 2026, short seller Morpheus Research published a 50-page report and disclosed a short position in the stock. Morpheus compared Fervo's claims against data from the Nevada Division of Minerals. The report alleged that Fervo altered historical temperature data after injecting about 33% more water into its pilot plant in March 2024.",
-   "According to Morpheus, production temperatures fell by 90°F month-over-month and water loss rose from 21% to 57%. State data cited in the report showed the project lost 193 million gallons of water to subsurface leak-off since December 2023. The report also alleged seismicity-related equipment damage.",
-   "Fervo shares dropped intraday on October 6, 2026, before closing at $14.33, about 46% below the $27.00 offering price. On November 19, 2026, a press release announced a shareholder investigation and sought whistleblowers with non-public information."
-  ],
-  "source": {
-   "label": "Morpheus Research report",
-   "url": "https://morpheus-research.com/fervo"
-  }
  },
  {
   "slug": "anthropic",
@@ -1270,7 +1176,11 @@
    "On August 19, 2026, short seller Scorpion Capital posted a report on X and disclosed a short position, which earns when shares fall. It called the company a cash-burning inferno operating a Ponzi-like scheme and labeled its AI narrative a speculative delusion.",
    "Twist Bioscience shares rose 22.64% to $142.39 on August 19, 2026, and later climbed to around $200 a share during a short squeeze. On September 27, 2026, The Bear Cave noted that Scorpion Capital flagged a $56.3 million stock sale by the chief executive under a Rule 10b5-1 trading plan.",
    "On November 5, 2026, The Bear Cave published a report by Hunterbrook Media's chief executive after interviewing Twist Bioscience's chief executive. The report argued that market optimism had detached from the core business economics, and Twist Bioscience shares fell 10% that day."
-  ]
+  ],
+  "source": {
+   "label": "The Bear Cave report",
+   "url": "https://thebearcave.substack.com/p/problems-at-twist-bioscience-twst"
+  }
  },
  {
   "slug": "flotek-industries-inc",
@@ -1314,7 +1224,11 @@
    "Viceroy Research, which held a short position and stood to gain if the share price fell, published reports starting August 13, 2026. The investigator said Blue Moon raised C$156.25 million in May 2026 after telling investors Nussir would be funded partly by a US$140 million project finance package, when final agreements for the US$50 million term loan and US$70 million stream were never signed.",
    "Kargl-Simard dismissed Viceroy's work during a call with brokers on August 13, 2026. On September 25, 2026, Norway delegated authority to its Ministry of Climate and Environment to reverse sea-disposal approvals from a 2016 royal decree while examining whether Nussir's permit had the same defect.",
    "On November 2, 2026, Blue Moon announced that its acquisition of 33 tungsten and antimony projects in the western United States was dead. The next day, the company announced it was selling Blue Moon Norway and Nussir to ACG Metals for $220 million in ACG shares."
-  ]
+  ],
+  "source": {
+   "label": "Viceroy Research report",
+   "url": "https://viceroyresearch.org/publications/blue-moon-metals-response-to-the-non-response"
+  }
  },
  {
   "slug": "zenatech-inc",
@@ -1359,7 +1273,11 @@
    "The SEC alleged that Netcapital recognized approximately $13.9 million in improper revenue, inflating reported figures by about 345%. At least eleven startups controlled by John Fanning signed consulting deals worth $1 million to $2 million each and paid in their own equity. Comparable legitimate customers paid about $50,000.",
    "On August 12, 2026, independent auditor Fruci & Associates II resigned, citing the SEC action. Netcapital later told investors not to rely on its audited financial statements for fiscal 2022 through 2025.",
    "Netcapital engaged a successor auditor to re-audit those years and fiscal 2026. By November 2026, its fiscal 2026 annual report and Q1 fiscal 2027 report were delinquent, and Nasdaq granted an extension until February 9, 2027."
-  ]
+  ],
+  "source": {
+   "label": "Fugazi Research report",
+   "url": "https://www.fugaziresearch.com/p/ncpl-phantom-revenue-sham-transactions"
+  }
  },
  {
   "slug": "block-inc",
@@ -1403,7 +1321,7 @@
   ],
   "source": {
    "label": "Fugazi Research report",
-   "url": "https://www.fugaziresearch.com/archive"
+   "url": "https://www.fugaziresearch.com/p/dfns-running-back-the-same-ruthless"
   }
  },
  {
@@ -1704,7 +1622,7 @@
   ],
   "source": {
    "label": "Pelican Way Research report",
-   "url": "https://melifinance.substack.com/p/beware-of-hyliion-holdings-hyln-more"
+   "url": "https://thebearcave.substack.com/p/the-bear-cave-332"
   }
  },
  {
@@ -1915,7 +1833,7 @@
   ],
   "source": {
    "label": "Fugazi Research report",
-   "url": "https://www.fugaziresearch.com/sitemap/2026"
+   "url": "https://www.fugaziresearch.com/p/lost-in-space-a-narrative-launched"
   }
  },
  {
@@ -1961,7 +1879,11 @@
    "On June 11, 2026, short seller Viceroy Research published a report and said it held a short position in Abaxx Technologies, meaning it earns when the shares fall. Viceroy alleged that Abaxx Exchange activity consisted of wash-traded churn sustained by incentives, with minimal size, wide spreads and limited depth on its central limit order book.",
    "Viceroy also claimed that Singapore filings showed CBOE had exited its strategic investment in Abaxx Exchange without public disclosure by the company. Abaxx Technologies shares fell 13.8% that day.",
    "On June 12, 2026, Viceroy sent a letter to MAS providing trade-level, time-stamped evidence from the previous day that it said showed artificial trading activity. On June 15, 2026, Viceroy published another report, and on June 26, 2026, it sent a letter to the OSC and CIRO requesting an investigation."
-  ]
+  ],
+  "source": {
+   "label": "Viceroy Research report",
+   "url": "https://viceroyresearch.org/publications/osc-and-ciro"
+  }
  },
  {
   "slug": "sony",
@@ -2008,30 +1930,6 @@
    "SEGG said its share price dropped by more than 50% after the report came out. The company denied the claims, calling them false, misleading and disparaging.",
    "On June 26, 2026, SEGG sued White Diamond Research and Adam Gefvert in Tarrant County District Court in Texas for $20 million in damages. SEGG also announced the launch of prediction market contracts for FIFA World Cup matches through Sports Predicts."
   ]
- },
- {
-  "slug": "ericsson",
-  "date": "2026-06-10",
-  "company": "Ericsson",
-  "ticker": "ERIC",
-  "investigator": "Global Witness",
-  "status": "Allegation",
-  "title": "Five of seven top Rwandan coltan exporters bought conflict minerals",
-  "points": [
-   "In a year-long investigation covering January 2023 to September 2025, Global Witness reviewed trade and customs data and interviewed over 70 people.",
-   "The report alleged that coltan from these tainted supply chains likely ended up in products from Ericsson and other major brands.",
-   "In early 2026, ITSCI told Global Witness that it had suspended three exporters and placed three additional exporters under review."
-  ],
-  "body": [
-   "Ericsson is a global brand that sells everyday technology products requiring coltan, a mineral essential for smartphones and computers.",
-   "In a year-long investigation covering January 2023 to September 2025, Global Witness reviewed trade and customs data and interviewed over 70 people. The group found that five of the seven largest Rwandan coltan exporters, which together exported almost 85% of Rwanda's coltan, bought smuggled minerals from mines in Rubaya, DRC, occupied by the M23 military group.",
-   "Global Witness said those exporters were members of the ITSCI traceability scheme, which tagged the smuggled minerals as conflict-free before shipping them to smelters. The report alleged that coltan from these tainted supply chains likely ended up in products from Ericsson and other major brands.",
-   "Ericsson told Global Witness that the smelters named in the report were conformant with the Responsible Minerals Initiative and said it would review the specific cases. In early 2026, ITSCI told Global Witness that it had suspended three exporters and placed three additional exporters under review."
-  ],
-  "source": {
-   "label": "Global Witness report",
-   "url": "https://globalwitness.org/en/press-releases/conflict-coltan-used-in-technology-from-major-brands"
-  }
  },
  {
   "slug": "amazon",
@@ -2825,30 +2723,10 @@
    "Viceroy argued that further provisions would weaken the group's regulatory capital. It said Close Brothers had already sold subsidiaries, reduced risk-weighted assets and cancelled dividends to support its capital position.",
    "Close Brothers shares fell as much as 18.8% on March 16. The company strongly disagreed with Viceroy's report. On March 31, Viceroy said the FCA's finalized policy supported its estimates and maintained that provisions would need to more than double.",
    "On April 8, 2026, Close Brothers announced that the finalized compensation scheme would cost approximately £320 million, broadly similar to its existing £294 million provision. The company said it could comfortably absorb the cost using its existing capital resources."
-  ]
- },
- {
-  "slug": "babcock-wilcox-enterprises-inc",
-  "date": "2026-03-12",
-  "company": "Babcock & Wilcox Enterprises Inc.",
-  "ticker": "BW",
-  "investigator": "Sunlight Partners, Wolfpack Research",
-  "status": "Allegation",
-  "title": "Short sellers questioned Babcock & Wilcox's $2.4 billion boiler deal",
-  "points": [
-   "It alleged that the deal involved an entity backed by BRC Group Holdings, Babcock & Wilcox's largest shareholder.",
-   "Sunlight Partners published a second report after interviewing experts in March and April 2026, and said it had taken a short position.",
-   "It alleged that the counterparty, Base Electron, was a related party controlled by affiliates of B."
-  ],
-  "body": [
-   "Babcock & Wilcox Enterprises is listed on the New York Stock Exchange and announced a $2.4 billion deal to supply power-generating boilers for Applied Digital. Its shares had risen about 75% after March 3.",
-   "On March 12, 2026, Wolfpack Research published a report and said it was short the stock. It alleged that the deal involved an entity backed by BRC Group Holdings, Babcock & Wilcox's largest shareholder.",
-   "On May 26, 2026, Sunlight Partners published a second report after interviewing experts in March and April 2026, and said it had taken a short position. It alleged that the counterparty, Base Electron, was a related party controlled by affiliates of B. Riley and that timelines were unrealistic.",
-   "By October 18, 2026, equity research from MR.INVEST noted that pending securities class-action complaints in federal court were in motion-to-dismiss stages without formal findings of liability."
   ],
   "source": {
-   "label": "Sunlight Partners report (PDF)",
-   "url": "https://sunlight.partners/s/Sunlight-Partners-Babcock-Wilcox-Report-6yay.pdf"
+   "label": "Viceroy Research report",
+   "url": "https://viceroyresearch.org/publications/close-brothers-fca-submission"
   }
  },
  {
@@ -3032,7 +2910,11 @@
    "On April 2, The Bear Cave published hundreds of consumer complaints obtained through public records requests. Merchants alleged that sales representatives offered free advertising trials, then billed them hundreds or thousands of dollars months after they believed they had cancelled. Other complaints described repeated sales calls despite requests to stop.",
    "One business owner recorded a July 1, 2025 sales call and submitted it to the Illinois Attorney General. The recording captured repeated requests to stop marketing calls while a Yelp representative continued offering a free advertising campaign.",
    "On April 6, Benzinga reported downward pressure on Yelp shares without giving a percentage decline. Yelp responded that employees must follow company policies and could face disciplinary action, including termination, for misconduct. The complaints remained allegations in the reporting."
-  ]
+  ],
+  "source": {
+   "label": "The Bear Cave report",
+   "url": "https://thebearcave.substack.com/p/problems-at-yelp-yelp"
+  }
  },
  {
   "slug": "sterling-infrastructure",
@@ -3213,7 +3095,7 @@
   ],
   "source": {
    "label": "The Bear Cave report",
-   "url": "https://thebearcave.substack.com/p/follow-the-money"
+   "url": "https://thebearcave.substack.com/p/problems-at-aduro-clean-technologies"
   }
  },
  {
@@ -3380,7 +3262,7 @@
   ],
   "source": {
    "label": "Bonitas Research report",
-   "url": "https://thebearcave.substack.com/p/more-problems-at-serve-robotics-serv"
+   "url": "https://thebearcave.substack.com/p/problems-at-serve-robotics-serv"
   }
  },
  {
@@ -3458,30 +3340,6 @@
   }
  },
  {
-  "slug": "ceres-power",
-  "date": "2025-12-11",
-  "company": "Ceres Power",
-  "ticker": "",
-  "investigator": "Grizzly Research",
-  "status": "Allegation",
-  "title": "Ceres Power shares jumped 250%, then a short seller questioned its deals",
-  "points": [
-   "The report reviewed Ceres Power's partnership history from 2013 through 2023 and said the company repeatedly announced deals that ended without commercial products or meaningful revenue.",
-   "Grizzly Research said Bosch acquired a nearly 18% stake and committed over €400 million since 2018 before ending the partnership in early 2025.",
-   "The report also said Ceres Power failed multiple times since 2018 to bring joint products to market with partner and largest shareholder Weichai."
-  ],
-  "body": [
-   "Ceres Power Holdings plc is a UK company that develops solid oxide electrolyzer cell and solid oxide fuel cell technology for distributed power systems. Its stock price rose more than 250% after partner Doosan Fuel Cell announced the start of systems in a new 50MW factory using Ceres technology in July 2025.",
-   "On December 11, 2025, Grizzly Research published a report and disclosed a short position in the stock, meaning it earns when the shares fall. The report reviewed Ceres Power's partnership history from 2013 through 2023 and said the company repeatedly announced deals that ended without commercial products or meaningful revenue.",
-   "Grizzly Research said Bosch acquired a nearly 18% stake and committed over €400 million since 2018 before ending the partnership in early 2025. The report also said Ceres Power failed multiple times since 2018 to bring joint products to market with partner and largest shareholder Weichai.",
-   "Sharecast News reported on December 11, 2025, that Ceres Power shares tumbled after Grizzly Research disclosed its short position and published the report."
-  ],
-  "source": {
-   "label": "Grizzly Research report",
-   "url": "https://grizzlyreports.com/ceres"
-  }
- },
- {
   "slug": "advance-auto-parts-inc",
   "date": "2025-12-10",
   "company": "Advance Auto Parts, Inc.",
@@ -3551,30 +3409,6 @@
   }
  },
  {
-  "slug": "sportradar-group-ag",
-  "date": "2025-11-20",
-  "company": "Sportradar Group AG",
-  "ticker": "SRAD",
-  "investigator": "Muddy Waters Research, Callisto Research",
-  "status": "Allegation",
-  "title": "Sportradar said it policed illegal betting. Undercover investigators found 50 clients.",
-  "points": [
-   "At the ICE 2026 gaming conference in Barcelona, Muddy Waters investigators posed as operators of a startup sportsbook targeting Vietnam, Thailand, Indonesia, and China.",
-   "Using code analysis and interviews with fifteen current and former employees, Muddy Waters said it identified nearly 50 current or recent Sportradar clients and collaborators operating in illegal markets.",
-   "The report estimated that illegal operators delivered about 20 to 40% of Sportradar's total revenues, and listed the report again in its 2026 archives on November 17, 2026."
-  ],
-  "body": [
-   "Sportradar Group AG is a sports data and integrity company listed on Nasdaq under the ticker SRAD. On its Q3 2025 earnings call, the company described a 4-level customer verification process and said it monitored illegal market activity very closely.",
-   "On April 22, 2026, short seller Muddy Waters Research published a report and said it held a short position in Sportradar shares, meaning it earns when the shares fall. At the ICE 2026 gaming conference in Barcelona, Muddy Waters investigators posed as operators of a startup sportsbook targeting Vietnam, Thailand, Indonesia, and China.",
-   "The report alleged that an Asia-focused Sportradar sales executive walked the undercover team through products tailored to each illegal market and offered an introduction to Yabo Group, which Muddy Waters called China's largest illegal gambling operator.",
-   "Using code analysis and interviews with fifteen current and former employees, Muddy Waters said it identified nearly 50 current or recent Sportradar clients and collaborators operating in illegal markets. The report estimated that illegal operators delivered about 20 to 40% of Sportradar's total revenues, and listed the report again in its 2026 archives on November 17, 2026."
-  ],
-  "source": {
-   "label": "Muddy Waters Research report",
-   "url": "https://muddywatersresearch.com/research/2026/mw-is-short-srad/"
-  }
- },
- {
   "slug": "sportradar",
   "date": "2025-11-20",
   "company": "Sportradar",
@@ -3592,7 +3426,11 @@
    "On November 20, 2025, short seller The Bear Cave published a report alleging that Sportradar facilitated crooked gambling and serviced grey market operators. The report pointed to logos for Stake and 188Bet in Sportradar's April 2025 investor presentation, noting 188Bet was licensed in Anjouan and Stake operated in legally ambiguous territories. Sportradar shares fell 5.9% that day.",
    "By April 26, 2026, two other short sellers had published reports on Sportradar. Callisto Research said it found more than 270 operators using Sportradar products illegally and cited a former employee who estimated 30% to 40% of revenue came from them. Hours later, Muddy Waters Research estimated illegal operators delivered about 20% to 40% of total revenues.",
    "Sportradar shares fell about 20% following the April reports. The company denied the claims, saying the reports showed a misunderstanding of its business and were written by short sellers trying to profit from stock disruption."
-  ]
+  ],
+  "source": {
+   "label": "The Bear Cave report",
+   "url": "https://thebearcave.substack.com/p/problems-at-sportradar-group-srad"
+  }
  },
  {
   "slug": "praxis-precision-medicines-inc",
@@ -4211,7 +4049,11 @@
    "In August 2025, Richtech announced a Master Services Agreement with a top global retailer. Online speculation linked the deal to Walmart and fueled a sharp rise in the share price.",
    "On September 30, 2025, Capybara Research published a report and disclosed that its affiliates held a short position in Richtech shares, meaning it earned when the shares fell. Capybara alleged that Richtech sold rebranded Chinese robots and relied on fake partnerships, fake deals, fabricated Walmart hype, and undisclosed related-party transactions.",
    "On October 23, 2025, Fugazi Research published a second report and disclosed a financial interest in the securities. Fugazi alleged that Richtech operated as a reseller of imported Chinese systems rather than a U.S. robotics maker. According to Activ8 Insights, Richtech shares fell 88.70% after the Fugazi report."
-  ]
+  ],
+  "source": {
+   "label": "Capybara Research report",
+   "url": "https://www.fugaziresearch.com/p/richtech-robotics-nasdaq-rr-the-illusion"
+  }
  },
  {
   "slug": "rezolve-ai",
@@ -4739,7 +4581,11 @@
    "On August 18, 2025, Fugazi Research published a report examining Advent's filings and promotional campaigns. The report stated that Advent had never turned a profit and posted $2.4 million in revenue in the second quarter of 2025, down from $3.0 million a year earlier.",
    "Fugazi Research alleged that Advent funded operations through repeated share dilutions, including two $50 million equity programs in April and June 2023. It also noted that Wall Street Reporter sent promotional emails in July and August 2025 ahead of potential share sales, and that Advent executed a 1-for-30 reverse split in May 2024.",
    "According to the filings cited, Advent's Danish subsidiary was declared bankrupt on July 25, 2024, and a German arbitration resulted in an unfavorable award of roughly €4.5 million. Since the August 18, 2025 report, Activ8 Insights tracked a 75.48% decline in the share price."
-  ]
+  ],
+  "source": {
+   "label": "Fugazi Research report",
+   "url": "https://www.fugaziresearch.com/p/advent-technologies-adn-how-paid"
+  }
  },
  {
   "slug": "marex-group-plc",
@@ -4779,7 +4625,11 @@
    "On July 29, 2025, The Bear Cave published a report alleging that overseas manipulation groups were inflating the shares in a pump-and-dump scheme. The report stated that Pheton actually had declining revenues of less than $1 million, ten employees, and no real potential for a major partnership.",
    "The shares fell 90% in minutes and ended the day down 95% at $1.65 after at least eight trading halts. The company's market value dropped from $765 million to $40.8 million, which reflects a fall in share value rather than cash taken from the company. Pheton denied any involvement in or knowledge of stock manipulation.",
    "The day after the drop, several entities in the British Virgin Islands filed amended 13G ownership forms disclosing they had sold all of their Pheton shares."
-  ]
+  ],
+  "source": {
+   "label": "The Bear Cave report",
+   "url": "https://thebearcave.substack.com/p/problems-at-pheton-holdings-pthl"
+  }
  },
  {
   "slug": "blaize-holdings",
@@ -4852,27 +4702,6 @@
    "label": "Morpheus Research report",
    "url": "https://morpheus-research.com/collective-response"
   }
- },
- {
-  "slug": "marex",
-  "date": "2025-08-05",
-  "company": "Marex",
-  "ticker": "",
-  "investigator": "NINGI Research",
-  "status": "Allegation",
-  "title": "Marex reported strong cash flow. A short seller found a $930 million fund off the books.",
-  "points": [
-   "According to the report, Marex was the sole investor and counterparty to this fund, which held more than $930 million in derivatives.",
-   "It also said Marex included debt issuance in operating cash flow, which was negative $150 million in 2024 and negative $258 million in 2023 without that debt.",
-   "Marex shares fell 3.4% on August 5, 2025, after the report came out."
-  ],
-  "body": [
-   "Marex Group plc is a commodities broker listed on Nasdaq. The company told investors it generated strong operating cash flow and reported profits.",
-   "On August 5, 2025, NINGI Research published a report on Marex and said it held a short position, meaning it earns when the shares fall. The firm examined Marex's filings and alleged the broker hid an off-balance-sheet entity in Luxembourg called the Marex Fund. According to the report, Marex was the sole investor and counterparty to this fund, which held more than $930 million in derivatives.",
-   "NINGI Research alleged Marex sold financial instruments to the Marex Fund and set the fair value on both sides to book fake gains. It also said Marex included debt issuance in operating cash flow, which was negative $150 million in 2024 and negative $258 million in 2023 without that debt.",
-   "Marex shares fell 3.4% on August 5, 2025, after the report came out. By August 12, NINGI Research referred to a company response as boilerplate, without providing its substance in the cited account.",
-   "On August 12, 2025, NINGI Research added that non-cash gains accounted for 91.9% of Marex's 2024 earnings attributable to common shareholders. It said those gains also represented 58.6% of the company's adjusted profit before tax."
-  ]
  },
  {
   "slug": "united-therapeutics",
@@ -5006,7 +4835,11 @@
    "Viceroy later alleged that ₹3,247 crore in brand fees went to Vedanta Resources without clear services in return. On August 29, Viceroy reported findings from staff interviews, site inspections, drone footage, satellite images and financial analysis. Vedanta valued Konkola Copper Mines' property, plant and equipment at $2.7 billion, while its liquidator had reported $1.1 billion the previous year.",
    "On September 17, 2025, Viceroy challenged Vedanta's proposed JAL acquisition. It reported a 6% EBITDA margin, negative operating earnings and a -29% net margin for JAL in FY25. Viceroy warned that financing the acquisition with new debt would weaken liquidity.",
    "On April 16, 2026, Viceroy reported that an April 14 explosion at Vedanta's Chhattisgarh Athena Power Plant had killed at least 20 workers and injured over 36. Vedanta said the incident involved subcontractor NGSL personnel."
-  ]
+  ],
+  "source": {
+   "label": "Viceroy Research report",
+   "url": "https://viceroyresearch.org/publications/vedanta-konkola-copper-mines-a-hollow-asset"
+  }
  },
  {
   "slug": "hindustan-zinc",
@@ -5027,7 +4860,11 @@
    "On July 9, Hindustan Zinc shares fell 4.8% to Rs 415.30, while Vedanta Limited shares fell as much as 7.7% to Rs 421. These were share-price movements, not amounts of cash allegedly transferred. Viceroy disclosed that its financial interests could benefit from falling security prices.",
    "Viceroy continued publishing allegations about Hindustan Zinc. On August 25, it reported that Hindustan Zinc had paid ₹1,060 crore ($121m) in Brand and Strategic Services fees to Vedanta Limited in Q1 FY26, which was then remitted to Vedanta Resources. It said the payment represented a 61% increase over the previous year.",
    "On October 23, Viceroy reported that Vedanta Resources had disclosed in its September 30, 2025 bond prospectus that the group had received summons from SEBI based on Viceroy's research. The disclosure established that the securities regulator had issued summons, not that Viceroy's allegations had been proven."
-  ]
+  ],
+  "source": {
+   "label": "Viceroy Research report",
+   "url": "https://viceroyresearch.org/publications/vedanta-our-letter-to-the-government-of-india-on-the-looting-of-hindustan-zinc"
+  }
  },
  {
   "slug": "bitmine-immersion",
@@ -5498,7 +5335,7 @@
   ],
   "source": {
    "label": "Fugazi Research report",
-   "url": "https://www.fugaziresearch.com/p/bitmine-bmnr-ethereum-real-business"
+   "url": "https://www.fugaziresearch.com/p/sharplink-gaming-sbet-ethereum-dream"
   }
  },
  {
@@ -5587,7 +5424,7 @@
   ],
   "source": {
    "label": "Pelican Way Research report",
-   "url": "https://investresearch.substack.com/p/newborn-town-a-single-digit-pe-for"
+   "url": "https://thebearcave.substack.com/p/the-bear-cave-277"
   }
  },
  {
@@ -5908,7 +5745,7 @@
   ],
   "source": {
    "label": "The Captain's Log report",
-   "url": "https://kianimd.substack.com/p/opinion-the-epocrates-doximity-connection"
+   "url": "https://thebearcave.substack.com/p/the-bear-cave-267"
   }
  },
  {
@@ -5955,27 +5792,6 @@
    "label": "Gotham City Research report",
    "url": "https://gothamcityresearch.com/post/kyndryl-and-its-deliberately-misleading-statement"
   }
- },
- {
-  "slug": "vita-coco",
-  "date": "2025-03-26",
-  "company": "Vita Coco",
-  "ticker": "",
-  "investigator": "NINGI Research",
-  "status": "Company denies",
-  "title": "Import records pointed to a $90 million Costco contract loss for Vita Coco",
-  "points": [
-   "Using import records, the firm said Costco, which accounted for around 25% of Vita Coco's net sales, was moving to source Kirkland coconut water from a rival.",
-   "The report also said 2024 sales grew 4.5% against 15.4% for the category, and noted Vita Coco had already conceded its US market share was lower than 51%.",
-   "Shares dropped about 3% to $34.43 in morning trading on March 26, 2025."
-  ],
-  "body": [
-   "The Vita Coco Company is listed on Nasdaq and sells coconut water under its own brand and for store labels. It told investors it was a growth story in better-for-you drinks and had claimed a 51% share of the US market.",
-   "On March 26, 2025, short seller NINGI Research published a report saying it held a short position, which earns when the shares fall. Using import records, the firm said Costco, which accounted for around 25% of Vita Coco's net sales, was moving to source Kirkland coconut water from a rival.",
-   "NINGI estimated the contract loss would create a $90 million revenue shortfall by the end of 2025. The report also said 2024 sales grew 4.5% against 15.4% for the category, and noted Vita Coco had already conceded its US market share was lower than 51%.",
-   "Shares dropped about 3% to $34.43 in morning trading on March 26, 2025. Vita Coco issued a rebuttal that NINGI described as boilerplate.",
-   "On March 27, 2025, NINGI published a second report alleging that supplier Ducoco, providing 8.5% of Vita Coco's supply, had filed for bankruptcy protection in February 2025 with $118 million in debt. The $90 million figure is an estimated revenue loss, while the $118 million is the supplier's debt."
-  ]
  },
  {
   "slug": "the-vita-coco-company",
@@ -6026,26 +5842,6 @@
   }
  },
  {
-  "slug": "hesai",
-  "date": "2025-03-18",
-  "company": "Hesai",
-  "ticker": "",
-  "investigator": "Blue Orca Capital",
-  "status": "Allegation",
-  "title": "Hesai denied military ties. A short seller cited photos of its LiDAR on military vehicles.",
-  "points": [
-   "Blue Orca said it found photographic and video evidence showing Chinese military vehicles outfitted with Hesai LiDAR systems.",
-   "The report alleged that Hesai was trying to escape its designation as a Chinese military company.",
-   "In Tuesday morning trading on March 18, 2025, Hesai shares dropped over 11% to $19.82."
-  ],
-  "body": [
-   "Hesai Group is a Nasdaq-listed company that makes LiDAR systems. It had insisted to investors, the Department of Defense, and a United States federal court that it had no involvement with the Chinese military.",
-   "On March 18, 2025, short seller Blue Orca Capital published a report on Hesai Group and said it held a short position, meaning it earns when the shares fall. Blue Orca said it found photographic and video evidence showing Chinese military vehicles outfitted with Hesai LiDAR systems.",
-   "The report alleged that Hesai was trying to escape its designation as a Chinese military company. Blue Orca also said it did not trust Hesai's financial disclosures.",
-   "In Tuesday morning trading on March 18, 2025, Hesai shares dropped over 11% to $19.82."
-  ]
- },
- {
   "slug": "appian-corporation",
   "date": "2025-03-18",
   "company": "Appian Corporation",
@@ -6066,7 +5862,7 @@
   ],
   "source": {
    "label": "The Captain's Log report",
-   "url": "https://chartsrus0.substack.com/p/appian"
+   "url": "https://thebearcave.substack.com/p/the-bear-cave-266"
   }
  },
  {
@@ -6203,7 +5999,7 @@
   ],
   "source": {
    "label": "Pelican Way Research report",
-   "url": "https://dcinboxinsights.substack.com/p/two-parties-two-internets"
+   "url": "https://theoccasionalspeculator.substack.com/p/rum-comes-through"
   }
  },
  {
@@ -6527,7 +6323,11 @@
    "On January 16, 2025, short seller Kerrisdale Capital published a report questioning those projections, noting it held a short position and profited if the shares fell. It reviewed US Army budget documents showing a 2025 program budget of just under $25 million, and Customs and Border Patrol procurement plans of $1 million.",
    "On August 15, 2025, short seller Fuzzy Panda Research published its own report while holding a short position. Citing former employees and defense officials, it alleged that 60% of Red Cat's drones initially failed to work and that competitor Skydio had already delivered hundreds of drones for the same Army program.",
    "On October 10, 2025, Fuzzy Panda Research published follow-up findings after contacting Army officials. The report said Army officials confirmed the Low-Rate Initial Production contract was worth only $12.9 million, and that Red Cat drones had been in the NATO catalogue since November 2023 without significant sales."
-  ]
+  ],
+  "source": {
+   "label": "Fuzzy Panda Research report",
+   "url": "https://kerrisdalecap.com/investments/red-cat-rcat/"
+  }
  },
  {
   "slug": "sealsq-corp",
@@ -6668,7 +6468,7 @@
   ],
   "source": {
    "label": "The Bear Cave report",
-   "url": "https://bmfreports.com/articles/sezl"
+   "url": "https://thebearcave.substack.com/p/sezzle-removes-merchants-following"
   }
  },
  {

@@ -101,6 +101,49 @@ def opens(url):
         return False
 
 
+LEGAL = re.compile(r"\b(inc|incorporated|corp|corporation|co|company|ltd|limited|plc|ag|se|sa|nv|holdings?|group|the|enterprises)\b")
+
+
+def company_key(name):
+    s = re.sub(r"[.,'’()&]", " ", name.lower())
+    return re.sub(r"\s+", " ", LEGAL.sub(" ", s)).strip()
+
+
+def body_words(case):
+    return set(re.findall(r"[a-z]{4,}|\d[\d.,]*", " ".join(case["body"]).lower()))
+
+
+def same_research(a, b):
+    """One investigation published as two posts: same company under another name or ticker, or the same
+    investigator's same-day text about a neighbouring company (AMD and its Chinese customer, Sony and Ericsson)."""
+    ka, kb = company_key(a["company"]), company_key(b["company"])
+    if ka and kb and (ka == kb or re.search(rf"\b{re.escape(ka)}\b", kb) or re.search(rf"\b{re.escape(kb)}\b", ka)):
+        return True
+    if a["ticker"] and a["ticker"] == b["ticker"]:
+        return True
+    wa, wb = body_words(a), body_words(b)
+    overlap = len(wa & wb) / max(1, len(wa | wb))
+    first = lambda c: c["investigator"].split(",")[0].strip().lower()
+    return overlap > 0.3 and (first(a) == first(b) or a["date"][:7] == b["date"][:7])
+
+
+def dedupe(cases):
+    groups = []
+    for case in cases:
+        for group in groups:
+            if any(same_research(case, other) for other in group):
+                group.append(case)
+                break
+        else:
+            groups.append([case])
+    kept, dropped = [], []
+    for group in groups:
+        best = max(group, key=lambda c: (bool(c.get("source")), c["date"] or "", len(" ".join(c["body"]))))
+        kept.append(best)
+        dropped += [(c["slug"], best["slug"]) for c in group if c is not best]
+    return kept, dropped
+
+
 def main():
     src, dst = sys.argv[1], sys.argv[2]
     check = "--no-check" not in sys.argv
@@ -131,9 +174,12 @@ def main():
         if live:
             name = c["investigator"].split(",")[0]
             c["source"] = {"label": f"{name} report" + (" (PDF)" if live[0].lower().endswith(".pdf") else ""), "url": live[0]}
+    cases, dropped = dedupe(cases)
+    for slug, kept in dropped:
+        print(f"repeat: {slug} -> {kept}", file=sys.stderr)
     cases.sort(key=lambda c: (c["date"] or "0000"), reverse=True)
     json.dump(cases, open(dst, "w"), ensure_ascii=False, indent=1)
-    print(json.dumps({"cases": len(cases), "with_source": sum(1 for c in cases if c.get("source")),
+    print(json.dumps({"cases": len(cases), "repeats_removed": len(dropped), "with_source": sum(1 for c in cases if c.get("source")),
                       "three_points": sum(1 for c in cases if len(c["points"]) == 3)}))
 
 
