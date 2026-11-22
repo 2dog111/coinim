@@ -2,6 +2,8 @@
 // Text is written from Market Scan's checked pages (mscan exposes). Each case links one source only:
 // the investigator's own report. When that report is no longer available, `source` is omitted.
 
+import imported from "./cases-data.json";
+
 export type CaseSource = { label: string; url: string };
 
 export type FraudCase = {
@@ -12,12 +14,12 @@ export type FraudCase = {
   investigator: string;
   status: string;
   title: string;
-  points: [string, string, string];
+  points: string[];
   body: string[];
   source?: CaseSource;
 };
 
-export const cases: FraudCase[] = [
+const edited: FraudCase[] = [
   {
     slug: "abivax-scorpion-capital",
     date: "2026-11-20",
@@ -47,11 +49,22 @@ export const cases: FraudCase[] = [
   },
 ];
 
+// Hand-edited cases replace the imported text of the same company (imported slug in `replaces`).
+const replaces = new Set(["abivax"]);
+
+export const cases: FraudCase[] = [...edited, ...(imported as FraudCase[]).filter((item) => !replaces.has(item.slug))].sort(
+  (a, b) => (b.date || "0000").localeCompare(a.date || "0000"),
+);
+
 export function findCase(slug: string): FraudCase | undefined {
   return cases.find((item) => item.slug === slug);
 }
 
 export function formatDate(iso: string): string {
+  if (/^\d{4}$/.test(iso)) return iso;
+  if (/^\d{4}-\d{2}$/.test(iso)) {
+    return new Date(`${iso}-01T00:00:00Z`).toLocaleDateString("en-US", { year: "numeric", month: "long", timeZone: "UTC" });
+  }
   return new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",

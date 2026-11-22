@@ -41,7 +41,7 @@ export default async function Page() {
           <h1 id="cx-title">Corporate fraud, exposed.</h1>
           <p>
             Short sellers and investigative reporters publish the evidence. We retell each case in plain English: what the report
-            found, what the stock did, what the company answered.
+            found, what the stock did, what the company answered. {cases.length} cases from 2025–2026, newest first.
           </p>
         </section>
         <ol className="cx-list" id="cases">
