@@ -20,7 +20,7 @@ from concurrent.futures import ThreadPoolExecutor
 from urllib.parse import urlparse
 
 NOISE = re.compile(r"law firm|llp\b|rosen|pomerantz|levi & korsinsky|shkreli|bragar|glancy|bronstein|faruqi", re.I)
-GENERIC_PATHS = re.compile(r"^/?(|home|index\.html?|about|disclosures?|track-record|press|research|reports?|sitemap\.xml|contact)/?$", re.I)
+GENERIC_PATHS = re.compile(r"^/?(|home|index\.html?|about|about-us|about_us|disclosures?|track-record|press|research|reports?|sitemap\.xml|contact)/?$", re.I)
 STATUS = {
     "alleged": "Allegation",
     "denied_by_company": "Company denies",
@@ -76,7 +76,7 @@ def points(paragraphs, lead=""):
     return [s for _, _, s in sorted(chosen)][:3]
 
 
-RELAYS = re.compile(r"^(?:the bear cave|activ8 insights|shortfinder|breakout point)$", re.I)   # lists of other people's reports
+RELAYS = re.compile(r"^(?:the bear cave|activ8 insights|shortfinder|breakout point|a peek behind the numbers|shorts corner)$", re.I)   # lists of other people's reports
 
 
 def investigators(names):
@@ -85,16 +85,52 @@ def investigators(names):
     return real or keep or names[:1]
 
 
+LISTING = re.compile(r"/(?:category|categories|tags?|topics?|ticker|author|authors|page)/|"
+                     r"/[a-z-]*(?:equities|investigations|publications)(?:\.html?)?/?$", re.I)
+HOST_ALIASES = {"hntrbrk": "hunterbrook", "occrp": "occrp", "wiwo": "wirtschaftswoche", "fd": "financieeledagblad",
+                "thestar": "torontostar", "wsj": "wallstreetjournal", "nytimes": "newyorktimes", "ft": "financialtimes"}
+COMMON_WORDS = {"research", "capital", "reports", "report", "management", "partners", "analysis", "media", "news", "group",
+                "investigations", "investigative", "the", "and", "of", "for", "fund", "llc", "asset"}
+
+
+def _fold(text):
+    import unicodedata
+    text = text.lower().replace("ü", "ue").replace("ö", "oe").replace("ä", "ae")
+    return "".join(ch for ch in unicodedata.normalize("NFKD", text) if ch.isalnum() and ord(ch) < 128)
+
+
+def own_host(url, names):
+    """Index of the investigator whose own site the link is on (not a reprint, a tracker or someone else's newsletter),
+    or None."""
+    host = urlparse(url).netloc.lower().removeprefix("www.")
+    parts = host.split(".")
+    core = parts[-3] if host.endswith(".substack.com") and len(parts) >= 3 else (parts[-2] if len(parts) >= 2 else host)
+    core = _fold(HOST_ALIASES.get(core, core))
+    for i, name in enumerate(names):
+        compact = _fold(name)
+        words = [_fold(w) for w in re.split(r"[\s,.&'’-]+", name)]
+        initials = "".join(w[:1] for w in words if w)
+        if not compact or not core:
+            continue
+        if core in compact or compact in core or core == initials:
+            return i
+        if any(len(w) >= 5 and w not in COMMON_WORDS and w in core for w in words):
+            return i
+    return None
+
+
 def report_candidates(post):
     out = []
+    names = investigators(post.get("investigators") or [])
     for src in post.get("sources") or []:
         url, label = src.get("url") or "", src.get("label") or ""
         path = urlparse(url).path
-        if not url or GENERIC_PATHS.match(path):
+        if not url or GENERIC_PATHS.match(path) or LISTING.search(path):
             continue
-        if "report" in label.lower() or "investigation" in label.lower():
-            out.append(url)
-    return out
+        who = own_host(url, names)
+        if ("report" in label.lower() or "investigation" in label.lower()) and who is not None:
+            out.append((who, len(out), url))
+    return [u for _, _, u in sorted(out)]      # the lead investigator's own report first
 
 
 def opens(url):
@@ -115,6 +151,12 @@ def company_key(name):
     return re.sub(r"\s+", " ", LEGAL.sub(" ", s)).strip()
 
 
+def names_company(url, case):
+    text = re.sub(r"[^a-z0-9]+", " ", url.lower())
+    tokens = [w for w in company_key(case["company"]).split() if len(w) >= 3] + ([case["ticker"].lower()] if case["ticker"] else [])
+    return any(re.search(rf"\b{re.escape(t)}\b", text) for t in tokens)
+
+
 def body_words(case):
     return set(re.findall(r"[a-z]{4,}|\d[\d.,]*", " ".join(case["body"]).lower()))
 
@@ -123,17 +165,30 @@ def same_research(a, b):
     """One investigation published as two posts: same company under another name or ticker, or the same
     investigator's same-day text about a neighbouring company (AMD and its Chinese customer, Sony and Ericsson)."""
     ka, kb = company_key(a["company"]), company_key(b["company"])
-    if ka and kb and (ka == kb or re.search(rf"\b{re.escape(ka)}\b", kb) or re.search(rf"\b{re.escape(kb)}\b", ka)):
-        return True
-    if a["ticker"] and a["ticker"] == b["ticker"]:
-        return True
     wa, wb = body_words(a), body_words(b)
     overlap = len(wa & wb) / max(1, len(wa | wb))
     first = lambda c: c["investigator"].split(",")[0].strip().lower()
+    alike = first(a) == first(b) or overlap > 0.15
+    if ka and kb and ka == kb:
+        return True
+    if ka and kb and (re.search(rf"\b{re.escape(ka)}\b", kb) or re.search(rf"\b{re.escape(kb)}\b", ka)):
+        # «Swvl» and «Swvl Holdings» are one company; «Aya» (a staffing firm) and «Aya Gold & Silver» are not
+        if alike or (a["ticker"] and a["ticker"] == b["ticker"]):
+            return True
+    if a["ticker"] and a["ticker"] == b["ticker"] and alike:
+        return True
+    if a.get("source") and b.get("source") and a["source"]["url"] == b["source"]["url"]:
+        return True                     # one report page behind both posts
+    if first(a) == first(b) and a["date"] and a["date"] == b["date"]:
+        # the same investigator's same-day report filed under a garbled name: «Dilution And» whose title is about Energous
+        named = lambda x, y: company_key(y["company"]) and re.search(rf"\b{re.escape(company_key(y['company']))}\b", x["title"].lower())
+        if named(a, b) or named(b, a):
+            return True
     return overlap > 0.3 and first(a) == first(b) and min(len(wa), len(wb)) >= 40
 
 
-def dedupe(cases):
+def dedupe(cases, published=frozenset()):
+    """One case per group; a merged group keeps an address that is already published, so old links stay alive."""
     groups = []
     for case in cases:
         for group in groups:
@@ -145,8 +200,12 @@ def dedupe(cases):
     kept, dropped = [], []
     for group in groups:
         best = max(group, key=lambda c: (bool(c.get("source")), c["date"] or "", len(" ".join(c["body"]))))
-        kept.append(best)
         dropped += [(c["slug"], best["slug"]) for c in group if c is not best]
+        if best["slug"] not in published:
+            old = next((c["slug"] for c in group if c["slug"] in published), None)
+            if old:
+                best = {**best, "slug": old}
+        kept.append(best)
     return kept, dropped
 
 
@@ -176,12 +235,24 @@ def main():
         urls = sorted({u for c in cases for u in c["candidates"]})
         with ThreadPoolExecutor(16) as pool:
             ok = dict(zip(urls, pool.map(opens, urls)))
+    # A report page that several companies' posts point to belongs to the one it names; when it names none of them,
+    # nobody gets it (Market Scan sometimes attaches a fund's other report to a post).
+    users = {}
+    for c in cases:
+        for u in c["candidates"]:
+            users.setdefault(u, set()).add(company_key(c["company"]))
+    for c in cases:
+        c["candidates"] = [u for u in c["candidates"] if len(users[u]) == 1 or names_company(u, c)]
     for c in cases:
         live = [u for u in c.pop("candidates") if not check or ok.get(u)]
         if live:
             name = c["investigator"].split(",")[0]
             c["source"] = {"label": f"{name} report" + (" (PDF)" if live[0].lower().endswith(".pdf") else ""), "url": live[0]}
-    cases, dropped = dedupe(cases)
+    try:
+        published = frozenset(c["slug"] for c in json.load(open(dst)))
+    except (OSError, ValueError):
+        published = frozenset()
+    cases, dropped = dedupe(cases, published)
     for slug, kept in dropped:
         print(f"repeat: {slug} -> {kept}", file=sys.stderr)
     cases.sort(key=lambda c: (c["date"] or "0000"), reverse=True)

@@ -64,6 +64,7 @@ def drop_aggregators(s, investigator_names):
 
 TAIL_ACCORDING = re.compile(rf",?\s+according to\s+{SUBJECT}(?=[.,;]|$)")
 TAIL_COMMENT = re.compile(r"\s+to\s+(?:a\s+)?[A-Z][\w.&'’ -]*?(?:'s|’s)?\s+request(?:s)? for comment")
+REPORTED_BY = re.compile(rf"\s+(?:as\s+)?(?:reported|first reported|cited|quoted) by\s+{SUBJECT}(?:\s+on\s+{DATE})?(?=[.,;]|\s)")
 
 
 def clean_sentence(s, investigator_names):
@@ -75,6 +76,9 @@ def _clean_sentence(s, investigator_names):
     if BOILER.match(s):
         return None
     s = TAIL_COMMENT.sub("", s)
+    by = REPORTED_BY.search(s)          # «a letter to investors reported by Bloomberg on April 17» → «a letter to investors»
+    if by and not any(re.sub(r"^the\s+", "", n.lower()) in by.group("who").lower() for n in investigator_names if n):
+        s = (s[:by.start()] + s[by.end():]).strip()
     tail = TAIL_ACCORDING.search(s)
     if tail and not any(re.sub(r"^the\s+", "", n.lower()) in tail.group("who").lower() for n in investigator_names if n):
         s = (s[:tail.start()] + s[tail.end():]).strip()
